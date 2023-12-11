@@ -29,10 +29,10 @@ def Generator(llm, nodes: dict):
         print('input:\n' + input_string)
         response = llm_function.call_llm(llm, input_string)
         #print('\ngenerator response: \n' + response['choices'][0]['text'] + '\n')
-        #record.Record_txt(parameters.file_name, response['choices'][0]['text'] + '\n')
+        #record.Record_txt(parameters.file_name, '\n' + response['choices'][0]['text'] + '\n\n')
         #answers = Parse_propose_response(response['choices'][0]['text'])
         print('\ngenerator response: \n' + response.choices[0].message.content + '\n')
-        record.Record_txt(parameters.file_name, response.choices[0].message.content + '\n')
+        record.Record_txt(parameters.file_name, '\n' + response.choices[0].message.content + '\n\n')
         answers = Parse_propose_response(response.choices[0].message.content)
         for answer in answers:
             new_nodes.append({'id': parameters.id, 'answer': answer, 'value': None, 'parent_node': node['id'], 'ancestor_value': Value_mapping(node['value']) + (0 if node['ancestor_value'] == None else node['ancestor_value'])})
@@ -57,12 +57,13 @@ def Evaluator(llm, nodes: dict):
         if re.search('left.+', node['answer']) != None:
             propose_response = re.search('left.+', node['answer']).group().replace('left: ', '').replace(')', '')
         input_string = value_prompt.format(input = propose_response)
+        print('input:\n' + input_string)
         response = llm_function.call_llm(llm, input_string)
         #print('evaluator: \n' + response['choices'][0]['text'] + '\n')
-        #record.Record_txt(parameters.file_name, response['choices'][0]['text'])
+        #record.Record_txt(parameters.file_name, '\n' + response['choices'][0]['text'] + '\n\n')
         #value = Parse_value_response(response['choices'][0]['text'])
         print('evaluator: \n' + response.choices[0].message.content + '\n')
-        record.Record_txt(parameters.file_name, response.choices[0].message.content)
+        record.Record_txt(parameters.file_name, '\n' + response.choices[0].message.content + '\n\n')
         value = Parse_value_response(response.choices[0].message.content)
         node['value'] = value
         new_nodes.append(node)
@@ -75,13 +76,14 @@ def Parse_cot_answer(response):
 
 def Final_Generator(llm, path: str):
     input_string = cot_prompt.format(input = path)
+    print(input_string)
     response = llm_function.call_llm(llm, input_string)
     #print('final answer: ' + response['choices'][0]['text'])
     #answer = Parse_cot_answer(response['choices'][0]['text'])
-    #record.Record_txt(parameters.file_name, response['choices'][0]['text'])
+    #record.Record_txt(parameters.file_name, '\n' + response['choices'][0]['text'] + '\n\n')
     print('final answer: ' + response.choices[0].message.content)
     answer = Parse_cot_answer(response.choices[0].message.content)
-    record.Record_txt(parameters.file_name, response.choices[0].message.content)
+    record.Record_txt(parameters.file_name, '\n' + response.choices[0].message.content + '\n\n')
     return answer
 
 
@@ -92,3 +94,6 @@ def Value_mapping(value):
 
 def Sorted_by_value(node):
     return Value_mapping(node['value']) + node['ancestor_value']
+
+def Sorted_by_id(node):
+    return node['id']
