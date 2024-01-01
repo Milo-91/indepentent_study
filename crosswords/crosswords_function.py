@@ -11,8 +11,9 @@ class CrosswordsEnv():
         self.idx = None
         self.id = 0
 
-    def increase_id(self):
+    def get_id(self):
         self.id += 1
+        return self.id - 1
 
     def load_data(self, file_name):
         data = None
@@ -20,12 +21,13 @@ class CrosswordsEnv():
             data = json.load(file)
         return data
 
-    def reset(self, idx, board = None, status = None, t = None):
+    def reset(self, idx, board = None, status = None, t = None, id = None):
         self.board = ['_'] * 25 # 25 blanks on the board
         self.ans = ['_____'] * 10 # memory each line
         self.status = [0] * 10 # 10 lines status 0: Unfilled, 1: Filled, 2: Changed
         self.t = 0 # steps
         self.idx = idx # question data index
+        self.id = 0
         self.data = self.data[idx][0]
         if board != None:
             self.board = board
@@ -34,6 +36,8 @@ class CrosswordsEnv():
             self.status = status
         if t != None:
             self.t = t
+        if id != None:
+            self.id = id
 
     def board_render(self):
         string = 'Current Board\n'
@@ -127,9 +131,9 @@ def Generator(llm, node):
     question = propose_prompt.format(input = input_string)
     print('\nquestion:\n' +  question + '\n')
     response = llm_function.call_llm(llm, question)
-    print('\nresponse:\n' + response.choices[0].message.content + '\n')
+    print('\nresponse:\n' + response + '\n')
     # parse response & return 
-    parsed_lines = Parse_propose_response(response.choices[0].message.content + '\n')
+    parsed_lines = Parse_propose_response(response + '\n')
     parsed_lines = [(line[0].lower() + '. ' + line[1].lower(), confidence_to_value.get(line[2], 0)) for line in parsed_lines]
     parsed_lines = sorted(parsed_lines, key = lambda x: x[1], reverse = True)   
     print('\nparsed lines:\n')
@@ -137,8 +141,7 @@ def Generator(llm, node):
     for i in range(len(parsed_lines)):
         if i == parameters.k:
             break
-        new_nodes.append({'id': env.id, 'answer': parsed_lines[i][0], 'value': None, 'parent_node': node['id']})
-        env.increase_id()
+        new_nodes.append({'id': env.get_id(), 'answer': parsed_lines[i][0], 'value': None, 'parent_node': node['id']})
     # refine
     if len(new_nodes) == 0:
         new_nodes = Generator(llm, node)
@@ -163,8 +166,8 @@ def Evaluator(llm, nodes):
             line = f'{self.data[i]}: {ans[i]}'
             question = value_prompt.format(input = line)
             response = llm_function.call_llm(llm, question)
-            print(response.choices[0].message.content)
-            answer = Parse_value_response(response.choices[0].message.content)
+            print(response)
+            answer = Parse_value_response(response)
             if answer != None:
                 count[answer] += 1
         node['value'] = count
@@ -179,11 +182,18 @@ if __name__ == '__main__':
     env = CrosswordsEnv(nodes = nodes, file_name = file_name)
     board = '______________________________'
     status = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-    env.reset(idx = 0, board = board)
+    env.reset(idx = 0)
     #print(env.board_render())
     #print(env.ans_render())
-    node = {'id': 0}
+    node = {'id': env.get_id()}
     llm = llm_function.get_llm()
     new_nodes = Generator(llm, node)
     print(new_nodes)
-
+    env.change_env(new_nodes[0])
+    env.board_render()
+    board = env.borad, status = env.status, env.t = t
+    '''
+    new_nodes = Evaluator(llm, new_nodes)
+    print(new_nodes)
+    env.reset(board = board, status = status, t = t, id = env.id)
+    '''

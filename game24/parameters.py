@@ -1,4 +1,3 @@
-#model_path = '../openhermes-2.5-neural-chat-7b-v3-1-7b.Q8_0.gguf'
 model_path = 'vicuna-7b-v1.5.Q8_0.gguf'
 file_name = 'record_game24_{idx}.txt'
 json_file_name = 'tree_game24.json'
