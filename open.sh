@@ -8,3 +8,5 @@ pip install llama-index
 pip install lm-format-enforcer
 pip install graphviz
 apt install -y graphviz
+git config --global user.name "Milo-91"
+git config --global user.email "milolin9112@gmail.com"
