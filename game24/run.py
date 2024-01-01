@@ -7,6 +7,7 @@ from bfs import *
 import record_function
 import sympy
 import re
+import time
 
 
 def Acc(answer, data, puzzles_id):
@@ -22,13 +23,19 @@ if __name__ == '__main__':
     llm = llm_function.get_llm()
     locs = list()
 
+    print('llm ok')
     for i in range(1):
+        start_time = time.time()
         nodes = [{'id': parameters.id, 'answer': data_game24['Puzzles'][i], 'value': None, 'parent_node': None, 'ancestor_value': None}]
         parameters.increase_id()
         loc = bfs(llm, nodes)
+        end_time = time.time()
         loc['id'] = i
         loc['correct'] = Acc(loc['answer'], data_game24, i)
+        loc['cost time'] = end_time - start_time
         locs.append(loc)
         print(loc)
+        parameters.increase_idx()
+        parameters.reset_id()
     record.Record_json(parameters.json_file_name, locs)
     draw.Draw(parameters.json_file_name)

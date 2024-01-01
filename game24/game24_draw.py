@@ -1,5 +1,7 @@
 import json
 import graphviz
+import os
+import parameters
 
 
 def Draw(file_name):
@@ -8,9 +10,9 @@ def Draw(file_name):
     
     for i in range(len(data)):
         dot = graphviz.Digraph(comment = 'tree_' + str(i), format = 'png')
-        Final = data[0]['steps'][-1]['nodes']
-        top_b = data[0]['steps'][-1]['top_b']
-        for step in data[0]['steps']:
+        Final = data[i]['steps'][-1]['nodes']
+        top_b = data[i]['steps'][-1]['top_b']
+        for step in data[i]['steps']:
             Nodes = step['nodes']
         
         answer_path = [top_b[0]]
@@ -29,5 +31,7 @@ def Draw(file_name):
             if node['parent_node'] != None:
                 dot.edge(str(node['parent_node']), str(node['id']))
         
-           
-        dot.render(f'tree_{i}.gv', view = True)
+        if not os.path.exists(parameters.image_folder):
+            os.makedirs(parameters.image_folder)
+        output_path = os.path.join(parameters.image_folder, f'tree_{i}')
+        dot.render(output_path, view = False)
