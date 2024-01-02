@@ -74,12 +74,17 @@ class CrosswordsEnv():
         return string
 
     def change_env(self, ans):
+        if ans == None:
+            return
         format = r'^([hv][1-5])\. ([a-zA-Z]{5}).*$'
         match = re.match(format, ans)
+        if not match:
+            return
         line_index, answer = match.group(1), match.group(2)
         l = int(line_index[1]) - 1
         print(f'line_index = {l}')
         direction = line_index[0]
+        # status
         for i in range(10):
             if direction == 'h':
                 if all(element == '_' for element in self.board[l * 5 : (l + 1) * 5]):

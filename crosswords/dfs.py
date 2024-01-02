@@ -19,6 +19,7 @@ def dfs(llm, nodes):
                 print(crosswords.env.board_render())
                 print(f'next node = {new_nodes[0]}')
                 print('-'*10)
+                record.Record_txt(parameters.file_name, '\nnow step: ' + str(crosswords.env.t) + '\nboard:\n' + crosswords.env.board_render() + '\n\n')
                 nodes.extend(new_nodes.copy())
                 nodes = sorted(nodes, key = crosswords.Sorted_by_id)
                 steps.append({'step': crosswords.env.t, 'nodes': nodes.copy(), 'selected_node': new_nodes[0].copy()})

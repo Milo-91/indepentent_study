@@ -16,7 +16,7 @@ if __name__ == '__main__':
     for i in range(1):
         start_time = time.time()
         nodes = [{'id': crosswords.env.get_id(), 'answer': None, 'value': None, 'parent_node': None, 'ancestor_value': None}]
-        record.Init_record_file(parameters.file_name, parameters.model_path + '\ntemperature: ' + str(parameters.temperature) )
+        record.Init_record_file(parameters.file_name, parameters.model_path + '\ntemperature: ' + str(parameters.temperature) + '\n')
         record.Init_record_file(parameters.json_file_name, '')
         crosswords.env.reset()
         loc = dfs(llm, nodes)

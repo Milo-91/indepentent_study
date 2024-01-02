@@ -1,5 +1,5 @@
 model_path = '../model/vicuna-7b-v1.5.Q8_0.gguf'
-file_name = 'record_crosswords{idx}.txt'
+file_name = 'record_crosswords_{idx}.txt'
 json_file_name = 'tree_crosswords.json'
 data_path_crosswords = 'data/mini0505.json'
 image_folder = 'crosswords_image'
@@ -7,9 +7,8 @@ max_tokens = 1024
 temperature = 0.7
 n_ctx = 2048
 n_gpu_layers = -1
-OPENAI_API_KEY = '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'
 b = 3
-T = 10
+T = 6
 k = 5
 
 id = 0
