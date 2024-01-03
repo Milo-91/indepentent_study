@@ -1,0 +1,146 @@
+// tree_74
+digraph {
+	0 [label="0
+1 3 7 10
+parent: None" color=red]
+	1 [label="1
+1 + 3 = 4 (left: 4 7 10)
+parent: 0"]
+	0 -> 1
+	2 [label="2
+3 / 1 = 3 (left: 3 7 10)
+parent: 0"]
+	0 -> 2
+	3 [label="3
+7 + 1 = 8 (left: 3 8 10)
+parent: 0" color=red]
+	0 -> 3
+	4 [label="4
+3 * 7 = 21 (left: 8 10 21)
+parent: 0"]
+	0 -> 4
+	5 [label="5
+10 - 3 = 7 (left: 7 10 21)
+parent: 0"]
+	0 -> 5
+	6 [label="6
+3 + 8 = 11 (left: 8 10 11)
+parent: 3"]
+	3 -> 6
+	7 [label="7
+8 / 3 = 2 (left: 2 4 9)
+parent: 3" color=red]
+	3 -> 7
+	8 [label="8
+10 - 3 = 7 (left: 7 8 10)
+parent: 3"]
+	3 -> 8
+	9 [label="9
+3 * 8 = 24 (left: 8 16 24)
+parent: 3"]
+	3 -> 9
+	10 [label="10
+10 + 3 = 13 (left: 7 8 13)
+parent: 3"]
+	3 -> 10
+	11 [label="11
+4 + 7 = 11 (left: 4 7 10)
+parent: 1"]
+	1 -> 11
+	12 [label="12
+7 / 4 = 3 (left: 3 7 10)
+parent: 1"]
+	1 -> 12
+	13 [label="13
+10 - 7 = 3 (left: 4 4 9)
+parent: 1"]
+	1 -> 13
+	14 [label="14
+4 * 7 = 28 (left: 4 4 16)
+parent: 1"]
+	1 -> 14
+	15 [label="15
+7 + 4 = 11 (left: 4 4 11)
+parent: 1"]
+	1 -> 15
+	16 [label="16
+3 + 7 = 10 (left: 7 10 10)
+parent: 2"]
+	2 -> 16
+	17 [label="17
+7 / 3 = 2 (left: 2 6 10)
+parent: 2"]
+	2 -> 17
+	18 [label="18
+10 - 3 = 7 (left: 7 7 10)
+parent: 2"]
+	2 -> 18
+	19 [label="19
+10 * 3 = 30 (left: 7 7 30)
+parent: 2"]
+	2 -> 19
+	20 [label="20
+3 + 7 = 10 (left: 7 10 30)
+parent: 2"]
+	2 -> 20
+	21 [label="21
+2 + 4 = 6 (left: 2 4 6)
+parent: 7" color=red]
+	7 -> 21
+	22 [label="22
+4 + 2 = 6 (left: 2 6 6)
+parent: 7"]
+	7 -> 22
+	23 [label="23
+9 - 2 = 7 (left: 7 9 7)
+parent: 7"]
+	7 -> 23
+	24 [label="24
+4 * 2 = 8 (left: 2 6 8)
+parent: 7"]
+	7 -> 24
+	25 [label="25
+9 /  2 = 4 (left: 4 9 4)
+parent: 7"]
+	7 -> 25
+	26 [label="26
+7 + 8 = 15 (left: 7 10 15)
+parent: 8"]
+	8 -> 26
+	27 [label="27
+8 * 2 = 16 (left: 7 14 16)
+parent: 8"]
+	8 -> 27
+	28 [label="28
+10 - 2 = 8 (left: 8 9 16)
+parent: 8"]
+	8 -> 28
+	29 [label="29
+15 - 7 = 8 (left: 8 10 8)
+parent: 8"]
+	8 -> 29
+	30 [label="30
+10 + 2 = 12 (left: 8 10 12)
+parent: 8"]
+	8 -> 30
+	31 [label="31
+8 + 16 = 24 (left: 0 8 24)
+parent: 9"]
+	9 -> 31
+	32 [label="32
+16 / 2 = 8 (left: 4 8 24)
+parent: 9"]
+	9 -> 32
+	33 [label="33
+24 - 8 = 16 (left: 0 16 24)
+parent: 9"]
+	9 -> 33
+	34 [label="34
+24 * 8 = 192 (left: 0 32 192)
+parent: 9"]
+	9 -> 34
+	35 [label="35
+32 + 8 = 40 (left: 40 32 192)
+parent: 9"]
+	9 -> 35
+}

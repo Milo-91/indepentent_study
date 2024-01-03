@@ -1,0 +1,271 @@
+../models/vicuna-7b-v1.5.Q8_0.gguf
+temperature: 0.7
+
+
+step 1
+
+
+1 + 5 = 6 (left: 6 12 12)
+5 * 5 = 25 (left: 6 6 25)
+12 - 5 = 7 (left: 7 6 25)
+12 /  5 = 2 (left: 2 2 7)
+12 + 2 = 14 (left: 7 7 14)
+
+
+6 + 12 + 12 = 30 + 12 = 42
+I cannot obtain 24 now, but numbers are within a reasonable range
+likely
+
+
+6 + 6 + 25 = 37
+(25 - 20) * 6 = 5 * 6 = 30
+6 6 25 are all too big
+impossible
+
+
+7 + 6 + 25 = 38
+(25 - 6) * 7 = 4 * 7 = 28
+7 6 25 numbers are too big, impossible
+
+
+2 * 2 + 7 = 4 + 7 = 11
+2 / 2 = 1, impossible
+
+
+7 + 7 + 14 = 28
+sure
+
+
+node:
+[{'id': 5, 'answer': '12 + 2 = 14 (left: 7 7 14)', 'value': 'sure', 'parent_node': 0, 'ancestor_value': 0.0}, {'id': 1, 'answer': '1 + 5 = 6 (left: 6 12 12)', 'value': 'likely', 'parent_node': 0, 'ancestor_value': 0.0}, {'id': 2, 'answer': '5 * 5 = 25 (left: 6 6 25)', 'value': 'impossible', 'parent_node': 0, 'ancestor_value': 0.0}, {'id': 3, 'answer': '12 - 5 = 7 (left: 7 6 25)', 'value': '7 6 25 numbers are too big, impossible', 'parent_node': 0, 'ancestor_value': 0.0}, {'id': 4, 'answer': '12 /  5 = 2 (left: 2 2 7)', 'value': '2 / 2 = 1, impossible', 'parent_node': 0, 'ancestor_value': 0.0}]
+5
+
+
+step 2
+
+
+7 + 7 = 14 (left: 7 14 14)
+7 / 7 = 1 (left: 1 7 14)
+14 - 7 = 7 (left: 7 8 14)
+7 * 7 = 49 (left: 7 7 21)
+14 + 7 = 21 (left: 21 7 14)
+
+
+6 + 12 = 18 (left: 12 12 0)
+12 / 2 = 6 (left: 6 9 6)
+12 - 2 = 10 (left: 4 7 6)
+12 * 2 = 24 (left: 8 7 6)
+12 + 2 = 14 (left: 6 6 14)
+
+
+6 + 6 = 12 (left: 0 12 25)
+25 /  6 = 4 (left: 0 6 25)
+6 - 25 = 19 (left: 0 6 19)
+6 * 25 = 150 (left: 19 150 150)
+19 + 6 = 25 (left: 150 150 25)
+
+
+7 + 14 + 14 = 35
+(14 - 7) * 14 = 7 * 14 = 98
+This is a reasonable range, and I cannot obtain 24 now. However, the numbers are larger than what would be necessary to reach 24. So it is impossible.
+im
+
+
+1 * 7 * 14 = 90
+(14 - 7) * 1 = 4
+1 7 14 are all too big (but close)
+impossible
+
+
+7 + 8 + 14 = 35
+(14 - 8) * 7 = 6 * 7 = 42
+7 8 14 are within a reasonable range, but I cannot obtain 24 now
+likely
+
+
+7 + 7 + 21 = 35
+(21 - 7) * 7 = 14 * 7 = 98
+impossible
+
+
+21 - 7 = 14
+(14 - 7) * 7 = 7 * 7 = 49
+21 + 7 = 28 (too big)
+sure
+
+
+12 + 12 = 24
+sure
+
+
+6 + 9 + 6 = 20
+(6 - 9) * 6 = 3 * 6 = 18
+6 9 6 are all within a reasonable range, but I cannot obtain 24
+unlikely
+
+
+4 + 7 + 6 = 17
+(6 - 4) * 7 = 0 * 7 = 0
+I cannot obtain 24 now, but numbers are within a reasonable range
+likely
+
+
+8 + 7 - 6 = 10 - 6 = 4
+(7 - 8) * 6 = -1 * 6 = -6
+I cannot obtain 24 now, but numbers are within a reasonable range
+likely
+
+
+6 + 6 + 14 = 28 + 14 = 42
+sure
+
+
+12 - 0 = 12
+(25 - 12) / 1 = 24 / 1 = 24
+impossible
+
+
+0 + 6 + 25 = 31
+(25 - 6) * 6 = 20
+0 6 25 are all too big
+impossible
+
+
+6 - 0 = 6
+(19 - 6) / 6 = 15 / 6 = 2.5
+0 6 19 cannot be achieved with the given numbers
+
+
+19 + 150 + 150 = 180 + 150 = 330
+(300 - 19) * (300 / 150) = 270 * 2 = 540
+sure
+
+
+150 + 150 + 25 = 425
+(25 - 150) / 150 = 9 / 150 = 0.06
+150 * 25 = 3750
+impossible
+
+
+node:
+[{'id': 10, 'answer': '14 + 7 = 21 (left: 21 7 14)', 'value': 'sure', 'parent_node': 5, 'ancestor_value': 20.0}, {'id': 8, 'answer': '14 - 7 = 7 (left: 7 8 14)', 'value': 'likely', 'parent_node': 5, 'ancestor_value': 20.0}, {'id': 11, 'answer': '6 + 12 = 18 (left: 12 12 0)', 'value': 'sure', 'parent_node': 1, 'ancestor_value': 1.0}, {'id': 15, 'answer': '12 + 2 = 14 (left: 6 6 14)', 'value': 'sure', 'parent_node': 1, 'ancestor_value': 1.0}, {'id': 7, 'answer': '7 / 7 = 1 (left: 1 7 14)', 'value': 'impossible', 'parent_node': 5, 'ancestor_value': 20.0}, {'id': 9, 'answer': '7 * 7 = 49 (left: 7 7 21)', 'value': 'impossible', 'parent_node': 5, 'ancestor_value': 20.0}, {'id': 19, 'answer': '6 * 25 = 150 (left: 19 150 150)', 'value': 'sure', 'parent_node': 2, 'ancestor_value': 0.001}, {'id': 6, 'answer': '7 + 7 = 14 (left: 7 14 14)', 'value': None, 'parent_node': 5, 'ancestor_value': 20.0}, {'id': 13, 'answer': '12 - 2 = 10 (left: 4 7 6)', 'value': 'likely', 'parent_node': 1, 'ancestor_value': 1.0}, {'id': 14, 'answer': '12 * 2 = 24 (left: 8 7 6)', 'value': 'likely', 'parent_node': 1, 'ancestor_value': 1.0}, {'id': 12, 'answer': '12 / 2 = 6 (left: 6 9 6)', 'value': 'unlikely', 'parent_node': 1, 'ancestor_value': 1.0}, {'id': 16, 'answer': '6 + 6 = 12 (left: 0 12 25)', 'value': 'impossible', 'parent_node': 2, 'ancestor_value': 0.001}, {'id': 17, 'answer': '25 /  6 = 4 (left: 0 6 25)', 'value': 'impossible', 'parent_node': 2, 'ancestor_value': 0.001}, {'id': 20, 'answer': '19 + 6 = 25 (left: 150 150 25)', 'value': 'impossible', 'parent_node': 2, 'ancestor_value': 0.001}, {'id': 18, 'answer': '6 - 25 = 19 (left: 0 6 19)', 'value': None, 'parent_node': 2, 'ancestor_value': 0.001}]
+15
+
+
+step 3
+
+
+21 + 7 = 28 (left: 7 21 28)
+7 * 14 = 98 (left: 2 7 98)
+14 - 7 = 7 (left: 0 7 21)
+14 / 7 = 2 (left: 2 7 21)
+21 + 14 = 35 (left: 5 21 35)
+
+
+7 + 8 = 15 (left: 0 14 15)
+8 - 7 = 1 (left: 1 1 14)
+14 + 1 = 15 (left: 0 15 15)
+14 / 1 = 15 (left: 0 15 15)
+14 - 1 = 13 (left: 13 15 15)
+
+
+12 + 12 = 24 (left: 0 12 24)
+12 / 12 = 1 (left: 1 12 24)
+0 * 12 = 0 (left: 0 12 24)
+12 + 0 = 12 (left: 0 12 12)
+12 - 0 = 12 (left: 12 0 12)
+
+
+7 + 21 + 28 = 46
+(28 - 7) * 21 = 5 * 21 = 105
+I cannot obtain 24 now, but numbers are within a reasonable range
+likely
+
+
+2 + 7 + 98 = 104
+(98 - 7) * 7 = 58 * 7 = 416
+2 7 98 are all too big
+impossible
+
+
+0 + 7 + 21 = 28
+(21 - 7) * 7 = 14 * 7 = 98
+0 7 21 are all too big
+impossible
+
+
+2 + 7 + 21 = 40
+(2 - 7) * 21 = 19 * 21 = 408
+2 7 21 are within a reasonable range but not enough numbers to reach 24.
+impossible
+
+
+5 + 21 + 35 = 31 + 35 = 66
+(35 - 21) / 5 = 7.4
+5 21 35 numbers are within a reasonable range, but the result is not 24
+impossible
+
+
+0 + 14 + 15 = 29
+0 * 14 - 14 = 0 - 14 = -14
+14 / 15 is not a whole number, so it cannot be 24. impossible
+
+
+1 + 1 + 14 = 16
+(14 - 1) * 1 = 14
+1 1 14 are all too big
+impossible
+
+
+0 + 15 + 15 = 30 + 15 = 45
+0 * 15 - 15 = 0 - 15 = -15
+15 / 0 = undefined
+impossible
+
+
+15 - 0 = 15
+15 * 15 = 225
+0 / 15 = 0
+impossible
+
+
+13 + 15 + 15 = 43
+(15 - 13) * 15 = 8 * 15 = 60
+13 15 15 are within a reasonable range, but I cannot obtain 24 now
+likely
+
+
+0 + 12 + 24 = 36
+sure
+
+
+1 * 12 * 24 = 80
+(24 - 12) * 1 = 12
+1 12 24 are all too big, the numbers are out of range
+
+
+0 + 12 + 24 = 17 + 24 = 41
+This is a multiple of 12. I cannot obtain 24 now, but numbers are within a reasonable range
+likely
+
+
+0 + 12 + 12 = 24
+sure
+
+
+12 - 0 = 12
+12 / 0 = undefined
+impossible
+
+
+node:
+[{'id': 21, 'answer': '21 + 7 = 28 (left: 7 21 28)', 'value': 'likely', 'parent_node': 10, 'ancestor_value': 40.0}, {'id': 31, 'answer': '12 + 12 = 24 (left: 0 12 24)', 'value': 'sure', 'parent_node': 11, 'ancestor_value': 21.0}, {'id': 34, 'answer': '12 + 0 = 12 (left: 0 12 12)', 'value': 'sure', 'parent_node': 11, 'ancestor_value': 21.0}, {'id': 22, 'answer': '7 * 14 = 98 (left: 2 7 98)', 'value': 'impossible', 'parent_node': 10, 'ancestor_value': 40.0}, {'id': 23, 'answer': '14 - 7 = 7 (left: 0 7 21)', 'value': 'impossible', 'parent_node': 10, 'ancestor_value': 40.0}, {'id': 24, 'answer': '14 / 7 = 2 (left: 2 7 21)', 'value': 'impossible', 'parent_node': 10, 'ancestor_value': 40.0}, {'id': 25, 'answer': '21 + 14 = 35 (left: 5 21 35)', 'value': 'impossible', 'parent_node': 10, 'ancestor_value': 40.0}, {'id': 30, 'answer': '14 - 1 = 13 (left: 13 15 15)', 'value': 'likely', 'parent_node': 8, 'ancestor_value': 21.0}, {'id': 33, 'answer': '0 * 12 = 0 (left: 0 12 24)', 'value': 'likely', 'parent_node': 11, 'ancestor_value': 21.0}, {'id': 27, 'answer': '8 - 7 = 1 (left: 1 1 14)', 'value': 'impossible', 'parent_node': 8, 'ancestor_value': 21.0}, {'id': 28, 'answer': '14 + 1 = 15 (left: 0 15 15)', 'value': 'impossible', 'parent_node': 8, 'ancestor_value': 21.0}, {'id': 29, 'answer': '14 / 1 = 15 (left: 0 15 15)', 'value': 'impossible', 'parent_node': 8, 'ancestor_value': 21.0}, {'id': 35, 'answer': '12 - 0 = 12 (left: 12 0 12)', 'value': 'impossible', 'parent_node': 11, 'ancestor_value': 21.0}, {'id': 26, 'answer': '7 + 8 = 15 (left: 0 14 15)', 'value': '14 / 15 is not a whole number, so it cannot be 24. impossible', 'parent_node': 8, 'ancestor_value': 21.0}, {'id': 32, 'answer': '12 / 12 = 1 (left: 1 12 24)', 'value': None, 'parent_node': 11, 'ancestor_value': 21.0}]
+15
+
+
+Answer: 12 * (28 - 14) = 24
+
+
+Answer: 
+12 * (28 - 14) 
+

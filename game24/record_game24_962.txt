@@ -1,0 +1,285 @@
+../models/vicuna-7b-v1.5.Q8_0.gguf
+temperature: 0.7
+
+
+step 1
+
+
+1 + 3 = 4 (left: 4 8 13)
+8 + 3 = 11 (left: 4 4 11)
+13 - 3 = 10 (left: 10 11 13)
+3 * 8 = 24 (left: 10 10 12)
+13 + 3 = 16 (left: 10 10 16)
+
+
+4 + 8 + 13 = 25 + 13 = 38
+(13 - 8) * 4 = 6 * 4 = 24
+sure
+
+
+4 + 4 + 11 = 18
+4 * 11 - 4 = 40 - 4 = 36
+(11 - 4) * 4 = 7 * 4 = 28
+sure
+
+
+10 + 11 + 13 = 34
+(13 - 10) * 11 = 30
+10 11 13 are all within a reasonable range, but I cannot obtain 24 now
+unlikely
+
+
+10 + 10 + 12 = 32
+(12 - 10) * 10 = 24
+10 10 12 is not possible as one number is too big (12) and the other two are too small (10, 10).
+impossible
+
+
+10 + 10 + 16 = 36
+sure
+
+
+node:
+[{'id': 1, 'answer': '1 + 3 = 4 (left: 4 8 13)', 'value': 'sure', 'parent_node': 0, 'ancestor_value': 0.0}, {'id': 2, 'answer': '8 + 3 = 11 (left: 4 4 11)', 'value': 'sure', 'parent_node': 0, 'ancestor_value': 0.0}, {'id': 5, 'answer': '13 + 3 = 16 (left: 10 10 16)', 'value': 'sure', 'parent_node': 0, 'ancestor_value': 0.0}, {'id': 4, 'answer': '3 * 8 = 24 (left: 10 10 12)', 'value': 'impossible', 'parent_node': 0, 'ancestor_value': 0.0}, {'id': 3, 'answer': '13 - 3 = 10 (left: 10 11 13)', 'value': 'unlikely', 'parent_node': 0, 'ancestor_value': 0.0}]
+5
+
+
+step 2
+
+
+4 + 8 = 12 (left: 8 10 13)
+8 / 4 = 2 (left: 2 6 8)
+13 - 4 = 9 (left: 8 8 9)
+8 + 2 = 10 (left: 8 8 10)
+4 * 8 = 32 (left: 8 10 13)
+
+
+4 + 4 = 8 (left: 8 8 11)
+8 /  4 = 2 (left: 2 6 8)
+11 + 2 = 13 (left: 8 8 13)
+4 * 4 = 16 (left: 8 8 16)
+11 - 4 = 7 (left: 7 8 8)
+
+
+10 + 10 = 20 (left: 16 20 16)
+16 / 2 = 8 (left: 8 16 16)
+16 - 2 = 14 (left: 10 14 16)
+10 + 8 = 18 (left: 14 18 16)
+10 - 8 = 2 (left: 2 14 16)
+
+
+8 + 10 + 13 = 31
+8 * 13 - 8 = 144 - 8 = 136
+(10 - 8) * (13 + 1) = 2 * (13 + 1) = 25
+impossible
+
+
+2 + 6 + 8 = 16
+2 * 8 - 6 = 32 - 6 = 26
+sure
+
+
+8 + 8 + 9 = 27
+(9 - 8) * 8 = 1 * 8 = 8
+8 8 9 are all within a reasonable range, but the numbers cannot be combined to reach 24.
+impossible
+
+
+8 + 8 + 10 = 26
+(8 - 8) * 10 = 4 * 10 = 40
+8 8 10 are all too big
+impossible
+
+
+8 + 10 + 13 = 31
+(13 - 10) * 10 = 3 * 10 = 30
+8 10 13 are all within a reasonable range, but I cannot obtain 24 now.
+likely
+
+
+8 + 8 + 11 = 27
+(11 - 8) * 8 = 3 * 8 = 24
+8 8 11 can reach 24, but the numbers are too big for a reasonable range
+
+
+2 + 6 + 8 = 16
+(8 - 2) * 6 = 4 * 6 = 24
+sure
+
+
+8 + 8 + 13 = 21 + 13 = 34
+(13 - 8) * 8 = 5 * 8 = 40
+8 8 13 are all too big
+impossible
+
+
+8 + 8 + 16 = 32
+(16 - 8) * 8 = 8
+8 8 16 are all within a reasonable range, but I cannot obtain 24 now
+likely
+
+
+7 + 8 + 8 = 20
+(8 - 7) * 8 = 1 * 8 = 8
+7 8 8 are all too big
+impossible
+
+
+16 + 20 - 16 = 4
+8 / 16 = 0.5
+impossible
+
+
+8 + 16 + 16 = 40 + 16 = 56
+8 * 16 - 8 = 64 - 8 = 56
+(16 - 8) * 8 = 8
+impossible
+
+
+10 + 14 + 16 = 34
+(16 - 10) * 14 = 8 * 14 = 28
+10 14 16 cannot reach 24
+impossible
+
+
+14 + 18 + 16 = 48
+(16 - 14) * 18 = 2 * 18 = 36
+This doesn t reach 24, but numbers are within a reasonable range
+likely
+
+
+2 + 14 + 16 = 20 + 16 = 36
+2 * 16 - 2 = 32 - 2 = 29
+(16 - 2) * 14 = 14 * 14 = 196
+impossible
+
+
+node:
+[{'id': 7, 'answer': '8 / 4 = 2 (left: 2 6 8)', 'value': 'sure', 'parent_node': 1, 'ancestor_value': 20.0}, {'id': 12, 'answer': '8 /  4 = 2 (left: 2 6 8)', 'value': 'sure', 'parent_node': 2, 'ancestor_value': 20.0}, {'id': 10, 'answer': '4 * 8 = 32 (left: 8 10 13)', 'value': 'likely', 'parent_node': 1, 'ancestor_value': 20.0}, {'id': 14, 'answer': '4 * 4 = 16 (left: 8 8 16)', 'value': 'likely', 'parent_node': 2, 'ancestor_value': 20.0}, {'id': 19, 'answer': '10 + 8 = 18 (left: 14 18 16)', 'value': 'likely', 'parent_node': 5, 'ancestor_value': 20.0}, {'id': 6, 'answer': '4 + 8 = 12 (left: 8 10 13)', 'value': 'impossible', 'parent_node': 1, 'ancestor_value': 20.0}, {'id': 8, 'answer': '13 - 4 = 9 (left: 8 8 9)', 'value': 'impossible', 'parent_node': 1, 'ancestor_value': 20.0}, {'id': 9, 'answer': '8 + 2 = 10 (left: 8 8 10)', 'value': 'impossible', 'parent_node': 1, 'ancestor_value': 20.0}, {'id': 13, 'answer': '11 + 2 = 13 (left: 8 8 13)', 'value': 'impossible', 'parent_node': 2, 'ancestor_value': 20.0}, {'id': 15, 'answer': '11 - 4 = 7 (left: 7 8 8)', 'value': 'impossible', 'parent_node': 2, 'ancestor_value': 20.0}, {'id': 16, 'answer': '10 + 10 = 20 (left: 16 20 16)', 'value': 'impossible', 'parent_node': 5, 'ancestor_value': 20.0}, {'id': 17, 'answer': '16 / 2 = 8 (left: 8 16 16)', 'value': 'impossible', 'parent_node': 5, 'ancestor_value': 20.0}, {'id': 18, 'answer': '16 - 2 = 14 (left: 10 14 16)', 'value': 'impossible', 'parent_node': 5, 'ancestor_value': 20.0}, {'id': 20, 'answer': '10 - 8 = 2 (left: 2 14 16)', 'value': 'impossible', 'parent_node': 5, 'ancestor_value': 20.0}, {'id': 11, 'answer': '4 + 4 = 8 (left: 8 8 11)', 'value': None, 'parent_node': 2, 'ancestor_value': 20.0}]
+15
+
+
+step 3
+
+
+2 + 6 = 8 (left: 2 6 8)
+6 / 2 = 3 (left: 3 3 8)
+8 - 2 = 6 (left: 6 8 8)
+10 + 2 = 12 (left: 4 8 12)
+5 * 2 = 10 (left: 10 8 12)
+
+
+2 + 6 = 8 (left: 6 8 10)
+6 / 2 = 3 (left: 6 3 8)
+8 - 6 = 2 (left: 2 8 10)
+2 * 6 = 12 (left: 2 10 10)
+6 + 2 = 8 (left: 8 10 10)
+
+
+8 + 2 = 10 (left: 10 13 13)
+10 / 2 = 5 (left: 5 6 13)
+13 - 2 = 11 (left: 6 7 13)
+13 * 2 = 26 (left: 7 10 13)
+10 + 8 = 18 (left: 6 6 18)
+
+
+2 + 6 + 8 = 16
+(8 - 2) * 6 = 5 * 6 = 30
+2 6 8 are within a reasonable range, but cannot reach 24
+likely
+
+
+3 + 3 + 8 = 14 + 8 = 22
+(8 - 3) * 3 = 5 * 3 = 15
+This is the final list, with a note about each situation.
+
+* 10 14 - Sure
+* 11 12 - Likely
+* 11 12 - Impossible (though it technically works)
+* 11 * 12s
+
+
+6 + 8 + 8 = 14 + 8 = 22
+6 / 8 = 0.75
+sure
+
+
+8 + 12 = 20
+4 * 12 - 8 = 56 - 8 = 48
+(12 - 8) / (8 + 4) is undefined as it involves dividing by zero. This combination is impossible to obtain.
+impossible
+
+
+10 + 8 + 12 = 30
+8 + 12 = 20
+(12 - 8) * 10 = 4
+I cannot obtain 24 now, but numbers are within a reasonable range
+likely
+
+
+6 + 8 + 10 = 24
+sure
+
+
+6 + 3 + 8 = 17
+(8 - 6) * 3 = 4 * 3 = 12
+sure
+
+
+2 + 8 + 10 = 10 + 10 = 20
+(10 - 2) * 8 = 4 * 8 = 32
+sure
+
+
+2 + 10 + 10 = 42
+sure
+
+
+8 + 10 + 10 = 28
+8 * 10 - 8 = 64 - 8 = 56
+(10 - 8) * 10 = 10 * 10 = 100
+impossible
+
+
+10 + 13 + 13 = 46
+(13 - 10) * 13 = 3 * 13 = 42
+10 13 13 are all too big
+impossible
+
+
+5 + 6 + 13 = 24 (sure)
+5 * 6 - 5 = 30 - 5 = 25
+sure
+
+
+6 + 7 + 13 = 26 + 13 = 40
+6 * 7 - 6 = 42 - 6 = 36
+(13 - 6) * 7 = 7 * 7 = 49
+I cannot obtain 24 now, but numbers are within a reasonable range
+likely
+
+
+7 + 10 + 13 = 30
+(10 - 7) * (13 - 10) = 3 * 3 = 9
+7 10 13 are all within a reasonable range, but I cannot obtain 24 now
+likely
+
+
+6 + 6 + 18 = 30 + 18 = 48
+6 / 6 = 1
+18 / 6 = 3
+(18 - 6) * 6 = 12 * 6 = 72
+sure
+
+
+node:
+[{'id': 23, 'answer': '8 - 2 = 6 (left: 6 8 8)', 'value': 'sure', 'parent_node': 7, 'ancestor_value': 40.0}, {'id': 26, 'answer': '2 + 6 = 8 (left: 6 8 10)', 'value': 'sure', 'parent_node': 12, 'ancestor_value': 40.0}, {'id': 27, 'answer': '6 / 2 = 3 (left: 6 3 8)', 'value': 'sure', 'parent_node': 12, 'ancestor_value': 40.0}, {'id': 28, 'answer': '8 - 6 = 2 (left: 2 8 10)', 'value': 'sure', 'parent_node': 12, 'ancestor_value': 40.0}, {'id': 29, 'answer': '2 * 6 = 12 (left: 2 10 10)', 'value': 'sure', 'parent_node': 12, 'ancestor_value': 40.0}, {'id': 21, 'answer': '2 + 6 = 8 (left: 2 6 8)', 'value': 'likely', 'parent_node': 7, 'ancestor_value': 40.0}, {'id': 25, 'answer': '5 * 2 = 10 (left: 10 8 12)', 'value': 'likely', 'parent_node': 7, 'ancestor_value': 40.0}, {'id': 32, 'answer': '10 / 2 = 5 (left: 5 6 13)', 'value': 'sure', 'parent_node': 10, 'ancestor_value': 21.0}, {'id': 35, 'answer': '10 + 8 = 18 (left: 6 6 18)', 'value': 'sure', 'parent_node': 10, 'ancestor_value': 21.0}, {'id': 24, 'answer': '10 + 2 = 12 (left: 4 8 12)', 'value': 'impossible', 'parent_node': 7, 'ancestor_value': 40.0}, {'id': 30, 'answer': '6 + 2 = 8 (left: 8 10 10)', 'value': 'impossible', 'parent_node': 12, 'ancestor_value': 40.0}, {'id': 22, 'answer': '6 / 2 = 3 (left: 3 3 8)', 'value': None, 'parent_node': 7, 'ancestor_value': 40.0}, {'id': 33, 'answer': '13 - 2 = 11 (left: 6 7 13)', 'value': 'likely', 'parent_node': 10, 'ancestor_value': 21.0}, {'id': 34, 'answer': '13 * 2 = 26 (left: 7 10 13)', 'value': 'likely', 'parent_node': 10, 'ancestor_value': 21.0}, {'id': 31, 'answer': '8 + 2 = 10 (left: 10 13 13)', 'value': 'impossible', 'parent_node': 10, 'ancestor_value': 21.0}]
+15
+
+
+Answer: ((1 + 3) * (8 / 4)) - 2 = 24
+
+
+Answer: 
+((1 + 3) * (8 / 4)) - 2 
+
