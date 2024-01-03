@@ -65,6 +65,7 @@ def Parse_value_response(response):
 def Evaluator(llm, nodes):
     new_nodes = list()
     for node in nodes:
+        # initialize
         count = {'sure': 0, 'maybe': 0, 'impossible': 0}
         board = env.board.copy()
         status = env.status.copy()
@@ -73,6 +74,7 @@ def Evaluator(llm, nodes):
         for i in range(10):
             print(env.board_render())
             print(f'env.ans: {env.ans[i]}')
+            # skip _____ & ____ answers
             if env.ans[i].count('_') >= 4:
                 continue
             ans = ''.join(env.ans[i].lower())
@@ -80,12 +82,14 @@ def Evaluator(llm, nodes):
             print('each ans: ' + line)
             question = value_prompt.format(input = line)
             pattern = r"[\d|\w|\s|\+|\-|\*|\/|\=|\(|\)|,|\.|\:|\"|\'|_|;|\!|\?]{0,500}[sure|maybe|impossible]"
+            # call llm
             start_time = time.time()
             response = llm_function.call_llm(llm, question, pattern)
             end_time = time.time()
+            # parse response & return
             print(response)
             print(f'cost time: {end_time - start_time}')
-            record.Record_txt(parameters.file_name, '\nEvaluator response: ' + response + '\ncost time: ' + str(end_time - start_time) + '\n')
+            record.Record_txt(parameters.file_name, '\ninput: ' + line + '\nEvaluator response: ' + response + '\ncost time: ' + str(end_time - start_time) + '\n')
             answer = Parse_value_response(response)
             if answer != None:
                 count[answer] += 1
@@ -113,14 +117,16 @@ def Sorted_by_id(node):
     
 
 if __name__ == '__main__':
-    file_name = 'data/mini0505.json'
-    nodes = [{}]
-    env = CrosswordsEnv(file_name = file_name)
     board = '______________________________'
     status = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     env.reset()
-    #print(env.board_render())
-    #print(env.ans_render())
+    print(env.board_render() + env.ans_render())
+    env.change_env('h1. agend')
+    print(env.board_render() + env.ans_render())
+    env.change_env('v1. amass')
+    print(env.board_render() + env.ans_render())
+    print(env.status)
+    '''
     node = {'id': env.get_id()}
     llm = llm_function.get_llm()
     env.change_env('h1. agend')
@@ -134,3 +140,4 @@ if __name__ == '__main__':
     print(new_nodes)
     env.reset(board = board, status = status, t = t, id = env.id)
     print(env.board, env.status, env.t)
+    '''

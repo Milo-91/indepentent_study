@@ -65,9 +65,7 @@ class CrosswordsEnv():
     def ans_render(self):
         string = 'Unfilled:\n'
         string += '\n'.join(self.get_lines(status = 0))
-        string += '\nFilled:\n'
-        string += '\n'.join(self.get_lines(status = 1))
-        string += '\nChanged:\n'
+        string += '\n'
         string += '\n'.join(self.get_lines(status = 2))
         string += '\n'
 
@@ -87,14 +85,24 @@ class CrosswordsEnv():
         # status
         for i in range(10):
             if direction == 'h':
+                '''
                 if all(element == '_' for element in self.board[l * 5 : (l + 1) * 5]):
                     self.status[l] = 1
                 else:
                     self.status[l] = 2
+                '''
+                self.status[l] = 1
+                if all(element != '_' for element in self.board[l * 5 : (l + 1) * 5]):
+                    self.status[l] = 2
             if direction == 'v':
+                '''
                 if all(element == '_' for element in self.board[l::5]):
                     self.status[l + 5] = 1
                 else:
+                    self.status[l + 5] = 2
+                '''
+                self.status[l + 5] = 1
+                if all(element != '_' for element in self.board[l::5]):
                     self.status[l + 5] = 2
         # board
         if direction == 'h':

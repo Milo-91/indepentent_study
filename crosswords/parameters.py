@@ -9,7 +9,7 @@ temperature = 0.7
 n_ctx = 2048
 n_gpu_layers = -1
 b = 3
-T = 6
+T = 10
 k = 5
 
 id = 0
