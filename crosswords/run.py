@@ -13,6 +13,7 @@ if __name__ == '__main__':
     llm = llm_function.get_llm()
     locs = list()
     print('llm ok')
+    record.Init_record_file(paramters.all_json_file_name, '')
     for i in range(1):
         start_time = time.time()
         nodes = [{'id': crosswords.env.get_id(), 'answer': None, 'value': None, 'parent_node': None, 'ancestor_value': None}]
@@ -24,7 +25,8 @@ if __name__ == '__main__':
         loc['id'] = parameters.idx
         loc['cost time'] = end_time - start_time
         locs.append(loc)
+        record.Record_json(parameters.json_file_name, loc)
         print(loc)
         crosswords.env.reset()
         parameters.increase_idx()
-    record.Record_json(parameters.json_file_name, locs)
+    record.Record_json(parameters.all_json_file_name, locs)

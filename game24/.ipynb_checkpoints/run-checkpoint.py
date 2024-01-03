@@ -24,7 +24,8 @@ if __name__ == '__main__':
     locs = list()
 
     print('llm ok')
-    for i in range(1):
+    parameters.reset_idx(initial_idx = 901)
+    for i in range(901, 1001):
         start_time = time.time()
         nodes = [{'id': parameters.id, 'answer': data_game24['Puzzles'][i], 'value': None, 'parent_node': None, 'ancestor_value': None}]
         parameters.increase_id()

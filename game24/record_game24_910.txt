@@ -1,0 +1,71 @@
+../models/vicuna-7b-v1.5.Q8_0.gguf
+temperature: 0.7
+
+
+step 1
+
+
+4 + 5 = 9 (left: 7 9 9)
+5 / 2 = 2 (left: 4 6 8)
+7 - 5 = 2 (left: 2 2 10)
+9 - 4 = 5 (left: 5 5 13)
+4 * 5 = 20 (left: 5 13 20)
+
+
+7 + 9 + 9 = 25
+(9 - 7) * 9 = 0
+I cannot obtain 24 now, but numbers are within a reasonable range
+likely
+
+
+4 + 6 + 8 = 20
+(8 - 4) * 6 = 3 * 6 = 18
+4 6 8 are all within reasonable range, but cannot obtain 24
+likely
+
+
+2 + 2 + 10 = 14
+2 * 10 - 2 = 20 - 2 = 18
+I cannot obtain 24 now, but numbers are within a reasonable range
+likely
+
+
+5 + 5 + 13 = 14
+(5 - 5) * 13 = 0 * 13 = 0
+impossible
+
+
+5 + 13 + 20 = 48
+(20 - 5) * 13 = 7 * 13 = 91
+I cannot obtain 24 now, but numbers are within a reasonable range
+likely
+
+
+node:
+[{'id': 1, 'answer': '4 + 5 = 9 (left: 7 9 9)', 'value': 'likely', 'parent_node': 0, 'ancestor_value': 0.0}, {'id': 2, 'answer': '5 / 2 = 2 (left: 4 6 8)', 'value': 'likely', 'parent_node': 0, 'ancestor_value': 0.0}, {'id': 3, 'answer': '7 - 5 = 2 (left: 2 2 10)', 'value': 'likely', 'parent_node': 0, 'ancestor_value': 0.0}, {'id': 5, 'answer': '4 * 5 = 20 (left: 5 13 20)', 'value': 'likely', 'parent_node': 0, 'ancestor_value': 0.0}, {'id': 4, 'answer': '9 - 4 = 5 (left: 5 5 13)', 'value': 'impossible', 'parent_node': 0, 'ancestor_value': 0.0}]
+5
+
+
+step 2
+
+
+7 + 9 = 16 (left: 7 0 16)
+9 * 9 = 81 (left: 7 9 81)
+7 - 9 = 0 (left: 0 9 81)
+16 / 9 = 1 (left: 0 1 81)
+7 + 9 = 16 (left: 1 15 81)
+
+
+4 + 6 = 10 (left: 6 10 8)
+6 / 2 = 3 (left: 3 6 8)
+8 - 4 = 4 (left: 4 4 8)
+4 * 6 = 24 (left: 4 8 24)
+6 + 4 = 10 (left: 10 8 24)
+
+
+2 + 2 = 4 (left: 4 10 10)
+2 * 2 = 4 (left: 4 6 10)
+2 - 2 = 0 (left: 0 6 10)
+10 + 2 = 12 (left: 0 12 10)
+10 - 2 = 8 (left: 8 12 10)
+
