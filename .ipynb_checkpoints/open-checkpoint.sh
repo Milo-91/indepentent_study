@@ -9,6 +9,7 @@ pip install lm-format-enforcer
 pip install graphviz
 pip install huggingface_hub
 apt -y install graphviz
+pip install vllm
 git config --global user.name "Milo-91"
 git config --global user.email "milolin9112@gmail.com"
-python3 huggingface_download_model.py
+# python3 huggingface_download_model.py

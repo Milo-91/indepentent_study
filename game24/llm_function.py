@@ -34,7 +34,7 @@ def get_llm():
     # llama_index (vllm)
     
     llm = Vllm(
-        model = "teknium/OpenHermes-2.5-Mistral-7B",
+        model = "WizardLM/WizardMath-13B-V1.0",
         dtype = "float16",
         tensor_parallel_size = 1,
         temperature = parameters.temperature,
