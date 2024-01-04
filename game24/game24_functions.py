@@ -28,7 +28,7 @@ def Generator(llm, nodes: dict):
         input_string = propose_prompt.format(input = question, k = parameters.k)
         print('input:\n' + input_string)
         
-        pattern = r"[0-9]+[\s]*[\+\-\*\/][\s]*[0-9]+[\s]*=[\s]*[0-9]*[\s]*\(left:[0-9\s]*\)"
+        pattern = r"[0-9]+[\s]*[\+\-\*\/][\s]*[0-9]+[\s]*=[\s]*[0-9]*[\s]*\(left:.*\)"
         patterns = '\n'.join([pattern for i in range(parameters.k)])
         response = llm_function.call_llm(llm, input_string, patterns)
 

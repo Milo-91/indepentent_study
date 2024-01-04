@@ -1,6 +1,8 @@
 model_path = '../models/vicuna-7b-v1.5.Q8_0.gguf'
-file_name = 'record_game24_{idx}.txt'
-json_file_name = 'tree_game24.json'
+record_files_folder = 'record'
+file_name = '{file_path}/record_game24_{idx}.txt'
+json_file_name = '{file_path}/tree_game24_{idx}.json'
+all_json_file_name = '{file_path}/all_tree_game24.json'
 data_path_game24 = 'data/24.csv'
 image_folder = 'game24_image'
 max_tokens = 1024

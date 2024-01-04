@@ -39,4 +39,4 @@ if __name__ == '__main__':
         parameters.increase_idx()
         parameters.reset_id()
     record.Record_json(parameters.json_file_name, locs)
-    draw.Draw(parameters.json_file_name)
+    draw.Draw(parameters.all_json_file_name.format(file_path = parameters.record_files_folder))
