@@ -83,27 +83,14 @@ class CrosswordsEnv():
         print(f'line_index = {l}')
         direction = line_index[0]
         # status
-        for i in range(10):
-            if direction == 'h':
-                '''
-                if all(element == '_' for element in self.board[l * 5 : (l + 1) * 5]):
-                    self.status[l] = 1
-                else:
-                    self.status[l] = 2
-                '''
-                self.status[l] = 1
-                if all(element != '_' for element in self.board[l * 5 : (l + 1) * 5]):
-                    self.status[l] = 2
-            if direction == 'v':
-                '''
-                if all(element == '_' for element in self.board[l::5]):
-                    self.status[l + 5] = 1
-                else:
-                    self.status[l + 5] = 2
-                '''
-                self.status[l + 5] = 1
-                if all(element != '_' for element in self.board[l::5]):
-                    self.status[l + 5] = 2
+        for i in range(5):
+            self.status[i] = 0
+            if all(element != '_' for element in self.board[i * 5 : (i + 1) * 5]):
+                self.status[i] = 1
+        for i in range(5):
+            self.status[i + 5] = 0
+            if all(element != '_' for element in self.board[i::5]):
+                self.status[i + 5] = 1
         # board
         if direction == 'h':
             self.board[l * 5 : (l + 1) * 5] = [char for char in answer]

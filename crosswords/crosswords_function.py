@@ -21,11 +21,10 @@ def Parse_propose_response(response: str):
     return parsed_lines
 
 
-def Generator(llm, node):
+def Generator(llm, node, refine = False):
     # initialize
     confidence_to_value = {'certain': 1, 'high': 0.5, 'medium': 0.2, 'low': 0.1}
     new_nodes = list()
-    env.change_env(node['answer']) # change env
     # call llm
     input_string = env.board_render() + env.ans_render()
     question = propose_prompt.format(input = input_string, k = parameters.k)
@@ -49,9 +48,14 @@ def Generator(llm, node):
         new_nodes.append({'id': env.get_id(), 'answer': parsed_lines[i][0], 'value': None, 'parent_node': node['id'], 'ancestor_value': Value_mapping(node['value']) + (0 if node['ancestor_value'] == None else node['ancestor_value'])})
     # refine
     if len(new_nodes) == 0:
-        new_nodes = Generator(llm, node)
-    print(f'cost time: {end_time - start_time}')
-    record.Record_txt(parameters.file_name, 'Generator nodes:\n' + str(new_nodes) + '\ncost time: ' + str(end_time - start_time) + '\n\n')
+        print('refine')
+        new_nodes = Generator(llm, node, refine = True)
+    if refine == False:
+        print(f'cost time: {end_time - start_time}')
+        record.Record_txt(parameters.file_name, 'Generator nodes:\n' + str(new_nodes) + '\ncost time: ' + str(end_time - start_time) + '\n\n')
+    else:
+        print(f'refine\ncost time: {end_time - start_time}')
+        record.Record_txt(parameters.file_name, 'refine\ncost time: ' + str(end_time - start_time) + '\n\n')
     return new_nodes
 
 
