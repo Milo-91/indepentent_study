@@ -9,6 +9,8 @@ max_tokens = 1024
 temperature = 0.7
 n_ctx = 2048
 n_gpu_layers = -1
+question_sets = 1
+initial_idx = 0
 b = 3
 T = 3
 k = 5
@@ -28,8 +30,7 @@ def increase_idx():
     global idx
     idx += 1
 
-def reset_idx(initial_idx = None):
+def reset_idx():
     global idx
-    idx = 0
-    if initial_idx != None:
-        idx = initial_idx
+    global initial_idx
+    idx = initial_idx
