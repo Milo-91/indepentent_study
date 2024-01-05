@@ -12,6 +12,7 @@ git push <branch> (將資料推送至 branch 上)
 上傳成功後在 Github 上進行 pull request (請 PR 至 feature 上而非 main 上)
 
 Game24 & Crosswords：
+
 確認模型路徑與匯入方式與題號(idx)正確後執行 run.py 即可開始
 parameters.py 內存有參數可以做變更，更改 model_path 也在這裡
 llm_function.py 內可更改 llm 的匯入方式，目前用手動註解方式調整
