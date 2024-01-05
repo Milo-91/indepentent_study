@@ -6,7 +6,6 @@ import parameters
 steps = list()
 all_nodes = list()
 def dfs(llm, nodes):
-    all_nodes.extend(nodes)
     board = crosswords.env.board.copy()
     status = crosswords.env.status.copy()
     t = crosswords.env.t
@@ -14,11 +13,14 @@ def dfs(llm, nodes):
         for node in nodes:
             crosswords.env.change_env(node['answer'])
             if '_' not in crosswords.env.board:
+                record.Record_txt(parameters.file_name, '\nnow step: ' + str(crosswords.env.t) + '\nboard:\n' + crosswords.env.board_render() + '\n\n')
+                steps.append({'step': crosswords.env.t, 'nodes': all_nodes.copy(), 'selected_node': node, 'is_back': False})
                 break
             new_nodes = crosswords.Generator(llm, node)
             new_nodes = crosswords.Evaluator(llm, new_nodes)
             new_nodes = sorted(new_nodes, key = crosswords.Sorted_by_value, reverse = True)
-            if new_nodes[0]['value']['impossible'] < 100:# change threshold
+            all_nodes.extend(new_nodes)
+            if new_nodes[0]['value']['impossible'] < 5:# change threshold
                 # possible branches
                 print('-'*10)
                 print(f'now step = {crosswords.env.t}\n')
