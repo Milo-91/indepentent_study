@@ -1,0 +1,3318 @@
+../models/vicuna-7b-v1.5.Q8_0.gguf
+temperature: 0.7
+
+
+step 1
+
+
+1 + 1 = 2 (left: 2 4 6)
+1 - 1 = 0 (left: 0 4 6)
+1 * 4 = 4 (left: 2 4 6)
+1 / 4 = 0.25 (left: 0.25 4 6)
+4 - 1 = 3 (left: 3 4 6)
+
+Input: 2 0.25 3 4 6
+6 Possible next steps:
+2 + 0.25 = 2.25 (left: 2.25 3 4 6)
+2 - 0.25 = 1.75 (left: 1.75 3 4 6)
+2 * 0.25 = 0.5 (left: 2.25 3 0.5 4 6)
+2 / 0.25 = 8 (left: 8 3 0.5 4 6)
+3 + 0.25 = 3.25 (left: 3.25 4 0.5 6)
+3 - 0.25 = 2.75 (left: 2.75 4 0.5 6)
+3 * 0.25 = 0.75 (left: 3.25 4 0.75 6)
+3 / 0.25 = 12 (left: 12 4 0.75 6)
+4 - 0.25 = 3.75 (left: 3.75 4 0.5 6)
+6 + 0.25 = 6.25 (left: 6.25 3 0.5 4 6)
+6 - 0.25 = 5.75 (left: 5.75 3 0.5 4 6)
+6 * 0.25 = 1.5 (left: 6.25 3 1.5 4 6)
+6 / 0.25 = 24 (left: 24 3 1.5 4 6)
+
+The answer is: 24 3 1.5 4 6.
+
+
+
+
+2 + 4 + 6 = 12
+2 * 4 * 6 = 48
+2 4 6 are all too big
+impossible
+5 6 7
+5 + 6 + 7 = 18
+(7 - 6) * 5 = 1 * 5 = 5
+5 6 7 are all within a reasonable range
+likely
+10 10 11
+10 + 10 + 11 = 31
+(11 - 10) * 10 = 10
+10 10 10 are all too big
+impossible
+1 3 3
+1 * 3 * 3 = 9
+(1 + 3) * 3 = 12
+1 3 3 are all too small
+impossible
+24
+sure
+10
+impossible
+2 4 6
+2 + 4 + 6 = 12
+2 * 4 * 6 = 48
+2 4 6 are all too big
+impossible
+5 6 7
+5 + 6 + 7 = 18
+(7 - 6) * 5 = 1 * 5 = 5
+5 6 7 are all within a reasonable range
+likely
+10 10 11
+10 + 10 + 11 = 31
+(11 - 10) * 10 = 10
+10 10 10 are all too big
+impossible
+1 3 3
+1 * 3 * 3 = 9
+(1 + 3) * 3 = 12
+1 3 3 are all too small
+impossible
+24
+sure
+10
+impossible
+2 4 6
+2 + 4 + 6 = 12
+2 * 4 * 6 = 48
+2 4 6 are all too big
+impossible
+5 6 7
+5 + 6 + 7 = 18
+(7 - 6) * 5 = 1 * 5 = 5
+5 6 7 are all within a reasonable range
+likely
+10 10 11
+10 + 10 + 11 = 31
+(11 - 10) * 10 = 10
+10 10 10 are all too big
+impossible
+1 3 3
+1 * 3 * 3 = 9
+(1 + 3) * 3 = 12
+1 3 3 are all too small
+impossible
+24
+sure
+10
+impossible
+2 4 6
+2 + 4 + 6 = 12
+2 * 4 * 6 = 48
+2 4 6 are all too big
+impossible
+5 6 7
+5 + 6 + 7 = 18
+(7 - 6) * 5 = 1 * 5 = 5
+5 6 7 are all within a reasonable range
+likely
+\end{code}
+
+The answer is: 24
+sure
+10
+impossible
+2 4 6
+2 + 4 + 6 = 12
+2 * 4 * 6 = 48
+2 4 6 are all too big
+impossible
+5 6 7
+5 + 6 + 7 = 18
+(7 - 6) * 5 = 1 * 5 = 5
+5 6 7 are all within a reasonable range
+likely.
+
+
+
+
+0 + 4 + 6 = 10
+(6 - 4) * 0 = 2 * 0 = 0
+0 4 6 are all too small
+impossible
+24
+sure
+10
+impossible
+0 4 6
+0 + 4 + 6 = 10
+(6 - 4) * 0 = 2 * 0 = 0
+0 4 6 are all too small
+impossible
+24
+sure
+10
+impossible
+0 4 6
+0 + 4 + 6 = 10
+(6 - 4) * 0 = 2 * 0 = 0
+0 4 6 are all too small
+impossible
+24
+sure
+10
+impossible
+0 4 6
+0 + 4 + 6 = 10
+(6 - 4) * 0 = 2 * 0 = 0
+0 4 6 are all too small
+impossible
+24
+sure
+10
+impossible
+0 4 6
+0 + 4 + 6 = 10
+(6 - 4) * 0 = 2 * 0 = 0
+0 4 6 are all too small
+impossible
+24
+sure
+10
+impossible
+0 4 6
+0 + 4 + 6 = 10
+(6 - 4) * 0 = 2 * 0 = 0
+0 4 6 are all too small
+impossible
+24
+sure
+10
+impossible
+0 4 6
+0 + 4 + 6 = 10
+(6 - 4) * 0 = 2 * 0 = 0
+0 4 6 are all too small
+impossible
+24
+sure
+10
+impossible
+0 4 6
+0 + 4 + 6 = 10
+(6 - 4) * 0 = 2 * 0 = 0
+0 4 6 are all too small
+impossible
+24
+sure
+10
+impossible
+0 4 6
+0 + 4 + 6 = 10
+(6 - 4) * 0 = 2 * 0 = 0
+0 4 6 are all too small
+impossible
+24
+sure
+10
+impossible
+0 4 6
+0 + 4 + 6 = 10
+(6 - 4) * 0 = 2 * 0 = 0
+0 4 6 are all too small
+impossible
+24
+sure
+10
+impossible
+0 4 6
+0 + 4 + 6 = 10
+(6 - 4) * 0 = 2 * 0 = 0
+0 4 6 are all too small
+impossible
+24
+sure
+10
+impossible
+0 4 6
+0 + 4 + 6 = 10
+(6 - 4) * 0 = 2 * 0 = 0
+0 4 6 are all too small
+impossible
+24
+sure
+10
+impossible
+0 4 6
+0 + 4 + 6 = 10
+(6 - 4) * 0 = 2 * 0 = 0
+0 4 6 are all too small
+impossible
+24
+sure
+10
+impossible
+0 4 6
+0 + 4 + 6 = 10
+(6 - 4) * 0 = 2 * 0 = 0
+0 4 6 are all too small
+impossible
+24
+sure
+10
+impossible
+0 4 6
+0 + 4 + 6 = 10
+(6 - 4) * 0 = 2 * 0 = 0
+0 4 6 are all too small
+impossible
+24
+sure
+10
+impossible
+0 4 6
+0 + 4 + 6 = 10
+(6 - 4) * 0 = 2 * 0 = 0
+0 4 6 are all too small
+impossible
+24
+sure
+10
+impossible
+0 4 6
+0 + 4 + 6 = 10
+(6 - 4) * 0 = 2 * 0 = 0
+0
+
+
+2 + 4 + 6 = 12
+4 - 2 = 2
+2 * 4 = 8
+(6 - 2) * 4 = 4 * 4 = 16
+(6 - 4) * 2 = 2 * 2 = 4
+2 4 6 are all too small
+impossible
+2 3 4
+2 + 3 + 4 = 9
+(4 - 2) * 3 = 2 * 3 = 6
+2 3 4 are all too small
+impossible
+3 4 5
+4 + 5 + 3 = 12
+5 - 4 = 1
+4 * 5 = 20
+(3 - 4) * 5 = (-1) * 5 = -5
+3 4 5 are all too small
+impossible
+4 5 6
+5 + 6 + 4 = 15
+(6 - 4) * 5 = 2 * 5 = 10
+4 5 6 are all too small
+impossible
+5 6 7
+6 + 7 + 5 = 18
+(7 - 6) * 5 = 1 * 5 = 5
+5 6 7 are all too small
+impossible
+6 7 8
+7 + 8 + 6 = 21
+(8 - 6) * 7 = 2 * 7 = 14
+6 7 8 are all too big
+impossible
+7 8 9
+8 + 9 + 7 = 24
+7 * 8 = 56
+7 / 8 = 0.875
+sure
+8 9 10
+9 + 10 + 8 = 27
+(10 - 8) * 9 = 2 * 9 = 18
+8 9 10 are all too big
+impossible
+9 10 11
+10 + 11 + 9 = 30
+(11 - 9) * 10 = 2 * 10 = 20
+9 10 11 are all too big
+impossible
+10 11 12
+11 + 12 + 10 = 33
+(12 - 10) * 11 = 2 * 11 = 22
+10 11 12 are all too big
+impossible
+11 12 13
+12 + 13 + 11 = 36
+13 * 11 = 143
+11 / 12 = 0.9167
+impossible
+12 13 14
+13 + 14 + 12 = 39
+14 * 12 = 168
+sure
+13 14 15
+14 + 15 + 13 = 42
+15 * 13 = 195
+13 / 14 = 0.9286
+impossible
+14 15 16
+15 + 16 + 14 = 45
+16 * 14 = 224
+sure
+15 16 17
+16 + 17 + 15 = 48
+17 * 15 = 255
+15 / 16 = 0.9375
+impossible
+16 17 18
+17 + 18 + 16 = 51
+18 * 16 = 288
+sure
+17 18 19
+18 + 19 + 17 = 54
+19 * 17 = 323
+17 / 18 = 0.9444
+impossible
+18 19 20
+19 + 20 + 18 = 57
+20 * 18 = 360
+sure
+19 20 21
+20 + 21 + 19 = 59
+21 * 19 = 399
+19 / 20 = 0.95
+impossible
+20 21 22
+21 + 22 + 20 = 63
+22 * 20
+
+
+0.25 * 4 * 6 = 0.25 * 24 = 6
+0.25 5 5
+0.25 * 5 * 5 = 0.25 * 25 = 6.25
+0.25 6 6
+0.25 * 6 * 6 = 0.25 * 36 = 9
+0.25 7 7
+0.25 * 7 * 7 = 0.25 * 49 = 12.25
+0.25 8 8
+0.25 * 8 * 8 = 0.25 * 64 = 16
+0.25 9 9
+0.25 * 9 * 9 = 0.25 * 81 = 20.25
+0.25 10 10
+0.25 * 10 * 10 = 0.25 * 100 = 25
+0.25 11 11
+0.25 * 11 * 11 = 0.25 * 121 = 30.25
+0.25 12 12
+0.25 * 12 * 12 = 0.25 * 144 = 36
+0.25 13 13
+0.25 * 13 * 13 = 0.25 * 169 = 42.25
+0.25 14 14
+0.25 * 14 * 14 = 0.25 * 196 = 49
+0.25 15 15
+0.25 * 15 * 15 = 0.25 * 225 = 56.25
+0.25 16 16
+0.25 * 16 * 16 = 0.25 * 256 = 64
+0.25 17 17
+0.25 * 17 * 17 = 0.25 * 289 = 72.25
+0.25 18 18
+0.25 * 18 * 18 = 0.25 * 324 = 81
+0.25 19 19
+0.25 * 19 * 19 = 0.25 * 361 = 90.25
+0.25 20 20
+0.25 * 20 * 20 = 0.25 * 400 = 100
+0.25 21 21
+0.25 * 21 * 21 = 0.25 * 441 = 110.25
+0.25 22 22
+0.25 * 22 * 22 = 0.25 * 484 = 121
+0.25 23 23
+0.25 * 23 * 23 = 0.25 * 508 = 127
+0.25 24 24
+0.25 * 24 * 24 = 0.25 * 520 = 130
+I cannot obtain 24 now, but numbers are within a reasonable range
+likely
+4 5 6
+4 + 5 + 6 = 15
+(6 - 4) * 5 = 2 * 5 = 10
+I cannot obtain 24 now, but numbers are within a reasonable range
+likely
+5 6 7
+5 + 6 + 7 = 18
+(7 - 5) * 6 = 2 * 6 = 12
+I cannot obtain 24 now, but numbers are within a reasonable range
+likely
+6 7 8
+6 + 7 + 8 = 21
+(8 - 6) * 7 = 2 * 7 = 14
+I cannot obtain 24 now, but numbers are within a reasonable range
+likely
+10 11 12
+10 + 11 + 12 = 33
+(12 - 
+
+
+3 + 4 + 6 = 13
+(6 - 3) * 4 = 3 * 4 = 12
+I cannot obtain 24 now, but numbers are within a reasonable range
+likely
+10
+10 + 10 = 20
+(10 - 10) * 10 = 10 * 10 = 100
+100 / 10 = 10
+10 10 10 are all too big
+impossible
+7 7 9
+7 + 7 + 9 = 23
+(9 - 7) * 7 = 2 * 7 = 14
+I cannot obtain 24 now, but numbers are within a reasonable range
+likely
+4 5 6
+4 + 5 + 6 = 15
+(6 - 4) * 5 = 2 * 5 = 10
+I cannot obtain 24 now, but numbers are within a reasonable range
+likely
+5 6 6
+5 + 6 + 6 = 17
+(6 - 5) * 6 = 1 * 6 = 6
+I cannot obtain 24 now, but numbers are within a reasonable range
+likely
+10 10 11
+10 + 10 + 11 = 31
+(11 - 10) * 10 = 10
+10 10 10 are all too big
+impossible
+1 3 3
+1 * 3 * 3 = 9
+(1 + 3) * 3 = 12
+1 3 3 are all too small
+impossible
+24
+sure
+10
+impossible
+3 4 6
+3 + 4 + 6 = 13
+(6 - 3) * 4 = 3 * 4 = 12
+I cannot obtain 24 now, but numbers are within a reasonable range
+likely
+10
+10 + 10 = 20
+(10 - 10) * 10 = 10 * 10 = 100
+100 / 10 = 10
+10 10 10 are all too big
+impossible
+7 7 9
+7 + 7 + 9 = 23
+(9 - 7) * 7 = 2 * 7 = 14
+I cannot obtain 24 now, but numbers are within a reasonable range
+likely
+4 5 6
+4 + 5 + 6 = 15
+(6 - 4) * 5 = 2 * 5 = 10
+I cannot obtain 24 now, but numbers are within a reasonable range
+likely
+5 6 6
+5 + 6 + 6 = 17
+(6 - 5) * 6 = 1 * 6 = 6
+I cannot obtain 24 now, but numbers are within a reasonable range
+likely
+10 10 11
+10 + 10 + 11 = 31
+(11 - 10) * 10 = 10
+10 10 10 are all too big
+impossible
+1 3 3
+1 * 3 * 3 = 9
+(1 + 3) * 3 = 12
+1 3 3 are all too small
+impossible
+24
+sure
+10
+impossible
+3 4 6
+3 + 4 + 6 = 13
+(6 - 3) * 4 = 3 * 4 = 12
+I cannot obtain 24 now, but numbers are within a reasonable range
+likely
+10
+10 + 10 = 20
+(10 - 10) * 10 = 10 * 10 = 100
+100 / 10 = 10
+10 10 10 are all too big
+impossible
+7 7 9
+7 + 7 + 9 = 23
+(9 - 7) * 7 = 2 * 7 = 14
+I cannot obtain 24 now, but numbers are within a reasonable range
+likely
+4 5 6
+4 + 5 + 6 = 15
+(6 - 4) * 5 = 2 * 5 = 10
+I cannot obtain 
+
+
+node:
+[{'id': 1, 'answer': '1 + 1 = 2 (left: 2 4 6)', 'value': 'likely.', 'parent_node': 0, 'ancestor_value': 0.0}, {'id': 2, 'answer': '1 - 1 = 0 (left: 0 4 6)', 'value': None, 'parent_node': 0, 'ancestor_value': 0.0}, {'id': 3, 'answer': '1 * 4 = 4 (left: 2 4 6)', 'value': None, 'parent_node': 0, 'ancestor_value': 0.0}, {'id': 4, 'answer': '1 / 4 = 0.25 (left: 0.25 4 6)', 'value': None, 'parent_node': 0, 'ancestor_value': 0.0}, {'id': 5, 'answer': '4 - 1 = 3 (left: 3 4 6)', 'value': None, 'parent_node': 0, 'ancestor_value': 0.0}]
+5
+
+
+step 2
+
+
+2 + 4 = 6 (left: 6 6)
+4 / 2 = 2 (left: 2 4)
+6 + 2 = 8 (left: 4 8)
+6 - 4 = 2 (left: 2 6)
+2 * 4 = 8 (left: 4 8)
+
+Input: 2 6 8 10 14
+7 Possible next steps:
+2 + 6 = 8 (left: 8 10 14)
+6 + 8 = 14 (left: 14 10)
+8 - 2 = 6 (left: 6 8 14)
+10 + 2 = 12 (left: 8 12)
+14 - 2 = 12 (left: 8 8 12)
+14 + 2 = 16 (left: 8 16)
+
+Input: 8 10 14
+4 Possible next steps:
+8 / 2 = 4 (left: 4 10 14)
+10 + 14 = 24 (left: 4 24)
+10 - 14 = -4 (left: -4 14)
+14 - 8 = 6 (left: 2 6 8)
+
+Input: 2 4 8 10 14
+7 Possible next steps:
+2 + 4 = 6 (left: 6 10 14)
+4 / 2 = 2 (left: 2 4 8)
+8 - 2 = 6 (left: 6 8 14)
+10 + 2 = 12 (left: 8 12)
+14 - 2 = 12 (left: 8 8 12)
+14 + 2 = 16 (left: 8 16)
+
+The answer is: 14 + 2 = 16 (left: 8 16).
+
+
+
+
+0 + 4 = 4 (left: 4 6)
+0 - 4 = -4 (left: -4 6)
+4 / 2 = 2 (left: 2 6)
+6 - 4 = 2 (left: 2 2 6)
+4 + 6 = 10 (left: 10 2 6)
+
+Input: 4 6 2 10
+6 Possible next steps:
+4 + 6 = 10 (left: 10 2 6)
+10 - 6 = 4 (left: 4 2 6)
+10 + 4 = 14 (left: 14 2 6)
+14 - 4 = 10 (left: 10 2 6)
+14 + 2 = 16 (left: 16 2 6)
+16 - 2 = 14 (left: 14 2 6)
+
+Input: 10 2 6
+4 Possible next steps:
+10 + 6 = 16 (left: 16 2 6)
+10 - 2 = 8 (left: 8 2 6)
+10 * 2 = 20 (left: 20 2 6)
+2 + 6 = 8 (left: 8 2 6)
+
+Input: 8 2 6
+3 Possible next steps:
+8 + 6 = 14 (left: 14 2 6)
+8 - 2 = 6 (left: 6 2 6)
+8 * 2 = 16 (left: 16 2 6)
+
+Input: 14 2 6
+3 Possible next steps:
+14 + 6 = 20 (left: 20 2 6)
+14 - 2 = 12 (left: 12 2 6)
+14 * 2 = 28 (left: 28 2 6)
+
+Input: 20 2 6
+2 Possible next steps:
+20 - 6 = 14 (left: 14 2 6)
+20 + 2 = 22 (left: 22 2 6)
+
+Input: 14 2 6
+2 Possible next steps:
+14 - 6 = 8 (left: 8 2 6)
+14 + 2 = 16 (left: 16 2 6)
+
+FINAL ANSWER: 16 2 6
+
+The answer is: 16 2 6.
+
+
+
+
+2 * 4 = 8 (left: 8 6)
+2 + 4 = 6 (left: 6 6)
+4 - 2 = 2 (left: 2 6)
+4 / 2 = 2 (left: 2 4)
+6 + 2 = 8 (left: 4 8)
+
+Input: 2 4 8
+7 Possible next steps:
+2 * 4 = 8 (left: 8 2)
+2 + 4 = 6 (left: 6 8)
+4 - 2 = 2 (left: 2 4)
+4 / 2 = 2 (left: 2 8)
+8 - 2 = 6 (left: 6 8)
+16 / 2 = 8 (left: 8 8)
+16 - 8 = 8 (left: 2 8)
+
+Input: 2 8 16
+8 Possible next steps:
+2 + 8 = 10 (left: 10 16)
+8 / 2 = 4 (left: 4 8 16)
+14 + 2 = 16 (left: 2 6 8 16)
+2 * 8 = 16 (left: 8 14 16)
+8 - 2 = 6 (left: 6 8 16)
+14 - 8 = 6 (left: 2 6 8 16)
+14 /  2 = 7 (left: 7 8 16)
+14 - 2 = 12 (left: 2 6 8 12 16)
+
+Input: 2 6 8 12 16
+8 Possible next steps:
+2 + 6 = 8 (left: 8 12 16)
+6 - 2 = 4 (left: 4 6 8 12 16)
+8 / 2 = 4 (left: 4 8 12 16)
+12 + 2 = 14 (left: 8 14 16)
+14 - 2 = 12 (left: 2 6 8 12 16)
+14 /  2 = 7 (left: 7 8 12 16)
+16 - 2 = 14 (left: 2 6 8 12 14 16)
+
+The answer is: 8.
+
+
+
+
+6 + 6 = 12
+(6 - 5) * 6 = 1 * 6 = 6
+I cannot obtain 24 now, but numbers are within a reasonable range
+likely
+4 5 6
+4 + 5 + 6 = 15
+(6 - 5) * 4 = 1 * 4 = 4
+I cannot obtain 24 now, but numbers are within a reasonable range
+likely
+6 7 8
+6 + 7 + 8 = 21
+(8 - 7) * 6 = 1 * 6 = 6
+I cannot obtain 24 now, but numbers are within a reasonable range
+likely
+7 8 9
+7 + 8 + 9 = 24
+sure
+The answer is: likely.
+
+
+
+
+impossible
+If you cannot obtain 24, try smaller numbers.
+If you cannot obtain 24, try smaller numbers.
+If you cannot obtain 24, try smaller numbers.
+If you cannot obtain 24, try smaller numbers.
+If you cannot obtain 24, try smaller numbers.
+If you cannot obtain 24, try smaller numbers.
+If you cannot obtain 24, try smaller numbers.
+If you cannot obtain 24, try smaller numbers.
+If you cannot obtain 24, try smaller numbers.
+If you cannot obtain 24, try smaller numbers.
+If you cannot obtain 24, try smaller numbers.
+If you cannot obtain 24, try smaller numbers.
+If you cannot obtain 24, try smaller numbers.
+If you cannot obtain 24, try smaller numbers.
+If you cannot obtain 24, try smaller numbers.
+If you cannot obtain 24, try smaller numbers.
+If you cannot obtain 24, try smaller numbers.
+If you cannot obtain 24, try smaller numbers.
+If you cannot obtain 24, try smaller numbers.
+If you cannot obtain 24, try smaller numbers.
+If you cannot obtain 24, try smaller numbers.
+If you cannot obtain 24, try smaller numbers.
+If you cannot obtain 24, try smaller numbers.
+If you cannot obtain 24, try smaller numbers.
+If you cannot obtain 24, try smaller numbers.
+If you cannot obtain 24, try smaller numbers.
+If you cannot obtain 24, try smaller numbers.
+If you cannot obtain 24, try smaller numbers.
+If you cannot obtain 24, try smaller numbers.
+If you cannot obtain 24, try smaller numbers.
+If you cannot obtain 24, try smaller numbers.
+If you cannot obtain 24, try smaller numbers.
+If you cannot obtain 24, try smaller numbers.
+If you cannot obtain 24, try smaller numbers.
+If you cannot obtain 24, try smaller numbers.
+If you cannot obtain 24, try smaller numbers.
+If you cannot obtain 24, try smaller numbers.
+If you cannot obtain 24, try smaller numbers.
+If you cannot obtain 24, try smaller numbers.
+If you cannot obtain 24, try smaller numbers.
+If you cannot obtain 24, try smaller numbers.
+If you cannot obtain 24, try smaller numbers.
+If you cannot obtain 24, try smaller numbers.
+If you cannot obtain 24, try smaller numbers.
+If you cannot obtain 24, try smaller numbers.
+If you cannot obtain 24, try smaller numbers.
+If you cannot obtain 24, try smaller numbers.
+If you cannot obtain 24, try smaller numbers.
+If you cannot obtain 24, try smaller numbers.
+If you cannot obtain 24, try smaller numbers.
+If you cannot obtain 24, try smaller numbers.
+If you cannot obtain 24, try smaller numbers.
+If you cannot obtain 24, try smaller numbers.
+If you cannot obtain 24, try smaller numbers.
+If you cannot obtain 24, try smaller numbers.
+If you cannot obtain 24, try smaller numbers.
+If you cannot obtain 24, try smaller numbers.
+If you cannot obtain 24, try smaller numbers.
+If you cannot obtain 24, try smaller numbers.
+If you cannot obtain 24, try smaller numbers.
+If you cannot obtain 24, try smaller numbers.
+If you cannot obtain 24, try smaller numbers.
+If you cannot obtain 24, try smaller numbers.
+If you cannot obtain 24, try smaller numbers.
+If you cannot obtain 24, try smaller numbers.
+If you cannot obtain 24, try smaller numbers.
+If you cannot obtain 24, try smaller numbers.
+If you cannot obtain 24, try smaller numbers.
+If you cannot obtain 24, try smaller numbers.
+If you cannot obtain 24, try smaller numbers.
+If you cannot obtain 24, try smaller numbers.
+If you cannot obtain 24, try smaller numbers.
+If you cannot obtain 24, try smaller numbers.
+If you cannot obtain 24, try smaller numbers.
+If you cannot obtain 24, try smaller numbers.
+If you cannot obtain 24, try smaller numbers.
+If you cannot obtain 24, try smaller numbers.
+If you cannot obtain 24, try smaller numbers.
+If you cannot obtain 24
+
+
+impossible
+5 6 6
+impossible
+10 10 11
+impossible
+1 3 3
+impossible
+The answer is: 5.
+
+
+
+
+2 * 6 = 12
+impossible
+The answer is: likely
+The answer is: likely
+
+
+
+impossible
+5 6 6
+impossible
+10 10 11
+impossible
+11 12 10
+impossible
+4 4 10
+impossible
+4 9 11
+impossible
+5 7 8
+impossible
+5 6 6
+impossible
+1 3 3
+impossible
+\end{code}
+
+The answer is: 24
+sure
+10
+impossible
+4 8
+impossible
+5 6 6
+impossible
+10 10 11
+impossible
+11 12 10
+impossible
+4 4 10
+impossible
+4 9 11
+impossible
+5 7 8
+impossible
+5 6 6
+impossible
+1 3 3
+impossible
+24
+sure
+10
+impossible
+4 8
+impossible
+5 6 6
+impossible
+10 10 11
+impossible
+11 12 10
+impossible
+4 4 10
+impossible
+4 9 11
+impossible
+5 7 8
+impossible
+5 6 6
+impossible
+1 3 3
+impossible
+.
+
+
+
+
+impossible
+4 6 8
+impossible
+5 6 7
+impossible
+5 7 8
+impossible
+10 10 11
+impossible
+(Note: 1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9 + 10 + 11 + 12 + 13 + 14 + 15 + 16 + 17 + 18 + 19 + 20 + 21 + 22 + 23 + 24 = 465)
+
+The answer is: 465.
+
+
+
+
+-4 + 6 = 2
+(-4 - 6) = -10
+10 - 10 = 0
+10 / 10 = 1
+1 * 10 = 10
+10 * 10 = 100
+(-10 + 10) * (-4 - 6) = 0 * (-14) = 0
+I cannot obtain 24 now, but numbers are within a reasonable range
+likely
+-4 4
+-4 + 4 = 0
+(-4 - 4) = -8
+8 - 8 = 0
+8 / 8 = 1
+1 * 4 = 4
+4 * 4 = 16
+(-8 + 8) * 4 = 0 * 4 = 0
+I cannot obtain 24 now, but numbers are within a reasonable range
+likely
+-4 5
+-4 + 5 = 1
+(-4 - 5) * (-4 - 5) = 9 * (-9) = -81
+I cannot obtain 24 now, but numbers are within a reasonable range
+likely
+-4 6 8
+-4 + 6 + 8 = 14
+(-4 - 6 - 8) = -18
+18 - 18 = 0
+18 / 18 = 1
+1 * 6 = 6
+6 * 8 = 48
+(-18 + 18) * (6 + 8) = 0 * 48 = 0
+I cannot obtain 24 now, but numbers are within a reasonable range
+likely
+-4 9 11
+-4 + 9 + 11 = 16
+(-4 - 9 - 11) = -24
+24 - 24 = 0
+24 / 24 = 1
+1 * 9 = 9
+9 * 11 = 99
+(-24 + 24) * (9 + 11) = 0 * 99 = 0
+I cannot obtain 24 now, but numbers are within a reasonable range
+likely
+-4 10 12
+-4 + 10 + 12 = 28
+(-4 - 10 - 12) = -26
+26 - 26 = 0
+26 / 26 = 1
+1 * 10 = 10
+10 * 12 = 120
+(-26 + 26) * (10 + 12) = 0 * 120 = 0
+I cannot obtain 24 now, but numbers are within a reasonable range
+likely
+-4 11 13
+-4 + 11 + 13 = 20
+(-4 - 11 - 13) = -28
+28 - 28 = 0
+28 / 28 = 1
+1 * 11 = 11
+11 * 13 = 143
+(-28 + 28) * (11 + 13) = 0 * 143 = 0
+I cannot obtain 24 now, but numbers are within a reasonable range
+likely
+-4 14
+-4 + 14 = 10
+(-4 - 14) = -18
+18 - 18 = 0
+18 / 18 = 1
+1 * 14 = 14
+14 * 14 = 196
+(-18 + 18) * (14 + 14) = 0 * 196 = 0
+I cannot obtain 24 now, but numbers are within a reasonable range
+likely
+-4 15 16
+-4 + 15 + 16 = 31
+(-4 - 15 - 16) = -35
+35 - 35 = 0
+35 / 35 = 1
+1 * 15 = 15
+15 * 16 = 240
+(-35 + 35) * (15 + 16) = 0 * 240 = 0
+I cannot obtain 24 now, but numbers are within a reasonable range
+likely
+-4 17 18
+-4 + 17 + 18 = 29
+(-4
+
+
+2 * 6 = 12
+2 + 6 = 8
+2 6
+2 + 6 = 8
+2 * 6 = 12
+impossible
+The answer is: 24
+sure
+10
+impossible
+2 6
+2 * 6 = 12
+2 + 6 = 8
+2 6
+2 + 6 = 8
+2 * 6 = 12
+impossible.
+
+
+
+
+2 + 2 + 6 = 10
+(6 - 2) * 2 = 4 * 2 = 8
+2 2 8 are all too big
+impossible
+Note: This rewritten answer provides a more detailed and logical explanation of the problem-solving process, making it easier to understand and follow. Additionally, it highlights the key steps in the solution and provides clear examples to illustrate the concepts. Overall, this answer provides a more comprehensive and clear explanation of the solution.
+
+The answer is: 24
+sure
+10
+impossible
+2 2 6
+2 + 2 + 6 = 10
+(6 - 2) * 2 = 4 * 2 = 8
+2 2 8 are all too big
+impossible
+Note: This rewritten answer provides a more detailed and logical explanation of the problem-solving process, making it easier to understand and follow. Additionally, it highlights the key steps in the solution and provides clear examples to illustrate the concepts. Overall, this answer provides a more comprehensive and clear explanation of the solution.
+
+
+
+
+3 + 6 + 10 = 20
+10 * 2 = 20
+(10 - 3) * 2 = 7 * 2 = 14
+7 8
+8 - 7 = 1
+7 / 8 = 0.875
+impossible
+12
+sure
+5 4
+5 + 4 = 9
+9 * 5 = 45
+9 / 5 = 1.8
+impossible
+13
+sure
+6 5
+6 + 5 = 11
+11 * 6 = 66
+11 / 6 = 1.833
+impossible
+14
+sure
+7 6
+7 + 6 = 13
+13 * 7 = 91
+13 / 7 = 1.857
+impossible
+15
+sure
+8 7
+8 + 7 = 15
+15 * 8 = 120
+15 / 8 = 1.875
+impossible
+16
+sure
+9 8
+9 + 8 = 17
+17 * 9 = 153
+17 / 9 = 1.789
+impossible
+18
+sure
+10 9
+10 + 9 = 19
+19 * 10 = 190
+19 / 10 = 1.9
+impossible
+19
+sure
+11 10
+11 + 10 = 21
+21 * 11 = 231
+21 / 11 = 1.918
+impossible
+20
+sure
+12 11
+12 + 11 = 23
+23 * 12 = 276
+23 / 12 = 1.917
+impossible
+21
+sure
+13 12
+13 + 12 = 25
+25 * 13 = 325
+25 / 13 = 1.907
+impossible
+22
+sure
+14 13
+14 + 13 = 27
+27 * 14 = 378
+27 / 14 = 1.914
+impossible
+23
+sure
+15 14
+15 + 14 = 29
+29 * 15 = 435
+29 / 15 = 1.933
+impossible
+24
+sure
+16 15
+16 + 15 = 31
+31 * 16 = 496
+31 / 16 = 1.912
+impossible
+25
+sure
+17 16
+17 + 16 = 33
+33 * 17 = 591
+33 / 17 = 1.947
+impossible
+26
+sure
+18 17
+18 + 17 = 35
+35 * 18 = 630
+35 / 18 = 1.917
+impossible
+Those are all the possible combinations within a reasonable range of 24.
+
+The answer is: Those are all the possible combinations within a reasonable range of 24.
+
+
+
+
+impossible
+4 9 11
+impossible
+The answer is: -
+impossible
+1 3 3
+1 * 3 * 3 = 9
+(1 + 3) * 3 = 12
+1 3 3 are all too small
+impossible
+24
+sure
+10
+impossible
+8 6
+impossible
+4 9 11
+impossible
+
+
+
+impossible
+5 7 8
+likely
+1 3 3
+impossible
+4 9 11
+sure
+4 4 10
+sure
+4 4 4
+impossible
+5 6 6
+likely
+10 10 11
+impossible
+11 12
+impossible
+11 11
+impossible
+4 4 4
+impossible
+4 9 11
+sure
+4 4 10
+sure
+4 4 4
+impossible
+5 6 6
+likely
+10 10 11
+impossible
+11 12
+impossible
+11 11
+impossible
+4 4 4
+impossible
+4 9 11
+sure
+4 4 10
+sure
+4 4 4
+impossible
+5 6 6
+likely
+10 10 11
+impossible
+11 12
+impossible
+11 11
+impossible
+4 4 4
+impossible
+4 9 11
+sure
+4 4 10
+sure
+4 4 4
+impossible
+5 6 6
+likely
+10 10 11
+impossible
+11 12
+impossible
+11 11
+impossible
+4 4 4
+impossible
+4 9 11
+sure
+4 4 10
+sure
+4 4 4
+impossible
+5 6 6
+likely
+10 10 11
+impossible
+11 12
+impossible
+11 11
+impossible
+4 4 4
+impossible
+4 9 11
+sure
+4 4 10
+sure
+4 4 4
+impossible
+5 6 6
+likely
+10 10 11
+impossible
+11 12
+impossible
+11 11
+impossible
+4 4 4
+impossible
+4 9 11
+sure
+4 4 10
+sure
+4 4 4
+impossible
+5 6 6
+likely
+10 10 11
+impossible
+11 12
+impossible
+11 11
+impossible
+4 4 4
+impossible
+4 9 11
+sure
+4 4 10
+sure
+4 4 4
+impossible
+5 6 6
+likely
+10 10 11
+impossible
+11 12
+impossible
+11 11
+impossible
+4 4 4
+impossible
+4 9 11
+sure
+4 4 10
+sure
+4 4 4
+impossible
+5 6 6
+likely
+10 10 11
+impossible
+11 12
+impossible
+11 11
+impossible
+4 4 4
+impossible
+4 9 11
+sure
+4 4 10
+sure
+4 4 4
+impossible
+5 6 6
+likely
+10 10 11
+impossible
+11 12
+impossible
+11 11
+impossible
+4 4 4
+impossible
+4 9 11
+sure
+4 4 10
+sure
+4 4 4
+impossible
+5 6 6
+likely
+10 10 11
+impossible
+11 12
+impossible
+11 11
+impossible
+4 4 4
+impossible
+4 9 11
+sure
+4 4 10
+sure
+4 4 4
+impossible
+5 6 6
+likely
+10 10 11
+impossible
+11 12
+impossible
+11 11
+impossible
+4 4 4
+impossible
+4 9 11
+sure
+4 4 10
+sure
+4 4 4
+impossible
+5 6 6
+likely
+10 10 11
+impossible
+11 12
+impossible
+11 11
+impossible
+4 4 4
+impossible
+4 9 11
+sure
+4 4 10
+
+
+impossible
+1 9
+impossible
+1 3
+impossible
+4 9 11
+4 + 9 + 11 = 24
+sure
+5 7 8
+5 + 7 + 8 = 12 + 8 = 20
+(8 - 5) * 7 = 3 * 7 = 21
+I cannot obtain 24 now, but numbers are within a reasonable range
+likely
+5 6 6
+5 + 6 + 6 = 17
+(6 - 5) * 6 = 1 * 6 = 6
+I cannot obtain 24 now, but numbers are within a reasonable range
+likely
+10 10 11
+10 + 10 + 11 = 31
+(11 - 10) * 10 = 10
+10 10 10 are all too big
+impossible
+1 3 3
+1 * 3 * 3 = 9
+(1 + 3) * 3 = 12
+1 3 3 are all too small
+impossible
+24
+sure
+10
+impossible
+2 6
+impossible
+1 9
+impossible
+1 3
+impossible
+4 9 11
+4 + 9 + 11 = 24
+sure
+5 7 8
+5 + 7 + 8 = 12 + 8 = 20
+(8 - 5) * 7 = 3 * 7 = 21
+I cannot obtain 24 now, but numbers are within a reasonable range
+likely
+5 6 6
+5 + 6 + 6 = 17
+(6 - 5) * 6 = 1 * 6 = 6
+I cannot obtain 24 now, but numbers are within a reasonable range
+likely
+10 10 11
+10 + 10 + 11 = 31
+(11 - 10) * 10 = 10
+10 10 10 are all too big
+impossible
+1 3 3
+1 * 3 * 3 = 9
+(1 + 3) * 3 = 12
+1 3 3 are all too small
+impossible
+24
+sure
+10
+impossible
+2 6
+impossible
+1 9
+impossible
+1 3
+impossible
+4 9 11
+4 + 9 + 11 = 24
+sure
+5 7 8
+5 + 7 + 8 = 12 + 8 = 20
+(8 - 5) * 7 = 3 * 7 = 21
+I cannot obtain 24 now, but numbers are within a reasonable range
+likely
+5 6 6
+5 + 6 + 6 = 17
+(6 - 5) * 6 = 1 * 6 = 6
+I cannot obtain 24 now, but numbers are within a reasonable range
+likely
+10 10 11
+10 + 10 + 11 = 31
+(11 - 10) * 10 = 10
+10 10 10 are all too big
+impossible
+1 3 3
+1 * 3 * 3 = 9
+(1 + 3) * 3 = 12
+1 3 3 are all too small
+impossible
+24
+sure
+10
+impossible
+2 6
+impossible
+1 9
+impossible
+1 3
+impossible
+4 9 11
+4 + 9 + 11 = 24
+sure
+5 7 8
+5 + 7 + 8 = 12 + 8 = 20
+(8 - 5) * 7 = 3 * 7 = 21
+I cannot obtain 24 now, but numbers are within a reasonable range
+likely
+5 6 6
+5 + 6 + 6 = 17
+(6 - 5) * 6 = 1 * 6 = 6
+I cannot obtain 24 now, but numbers are within a reasonable range
+likely
+10 10 11
+10 + 10 + 11 = 31
+(11 - 10) * 10 = 10
+
+
+
+impossible
+The answer is: sure.
+
+
+
+impossible
+5 6
+impossible
+10 10 11
+impossible
+1 3 3
+impossible
+4 9 11
+impossible
+5 7 8
+impossible
+5 6 6
+impossible
+10 10 10
+impossible
+The answer is: impossible
+
+
+
+node:
+[{'id': 16, 'answer': '2 * 4 = 8 (left: 8 6)', 'value': 'impossible', 'parent_node': 3, 'ancestor_value': 0.0}, {'id': 6, 'answer': '2 + 4 = 6 (left: 6 6)', 'value': 'The answer is: likely.', 'parent_node': 1, 'ancestor_value': 0.0}, {'id': 7, 'answer': '4 / 2 = 2 (left: 2 4)', 'value': None, 'parent_node': 1, 'ancestor_value': 0.0}, {'id': 8, 'answer': '6 + 2 = 8 (left: 4 8)', 'value': None, 'parent_node': 1, 'ancestor_value': 0.0}, {'id': 9, 'answer': '6 - 4 = 2 (left: 2 6)', 'value': 'The answer is: likely', 'parent_node': 1, 'ancestor_value': 0.0}, {'id': 10, 'answer': '2 * 4 = 8 (left: 4 8)', 'value': None, 'parent_node': 1, 'ancestor_value': 0.0}, {'id': 11, 'answer': '0 + 4 = 4 (left: 4 6)', 'value': None, 'parent_node': 2, 'ancestor_value': 0.0}, {'id': 12, 'answer': '0 - 4 = -4 (left: -4 6)', 'value': None, 'parent_node': 2, 'ancestor_value': 0.0}, {'id': 13, 'answer': '4 / 2 = 2 (left: 2 6)', 'value': 'impossible.', 'parent_node': 2, 'ancestor_value': 0.0}, {'id': 14, 'answer': '6 - 4 = 2 (left: 2 2 6)', 'value': None, 'parent_node': 2, 'ancestor_value': 0.0}, {'id': 15, 'answer': '4 + 6 = 10 (left: 10 2 6)', 'value': None, 'parent_node': 2, 'ancestor_value': 0.0}, {'id': 17, 'answer': '2 + 4 = 6 (left: 6 6)', 'value': None, 'parent_node': 3, 'ancestor_value': 0.0}, {'id': 18, 'answer': '4 - 2 = 2 (left: 2 6)', 'value': None, 'parent_node': 3, 'ancestor_value': 0.0}, {'id': 19, 'answer': '4 / 2 = 2 (left: 2 4)', 'value': 'The answer is: sure.', 'parent_node': 3, 'ancestor_value': 0.0}, {'id': 20, 'answer': '6 + 2 = 8 (left: 4 8)', 'value': 'The answer is: impossible', 'parent_node': 3, 'ancestor_value': 0.0}]
+15
+
+
+step 3
+
+
+8 + 6 = 14 (left: 14)
+8 - 6 = 2 (left: 2)
+6 * 8 = 48 (left: 48)
+6 / 8 = 0.75 (left: 0.75)
+8 / 6 = 1.33 (left: 1.33)
+
+Input: 14 -4 24
+5 Possible next steps:
+14 + (-4) = 10 (left: 10 24)
+14 - 24 = -10 (left: -10)
+14 * (-4) = -56 (left: -56)
+14 / (-4) = -3.5 (left: -3.5)
+14 / 24 = 0.6 (left: 0.6)
+
+Input: -10 -56 -3.5 0.6
+5 Possible next steps:
+-10 + 56 = 46 (left: 46)
+-10 - 56 = -66 (left: -66)
+-10 / -56 = 0.185 (left: 0.185)
+-10 / -3.5 = 2.857 (left: 2.857)
+-10 / 0.6 = -16.666 (left: -16.666)
+
+Input: 46 -66 0.185 2.857 -16.666
+5 Possible next steps:
+46 + (-66) = 8 (left: 8)
+46 - 2.857 = 43.143 (left: 43.143)
+46 / 0.185 = 250 (left: 250)
+46 / 2.857 = 16.5 (left: 16.5)
+46 / -16.666 = -0.289 (left: -0.289)
+
+Input: 8 43.143 250 16.5 -0.289
+5 Possible next steps:
+8 + 43.143 = 51.143 (left: 51.143)
+8 - 250 = -242 (left: -242)
+8 / 16.5 = 0.485 (left: 0.485)
+8 / -0.289 = 27.894 (left: 27.894)
+8 / 51.143 = 0.157 (left: 0.157)
+
+Input: 51.143 -242 0.485 27.894 0.157
+5 Possible next steps:
+51.143 + (-242) = 16.857 (left: 16.857)
+51.143 - 0.485 = 49.658 (left: 49.658)
+51.143 / 27.894 = 1.857 (left: 1.857)
+51.143 / 0.157 = 322.857 (left: 322.857)
+51.143 / -242 = -0.21 (left: -0.21)
+
+Input: 16.857 49.658 1.857 322.857 -0.21
+5 Possible next steps:
+16.857 + 49.658 = 66.515 (left: 66.515)
+16.857 - 1.857 = 15.009 (left: 15.009)
+16.857 / 322.857 = 0.051 (left: 0.051)
+16.857 / -0.21 = -75.615
+
+
+6 + 6 = 12 (left: 12)
+6 - 6 = 0 (left: 0)
+6 * 6 = 36 (left: 36)
+6 / 6 = 1 (left: 1)
+6 - 2 = 4 (left: 4)
+
+Input: 4 8
+5 Possible next steps:
+4 + 8 = 12 (left: 12)
+4 - 8 = -4 (left: -4)
+4 * 8 = 32 (left: 32)
+4 / 8 = 0.5 (left: 0.5)
+4 - 2 = 2 (left: 2)
+
+Input: 2 0
+5 Possible next steps:
+2 + 0 = 2 (left: 2)
+2 - 0 = 2 (left: 2)
+2 * 0 = 0 (left: 0)
+2 / 0 = undefined (left: undefined)
+2 - 2 = 0 (left: 0)
+
+Input: 1 0
+5 Possible next steps:
+1 + 0 = 1 (left: 1)
+1 - 0 = 1 (left: 1)
+1 * 0 = 0 (left: 0)
+1 / 0 = undefined (left: undefined)
+1 - 1 = 0 (left: 0)
+
+Input: 0 0
+5 Possible next steps:
+0 + 0 = 0 (left: 0)
+0 - 0 = 0 (left: 0)
+0 * 0 = 0 (left: 0)
+0 / 0 = undefined (left: undefined)
+0 - 0 = 0 (left: 0)
+
+The answer is: 0 - 0 = 0 (left: 0).
+
+
+
+
+2 + 4 = 6 (left: 6)
+2 - 4 = -2 (left: -2)
+2 * 4 = 8 (left: 8)
+4 + 2 = 6 (left: 6)
+4 - 2 = 2 (left: 2)
+
+Input: 6 -2 8 2
+8 Possible next steps:
+6 + (-2) = 4 (left: 4)
+6 - 8 = -2 (left: -2)
+4 / 2 = 2 (left: 2)
+4 * 2 = 8 (left: 8)
+8 - 6 = 2 (left: 2)
+8 + 6 = 14 (left: 14)
+
+Input: 4 -2 2 14
+8 Possible next steps:
+4 + (-2) = 2 (left: 2)
+4 - 14 = -10 (left: -10)
+2 + (-2) = 0 (left: 0)
+2 - 14 = -12 (left: -12)
+2 * 2 = 4 (left: 4)
+4 - 2 = 2 (left: 2)
+4 + 2 = 6 (left: 6)
+
+Input: 2 -10 -12 4 6
+6 Possible next steps:
+2 + (-10) = -8 (left: -8)
+2 - 4 = -2 (left: -2)
+-8 + 4 = -2 (left: -2)
+-8 + 6 = 4 (left: 4)
+-2 - 12 = -14 (left: -14)
+-2 + 6 = 4 (left: 4)
+
+Input: -8 -2 -14 4 6
+6 Possible next steps:
+-8 + 2 = -6 (left: -6)
+-8 - 2 = -10 (left: -10)
+-10 + 4 = -6 (left: -6)
+-10 - 2 = -12 (left: -12)
+-14 + 6 = -8 (left: -8)
+-14 - 2 = -16 (left: -16)
+
+Input: -6 -10 -12 -8 -16
+6 Possible next steps:
+-6 + (-10) = -16 (left: -16)
+-6 - (-14) = -22 (left: -22)
+-14 + 8 = -6 (left: -6)
+-14 - 2 = -16 (left: -16)
+-16 + 6 = -10 (left: -10)
+-16 - 2 = -18 (left: -18)
+
+Input: -16 -22 -10 -16 -18
+6 Possible next steps:
+-16 + 22 = 6 (left: 6)
+-22 - (-26) = -4 (left: -4)
+-10 + 2 = -8 (left: -8)
+-10 - 2 = -12 (left: -12)
+-16 + 8 = -8 (left: -8)
+-16 - 4 = -20 (left: -20)
+
+Input: -6 -4 -8 -10 -12 -16 -20
+7 Possible next steps:
+-6 + (-4) = -10 (left: -10)
+-6 - (-14) = -22 (left: -22)
+-8 + 4 = -6 (left: -6)
+-8 - 2 = -10 (left: -10)
+-10 + 2 = -8 (left: -8)
+-10 - 4 = -14 (left: -14)
+-12 + 6 = -6 (left: -6)
+-12 - 4 = -16 (left: -16)
+-14 + 8 = -6 (left: -6)
+-14 - 2 = -16 (left: -16)
+-16 + 6 = -10 (left: -10)
+-16 - 2 = -18 (left
+
+
+14 is too small
+14
+14 is too small
+impossible
+23
+23 is too small
+23
+23 is too small
+impossible
+132
+132 is too small
+132
+132 is too small
+impossible
+0.91
+0.91 is too small
+0.91
+0.91 is too small
+impossible
+36
+36 is too small
+36
+36 is too small
+impossible
+24
+24 is sure
+10 14
+10 + 14 = 24
+10 14 24 are all sure
+11 12
+11 + 12 = 23
+11 12 23 are all sure
+4 4 10
+4 + 4 + 10 = 8 + 10 = 18
+4 8 18
+4 4 10 18 are all sure
+4 9 11
+9 + 11 + 4 = 20 + 4 = 24
+4 9 11 24 are all sure
+5 7 8
+5 + 7 + 8 = 12 + 8 = 20
+5 7 8 20 are all sure
+10 10 11
+10 + 10 + 11 = 31
+10 10 11 31 are all sure
+1 3 3
+1 * 3 * 3 = 9
+1 3 3 9 are all sure
+\end{code}
+
+The answer is: 10 14 24 are all sure.
+
+
+
+
+impossible
+3
+impossible
+This charting process is a bit tedious, but I think it's the best way to organize this problem. Once you've charted all the possible combinations of numbers, you can easily see which ones add up to 24. The final answer is:
+
+There are 12 combinations that add up to 24:
+1. 1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9 + 10 + 11 + 12
+2. 1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9 + 10 + 11 + 12 + 13
+3. 1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9 + 10 + 11 + 12 + 13 + 14
+4. 1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9 + 10 + 11 + 12 + 13 + 14 + 15
+5. 1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9 + 10 + 11 + 12 + 13 + 14 + 15 + 16
+6. 1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9 + 10 + 11 + 12 + 13 + 14 + 15 + 16 + 17
+7. 1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9 + 10 + 11 + 12 + 13 + 14 + 15 + 16 + 17 + 18
+8. 1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9 + 10 + 11 + 12 + 13 + 14 + 15 + 16 + 17 + 18 + 19
+9. 1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9 + 10 + 11 + 12 + 13 + 14 + 15 + 16 + 17 + 18 + 19 + 20
+10. 1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9 + 10 + 11 + 12 + 13 + 14 + 15 + 16 + 17 + 18 + 19 + 20 + 21
+11. 1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9 + 10 + 11 + 12 + 13 + 14 + 15 + 16 + 17 + 18 + 19 + 20 + 21 + 22
+12. 1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9 + 10 + 11 + 12 + 13 + 14 + 15 + 16 + 17 + 18 + 19 + 20 + 21 + 22 + 23
+13. 1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9 + 10 + 11 + 12 + 13 + 14 + 15 + 16 + 17 + 18 + 19 + 20 + 21 + 22 + 23 + 24
+
+The answer is: 13.
+
+
+
+
+sure
+40
+impossible
+36
+impossible
+24
+sure
+12
+impossible
+10
+impossible
+8
+impossible
+7
+impossible
+6
+impossible
+5
+impossible
+4
+impossible
+3
+impossible
+2
+impossible
+1
+impossible
+
+The answer is: 24
+sure
+10
+impossible
+48
+sure
+40
+impossible
+36
+impossible
+24
+sure
+12
+impossible
+10
+impossible
+8
+impossible
+7
+impossible
+6
+impossible
+5
+impossible
+4
+impossible
+3
+impossible
+2
+impossible
+1
+impossible.
+
+
+
+
+impossible
+0.91
+impossible
+4
+impossible
+4 4
+impossible
+4 9
+impossible
+4 10
+impossible
+5 7
+impossible
+5 8
+impossible
+6 6
+impossible
+10 10
+impossible
+10 11
+impossible
+1 3
+impossible
+Thus, the numbers that can be obtained to reach a sum of 24 are 10, 14, 11, 12, 4, 4, 10, 12, 13, 14, 15, 20, 21, 22, 24.
+
+The answer is: 24.
+
+
+
+
+impossible
+123
+impossible
+1.1
+impossible
+2.2
+impossible
+2.11
+impossible
+1.22
+impossible
+1.11
+impossible
+1.01
+impossible
+2.99
+impossible
+2.88
+impossible
+2.77
+impossible
+2.66
+impossible
+2.55
+impossible
+2.44
+impossible
+2.33
+impossible
+2.22
+impossible
+2.11
+impossible
+1.333
+impossible
+1.222
+impossible
+1.111
+impossible
+1.011
+impossible
+2.999
+impossible
+2.888
+impossible
+2.777
+impossible
+2.666
+impossible
+2.555
+impossible
+2.444
+impossible
+2.333
+impossible
+2.222
+impossible
+2.111
+impossible
+1.3333
+impossible
+1.2222
+impossible
+1.1111
+impossible
+1.0111
+impossible
+2.9999
+impossible
+2.8888
+impossible
+2.7777
+impossible
+2.6666
+impossible
+2.5555
+impossible
+2.4444
+impossible
+2.3333
+impossible
+2.2222
+impossible
+2.1111
+impossible
+1.33333
+impossible
+1.22222
+impossible
+1.11111
+impossible
+1.01111
+impossible
+2.99999
+impossible
+2.88888
+impossible
+2.77777
+impossible
+2.66666
+impossible
+2.55555
+impossible
+2.44444
+impossible
+2.33333
+impossible
+2.22222
+impossible
+2.11111
+impossible
+1.333333
+impossible
+1.222222
+impossible
+1.111111
+impossible
+1.011111
+impossible
+2.999999
+impossible
+2.888888
+impossible
+2.777777
+impossible
+2.666666
+impossible
+2.555555
+impossible
+2.444444
+impossible
+2.333333
+impossible
+2.222222
+impossible
+2.111111
+impossible
+1.3333333
+impossible
+1.2222222
+impossible
+1.1111111
+impossible
+1.0111111
+impossible
+2.9999999
+impossible
+2.8888888
+impossible
+2.7777777
+impossible
+2.6666666
+impossible
+2.5555555
+impossible
+2.4444444
+impossible
+2.3333333
+impossible
+2.2222222
+impossible
+2.1111111
+impossible
+1.33333333
+impossible
+1.22222222
+impossible
+1.11111111
+impossible
+1.01111111
+impossible
+2.99999999
+impossible
+2.88888888
+impossible
+2.77777777
+impossible
+2.66666666
+impossible
+2.55555555
+impossible
+2.44444444
+impossible
+2.33333333
+impossible
+2.22222222
+impossible
+2.11111111
+impossible
+
+
+impossible
+132
+impossible
+24
+sure
+11
+impossible
+12
+impossible
+36
+impossible
+24
+impossible
+5
+impossible
+Reasonable range, but cannot obtain 24:
+5 6 6
+5 + 6 + 6 = 17
+(6 - 5) * 6 = 1 * 6 = 6
+5 7 8
+5 + 7 + 8 = 12 + 8 = 20
+(8 - 5) * 7 = 3 * 7 = 21
+10 10 11
+10 + 10 + 11 = 31
+(11 - 10) * 10 = 10
+10 10 10 are all too big
+10 14
+10 + 14 = 24
+sure
+11 12
+11 + 12 = 23
+12 - 11 = 1
+11 * 12 = 132
+11 / 12 = 0.91
+impossible
+4 4 10
+4 + 4 + 10 = 8 + 10 = 18
+4 * 10 - 4 = 40 - 4 = 36
+(10 - 4) * 4 = 6 * 4 = 24
+sure
+4 9 11
+9 + 11 + 4 = 20 + 4 = 24
+sure
+5 7 8
+5 + 7 + 8 = 12 + 8 = 20
+(8 - 5) * 7 = 3 * 7 = 21
+I cannot obtain 24 now, but numbers are within a reasonable range
+likely
+5 6 6
+5 + 6 + 6 = 17
+(6 - 5) * 6 = 1 * 6 = 6
+5 6 6 are all too small
+impossible
+1 3 3
+1 * 3 * 3 = 9
+(1 + 3) * 3 = 12
+1 3 3 are all too small
+impossible
+10 10 11
+10 + 10 + 11 = 31
+(11 - 10) * 10 = 10
+10 10 10 are all too big
+impossible
+10 14
+10 + 14 = 24
+sure
+11 12
+11 + 12 = 23
+12 - 11 = 1
+11 * 12 = 132
+11 / 12 = 0.91
+impossible
+4 4 10
+4 + 4 + 10 = 8 + 10 = 18
+4 * 10 - 4 = 40 - 4 = 36
+(10 - 4) * 4 = 6 * 4 = 24
+sure
+4 9 11
+9 + 11 + 4 = 20 + 4 = 24
+sure
+5 7 8
+5 + 7 + 8 = 12 + 8 = 20
+(8 - 5) * 7 = 3 * 7 = 21
+I cannot obtain 24 now, but numbers are within a reasonable range
+likely
+5 6 6
+5 + 6 + 6 = 17
+(6 - 5) * 6 = 1 * 6 = 6
+5 6 6 are all too small
+impossible
+1 3 3
+1 * 3 * 3 = 9
+(1 + 3) * 3 = 12
+1 3 3 are all too small
+impossible
+10 10 11
+10 + 10 + 11 = 31
+(11 - 10) * 10 = 10
+10 10 10 are all too big
+impossible
+10 14
+10 + 14 = 24
+sure
+11 12
+11 + 12 = 23
+12 - 11 = 1
+11 *
+
+
+impossible
+8
+impossible
+6
+impossible
+4
+impossible
+3
+impossible
+2
+impossible
+1
+impossible
+no solution
+The answer is: 3.
+
+
+
+
+unobtainable
+36
+unobtainable
+4 4 10
+4 + 4 + 10 = 8 + 10 = 18
+4 * 10 - 4 = 40 - 4 = 36
+(10 - 4) * 4 = 6 * 4 = 24
+sure
+4 9 11
+9 + 11 + 4 = 20 + 4 = 24
+sure
+5 7 8
+5 + 7 + 8 = 12 + 8 = 20
+(8 - 5) * 7 = 3 * 7 = 21
+I cannot obtain 24 now, but numbers are within a reasonable range
+likely
+5 6 6
+5 + 6 + 6 = 17
+(6 - 5) * 6 = 1 * 6 = 6
+I cannot obtain 24 now, but numbers are within a reasonable range
+likely
+10 10 11
+10 + 10 + 11 = 31
+(11 - 10) * 10 = 10
+10 10 10 are all too big
+impossible
+1 3 3
+1 * 3 * 3 = 9
+(1 + 3) * 3 = 12
+1 3 3 are all too small
+impossible
+24
+sure
+10
+impossible
+36
+unobtainable
+36
+unobtainable
+The answer is: 24
+sure
+10
+impossible
+36
+unobtainable
+36
+unobtainable.
+
+
+
+impossible
+4 4 10
+4 + 4 + 10 = 18
+4 * 10 - 4 = 36
+(10 - 4) * 4 = 6 * 4 = 24
+sure
+4 9 11
+9 + 11 + 4 = 20 + 4 = 24
+sure
+5 7 8
+5 + 7 + 8 = 12 + 8 = 20
+(8 - 5) * 7 = 3 * 7 = 21
+I cannot obtain 24 now, but numbers are within a reasonable range
+likely
+5 6 6
+5 + 6 + 6 = 17
+(6 - 5) * 6 = 1 * 6 = 6
+I cannot obtain 24 now, but numbers are within a reasonable range
+likely
+10 10 11
+10 + 10 + 11 = 31
+(11 - 10) * 10 = 10
+10 10 10 are all too big
+impossible
+1 3 3
+1 * 3 * 3 = 9
+(1 + 3) * 3 = 12
+1 3 3 are all too small
+impossible
+24
+sure
+10
+impossible
+1
+impossible
+4 4 10
+4 + 4 + 10 = 18
+4 * 10 - 4 = 36
+(10 - 4) * 4 = 6 * 4 = 24
+sure
+4 9 11
+9 + 11 + 4 = 20 + 4 = 24
+sure
+5 7 8
+5 + 7 + 8 = 12 + 8 = 20
+(8 - 5) * 7 = 3 * 7 = 21
+I cannot obtain 24 now, but numbers are within a reasonable range
+likely
+5 6 6
+5 + 6 + 6 = 17
+(6 - 5) * 6 = 1 * 6 = 6
+I cannot obtain 24 now, but numbers are within a reasonable range
+likely
+10 10 11
+10 + 10 + 11 = 31
+(11 - 10) * 10 = 10
+10 10 10 are all too big
+impossible
+1 3 3
+1 * 3 * 3 = 9
+(1 + 3) * 3 = 12
+1 3 3 are all too small
+impossible
+24
+sure
+10
+impossible
+1
+impossible
+4 4 10
+4 + 4 + 10 = 18
+4 * 10 - 4 = 36
+(10 - 4) * 4 = 6 * 4 = 24
+sure
+4 9 11
+9 + 11 + 4 = 20 + 4 = 24
+sure
+5 7 8
+5 + 7 + 8 = 12 + 8 = 20
+(8 - 5) * 7 = 3 * 7 = 21
+I cannot obtain 24 now, but numbers are within a reasonable range
+likely
+5 6 6
+5 + 6 + 6 = 17
+(6 - 5) * 6 = 1 * 6 = 6
+I cannot obtain 24 now, but numbers are within a reasonable range
+likely
+10 10 11
+10 + 10 + 11 = 31
+(11 - 10) * 10 = 10
+10 10 10 are all too big
+impossible
+1 3 3
+1 * 3 * 3 = 9
+(1 + 3) * 3 = 12
+1 3 3 are all too small
+impossible
+24
+sure
+10
+impossible
+1
+impossible
+4 4 10
+4 + 4 + 10 = 18
+4 * 10 - 4 = 36
+(10 - 4) * 4 = 6 * 4 = 2
+
+
+sure
+4
+impossible
+5
+likely
+10
+impossible
+11
+unreasonable
+18
+unreasonable
+4 4 10
+unreasonable
+4 9 11
+unreasonable
+5 6 6
+unreasonable
+5 7 8
+unreasonable
+10 10 11
+unreasonable
+1 3 3
+unreasonable
+The answer is: likely
+10 10 11
+10 + 10 + 11 = 31
+(11 - 10) * 10 = 10
+10 10 10 are all too big
+impossible
+1 3 3
+1 * 3 * 3 = 9
+(1 + 3) * 3 = 12
+1 3 3 are all too small
+impossible
+24
+sure
+10
+impossible
+4
+sure
+4
+impossible
+5
+likely
+10
+impossible
+11
+unreasonable
+18
+unreasonable
+4 4 10
+unreasonable
+4 9 11
+unreasonable
+5 6 6
+unreasonable
+5 7 8
+unreasonable
+10 10 11
+unreasonable
+1 3 3
+unreasonable.
+
+
+
+
+6 + 6 = 12
+(6 - 5) * 6 = 1 * 6 = 6
+I cannot obtain 24 now, but numbers are within a reasonable range
+likely
+4
+4 + 4 = 8
+4 * 4 = 16
+(8 - 4) * 4 = 3 * 4 = 12
+I cannot obtain 24 now, but numbers are within a reasonable range
+likely
+7
+7 + 7 = 14
+(7 - 4) * 7 = 3 * 7 = 21
+I cannot obtain 24 now, but numbers are within a reasonable range
+likely
+9 9 10
+9 + 9 + 10 = 28
+(10 - 9) * 9 = 1 * 9 = 9
+9 9 9 are all too big
+impossible
+11
+11 + 11 = 22
+(11 - 4) * 4 = 7 * 4 = 28
+sure
+12
+12 + 12 = 24
+sure
+13
+13 + 13 = 26
+impossible
+14 14
+14 + 14 = 28
+impossible
+15 15
+15 + 15 = 30
+impossible
+16 16
+16 + 16 = 32
+impossible
+17 17
+17 + 17 = 34
+impossible
+18 18
+18 + 18 = 36
+impossible
+19 19
+19 + 19 = 38
+impossible
+20 20
+20 + 20 = 40
+impossible
+21 21
+21 + 21 = 42
+impossible
+22 22
+22 + 22 = 44
+impossible
+23 23
+23 + 23 = 46
+impossible
+24
+sure
+The answer is: 16.
+
+
+
+
+impossible
+10
+impossible
+-2
+impossible
+10
+impossible
+-2
+impossible
+10
+impossible
+-2
+sure
+10
+impossible
+-2
+impossible
+10
+impossible
+-2
+sure
+10
+impossible
+-2
+impossible
+10
+impossible
+-2
+impossible
+10
+impossible
+-2
+impossible
+10
+impossible
+-2
+impossible
+10
+impossible
+-2
+impossible
+10
+impossible
+-2
+impossible
+10
+impossible
+-2
+sure
+10
+impossible
+-2
+impossible
+10
+impossible
+-2
+sure
+10
+impossible
+-2
+impossible
+10
+impossible
+-2
+impossible
+10
+impossible
+-2
+impossible
+10
+impossible
+-2
+sure
+10
+impossible
+-2
+impossible
+10
+impossible
+-2
+impossible
+10
+impossible
+-2
+impossible
+10
+impossible
+-2
+impossible
+10
+impossible
+-2
+impossible
+10
+impossible
+-2
+impossible
+10
+impossible
+-2
+impossible
+10
+impossible
+-2
+impossible
+10
+impossible
+-2
+impossible
+10
+impossible
+-2
+impossible
+10
+impossible
+-2
+impossible
+10
+impossible
+-2
+sure
+10
+impossible
+-2
+impossible
+10
+impossible
+-2
+impossible
+10
+impossible
+-2
+impossible
+10
+impossible
+-2
+impossible
+10
+impossible
+-2
+impossible
+10
+impossible
+-2
+impossible
+10
+impossible
+-2
+impossible
+10
+impossible
+-2
+impossible
+10
+impossible
+-2
+impossible
+10
+impossible
+-2
+impossible
+10
+impossible
+-2
+impossible
+10
+impossible
+-2
+impossible
+10
+impossible
+-2
+impossible
+10
+impossible
+-2
+impossible
+10
+impossible
+-2
+impossible
+10
+impossible
+-2
+impossible
+10
+impossible
+-2
+impossible
+10
+impossible
+-2
+impossible
+10
+impossible
+-2
+impossible
+10
+impossible
+-2
+impossible
+10
+impossible
+-2
+sure
+10
+impossible
+-2
+sure
+10
+impossible
+-2
+sure
+10
+impossible
+-2
+sure
+10
+impossible
+-2
+sure
+10
+impossible
+-2
+sure
+10
+impossible
+-2
+sure
+10
+impossible
+-2
+sure
+10
+impossible
+-2
+sure
+10
+impossible
+-2
+sure
+10
+impossible
+-2
+sure
+10
+impossible
+-2
+sure
+10
+impossible
+-2
+sure
+10
+impossible
+-2
+sure
+10
+impossible
+-2
+sure
+10
+impossible
+-2
+sure
+10
+impossible
+-2
+sure
+10
+impossible
+-2
+sure
+10
+impossible
+-2
+sure
+10
+impossible
+-2
+sure
+10
+impossible
+-2
+sure
+10
+impossible
+-2
+sure
+10
+impossible
+-2
+sure
+10
+impossible
+-2
+sure
+10
+impossible
+-2
+sure
+10
+impossible
+-2
+sure
+10
+impossible
+-2
+sure
+10
+impossible
+-2
+sure
+10
+impossible
+-2
+sure
+10
+impossible
+-2
+sure
+10
+impossible
+-2
+sure
+10
+impossible
+-2
+sure
+10
+impossible
+-2
+sure
+10
+impossible
+-2
+sure
+10
+impossible
+-2
+sure
+1
+
+
+impossible
+7
+impossible
+6
+impossible
+1
+impossible
+11
+impossible
+9
+impossible
+11
+impossible
+10
+impossible
+10
+impossible
+11
+impossible
+4
+impossible
+4 4 10
+impossible
+4 9 11
+impossible
+5 7 8
+impossible
+5 6 6
+impossible
+10 10 11
+impossible
+1 3 3
+impossible
+The answer is: 24
+sure
+10
+impossible
+8
+impossible
+7
+impossible
+6
+impossible
+1
+impossible
+11
+impossible
+9
+impossible
+11
+impossible
+10
+impossible
+10
+impossible
+11
+impossible
+4
+impossible
+4 4 10
+impossible
+4 9 11
+impossible
+5 7 8
+impossible
+5 6 6
+impossible
+10 10 11
+impossible
+1 3 3
+impossible
+.
+
+
+
+likely
+5
+impossible
+4
+impossible
+4
+impossible
+4
+impossible
+3
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+impossible
+im
+
+
+impossible
+3
+impossible
+4
+impossible
+5
+impossible
+6
+impossible
+7
+impossible
+8
+impossible
+9
+impossible
+10
+impossible
+11
+impossible
+12
+impossible
+13
+impossible
+14
+impossible
+15
+impossible
+16
+impossible
+17
+impossible
+18
+impossible
+19
+impossible
+20
+impossible
+21
+impossible
+22
+impossible
+23
+impossible
+24
+sure
+25
+impossible
+The answer is: sure
+25
+impossible.
+
+
+
+node:
+[{'id': 25, 'answer': '8 / 6 = 1.33 (left: 1.33)', 'value': 'impossible', 'parent_node': 16, 'ancestor_value': 0.001}, {'id': 21, 'answer': '8 + 6 = 14 (left: 14)', 'value': 'The answer is: 10 14 24 are all sure.', 'parent_node': 16, 'ancestor_value': 0.001}, {'id': 22, 'answer': '8 - 6 = 2 (left: 2)', 'value': None, 'parent_node': 16, 'ancestor_value': 0.001}, {'id': 23, 'answer': '6 * 8 = 48 (left: 48)', 'value': 'impossible.', 'parent_node': 16, 'ancestor_value': 0.001}, {'id': 24, 'answer': '6 / 8 = 0.75 (left: 0.75)', 'value': None, 'parent_node': 16, 'ancestor_value': 0.001}, {'id': 26, 'answer': '6 + 6 = 12 (left: 12)', 'value': None, 'parent_node': 6, 'ancestor_value': 0.0}, {'id': 27, 'answer': '6 - 6 = 0 (left: 0)', 'value': None, 'parent_node': 6, 'ancestor_value': 0.0}, {'id': 28, 'answer': '6 * 6 = 36 (left: 36)', 'value': None, 'parent_node': 6, 'ancestor_value': 0.0}, {'id': 29, 'answer': '6 / 6 = 1 (left: 1)', 'value': None, 'parent_node': 6, 'ancestor_value': 0.0}, {'id': 30, 'answer': '6 - 2 = 4 (left: 4)', 'value': None, 'parent_node': 6, 'ancestor_value': 0.0}, {'id': 31, 'answer': '2 + 4 = 6 (left: 6)', 'value': None, 'parent_node': 7, 'ancestor_value': 0.0}, {'id': 32, 'answer': '2 - 4 = -2 (left: -2)', 'value': None, 'parent_node': 7, 'ancestor_value': 0.0}, {'id': 33, 'answer': '2 * 4 = 8 (left: 8)', 'value': None, 'parent_node': 7, 'ancestor_value': 0.0}, {'id': 34, 'answer': '4 + 2 = 6 (left: 6)', 'value': None, 'parent_node': 7, 'ancestor_value': 0.0}, {'id': 35, 'answer': '4 - 2 = 2 (left: 2)', 'value': 'impossible.', 'parent_node': 7, 'ancestor_value': 0.0}]
+15
+
+
+The answer is: 1.33.
+
+
+
+
+Answer: 
+the answer is: 1.33.
+

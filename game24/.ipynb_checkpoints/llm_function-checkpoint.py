@@ -7,6 +7,7 @@ from llama_index.prompts.lmformatenforcer_utils import (
     build_lm_format_enforcer_function,
 )
 from llama_index.llms import LlamaCPP
+from llama_index.llms.vllm import Vllm
 
 def get_llm():
     # llama-cpp
@@ -19,7 +20,7 @@ def get_llm():
     )
     '''
     # llama_index (llama-cpp)
-
+    '''
     llm = LlamaCPP(
         model_path = parameters.model_path,
         temperature = parameters.temperature,
@@ -28,6 +29,21 @@ def get_llm():
         generate_kwargs={},
         model_kwargs={"n_gpu_layers": parameters.n_gpu_layers},
         verbose = True,
+    )
+    '''
+    # llama_index (vllm)
+    
+    llm = Vllm(
+        model = "WizardLM/WizardMath-13B-V1.0",
+        dtype = "float16",
+        tensor_parallel_size = 1,
+        temperature = parameters.temperature,
+        max_new_tokens = parameters.max_tokens,
+        vllm_kwargs={
+            "swap_space": 1,
+            "gpu_memory_utilization": 0.7,
+            "max_model_len": parameters.n_ctx,
+        },
     )
     
     return llm
@@ -58,12 +74,13 @@ def call_llm(llm, question, pattern_format):
     output = response.choices[0].message.content
     '''
     # llama_index
-
+    '''
     regex_parser = lmformatenforcer.RegexParser(pattern_format)
     lm_format_enforcer_fn = build_lm_format_enforcer_function(llm, regex_parser)
     with activate_lm_format_enforcer(llm, lm_format_enforcer_fn):
         response = llm.complete(question)
     output = response.text
-
+    '''
+    output = llm.complete(question).text
     return output
     

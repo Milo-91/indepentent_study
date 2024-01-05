@@ -24,8 +24,8 @@ if __name__ == '__main__':
     locs = list()
 
     print('llm ok')
-    parameters.reset_idx(initial_idx = 901)
-    for i in range(901, 1001):
+    parameters.reset_idx(initial_idx = 0)
+    for i in range(0, 2):
         start_time = time.time()
         nodes = [{'id': parameters.id, 'answer': data_game24['Puzzles'][i], 'value': None, 'parent_node': None, 'ancestor_value': None}]
         parameters.increase_id()
@@ -35,8 +35,9 @@ if __name__ == '__main__':
         loc['correct'] = Acc(loc['answer'], data_game24, i)
         loc['cost time'] = end_time - start_time
         locs.append(loc)
+        record.Record_json(parameters.json_file_name, locs)
         print(loc)
         parameters.increase_idx()
         parameters.reset_id()
-    record.Record_json(parameters.json_file_name, locs)
+    record.Record_json(parameters.all_json_file_name, locs)
     draw.Draw(parameters.all_json_file_name.format(file_path = parameters.record_files_folder))
