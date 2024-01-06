@@ -85,7 +85,7 @@ def Evaluator(llm, nodes):
             line = f'{env.data[i]}: {ans}'
             print('each ans: ' + line)
             question = value_prompt.format(input = line)
-            pattern = r"[\d|\w|\s|\+|\-|\*|\/|\=|\(|\)|,|\.|\:|\"|\'|_|;|\!|\?]{0,500}[sure|maybe|impossible]"
+            pattern = r"[\w|\W]*((?:sure)|(?:likely)|(?:impossible))$"
             # call llm
             start_time = time.time()
             response = llm_function.call_llm(llm, question, pattern)

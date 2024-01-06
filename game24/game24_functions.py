@@ -28,7 +28,7 @@ def Generator(llm, nodes: dict):
         input_string = propose_prompt.format(input = question, k = parameters.k)
         print('input:\n' + input_string)
         
-        pattern = r"[0-9]+[\s]*[\+\-\*\/][\s]*[0-9]+[\s]*=[\s]*[0-9]*[\s]*\(left:[0-9\s]*\)"
+        pattern = r"[0-9]+[\+\-\*\/ ]*[0-9]+[\s]*=[\s]*[0-9]+[\s]*\(left:([0-9\s]+)\)"
         patterns = '\n'.join([pattern for i in range(parameters.k)])
         response = llm_function.call_llm(llm, input_string, patterns)
 
@@ -76,7 +76,7 @@ def Evaluator(llm, nodes: dict):
         input_string = value_prompt.format(input = propose_response)
         print('input:\n' + input_string)
 
-        pattern = r"[\d|\w|\s|\+|\-|\*|\/|\=|\(|\)|,|\.]{0,200}[sure|likely|impossible]"
+        pattern = r"[\w|\W]*((?:sure)|(?:likely)|(?:impossible))$"
         response = llm_function.call_llm(llm, input_string, pattern)
 
         # llama-cpp
@@ -111,7 +111,8 @@ def Parse_cot_answer(response):
 def Final_Generator(llm, path: str):
     input_string = cot_prompt.format(input = path)
     print(input_string)
-    pattern = r"Answer: .*= \d*"
+    pattern = r"Answer: .*= 24$"
+    pattern_strickly = r"^Answer:[\D]*([\d]+)[\D]*([\d]+)[\D]*([\d]+)[\D]*([\d]+)[\D]*= 24$"
     response = llm_function.call_llm(llm, input_string, pattern)
 
     #llama-cpp
