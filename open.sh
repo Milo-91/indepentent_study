@@ -10,6 +10,8 @@ pip install graphviz
 pip install huggingface_hub
 apt -y install graphviz
 pip install vllm
+pip install rellm
+pip install accelerate
 git config --global user.name "Milo-91"
 git config --global user.email "milolin9112@gmail.com"
 # python3 huggingface_download_model.py
