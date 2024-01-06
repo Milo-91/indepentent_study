@@ -32,21 +32,6 @@ def Generator(llm, nodes: dict):
         patterns = '\n'.join([pattern for i in range(parameters.k)])
         response = llm_function.call_llm(llm, input_string, patterns)
 
-        # llama-cpp
-        '''
-        print('\ngenerator response: \n' + response['choices'][0]['text'] + '\n')
-        record.Record_txt(parameters.file_name, '\n' + response['choices'][0]['text'] + '\n\n')
-        answers = Parse_propose_response(response['choices'][0]['text'])
-        '''
-
-        # openai
-        '''
-        print('\ngenerator response: \n' + response.choices[0].message.content + '\n')
-        record.Record_txt(parameters.file_name, '\n' + response.choices[0].message.content + '\n\n')
-        answers = Parse_propose_response(response.choices[0].message.content)
-        '''
-
-        # llama_index
         print('\ngenerator response: \n' + response + '\n')
         record.Record_txt(parameters.file_name, '\n' + response + '\n\n')
         answers = Parse_propose_response(response)
@@ -65,7 +50,7 @@ def Parse_value_response(response):
     return answer
 
 
-def Evaluator(llm, nodes: dict):
+def Evaluator(llm, nodes: dict, t):
     new_nodes = list()
     for node in nodes:
         if node['answer'] == 'wrong answer':
@@ -73,27 +58,12 @@ def Evaluator(llm, nodes: dict):
         propose_response = node['answer']
         if re.search('left.+', node['answer']) != None:
             propose_response = re.search('left.+', node['answer']).group().replace('left: ', '').replace(')', '')
+        propose_response += f' (len: {3 - t})'
         input_string = value_prompt.format(input = propose_response)
         print('input:\n' + input_string)
 
-        pattern = r"[\w|\W]*((?:sure)|(?:likely)|(?:impossible))$"
+        pattern = r"[\w|\W]*((?:sure)|(?:likely)|(?:impossible))"
         response = llm_function.call_llm(llm, input_string, pattern)
-
-        # llama-cpp
-        '''
-        print('evaluator: \n' + response['choices'][0]['text'] + '\n')
-        record.Record_txt(parameters.file_name, '\n' + response['choices'][0]['text'] + '\n\n')
-        value = Parse_value_response(response['choices'][0]['text'])
-        '''
-
-        # openai
-        '''
-        print('evaluator: \n' + response.choices[0].message.content + '\n')
-        record.Record_txt(parameters.file_name, '\n' + response.choices[0].message.content + '\n\n')
-        value = Parse_value_response(response.choices[0].message.content)
-        '''
-
-        #llama_index
         
         print('evaluator: \n' + response + '\n')
         record.Record_txt(parameters.file_name, '\n' + response + '\n\n')
@@ -111,25 +81,9 @@ def Parse_cot_answer(response):
 def Final_Generator(llm, path: str):
     input_string = cot_prompt.format(input = path)
     print(input_string)
-    pattern = r"Answer: .*= 24$"
-    pattern_strickly = r"^Answer:[\D]*([\d]+)[\D]*([\d]+)[\D]*([\d]+)[\D]*([\d]+)[\D]*= 24$"
-    response = llm_function.call_llm(llm, input_string, pattern)
-
-    #llama-cpp
-    '''
-    print('final answer: ' + response['choices'][0]['text'])
-    answer = Parse_cot_answer(response['choices'][0]['text'])
-    record.Record_txt(parameters.file_name, '\n' + response['choices'][0]['text'] + '\n\n')
-    '''
-
-    #openai
-    '''
-    print('final answer: ' + response.choices[0].message.content)
-    answer = Parse_cot_answer(response.choices[0].message.content)
-    record.Record_txt(parameters.file_name, '\n' + response.choices[0].message.content + '\n\n')
-    '''
-
-    # llama_index
+    pattern = r"Answer: .*= 24"
+    pattern_strickly = r"Answer:[\D]*([\d]+)[\D]*([\d]+)[\D]*([\d]+)[\D]*([\d]+)[\D]*= 24"
+    response = llm_function.call_llm(llm, input_string, pattern_strickly)
 
     print('final answer: ' + response)
     answer = Parse_cot_answer(response)

@@ -14,7 +14,7 @@ def bfs(llm, nodes):
         # Generator
         new_nodes = game24.Generator(llm, top_b)
         # Evaluator
-        new_nodes = game24.Evaluator(llm, new_nodes)
+        new_nodes = game24.Evaluator(llm, new_nodes, t)
         # sort nodes
         new_nodes = sorted(new_nodes, key = game24.Sorted_by_value, reverse = True)
         record.Record_txt(parameters.file_name, '\nnode:\n' + str(new_nodes) + '\n' + str(len(new_nodes)) + '\n\n')

@@ -7,3 +7,10 @@ hf_hub_download(
     filename = 'vicuna-7b-v1.5.Q8_0.gguf',
     local_dir = 'models'
 )
+'''
+hf_hub_download(
+    repo_id = 'TheBloke/llemma_7b-GGUF',
+    filename = 'llemma_7b.Q8_0.gguf',
+    local_dir = 'models'
+)
+'''

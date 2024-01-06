@@ -20,7 +20,7 @@ def get_llm():
     )
     '''
     # llama_index (llama-cpp)
-    '''
+    
     llm = LlamaCPP(
         model_path = parameters.model_path,
         temperature = parameters.temperature,
@@ -30,9 +30,9 @@ def get_llm():
         model_kwargs={"n_gpu_layers": parameters.n_gpu_layers},
         verbose = True,
     )
-    '''
-    # llama_index (vllm)
     
+    # llama_index (vllm)
+    '''
     llm = Vllm(
         model = "WizardLM/WizardMath-13B-V1.0",
         dtype = "float16",
@@ -45,7 +45,7 @@ def get_llm():
             "max_model_len": parameters.n_ctx,
         },
     )
-    
+    '''
     return llm
 
 
@@ -73,14 +73,17 @@ def call_llm(llm, question, pattern_format):
     )
     output = response.choices[0].message.content
     '''
-    # llama_index
-    '''
+    # llama_index (llama-cpp)
+    
     regex_parser = lmformatenforcer.RegexParser(pattern_format)
     lm_format_enforcer_fn = build_lm_format_enforcer_function(llm, regex_parser)
     with activate_lm_format_enforcer(llm, lm_format_enforcer_fn):
         response = llm.complete(question)
     output = response.text
+
+    # llama_index (vllm)
     '''
     output = llm.complete(question).text
-    return output
+    '''
     
+    return output

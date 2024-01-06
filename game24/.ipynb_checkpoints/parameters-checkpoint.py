@@ -1,12 +1,17 @@
+# model_path = '../models/llemma_7b.Q8_0.gguf'
 model_path = '../models/vicuna-7b-v1.5.Q8_0.gguf'
-file_name = 'record_game24_{idx}.txt'
-json_file_name = 'tree_game24.json'
+record_files_folder = 'record'
+file_name = '{file_path}/record_game24_{idx}.txt'
+json_file_name = '{file_path}/tree_game24_{idx}.json'
+all_json_file_name = '{file_path}/all_tree_game24.json'
 data_path_game24 = 'data/24.csv'
 image_folder = 'game24_image'
 max_tokens = 1024
 temperature = 0.7
 n_ctx = 2048
 n_gpu_layers = -1
+question_sets = 10
+initial_idx = 0
 b = 3
 T = 3
 k = 5
@@ -26,8 +31,7 @@ def increase_idx():
     global idx
     idx += 1
 
-def reset_idx(initial_idx = None):
+def reset_idx():
     global idx
-    idx = 0
-    if initial_idx != None:
-        idx = initial_idx
+    global initial_idx
+    idx = initial_idx

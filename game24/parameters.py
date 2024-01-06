@@ -1,3 +1,4 @@
+# model_path = '../models/llemma_7b.Q8_0.gguf'
 model_path = '../models/vicuna-7b-v1.5.Q8_0.gguf'
 record_files_folder = 'record'
 file_name = '{file_path}/record_game24_{idx}.txt'
@@ -9,7 +10,7 @@ max_tokens = 1024
 temperature = 0.7
 n_ctx = 2048
 n_gpu_layers = -1
-question_sets = 1
+question_sets = 10
 initial_idx = 0
 b = 3
 T = 3
