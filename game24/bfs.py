@@ -27,12 +27,12 @@ def bfs(llm, nodes):
     # generate final answer
     best = top_b[0]
     print(best)
-    path = ''
+    path = list()
     while best['parent_node'] != None:
-        path = best['answer'] + '\n' + path
+        path.append(best['answer'])
         best = nodes[best['parent_node']]
-    path = nodes[0]['answer'] + '\nSteps\n' + path
-    print('\npath: ' + path + '\n')
+    path.append(nodes[0]['answer'])
+    print('\npath: ' + str(path) + '\n')
     answer = game24.Final_Generator(llm, path)
     record.Record_txt(parameters.file_name, '\nAnswer: \n' + answer + '\n\n')
 

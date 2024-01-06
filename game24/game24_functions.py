@@ -79,6 +79,7 @@ def Parse_cot_answer(response):
 
 
 def Final_Generator(llm, path: str):
+    '''
     input_string = cot_prompt.format(input = path)
     print(input_string)
     pattern = r"Answer: .*= 24"
@@ -88,8 +89,32 @@ def Final_Generator(llm, path: str):
     print('final answer: ' + response)
     answer = Parse_cot_answer(response)
     record.Record_txt(parameters.file_name, '\n' + response + '\n\n')
-
-    return answer
+    '''
+    left = None
+    for i in range(3):
+        match = re.search(r'(.+) = (\d+) \(left: (.+)\)', path[i])
+        check = re.search(r'\(left: (.+)\)', path[i + 1]).group(1)
+        if match:
+            x = '(' + match.group(1).replace(' ', '') + ')'
+            y = match.group(2)
+            print(x, y)
+            if left == None:
+                left = match.group(3)
+        else:
+            print("cant match path format")
+            record.Record_txt(parameters.file_name, '\nwrong path format\n' + str(path) + '\n\n')
+            break
+        left = left.replace(y, x, 1)
+        print(sorted(re.findall(r'\d+', left), key = lambda x: int(x)))
+        print(sorted(re.findall(r'\d+', check),  key = lambda x: int(x)))
+        if sorted(re.findall(r'\d+', left), key = lambda x: int(x)) == sorted(re.findall(r'\d+', check),  key = lambda x: int(x)):
+            print('correct foramt')
+        else:
+            print('wrong format')
+            record.Record_txt(parameters.file_name, '\nwrong format\n' + left + '\n' + check + '\n\n')
+            break
+    record.Record_txt(parameters.file_name, '\n' + str(path) + '\n' + left + '\n\n')
+    return left
 
 
 def Value_mapping(value):
