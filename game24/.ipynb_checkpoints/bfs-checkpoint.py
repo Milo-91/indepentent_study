@@ -18,21 +18,21 @@ def bfs(llm, nodes):
         # sort nodes
         new_nodes = sorted(new_nodes, key = game24.Sorted_by_value, reverse = True)
         record.Record_txt(parameters.file_name, '\nnode:\n' + str(new_nodes) + '\n' + str(len(new_nodes)) + '\n\n')
-        # choose top b as next input nodes
+        # choose top b as the next input nodes
         top_b = new_nodes[:parameters.b]
         nodes.extend(new_nodes)
         nodes = sorted(nodes, key = game24.Sorted_by_id)
         steps.append({'step': t, 'nodes': nodes.copy(), 'top_b': top_b})
 
-    # generate final answer
+    # generate a final answer
     best = top_b[0]
     print(best)
-    path = ''
+    path = list()
     while best['parent_node'] != None:
-        path = best['answer'] + '\n' + path
+        path.append(best['answer'])
         best = nodes[best['parent_node']]
-    path = nodes[0]['answer'] + '\nSteps\n' + path
-    print('\npath: ' + path + '\n')
+    path.append(nodes[0]['answer'])
+    print('\npath: ' + str(path) + '\n')
     answer = game24.Final_Generator(llm, path)
     record.Record_txt(parameters.file_name, '\nAnswer: \n' + answer + '\n\n')
 

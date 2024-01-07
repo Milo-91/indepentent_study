@@ -78,7 +78,7 @@ def Parse_cot_answer(response):
     return response.strip().split('\n')[-1].lower().replace('answer: ', '').split('=')[0]
 
 
-def Final_Generator(llm, path: str):
+def Final_Generator(llm, path):
     '''
     input_string = cot_prompt.format(input = path)
     print(input_string)
