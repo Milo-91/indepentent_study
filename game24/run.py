@@ -39,7 +39,7 @@ if __name__ == '__main__':
         loc['correct'] = Acc(loc['answer'], data_game24, i)
         loc['cost time'] = end_time - start_time
         locs.append(loc)
-        record.Record_json(parameters.json_file_name, locs)
+        record.Record_json(parameters.json_file_name, loc)
         print(loc)
         parameters.increase_idx()
         parameters.reset_id()
