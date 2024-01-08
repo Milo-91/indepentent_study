@@ -62,7 +62,7 @@ def Generator(llm, nodes: dict):
         input_string = propose_prompt.format(input = question, k = parameters.k)
         print('input:\n' + input_string)
         
-        pattern = r"-?[0-9\.]+[\+\-\*\/ ]*-?[0-9\.]+[\s]*=[\s]*-?[0-9\.]+[\s]*"
+        pattern = r"-?[0-9\.]+[\+\-\*\/ ]*-?[0-9\.]+[\s]*=[\s]*-?[0-9\.]+"
         patterns = '\n'.join([pattern for i in range(parameters.k)])
         response = llm_function.call_llm(llm, input_string, patterns)
 
@@ -129,7 +129,7 @@ def Final_Generator(llm, path):
         match = re.search(r'(.+)[\s]*=[\s]*(-?[\d.]+)[\s]*\(left: (.+)\)', path[i])
         check = re.search(r'\(left: (.+)\)', path[i + 1]).group(1)
         if match:
-            x = '(' + match.group(1).replace(' ', ' ') + ')' # not replace ' ' to '' (negative numbers problem)
+            x = '(' + match.group(1).strip() + ')' # not replace ' ' to '' (negative numbers problem)
             y = match.group(2)
             print(x, y)
             if left == None:

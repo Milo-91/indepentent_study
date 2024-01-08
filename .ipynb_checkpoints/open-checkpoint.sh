@@ -14,4 +14,4 @@ apt -y install graphviz
 git config --global user.name "Milo-91"
 git config --global user.email "milolin9112@gmail.com"
 # git clone https://github.com/Milo-91/rellm
-python3 huggingface_download_model.py
+# python3 huggingface_download_model.py
