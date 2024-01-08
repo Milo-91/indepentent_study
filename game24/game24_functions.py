@@ -19,8 +19,8 @@ def Parse_propose_response(question: str, response: str):
     answers = []
     output_list = response.strip().split('\n')
     # add (left: numbers)
-    pattern = r"(-?[0-9]+)[\+\-\*\/ ]*(-?[0-9]+)[\s]*=[\s]*(-?[0-9]+)[\s]*"
-    for i in range(output_list):
+    pattern = r"(-?[0-9\.]+)[\+\-\*\/ ]*(-?[0-9\.]+)[\s]*=[\s]*(-?[0-9\.]+)[\s]*"
+    for i in range(len(output_list)):
         input_string = question
         match = re.match(pattern, output_list[i])
         if match:
@@ -39,7 +39,7 @@ def Parse_propose_response(question: str, response: str):
             input_string = input_string.strip()
             input_string = input_string.replace('  ', ' ')
             print(input_string)
-            output_list[i] = output_list[i] + f'(left: {input_string})'
+            output_list[i] = output_list[i] + f' (left: {input_string})'
         else:
             print('wrong format')
             output_list[i] = 'wrong answer'
@@ -62,12 +62,12 @@ def Generator(llm, nodes: dict):
         input_string = propose_prompt.format(input = question, k = parameters.k)
         print('input:\n' + input_string)
         
-        pattern = r"-?[0-9]+[\+\-\*\/ ]*-?[0-9]+[\s]*=[\s]*-?[0-9]+[\s]*"
+        pattern = r"-?[0-9\.]+[\+\-\*\/ ]*-?[0-9\.]+[\s]*=[\s]*-?[0-9\.]+[\s]*"
         patterns = '\n'.join([pattern for i in range(parameters.k)])
         response = llm_function.call_llm(llm, input_string, patterns)
 
         print('\ngenerator response: \n' + response + '\n')
-        record.Record_txt(parameters.file_name, '\n' + response + '\n\n')
+        record.Record_txt(parameters.file_name, '\nGenerator response:\n' + response + '\n\n')
         answers = Parse_propose_response(question, response)
 
         for answer in answers:
@@ -126,7 +126,7 @@ def Final_Generator(llm, path):
     '''
     left = None
     for i in range(3):
-        match = re.search(r'(.+) = (-?\d+) \(left: (.+)\)', path[i])
+        match = re.search(r'(.+)[\s]*=[\s]*(-?[\d.]+)[\s]*\(left: (.+)\)', path[i])
         check = re.search(r'\(left: (.+)\)', path[i + 1]).group(1)
         if match:
             x = '(' + match.group(1).replace(' ', ' ') + ')' # not replace ' ' to '' (negative numbers problem)
@@ -145,6 +145,8 @@ def Final_Generator(llm, path):
             print('correct foramt')
         else:
             print('wrong format')
+            print(f'match: {match}')
+            print(f'check: {check}')
             record.Record_txt(parameters.file_name, '\nwrong format\n' + left + '\n' + check + '\n\n')
             break
     record.Record_txt(parameters.file_name, '\n' + str(path) + '\n' + left + '\n\n')

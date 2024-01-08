@@ -1,12 +1,13 @@
 import game24_functions as game24
 import parameters
 import record_function as record
+import datetime
 
 
 def bfs(llm, nodes):
     steps = list()
     top_b = nodes.copy()
-    record.Init_record_file(parameters.file_name, parameters.model_path + '\ntemperature: ' + str(parameters.temperature) + '\n\n')
+    record.Init_record_file(parameters.file_name, parameters.model_path + '\ntemperature: ' + str(parameters.temperature) + '\ndate: ' + str(datetime.date.today()) + '\n\n')
     record.Init_record_file(parameters.json_file_name, '')
 
     for t in range(parameters.T):
@@ -31,8 +32,9 @@ def bfs(llm, nodes):
     while best['parent_node'] != None:
         path.append(best['answer'])
         best = nodes[best['parent_node']]
-    path.append(nodes[0]['answer'])
+    path.append('(left: ' + nodes[0]['answer'] + ')')
     print('\npath: ' + str(path) + '\n')
+    record.Record_txt(parameters.file_name, '\npath: ' + str(path) + '\n\n')
     answer = game24.Final_Generator(llm, path)
     record.Record_txt(parameters.file_name, '\nAnswer: \n' + answer + '\n\n')
 

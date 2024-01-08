@@ -1,5 +1,7 @@
-# model_path = '../models/llemma_7b.Q8_0.gguf'
-model_path = '../models/vicuna-13b-v1.5.Q8_0.gguf'
+repo_id = 'TheBloke/OpenHermes-2.5-Mistral-7B-GGUF'
+model_name = 'openhermes-2.5-mistral-7b.Q8_0.gguf'
+local_dir = '../models'
+model_path = local_dir + '/' + model_name
 record_files_folder = 'record'
 file_name = '{file_path}/record_game24_{idx}.txt'
 json_file_name = '{file_path}/tree_game24_{idx}.json'

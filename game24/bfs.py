@@ -1,12 +1,13 @@
 import game24_functions as game24
 import parameters
 import record_function as record
+import datetime
 
 
 def bfs(llm, nodes):
     steps = list()
     top_b = nodes.copy()
-    record.Init_record_file(parameters.file_name, parameters.model_path + '\ntemperature: ' + str(parameters.temperature) + '\n\n')
+    record.Init_record_file(parameters.file_name, parameters.model_path + '\ntemperature: ' + str(parameters.temperature) + '\ndate: ' + str(datetime.date.today()) + '\n\n')
     record.Init_record_file(parameters.json_file_name, '')
 
     for t in range(parameters.T):
