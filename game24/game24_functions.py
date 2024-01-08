@@ -129,7 +129,7 @@ def Final_Generator(llm, path):
         match = re.search(r'(.+)[\s]*=[\s]*(-?[\d.]+)[\s]*\(left: (.+)\)', path[i])
         check = re.search(r'\(left: (.+)\)', path[i + 1]).group(1)
         if match:
-            x = '(' + match.group(1).replace(' ', ' ') + ')' # not replace ' ' to '' (negative numbers problem)
+            x = '(' + match.group(1).strip() + ')' # not replace ' ' to '' (negative numbers problem)
             y = match.group(2)
             print(x, y)
             if left == None:
