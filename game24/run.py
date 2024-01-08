@@ -8,6 +8,7 @@ import record_function as record
 import sympy
 import re
 import time
+import model_download
 
 
 def Acc(answer, data, puzzles_id):
@@ -21,9 +22,10 @@ def Acc(answer, data, puzzles_id):
 if __name__ == '__main__':
     # initialize
     data_game24 = pd.read_csv(parameters.data_path_game24)
-    llm = llm_function.get_llm()
     locs = list()
-
+    model_download.Model_download(parameters.repo_id, parameters.model_name, parameters.local_dir)
+    llm = llm_function.get_llm()
+    
     print('llm ok')
     record.Init_record_file(parameters.all_json_file_name, '')
     parameters.reset_idx()

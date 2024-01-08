@@ -92,7 +92,7 @@ def Evaluator(llm, nodes: dict, t):
         propose_response = node['answer']
         if re.search('left.+', node['answer']) != None:
             propose_response = re.search('left.+', node['answer']).group().replace('left: ', '').replace(')', '')
-        propose_response += f' (len: {3 - t})'
+        # propose_response += f' (len: {3 - t})'
         input_string = value_prompt.format(input = propose_response)
         print('input:\n' + input_string)
 

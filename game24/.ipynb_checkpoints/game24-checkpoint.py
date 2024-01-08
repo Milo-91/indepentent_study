@@ -54,96 +54,88 @@ don't forget to convert the numbers in the input to the result number in possibl
 and then put new numbers behind "left: " in possible next steps
 Input: 2 8 8 14
 8 Possible next steps:
-2 + 8 = 10 (left: 8 10 14)
-8 / 2 = 4 (left: 4 8 14)
-14 + 2 = 16 (left: 8 8 16)
-2 * 8 = 16 (left: 8 14 16)
-8 - 2 = 6 (left: 6 8 14)
-14 - 8 = 6 (left: 2 6 8)
-14 /  2 = 7 (left: 7 8 8)
-14 - 2 = 12 (left: 8 8 12)
+2 + 8 = 10
+8 / 2 = 4
+14 + 2 = 16
+2 * 8 = 16
+8 - 2 = 6
+14 - 8 = 6
+14 /  2 = 7
+14 - 2 = 12
 
 Input: 2 8 14
 5 Possible next steps:
-2 + 8 = 10 (left: 10 14)
-14 - 8 = 6 (left: 2 6)
-14 + 2 = 16 (left: 8 16)
-8 / 2 = 4 (left: 4 14)
-2 - 8 = -6 (left: -6 14)
+2 + 8 = 10
+14 - 8 = 6
+14 + 2 = 16
+8 / 2 = 4
+2 - 8 = -6
 
 Input: 10 14
 3 Possible next steps:
-10 + 14 = 24 (left: 24)
-10 - 14 = -4 (left: -4)
-10 * 14 = 140 (left: 140)
+10 + 14 = 24
+10 - 14 = -4
+10 * 14 = 140
 
 Input: {input}
 {k} Possible next steps:
 '''
 
 value_prompt = '''Evaluate if given numbers can reach 24 (sure/likely/impossible)
-10 14 (len: 2)
+Generate only one set of below output
+10 14
 10 + 14 = 24
-counting numbers 10 and 14 are 2 numbers equal to len: 2
 sure
-11 12 (len: 2)
+
+11 12
 11 + 12 = 23
 12 - 11 = 1
 11 * 12 = 132
 11 / 12 = 0.91
 impossible
-4 4 10 (len: 3)
+
+4 4 10
 4 + 4 + 10 = 8 + 10 = 18
 4 * 10 - 4 = 40 - 4 = 36
 (10 - 4) * 4 = 6 * 4 = 24
-counting numbers 4 4 and 10 are 3 numbers equal to len: 3
 sure
-4 9 11 (len: 3)
+
+4 9 11
 9 + 11 + 4 = 20 + 4 = 24
 sure
-4 9 11 (len: 1)
-9 + 11 + 4 = 20 + 4 = 24
-but counting numbers 4 9 and 11 are 3 numbers not equal to len: 1
-impossible
-5 7 8 (len: 3)
+
+5 7 8
 5 + 7 + 8 = 12 + 8 = 20
 (8 - 5) * 7 = 3 * 7 = 21
 I cannot obtain 24 now, but the numbers are within a reasonable range
-counting numbers 5 7 and 8 are 3 numbers equal to len: 3
 likely
-5 6 6 (len: 3)
+
+5 6 6
 5 + 6 + 6 = 17
 (6 - 5) * 6 = 1 * 6 = 6
 I cannot obtain 24 now, but the numbers are within a reasonable range
-counting numbers 5 6 and 6 are 3 numbers equal to len: 3
 likely
-5 6 6 (len: 2)
-5 + 6 + 6 = 17
-(6 - 5) * 6 = 1 * 6 = 6
-I cannot obtain 24 now, but the numbers are within a reasonable range
-but counting numbers 5 6 and 6 are 3 numbers not equal to len: 2
-impossible
-10 10 11 (len: 3)
+
+10 10 11
 10 + 10 + 11 = 31
 (11 - 10) * 10 = 10
 10 10 10 are all too big
 impossible
-1 3 3 (len: 3)
+
+1 3 3
 1 * 3 * 3 = 9
 (1 + 3) * 3 = 12
 1 3 3 are all too small
 impossible
-24 (len: 1)
-24 equal to 24
-counting 24 is 1 number equal to len: 1
+
+24
+24 is equal to 24
 sure
-24 (len: 2)
-24 equal to 24
-but counting 24 is 1 number not equal to len: 2
-impossible
-10 (len: 1)
+
+10
 10 is not equal to 24
 impossible
+
 {input}
 '''
 
