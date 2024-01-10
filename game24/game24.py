@@ -50,8 +50,6 @@ Input: {input}
 
 # 1-shot
 propose_prompt = '''Generate only one set of below output
-don't forget to convert the numbers in the input to the result number in possible next steps
-and then put new numbers behind "left: " in possible next steps
 Input: 2 8 8 14
 8 Possible next steps:
 2 + 8 = 10
@@ -82,61 +80,73 @@ Input: {input}
 '''
 
 value_prompt = '''Evaluate if given numbers can reach 24 (sure/likely/impossible)
-Generate only one set of below output
-10 14
+below are 10 examples, and generate only one set of below output
+in the end must be sure, likely, or impossible
+Input: 10 14
+Analysis:
 10 + 14 = 24
 sure
 
-11 12
+Input: 11 12
+Analysis:
 11 + 12 = 23
 12 - 11 = 1
 11 * 12 = 132
 11 / 12 = 0.91
 impossible
 
-4 4 10
+Input: 4 4 10
+Analysis:
 4 + 4 + 10 = 8 + 10 = 18
 4 * 10 - 4 = 40 - 4 = 36
 (10 - 4) * 4 = 6 * 4 = 24
 sure
 
-4 9 11
+Input: 4 9 11
+Analysis:
 9 + 11 + 4 = 20 + 4 = 24
 sure
 
-5 7 8
+Input: 5 7 8
+Analysis:
 5 + 7 + 8 = 12 + 8 = 20
 (8 - 5) * 7 = 3 * 7 = 21
 I cannot obtain 24 now, but the numbers are within a reasonable range
 likely
 
-5 6 6
+Input: 5 6 6
+Analysis:
 5 + 6 + 6 = 17
 (6 - 5) * 6 = 1 * 6 = 6
 I cannot obtain 24 now, but the numbers are within a reasonable range
 likely
 
-10 10 11
+Input: 10 10 11
+Analysis:
 10 + 10 + 11 = 31
 (11 - 10) * 10 = 10
 10 10 10 are all too big
 impossible
 
-1 3 3
+Input: 1 3 3
+Analysis:
 1 * 3 * 3 = 9
 (1 + 3) * 3 = 12
 1 3 3 are all too small
 impossible
 
-24
+Input: 24
+Analysis:
 24 is equal to 24
 sure
 
-10
+Input: 10
+Analysis:
 10 is not equal to 24
 impossible
 
-{input}
+Input: {input}
+Analysis:
 '''
 
 value_last_step_prompt = '''Use numbers and basic arithmetic operations (+ - * /) to obtain 24. Given an input and an answer, give a judgement (sure/impossible) if the answer is correct, i.e. it uses each input exactly once and no other numbers, and reach 24.

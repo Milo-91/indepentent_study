@@ -9,6 +9,7 @@ import sympy
 import re
 import time
 import model_download
+import datetime
 
 
 def Acc(answer, data, puzzles_id):
@@ -23,11 +24,14 @@ if __name__ == '__main__':
     # initialize
     data_game24 = pd.read_csv(parameters.data_path_game24)
     locs = list()
-    model_download.Model_download(parameters.repo_id, parameters.model_name, parameters.local_dir)
+    # model_download.Model_download(parameters.repo_id, parameters.model_name, parameters.local_dir)
     llm = llm_function.get_llm()
+    acc_count = 0
+    total_cost_time = 0
     
     print('llm ok')
     record.Init_record_file(parameters.all_json_file_name, '')
+    record.Init_record_file(parameters.acc_file_name, 'model: ' + parameters.model_name + '\ntemperature: ' + str(parameters.temperature) + '\ndate: ' + str(datetime.date.today()) + '\nquestions index: ' + str(parameters.initial_idx) + '-' + str(parameters.initial_idx + parameters.question_sets) + '\n\n')
     parameters.reset_idx()
     for i in range(parameters.initial_idx, parameters.initial_idx + parameters.question_sets):
         #call llm
@@ -43,8 +47,13 @@ if __name__ == '__main__':
         locs.append(loc)
         record.Record_json(parameters.json_file_name, loc)
         print(loc)
+        record.Record_txt(parameters.acc_file_name, 'id ' + str(i) + ': ' + data_game24['Puzzles'][i] + ', ' + loc['answer'] + '\n')
+        if loc['correct'] == True:
+            acc_count += 1
+        total_cost_time += loc['cost time']
         parameters.increase_idx()
         parameters.reset_id()
     record.Record_json(parameters.all_json_file_name, locs)
+    record.Record_txt(parameters.acc_file_name, '\nacc: ' + str(acc_count) + '\ntotal cost time: ' + str(total_cost_time))
     # draw
     draw.Draw(parameters.all_json_file_name.format(file_path = parameters.record_files_folder))

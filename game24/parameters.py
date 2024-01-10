@@ -1,5 +1,6 @@
 repo_id = 'TheBloke/OpenHermes-2.5-neural-chat-7B-v3-1-7B-GGUF'
 model_name = 'openhermes-2.5-neural-chat-7b-v3-1-7b.Q8_0.gguf'
+huggingface_model_path = 'Weyaxi/OpenHermes-2.5-neural-chat-7b-v3-1-7B'
 local_dir = '../models'
 model_path = local_dir + '/' + model_name
 record_files_folder = 'record'
