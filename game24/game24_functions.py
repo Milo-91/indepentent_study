@@ -96,7 +96,7 @@ def Evaluator(llm, nodes: dict, t):
         input_string = value_prompt.format(input = propose_response)
         print('input:\n' + input_string)
 
-        pattern = r"[\w|\W]*((?:sure)|(?:likely)|(?:impossible))"
+        pattern = r"[\w|\W]*Output: ((?:sure)|(?:likely)|(?:impossible))"
         response = llm_function.call_llm(llm, input_string, pattern)
         
         print('evaluator: \n' + response + '\n')

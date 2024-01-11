@@ -9,7 +9,7 @@ pip install lm-format-enforcer
 pip install graphviz
 pip install huggingface_hub
 apt -y install graphviz
-# pip install vllm
+pip install vllm
 pip install accelerate
 pip install 'transformers[torch]'
 # for openhermes

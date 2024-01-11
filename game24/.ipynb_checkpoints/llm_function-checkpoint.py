@@ -66,7 +66,7 @@ def get_llm():
 
     # vllm
     
-    llm = LLM(model = parameters.huggingface_model_path, trust_remote_code = True)
+    llm = LLM(model = parameters.huggingface_model_path, trust_remote_code = True, enforce_eager = True)
 
     
     return llm
