@@ -90,57 +90,57 @@ Analysis:
 4 + 4 + 10 = 8 + 10 = 18
 4 * 10 - 4 = 40 - 4 = 36
 (10 - 4) * 4 = 6 * 4 = 24
-Output: sure
+Output: sure (4 4 10)
 
 Input: 4 9 11
 Analysis:
 9 + 11 + 4 = 20 + 4 = 24
-Output: sure
+Output: sure (4 9 11)
 
 Input: 5 7 8
 Analysis:
 5 + 7 + 8 = 12 + 8 = 20
 (8 - 5) * 7 = 3 * 7 = 21
 I cannot obtain 24 now, but the numbers are within a reasonable range
-Output: likely
+Output: likely (5 7 8)
 
 Input: 5 6 6
 Analysis:
 5 + 6 + 6 = 17
 (6 - 5) * 6 = 1 * 6 = 6
 I cannot obtain 24 now, but the numbers are within a reasonable range
-Output: likely
+Output: likely (5 6 6)
 
 Input: 10 10 11
 Analysis:
 10 + 10 + 11 = 31
 (11 - 10) * 10 = 10
 10 10 10 are all too big
-Output: impossible
+Output: impossible (10 10 11)
 
 Input: 1 3 3
 Analysis:
 1 * 3 * 3 = 9
 (1 + 3) * 3 = 12
 1 3 3 are all too small
-Output: impossible
+Output: impossible (1 3 3)
 
 Input: 0 4 6
 Analysis:
 0 + 4 + 6 = 10
 0 * 4 * 6 = 0
 0 + 4 * 6 = 24
-Output: sure
+Output: sure (0 4 6)
 
 Input: 10 14
 Analysis:
 10 + 14 = 24
-Output: sure
+Output: sure (10 14)
 
 Input: 24 0
 Analysis:
 24 + 0 = 24 
-Output: sure
+Output: sure (24 0)
 
 Input: 11 12
 Analysis:
@@ -148,22 +148,22 @@ Analysis:
 12 - 11 = 1
 11 * 12 = 132
 11 / 12 = 0.91
-Output: impossible
+Output: impossible (11 12)
 
 Input: 24
 Analysis:
 24 is equal to 24
-Output: sure
+Output: sure (24)
 
 Input: 10
 Analysis:
 10 is not equal to 24
-Output: impossible
+Output: impossible (10)
 
 Input: -1
 Analysis:
 -1 is not equal to 24
-Output: impossible
+Output: impossible (-1)
 
 Input: {input}
 '''
