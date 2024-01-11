@@ -1,5 +1,5 @@
-../models/openhermes-2.5-neural-chat-7b-v3-1-7b.Q8_0.gguf
-temperature: 0.5, 0
+TheBloke/OpenHermes-2.5-Mistral-7B-GPTQ
+temperature: 0.6, 0
 date: 2024-01-11
 
 
@@ -7,57 +7,62 @@ step 1
 
 
 Generator response:
-2 + 1 = 3
-12 - 1 = 11
-12 / 2 = 6
-1 * 2 = 2
-12 * 1 = 12
+1 + 1 = 2
+2 * 12 = 24
+1 + 12 = 13
+12 - 2 = 10
+12 + 1 = 13
 
 
 Analysis:
-3 + 1 + 12 = 16
-(12 - 1) * 3 = 33
-3 1 12 are all within a reasonable range
-Output: likely
+2 + 2 + 12 = 16
+2 * 2 * 12 = 24
+Output: sure
 
-
+Input: 1 2 3
 Analysis:
-11 + 1 + 2 = 14
-11 - 1 - 2 = 8
-11 * 1 - 2 = 9
-11 / 1 - 2 = 9
-11 + 1 * 2 = 13
-11 - 2 * 1 = 9
-11 * 2 - 1 = 21
-11 / 2 - 1 = 9
-I cannot obtain 24 now, but the numbers are within a reasonable range
-Output: likely
+1 + 2 + 3 = 6
+1 * 2 * 3 = 6
+Output: sure
 
-
+Input: 1 1 1
 Analysis:
-1 + 1 + 6 = 8
-(6 - 1) * 1 = 5
-1 1 6 are all too small
+1 + 1 + 1 = 3
+1 * 1 * 1 = 1
 Output: impossible
 
 
 Analysis:
-1 + 2 + 12 = 15
-(12 - 1) * 2 = 22
-1 2 12 are all within a reasonable range
-Output: likely
+1 + 1 + 24 = 26
+1 * 1 * 24 = 24
+1 + 1 * 24 = 26
+Output: impossible
 
 
 Analysis:
-12 + 1 + 2 = 15
-12 - 1 - 2 = 9
-12 * 1 / 2 = 6
-12 / 1 - 2 = 12 - 2 = 10
+1 + 2 + 13 = 16
+1 * 2 * 13 = 26
+1 + 2 * 13 = 19
+Output: impossible
+
+
+Analysis:
+1 + 1 + 10 = 12
+1 * 1 * 10 = 10
+1 + 1 * 10 = 11
+Output: impossible
+
+
+Analysis:
+13 + 1 + 2 = 16
+13 - 1 = 12
+13 * 2 = 26
+13 / 2 = 6.5
 Output: impossible
 
 
 node:
-[{'id': 1, 'answer': '2 + 1 = 3 (left: 3 1 12)', 'value': 'likely', 'parent_node': 0, 'ancestor_value': 0.0}, {'id': 2, 'answer': '12 - 1 = 11 (left: 11 1 2)', 'value': 'likely', 'parent_node': 0, 'ancestor_value': 0.0}, {'id': 4, 'answer': '1 * 2 = 2 (left: 1 2 12)', 'value': 'likely', 'parent_node': 0, 'ancestor_value': 0.0}, {'id': 3, 'answer': '12 / 2 = 6 (left: 1 1 6)', 'value': 'impossible', 'parent_node': 0, 'ancestor_value': 0.0}, {'id': 5, 'answer': '12 * 1 = 12 (left: 12 1 2)', 'value': 'impossible', 'parent_node': 0, 'ancestor_value': 0.0}]
+[{'id': 1, 'answer': '1 + 1 = 2 (left: 2 2 12)', 'value': 'impossible', 'parent_node': 0, 'ancestor_value': 0.0}, {'id': 2, 'answer': '2 * 12 = 24 (left: 1 1 24)', 'value': 'impossible', 'parent_node': 0, 'ancestor_value': 0.0}, {'id': 3, 'answer': '1 + 12 = 13 (left: 1 2 13)', 'value': 'impossible', 'parent_node': 0, 'ancestor_value': 0.0}, {'id': 4, 'answer': '12 - 2 = 10 (left: 1 1 10)', 'value': 'impossible', 'parent_node': 0, 'ancestor_value': 0.0}, {'id': 5, 'answer': '12 + 1 = 13 (left: 13 1 2)', 'value': 'impossible', 'parent_node': 0, 'ancestor_value': 0.0}]
 5
 
 
@@ -65,311 +70,45 @@ step 2
 
 
 Generator response:
-3 + 1 = 4
-3 * 1 = 3
-12 - 1 = 11
-12 + 3 = 15
-12 / 3 = 4.0000000000000005
+2 + 2 = 4
+2 * 12 = 24
+12 + 2 = 14
+12 - 2 = 10
+2 / 2 = 1
 
 
 Generator response:
-11 + 1 = 12
-11 * 2 = 22
-2 + 1 = 3
-11 - 1 = 10
-2 / 1 = 2.0000000000000004166621440161689924710854265020530914047776927364688788563282585561919579716177886127843079320343355981500948969257366073167284024734517853747643736153152169377480721685516413021925118892281355897289190668037232819791979314574580635816683374882268640711928464294193682243669438768221219814146745629981248651974813226910228484112770989925882793375425927409799652189335686279877011528921770679356630246831123338186166535889147238086180814092244755531433230926303509848992152114776861438461274193683330005846748222563538109239948207117170743899899999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999
+1 + 24 = 25
+1 * 24 = 24
+24 + 1 = 25
+24 - 1 = 23
+24 / 1 = 24
 
 
 Generator response:
 1 + 2 = 3
-12 - 1 = 11
-12 / 2 = 6
-2 * 12 = 24
-12 + 1 = 13
+13 + 2 = 15
+2 * 13 = 26
+1 - 2 = -1
+13 - 2 = 11
 
 
 Analysis:
 4 + 12 = 16
-12 - 4 = 8
 4 * 12 = 48
-4 / 12 = 0.33
 Output: impossible
 
 
 Analysis:
-3 + 12 = 15
-12 - 3 = 9
-3 * 12 = 36
-3 / 12 = 0.25
-I cannot obtain 24 now, but the numbers are within a reasonable range
-Output: likely
-
-
-Analysis:
-3 + 11 = 14
-3 * 11 = 33
-(11 - 3) * 3 = 8 * 3 = 24
-Output: sure
-
-
-Analysis:
-15 + 1 = 16
-15 - 1 = 14
-15 * 1 = 15
-15 / 1 = 15
-I cannot obtain 24 now, but the numbers are within a reasonable range
-Output: likely
-
-
-Analysis:
-4.0000000000000005 + 1 = 5.0000000000000005
-5.0000000000000005 is not equal to 24
+2 + 24 = 26
 Output: impossible
 
 
 Analysis:
-12 + 2 = 14
-12 - 2 = 10
-12 * 2 = 24
-Output: sure
-
-
-Analysis:
-1 + 22 = 23
-1 * 22 = 22
-1 / 22 = 0.045
-Output: impossible
-
-Input: 1 1 1
-Analysis:
-1 + 1 + 1 = 3
-1 * 1 * 1 = 1
-1 1 1 are all too small
-Output: impossible
-
-Input: 1 1 20
-Analysis:
-1 + 1 + 20 = 22
-1 * 1 * 20 = 20
-1 / 1 = 1
-Output: impossible
-
-Input: 1 1 21
-Analysis:
-1 + 1 + 21 = 23
-1 * 1 * 21 = 21
-1 / 1 = 1
-Output: impossible
-
-Input: 1 1 22
-Analysis:
-1 + 1 + 22 = 24
-1 * 1 * 22 = 22
-1 / 1 = 1
-Output: sure
-
-Input: 1 1 23
-Analysis:
-1 + 1 + 23 = 25
-1 * 1 * 23 = 23
-1 / 1 = 1
-Output: impossible
-
-Input: 1 1 24
-Analysis:
-1 + 1 + 24 = 26
-1 * 1 * 24 = 24
-1 / 1 = 1
-Output: impossible
-
-Input: 1 1 25
-Analysis:
-1 + 1 + 25 = 27
-1 * 1 * 25 = 25
-1 / 1 = 1
-Output: impossible
-
-Input: 1 1 26
-Analysis:
-1 + 1 + 26 = 28
-1 * 1 * 26 = 26
-1 / 1 = 1
-Output: impossible
-
-Input: 1 1 27
-Analysis:
-1 + 1 + 27 = 29
-1 * 1 * 27 = 27
-1 / 1 = 1
-Output: impossible
-
-Input: 1 1 28
-Analysis:
-1 + 1 + 28 = 30
-1 * 1 * 28 = 28
-1 / 1 = 1
-Output: impossible
-
-Input: 1 1 29
-Analysis:
-1 + 1 + 29 = 31
-1 * 1 * 29 = 29
-1 / 1 = 1
-Output: impossible
-
-Input: 1 1 30
-Analysis:
-1 + 1 + 30 = 32
-1 * 1 * 30 = 30
-1 / 1 = 1
-Output: impossible
-
-Input: 1 1 31
-Analysis:
-1 + 1 + 31 = 33
-1 * 1 * 31 = 31
-1 / 1 = 1
-Output: impossible
-
-Input: 1 1 32
-Analysis:
-1 + 1 + 32 = 34
-1 * 1 * 32 = 32
-1 / 1 = 1
-Output: impossible
-
-Input: 1 1 33
-Analysis:
-1 + 1 + 33 = 35
-1 * 1 * 33 = 33
-1 / 1 = 1
-Output: impossible
-
-Input: 1 1 34
-Analysis:
-1 + 1 + 34 = 36
-1 * 1 * 34 = 34
-1 / 1 = 1
-Output: impossible
-
-Input: 1 1 35
-Analysis:
-1 + 1 + 35 = 37
-1 * 1 * 35 = 35
-1 / 1 = 1
-Output: impossible
-
-Input: 1 1 36
-Analysis:
-1 + 1 + 36 = 38
-1 * 1 * 36 = 36
-1 / 1 = 1
-Output: impossible
-
-Input: 1 1 37
-Analysis:
-1 + 1 + 37 = 39
-1 * 1 * 37 = 37
-1 / 1 = 1
-Output: impossible
-
-Input: 1 1 38
-Analysis:
-1 + 1 + 38 = 40
-1 * 1 * 38 = 38
-1 / 1 = 1
-Output: impossible
-
-Input: 1 1 39
-Analysis:
-1 + 1 + 39 = 41
-1 * 1 * 39 = 39
-1 / 1 = 1
-Output: impossible
-
-Input: 1 1 40
-Analysis:
-1 + 1 + 40 = 42
-1 * 1 * 40 = 40
-1 / 1 = 1
-Output: impossible
-
-Input: 1 1 41
-Analysis:
-1 + 1 + 41 = 43
-1 * 1 * 41 = 41
-1 / 1 = 1
-Output: impossible
-
-Input: 1 1 42
-Analysis:
-1 + 1 + 42 = 44
-1 * 1 * 42 = 42
-1 / 1 = 1
-Output: impossible
-
-Input: 1 1 43
-Analysis:
-1 + 1 + 43 = 45
-1 * 1 * 43 = 43
-1 / 1 = 1
-Output: impossible
-
-Input: 1 1 44
-Analysis:
-1 + 1 + 44 = 46
-1 * 1 * 44 = 44
-1 / 1 = 1
-Output: impossible
-
-Input: 1 1 45
-Analysis:
-1 + 1 + 45 = 47
-1 * 1 * 45 = 45
-1 / 1 = 1
-Output: impossible
-
-Input: 1 1 46
-Analysis:
-1 + 1 + 46 = 48
-1 * 1 * 46 = 46
-1 / 1 = 1
-Output: impossible
-
-Input: 1 1 47
-Analysis:
-1 + 1 + 47 = 49
-1 * 1 * 47 = 47
-1 / 1 = 1
-Output: impossible
-
-Input: 1 1 48
-Analysis:
-1 + 1 + 48 = 50
-1 * 1 * 48 = 48
-1 / 1 = 1
-Output: impossible
-
-Input: 1 1 49
-Analysis:
-1 + 1 + 49 = 51
-1 * 1 * 49 = 49
-1 / 1 = 1
-Output: impossible
-
-Input: 1 1 50
-Analysis:
-1 + 1 + 50 = 52
-1 * 1 * 50 = 50
-1 / 1 = 1
-Output: impossible
-
-
-Analysis:
-31 + 1 = 32
-31 - 1 = 30
-31 * 1 = 31
-31 / 1 = 31
+14 + 2 = 16
+14 - 2 = 12
+14 * 2 = 28
+14 / 2 = 7
 Output: impossible
 
 
@@ -382,287 +121,16 @@ Output: impossible
 
 
 Analysis:
-I can't get 24 from the given numbers
-Output: impossible
-
-
-Analysis:
-3 + 12 = 15
-12 - 3 = 9
-3 * 12 = 36
-3 / 12 = 0.25
-I cannot obtain 24 now, but the numbers are within a reasonable range
-Output: likely
-
-
-Analysis:
-11 + 2 = 13
-11 - 2 = 9
-11 * 2 = 22
-11 / 2 = 5.5
-Output: impossible
-
-Input: 10 10 10
-Analysis:
-10 + 10 + 10 = 30
-(10 - 10) * 10 = 0
-10 10 10 are all too big
-Output: impossible
-
-Input: 1 1 1
-Analysis:
-1 + 1 + 1 = 3
-1 - 1 = 0
-1 * 1 = 1
-1 / 1 = 1
-Output: impossible
-
-Input: 1 1 2
-Analysis:
-1 + 1 + 2 = 4
-1 - 1 = 0
-1 * 2 = 2
-1 / 2 = 0.5
-Output: impossible
-
-Input: 1 2 3
-Analysis:
-1 + 2 + 3 = 6
-1 - 2 = -1
-1 * 3 = 3
-1 / 3 = 0.33
-Output: impossible
-
-Input: 1 3 3
-Analysis:
-1 + 3 + 3 = 7
-1 - 3 = -2
-1 * 3 = 3
-1 / 3 = 0.33
-Output: impossible
-
-Input: 1 4 4
-Analysis:
-1 + 4 + 4 = 9
-1 - 4 = -3
-1 * 4 = 4
-1 / 4 = 0.25
-Output: impossible
-
-Input: 1 5 5
-Analysis:
-1 + 5 + 5 = 11
-1 - 5 = -4
-1 * 5 = 5
-1 / 5 = 0.2
-Output: impossible
-
-Input: 1 6 6
-Analysis:
-1 + 6 + 6 = 13
-1 - 6 = -5
-1 * 6 = 6
-1 / 6 = 0.166
-Output: impossible
-
-Input: 1 7 7
-Analysis:
-1 + 7 + 7 = 15
-1 - 7 = -6
-1 * 7 = 7
-1 / 7 = 0.142
-Output: impossible
-
-Input: 1 8 8
-Analysis:
-1 + 8 + 8 = 17
-1 - 8 = -7
-1 * 8 = 8
-1 / 8 = 0.125
-Output: impossible
-
-Input: 1 9 9
-Analysis:
-1 + 9 + 9 = 19
-1 - 9 = -8
-1 * 9 = 9
-1 / 9 = 0.111
-Output: impossible
-
-Input: 1 10 10
-Analysis:
-1 + 10 + 10 = 21
-1 - 10 = -9
-1 * 10 = 10
-1 / 10 = 0.1
-Output: impossible
-
-Input: 1 11 11
-Analysis:
-1 + 11 + 11 = 23
-1 - 11 = -10
-1 * 11 = 11
-1 / 11 = 0.0909
-Output: impossible
-
-Input: 1 12 12
-Analysis:
-1 + 12 + 12 = 25
-1 - 12 = -11
+1 + 12 = 13
+12 - 1 = 11
 1 * 12 = 12
-1 / 12 = 0.0833
+1 / 12 = 0.083
 Output: impossible
 
-Input: 1 13 13
+
 Analysis:
-1 + 13 + 13 = 27
-1 - 13 = -12
-1 * 13 = 13
-1 / 13 = 0.0769
+1 + 25 = 26
 Output: impossible
-
-Input: 1 14 14
-Analysis:
-1 + 14 + 14 = 29
-1 - 14 = -13
-1 * 14 = 14
-1 / 14 = 0.0714
-Output: impossible
-
-Input: 1 15 15
-Analysis:
-1 + 15 + 15 = 31
-1 - 15 = -14
-1 * 15 = 15
-1 / 15 = 0.0667
-Output: impossible
-
-Input: 1 16 16
-Analysis:
-1 + 16 + 16 = 33
-1 - 16 = -15
-1 * 16 = 16
-1 / 16 = 0.0625
-Output: impossible
-
-Input: 1 17 17
-Analysis:
-1 + 17 + 17 = 35
-1 - 17 = -16
-1 * 17 = 17
-1 / 17 = 0.0588
-Output: impossible
-
-Input: 1 18 18
-Analysis:
-1 + 18 + 18 = 37
-1 - 18 = -17
-1 * 18 = 18
-1 / 18 = 0.0556
-Output: impossible
-
-Input: 1 19 19
-Analysis:
-1 + 19 + 19 = 39
-1 - 19 = -18
-1 * 19 = 19
-1 / 19 = 0.0526
-Output: impossible
-
-Input: 1 20 20
-Analysis:
-1 + 20 + 20 = 41
-1 - 20 = -19
-1 * 20 = 20
-1 / 20 = 0.05
-Output: impossible
-
-Input: 1 21 21
-Analysis:
-1 + 21 + 21 = 43
-1 - 21 = -20
-1 * 21 = 21
-1 / 21 = 0.0476
-Output: impossible
-
-Input: 1 22 22
-Analysis:
-1 + 22 + 22 = 45
-1 - 22 = -21
-1 * 22 = 22
-1 / 22 = 0.0455
-Output: impossible
-
-Input: 1 23 23
-Analysis:
-1 + 23 + 23 = 47
-1 - 23 = -22
-1 * 23 = 23
-1 / 23 = 0.0435
-Output: impossible
-
-Input: 1 24 24
-Analysis:
-1 + 24 + 24 = 49
-1 - 24 = -23
-1 * 24 = 24
-1 / 24 = 0.0417
-Output: impossible
-
-Input: 1 25 25
-Analysis:
-1 + 25 + 25 = 51
-1 - 25 = -24
-1 * 25 = 25
-1 / 25 = 0.04
-Output: impossible
-
-Input: 1 26 26
-Analysis:
-1 + 26 + 26 = 53
-1 - 26 = -25
-1 * 26 = 26
-1 / 26 = 0.0385
-Output: impossible
-
-Input: 1 27 27
-Analysis:
-1 + 27 + 27 = 55
-1 - 27 = -26
-1 * 27 = 27
-1 / 27 = 0.037
-Output: impossible
-
-Input: 1 28 28
-Analysis:
-1 + 28 + 28 = 57
-1 - 28 = -27
-1 * 28 = 28
-1 / 28 = 0.0357
-Output: impossible
-
-Input: 1 29 29
-Analysis:
-1 + 29 + 29 = 58
-1 - 29 = -28
-1 * 29 = 29
-1 / 29 = 0.0345
-Output: impossible
-
-Input: 1 30 30
-Analysis:
-1 + 30 + 30 = 61
-1 - 30 = -29
-1 * 30 = 30
-1 / 
-
-
-Analysis:
-1 + 6 = 7
-1 * 6 = 6
-1 / 6 = 0.16
-I cannot obtain 24 now, but the numbers are within a reasonable range
-Output: likely
 
 
 Analysis:
@@ -671,15 +139,63 @@ Output: impossible
 
 
 Analysis:
-13 + 2 = 15
-13 - 2 = 11
-13 * 2 = 26
-13 / 2 = 6.5
+25 + 1 = 26
+Output: impossible
+
+
+Analysis:
+23 + 1 = 24
+Output: sure
+
+Input: 1 2 3
+Analysis:
+1 + 2 + 3 = 6
+1 * 2 * 3 = 6
+Output: sure
+
+Input: 1 2 4
+Analysis:
+1 + 2 + 4 = 7
+1 * 2 * 4 = 8
+Output: impossible
+
+
+Analysis:
+24 + 1 = 25
+Output: impossible
+
+
+Analysis:
+3 + 13 = 16
+3 * 13 = 39
+13 - 3 = 10
+Output: impossible
+
+
+Analysis:
+1 + 15 = 16
+15 - 1 = 14
+1 * 15 = 15
+Output: sure
+
+
+Analysis:
+1 + 26 = 27
+Output: impossible
+
+
+Analysis:
+-1 + 13 = 12
+Output: impossible
+
+
+Analysis:
+1 + 11 = 12
 Output: impossible
 
 
 node:
-[{'id': 8, 'answer': '12 - 1 = 11 (left: 3 11)', 'value': 'sure', 'parent_node': 1, 'ancestor_value': 1.0}, {'id': 11, 'answer': '11 + 1 = 12 (left: 12 2)', 'value': 'sure', 'parent_node': 2, 'ancestor_value': 1.0}, {'id': 7, 'answer': '3 * 1 = 3 (left: 3 12)', 'value': 'likely', 'parent_node': 1, 'ancestor_value': 1.0}, {'id': 9, 'answer': '12 + 3 = 15 (left: 15 1)', 'value': 'likely', 'parent_node': 1, 'ancestor_value': 1.0}, {'id': 16, 'answer': '1 + 2 = 3 (left: 3 12)', 'value': 'likely', 'parent_node': 4, 'ancestor_value': 1.0}, {'id': 18, 'answer': '12 / 2 = 6 (left: 1 6)', 'value': 'likely', 'parent_node': 4, 'ancestor_value': 1.0}, {'id': 6, 'answer': '3 + 1 = 4 (left: 4 12)', 'value': 'impossible', 'parent_node': 1, 'ancestor_value': 1.0}, {'id': 10, 'answer': '12 / 3 = 4.0000000000000005 (left: 4.0000000000000005 1)', 'value': 'impossible', 'parent_node': 1, 'ancestor_value': 1.0}, {'id': 12, 'answer': '11 * 2 = 22 (left: 1 22)', 'value': 'impossible', 'parent_node': 2, 'ancestor_value': 1.0}, {'id': 13, 'answer': '2 + 1 = 3 (left: 31 1)', 'value': 'impossible', 'parent_node': 2, 'ancestor_value': 1.0}, {'id': 14, 'answer': '11 - 1 = 10 (left: 10 2)', 'value': 'impossible', 'parent_node': 2, 'ancestor_value': 1.0}, {'id': 15, 'answer': '2 / 1 = 2.0000000000000004166621440161689924710854265020530914047776927364688788563282585561919579716177886127843079320343355981500948969257366073167284024734517853747643736153152169377480721685516413021925118892281355897289190668037232819791979314574580635816683374882268640711928464294193682243669438768221219814146745629981248651974813226910228484112770989925882793375425927409799652189335686279877011528921770679356630246831123338186166535889147238086180814092244755531433230926303509848992152114776861438461274193683330005846748222563538109239948207117170743899899999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999 (left: 2.00000000000000041666214401616899247108542650205309140477769273646887885632825855619195797161778861278430793203433559815009489692573660731672840247345178537476437361531521693774807216855164130219251188922813558972891906680372328197919793145745806358166833748822686407119284642941936822436694387682212198141467456299812486519748132269102284841127709899258827933754259274097996521893356862798770115289217706793566302468311233381861665358891472380861808140922447555314332309263035098489921521147768614384612741936833300058467482225635381092399482071171707438998999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999991 1)', 'value': 'impossible', 'parent_node': 2, 'ancestor_value': 1.0}, {'id': 19, 'answer': '2 * 12 = 24 (left: 1 24)', 'value': 'impossible', 'parent_node': 4, 'ancestor_value': 1.0}, {'id': 20, 'answer': '12 + 1 = 13 (left: 13 2)', 'value': 'impossible', 'parent_node': 4, 'ancestor_value': 1.0}, {'id': 17, 'answer': '12 - 1 = 11 (left: 11 2)', 'value': None, 'parent_node': 4, 'ancestor_value': 1.0}]
+[{'id': 17, 'answer': '13 + 2 = 15 (left: 1 15)', 'value': 'sure', 'parent_node': 3, 'ancestor_value': 0.001}, {'id': 6, 'answer': '2 + 2 = 4 (left: 4 12)', 'value': 'impossible', 'parent_node': 1, 'ancestor_value': 0.001}, {'id': 7, 'answer': '2 * 12 = 24 (left: 2 24)', 'value': 'impossible', 'parent_node': 1, 'ancestor_value': 0.001}, {'id': 8, 'answer': '12 + 2 = 14 (left: 14 2)', 'value': 'impossible', 'parent_node': 1, 'ancestor_value': 0.001}, {'id': 9, 'answer': '12 - 2 = 10 (left: 10 2)', 'value': 'impossible', 'parent_node': 1, 'ancestor_value': 0.001}, {'id': 10, 'answer': '2 / 2 = 1 (left: 1 12)', 'value': 'impossible', 'parent_node': 1, 'ancestor_value': 0.001}, {'id': 11, 'answer': '1 + 24 = 25 (left: 1 25)', 'value': 'impossible', 'parent_node': 2, 'ancestor_value': 0.001}, {'id': 12, 'answer': '1 * 24 = 24 (left: 1 24)', 'value': 'impossible', 'parent_node': 2, 'ancestor_value': 0.001}, {'id': 13, 'answer': '24 + 1 = 25 (left: 25 1)', 'value': 'impossible', 'parent_node': 2, 'ancestor_value': 0.001}, {'id': 14, 'answer': '24 - 1 = 23 (left: 23 1)', 'value': 'impossible', 'parent_node': 2, 'ancestor_value': 0.001}, {'id': 15, 'answer': '24 / 1 = 24 (left: 24 1)', 'value': 'impossible', 'parent_node': 2, 'ancestor_value': 0.001}, {'id': 16, 'answer': '1 + 2 = 3 (left: 3 13)', 'value': 'impossible', 'parent_node': 3, 'ancestor_value': 0.001}, {'id': 18, 'answer': '2 * 13 = 26 (left: 1 26)', 'value': 'impossible', 'parent_node': 3, 'ancestor_value': 0.001}, {'id': 19, 'answer': '1 - 2 = -1 (left: -1 13)', 'value': 'impossible', 'parent_node': 3, 'ancestor_value': 0.001}, {'id': 20, 'answer': '13 - 2 = 11 (left: 1 11)', 'value': 'impossible', 'parent_node': 3, 'ancestor_value': 0.001}]
 15
 
 
@@ -687,122 +203,56 @@ step 3
 
 
 Generator response:
-3 + 11 = 14
-11 - 3 = 8
-11 * 3 = 33
-3 / 11 = 0.2727272727272727
-11 / 3 = 3.6666666666666664
+1 + 15 = 16
+15 - 1 = 14
+1 * 15 = 15
+1 / 15 = 0.06666666666666667
+15 + 1 = 16
 
 
 Generator response:
-12 + 2 = 14
-12 - 2 = 10
+4 + 12 = 16
+12 - 4 = 8
+4 / 2 = 2
 12 * 2 = 24
-2 / 12 = 0.16666666666666666
-12 / 2 = 6.00000000000000132458001130137780826278387475823162769373126833139301022706042808333473229508198927936507812500000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+12 - 4 = 8
 
 
 Generator response:
-3 + 12 = 15
-12 / 3 = 4
-3 - 12 = -9
-12 * 3 = 36
-12 - 3 = 9
+2 + 24 = 26
+2 / 24 = 0.08333333333333334
+24 + 2 = 26
+2 * 24 = 48
+2 - 24 = -22
+
+
+Analysis:
+16 is not equal to 24
+Output: impossible
 
 
 Analysis:
 14 is not equal to 24
 Output: impossible
 
-Input: 10 10 10
+
 Analysis:
-10 + 10 + 10 = 30
-10 * 10 * 10 = 1000
-10 10 10 are all too big
+15 is not equal to 24
 Output: impossible
 
-Input: 1 1 1
+
 Analysis:
-1 + 1 + 1 = 3
-1 * 1 * 1 = 1
-1 1 1 are all too small
+0.06666666666666667 is not equal to 24
 Output: impossible
 
-Input: 10 10 10 10
+
 Analysis:
-10 + 10 + 10 + 10 = 40
-10 * 10 * 10 * 10 = 10000
-10 10 10 10 are all too big
+16 is not equal to 24
 Output: impossible
 
-Input: 1 1 1 1
-Analysis:
-1 + 1 + 1 + 1 = 4
-1 * 1 * 1 * 1 = 1
-1 1 1 1 are all too small
-Output: impossible
 
-Input: 10 10 10 10 10
 Analysis:
-10 + 10 + 10 + 10 + 10 = 50
-10 * 10 * 10 * 10 * 10 = 100000
-10 10 10 10 10 are all too big
-Output: impossible
-
-Input: 1 1 1 1 1
-Analysis:
-1 + 1 + 1 + 1 + 1 = 5
-1 * 1 * 1 * 1 * 1 = 1
-1 1 1 1 1 are all too small
-Output: impossible
-
-Input: 10 10 10 10 10 10
-Analysis:
-10 + 10 + 10 + 10 + 10 + 10 = 60
-10 * 10 * 10 * 10 * 10 * 10 = 10000000
-10 10 10 10 10 10 are all too big
-Output: impossible
-
-Input: 1 1 1 1 1 1
-Analysis:
-1 + 1 + 1 + 1 + 1 + 1 = 6
-1 * 1 * 1 * 1 * 1 * 1 = 1
-1 1 1 1 1 1 are all too small
-Output: impossible
-
-Input: 10 10 10 10 10 10 10
-Analysis:
-10 + 10 + 10 + 10 + 10 + 10 + 10 = 70
-10 * 10 * 10 * 10 * 10 * 10 * 10 = 1000000000
-10 10 10 10 10 10 10 are all too big
-Output: impossible
-
-Input: 1 1 1 1 1 1 1
-Analysis:
-1 + 1 + 1 + 1 + 1 + 1 + 1 = 7
-1 * 1 * 1 * 1 * 1 * 1 * 1 = 1
-1 1 1 1 1 1 1 are all too small
-Output: impossible
-
-Input: 10 10 10 10 10 10 10 10
-Analysis:
-10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 = 80
-10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 = 100000000000
-10 10 10 10 10 10 10 10 are all too big
-Output: impossible
-
-Input: 1 1 1 1 1 1 1 1
-Analysis:
-1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 = 8
-1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 = 1
-1 1 1 1 1 1 1 1 are all too small
-Output: impossible
-
-Input: 10 10 10 10 10 10 10 10 10
-Analysis:
-10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 = 90
-10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 = 1000000000000
-10 10 10 10 10 10 10 10 10 are all too big
+16 is not equal to 24
 Output: impossible
 
 
@@ -810,518 +260,9 @@ Analysis:
 8 is not equal to 24
 Output: impossible
 
-Input: 1 2 3
-Analysis:
-1 + 2 + 3 = 6
-(3 - 2) * 1 = 1
-1 2 3 are all too small
-Output: impossible
-
-Input: 1 1 1
-Analysis:
-1 + 1 + 1 = 3
-(1 - 1) * 1 = 0
-1 1 1 are all too small
-Output: impossible
-
-Input: 1 1 2
-Analysis:
-1 + 1 + 2 = 4
-(2 - 1) * 1 = 1
-1 1 2 are all too small
-Output: impossible
-
-Input: 1 1 1 1
-Analysis:
-1 + 1 + 1 + 1 = 4
-(1 - 1) * 1 * 1 = 0
-1 1 1 1 are all too small
-Output: impossible
-
-Input: 1 1 1 2
-Analysis:
-1 + 1 + 1 + 2 = 5
-(2 - 1) * 1 * 1 = 1
-1 1 1 2 are all too small
-Output: impossible
-
-Input: 1 1 1 1 1
-Analysis:
-1 + 1 + 1 + 1 + 1 = 5
-(1 - 1) * 1 * 1 * 1 = 0
-1 1 1 1 1 are all too small
-Output: impossible
-
-Input: 1 1 1 1 2
-Analysis:
-1 + 1 + 1 + 1 + 2 = 6
-(2 - 1) * 1 * 1 * 1 = 1
-1 1 1 1 2 are all too small
-Output: impossible
-
-Input: 1 1 1 1 1 1
-Analysis:
-1 + 1 + 1 + 1 + 1 + 1 = 6
-(1 - 1) * 1 * 1 * 1 * 1 = 0
-1 1 1 1 1 1 are all too small
-Output: impossible
-
-Input: 1 1 1 1 1 2
-Analysis:
-1 + 1 + 1 + 1 + 1 + 2 = 7
-(2 - 1) * 1 * 1 * 1 * 1 = 1
-1 1 1 1 1 2 are all too small
-Output: impossible
-
-Input: 1 1 1 1 1 1 1
-Analysis:
-1 + 1 + 1 + 1 + 1 + 1 + 1 = 7
-(1 - 1) * 1 * 1 * 1 * 1 * 1 = 0
-1 1 1 1 1 1 1 are all too small
-Output: impossible
-
-Input: 1 1 1 1 1 1 2
-Analysis:
-1 + 1 + 1 + 1 + 1 + 1 + 2 = 8
-(2 - 1) * 1 * 1 * 1 * 1 * 1 = 1
-1 1 1 1 1 1 2 are all too small
-Output: impossible
-
-Input: 1 1 1 1 1 1 1 1
-Analysis:
-1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 = 8
-(1 - 1) * 1 * 1 * 1 * 1 * 1 * 1 = 0
-1 1 1 1 1 1 1 1 are all too small
-Output: impossible
-
-Input: 1 1 1 1 1 1 1 2
-Analysis:
-1 + 1 + 1 + 1 + 1 + 1 + 1 + 2 = 9
-(2 - 1) * 1 * 1 * 1 * 1 * 1 * 1 = 1
-1 1 1 1 1 1 1 2 are all too small
-Output: impossible
-
-Input: 1 1 1 1 1 1 1 1 1
-Analysis:
-1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 = 9
-(1 - 1) * 1 * 1 * 1 * 1 * 1 * 1 * 1 = 0
-1 1 1 1 1 1 1 1 1 are all too small
-Output: impossible
-
-Input: 1 1 1 1 1 1 1 2 2
-Analysis:
-1 + 1 + 1 + 1 + 1 + 1 + 1 + 2 + 2 = 12
-(2 - 1) * 1 * 1 * 1 * 1 * 1 * 1 * 1 = 1
-1 1 1 1 1 1 1 2 2 are all too small
-Output: impossible
-
-Input: 1 1 1 1 1 1 1 1 1 1
-Analysis:
-1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 = 10
-(1 - 1) * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 = 0
-1 1 1 1 1 1 1 1 1 1 are all too small
-Output: impossible
-
-Input: 1 1 1 1 1 1 1 1 1 2
-Analysis:
-1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 2 = 11
-(2 - 1) * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 = 1
-1 1 1 1 1 1 1 1 1 2 are all too small
-Output: impossible
-
-Input: 1 1 1 1 1 1 1 1 1 1 1
-Analysis:
-1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 = 11
-(1 - 1) * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 = 0
-1 1 1 1 1 1 1 1 1 1 1 are all too small
-Output: impossible
-
-Input: 1 1 1 1 1 1 1 1 1 2 2
-Analysis:
-1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 2 + 2 = 13
-(2 - 1) * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 = 1
-1 1 1 1 1 1 1 1 1 2 2 are all too small
-Output: impossible
-
-Input: 1 1 1 1 1 1 1 1 1 1 1 1
-Analysis:
-1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 = 12
-(1 - 1) * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 = 0
-1 1 1 1 1 1 1 1 1 1 1 1 are all too small
-Output: impossible
-
-
-Analysis:
-33 is not equal to 24
-Output: impossible
-
-Input: 1 2 2
-Analysis:
-1 + 2 + 2 = 5
-(2 - 1) * 2 = 2 * 2 = 4
-I cannot obtain 24 now, but the numbers are within a reasonable range
-Output: likely
-
-
-Analysis:
-0.2727272727272727 is not equal to 24
-Output: impossible
-
-
-Analysis:
-3.6666666666666664 is not equal to 24
-Output: impossible
-
-
-Analysis:
-14 is not equal to 24
-Output: impossible
-
-Input: 10 10 10
-Analysis:
-10 + 10 + 10 = 30
-10 * 10 * 10 = 1000
-10 10 10 are all too big
-Output: impossible
-
-Input: 1 1 1
-Analysis:
-1 + 1 + 1 = 3
-1 * 1 * 1 = 1
-1 1 1 are all too small
-Output: impossible
-
-Input: 10 10 10 10
-Analysis:
-10 + 10 + 10 + 10 = 40
-10 * 10 * 10 * 10 = 10000
-10 10 10 10 are all too big
-Output: impossible
-
-Input: 1 1 1 1
-Analysis:
-1 + 1 + 1 + 1 = 4
-1 * 1 * 1 * 1 = 1
-1 1 1 1 are all too small
-Output: impossible
-
-Input: 10 10 10 10 10
-Analysis:
-10 + 10 + 10 + 10 + 10 = 50
-10 * 10 * 10 * 10 * 10 = 100000
-10 10 10 10 10 are all too big
-Output: impossible
-
-Input: 1 1 1 1 1
-Analysis:
-1 + 1 + 1 + 1 + 1 = 5
-1 * 1 * 1 * 1 * 1 = 1
-1 1 1 1 1 are all too small
-Output: impossible
-
-Input: 10 10 10 10 10 10
-Analysis:
-10 + 10 + 10 + 10 + 10 + 10 = 60
-10 * 10 * 10 * 10 * 10 * 10 = 10000000
-10 10 10 10 10 10 are all too big
-Output: impossible
-
-Input: 1 1 1 1 1 1
-Analysis:
-1 + 1 + 1 + 1 + 1 + 1 = 6
-1 * 1 * 1 * 1 * 1 * 1 = 1
-1 1 1 1 1 1 are all too small
-Output: impossible
-
-Input: 10 10 10 10 10 10 10
-Analysis:
-10 + 10 + 10 + 10 + 10 + 10 + 10 = 70
-10 * 10 * 10 * 10 * 10 * 10 * 10 = 1000000000
-10 10 10 10 10 10 10 are all too big
-Output: impossible
-
-Input: 1 1 1 1 1 1 1
-Analysis:
-1 + 1 + 1 + 1 + 1 + 1 + 1 = 7
-1 * 1 * 1 * 1 * 1 * 1 * 1 = 1
-1 1 1 1 1 1 1 are all too small
-Output: impossible
-
-Input: 10 10 10 10 10 10 10 10
-Analysis:
-10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 = 80
-10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 = 100000000000
-10 10 10 10 10 10 10 10 are all too big
-Output: impossible
-
-Input: 1 1 1 1 1 1 1 1
-Analysis:
-1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 = 8
-1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 = 1
-1 1 1 1 1 1 1 1 are all too small
-Output: impossible
-
-Input: 10 10 10 10 10 10 10 10 10
-Analysis:
-10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 = 90
-10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 = 1000000000000
-10 10 10 10 10 10 10 10 10 are all too big
-Output: impossible
-
-
-Analysis:
-10 is not equal to 24
-Output: impossible
-
-Input: 10 10
-Analysis:
-10 + 10 = 20
-10 - 10 = 0
-10 * 10 = 100
-10 / 10 = 1
-10 + 10 = 20
-10 - 10 = 0
-10 * 10 = 100
-10 / 10 = 1
-I cannot obtain 24 now, but the numbers are within a reasonable range
-Output: likely
-
-
-Analysis:
-24 is equal to 24
-Output: sure
-
-Input: 10
-Analysis:
-10 is not equal to 24
-Output: impossible
-
-Input: 10 10 10
-Analysis:
-10 + 10 + 10 = 30
-(10 - 10) * 10 = 0
-10 10 10 are all too big
-Output: impossible
-
-Input: 1 1 1
-Analysis:
-1 + 1 + 1 = 3
-(1 - 1) * 1 = 0
-1 1 1 are all too small
-Output: impossible
-
-Input: 24 24
-Analysis:
-24 + 24 = 48
-(24 - 24) * 24 = 0
-24 24 are all too big
-Output: impossible
-
-Input: 1 1 1
-Analysis:
-1 + 1 + 1 = 3
-(1 - 1) * 1 = 0
-1 1 1 are all too small
-Output: impossible
-
-Input: 1 1 1
-Analysis:
-1 + 1 + 1 = 3
-(1 - 1) * 1 = 0
-1 1 1 are all too small
-Output: impossible
-
-Input: 1 1 1
-Analysis:
-1 + 1 + 1 = 3
-(1 - 1) * 1 = 0
-1 1 1 are all too small
-Output: impossible
-
-Input: 1 1 1
-Analysis:
-1 + 1 + 1 = 3
-(1 - 1) * 1 = 0
-1 1 1 are all too small
-Output: impossible
-
-Input: 1 1 1
-Analysis:
-1 + 1 + 1 = 3
-(1 - 1) * 1 = 0
-1 1 1 are all too small
-Output: impossible
-
-Input: 1 1 1
-Analysis:
-1 + 1 + 1 = 3
-(1 - 1) * 1 = 0
-1 1 1 are all too small
-Output: impossible
-
-
-Analysis:
-1 + 2 = 3
-1 * 2 = 2
-1 - 2 = -1
-I cannot obtain 24 now, but the numbers are within a reasonable range
-Output: likely
-
-
-Analysis:
-I cannot obtain 24 now, but the numbers are within a reasonable range
-Output: likely
-
-
-Analysis:
-15 is not equal to 24
-Output: impossible
-
-Input: 10 10 10
-Analysis:
-10 + 10 + 10 = 30
-10 * 10 * 10 = 1000
-10 10 10 are all too big
-Output: impossible
-
-Input: 1 2 3
-Analysis:
-1 + 2 + 3 = 6
-(3 - 2) * 1 = 1
-1 2 3 are all too small
-Output: impossible
-
-Input: 1 1 1
-Analysis:
-1 + 1 + 1 = 3
-1 * 1 * 1 = 1
-1 1 1 are all too small
-Output: impossible
-
-Input: 1 1 2
-Analysis:
-1 + 1 + 2 = 4
-(2 - 1) * 1 = 1
-1 1 2 are all too small
-Output: impossible
-
-Input: 1 1 1 1
-Analysis:
-1 + 1 + 1 + 1 = 4
-1 * 1 * 1 * 1 = 1
-1 1 1 1 are all too small
-Output: impossible
-
-Input: 1 1 1 2
-Analysis:
-1 + 1 + 1 + 2 = 5
-(2 - 1) * 1 * 1 = 1
-1 1 1 2 are all too small
-Output: impossible
-
-Input: 1 1 1 1 1
-Analysis:
-1 + 1 + 1 + 1 + 1 = 5
-1 * 1 * 1 * 1 * 1 = 1
-1 1 1 1 1 are all too small
-Output: impossible
-
-Input: 1 1 1 1 2
-Analysis:
-1 + 1 + 1 + 1 + 2 = 6
-(2 - 1) * 1 * 1 * 1 = 1
-1 1 1 1 2 are all too small
-Output: impossible
-
-Input: 1 1 1 1 1 1
-Analysis:
-1 + 1 + 1 + 1 + 1 + 1 = 6
-1 * 1 * 1 * 1 * 1 * 1 = 1
-1 1 1 1 1 1 are all too small
-Output: impossible
-
-Input: 1 1 1 1 1 2
-Analysis:
-1 + 1 + 1 + 1 + 1 + 2 = 7
-(2 - 1) * 1 * 1 * 1 * 1 = 1
-1 1 1 1 1 2 are all too small
-Output: impossible
-
-Input: 1 1 1 1 1 1 1
-Analysis:
-1 + 1 + 1 + 1 + 1 + 1 + 1 = 7
-1 * 1 * 1 * 1 * 1 * 1 * 1 = 1
-1 1 1 1 1 1 1 are all too small
-Output: impossible
-
-Input: 1 1 1 1 1 1 2
-Analysis:
-1 + 1 + 1 + 1 + 1 + 1 + 2 = 8
-(2 - 1) * 1 * 1 * 1 * 1 * 1 = 1
-1 1 1 1 1 1 2 are all too small
-Output: impossible
-
-Input: 1 1 1 1 1 1 1 1
-Analysis:
-1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 = 8
-1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 = 1
-1 1 1 1 1 1 1 1 are all too small
-Output: impossible
-
-Input: 1 1 1 1 1 1 1 2
-Analysis:
-1 + 1 + 1 + 1 + 1 + 1 + 1 + 2 = 9
-(2 - 1) * 1 * 1 * 1 * 1 * 1 * 1 = 1
-1 1 1 1 1 1 1 2 are all too small
-Output: impossible
-
-Input: 1 1 1 1 1 1 1 1 1
-Analysis:
-1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 = 9
-1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 = 1
-1 1 1 1 1 1 1 1 1 are all too small
-Output: impossible
-
-Input: 1 1 1 1 1 1 1 2 2
-Analysis:
-1 + 1 + 1 + 1 + 1 + 1 + 1 + 2 + 2 = 12
-(2 - 1) * 1 * 1 * 1 * 1 * 1 * 1 * 1 = 1
-1 1 1 1 1 1 1 2 2 are all too small
-Output: impossible
-
-Input: 1 1 1 1 1 1 1 1 1 1
-Analysis:
-1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 = 10
-1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 = 1
-1 1 1 1 1 1 1 1 1 1 are all too small
-Output: impossible
-
-Input: 1 1 1 1 1 1 1 1 1 2
-Analysis:
-1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 2 = 11
-(2 - 1) * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 = 1
-1 1 1 1 1 1 1 1 1 2 are all too small
-Output: impossible
-
-Input: 1 1 1 1 1 1 1 1 1 1 1
-Analysis:
-1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 = 11
-1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 = 1
-1 1 1 1 1 1 1 1 1 1 1 are all too small
-Output: impossible
-
-Input: 1 1 1 1 1 1 1 1 1 2 2
-Analysis:
-1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 2 + 2 = 13
-(2 - 1) * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 = 1
-1 1 1 1 1 1 1 1 1 2 2 are all too small
-Output: impossible
 
-Input: 1 1 1 1 1 1 1 1 1 1 1 1
 Analysis:
-1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 = 12
-1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 = 1
-1 1 1 1 1 1 1 1 1 1 1 1 are all too small
+12 is not equal to 24
 Output: impossible
 
 
@@ -1329,528 +270,49 @@ Analysis:
 4 is not equal to 24
 Output: impossible
 
-Input: 1 1 1 1 1 1 1 1 1 1
-Analysis:
-1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 = 11
-11 is not equal to 24
-Output: impossible
-
-
-Analysis:
--9 is not equal to 24
-Output: impossible
-
-Input: 1 2 3
-Analysis:
-1 + 2 + 3 = 6
-(3 - 2) * 1 = 1
-1 2 3 are all too small
-Output: impossible
-
-Input: 1 1 1
-Analysis:
-1 + 1 + 1 = 3
-(1 - 1) * 1 = 0
-1 1 1 are all too small
-Output: impossible
-
-Input: 1 1 2
-Analysis:
-1 + 1 + 2 = 4
-(2 - 1) * 1 = 1
-1 1 2 are all too small
-Output: impossible
-
-Input: 1 1 10
-Analysis:
-1 + 1 + 10 = 12
-(10 - 1) * 1 = 9
-1 1 10 are all too small
-Output: impossible
-
-Input: 1 1 11
-Analysis:
-1 + 1 + 11 = 13
-(11 - 1) * 1 = 10
-1 1 11 are all too small
-Output: impossible
-
-Input: 1 2 2
-Analysis:
-1 + 2 + 2 = 5
-(2 - 1) * 2 = 2
-1 2 2 are all too small
-Output: impossible
-
-Input: 1 3 3
-Analysis:
-1 + 3 + 3 = 7
-(3 - 1) * 3 = 6
-1 3 3 are all too small
-Output: impossible
-
-Input: 1 4 4
-Analysis:
-1 + 4 + 4 = 9
-(4 - 1) * 4 = 12
-1 4 4 are all too small
-Output: impossible
-
-Input: 1 5 5
-Analysis:
-1 + 5 + 5 = 11
-(5 - 1) * 5 = 20
-1 5 5 are all too small
-Output: impossible
-
-Input: 1 6 6
-Analysis:
-1 + 6 + 6 = 13
-(6 - 1) * 6 = 30
-1 6 6 are all too small
-Output: impossible
-
-Input: 1 7 7
-Analysis:
-1 + 7 + 7 = 15
-(7 - 1) * 7 = 42
-1 7 7 are all too small
-Output: impossible
-
-Input: 1 8 8
-Analysis:
-1 + 8 + 8 = 17
-(8 - 1) * 8 = 60
-1 8 8 are all too small
-Output: impossible
-
-Input: 1 9 9
-Analysis:
-1 + 9 + 9 = 19
-(9 - 1) * 9 = 80
-1 9 9 are all too small
-Output: impossible
-
-Input: 1 10 10
-Analysis:
-1 + 10 + 10 = 21
-(10 - 1) * 10 = 90
-1 10 10 are all too small
-Output: impossible
-
-Input: 1 11 11
-Analysis:
-1 + 11 + 11 = 23
-(11 - 1) * 11 = 110
-1 11 11 are all too small
-Output: impossible
-
-Input: 1 12 12
-Analysis:
-1 + 12 + 12 = 25
-(12 - 1) * 12 = 132
-1 12 12 are all too small
-Output: impossible
-
-Input: 1 13 13
-Analysis:
-1 + 13 + 13 = 27
-(13 - 1) * 13 = 156
-1 13 13 are all too small
-Output: impossible
-
-Input: 1 14 14
-Analysis:
-1 + 14 + 14 = 29
-(14 - 1) * 14 = 182
-1 14 14 are all too small
-Output: impossible
-
-Input: 1 15 15
-Analysis:
-1 + 15 + 15 = 31
-(15 - 1) * 15 = 210
-1 15 15 are all too small
-Output: impossible
-
-Input: 1 16 16
-Analysis:
-1 + 16 + 16 = 33
-(16 - 1) * 16 = 256
-1 16 16 are all too small
-Output: impossible
-
-Input: 1 17 17
-Analysis:
-1 + 17 + 17 = 35
-(17 - 1) * 17 = 294
-1 17 17 are all too small
-Output: impossible
-
-Input: 1 18 18
-Analysis:
-1 + 18 + 18 = 37
-(18 - 1) * 18 = 324
-1 18 18 are all too small
-Output: impossible
-
-Input: 1 19 19
-Analysis:
-1 + 19 + 19 = 39
-(19 - 1) * 19 = 361
-1 19 19 are all too small
-Output: impossible
-
-Input: 1 20 20
-Analysis:
-1 + 20 + 20 = 41
-(20 - 1) * 20 = 380
-1 20 20 are all too small
-Output: impossible
-
-Input: 1 21 21
-Analysis:
-1 + 21 + 21 = 43
-(21 - 1) * 21 = 418
-1 21 21 are all too small
-Output: impossible
-
-Input: 1 22 22
-Analysis:
-1 + 22 + 22 = 45
-(22 - 1) * 22 = 462
-1 22 22 are all too small
-Output: impossible
-
-Input: 1 23 23
-Analysis:
-1 + 23 + 23 = 47
-(23 - 1) * 23 = 504
-1 23 23 are all too small
-Output: impossible
-
-Input: 1 24 24
-Analysis:
-1 + 24 + 24 = 49
-(24 - 1) * 24 = 544
-1 24 24 are all too small
-Output: impossible
-
-Input: 1 25 25
-Analysis:
-1 + 25 + 25 = 51
-(25 - 1) * 25 = 600
-1 25 25 are all too small
-Output: impossible
-
-Input: 1 26 26
-Analysis:
-1 + 26 + 26 = 53
-(26 - 1) * 26 = 652
-1 26 26 are all too small
-Output: impossible
-
-Input: 1 27 27
-Analysis:
-1 + 27 + 27 = 55
-(27 - 1) * 27 = 702
-1 27 27 are all too small
-Output: impossible
-
-Input: 1 28 28
-Analysis:
-1 + 28 + 28 = 57
-(28 - 1) * 28 = 744
-1 28 28 are all too small
-Output: impossible
-
-Input: 1 29 29
-Analysis:
-1 + 29 + 29 = 58
-(29 - 1) * 29 = 780
-1 29 29 are all too small
-Output: impossible
-
-Input: 1 30 30
-Analysis:
-1 + 30 + 30 = 61
-(30 - 1) * 30 = 840
-1 30 30 are all too small
-Output: impossible
-
-
-Analysis:
-36 is not equal to 24
-Output: impossible
-
-Input: 1 2 2
-Analysis:
-1 + 2 + 2 = 5
-(2 - 1) * 2 = 2 * 2 = 4
-I cannot obtain 24 now, but the numbers are within a reasonable range
-Output: likely
-
-
-Analysis:
-9 is not equal to 24
-Output: impossible
-
-Input: 1
-Analysis:
-1 is not equal to 24
-Output: impossible
-
-Input: 10 10 10
-Analysis:
-10 + 10 + 10 = 30
-10 * 10 * 10 = 1000
-10 10 10 are all too big
-Output: impossible
-
-Input: 1 2 3
-Analysis:
-1 + 2 + 3 = 6
-(1 + 2) * 3 = 9
-1 2 3 are all too small
-Output: impossible
-
-Input: 1 1 1
-Analysis:
-1 + 1 + 1 = 3
-1 * 1 * 1 = 1
-1 1 1 are all too small
-Output: impossible
-
-Input: 1 1 2
-Analysis:
-1 + 1 + 2 = 4
-(1 + 1) * 2 = 4
-1 1 2 are all too small
-Output: impossible
-
-Input: 1 1 3
-Analysis:
-1 + 1 + 3 = 5
-(1 + 1) * 3 = 6
-1 1 3 are all too small
-Output: impossible
-
-Input: 1 2 2
-Analysis:
-1 + 2 + 2 = 5
-(1 + 2) * 2 = 8
-1 2 2 are all too small
-Output: impossible
-
-Input: 1 3 3
-Analysis:
-1 + 3 + 3 = 7
-(1 + 3) * 3 = 12
-1 3 3 are all too small
-Output: impossible
-
-Input: 1 4 4
-Analysis:
-1 + 4 + 4 = 9
-(1 + 4) * 4 = 16
-1 4 4 are all too small
-Output: impossible
-
-Input: 1 5 5
-Analysis:
-1 + 5 + 5 = 11
-(1 + 5) * 5 = 20
-1 5 5 are all too small
-Output: impossible
-
-Input: 1 6 6
-Analysis:
-1 + 6 + 6 = 13
-(1 + 6) * 6 = 24
-1 6 6 are all too small
-Output: impossible
-
-Input: 1 7 7
-Analysis:
-1 + 7 + 7 = 15
-(1 + 7) * 7 = 30
-1 7 7 are all too small
-Output: impossible
-
-Input: 1 8 8
-Analysis:
-1 + 8 + 8 = 17
-(1 + 8) * 8 = 36
-1 8 8 are all too small
-Output: impossible
-
-Input: 1 9 9
-Analysis:
-1 + 9 + 9 = 19
-(1 + 9) * 9 = 45
-1 9 9 are all too small
-Output: impossible
-
-Input: 1 10 10
-Analysis:
-1 + 10 + 10 = 21
-(1 + 10) * 10 = 50
-1 10 10 are all too small
-Output: impossible
-
-Input: 1 11 11
-Analysis:
-1 + 11 + 11 = 23
-(1 + 11) * 11 = 66
-1 11 11 are all too small
-Output: impossible
-
-Input: 1 12 12
-Analysis:
-1 + 12 + 12 = 25
-(1 + 12) * 12 = 84
-1 12 12 are all too small
-Output: impossible
-
-Input: 1 13 13
-Analysis:
-1 + 13 + 13 = 27
-(1 + 13) * 13 = 104
-1 13 13 are all too small
-Output: impossible
-
-Input: 1 14 14
-Analysis:
-1 + 14 + 14 = 29
-(1 + 14) * 14 = 126
-1 14 14 are all too small
-Output: impossible
 
-Input: 1 15 15
 Analysis:
-1 + 15 + 15 = 31
-(1 + 15) * 15 = 150
-1 15 15 are all too small
+8 is not equal to 24
 Output: impossible
 
-Input: 1 16 16
-Analysis:
-1 + 16 + 16 = 33
-(1 + 16) * 16 = 184
-1 16 16 are all too small
-Output: impossible
-
-Input: 1 17 17
-Analysis:
-1 + 17 + 17 = 35
-(1 + 17) * 17 = 204
-1 17 17 are all too small
-Output: impossible
-
-Input: 1 18 18
-Analysis:
-1 + 18 + 18 = 37
-(1 + 18) * 18 = 246
-1 18 18 are all too small
-Output: impossible
-
-Input: 1 19 19
-Analysis:
-1 + 19 + 19 = 39
-(1 + 19) * 19 = 286
-1 19 19 are all too small
-Output: impossible
-
-Input: 1 20 20
-Analysis:
-1 + 20 + 20 = 41
-(1 + 20) * 20 = 320
-1 20 20 are all too small
-Output: impossible
-
-Input: 1 21 21
-Analysis:
-1 + 21 + 21 = 43
-(1 + 21) * 21 = 366
-1 21 21 are all too small
-Output: impossible
 
-Input: 1 22 22
 Analysis:
-1 + 22 + 22 = 45
-(1 + 22) * 22 = 404
-1 22 22 are all too small
+26 is not equal to 24
 Output: impossible
 
-Input: 1 23 23
-Analysis:
-1 + 23 + 23 = 47
-(1 + 23) * 23 = 446
-1 23 23 are all too small
-Output: impossible
 
-Input: 1 24 24
 Analysis:
-1 + 24 + 24 = 49
-(1 + 24) * 24 = 528
-1 24 24 are all too small
+0.08333333333333334 is not equal to 24
 Output: impossible
 
-Input: 1 25 25
-Analysis:
-1 + 25 + 25 = 51
-(1 + 25) * 25 = 600
-1 25 25 are all too small
-Output: impossible
 
-Input: 1 26 26
 Analysis:
-1 + 26 + 26 = 53
-(1 + 26) * 26 = 646
-1 26 26 are all too small
+26 is not equal to 24
 Output: impossible
 
-Input: 1 27 27
-Analysis:
-1 + 27 + 27 = 55
-(1 + 27) * 27 = 702
-1 27 27 are all too small
-Output: impossible
 
-Input: 1 28 28
 Analysis:
-1 + 28 + 28 = 57
-(1 + 28) * 28 = 764
-1 28 28 are all too small
+48 is not equal to 24
 Output: impossible
 
-Input: 1 29 29
-Analysis:
-1 + 29 + 29 = 58
-(1 + 29) * 29 = 816
-1 29 29 are all too small
-Output: impossible
 
-Input: 1 30 30
 Analysis:
-1 + 30 + 30 = 61
-(1 + 30) * 30 = 900
-1 30 30 are all too small
+-22 is not equal to 24
 Output: impossible
 
 
 node:
-[{'id': 23, 'answer': '11 * 3 = 33 (left: 33)', 'value': 'likely', 'parent_node': 8, 'ancestor_value': 21.0}, {'id': 27, 'answer': '12 - 2 = 10 (left: 10)', 'value': 'likely', 'parent_node': 11, 'ancestor_value': 21.0}, {'id': 29, 'answer': '2 / 12 = 0.16666666666666666 (left: 1 2)', 'value': 'likely', 'parent_node': 11, 'ancestor_value': 21.0}, {'id': 30, 'answer': '12 / 2 = 6.00000000000000132458001130137780826278387475823162769373126833139301022706042808333473229508198927936507812500000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 (left: 6.00000000000000132458001130137780826278387475823162769373126833139301022706042808333473229508198927936507812500000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000)', 'value': 'likely', 'parent_node': 11, 'ancestor_value': 21.0}, {'id': 21, 'answer': '3 + 11 = 14 (left: 14)', 'value': 'impossible', 'parent_node': 8, 'ancestor_value': 21.0}, {'id': 22, 'answer': '11 - 3 = 8 (left: 8)', 'value': 'impossible', 'parent_node': 8, 'ancestor_value': 21.0}, {'id': 24, 'answer': '3 / 11 = 0.2727272727272727 (left: 0.2727272727272727)', 'value': 'impossible', 'parent_node': 8, 'ancestor_value': 21.0}, {'id': 25, 'answer': '11 / 3 = 3.6666666666666664 (left: 3.6666666666666664)', 'value': 'impossible', 'parent_node': 8, 'ancestor_value': 21.0}, {'id': 26, 'answer': '12 + 2 = 14 (left: 14)', 'value': 'impossible', 'parent_node': 11, 'ancestor_value': 21.0}, {'id': 28, 'answer': '12 * 2 = 24 (left: 24)', 'value': 'impossible', 'parent_node': 11, 'ancestor_value': 21.0}, {'id': 34, 'answer': '12 * 3 = 36 (left: 36)', 'value': 'likely', 'parent_node': 7, 'ancestor_value': 2.0}, {'id': 31, 'answer': '3 + 12 = 15 (left: 15)', 'value': 'impossible', 'parent_node': 7, 'ancestor_value': 2.0}, {'id': 32, 'answer': '12 / 3 = 4 (left: 4)', 'value': 'impossible', 'parent_node': 7, 'ancestor_value': 2.0}, {'id': 33, 'answer': '3 - 12 = -9 (left: -9)', 'value': 'impossible', 'parent_node': 7, 'ancestor_value': 2.0}, {'id': 35, 'answer': '12 - 3 = 9 (left: 9)', 'value': 'impossible', 'parent_node': 7, 'ancestor_value': 2.0}]
+[{'id': 21, 'answer': '1 + 15 = 16 (left: 16)', 'value': 'impossible', 'parent_node': 17, 'ancestor_value': 20.001}, {'id': 22, 'answer': '15 - 1 = 14 (left: 14)', 'value': 'impossible', 'parent_node': 17, 'ancestor_value': 20.001}, {'id': 23, 'answer': '1 * 15 = 15 (left: 15)', 'value': 'impossible', 'parent_node': 17, 'ancestor_value': 20.001}, {'id': 24, 'answer': '1 / 15 = 0.06666666666666667 (left: 0.06666666666666667)', 'value': 'impossible', 'parent_node': 17, 'ancestor_value': 20.001}, {'id': 25, 'answer': '15 + 1 = 16 (left: 16)', 'value': 'impossible', 'parent_node': 17, 'ancestor_value': 20.001}, {'id': 26, 'answer': '4 + 12 = 16 (left: 16)', 'value': 'impossible', 'parent_node': 6, 'ancestor_value': 0.002}, {'id': 27, 'answer': '12 - 4 = 8 (left: 8)', 'value': 'impossible', 'parent_node': 6, 'ancestor_value': 0.002}, {'id': 28, 'answer': '4 / 2 = 2 (left: 12)', 'value': 'impossible', 'parent_node': 6, 'ancestor_value': 0.002}, {'id': 29, 'answer': '12 * 2 = 24 (left: 4)', 'value': 'impossible', 'parent_node': 6, 'ancestor_value': 0.002}, {'id': 30, 'answer': '12 - 4 = 8 (left: 8)', 'value': 'impossible', 'parent_node': 6, 'ancestor_value': 0.002}, {'id': 31, 'answer': '2 + 24 = 26 (left: 26)', 'value': 'impossible', 'parent_node': 7, 'ancestor_value': 0.002}, {'id': 32, 'answer': '2 / 24 = 0.08333333333333334 (left: 0.08333333333333334)', 'value': 'impossible', 'parent_node': 7, 'ancestor_value': 0.002}, {'id': 33, 'answer': '24 + 2 = 26 (left: 26)', 'value': 'impossible', 'parent_node': 7, 'ancestor_value': 0.002}, {'id': 34, 'answer': '2 * 24 = 48 (left: 48)', 'value': 'impossible', 'parent_node': 7, 'ancestor_value': 0.002}, {'id': 35, 'answer': '2 - 24 = -22 (left: -22)', 'value': 'impossible', 'parent_node': 7, 'ancestor_value': 0.002}]
 15
 
 
-path: ['11 * 3 = 33 (left: 33)', '12 - 1 = 11 (left: 3 11)', '2 + 1 = 3 (left: 3 1 12)', '(left: 1 1 2 12)']
+path: ['1 + 15 = 16 (left: 16)', '13 + 2 = 15 (left: 1 15)', '1 + 12 = 13 (left: 1 2 13)', '(left: 1 1 2 12)']
 
 
-['11 * 3 = 33 (left: 33)', '12 - 1 = 11 (left: 3 11)', '2 + 1 = 3 (left: 3 1 12)', '(left: 1 1 2 12)']
-((12 - 1) * (2 + 1))
+['1 + 15 = 16 (left: 16)', '13 + 2 = 15 (left: 1 15)', '1 + 12 = 13 (left: 1 2 13)', '(left: 1 1 2 12)']
+(1 + ((1 + 12) + 2))
 
 
 Answer: 
-((12 - 1) * (2 + 1))
+(1 + ((1 + 12) + 2))
 

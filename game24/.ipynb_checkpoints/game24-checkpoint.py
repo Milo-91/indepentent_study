@@ -80,8 +80,11 @@ Input: {input}
 '''
 
 value_prompt = '''Evaluate if given numbers can reach 24 (sure/likely/impossible)
-below are several examples, and generate only one set of below output
-in the end must be sure, likely, or impossible, choose one
+sure means these numbers or this number can reach 24
+likely means these numbers or this number have or has the probability to reach 24
+impossible means these numbers or this number can't reach 24
+below are several sets of examples, and you can generate only one set of the below examples according to the Input
+Output must be sure, likely, or impossible, choose one
 Input: 4 4 10
 Analysis:
 4 + 4 + 10 = 8 + 10 = 18
