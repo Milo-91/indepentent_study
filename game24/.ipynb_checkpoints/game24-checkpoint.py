@@ -80,21 +80,8 @@ Input: {input}
 '''
 
 value_prompt = '''Evaluate if given numbers can reach 24 (sure/likely/impossible)
-below are 10 examples, and generate only one set of below output
+below are several examples, and generate only one set of below output
 in the end must be sure, likely, or impossible, choose one
-Input: 10 14
-Analysis:
-10 + 14 = 24
-Output: sure
-
-Input: 11 12
-Analysis:
-11 + 12 = 23
-12 - 11 = 1
-11 * 12 = 132
-11 / 12 = 0.91
-Output: impossible
-
 Input: 4 4 10
 Analysis:
 4 + 4 + 10 = 8 + 10 = 18
@@ -135,6 +122,31 @@ Analysis:
 1 3 3 are all too small
 Output: impossible
 
+Input: 0 4 6
+Analysis:
+0 + 4 + 6 = 10
+0 * 4 * 6 = 0
+0 + 4 * 6 = 24
+Output: sure
+
+Input: 10 14
+Analysis:
+10 + 14 = 24
+Output: sure
+
+Input: 24 0
+Analysis:
+24 + 0 = 24 
+Output: sure
+
+Input: 11 12
+Analysis:
+11 + 12 = 23
+12 - 11 = 1
+11 * 12 = 132
+11 / 12 = 0.91
+Output: impossible
+
 Input: 24
 Analysis:
 24 is equal to 24
@@ -145,8 +157,12 @@ Analysis:
 10 is not equal to 24
 Output: impossible
 
-Input: {input}
+Input: -1
 Analysis:
+-1 is not equal to 24
+Output: impossible
+
+Input: {input}
 '''
 
 value_last_step_prompt = '''Use numbers and basic arithmetic operations (+ - * /) to obtain 24. Given an input and an answer, give a judgement (sure/impossible) if the answer is correct, i.e. it uses each input exactly once and no other numbers, and reach 24.

@@ -14,8 +14,8 @@ from lmformatenforcer import CharacterLevelParser, RegexParser
 from lmformatenforcer.integrations.vllm import build_vllm_logits_processor, build_vllm_token_enforcer_tokenizer_data
 ListOrStrList = Union[str, List[str]]
 
-def vllm_with_character_level_parser(llm, prompt: ListOrStrList, tokenizer_data, parser: Optional[CharacterLevelParser] = None) -> ListOrStrList:   
-    sampling_params = SamplingParams(temperature = parameters.temperature, max_tokens = parameters.n_ctx)
+def vllm_with_character_level_parser(llm, prompt: ListOrStrList, tokenizer_data, temperature, parser: Optional[CharacterLevelParser] = None) -> ListOrStrList:   
+    sampling_params = SamplingParams(temperature = temperature, max_tokens = parameters.n_ctx)
     if parser:
         logits_processor = build_vllm_logits_processor(tokenizer_data, parser)
         sampling_params.logits_processors = [logits_processor]
@@ -72,7 +72,7 @@ def get_llm():
     return llm
 
 
-def call_llm(llm, question, pattern_format):
+def call_llm(llm, question, pattern_format, temperature):
     # llama-cpp
     '''
     response = llm(
@@ -112,7 +112,7 @@ def call_llm(llm, question, pattern_format):
     # vllm
 
     tokenizer_data = build_vllm_token_enforcer_tokenizer_data(llm)
-    output = vllm_with_character_level_parser(llm, question, tokenizer_data, RegexParser(pattern_format))
+    output = vllm_with_character_level_parser(llm, question, tokenizer_data, temperature, RegexParser(pattern_format))
 
     
     return output

@@ -64,7 +64,7 @@ def Generator(llm, nodes: dict):
         
         pattern = r"-?[0-9\.]+[\+\-\*\/ ]*-?[0-9\.]+[\s]*=[\s]*-?[0-9\.]+"
         patterns = '\n'.join([pattern for i in range(parameters.k)])
-        response = llm_function.call_llm(llm, input_string, patterns)
+        response = llm_function.call_llm(llm, input_string, patterns, parameters.generator_temperature)
 
         print('\ngenerator response: \n' + response + '\n')
         record.Record_txt(parameters.file_name, '\nGenerator response:\n' + response + '\n\n')
@@ -79,9 +79,13 @@ def Generator(llm, nodes: dict):
 def Parse_value_response(response):
     #if can't parse return None
     answer = response.strip().split('\n')[-1]
-    if ('sure' not in answer) and ('likely' not in answer) and ('impossible' not in answer):
-        answer = None
-    return answer
+    pattern = r"Output: ((?:sure)|(?:likely)|(?:impossible))"
+    answer = re.match(pattern, answer)
+    if answer:
+        return answer.group(1)
+    else:
+        return None
+    
 
 
 def Evaluator(llm, nodes: dict, t):
@@ -96,8 +100,8 @@ def Evaluator(llm, nodes: dict, t):
         input_string = value_prompt.format(input = propose_response)
         print('input:\n' + input_string)
 
-        pattern = r"[\w|\W]*Output: ((?:sure)|(?:likely)|(?:impossible))"
-        response = llm_function.call_llm(llm, input_string, pattern)
+        pattern = r"Analysis:[\w|\W]*[\n]Output: ((?:sure)|(?:likely)|(?:impossible))"
+        response = llm_function.call_llm(llm, input_string, pattern, parameters.evaluator_temperature)
         
         print('evaluator: \n' + response + '\n')
         record.Record_txt(parameters.file_name, '\n' + response + '\n\n')

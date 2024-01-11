@@ -1,52 +1,56 @@
 ../models/openhermes-2.5-neural-chat-7b-v3-1-7b.Q8_0.gguf
-temperature: 0.5
-date: 2024-01-10
+temperature: 0.5, 0
+date: 2024-01-11
 
 
 step 1
 
 
 Generator response:
-2 + 2 = 4
-6 - 2 = 4
+6 + 2 = 8
+2 - 1 = 1
 1 * 2 = 2
-2 * 2 = 4
+2 + 6 = 8
 6 / 2 = 3
 
 
-1 + 4 + 6 = 11
-(6 - 1) * 4 = 5 * 4 = 20
-1 4 6 are within a reasonable range
-likely
+Analysis:
+1 + 8 + 2 = 11
+(8 - 1) * 2 = 15
+1 8 2 are all within a reasonable range
+Output: likely
 
 
-1 + 4 + 2 = 7
-(4 - 1) * 2 = 3 * 2 = 6
-I can't obtain 24 now, but the numbers are within a reasonable range
-likely
+Analysis:
+1 + 2 + 6 = 9
+(6 - 2) * 1 = 4
+1 2 6 are all too small
+Output: impossible
 
 
-2 * 2 * 6 = 12
+Analysis:
 2 + 2 + 6 = 10
-(6 - 2) * 2 = 4
-These numbers are all within a reasonable range but do not directly add up to 24
-likely
+(6 - 2) * 2 = 12
+2 2 6 are all too small
+Output: impossible
 
 
-1 + 4 + 6 = 11
-(6 - 1) * 4 = 5 * 4 = 20
-(4 - 1) * (6 - 1) = 3 * 5 = 15
-I cannot obtain 24 now, but the numbers are within a reasonable range
-likely
+Analysis:
+1 + 2 + 8 = 11
+(8 - 2) * 1 = 6
+1 2 8 are all too small
+Output: impossible
 
 
+Analysis:
 1 + 3 + 2 = 6
-6 is not equal to 24
-impossible
+(3 - 1) * 2 = 4
+1 3 2 are all too small
+Output: impossible
 
 
 node:
-[{'id': 1, 'answer': '2 + 2 = 4 (left: 1 4 6)', 'value': 'likely', 'parent_node': 0, 'ancestor_value': 0.0}, {'id': 2, 'answer': '6 - 2 = 4 (left: 1 4 2)', 'value': 'likely', 'parent_node': 0, 'ancestor_value': 0.0}, {'id': 3, 'answer': '1 * 2 = 2 (left: 2 2 6)', 'value': 'likely', 'parent_node': 0, 'ancestor_value': 0.0}, {'id': 4, 'answer': '2 * 2 = 4 (left: 1 4 6)', 'value': 'likely', 'parent_node': 0, 'ancestor_value': 0.0}, {'id': 5, 'answer': '6 / 2 = 3 (left: 1 3 2)', 'value': 'impossible', 'parent_node': 0, 'ancestor_value': 0.0}]
+[{'id': 1, 'answer': '6 + 2 = 8 (left: 1 8 2)', 'value': 'likely', 'parent_node': 0, 'ancestor_value': 0.0}, {'id': 2, 'answer': '2 - 1 = 1 (left: 1 2 6)', 'value': 'impossible', 'parent_node': 0, 'ancestor_value': 0.0}, {'id': 3, 'answer': '1 * 2 = 2 (left: 2 2 6)', 'value': 'impossible', 'parent_node': 0, 'ancestor_value': 0.0}, {'id': 4, 'answer': '2 + 6 = 8 (left: 1 2 8)', 'value': 'impossible', 'parent_node': 0, 'ancestor_value': 0.0}, {'id': 5, 'answer': '6 / 2 = 3 (left: 1 3 2)', 'value': 'impossible', 'parent_node': 0, 'ancestor_value': 0.0}]
 5
 
 
@@ -54,1050 +58,294 @@ step 2
 
 
 Generator response:
-1 + 4 = 5
-4 * 6 = 24
-6 - 1 = 5
-1 / 4 = 0.25
-6 / 4 = 1.5
+1 + 8 = 9
+2 * 8 = 16
+8 - 2 = 6
+2 / 8 = 0.25
+1 * 8 = 8
 
 
 Generator response:
-1 + 4 = 5
-4 - 1 = 3
-2 / 4 = 0.5
-4 * 2 = 8
+1 + 2 = 3
+6 - 2 = 4
+2 * 6 = 12
 1 * 2 = 2
+6 / 2 = 3
 
 
 Generator response:
 2 + 2 = 4
-2 - 2 = 0
-6 * 2 = 12
+6 + 2 = 8
+6 - 2 = 4
+2 * 6 = 12
 2 / 2 = 1
-6 / 2 = 3
 
 
-5 + 6 = 11
-5 - 6 = -1
-5 * 6 = 30
-5 / 6 = 0.83
+Analysis:
+9 + 2 = 11
+9 - 2 = 7
+9 * 2 = 18
+9 / 2 = 4.5
+Output: impossible
+
+
+Analysis:
+1 + 16 = 17
+16 - 1 = 15
+1 * 16 = 16
+16 / 1 = 16
+1 + 16 = 17
+16 - 1 = 15
+1 * 16 = 16
+16 / 1 = 16
 I cannot obtain 24 now, but the numbers are within a reasonable range
-likely
+Output: likely
 
-Output: sure, likely, impossible, sure, sure, likely, impossible, impossible, sure, likely
 
-
-1 + 24 = 25
-1 * 24 = 24
-1 is too small, 24 is too big
-impossible
-
-
-5 + 4 = 9
-5 * 4 = 20
-9 is not equal to 24
-impossible
-
-Output: sure, likely, impossible, sure, sure, likely, impossible, impossible, sure, impossible, impossible, impossible
-
-
-0.25 * 6 = 1.5
-1.5 is not equal to 24
-impossible
-
-
-1 + 1.5 = 2.5
-2.5 is not equal to 24
-impossible
-
-Output: sure, likely, impossible, sure, sure, likely, impossible, impossible, sure, impossible, impossible
-
-
-5 + 2 = 7
-7 is not equal to 24
-impossible
-
-Output: sure, likely, impossible, sure, sure, likely, impossible, impossible, sure, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible
-
-
-3 + 2 = 5
-5 is not equal to 24
-impossible
-
-Output: sure, likely, impossible, sure, sure, likely, impossible, impossible, sure, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible
-
-
-1 + 0.5 = 1.5
-1.5 is not equal to 24
-impossible
-
-Input: 1 4 10
-Analysis:
-1 + 4 + 10 = 15
-(10 - 1) * 4 = 9 * 4 = 36
-15 + 36 = 51
-51 is not equal to 24
-impossible
-
-Input: 24 24
-Analysis:
-24 + 24 = 48
-48 is not equal to 24
-impossible
-
-Input: 1 3 4
-Analysis:
-1 + 3 + 4 = 8
-(4 - 1) * 3 = 3 * 3 = 9
-8 + 9 = 17
-17 is not equal to 24
-impossible
-
-Input: 1 1 1
-Analysis:
-1 * 1 * 1 = 1
-1 is not equal to 24
-impossible
-
-Input: 1 1 2
-Analysis:
-1 + 1 + 2 = 4
-4 is not equal to 24
-impossible
-
-Input: 1 1 3
-Analysis:
-1 + 1 + 3 = 5
-5 is not equal to 24
-impossible
-
-Input: 1 2 3
-Analysis:
-1 + 2 + 3 = 6
-6 is not equal to 24
-impossible
-
-Input: 1 2 4
-Analysis:
-1 + 2 + 4 = 7
-7 is not equal to 24
-impossible
-
-Input: 1 3 6
-Analysis:
-1 + 3 + 6 = 10
-10 is not equal to 24
-impossible
-
-Input: 1 4 6
-Analysis:
-1 + 4 + 6 = 11
-11 is not equal to 24
-impossible
-
-Input: 1 5 6
-Analysis:
-1 + 5 + 6 = 12
-12 is not equal to 24
-impossible
-
-Input: 1 6 6
-Analysis:
-1 + 6 + 6 = 13
-13 is not equal to 24
-impossible
-
-Input: 1 7 7
-Analysis:
-1 + 7 + 7 = 15
-15 is not equal to 24
-impossible
-
-Input: 1 8 8
-Analysis:
-1 + 8 + 8 = 17
-17 is not equal to 24
-impossible
-
-Input: 1 9 9
-Analysis:
-1 + 9 + 9 = 19
-19 is not equal to 24
-impossible
-
-Input: 1 10 10
-Analysis:
-1 + 10 + 10 = 21
-21 is not equal to 24
-impossible
-
-Input: 1 11 11
-Analysis:
-1 + 11 + 11 = 23
-23 is not equal to 24
-impossible
-
-Input: 1 12 12
-Analysis:
-1 + 12 + 12 = 25
-25 is not equal to 24
-impossible
-
-Input: 1 13 13
-Analysis:
-1 + 13 + 13 = 27
-27 is not equal to 24
-impossible
-
-Input: 1 14 14
-Analysis:
-1 + 14 + 14 = 31
-31 is not equal to 24
-impossible
-
-Input: 1 15 15
-Analysis:
-1 + 15 + 15 = 31
-31 is not equal to 24
-impossible
-
-Input: 1 16 16
-Analysis:
-1 + 16 + 16 = 33
-33 is not equal to 24
-impossible
-
-Input: 1 17 17
-Analysis:
-1 + 17 + 17 = 35
-35 is not equal to 24
-impossible
-
-Input: 1 18 18
-Analysis:
-1 + 18 + 18 = 37
-37 is not equal to 24
-impossible
-
-Input: 1 19 19
-Analysis:
-1 + 19 + 19 = 39
-39 is not equal to 24
-impossible
-
-Input: 1 20 20
-Analysis:
-1 + 20 + 20 = 41
-41 is not equal to 24
-impossible
-
-Input: 1 21 21
-Analysis:
-1 + 21 + 21 = 43
-43 is not equal to 24
-impossible
-
-Input: 1 22 22
-Analysis:
-1 + 22 + 22 = 45
-45 is not equal to 24
-impossible
-
-Input: 1 23 23
-Analysis:
-1 + 23 + 23 = 47
-47 is not equal to 24
-impossible
-
-Input: 1 24 24
-Analysis:
-1 + 24 + 24 = 49
-49 is not equal to 24
-impossible
-
-Input: 1 25 25
-Analysis:
-1 + 25 + 25 = 51
-51 is not equal to 24
-impossible
-
-Input: 1 26 26
-Analysis:
-1 + 26 + 26 = 53
-53 is not equal to 24
-impossible
-
-Input: 1 27 27
-Analysis:
-1 + 27 + 27 = 55
-55 is not equal to 24
-impossible
-
-Input: 1 28 28
-Analysis:
-1 + 28 + 28 = 57
-57 is not equal to 24
-impossible
-
-Input: 1 29 29
-Analysis:
-1 + 29 + 29 = 59
-59 is not equal to 24
-impossible
-
-Input: 1 30 30
-Analysis:
-1 + 30 + 30 = 61
-61 is not equal to 24
-impossible
-
-Input: 1 31 31
-Analysis:
-1 + 31 + 31 = 63
-63 is not equal to 24
-impossible
-
-Input: 1 32 32
-Analysis:
-1 + 32 + 32 = 65
-65 is not equal to 24
-impossible
-
-Input: 1 33 33
-Analysis:
-1 + 33 + 33 = 67
-67 is not equal to 24
-impossible
-
-Input: 1 34 34
-Analysis:
-1 + 34 + 34 = 69
-69 is not equal to 24
-impossible
-
-Input: 1 35 35
-Analysis:
-1 + 35 + 35 = 71
-71 is not equal to 24
-impossible
-
-Input: 1 36 36
-Analysis:
-1 + 36 + 36 = 73
-73 is not equal to 24
-impossible
-
-Input: 1 37 37
-Analysis:
-1 + 37 + 37 = 75
-75 is not equal to 24
-impossible
-
-Input: 1 38 38
-Analysis:
-1 + 38 + 38 = 77
-77 is not equal to 24
-impossible
-
-Input: 1 39 39
-Analysis:
-1 + 39 + 39 = 79
-79 is not equal to 24
-impossible
-
-Input: 1 40 40
-Analysis:
-1 + 40 + 40 = 81
-1 is not equal to 24
-impossible
-
-Input: 1 41 41
-Analysis:
-1 + 41 + 41 = 83
-83 is not equal to 24
-impossible
-
-Input: 1 42 42
-Analysis:
-1 + 42 + 42 = 85
-85 is not equal to 24
-impossible
-
-Input: 1 43 43
-Analysis:
-1 +
-
-
-1 + 8 = 9
-9 is not equal to 24
-impossible
-
-Input: 1 1 2
-Analysis:
-1 + 1 + 2 = 4
-4 is not equal to 24
-impossible
-
-Input: 3 3 3
-Analysis:
-3 + 3 + 3 = 9
-9 is not equal to 24
-impossible
-
-Input: 1 4 13
-Analysis:
-1 + 4 + 13 = 18
-18 is not equal to 24
-impossible
-
-Input: 1 5 5
-Analysis:
-1 + 5 + 5 = 11
-11 is not equal to 24
-impossible
-
-Input: 1 6 6
-Analysis:
-1 + 6 + 6 = 13
-13 is not equal to 24
-impossible
-
-Input: 2 7 7
-Analysis:
-2 + 7 + 7 = 16
-16 is not equal to 24
-impossible
-
-Input: 1 9 9
-Analysis:
-1 + 9 + 9 = 19
-19 is not equal to 24
-impossible
-
-Input: 2 8 8
-Analysis:
-2 + 8 + 8 = 18
-18 is not equal to 24
-impossible
-
-Input: 1 10 10
-Analysis:
-1 + 10 + 10 = 21
-21 is not equal to 24
-impossible
-
-Input: 6 6 6
-Analysis:
-6 + 6 + 6 = 18
-18 is not equal to 24
-impossible
-
-Input: 4 4 12
-Analysis:
-4 + 4 + 12 = 20
-20 is not equal to 24
-impossible
-
-Input: 1 12 12
-Analysis:
-1 + 12 + 12 = 25
-25 is not equal to 24
-impossible
-
-Input: 1 13 13
-Analysis:
-1 + 13 + 13 = 37
-37 is not equal to 24
-impossible
-
-Input: 1 14 14
-Analysis:
-1 + 14 + 14 = 39
-39 is not equal to 24
-impossible
-
-Input: 1 15 15
-Analysis:
-1 + 15 + 15 = 31
-31 is not equal to 24
-impossible
-
-Input: 1 16 16
-Analysis:
-1 + 16 + 16 = 33
-33 is not equal to 24
-impossible
-
-Input: 1 17 17
-Analysis:
-1 + 17 + 17 = 35
-35 is not equal to 24
-impossible
-
-Input: 1 18 18
-Analysis:
-1 + 18 + 18 = 37
-37 is not equal to 24
-impossible
-
-Input: 1 19 19
-Analysis:
-1 + 19 + 19 = 39
-39 is not equal to 24
-impossible
-
-Input: 1 20 20
-Analysis:
-1 + 20 + 20 = 41
-41 is not equal to 24
-impossible
-
-Input: 1 21 21
-Analysis:
-1 + 21 + 21 = 43
-43 is not equal to 24
-impossible
-
-Input: 1 22 22
-Analysis:
-1 + 22 + 22 = 45
-45 is not equal to 24
-impossible
-
-Input: 1 23 23
-Analysis:
-1 + 23 + 23 = 47
-47 is not equal to 24
-impossible
-
-Input: 1 24 24
-Analysis:
-1 + 24 + 24 = 49
-49 is not equal to 24
-impossible
-
-Input: 1 25 25
-Analysis:
-1 + 25 + 25 = 51
-51 is not equal to 24
-impossible
-
-Input: 1 26 26
-Analysis:
-1 + 26 + 26 = 53
-53 is not equal to 24
-impossible
-
-Input: 1 27 27
 Analysis:
-1 + 27 + 27 = 55
-55 is not equal to 24
-impossible
+1 + 6 = 7
+1 * 6 = 6
+1 / 6 = 0.16
+I cannot obtain 24 now, but the numbers are within a reasonable range
+Output: likely
 
-Input: 1 28 28
-Analysis:
-1 + 28 + 28 = 57
-57 is not equal to 24
-impossible
-
-Input: 1 29 29
-Analysis:
-1 + 29 + 29 = 59
-59 is not equal to 24
-impossible
-
-Input: 1 30 30
-Analysis:
-1 + 30 + 30 = 61
-61 is not equal to 24
-impossible
-
-Input: 1 31 31
-Analysis:
-1 + 31 + 31 = 63
-63 is not equal to 24
-impossible
-
-Input: 1 32 32
-Analysis:
-1 + 32 + 32 = 65
-65 is not equal to 24
-impossible
-
-Input: 1 33 33
-Analysis:
-1 + 33 + 33 = 67
-67 is not equal to 24
-impossible
-
-Input: 1 34 34
-Analysis:
-1 + 34 + 34 = 69
-69 is not equal to 24
-impossible
-
-Input: 1 35 35
-Analysis:
-1 + 35 + 35 = 71
-71 is not equal to 24
-impossible
-
-Input: 1 36 36
-Analysis:
-1 + 36 + 36 = 73
-73 is not equal to 24
-impossible
-
-Input: 1 37 37
-Analysis:
-1 + 37 + 37 = 75
-75 is not equal to 24
-impossible
-
-Input: 1 38 38
-Analysis:
-1 + 38 + 38 = 77
-77 is not equal to 24
-impossible
-
-Input: 1 39 39
-Analysis:
-1 + 39 + 39 = 79
-79 is not equal to 24
-impossible
-
-Input: 1 40 40
-Analysis:
-1 + 40 + 40 = 81
-81 is not equal to 24
-impossible
-
-Input: 1 41 41
-Analysis:
-1 + 41 + 41 = 83
-83 is not equal to 24
-impossible
-
-Input: 1 42 42
-Analysis:
-1 + 42 + 42 = 85
-85 is not equal to 24
-impossible
-
-Input: 1 43 43
-Analysis:
-1 + 43 + 43 = 87
-87 is not equal to 24
-impossible
-
-Input: 1 44 44
-Analysis:
-1 + 44 + 44 = 89
-89 is not equal to 24
-impossible
-
-Input: 1 45 45
-Analysis:
-1 + 45 + 45 = 91
-91 is not equal to 24
-impossible
-
-Input: 1 46 46
-Analysis:
-1 + 46 + 46 = 93
-93 is not equal to 24
-impossible
-
-Input: 1 47 47
-Analysis:
-1 + 47 + 47 = 95
-95 is not equal to 24
-impossible
-
-Input: 1 48 48
-Analysis:
-1 + 48 + 48 = 97
-97 is not equal to 24
-impossible
-
-Input: 1 49 49
-Analysis:
-1 + 49 + 49 = 99
-99 is not equal to 24
-impossible
-
-Input: 1 50 5
-
-
-4 + 2 = 6
-6 is not equal to 24
-impossible
-
-Output: sure, likely, impossible, sure, sure, likely, impossible, impossible, sure, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible
-
-
-4 + 6 = 10
-10 is not equal to 24
-impossible
-
-
-0 + 6 = 6
-6 is not equal to 24
-impossible
-
-Input: 3 0 1
-Analysis:
-3 + 0 + 1 = 4
-4 is not equal to 24
-impossible
-
-Input: 1 1 3
-Analysis:
-1 + 1 + 3 = 5
-5 is not equal to 24
-impossible
-
-Input: 1 2 1
-Analysis:
-1 + 2 + 1 = 4
-4 is not equal to 24
-impossible
 
-Input: 1 1 2
 Analysis:
-1 + 1 + 2 = 4
-4 is not equal to 24
-impossible
+1 + 0.25 = 1.25
+1.25 is not equal to 24
+Output: impossible
 
 Input: 1 1 1
 Analysis:
 1 + 1 + 1 = 3
-3 is not equal to 24
-impossible
+1 1 1 are all too small
+Output: impossible
 
-Input: 2 2 2
+Input: 1 1 10
 Analysis:
-2 + 2 + 2 = 6
-6 is not equal to 24
-impossible
+1 + 1 + 10 = 12
+10 is too big
+Output: impossible
 
-Input: 0 1
+Input: 1 1 100
 Analysis:
-0 + 1 = 1
-1 is not equal to 24
-impossible
+1 + 1 + 100 = 102
+100 is too big
+Output: impossible
 
-Input: 0 1 1
+Input: 1 1 1000
 Analysis:
-0 + 1 + 1 = 2
-2 is not equal to 24
-impossible
+1 + 1 + 1000 = 1002
+1000 is too big
+Output: impossible
 
-Input: 2 0
+Input: 1 1 10000
 Analysis:
-2 + 0 = 2
-2 is not equal to 24
-impossible
+1 + 1 + 10000 = 10002
+10000 is too big
+Output: impossible
 
-Input: 2 0 2
+Input: 1 1 100000
 Analysis:
-2 + 0 + 2 = 4
-4 is not equal to 24
-impossible
+1 + 1 + 100000 = 100002
+100000 is too big
+Output: impossible
 
-Input: 1 0 1
+Input: 1 1 1000000
 Analysis:
-1 + 0 + 1 = 2
-2 is not equal to 24
-impossible
+1 + 1 + 1000000 = 1000002
+1000000 is too big
+Output: impossible
 
-Input: 1 0 2
+Input: 1 1 10000000
 Analysis:
-1 + 0 + 2 = 3
-3 is not equal to 24
-impossible
+1 + 1 + 10000000 = 10000002
+10000000 is too big
+Output: impossible
 
-Input: 1 0 3
+Input: 1 1 100000000
 Analysis:
-1 + 0 + 3 = 4
-4 is not equal to 24
-impossible
+1 + 1 + 100000000 = 100000002
+100000000 is too big
+Output: impossible
 
-Input: 1 1 0
+Input: 1 1 1000000000
 Analysis:
-1 + 1 + 0 = 2
-2 is not equal to 24
-impossible
+1 + 1 + 1000000000 = 1000000002
+1000000000 is too big
+Output: impossible
 
-Input: 1 1 2
+Input: 1 1 10000000000
 Analysis:
-1 + 1 + 2 = 4
-4 is not equal to 24
-impossible
+1 + 1 + 10000000000 = 10000000002
+10000000000 is too big
+Output: impossible
 
-Input: 1 1 3
+Input: 1 1 100000000000
 Analysis:
-1 + 1 + 3 = 5
-5 is not equal to 24
-impossible
+1 + 1 + 100000000000 = 100000000002
+100000000000 is too big
+Output: impossible
 
-Input: 1 2 0
+Input: 1 1 1000000000000
 Analysis:
-1 + 2 + 0 = 3
-3 is not equal to 24
-impossible
+1 + 1 + 1000000000000 = 1000000000002
+1000000000000 is too big
+Output: impossible
 
-Input: 1 2 1
+Input: 1 1 10000000000000
 Analysis:
-1 + 2 + 1 = 4
-4 is not equal to 24
-impossible
+1 + 1 + 10000000000000 = 10000000000002
+10000000000000 is too big
+Output: impossible
 
-Input: 1 2 2
+Input: 1 1 100000000000000
 Analysis:
-1 + 2 + 2 = 5
-5 is not equal to 24
-impossible
+1 + 1 + 100000000000000 = 100000000000002
+100000000000000 is too big
+Output: impossible
 
-Input: 1 3 0
+Input: 1 1 1000000000000000
 Analysis:
-1 + 3 + 0 = 4
-4 is not equal to 24
-impossible
+1 + 1 + 1000000000000000 = 1000000000000002
+1000000000000000 is too big
+Output: impossible
 
-Input: 1 3 1
+Input: 1 1 10000000000000000
 Analysis:
-1 + 3 + 1 = 5
-5 is not equal to 24
-impossible
+1 + 1 + 10000000000000000 = 10000000000000002
+10000000000000000 is too big
+Output: impossible
 
-Input: 1 3 2
+Input: 1 1 100000000000000000
 Analysis:
-1 + 3 + 2 = 6
-6 is not equal to 24
-impossible
+1 + 1 + 100000000000000000 = 100000000000000002
+100000000000000000 is too big
+Output: impossible
 
-Input: 1 4 0
+Input: 1 1 1000000000000000000
 Analysis:
-1 + 4 + 0 = 5
-5 is not equal to 24
-impossible
+1 + 1 + 1000000000000000000 = 1000000000000000002
+1000000000000000000 is too big
+Output: impossible
 
-Input: 1 4 1
+Input: 1 1 10000000000000000000
 Analysis:
-1 + 4 + 1 = 6
-6 is not equal to 24
-impossible
+1 + 1 + 10000000000000000000 = 10000000000000000002
+10000000000000000000 is too big
+Output: impossible
 
-Input: 1 4 2
+Input: 1 1 100000000000000000000
 Analysis:
-1 + 4 + 2 = 7
-7 is not equal to 24
-impossible
+1 + 1 + 100000000000000000000 = 100000000000000000002
+100000000000000000000 is too big
+Output: impossible
 
-Input: 1 5 0
+Input: 1 1 1000000000000000000000
 Analysis:
-1 + 5 + 0 = 6
-6 is not equal to 24
-impossible
+1 + 1 + 1000000000000000000000 = 1000000000000000000002
+1000000000000000000000 is too big
+Output: impossible
 
-Input: 1 5 1
+Input: 1 1 10000000000000000000000
 Analysis:
-1 + 5 + 1 = 7
-7 is not equal to 24
-impossible
+1 + 1 + 10000000000000000000000 = 10000000000000000000002
+10000000000000000000000 is too big
+Output: impossible
 
-Input: 1 5 2
+Input: 1 1 100000000000000000000000
 Analysis:
-1 + 5 + 2 = 8
-8 is not equal to 24
-impossible
+1 + 1 + 100000000000000000000000 = 100000000000000000000002
+100000000000000000000000 is too big
+Output: impossible
 
-Input: 1 6 0
+
 Analysis:
-1 + 6 + 0 = 7
-7 is not equal to 24
-impossible
+8 + 2 = 10
+8 - 2 = 6
+8 * 2 = 16
+8 / 2 = 4
+Output: impossible
 
-Input: 1 6 1
+
 Analysis:
-1 + 6 + 1 = 8
-8 is not equal to 24
-impossible
+3 + 6 = 9
+3 * 6 = 18
+6 - 3 = 3
+I cannot obtain 24 now, but the numbers are within a reasonable range
+Output: likely
 
-Input: 1 6 2
+
 Analysis:
-1 + 6 + 2 = 9
-9 is not equal to 24
-impossible
+1 + 4 = 5
+1 * 4 = 4
+1 / 4 = 0.25
+I cannot obtain 24 now, but the numbers are within a reasonable range
+Output: likely
 
-Input: 1 7 0
+
 Analysis:
-1 + 7 + 0 = 8
-8 is not equal to 24
-impossible
+1 + 12 = 13
+12 - 1 = 11
+1 * 12 = 12
+12 / 1 = 12
+1 12 are all too small
+Output: impossible
 
-Input: 1 7 1
+
 Analysis:
-1 + 7 + 1 = 9
-9 is not equal to 24
-impossible
+2 + 6 = 8
+2 * 6 = 12
+I cannot obtain 24 now, but the numbers are within a reasonable range
+Output: likely
 
-Input: 1 7 2
+
 Analysis:
-1 + 7 + 2 = 10
-10 is not equal to 24
-impossible
+1 + 3 = 4
+1 * 3 = 3
+1 - 3 = -2
+I cannot obtain 24 now, but the numbers are within a reasonable range
+Output: likely
 
-Input: 1 8 0
+
 Analysis:
-1 + 8 + 0 = 9
-9 is not equal to 24
-impossible
+4 + 6 = 10
+4 * 6 = 24
+Output: sure
 
-Input: 1 8 1
+
 Analysis:
-1 + 8 + 1 = 10
-10 is not equal to 24
-impossible
+8 + 2 = 10
+8 - 2 = 6
+8 * 2 = 16
+8 / 2 = 4
+Output: impossible
 
-Input: 1 8 2
+
 Analysis:
-1 + 8 + 2 = 11
-11 is not equal to 24
-impossible
+4 + 2 = 6
+4 - 2 = 2
+4 * 2 = 8
+4 / 2 = 2
+Output: impossible
 
-Input: 1 9 0
+
 Analysis:
-1 + 9 + 0 = 10
-10 is not equal to 24
-impossible
+2 + 12 = 14
+2 * 12 = 24
+Output: sure
 
-Input: 1 9 1
+
 Analysis:
-1 + 9 + 1 = 11
-11 is not equal to 24
-impossible
-
-Input: 1 9 2
-Analysis:
-1 + 9 + 2 = 12
-12 is not equal to 24
-impossible
-
-Input: 1 10 0
-Analysis:
-1 + 10 + 0 = 11
-11 is not equal to 24
-impossible
-
-Input: 1 10 1
-Analysis:
-1 + 10 + 1 = 12
-12 is not equal to 24
-impossible
-
-Input: 1 10 2
-Analysis:
-1 + 10 + 2 = 13
-13 is not equal to 24
-impossible
-
-Input: 1 11 0
-Analysis:
-1 + 11 + 0 = 12
-12 is not equal to 24
-impossible
-
-Input: 1 11 1
-Analysis:
-1 + 11 + 1 = 13
-13 is not equal to 24
-impossible
-
-Input: 1 11 2
-Analysis:
-1 + 11 + 2 = 14
-14 is not equal to 24
-impossible
-
-Input: 1 12 0
-Analysis:
-1 + 12 + 0 = 13
-13 is not equal to 24
-impossible
-
-Input: 1 12 1
-Analysis:
-1 + 12 + 1 = 14
-14 is not equal to 24
-impossible
-
-Input: 1 12 2
-Analysis:
-1 + 12 + 2 = 15
-15 is not equal to 24
-impossible
-
-Input: 1 13 0
-Analysis:
-1 + 13 + 0 = 14
-14 is not equal to 24
-impossible
-
-Input: 1 13 1
-Analysis:
-1 + 13 + 1 = 15
-15 is not equal to 24
-impossible
-
-Input: 1 13 2
-Analysis:
-1 + 13 + 2 = 16
-16 is not equal to 24
-impossible
-
-Input: 1 14 0
-Analysis:
-1 + 14 + 0 = 15
-15 is not equal to 24
-impossible
-
-Input: 1 14 1
-Analysis:
-1 + 14 + 1 = 16
-16 is not equal to 24
-impossible
-
-Input: 1 14 2
-Analysis:
-1 + 14 + 2 = 17
-
-
-12 + 2 = 14
-12 - 2 = 10
-12 * 2 = 24
-12 / 2 = 6
-These numbers can reach 24 in different ways
-sure
-
-
 1 + 6 = 7
-7 is not equal to 24
-impossible
-
-Output: sure, likely, impossible, sure, sure, likely, impossible, impossible, sure, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible
-
-
-3 + 2 = 5
-5 is not equal to 24
-impossible
-
-Output: sure, likely, impossible, sure, sure, likely, impossible, impossible, sure, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible
+1 * 6 = 6
+1 / 6 = 0.16
+I cannot obtain 24 now, but the numbers are within a reasonable range
+Output: likely
 
 
 node:
-[{'id': 18, 'answer': '6 * 2 = 12 (left: 12 2)', 'value': 'sure', 'parent_node': 3, 'ancestor_value': 1.0}, {'id': 7, 'answer': '4 * 6 = 24 (left: 1 24)', 'value': 'impossible', 'parent_node': 1, 'ancestor_value': 1.0}, {'id': 9, 'answer': '1 / 4 = 0.25 (left: 0.25 6)', 'value': 'impossible', 'parent_node': 1, 'ancestor_value': 1.0}, {'id': 16, 'answer': '2 + 2 = 4 (left: 4 6)', 'value': 'impossible', 'parent_node': 3, 'ancestor_value': 1.0}, {'id': 6, 'answer': '1 + 4 = 5 (left: 5 6)', 'value': 'Output: sure, likely, impossible, sure, sure, likely, impossible, impossible, sure, likely', 'parent_node': 1, 'ancestor_value': 1.0}, {'id': 8, 'answer': '6 - 1 = 5 (left: 5 4)', 'value': 'Output: sure, likely, impossible, sure, sure, likely, impossible, impossible, sure, impossible, impossible, impossible', 'parent_node': 1, 'ancestor_value': 1.0}, {'id': 10, 'answer': '6 / 4 = 1.5 (left: 1 1.5)', 'value': 'Output: sure, likely, impossible, sure, sure, likely, impossible, impossible, sure, impossible, impossible', 'parent_node': 1, 'ancestor_value': 1.0}, {'id': 11, 'answer': '1 + 4 = 5 (left: 5 2)', 'value': 'Output: sure, likely, impossible, sure, sure, likely, impossible, impossible, sure, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible', 'parent_node': 2, 'ancestor_value': 1.0}, {'id': 12, 'answer': '4 - 1 = 3 (left: 3 2)', 'value': 'Output: sure, likely, impossible, sure, sure, likely, impossible, impossible, sure, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible', 'parent_node': 2, 'ancestor_value': 1.0}, {'id': 13, 'answer': '2 / 4 = 0.5 (left: 1 0.5)', 'value': None, 'parent_node': 2, 'ancestor_value': 1.0}, {'id': 14, 'answer': '4 * 2 = 8 (left: 1 8)', 'value': None, 'parent_node': 2, 'ancestor_value': 1.0}, {'id': 15, 'answer': '1 * 2 = 2 (left: 4 2)', 'value': 'Output: sure, likely, impossible, sure, sure, likely, impossible, impossible, sure, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible', 'parent_node': 2, 'ancestor_value': 1.0}, {'id': 17, 'answer': '2 - 2 = 0 (left: 0 6)', 'value': None, 'parent_node': 3, 'ancestor_value': 1.0}, {'id': 19, 'answer': '2 / 2 = 1 (left: 1 6)', 'value': 'Output: sure, likely, impossible, sure, sure, likely, impossible, impossible, sure, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible', 'parent_node': 3, 'ancestor_value': 1.0}, {'id': 20, 'answer': '6 / 2 = 3 (left: 3 2)', 'value': 'Output: sure, likely, impossible, sure, sure, likely, impossible, impossible, sure, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible', 'parent_node': 3, 'ancestor_value': 1.0}]
+[{'id': 16, 'answer': '2 + 2 = 4 (left: 4 6)', 'value': 'sure', 'parent_node': 3, 'ancestor_value': 0.001}, {'id': 19, 'answer': '2 * 6 = 12 (left: 2 12)', 'value': 'sure', 'parent_node': 3, 'ancestor_value': 0.001}, {'id': 7, 'answer': '2 * 8 = 16 (left: 1 16)', 'value': 'likely', 'parent_node': 1, 'ancestor_value': 1.0}, {'id': 8, 'answer': '8 - 2 = 6 (left: 1 6)', 'value': 'likely', 'parent_node': 1, 'ancestor_value': 1.0}, {'id': 6, 'answer': '1 + 8 = 9 (left: 9 2)', 'value': 'impossible', 'parent_node': 1, 'ancestor_value': 1.0}, {'id': 9, 'answer': '2 / 8 = 0.25 (left: 1 0.25)', 'value': 'impossible', 'parent_node': 1, 'ancestor_value': 1.0}, {'id': 10, 'answer': '1 * 8 = 8 (left: 8 2)', 'value': 'impossible', 'parent_node': 1, 'ancestor_value': 1.0}, {'id': 11, 'answer': '1 + 2 = 3 (left: 3 6)', 'value': 'likely', 'parent_node': 2, 'ancestor_value': 0.001}, {'id': 12, 'answer': '6 - 2 = 4 (left: 1 4)', 'value': 'likely', 'parent_node': 2, 'ancestor_value': 0.001}, {'id': 14, 'answer': '1 * 2 = 2 (left: 2 6)', 'value': 'likely', 'parent_node': 2, 'ancestor_value': 0.001}, {'id': 15, 'answer': '6 / 2 = 3 (left: 1 3)', 'value': 'likely', 'parent_node': 2, 'ancestor_value': 0.001}, {'id': 20, 'answer': '2 / 2 = 1 (left: 1 6)', 'value': 'likely', 'parent_node': 3, 'ancestor_value': 0.001}, {'id': 13, 'answer': '2 * 6 = 12 (left: 1 12)', 'value': 'impossible', 'parent_node': 2, 'ancestor_value': 0.001}, {'id': 17, 'answer': '6 + 2 = 8 (left: 8 2)', 'value': 'impossible', 'parent_node': 3, 'ancestor_value': 0.001}, {'id': 18, 'answer': '6 - 2 = 4 (left: 4 2)', 'value': 'impossible', 'parent_node': 3, 'ancestor_value': 0.001}]
 15
 
 
@@ -1105,1380 +353,1620 @@ step 3
 
 
 Generator response:
-12 + 2 = 14
+4 + 6 = 10
+4 / 2 = 2
+6 - 4 = 2
+6 * 4 = 24
+6 / 4 = 1
+
+
+Generator response:
+2 + 12 = 14
+12 - 2 = 10
 12 / 2 = 6
 2 * 12 = 24
-12 - 2 = 10
-12 - 2 = 10
+2 * 12 = 24
 
 
 Generator response:
-1 + 24 = 25
-24 - 1 = 23
-1 * 24 = 24
-1 / 24 = 0.04166666666666667
-24 / 1 = 24
+1 + 16 = 17
+1 * 16 = 16
+16 - 1 = 15
+16 / 1 = 16
+16 / 1 = 16
 
 
-Generator response:
-0.25 * 6 = 1.5
-0.25 + 6 = 6.25
-6 - 0.25 = 5.75
-6 / 0.25 = 24
-6 / 6 = 1.0
-
-
-14 is not equal to 24
-impossible
-
-Input: 19
 Analysis:
-19 is not equal to 24
-impossible
-
-Input: 21
-Analysis:
-21 is not equal to 24
-impossible
-
-Input: 23
-Analysis:
-23 is not equal to 24
-impossible
-
-Input: 25
-Analysis:
-25 is not equal to 24
-impossible
-
-Output: sure, likely, impossible, sure, sure, likely, impossible, impossible, sure, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible
-
-
-6 is not equal to 24
-impossible
-
-Input: 3 7
-Analysis:
-3 + 7 = 10
 10 is not equal to 24
-impossible
+Output: impossible
 
-Input: 2 2 2
+Input: 10 10
 Analysis:
-2 * 2 * 2 = 8
-8 is not equal to 24
-impossible
+10 + 10 = 20
+10 - 10 = 0
+10 * 10 = 100
+10 / 10 = 1
+10 + 10 = 20
+10 - 10 = 0
+10 * 10 = 100
+10 / 10 = 1
+I cannot obtain 24 now, but the numbers are within a reasonable range
+Output: likely
+
+
+Analysis:
+6 is not equal to 24
+Output: impossible
+
+Input: 1 2 3
+Analysis:
+1 + 2 + 3 = 6
+(3 - 2) * 1 = 1
+1 2 3 are all too small
+Output: impossible
+
+Input: 1 1 1
+Analysis:
+1 + 1 + 1 = 3
+(1 - 1) * 1 = 0
+1 1 1 are all too small
+Output: impossible
 
 Input: 1 1 2
 Analysis:
 1 + 1 + 2 = 4
-4 is not equal to 24
-impossible
+(2 - 1) * 1 = 1
+1 1 2 are all too small
+Output: impossible
 
-Input: 1 1 1
+Input: 1 1 1 1
 Analysis:
-1 + 1 + 1 = 3
-3 is not equal to 24
-impossible
+1 + 1 + 1 + 1 = 4
+(1 - 1) * 1 * 1 = 0
+1 1 1 1 are all too small
+Output: impossible
 
-Input: 16
+Input: 1 1 1 2
 Analysis:
-16 is not equal to 24
-impossible
+1 + 1 + 1 + 2 = 5
+(2 - 1) * 1 * 1 = 1
+1 1 1 2 are all too small
+Output: impossible
 
-Input: 12 12
+Input: 1 1 1 1 1
 Analysis:
-12 + 12 = 24
-sure
+1 + 1 + 1 + 1 + 1 = 5
+(1 - 1) * 1 * 1 * 1 = 0
+1 1 1 1 1 are all too small
+Output: impossible
 
-Input: 10 10 10
+Input: 1 1 1 1 2
 Analysis:
-10 + 10 + 10 = 30
-30 is not equal to 24
-impossible
+1 + 1 + 1 + 1 + 2 = 6
+(2 - 1) * 1 * 1 * 1 = 1
+1 1 1 1 2 are all too small
+Output: impossible
 
-Input: 10 10 11
+Input: 1 1 1 1 1 1
 Analysis:
-10 + 10 + 11 = 31
-31 is not equal to 24
-impossible
+1 + 1 + 1 + 1 + 1 + 1 = 6
+(1 - 1) * 1 * 1 * 1 * 1 = 0
+1 1 1 1 1 1 are all too small
+Output: impossible
 
-Input: 10 20
+Input: 1 1 1 1 1 2
 Analysis:
-10 + 20 = 30
-30 is not equal to 24
-impossible
+1 + 1 + 1 + 1 + 1 + 2 = 7
+(2 - 1) * 1 * 1 * 1 * 1 = 1
+1 1 1 1 1 2 are all too small
+Output: impossible
 
-Input: 20 10
+Input: 1 1 1 1 1 1 1
 Analysis:
-20 + 10 = 30
-30 is not equal to 24
-impossible
+1 + 1 + 1 + 1 + 1 + 1 + 1 = 7
+(1 - 1) * 1 * 1 * 1 * 1 * 1 = 0
+1 1 1 1 1 1 1 are all too small
+Output: impossible
 
-Input: 10 10
+Input: 1 1 1 1 1 1 2
 Analysis:
-10 + 10 = 20
-20 is not equal to 24
-impossible
+1 + 1 + 1 + 1 + 1 + 1 + 2 = 8
+(2 - 1) * 1 * 1 * 1 * 1 * 1 = 1
+1 1 1 1 1 1 2 are all too small
+Output: impossible
 
-Input: 10 10 10
+Input: 1 1 1 1 1 1 1 1
 Analysis:
-10 + 10 + 10 = 30
-30 is not equal to 24
-impossible
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 = 8
+(1 - 1) * 1 * 1 * 1 * 1 * 1 * 1 = 0
+1 1 1 1 1 1 1 1 are all too small
+Output: impossible
 
-Input: 10 10 11
+Input: 1 1 1 1 1 1 1 2
 Analysis:
-10 + 10 + 11 = 31
-31 is not equal to 24
-impossible
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 2 = 9
+(2 - 1) * 1 * 1 * 1 * 1 * 1 * 1 = 1
+1 1 1 1 1 1 1 2 are all too small
+Output: impossible
 
-Input: 10 10 10
+Input: 1 1 1 1 1 1 1 1 1
 Analysis:
-10 + 10 + 10 = 30
-30 is not equal to 24
-impossible
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 = 9
+(1 - 1) * 1 * 1 * 1 * 1 * 1 * 1 * 1 = 0
+1 1 1 1 1 1 1 1 1 are all too small
+Output: impossible
 
-Input: 10 10 11
+Input: 1 1 1 1 1 1 1 2 2
 Analysis:
-10 + 10 + 11 = 31
-31 is not equal to 24
-impossible
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 2 + 2 = 12
+(2 - 1) * 1 * 1 * 1 * 1 * 1 * 1 * 1 = 1
+1 1 1 1 1 1 1 2 2 are all too small
+Output: impossible
 
-Input: 10 10 10
+Input: 1 1 1 1 1 1 1 1 1 1
 Analysis:
-10 + 10 + 10 = 30
-30 is not equal to 24
-impossible
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 = 10
+(1 - 1) * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 = 0
+1 1 1 1 1 1 1 1 1 1 are all too small
+Output: impossible
 
-Input: 10 10 10
+Input: 1 1 1 1 1 1 1 1 1 2
 Analysis:
-10 + 10 + 10 = 30
-30 is not equal to 24
-impossible
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 2 = 11
+(2 - 1) * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 = 1
+1 1 1 1 1 1 1 1 1 2 are all too small
+Output: impossible
 
-Input: 10 10 11
+Input: 1 1 1 1 1 1 1 1 1 1 1
 Analysis:
-10 + 10 + 11 = 31
-31 is not equal to 24
-impossible
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 = 11
+(1 - 1) * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 = 0
+1 1 1 1 1 1 1 1 1 1 1 are all too small
+Output: impossible
 
-Input: 10 10 10
+Input: 1 1 1 1 1 1 1 1 1 2 2
 Analysis:
-10 + 10 + 10 = 30
-30 is not equal to 24
-impossible
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 2 + 2 = 13
+(2 - 1) * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 = 1
+1 1 1 1 1 1 1 1 1 2 2 are all too small
+Output: impossible
 
-Input: 10 10 10
+Input: 1 1 1 1 1 1 1 1 1 1 1 1
 Analysis:
-10 + 10 + 10 = 30
-30 is not equal to 24
-impossible
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 = 12
+(1 - 1) * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 = 0
+1 1 1 1 1 1 1 1 1 1 1 1 are all too small
+Output: impossible
 
-Input: 10 10 11
-Analysis:
-10 + 10 + 11 = 31
-31 is not equal to 24
-impossible
-
-Input: 10 10 10
-Analysis:
-10 + 10 + 10 = 30
-30 is not equal to 24
-impossible
-
-Input: 10 10 10
-Analysis:
-10 + 10 + 10 = 30
-30 is not equal to 24
-impossible
-
-Input: 10 10 11
-Analysis:
-10 + 10 + 11 = 31
-31 is not equal to 24
-impossible
-
-Input: 10 10 10
-Analysis:
-10 + 10 + 10 = 30
-30 is not equal to 24
-impossible
-
-Input: 10 10 10
-Analysis:
-10 + 10 + 10 = 30
-30 is not equal to 24
-impossible
-
-Input: 10 10 11
-Analysis:
-10 + 10 + 11 = 31
-31 is not equal to 24
-impossible
-
-Input: 10 10 10
-Analysis:
-10 + 10 + 10 = 30
-30 is not equal to 24
-impossible
-
-Input: 10 10 10
-Analysis:
-10 + 10 + 10 = 30
-30 is not equal to 24
-impossible
-
-Input: 10 10 11
-Analysis:
-10 + 10 + 11 = 31
-31 is not equal to 24
-impossible
-
-Input: 10 10 10
-Analysis:
-10 + 10 + 10 = 30
-30 is not equal to 24
-impossible
-
-Input: 10 10 10
-Analysis:
-10 + 10 + 10 = 30
-30 is not equal to 24
-impossible
-
-Input: 10 10 11
-Analysis:
-10 + 10 + 11 = 31
-31 is not equal to 24
-impossible
-
-Input: 10 10 10
-Analysis:
-10 + 10 + 10 = 30
-30 is not equal to 24
-impossible
-
-Input: 10 10 10
-Analysis:
-10 + 10 + 10 = 30
-30 is not equal to 24
-impossible
-
-Input: 10 10 11
-Analysis:
-10 + 10 + 11 = 31
-31 is not equal to 24
-impossible
-
-Input: 10 10 10
-Analysis:
-10 + 10 + 10 = 30
-30 is not equal to 24
-impossible
-
-Input: 10 10 10
-Analysis:
-10 + 10 + 10 = 30
-30 is not equal to 24
-impossible
-
-Input: 10 10 11
-Analysis:
-10 + 10 + 11 = 31
-31 is not equal to 24
-impossible
-
-Input: 10 10 10
-Analysis:
-10 + 10 + 10 = 30
-30 is not equal to 24
-impossible
-
-Input: 10 10 10
-Analysis:
-10 + 10 + 10 = 30
-30 is not equal to 24
-impossible
-
-Input: 10 10 11
-Analysis:
-10 + 10 + 11 = 31
-31 is not equal to 24
-impossible
-
-Input: 10 10 10
-Analysis:
-10 + 10 + 10 = 30
-30 is not equal to 24
-impossible
-
-Input: 10 10 10
-Analysis:
-10 + 10 + 10 = 30
-30 is not equal to 24
-impossible
-
-Input: 10 10 11
-Analysis:
-10 + 10 + 11 = 31
-31 is not equal to 24
-impossible
-
-Input: 10 10 10
-Analysis:
-10 + 10 + 10 = 30
-30 is not equal to 24
-impossible
-
-Input: 10 10 10
-Analysis:
-10 + 10 + 10 = 30
-30 is not equal to 24
-impossible
-
-Input: 10 10 11
-Analysis:
-10 + 10 + 11 = 31
-31 is not equal to 24
-impossible
-
-Input: 10 10 10
-Analysis:
-10 +
-
-
-1 + 2 = 3
-3 is not equal to 24
-impossible
-
-
-10 is not equal to 24
-impossible
-
-Input: 10 10
-Analysis:
-10 + 10 = 20
-20 is not equal to 24
-impossible
-
-Input: 10 10 10
-Analysis:
-10 + 10 + 10 = 30
-30 is not equal to 24
-impossible
-
-Input: 10 15 20
-Analysis:
-10 + 15 + 20 = 45
-45 is not equal to 24
-impossible
-
-Input: 10 20 30
-Analysis:
-10 + 20 + 30 = 60
-60 is not equal to 24
-impossible
-
-Input: 10 25 35
-Analysis:
-10 + 25 + 35 = 70
-70 is not equal to 24
-impossible
-
-Input: 10 30 40
-Analysis:
-10 + 30 + 40 = 80
-80 is not equal to 24
-impossible
-
-Input: 10 35 45
-Analysis:
-10 + 35 + 45 = 90
-90 is not equal to 24
-impossible
-
-Input: 10 40 50
-Analysis:
-10 + 40 + 50 = 100
-100 is not equal to 24
-impossible
-
-Input: 10 45 55
-Analysis:
-10 + 45 + 55 = 110
-110 is not equal to 24
-impossible
-
-Input: 10 50 60
-Analysis:
-10 + 50 + 60 = 120
-120 is not equal to 24
-impossible
-
-Input: 10 55 65
-Analysis:
-10 + 55 + 65 = 130
-130 is not equal to 24
-impossible
-
-Input: 10 60 70
-Analysis:
-10 + 60 + 70 = 140
-140 is not equal to 24
-impossible
-
-Input: 10 65 75
-Analysis:
-10 + 65 + 75 = 150
-150 is not equal to 24
-impossible
-
-Input: 10 70 80
-Analysis:
-10 + 70 + 80 = 160
-160 is not equal to 24
-impossible
-
-Input: 10 75 85
-Analysis:
-10 + 75 + 85 = 170
-170 is not equal to 24
-impossible
-
-Input: 10 80 90
-Analysis:
-10 + 80 + 90 = 180
-180 is not equal to 24
-impossible
-
-Input: 10 85 95
-Analysis:
-10 + 85 + 95 = 190
-190 is not equal to 24
-impossible
-
-Input: 10 90 100
-Analysis:
-10 + 90 + 100 = 200
-200 is not equal to 24
-impossible
-
-Input: 10 95 105
-Analysis:
-10 + 95 + 105 = 210
-210 is not equal to 24
-impossible
-
-Input: 10 100 110
-Analysis:
-10 + 100 + 110 = 220
-220 is not equal to 24
-impossible
-
-Input: 10 105 115
-Analysis:
-10 + 105 + 115 = 230
-230 is not equal to 24
-impossible
-
-Input: 10 110 120
-Analysis:
-10 + 110 + 120 = 240
-240 is not equal to 24
-impossible
-
-Input: 10 115 125
-Analysis:
-10 + 115 + 125 = 250
-250 is not equal to 24
-impossible
-
-Input: 10 120 130
-Analysis:
-10 + 120 + 130 = 260
-260 is not equal to 24
-impossible
-
-Input: 10 125 135
-Analysis:
-10 + 125 + 135 = 270
-270 is not equal to 24
-impossible
-
-Input: 10 130 140
-Analysis:
-10 + 130 + 140 = 280
-280 is not equal to 24
-impossible
-
-Input: 10 135 145
-Analysis:
-10 + 135 + 145 = 290
-290 is not equal to 24
-impossible
-
-Input: 10 140 150
-Analysis:
-10 + 140 + 150 = 300
-300 is not equal to 24
-impossible
-
-Input: 10 145 155
-Analysis:
-10 + 145 + 155 = 310
-310 is not equal to 24
-impossible
-
-Input: 10 150 160
-Analysis:
-10 + 150 + 160 = 320
-320 is not equal to 24
-impossible
-
-Input: 10 155 165
-Analysis:
-10 + 155 + 165 = 330
-330 is not equal to 24
-impossible
-
-Input: 10 160 170
-Analysis:
-10 + 160 + 170 = 340
-340 is not equal to 24
-impossible
-
-Input: 10 165 175
-Analysis:
-10 + 165 + 175 = 350
-350 is not equal to 24
-impossible
-
-Input: 10 170 180
-Analysis:
-10 + 170 + 180 = 360
-360 is not equal to 24
-impossible
-
-Input: 10 175 185
-Analysis:
-10 + 175 + 185 = 370
-370 is not equal to 24
-impossible
-
-Input: 10 180 190
-Analysis:
-10 + 180 + 190 = 370
-370 is not equal to 24
-impossible
-
-Input: 10 185 195
-Analysis:
-10 + 185 + 195 = 390
-390 is not equal to 24
-impossible
-
-Input: 10 190 200
-Analysis:
-10 + 190 + 200 = 400
-400 is not equal to 24
-impossible
-
-Input: 10 195 205
-Analysis:
-10 + 195 + 205 = 410
-410 is not equal to 24
-impossible
-
-Input: 10 200 210
-Analysis:
-10 + 200 + 210 = 420
-420 is not equal to 24
-impossible
-
-Input: 10 205 215
-Analysis:
-10 + 205 + 215 = 420
-420 is not equal to 24
-impossible
-
-Input: 10 210 220
-Analysis:
-10 + 210 + 220 = 440
-440 is not equal to 24
-impossible
-
-Input: 10 215 225
-Analysis:
-10 + 215 + 2
-
-
-10 is not equal to 24
-impossible
-
-Input: 2 4 8
-Analysis:
-2 + 4 + 8 = 14
-(8 - 2) * 4 = 6 * 4 = 24
-sure
-
-Input: 1 1 1
-Analysis:
-1 + 1 + 1 = 3
-(1 - 1) * 1 = 0
-1 1 1 are all too small
-impossible
-
-Input: 11 12 13
-Analysis:
-11 + 12 + 13 = 36
-(13 - 11) * 12 = 2 * 12 = 24
-sure
-
-Input: 5 6 7
-Analysis:
-5 + 6 + 7 = 18
-(7 - 5) * 6 = 2 * 6 = 12
-I cannot obtain 24 now, but the numbers are within a reasonable range
-likely
-
-Input: 1 3 4
-Analysis:
-1 + 3 + 4 = 8
-(4 - 1) * 3 = 3 * 3 = 9
-I cannot obtain 24 now, but the numbers are within a reasonable range
-likely
-
-Input: 1 1 1
-Analysis:
-1 + 1 + 1 = 3
-(1 - 1) * 1 = 0
-1 1 1 are all too small
-impossible
-
-Input: 2 4 6
-Analysis:
-2 + 4 + 6 = 12
-(6 - 2) * 4 = 4 * 4 = 16
-I cannot obtain 24 now, but the numbers are within a reasonable range
-likely
-
-Input: 1 2 3
-Analysis:
-1 + 2 + 3 = 6
-(3 - 1) * 2 = 2 * 2 = 4
-I cannot obtain 24 now, but the numbers are within a reasonable range
-likely
-
-Input: 1 2 4
-Analysis:
-1 + 2 + 4 = 7
-(4 - 1) * 2 = 3 * 2 = 6
-I cannot obtain 24 now, but the numbers are within a reasonable range
-likely
-
-Input: 1 2 5
-Analysis:
-1 + 2 + 5 = 8
-(5 - 1) * 2 = 4 * 2 = 8
-I cannot obtain 24 now, but the numbers are within a reasonable range
-likely
-
-Input: 1 3 5
-Analysis:
-1 + 3 + 5 = 9
-(5 - 1) * 3 = 4 * 3 = 12
-I cannot obtain 24 now, but the numbers are within a reasonable range
-likely
-
-Input: 1 4 5
-Analysis:
-1 + 4 + 5 = 10
-(5 - 1) * 4 = 4 * 4 = 16
-I cannot obtain 24 now, but the numbers are within a reasonable range
-likely
-
-Input: 2 2 10
-Analysis:
-2 + 2 + 10 = 14
-(10 - 2) * 2 = 8 * 2 = 16
-I cannot obtain 24 now, but the numbers are within a reasonable range
-likely
-
-Input: 2 4 6
-Analysis:
-2 + 4 + 6 = 12
-(6 - 2) * 4 = 4 * 4 = 16
-I cannot obtain 24 now, but the numbers are within a reasonable range
-likely
-
-Input: 3 3 3
-Analysis:
-3 + 3 + 3 = 9
-(3 - 3) * 3 = 0 * 3 = 0
-3 3 3 are all too small
-impossible
-
-Input: 1 1 1
-Analysis:
-1 + 1 + 1 = 3
-(1 - 1) * 1 = 0
-1 1 1 are all too small
-impossible
-
-Input: 1 2 3
-Analysis:
-1 + 2 + 3 = 6
-(3 - 1) * 2 = 2 * 2 = 4
-I cannot obtain 24 now, but the numbers are within a reasonable range
-likely
-
-Input: 1 3 5
-Analysis:
-1 + 3 + 5 = 9
-(5 - 1) * 3 = 4 * 3 = 12
-I cannot obtain 24 now, but the numbers are within a reasonable range
-likely
-
-Input: 1 4 5
-Analysis:
-1 + 4 + 5 = 10
-(5 - 1) * 4 = 4 * 4 = 16
-I cannot obtain 24 now, but the numbers are within a reasonable range
-likely
-
-Input: 2 2 10
-Analysis:
-2 + 2 + 10 = 14
-(10 - 2) * 2 = 8 * 2 = 16
-I cannot obtain 24 now, but the numbers are within a reasonable range
-likely
-
-Input: 2 4 6
-Analysis:
-2 + 4 + 6 = 12
-(6 - 2) * 4 = 4 * 4 = 16
-I cannot obtain 24 now, but the numbers are within a reasonable range
-likely
-
-Input: 3 3 3
-Analysis:
-3 + 3 + 3 = 9
-(3 - 3) * 3 = 0 * 3 = 0
-3 3 3 are all too small
-impossible
-
-Input: 1 1 1
-Analysis:
-1 + 1 + 1 = 3
-(1 - 1) * 1 = 0
-1 1 1 are all too small
-impossible
-
-Input: 1 2 3
-Analysis:
-1 + 2 + 3 = 6
-(3 - 1) * 2 = 2 * 2 = 4
-I cannot obtain 24 now, but the numbers are within a reasonable range
-likely
-
-Input: 1 3 5
-Analysis:
-1 + 3 + 5 = 9
-(5 - 1) * 3 = 4 * 3 = 12
-I cannot obtain 24 now, but the numbers are within a reasonable range
-likely
-
-Input: 1 4 5
-Analysis:
-1 + 4 + 5 = 10
-(5 - 1) * 4 = 4 * 4 = 16
-I cannot obtain 24 now, but the numbers are within a reasonable range
-likely
-
-Input: 2 2 10
-Analysis:
-2 + 2 + 10 = 14
-(10 - 2) * 2 = 8 * 2 = 16
-I cannot obtain 24 now, but the numbers are within a reasonable range
-likely
-
-Input: 2 4 6
-Analysis:
-2 + 4 + 6 = 12
-(6 - 2) * 4 = 4 * 4 = 16
-I cannot obtain 24 now, but the numbers are within a reasonable range
-likely
-
-Input: 3 3 3
-Analysis:
-3 + 3 + 3 = 9
-(3 - 3) * 3 = 0 * 3 = 0
-3 3 3 are all too small
-impossible
-
-Input: 1 1 1
-Analysis:
-1 + 1 + 1 = 3
-(1 - 1) * 1 = 0
-1 1 1 are all too small
-impossible
-
-Input: 1 2 3
-Analysis:
-1 + 2 + 3 = 6
-(3 - 1) * 2 = 2 * 2 = 4
-I cannot obtain 24 now, but the numbers are within a reasonable range
-likely
-
-Input: 1 3 5
-Analysis:
-1 + 3 + 5 = 9
-(5 - 1) * 3 = 4 * 3 = 12
-I cannot obtain 24 now, but the numbers are within a reasonable range
-likely
-
-Input: 1 4 5
-Analysis:
-1 + 4 + 5 = 10
-(5 - 1) * 4 = 4 * 4 = 16
-I cannot obtain 24 now, but the numbers are within a reasonable range
-likely
-
-Input: 2 2 10
-Analysis:
-2 + 2 + 10 = 14
-(10 - 2) * 2 = 8 * 2 = 16
-I cannot
-
-
-25 is not equal to 24
-impossible
-
-Output: sure, likely, impossible, sure, sure, likely, impossible, impossible, sure, impossible, impossible
-
-
-23 is not equal to 24
-impossible
-
-Input: 15
-Analysis:
-15 is not equal to 24
-impossible
-
-Input: 11 12 13
-Analysis:
-11 + 12 + 13 = 36
-impossible
-
-Input: 10 13 15
-Analysis:
-10 + 13 + 15 = 38
-impossible
-
-Input: 1 1 1
-Analysis:
-1 * 1 * 1 = 1
-1 + 1 + 1 = 3
-1 1 1 are all too small
-impossible
-
-Input: 10 20 30
-Analysis:
-10 + 20 + 30 = 60
-impossible
-
-Input: 1 2 9
-Analysis:
-1 + 2 + 9 = 12
-impossible
 
-Input: 5 5 5
 Analysis:
-5 * 5 * 5 = 125
-sure
+2 is not equal to 24
+Output: impossible
 
 Input: 1 1 1
 Analysis:
 1 + 1 + 1 = 3
 1 * 1 * 1 = 1
 1 1 1 are all too small
-impossible
+Output: impossible
 
-Input: 1 2 3
+Input: 1 1 2
 Analysis:
-1 + 2 + 3 = 6
-impossible
+1 + 1 + 2 = 4
+1 * 1 * 2 = 2
+1 1 2 are all too small
+Output: impossible
 
-Input: 1 2 4
+Input: 1 1 3
 Analysis:
-1 + 2 + 4 = 7
-impossible
+1 + 1 + 3 = 5
+1 * 1 * 3 = 3
+1 1 3 are all too small
+Output: impossible
 
-Input: 1 3 6
+Input: 1 2 2
 Analysis:
-1 + 3 + 6 = 10
-impossible
+1 + 2 + 2 = 5
+(2 - 1) * 2 = 2 * 2 = 4
+1 2 2 are all too small
+Output: impossible
 
-Input: 1 4 9
+Input: 1 3 3
 Analysis:
-1 + 4 + 9 = 14
-impossible
-
-Input: 2 4 8
-Analysis:
-2 + 4 + 8 = 14
-impossible
-
-Input: 3 6 9
-Analysis:
-3 + 6 + 9 = 18
-impossible
-
-Input: 4 8 12
-Analysis:
-4 + 8 + 12 = 24
-sure
-
-Input: 5 10 15
-Analysis:
-5 + 10 + 15 = 30
-impossible
-
-Input: 1 1 1
-Analysis:
-1 + 1 + 1 = 3
-1 * 1 * 1 = 1
-1 1 1 are all too small
-impossible
-
-Input: 1 1 10
-Analysis:
-1 + 1 + 10 = 12
-impossible
-
-Input: 1 2 3
-Analysis:
-1 + 2 + 3 = 6
-impossible
-
-Input: 1 2 4
-Analysis:
-1 + 2 + 4 = 7
-impossible
-
-Input: 1 3 6
-Analysis:
-1 + 3 + 6 = 10
-impossible
-
-Input: 1 4 9
-Analysis:
-1 + 4 + 9 = 14
-impossible
-
-Input: 2 4 8
-Analysis:
-2 + 4 + 8 = 14
-impossible
-
-Input: 3 6 9
-Analysis:
-3 + 6 + 9 = 18
-impossible
-
-Input: 4 8 12
-Analysis:
-4 + 8 + 12 = 24
-sure
-
-Input: 5 10 15
-Analysis:
-5 + 10 + 15 = 30
-impossible
-
-Input: 1 1 1
-Analysis:
-1 + 1 + 1 = 3
-1 * 1 * 1 = 1
-1 1 1 are all too small
-impossible
-
-Input: 1 1 10
-Analysis:
-1 + 1 + 10 = 12
-impossible
-
-Input: 1 2 3
-Analysis:
-1 + 2 + 3 = 6
-impossible
-
-Input: 1 2 4
-Analysis:
-1 + 2 + 4 = 7
-impossible
-
-Input: 1 3 6
-Analysis:
-1 + 3 + 6 = 10
-impossible
-
-Input: 1 4 9
-Analysis:
-1 + 4 + 9 = 14
-impossible
-
-Input: 2 4 8
-Analysis:
-2 + 4 + 8 = 14
-impossible
-
-Input: 3 6 9
-Analysis:
-3 + 6 + 9 = 18
-impossible
-
-Input: 4 8 12
-Analysis:
-4 + 8 + 12 = 24
-sure
-
-Input: 5 10 15
-Analysis:
-5 + 10 + 15 = 30
-impossible
-
-Input: 1 1 1
-Analysis:
-1 + 1 + 1 = 3
-1 * 1 * 1 = 1
-1 1 1 are all too small
-impossible
-
-Input: 1 1 10
-Analysis:
-1 + 1 + 10 = 12
-impossible
-
-Input: 1 2 3
-Analysis:
-1 + 2 + 3 = 6
-impossible
-
-Input: 1 2 4
-Analysis:
-1 + 2 + 4 = 7
-impossible
-
-Input: 1 3 6
-Analysis:
-1 + 3 + 6 = 10
-impossible
-
-Input: 1 4 9
-Analysis:
-1 + 4 + 9 = 14
-impossible
-
-Input: 2 4 8
-Analysis:
-2 + 4 + 8 = 14
-impossible
-
-Input: 3 6 9
-Analysis:
-3 + 6 + 9 = 18
-impossible
-
-Input: 4 8 12
-Analysis:
-4 + 8 + 12 = 24
-sure
-
-Input: 5 10 15
-Analysis:
-5 + 10 + 15 = 30
-impossible
-
-Input: 1 1 1
-Analysis:
-1 + 1 + 1 = 3
-1 * 1 * 1 = 1
-1 1 1 are all too small
-impossible
-
-Input: 1 1 10
-Analysis:
-1 + 1 + 10 = 12
-impossible
-
-Input: 1 2 3
-Analysis:
-1 + 2 + 3 = 6
-impossible
-
-Input: 1 2 4
-Analysis:
-1 + 2 + 4 = 7
-impossible
-
-Input: 1 3 6
-Analysis:
-1 + 3 + 6 = 10
-impossible
-
-Input: 1 4 9
-Analysis:
-1 + 4 + 9 = 14
-impossible
-
-Input: 2 4 8
-Analysis:
-2 + 4 + 8 = 14
-impossible
-
-Input: 3 6 9
-Analysis:
-3 + 6 + 9 = 18
-impossible
-
-Input: 4 8 12
-Analysis:
-4 + 8 + 12 = 24
-sure
-
-Input: 5 10 15
-Analysis:
-5 + 10 + 15 = 30
-impossible
-
-Input: 1 1 1
-Analysis:
-1 + 1 + 1 = 3
-1 * 1 * 1 = 1
-1 1 1 are all too small
-impossible
-
-Input: 1 1 10
-Analysis:
-1 + 1 + 10 = 12
-impossible
-
-Input: 1 2 3
-Analysis:
-1 + 2 + 3 = 6
-impossible
-
-Input: 1 2 4
-Analysis:
-1 + 2 + 4 = 7
-impossible
-
-Input: 1 3 6
-Analysis:
-1 + 3 + 6 = 10
-impossible
-
-Input: 1 4 9
-Analysis:
-1 + 4 + 9 = 14
-impossible
-
-Input: 2 4 8
-Analysis:
-2 + 4 + 8 = 14
-impossible
-
-Input: 3 6 9
-Analysis:
-3 + 6 + 9 = 18
-impossible
-
-Input: 4 8 12
-Analysis:
-4 + 8 + 12 = 24
-sure
-
-Input: 5 10 15
-Analysis:
-5 + 10 + 15 = 30
-impossible
-
-Input: 1 
-
-
-24 is equal to 24
-sure
-
-Input: 2 4
-Analysis:
-2 + 4 = 6
-6 is not equal to 24
-impossible
-
-Input: 2 4 20
-Analysis:
-2 + 4 + 20 = 26
-(20 - 4) * 2 = 16 * 2 = 32
-(20 - 2) * 4 = 18 * 4 = 72
-(20 - 2) * 2 = 18 * 2 = 36
-(20 - 4) * 2 = 16 * 2 = 32
-(20 - 2) * 4 = 18 * 4 = 72
-The numbers are within a reasonable range, but I cannot find a way to reach 24
-impossible
-
-
-0.04166666666666667 is not equal to 24
-impossible
-
-
-24 is equal to 24
-sure
-
-Input: 24 24
-Analysis:
-24 + 24 = 48
-48 / 2 = 24
-sure
-
-Input: 24 24
-Analysis:
-24 + 24 = 48
-48 - 24 = 24
-sure
-
-Input: 24 24
-Analysis:
-24 + 24 = 48
-48 * 2 = 96
-96 / 2 = 48
-48 - 24 = 24
-24 is equal to 24
-sure
-
-Input: 24 24
-Analysis:
-24 + 24 = 48
-48 * 2 = 96
-96 / 2 = 48
-48 - 24 = 24
-24 is equal to 24
-sure
-
-Input: 24 24 24
-Analysis:
-24 + 24 + 24 = 72
-72 / 2 = 36
-36 + 24 = 60
-60 - 24 = 36
-24 is equal to 24
-sure
-
-Input: 24 24 24
-Analysis:
-24 + 24 + 24 = 72
-72 / 2 = 36
-36 + 24 = 60
-60 - 24 = 36
-24 is equal to 24
-sure
-
-Input: 24 24 24
-Analysis:
-24 + 24 + 24 = 72
-72 / 2 = 36
-36 + 24 = 60
-60 - 24 = 36
-24 is equal to 24
-sure
-
-Input: 24 24 24
-Analysis:
-24 + 24 + 24 = 72
-72 / 2 = 36
-36 + 24 = 60
-60 - 24 = 36
-24 is equal to 24
-sure
-
-
-1.5 is not equal to 24
-impossible
+1 + 3 + 3 = 7
+(3 - 1) * 3 = 2 * 3 = 6
+1 3 3 are all too small
+Output: impossible
 
 Input: 2 2 2
 Analysis:
-2 * 2 * 2 = 8
-(2 + 2) * 2 = 12
+2 + 2 + 2 = 6
+(2 - 2) * 2 = 0 * 2 = 0
 2 2 2 are all too small
-impossible
+Output: impossible
 
-Input: 24 24 24
+Input: 1 4 4
 Analysis:
-24 * 24 * 24 = 24 * 24 = 24
-24 24 24 are all too big
-impossible
+1 + 4 + 4 = 9
+(4 - 1) * 4 = 3 * 4 = 12
+1 4 4 are all too small
+Output: impossible
 
-Output: sure, likely, impossible, sure, sure, likely, impossible, impossible, sure, impossible, likely, impossible, impossible, impossible
-
-
-6.25 is not equal to 24
-impossible
-
-Input: 10 15
+Input: 1 5 5
 Analysis:
-10 + 15 = 25
-10 - 15 = -5
-15 - 10 = 5
-10 * 15 = 150
-15 / 10 = 1.5
-There is no exact way to reach 24, but the numbers are within a reasonable range
-likely
+1 + 5 + 5 = 11
+(5 - 1) * 5 = 4 * 5 = 20
+1 5 5 are all too small
+Output: impossible
+
+Input: 1 6 6
+Analysis:
+1 + 6 + 6 = 13
+(6 - 1) * 6 = 5 * 6 = 30
+1 6 6 are all too small
+Output: impossible
+
+Input: 1 7 7
+Analysis:
+1 + 7 + 7 = 15
+(7 - 1) * 7 = 6 * 7 = 42
+1 7 7 are all too small
+Output: impossible
+
+Input: 1 8 8
+Analysis:
+1 + 8 + 8 = 17
+(8 - 1) * 8 = 7 * 8 = 56
+1 8 8 are all too small
+Output: impossible
+
+Input: 1 9 9
+Analysis:
+1 + 9 + 9 = 19
+(9 - 1) * 9 = 8 * 9 = 72
+1 9 9 are all too small
+Output: impossible
+
+Input: 1 10 10
+Analysis:
+1 + 10 + 10 = 21
+(10 - 1) * 10 = 9 * 10 = 90
+1 10 10 are all too small
+Output: impossible
+
+Input: 1 11 11
+Analysis:
+1 + 11 + 11 = 23
+(11 - 1) * 11 = 10 * 11 = 110
+1 11 11 are all too small
+Output: impossible
+
+Input: 1 12 12
+Analysis:
+1 + 12 + 12 = 25
+(12 - 1) * 12 = 11 * 12 = 132
+1 12 12 are all too small
+Output: impossible
+
+Input: 1 13 13
+Analysis:
+1 + 13 + 13 = 27
+(13 - 1) * 13 = 12 * 13 = 156
+1 13 13 are all too small
+Output: impossible
+
+Input: 1 14 14
+Analysis:
+1 + 14 + 14 = 30
+(14 - 1) * 14 = 13 * 14 = 182
+1 14 14 are all too small
+Output: impossible
+
+Input: 1 15 15
+Analysis:
+1 + 15 + 15 = 31
+(15 - 1) * 15 = 14 * 15 = 210
+1 15 15 are all too small
+Output: impossible
+
+Input: 1 16 16
+Analysis:
+1 + 16 + 16 = 33
+(16 - 1) * 16 = 15 * 16 = 240
+1 16 16 are all too small
+Output: impossible
+
+Input: 1 17 17
+Analysis:
+1 + 17 + 17 = 35
+(17 - 1) * 17 = 16 * 17 = 272
+1 17 17 are all too small
+Output: impossible
+
+Input: 1 18 18
+Analysis:
+1 + 18 + 18 = 37
+(18 - 1) * 18 = 17 * 18 = 306
+1 18 18 are all too small
+Output: impossible
+
+Input: 1 19 19
+Analysis:
+1 + 19 + 19 = 39
+(19 - 1) * 19 = 18 * 19 = 342
+1 19 19 are all too small
+Output: impossible
+
+Input: 1 20 20
+Analysis:
+1 + 20 + 20 = 41
+(20 - 1) * 20 = 19 * 20 = 380
+1 20 20 are all too small
+Output: impossible
+
+Input: 1 21 21
+Analysis:
+1 + 21 + 21 = 43
+(21 - 1) * 21 = 20 * 21 = 420
+1 21 21 are all too small
+Output: impossible
+
+Input: 1 22 22
+Analysis:
+1 + 22 + 22 = 45
+(22 - 1) * 22 = 21 * 22 = 462
+1 22 22 are all too small
+Output: impossible
+
+Input: 1 23 23
+Analysis:
+1 + 23 + 23 = 47
+(23 - 1) * 23 = 22 * 23 = 506
+1 23 23 are all too small
+Output: impossible
+
+Input: 1 24 24
+Analysis:
+1 + 24 + 24 = 49
+(24 - 1) * 24 = 23 * 24 = 552
+1 24 24 are all too small
+Output: impossible
 
 
-5.75 is not an integer and cannot be summed or multiplied to get 24
-impossible
-
-Output: sure, likely, impossible, sure, sure, likely, impossible, impossible, sure, impossible, impossible
-
-
+Analysis:
 24 is equal to 24
-sure
+Output: sure
 
-Input: 100
+Input: 10
 Analysis:
-100 is not equal to 24
-impossible
+10 is not equal to 24
+Output: impossible
 
-Input: 3 9 9
+Input: 10 10 10
 Analysis:
-3 + 9 + 9 = 15 + 9 = 24
-sure
+10 + 10 + 10 = 30
+(10 - 10) * 10 = 0
+10 10 10 are all too big
+Output: impossible
+
+Input: 1 1 1
+Analysis:
+1 + 1 + 1 = 3
+(1 - 1) * 1 = 0
+1 1 1 are all too small
+Output: impossible
+
+Input: 24 24
+Analysis:
+24 + 24 = 48
+(24 - 24) * 24 = 0
+24 24 are all too big
+Output: impossible
+
+Input: 1 1 1
+Analysis:
+1 + 1 + 1 = 3
+(1 - 1) * 1 = 0
+1 1 1 are all too small
+Output: impossible
+
+Input: 1 1 1
+Analysis:
+1 + 1 + 1 = 3
+(1 - 1) * 1 = 0
+1 1 1 are all too small
+Output: impossible
+
+Input: 1 1 1
+Analysis:
+1 + 1 + 1 = 3
+(1 - 1) * 1 = 0
+1 1 1 are all too small
+Output: impossible
+
+Input: 1 1 1
+Analysis:
+1 + 1 + 1 = 3
+(1 - 1) * 1 = 0
+1 1 1 are all too small
+Output: impossible
+
+Input: 1 1 1
+Analysis:
+1 + 1 + 1 = 3
+(1 - 1) * 1 = 0
+1 1 1 are all too small
+Output: impossible
+
+Input: 1 1 1
+Analysis:
+1 + 1 + 1 = 3
+(1 - 1) * 1 = 0
+1 1 1 are all too small
+Output: impossible
 
 
-0.25 is not equal to 24
-impossible
+Analysis:
+1 is not equal to 24
+Output: impossible
 
-Output: sure, likely, impossible, sure, sure, likely, impossible, impossible, sure, impossible, impossible
+Input: 10 10 10
+Analysis:
+10 + 10 + 10 = 30
+10 * 10 * 10 = 1000
+10 10 10 are all too big
+Output: impossible
+
+Input: 1 2 3
+Analysis:
+1 + 2 + 3 = 6
+(1 + 2) * 3 = 9
+1 2 3 are all too small
+Output: impossible
+
+Input: 1 1 1
+Analysis:
+1 + 1 + 1 = 3
+1 * 1 * 1 = 1
+1 1 1 are all too small
+Output: impossible
+
+Input: 1 1 2
+Analysis:
+1 + 1 + 2 = 4
+(1 + 1) * 2 = 4
+1 1 2 are all too small
+Output: impossible
+
+Input: 1 1 10
+Analysis:
+1 + 1 + 10 = 12
+(1 + 1) * 10 = 20
+1 1 10 are all too big
+Output: impossible
+
+Input: 1 1 11
+Analysis:
+1 + 1 + 11 = 13
+(1 + 1) * 11 = 22
+1 1 11 are all too big
+Output: impossible
+
+Input: 1 2 2
+Analysis:
+1 + 2 + 2 = 5
+(1 + 2) * 2 = 8
+1 2 2 are all too small
+Output: impossible
+
+Input: 1 3 3
+Analysis:
+1 + 3 + 3 = 7
+(1 + 3) * 3 = 12
+1 3 3 are all too small
+Output: impossible
+
+Input: 1 4 4
+Analysis:
+1 + 4 + 4 = 9
+(1 + 4) * 4 = 16
+1 4 4 are all too small
+Output: impossible
+
+Input: 1 5 5
+Analysis:
+1 + 5 + 5 = 11
+(1 + 5) * 5 = 20
+1 5 5 are all too small
+Output: impossible
+
+Input: 1 6 6
+Analysis:
+1 + 6 + 6 = 13
+(1 + 6) * 6 = 22
+1 6 6 are all too small
+Output: impossible
+
+Input: 1 7 7
+Analysis:
+1 + 7 + 7 = 15
+(1 + 7) * 7 = 28
+1 7 7 are all too small
+Output: impossible
+
+Input: 1 8 8
+Analysis:
+1 + 8 + 8 = 17
+(1 + 8) * 8 = 32
+1 8 8 are all too small
+Output: impossible
+
+Input: 1 9 9
+Analysis:
+1 + 9 + 9 = 19
+(1 + 9) * 9 = 36
+1 9 9 are all too small
+Output: impossible
+
+Input: 1 10 10
+Analysis:
+1 + 10 + 10 = 21
+(1 + 10) * 10 = 40
+1 10 10 are all too small
+Output: impossible
+
+Input: 1 11 11
+Analysis:
+1 + 11 + 11 = 23
+(1 + 11) * 11 = 44
+1 11 11 are all too small
+Output: impossible
+
+Input: 1 12 12
+Analysis:
+1 + 12 + 12 = 25
+(1 + 12) * 12 = 52
+1 12 12 are all too small
+Output: impossible
+
+Input: 1 13 13
+Analysis:
+1 + 13 + 13 = 27
+(1 + 13) * 13 = 60
+1 13 13 are all too small
+Output: impossible
+
+Input: 1 14 14
+Analysis:
+1 + 14 + 14 = 29
+(1 + 14) * 14 = 68
+1 14 14 are all too small
+Output: impossible
+
+Input: 1 15 15
+Analysis:
+1 + 15 + 15 = 31
+(1 + 15) * 15 = 80
+1 15 15 are all too small
+Output: impossible
+
+Input: 1 16 16
+Analysis:
+1 + 16 + 16 = 33
+(1 + 16) * 16 = 96
+1 16 16 are all too small
+Output: impossible
+
+Input: 1 17 17
+Analysis:
+1 + 17 + 17 = 35
+(1 + 17) * 17 = 110
+1 17 17 are all too small
+Output: impossible
+
+Input: 1 18 18
+Analysis:
+1 + 18 + 18 = 37
+(1 + 18) * 18 = 126
+1 18 18 are all too small
+Output: impossible
+
+Input: 1 19 19
+Analysis:
+1 + 19 + 19 = 39
+(1 + 19) * 19 = 141
+1 19 19 are all too small
+Output: impossible
+
+Input: 1 20 20
+Analysis:
+1 + 20 + 20 = 41
+(1 + 20) * 20 = 160
+1 20 20 are all too small
+Output: impossible
+
+Input: 1 21 21
+Analysis:
+1 + 21 + 21 = 43
+(1 + 21) * 21 = 172
+1 21 21 are all too small
+Output: impossible
+
+Input: 1 22 22
+Analysis:
+1 + 22 + 22 = 45
+(1 + 22) * 22 = 184
+1 22 22 are all too small
+Output: impossible
+
+Input: 1 23 23
+Analysis:
+1 + 23 + 23 = 47
+(1 + 23) * 23 = 196
+1 23 23 are all too small
+Output: impossible
+
+Input: 1 24 24
+Analysis:
+1 + 24 + 24 = 49
+(1 + 24) * 24 = 216
+1 24 24 are all too small
+Output: impossible
+
+
+Analysis:
+14 is not equal to 24
+Output: impossible
+
+Input: 10 10 10
+Analysis:
+10 + 10 + 10 = 30
+10 * 10 * 10 = 1000
+10 10 10 are all too big
+Output: impossible
+
+Input: 1 1 1
+Analysis:
+1 + 1 + 1 = 3
+1 * 1 * 1 = 1
+1 1 1 are all too small
+Output: impossible
+
+Input: 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 = 40
+10 * 10 * 10 * 10 = 10000
+10 10 10 10 are all too big
+Output: impossible
+
+Input: 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 = 4
+1 * 1 * 1 * 1 = 1
+1 1 1 1 are all too small
+Output: impossible
+
+Input: 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 = 50
+10 * 10 * 10 * 10 * 10 = 100000
+10 10 10 10 10 are all too big
+Output: impossible
+
+Input: 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 = 5
+1 * 1 * 1 * 1 * 1 = 1
+1 1 1 1 1 are all too small
+Output: impossible
+
+Input: 10 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 + 10 = 60
+10 * 10 * 10 * 10 * 10 * 10 = 10000000
+10 10 10 10 10 10 are all too big
+Output: impossible
+
+Input: 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 = 6
+1 * 1 * 1 * 1 * 1 * 1 = 1
+1 1 1 1 1 1 are all too small
+Output: impossible
+
+Input: 10 10 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 + 10 + 10 = 70
+10 * 10 * 10 * 10 * 10 * 10 * 10 = 1000000000
+10 10 10 10 10 10 10 are all too big
+Output: impossible
+
+Input: 1 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 + 1 = 7
+1 * 1 * 1 * 1 * 1 * 1 * 1 = 1
+1 1 1 1 1 1 1 are all too small
+Output: impossible
+
+Input: 10 10 10 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 = 80
+10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 = 100000000000
+10 10 10 10 10 10 10 10 are all too big
+Output: impossible
+
+Input: 1 1 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 = 8
+1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 = 1
+1 1 1 1 1 1 1 1 are all too small
+Output: impossible
+
+Input: 10 10 10 10 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 = 90
+10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 = 1000000000000
+10 10 10 10 10 10 10 10 10 are all too big
+Output: impossible
+
+
+Analysis:
+10 is not equal to 24
+Output: impossible
+
+Input: 10 10
+Analysis:
+10 + 10 = 20
+10 - 10 = 0
+10 * 10 = 100
+10 / 10 = 1
+10 + 10 = 20
+10 - 10 = 0
+10 * 10 = 100
+10 / 10 = 1
+I cannot obtain 24 now, but the numbers are within a reasonable range
+Output: likely
+
+
+Analysis:
+6 is not equal to 24
+Output: impossible
+
+Input: 1 2 3
+Analysis:
+1 + 2 + 3 = 6
+(3 - 2) * 1 = 1
+1 2 3 are all too small
+Output: impossible
+
+Input: 1 1 1
+Analysis:
+1 + 1 + 1 = 3
+(1 - 1) * 1 = 0
+1 1 1 are all too small
+Output: impossible
+
+Input: 1 1 2
+Analysis:
+1 + 1 + 2 = 4
+(2 - 1) * 1 = 1
+1 1 2 are all too small
+Output: impossible
+
+Input: 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 = 4
+(1 - 1) * 1 * 1 = 0
+1 1 1 1 are all too small
+Output: impossible
+
+Input: 1 1 1 2
+Analysis:
+1 + 1 + 1 + 2 = 5
+(2 - 1) * 1 * 1 = 1
+1 1 1 2 are all too small
+Output: impossible
+
+Input: 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 = 5
+(1 - 1) * 1 * 1 * 1 = 0
+1 1 1 1 1 are all too small
+Output: impossible
+
+Input: 1 1 1 1 2
+Analysis:
+1 + 1 + 1 + 1 + 2 = 6
+(2 - 1) * 1 * 1 * 1 = 1
+1 1 1 1 2 are all too small
+Output: impossible
+
+Input: 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 = 6
+(1 - 1) * 1 * 1 * 1 * 1 = 0
+1 1 1 1 1 1 are all too small
+Output: impossible
+
+Input: 1 1 1 1 1 2
+Analysis:
+1 + 1 + 1 + 1 + 1 + 2 = 7
+(2 - 1) * 1 * 1 * 1 * 1 = 1
+1 1 1 1 1 2 are all too small
+Output: impossible
+
+Input: 1 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 + 1 = 7
+(1 - 1) * 1 * 1 * 1 * 1 * 1 = 0
+1 1 1 1 1 1 1 are all too small
+Output: impossible
+
+Input: 1 1 1 1 1 1 2
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 + 2 = 8
+(2 - 1) * 1 * 1 * 1 * 1 * 1 = 1
+1 1 1 1 1 1 2 are all too small
+Output: impossible
+
+Input: 1 1 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 = 8
+(1 - 1) * 1 * 1 * 1 * 1 * 1 * 1 = 0
+1 1 1 1 1 1 1 1 are all too small
+Output: impossible
+
+Input: 1 1 1 1 1 1 1 2
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 2 = 9
+(2 - 1) * 1 * 1 * 1 * 1 * 1 * 1 = 1
+1 1 1 1 1 1 1 2 are all too small
+Output: impossible
+
+Input: 1 1 1 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 = 9
+(1 - 1) * 1 * 1 * 1 * 1 * 1 * 1 * 1 = 0
+1 1 1 1 1 1 1 1 1 are all too small
+Output: impossible
+
+Input: 1 1 1 1 1 1 1 2 2
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 2 + 2 = 12
+(2 - 1) * 1 * 1 * 1 * 1 * 1 * 1 * 1 = 1
+1 1 1 1 1 1 1 2 2 are all too small
+Output: impossible
+
+Input: 1 1 1 1 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 = 10
+(1 - 1) * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 = 0
+1 1 1 1 1 1 1 1 1 1 are all too small
+Output: impossible
+
+Input: 1 1 1 1 1 1 1 1 1 2
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 2 = 11
+(2 - 1) * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 = 1
+1 1 1 1 1 1 1 1 1 2 are all too small
+Output: impossible
+
+Input: 1 1 1 1 1 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 = 11
+(1 - 1) * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 = 0
+1 1 1 1 1 1 1 1 1 1 1 are all too small
+Output: impossible
+
+Input: 1 1 1 1 1 1 1 1 1 2 2
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 2 + 2 = 13
+(2 - 1) * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 = 1
+1 1 1 1 1 1 1 1 1 2 2 are all too small
+Output: impossible
+
+Input: 1 1 1 1 1 1 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 = 12
+(1 - 1) * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 = 0
+1 1 1 1 1 1 1 1 1 1 1 1 are all too small
+Output: impossible
+
+
+Analysis:
+24 is equal to 24
+Output: sure
+
+Input: 10
+Analysis:
+10 is not equal to 24
+Output: impossible
+
+Input: 10 10 10
+Analysis:
+10 + 10 + 10 = 30
+(10 - 10) * 10 = 0
+10 10 10 are all too big
+Output: impossible
+
+Input: 1 1 1
+Analysis:
+1 + 1 + 1 = 3
+(1 - 1) * 1 = 0
+1 1 1 are all too small
+Output: impossible
+
+Input: 24 24
+Analysis:
+24 + 24 = 48
+(24 - 24) * 24 = 0
+24 24 are all too big
+Output: impossible
+
+Input: 1 1 1
+Analysis:
+1 + 1 + 1 = 3
+(1 - 1) * 1 = 0
+1 1 1 are all too small
+Output: impossible
+
+Input: 1 1 1
+Analysis:
+1 + 1 + 1 = 3
+(1 - 1) * 1 = 0
+1 1 1 are all too small
+Output: impossible
+
+Input: 1 1 1
+Analysis:
+1 + 1 + 1 = 3
+(1 - 1) * 1 = 0
+1 1 1 are all too small
+Output: impossible
+
+Input: 1 1 1
+Analysis:
+1 + 1 + 1 = 3
+(1 - 1) * 1 = 0
+1 1 1 are all too small
+Output: impossible
+
+Input: 1 1 1
+Analysis:
+1 + 1 + 1 = 3
+(1 - 1) * 1 = 0
+1 1 1 are all too small
+Output: impossible
+
+Input: 1 1 1
+Analysis:
+1 + 1 + 1 = 3
+(1 - 1) * 1 = 0
+1 1 1 are all too small
+Output: impossible
+
+
+Analysis:
+24 is equal to 24
+Output: sure
+
+Input: 10
+Analysis:
+10 is not equal to 24
+Output: impossible
+
+Input: 10 10 10
+Analysis:
+10 + 10 + 10 = 30
+(10 - 10) * 10 = 0
+10 10 10 are all too big
+Output: impossible
+
+Input: 1 1 1
+Analysis:
+1 + 1 + 1 = 3
+(1 - 1) * 1 = 0
+1 1 1 are all too small
+Output: impossible
+
+Input: 24 24
+Analysis:
+24 + 24 = 48
+(24 - 24) * 24 = 0
+24 24 are all too big
+Output: impossible
+
+Input: 1 1 1
+Analysis:
+1 + 1 + 1 = 3
+(1 - 1) * 1 = 0
+1 1 1 are all too small
+Output: impossible
+
+Input: 1 1 1
+Analysis:
+1 + 1 + 1 = 3
+(1 - 1) * 1 = 0
+1 1 1 are all too small
+Output: impossible
+
+Input: 1 1 1
+Analysis:
+1 + 1 + 1 = 3
+(1 - 1) * 1 = 0
+1 1 1 are all too small
+Output: impossible
+
+Input: 1 1 1
+Analysis:
+1 + 1 + 1 = 3
+(1 - 1) * 1 = 0
+1 1 1 are all too small
+Output: impossible
+
+Input: 1 1 1
+Analysis:
+1 + 1 + 1 = 3
+(1 - 1) * 1 = 0
+1 1 1 are all too small
+Output: impossible
+
+Input: 1 1 1
+Analysis:
+1 + 1 + 1 = 3
+(1 - 1) * 1 = 0
+1 1 1 are all too small
+Output: impossible
+
+
+Analysis:
+17 is not equal to 24
+Output: impossible
+
+Input: 10 10 10
+Analysis:
+10 + 10 + 10 = 30
+10 * 10 * 10 = 1000
+10 10 10 are all too big
+Output: impossible
+
+Input: 1 1 1
+Analysis:
+1 + 1 + 1 = 3
+1 * 1 * 1 = 1
+1 1 1 are all too small
+Output: impossible
+
+Input: 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 = 40
+10 * 10 * 10 * 10 = 10000
+10 10 10 10 are all too big
+Output: impossible
+
+Input: 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 = 4
+1 * 1 * 1 * 1 = 1
+1 1 1 1 are all too small
+Output: impossible
+
+Input: 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 = 50
+10 * 10 * 10 * 10 * 10 = 100000
+10 10 10 10 10 are all too big
+Output: impossible
+
+Input: 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 = 5
+1 * 1 * 1 * 1 * 1 = 1
+1 1 1 1 1 are all too small
+Output: impossible
+
+Input: 10 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 + 10 = 60
+10 * 10 * 10 * 10 * 10 * 10 = 10000000
+10 10 10 10 10 10 are all too big
+Output: impossible
+
+Input: 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 = 6
+1 * 1 * 1 * 1 * 1 * 1 = 1
+1 1 1 1 1 1 are all too small
+Output: impossible
+
+Input: 10 10 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 + 10 + 10 = 70
+10 * 10 * 10 * 10 * 10 * 10 * 10 = 1000000000
+10 10 10 10 10 10 10 are all too big
+Output: impossible
+
+Input: 1 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 + 1 = 7
+1 * 1 * 1 * 1 * 1 * 1 * 1 = 1
+1 1 1 1 1 1 1 are all too small
+Output: impossible
+
+Input: 10 10 10 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 = 80
+10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 = 100000000000
+10 10 10 10 10 10 10 10 are all too big
+Output: impossible
+
+Input: 1 1 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 = 8
+1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 = 1
+1 1 1 1 1 1 1 1 are all too small
+Output: impossible
+
+Input: 10 10 10 10 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 = 90
+10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 = 1000000000000
+10 10 10 10 10 10 10 10 10 are all too big
+Output: impossible
+
+
+Analysis:
+16 is not equal to 24
+Output: impossible
+
+Input: 10 10 10
+Analysis:
+10 + 10 + 10 = 30
+10 * 10 * 10 = 1000
+10 10 10 are all too big
+Output: impossible
+
+Input: 1 1 1
+Analysis:
+1 + 1 + 1 = 3
+1 * 1 * 1 = 1
+1 1 1 are all too small
+Output: impossible
+
+Input: 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 = 4
+1 * 1 * 1 * 1 = 1
+1 1 1 1 are all too small
+Output: impossible
+
+Input: 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 = 5
+1 * 1 * 1 * 1 * 1 = 1
+1 1 1 1 1 are all too small
+Output: impossible
+
+Input: 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 = 6
+1 * 1 * 1 * 1 * 1 * 1 = 1
+1 1 1 1 1 1 are all too small
+Output: impossible
+
+Input: 1 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 + 1 = 7
+1 * 1 * 1 * 1 * 1 * 1 * 1 = 1
+1 1 1 1 1 1 1 are all too small
+Output: impossible
+
+Input: 1 1 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 = 8
+1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 = 1
+1 1 1 1 1 1 1 1 are all too small
+Output: impossible
+
+Input: 1 1 1 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 = 9
+1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 = 1
+1 1 1 1 1 1 1 1 1 are all too small
+Output: impossible
+
+Input: 1 1 1 1 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 = 10
+1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 = 1
+1 1 1 1 1 1 1 1 1 1 are all too small
+Output: impossible
+
+Input: 1 1 1 1 1 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 = 11
+1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 = 1
+1 1 1 1 1 1 1 1 1 1 1 are all too small
+Output: impossible
+
+Input: 1 1 1 1 1 1 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 = 12
+1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 = 1
+1 1 1 1 1 1 1 1 1 1 1 1 are all too small
+Output: impossible
+
+Input: 1 1 1 1 1 1 1 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 = 13
+1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 = 1
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 are all too small
+Output: impossible
+
+Input: 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 = 14
+1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 = 1
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 are all too small
+Output: impossible
+
+
+Analysis:
+15 is not equal to 24
+Output: impossible
+
+Input: 10 10 10
+Analysis:
+10 + 10 + 10 = 30
+10 * 10 * 10 = 1000
+10 10 10 are all too big
+Output: impossible
+
+Input: 1 2 3
+Analysis:
+1 + 2 + 3 = 6
+(3 - 2) * 1 = 1
+1 2 3 are all too small
+Output: impossible
+
+Input: 1 1 1
+Analysis:
+1 + 1 + 1 = 3
+1 * 1 * 1 = 1
+1 1 1 are all too small
+Output: impossible
+
+Input: 1 1 2
+Analysis:
+1 + 1 + 2 = 4
+(2 - 1) * 1 = 1
+1 1 2 are all too small
+Output: impossible
+
+Input: 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 = 4
+1 * 1 * 1 * 1 = 1
+1 1 1 1 are all too small
+Output: impossible
+
+Input: 1 1 1 2
+Analysis:
+1 + 1 + 1 + 2 = 5
+(2 - 1) * 1 * 1 = 1
+1 1 1 2 are all too small
+Output: impossible
+
+Input: 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 = 5
+1 * 1 * 1 * 1 * 1 = 1
+1 1 1 1 1 are all too small
+Output: impossible
+
+Input: 1 1 1 1 2
+Analysis:
+1 + 1 + 1 + 1 + 2 = 6
+(2 - 1) * 1 * 1 * 1 = 1
+1 1 1 1 2 are all too small
+Output: impossible
+
+Input: 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 = 6
+1 * 1 * 1 * 1 * 1 * 1 = 1
+1 1 1 1 1 1 are all too small
+Output: impossible
+
+Input: 1 1 1 1 1 2
+Analysis:
+1 + 1 + 1 + 1 + 1 + 2 = 7
+(2 - 1) * 1 * 1 * 1 * 1 = 1
+1 1 1 1 1 2 are all too small
+Output: impossible
+
+Input: 1 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 + 1 = 7
+1 * 1 * 1 * 1 * 1 * 1 * 1 = 1
+1 1 1 1 1 1 1 are all too small
+Output: impossible
+
+Input: 1 1 1 1 1 1 2
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 + 2 = 8
+(2 - 1) * 1 * 1 * 1 * 1 * 1 = 1
+1 1 1 1 1 1 2 are all too small
+Output: impossible
+
+Input: 1 1 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 = 8
+1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 = 1
+1 1 1 1 1 1 1 1 are all too small
+Output: impossible
+
+Input: 1 1 1 1 1 1 1 2
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 2 = 9
+(2 - 1) * 1 * 1 * 1 * 1 * 1 * 1 = 1
+1 1 1 1 1 1 1 2 are all too small
+Output: impossible
+
+Input: 1 1 1 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 = 9
+1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 = 1
+1 1 1 1 1 1 1 1 1 are all too small
+Output: impossible
+
+Input: 1 1 1 1 1 1 1 2 2
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 2 + 2 = 12
+(2 - 1) * 1 * 1 * 1 * 1 * 1 * 1 * 1 = 1
+1 1 1 1 1 1 1 2 2 are all too small
+Output: impossible
+
+Input: 1 1 1 1 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 = 10
+1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 = 1
+1 1 1 1 1 1 1 1 1 1 are all too small
+Output: impossible
+
+Input: 1 1 1 1 1 1 1 1 1 2
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 2 = 11
+(2 - 1) * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 = 1
+1 1 1 1 1 1 1 1 1 2 are all too small
+Output: impossible
+
+Input: 1 1 1 1 1 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 = 11
+1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 = 1
+1 1 1 1 1 1 1 1 1 1 1 are all too small
+Output: impossible
+
+Input: 1 1 1 1 1 1 1 1 1 2 2
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 2 + 2 = 13
+(2 - 1) * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 = 1
+1 1 1 1 1 1 1 1 1 2 2 are all too small
+Output: impossible
+
+Input: 1 1 1 1 1 1 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 = 12
+1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 = 1
+1 1 1 1 1 1 1 1 1 1 1 1 are all too small
+Output: impossible
+
+
+Analysis:
+16 is not equal to 24
+Output: impossible
+
+Input: 10 10 10
+Analysis:
+10 + 10 + 10 = 30
+10 * 10 * 10 = 1000
+10 10 10 are all too big
+Output: impossible
+
+Input: 1 1 1
+Analysis:
+1 + 1 + 1 = 3
+1 * 1 * 1 = 1
+1 1 1 are all too small
+Output: impossible
+
+Input: 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 = 4
+1 * 1 * 1 * 1 = 1
+1 1 1 1 are all too small
+Output: impossible
+
+Input: 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 = 5
+1 * 1 * 1 * 1 * 1 = 1
+1 1 1 1 1 are all too small
+Output: impossible
+
+Input: 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 = 6
+1 * 1 * 1 * 1 * 1 * 1 = 1
+1 1 1 1 1 1 are all too small
+Output: impossible
+
+Input: 1 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 + 1 = 7
+1 * 1 * 1 * 1 * 1 * 1 * 1 = 1
+1 1 1 1 1 1 1 are all too small
+Output: impossible
+
+Input: 1 1 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 = 8
+1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 = 1
+1 1 1 1 1 1 1 1 are all too small
+Output: impossible
+
+Input: 1 1 1 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 = 9
+1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 = 1
+1 1 1 1 1 1 1 1 1 are all too small
+Output: impossible
+
+Input: 1 1 1 1 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 = 10
+1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 = 1
+1 1 1 1 1 1 1 1 1 1 are all too small
+Output: impossible
+
+Input: 1 1 1 1 1 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 = 11
+1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 = 1
+1 1 1 1 1 1 1 1 1 1 1 are all too small
+Output: impossible
+
+Input: 1 1 1 1 1 1 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 = 12
+1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 = 1
+1 1 1 1 1 1 1 1 1 1 1 1 are all too small
+Output: impossible
+
+Input: 1 1 1 1 1 1 1 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 = 13
+1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 = 1
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 are all too small
+Output: impossible
+
+Input: 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 = 14
+1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 = 1
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 are all too small
+Output: impossible
+
+
+Analysis:
+16 is not equal to 24
+Output: impossible
+
+Input: 10 10 10
+Analysis:
+10 + 10 + 10 = 30
+10 * 10 * 10 = 1000
+10 10 10 are all too big
+Output: impossible
+
+Input: 1 1 1
+Analysis:
+1 + 1 + 1 = 3
+1 * 1 * 1 = 1
+1 1 1 are all too small
+Output: impossible
+
+Input: 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 = 4
+1 * 1 * 1 * 1 = 1
+1 1 1 1 are all too small
+Output: impossible
+
+Input: 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 = 5
+1 * 1 * 1 * 1 * 1 = 1
+1 1 1 1 1 are all too small
+Output: impossible
+
+Input: 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 = 6
+1 * 1 * 1 * 1 * 1 * 1 = 1
+1 1 1 1 1 1 are all too small
+Output: impossible
+
+Input: 1 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 + 1 = 7
+1 * 1 * 1 * 1 * 1 * 1 * 1 = 1
+1 1 1 1 1 1 1 are all too small
+Output: impossible
+
+Input: 1 1 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 = 8
+1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 = 1
+1 1 1 1 1 1 1 1 are all too small
+Output: impossible
+
+Input: 1 1 1 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 = 9
+1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 = 1
+1 1 1 1 1 1 1 1 1 are all too small
+Output: impossible
+
+Input: 1 1 1 1 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 = 10
+1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 = 1
+1 1 1 1 1 1 1 1 1 1 are all too small
+Output: impossible
+
+Input: 1 1 1 1 1 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 = 11
+1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 = 1
+1 1 1 1 1 1 1 1 1 1 1 are all too small
+Output: impossible
+
+Input: 1 1 1 1 1 1 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 = 12
+1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 = 1
+1 1 1 1 1 1 1 1 1 1 1 1 are all too small
+Output: impossible
+
+Input: 1 1 1 1 1 1 1 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 = 13
+1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 = 1
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 are all too small
+Output: impossible
+
+Input: 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 = 14
+1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 = 1
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 are all too small
+Output: impossible
 
 
 node:
-[{'id': 23, 'answer': '2 * 12 = 24 (left: 1 2)', 'value': 'impossible', 'parent_node': 18, 'ancestor_value': 21.0}, {'id': 30, 'answer': '24 / 1 = 24 (left: 24)', 'value': 'sure', 'parent_node': 7, 'ancestor_value': 1.001}, {'id': 34, 'answer': '6 / 0.25 = 24 (left: 24)', 'value': 'sure', 'parent_node': 9, 'ancestor_value': 1.001}, {'id': 21, 'answer': '12 + 2 = 14 (left: 14)', 'value': 'Output: sure, likely, impossible, sure, sure, likely, impossible, impossible, sure, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible, impossible', 'parent_node': 18, 'ancestor_value': 21.0}, {'id': 22, 'answer': '12 / 2 = 6 (left: 6)', 'value': None, 'parent_node': 18, 'ancestor_value': 21.0}, {'id': 24, 'answer': '12 - 2 = 10 (left: 10)', 'value': None, 'parent_node': 18, 'ancestor_value': 21.0}, {'id': 25, 'answer': '12 - 2 = 10 (left: 10)', 'value': None, 'parent_node': 18, 'ancestor_value': 21.0}, {'id': 32, 'answer': '0.25 + 6 = 6.25 (left: 6.25)', 'value': 'likely', 'parent_node': 9, 'ancestor_value': 1.001}, {'id': 28, 'answer': '1 * 24 = 24 (left: 24)', 'value': 'impossible', 'parent_node': 7, 'ancestor_value': 1.001}, {'id': 29, 'answer': '1 / 24 = 0.04166666666666667 (left: 0.04166666666666667)', 'value': 'impossible', 'parent_node': 7, 'ancestor_value': 1.001}, {'id': 26, 'answer': '1 + 24 = 25 (left: 25)', 'value': 'Output: sure, likely, impossible, sure, sure, likely, impossible, impossible, sure, impossible, impossible', 'parent_node': 7, 'ancestor_value': 1.001}, {'id': 27, 'answer': '24 - 1 = 23 (left: 23)', 'value': None, 'parent_node': 7, 'ancestor_value': 1.001}, {'id': 31, 'answer': '0.25 * 6 = 1.5 (left: 1.5)', 'value': 'Output: sure, likely, impossible, sure, sure, likely, impossible, impossible, sure, impossible, likely, impossible, impossible, impossible', 'parent_node': 9, 'ancestor_value': 1.001}, {'id': 33, 'answer': '6 - 0.25 = 5.75 (left: 5.75)', 'value': 'Output: sure, likely, impossible, sure, sure, likely, impossible, impossible, sure, impossible, impossible', 'parent_node': 9, 'ancestor_value': 1.001}, {'id': 35, 'answer': '6 / 6 = 1.0 (left: 0.25)', 'value': 'Output: sure, likely, impossible, sure, sure, likely, impossible, impossible, sure, impossible, impossible', 'parent_node': 9, 'ancestor_value': 1.001}]
+[{'id': 21, 'answer': '4 + 6 = 10 (left: 10)', 'value': 'likely', 'parent_node': 16, 'ancestor_value': 20.001}, {'id': 27, 'answer': '12 - 2 = 10 (left: 10)', 'value': 'likely', 'parent_node': 19, 'ancestor_value': 20.001}, {'id': 22, 'answer': '4 / 2 = 2 (left: 6)', 'value': 'impossible', 'parent_node': 16, 'ancestor_value': 20.001}, {'id': 23, 'answer': '6 - 4 = 2 (left: 2)', 'value': 'impossible', 'parent_node': 16, 'ancestor_value': 20.001}, {'id': 24, 'answer': '6 * 4 = 24 (left: 24)', 'value': 'impossible', 'parent_node': 16, 'ancestor_value': 20.001}, {'id': 25, 'answer': '6 / 4 = 1 (left: 1)', 'value': 'impossible', 'parent_node': 16, 'ancestor_value': 20.001}, {'id': 26, 'answer': '2 + 12 = 14 (left: 14)', 'value': 'impossible', 'parent_node': 19, 'ancestor_value': 20.001}, {'id': 28, 'answer': '12 / 2 = 6 (left: 6)', 'value': 'impossible', 'parent_node': 19, 'ancestor_value': 20.001}, {'id': 29, 'answer': '2 * 12 = 24 (left: 24)', 'value': 'impossible', 'parent_node': 19, 'ancestor_value': 20.001}, {'id': 30, 'answer': '2 * 12 = 24 (left: 24)', 'value': 'impossible', 'parent_node': 19, 'ancestor_value': 20.001}, {'id': 31, 'answer': '1 + 16 = 17 (left: 17)', 'value': 'impossible', 'parent_node': 7, 'ancestor_value': 2.0}, {'id': 32, 'answer': '1 * 16 = 16 (left: 16)', 'value': 'impossible', 'parent_node': 7, 'ancestor_value': 2.0}, {'id': 33, 'answer': '16 - 1 = 15 (left: 15)', 'value': 'impossible', 'parent_node': 7, 'ancestor_value': 2.0}, {'id': 34, 'answer': '16 / 1 = 16 (left: 16)', 'value': 'impossible', 'parent_node': 7, 'ancestor_value': 2.0}, {'id': 35, 'answer': '16 / 1 = 16 (left: 16)', 'value': 'impossible', 'parent_node': 7, 'ancestor_value': 2.0}]
 15
 
 
-path: ['2 * 12 = 24 (left: 1 2)', '6 * 2 = 12 (left: 12 2)', '1 * 2 = 2 (left: 2 2 6)', '(left: 1 2 2 6)']
+path: ['4 + 6 = 10 (left: 10)', '2 + 2 = 4 (left: 4 6)', '1 * 2 = 2 (left: 2 2 6)', '(left: 1 2 2 6)']
 
 
-wrong format
-1 2
-12 2
-
-
-['2 * 12 = 24 (left: 1 2)', '6 * 2 = 12 (left: 12 2)', '1 * 2 = 2 (left: 2 2 6)', '(left: 1 2 2 6)']
-1 2
+['4 + 6 = 10 (left: 10)', '2 + 2 = 4 (left: 4 6)', '1 * 2 = 2 (left: 2 2 6)', '(left: 1 2 2 6)']
+(((1 * 2) + 2) + 6)
 
 
 Answer: 
-1 2
+(((1 * 2) + 2) + 6)
 

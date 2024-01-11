@@ -1,6 +1,6 @@
 repo_id = 'TheBloke/OpenHermes-2.5-neural-chat-7B-v3-1-7B-GGUF'
 model_name = 'openhermes-2.5-neural-chat-7b-v3-1-7b.Q8_0.gguf'
-huggingface_model_path = 'cloudyu/Mixtral_7Bx2_MoE'
+huggingface_model_path = 'teknium/OpenHermes-2.5-Mistral-7B'
 local_dir = '../models'
 model_path = local_dir + '/' + model_name
 record_files_folder = 'record'
@@ -11,7 +11,8 @@ acc_file_name = '{file_path}/acc_info_game24.txt'
 data_path_game24 = 'data/24.csv'
 image_folder = 'game24_image'
 max_tokens = 1024
-temperature = 0.1
+generator_temperature = 0.5
+evaluator_temperature = 0
 n_ctx = 2048
 n_gpu_layers = -1
 question_sets = 10
