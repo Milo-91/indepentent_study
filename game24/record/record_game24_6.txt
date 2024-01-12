@@ -1,6 +1,6 @@
 TheBloke/OpenHermes-2.5-Mistral-7B-GPTQ
-temperature: 0.6, 0
-date: 2024-01-11
+temperature: 0.5, 0
+date: 2024-01-12
 
 
 step 1
@@ -8,57 +8,1119 @@ step 1
 
 Generator response:
 1 + 2 = 3
-2 - 1 = 1
-6 + 2 = 8
-2 * 2 = 4
+2 + 2 = 4
+6 - 2 = 4
 6 / 2 = 3
+2 - 1 = 1
 
 
 Analysis:
 3 + 2 + 6 = 11
 3 * 2 * 6 = 36
-Output: impossible
-
-
-Analysis:
-1 + 2 + 6 = 9
-1 * 2 * 6 = 12
-Output: impossible
-
-
-Analysis:
-1 + 8 + 2 = 11
-1 * 8 = 8
-1 / 8 = 0.125
-Output: impossible
-
-
-Analysis:
-1 + 4 + 6 = 11
-1 * 4 * 6 = 24
-Output: sure
+Output: impossible (3 2 6)
 
 Input: 1 2 3
 Analysis:
 1 + 2 + 3 = 6
 1 * 2 * 3 = 6
-Output: sure
+Output: impossible (1 2 3)
+
+Input: 1 1 1
+Analysis:
+1 + 1 + 1 = 3
+1 * 1 * 1 = 1
+Output: impossible (1 1 1)
+
+Input: 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 = 4
+1 * 1 * 1 * 1 = 1
+Output: impossible (1 1 1 1)
+
+Input: 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 = 5
+1 * 1 * 1 * 1 * 1 = 1
+Output: impossible (1 1 1 1 1)
+
+Input: 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 = 6
+1 * 1 * 1 * 1 * 1 * 1 = 1
+Output: impossible (1 1 1 1 1 1)
+
+Input: 1 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 + 1 = 7
+1 * 1 * 1 * 1 * 1 * 1 * 1 = 1
+Output: impossible (1 1 1 1 1 1 1)
+
+Input: 1 1 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 = 8
+1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 = 1
+Output: impossible (1 1 1 1 1 1 1 1)
+
+Input: 1 1 1 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 = 9
+1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 = 1
+Output: impossible (1 1 1 1 1 1 1 1 1)
+
+Input: 1 1 1 1 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 = 10
+1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 = 1
+Output: impossible (1 1 1 1 1 1 1 1 1 1)
+
+Input: 1 1 1 1 1 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 = 11
+1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 = 1
+Output: impossible (1 1 1 1 1 1 1 1 1 1 1)
+
+Input: 1 1 1 1 1 1 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 = 12
+1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 = 1
+Output: impossible (1 1 1 1 1 1 1 1 1 1 1 1)
+
+Input: 1 1 1 1 1 1 1 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 = 13
+1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 = 1
+Output: impossible (1 1 1 1 1 1 1 1 1 1 1 1 1)
+
+Input: 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 = 15
+1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 = 1
+Output: impossible (1 1 1 1 1 1 1 1 1 1 1 1 1 1 1)
+
+Input: 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 = 16
+1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 = 1
+Output: impossible (1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1)
+
+Input: 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 = 17
+(1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1) - 1 = 16
+Output: impossible (1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1)
+
+Input: 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 = 18
+(1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1) - 1 = 17
+Output: impossible (1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1)
+
+Input: 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 = 19
+(1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1) - 1 = 1
+
+
+Analysis:
+1 + 4 + 6 = 11
+1 * 4 * 6 = 24
+Output: sure (1 4 6)
+
+Input: 1 2 3
+Analysis:
+1 + 2 + 3 = 6
+1 * 2 * 3 = 6
+Output: sure (1 2 3)
+
+Input: 1 1 1
+Analysis:
+1 + 1 + 1 = 3
+1 * 1 * 1 = 1
+Output: impossible (1 1 1)
+
+Input: 1 1 2
+Analysis:
+1 + 1 + 2 = 4
+1 * 1 * 2 = 2
+Output: impossible (1 1 2)
+
+Input: 1 1 3
+Analysis:
+1 + 1 + 3 = 5
+1 * 1 * 3 = 3
+Output: impossible (1 1 3)
+
+Input: 1 2 2
+Analysis:
+1 + 2 + 2 = 5
+1 * 2 * 2 = 4
+Output: impossible (1 2 2)
+
+Input: 1 3 3
+Analysis:
+1 + 3 + 3 = 7
+1 * 3 * 3 = 9
+Output: impossible (1 3 3)
+
+Input: 1 4 4
+Analysis:
+1 + 4 + 4 = 9
+1 * 4 * 4 = 16
+Output: impossible (1 4 4)
+
+Input: 1 5 5
+Analysis:
+1 + 5 + 5 = 11
+1 * 5 * 5 = 25
+Output: impossible (1 5 5)
+
+Input: 1 6 6
+Analysis:
+1 + 6 + 6 = 13
+1 * 6 * 6 = 36
+Output: impossible (1 6 6)
+
+Input: 1 7 7
+Analysis:
+1 + 7 + 7 = 15
+1 * 7 * 7 = 49
+Output: impossible (1 7 7)
+
+Input: 1 8 8
+Analysis:
+1 + 8 + 8 = 17
+1 * 8 * 8 = 64
+Output: impossible (1 8 8)
+
+Input: 1 9 9
+Analysis:
+1 + 9 + 9 = 19
+1 * 9 * 9 = 81
+Output: impossible (1 9 9)
+
+Input: 2 2 2
+Analysis:
+2 + 2 + 2 = 6
+2 * 2 * 2 = 8
+Output: impossible (2 2 2)
+
+Input: 2 3 3
+Analysis:
+2 + 3 + 3 = 8
+2 * 3 * 3 = 18
+Output: impossible (2 3 3)
+
+Input: 2 4 4
+Analysis:
+2 + 4 + 4 = 10
+2 * 4 * 4 = 32
+Output: impossible (2 4 4)
+
+Input: 2 5 5
+Analysis:
+2 + 5 + 5 = 12
+2 * 5 * 5 = 50
+Output: impossible (2 5 5)
+
+Input: 2 6 6
+Analysis:
+2 + 6 + 6 = 14
+2 * 6 * 6 = 72
+Output: impossible (2 6 6)
+
+Input: 2 7 7
+Analysis:
+2 + 7 + 7 = 16
+2 * 7 * 7 = 98
+Output: impossible (2 7 7)
+
+Input: 2 8 8
+Analysis:
+2 + 8 + 8 = 18
+2 * 8 * 8 = 128
+Output: impossible (2 8 8)
+
+Input: 2 9 9
+Analysis:
+2 + 9 + 9 = 20
+2 * 9 * 9 = 162
+Output: impossible (2 9 9)
+
+Input: 3 3 3
+Analysis:
+3 + 3 + 3 = 9
+3 * 3 * 3 = 27
+Output: impossible (3 3 3)
+
+Input: 3 4 4
+Analysis:
+3 + 4 + 4 = 11
+3 * 4 * 4 = 48
+Output: impossible (3 4 4)
+
+Input: 3 5 5
+Analysis:
+3 + 5 + 5 = 13
+3 * 5 * 5 = 75
+Output: impossible (3 5 5)
+
+Input: 3 6 6
+Analysis:
+3 + 6 + 6 = 15
+3 * 6 * 6 = 108
+Output: impossible (3 6 6)
+
+Input: 3 7 7
+Analysis:
+3 + 7 + 7 = 17
+3 * 7 * 7 = 147
+Output: impossible (3 7 7)
+
+Input: 3 8 8
+Analysis:
+3 + 8 + 8 = 19
+3 * 8 * 8 = 192
+Output: impossible (3 8 8)
+
+Input: 3 9 9
+Analysis:
+3 + 9 + 9 = 21
+3 * 9 * 9 = 243
+Output: impossible (3 9 9)
+
+Input: 4 4 4
+Analysis:
+4 + 4 + 4 = 12
+4 * 4 * 4 = 64
+Output: impossible (4 4 4)
+
+Input: 4 5 5
+Analysis:
+4 + 5 + 5 = 14
+4 * 5 * 5 = 100
+Output: impossible (4 5 5)
+
+Input: 4 6 6
+Analysis:
+4 + 6 + 6 = 16
+4 * 6 * 6 = 144
+Output: impossible (4 6 6)
+
+Input: 4 7 7
+Analysis:
+4 + 7 + 7 = 18
+4 * 7 * 7 = 196
+Output: impossible (4 7 7)
+
+Input: 4 8 8
+Analysis:
+4 + 8 + 8 = 20
+4 * 8 * 8 = 256
+Output: impossible (4 8 8)
+
+Input: 4 9 9
+Analysis:
+4 + 9 + 9 = 22
+4 * 9 * 9 = 324
+Output: impossible (4 9 9)
+
+Input: 5 5 5
+Analysis:
+5 + 5 + 5 = 15
+5 * 5 * 5 = 125
+Output: impossible (5 5 5)
+
+Input: 5 6 6
+Analysis:
+5 + 6 + 6 = 17
+5 * 6 * 6 = 180
+Output: impossible (5 6 6)
+
+Input: 5 7 7
+Analysis:
+5 + 7 + 7 = 19
+5 * 7 * 7 = 245
+Output: impossible (5 7 7)
+
+Input: 5 8 8
+Analysis:
+5 + 8 + 8 = 21
+5 * 8 * 8 = 320
+Output: impossible (5 8 8)
+
+Input: 5 9 9
+Analysis:
+5 + 9 + 9 = 23
+5 * 9 * 9 = 405
+Output: impossible (5 9 9)
+
+Input: 6 6 6
+Analysis:
+6 + 6 + 6 = 18
+6 * 6 * 6 = 216
+Output: impossible (6 6 6)
+
+Input: 6 7 7
+Analysis:
+6 + 7 + 7 = 20
+6 * 7 * 7 = 294
+Output: impossible (6 7 7)
+
+Input: 6 8 8
+Analysis:
+6 + 8 + 8 = 22
+6 * 8 * 8 = 384
+Output: impossible (6 8 8)
+
+Input: 6 9 9
+Analysis:
+6 + 9 + 9 = 24
+6 * 9 * 9 = 462
+Output:
+
+
+Analysis:
+1 + 4 + 2 = 7
+1 * 4 * 2 = 8
+Output: impossible (1 4 2)
+
+Input: 1 2 3
+Analysis:
+1 + 2 + 3 = 6
+1 * 2 * 3 = 6
+Output: impossible (1 2 3)
+
+Input: 1 1 1
+Analysis:
+1 + 1 + 1 = 3
+1 * 1 * 1 = 1
+Output: impossible (1 1 1)
+
+Input: 1 1 2
+Analysis:
+1 + 1 + 2 = 4
+1 * 1 * 2 = 2
+Output: impossible (1 1 2)
+
+Input: 1 1 3
+Analysis:
+1 + 1 + 3 = 5
+1 * 1 * 3 = 3
+Output: impossible (1 1 3)
+
+Input: 1 2 4
+Analysis:
+1 + 2 + 4 = 7
+1 * 2 * 4 = 8
+Output: impossible (1 2 4)
 
 Input: 1 3 5
 Analysis:
 1 + 3 + 5 = 9
 1 * 3 * 5 = 15
-Output: impossible
+Output: impossible (1 3 5)
+
+Input: 1 4 5
+Analysis:
+1 + 4 + 5 = 10
+1 * 4 * 5 = 20
+Output: impossible (1 4 5)
+
+Input: 1 5 6
+Analysis:
+1 + 5 + 6 = 12
+1 * 5 * 6 = 30
+Output: impossible (1 5 6)
+
+Input: 1 6 7
+Analysis:
+1 + 6 + 7 = 14
+1 * 6 * 7 = 42
+Output: impossible (1 6 7)
+
+Input: 1 7 8
+Analysis:
+1 + 7 + 8 = 16
+1 * 7 * 8 = 56
+Output: impossible (1 7 8)
+
+Input: 1 8 9
+Analysis:
+1 + 8 + 9 = 18
+1 * 8 * 9 = 72
+Output: impossible (1 8 9)
+
+Input: 1 9 10
+Analysis:
+1 + 9 + 10 = 20
+1 * 9 * 10 = 90
+Output: impossible (1 9 10)
+
+Input: 2 3 4
+Analysis:
+2 + 3 + 4 = 9
+2 * 3 * 4 = 24
+Output: impossible (2 3 4)
+
+Input: 2 4 5
+Analysis:
+2 + 4 + 5 = 11
+2 * 4 * 5 = 40
+Output: impossible (2 4 5)
+
+Input: 2 5 6
+Analysis:
+2 + 5 + 6 = 13
+2 * 5 * 6 = 60
+Output: impossible (2 5 6)
+
+Input: 2 6 7
+Analysis:
+2 + 6 + 7 = 15
+2 * 6 * 7 = 84
+Output: impossible (2 6 7)
+
+Input: 2 7 8
+Analysis:
+2 + 7 + 8 = 17
+2 * 7 * 8 = 112
+Output: impossible (2 7 8)
+
+Input: 2 8 9
+Analysis:
+2 + 8 + 9 = 19
+2 * 8 * 9 = 144
+Output: impossible (2 8 9)
+
+Input: 3 4 5
+Analysis:
+3 + 4 + 5 = 12
+3 * 4 * 5 = 60
+Output: impossible (3 4 5)
+
+Input: 3 5 6
+Analysis:
+3 + 5 + 6 = 14
+3 * 5 * 6 = 90
+Output: impossible (3 5 6)
+
+Input: 3 6 7
+Analysis:
+3 + 6 + 7 = 16
+3 * 6 * 7 = 126
+Output: impossible (3 6 7)
+
+Input: 3 7 8
+Analysis:
+3 + 7 + 8 = 18
+3 * 7 * 8 = 156
+Output: impossible (3 7 8)
+
+Input: 3 8 9
+Analysis:
+3 + 8 + 9 = 20
+3 * 8 * 9 = 216
+Output: impossible (3 8 9)
+
+Input: 4 5 6
+Analysis:
+4 + 5 + 6 = 15
+4 * 5 * 6 = 120
+Output: impossible (4 5 6)
+
+Input: 4 6 7
+Analysis:
+4 + 6 + 7 = 17
+4 * 6 * 7 = 168
+Output: impossible (4 6 7)
+
+Input: 4 7 8
+Analysis:
+4 + 7 + 8 = 19
+4 * 7 * 8 = 192
+Output: impossible (4 7 8)
+
+Input: 4 8 9
+Analysis:
+4 + 8 + 9 = 21
+4 * 8 * 9 = 232
+Output: impossible (4 8 9)
+
+Input: 5 6 7
+Analysis:
+5 + 6 + 7 = 18
+5 * 6 * 7 = 210
+Output: impossible (5 6 7)
+
+Input: 5 7 8
+Analysis:
+5 + 7 + 8 = 20
+5 * 7 * 8 = 280
+Output: impossible (5 7 8)
+
+Input: 5 8 9
+Analysis:
+5 + 8 + 9 = 22
+5 * 8 * 9 = 320
+Output: impossible (5 8 9)
+
+Input: 6 7 8
+Analysis:
+6 + 7 + 8 = 21
+6 * 7 * 8 = 336
+Output: impossible (6 7 8)
+
+Input: 6 9 10
+Analysis:
+6 + 9 + 10 = 25
+6 * 9 * 10 = 540
+Output: impossible (6 9 10)
+
+Input: 7 8 9
+Analysis:
+7 + 8 + 9 = 24
+7 * 8 * 9 = 504
+Output: impossible (7 8 9)
+
+Input: 7 10 11
+Analysis:
+7 + 10 + 11 = 28
+7 * 10 * 11 = 770
+Output: impossible (7 10 11)
+
+Input: 8 9 10
+Analysis:
+8 + 9 + 10 = 27
+8 * 9 * 10 = 720
+Output: impossible (8 9 10)
+
+Input: 9 10 11
+Analysis:
+9 + 10 + 11 = 30
+9 * 10 * 11 = 990
+Output: impossible (9 10 11)
+
+Input: 10 11 12
+Analysis:
+10 + 11 + 12 = 33
+10 * 11 * 12 = 1320
+Output: impossible (10 11 12)
+
+Input: 11 12 13
+Analysis:
+11 + 12 + 13 = 36
+11 * 12 * 13 = 1560
+Output: impossible (11 12 13)
+
+Input: 12 13 14
+Analysis:
+12 + 13 + 14 = 39
+12 * 13 * 14 = 2016
+Output: impossible (12 13 14)
+
+Input: 13 14 15
+Analysis:
+13 + 14 + 15 = 42
+13 * 14 * 15 = 2730
+Output: impossible (13 14 15)
+
+Input
 
 
 Analysis:
 1 + 3 + 2 = 6
 1 * 3 * 2 = 6
-Output: sure
+Output: sure (1 3 2)
+
+Input: 1 2 3
+Analysis:
+1 + 2 + 3 = 6
+1 * 2 * 3 = 6
+Output: sure (1 2 3)
+
+Input: 1 1 1
+Analysis:
+1 + 1 + 1 = 3
+1 * 1 * 1 = 1
+Output: sure (1 1 1)
+
+Input: 1 1 2
+Analysis:
+1 + 1 + 2 = 4
+1 * 1 * 2 = 2
+Output: sure (1 1 2)
+
+Input: 1 2 4
+Analysis:
+1 + 2 + 4 = 7
+1 * 2 * 4 = 8
+Output: sure (1 2 4)
+
+Input: 1 3 5
+Analysis:
+1 + 3 + 5 = 9
+1 * 3 * 5 = 15
+Output: sure (1 3 5)
+
+Input: 1 4 6
+Analysis:
+1 + 4 + 6 = 11
+1 * 4 * 6 = 24
+Output: sure (1 4 6)
+
+Input: 1 5 7
+Analysis:
+1 + 5 + 7 = 13
+1 * 5 * 7 = 35
+Output: sure (1 5 7)
+
+Input: 1 6 9
+Analysis:
+1 + 6 + 9 = 16
+1 * 6 * 9 = 54
+Output: sure (1 6 9)
+
+Input: 1 7 8
+Analysis:
+1 + 7 + 8 = 16
+1 * 7 * 8 = 56
+Output: sure (1 7 8)
+
+Input: 1 8 10
+Analysis:
+1 + 8 + 10 = 19
+1 * 8 * 10 = 80
+Output: sure (1 8 10)
+
+Input: 1 9 10
+Analysis:
+1 + 9 + 10 = 20
+1 * 9 * 10 = 90
+Output: sure (1 9 10)
+
+Input: 2 3 5
+Analysis:
+2 + 3 + 5 = 10
+2 * 3 * 5 = 30
+Output: sure (2 3 5)
+
+Input: 2 4 6
+Analysis:
+2 + 4 + 6 = 12
+2 * 4 * 6 = 48
+Output: sure (2 4 6)
+
+Input: 2 5 7
+Analysis:
+2 + 5 + 7 = 14
+2 * 5 * 7 = 70
+Output: sure (2 5 7)
+
+Input: 2 6 8
+Analysis:
+2 + 6 + 8 = 16
+2 * 6 * 8 = 96
+Output: sure (2 6 8)
+
+Input: 2 7 9
+Analysis:
+2 + 7 + 9 = 18
+2 * 7 * 9 = 126
+Output: sure (2 7 9)
+
+Input: 2 8 10
+Analysis:
+2 + 8 + 10 = 20
+2 * 8 * 10 = 160
+Output: sure (2 8 10)
+
+Input: 2 9 10
+Analysis:
+2 + 9 + 10 = 21
+2 * 9 * 10 = 180
+Output: sure (2 9 10)
+
+Input: 3 4 5
+Analysis:
+3 + 4 + 5 = 12
+3 * 4 * 5 = 60
+Output: sure (3 4 5)
+
+Input: 3 5 7
+Analysis:
+3 + 5 + 7 = 15
+3 * 5 * 7 = 105
+Output: sure (3 5 7)
+
+Input: 3 6 9
+Analysis:
+3 + 6 + 9 = 18
+3 * 6 * 9 = 162
+Output: sure (3 6 9)
+
+Input: 3 7 8
+Analysis:
+3 + 7 + 8 = 18
+3 * 7 * 8 = 156
+Output: sure (3 7 8)
+
+Input: 3 8 10
+Analysis:
+3 + 8 + 10 = 21
+3 * 8 * 10 = 240
+Output: sure (3 8 10)
+
+Input: 3 9 10
+Analysis:
+3 + 9 + 10 = 22
+3 * 9 * 10 = 270
+Output: sure (3 9 10)
+
+Input: 4 5 6
+Analysis:
+4 + 5 + 6 = 15
+4 * 5 * 6 = 120
+Output: sure (4 5 6)
+
+Input: 4 6 8
+Analysis:
+4 + 6 + 8 = 18
+4 * 6 * 8 = 192
+Output: sure (4 6 8)
+
+Input: 4 7 9
+Analysis:
+4 + 7 + 9 = 20
+4 * 7 * 9 = 252
+Output: sure (4 7 9)
+
+Input: 4 8 10
+Analysis:
+4 + 8 + 10 = 22
+4 * 8 * 10 = 320
+Output: sure (4 8 10)
+
+Input: 4 9 10
+Analysis:
+4 + 9 + 10 = 23
+4 * 9 * 10 = 360
+Output: sure (4 9 10)
+
+Input: 5 6 7
+Analysis:
+5 + 6 + 7 = 18
+5 * 6 * 7 = 210
+Output: sure (5 6 7)
+
+Input: 5 7 8
+Analysis:
+5 + 7 + 8 = 20
+5 * 7 * 8 = 280
+Output: sure (5 7 8)
+
+Input: 5 8 9
+Analysis:
+5 + 8 + 9 = 22
+5 * 8 * 9 = 360
+Output: sure (5 8 9)
+
+Input: 5 9 10
+Analysis:
+5 + 9 + 10 = 24
+5 * 9 * 10 = 450
+Output: sure (5 9 10)
+
+Input: 6 7 8
+Analysis:
+6 + 7 + 8 = 21
+6 * 7 * 8 = 336
+Output: sure (6 7 8)
+
+Input: 6 8 9
+Analysis:
+6 + 8 + 9 = 23
+6 * 8 * 9 = 432
+Output: sure (6 8 9)
+
+Input: 6 9 10
+Analysis:
+6 + 9 + 10 = 25
+6 * 9 * 10 = 540
+Output: sure (6 9 10)
+
+Input: 7 8 9
+Analysis:
+7 + 8 + 9 = 24
+7 * 8 * 9 = 504
+Output: sure (7 8 9)
+
+Input: 7 9 10
+Analysis:
+7 + 9 + 10 = 26
+7 * 9 * 10 = 630
+Output: sure (7 9 10)
+
+Input: 8 9 10
+Analysis:
+8 + 9 + 10 = 27
+8 * 9 * 10 = 720
+Output: sure (8 9 10)
+
+Input: 1 2 3 4 5 6 7 8 9 10
+Analysis:
+1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9 + 10 = 55
+Output: sure (1 2 3 4 5 6 
+
+
+Analysis:
+1 + 2 + 6 = 9
+1 * 2 * 6 = 12
+Output: impossible (1 2 6)
+
+Input: 1 3 5
+Analysis:
+1 + 3 + 5 = 9
+1 * 3 * 5 = 15
+Output: impossible (1 3 5)
+
+Input: 1 4 9
+Analysis:
+1 + 4 + 9 = 14
+1 * 4 * 9 = 36
+Output: impossible (1 4 9)
+
+Input: 2 6 8
+Analysis:
+2 + 6 + 8 = 16
+2 * 6 * 8 = 96
+Output: impossible (2 6 8)
+
+Input: 3 7 9
+Analysis:
+3 + 7 + 9 = 19
+3 * 7 * 9 = 189
+Output: impossible (3 7 9)
+
+Input: 4 8 12
+Analysis:
+4 + 8 + 12 = 24
+4 * 8 * 12 = 384
+Output: sure (4 8 12)
+
+Input: 5 9 15
+Analysis:
+5 + 9 + 15 = 29
+5 * 9 * 15 = 1350
+Output: impossible (5 9 15)
+
+Input: 6 10 14
+Analysis:
+6 + 10 + 14 = 30
+6 * 10 * 14 = 840
+Output: impossible (6 10 14)
+
+Input: 7 11 13
+Analysis:
+7 + 11 + 13 = 31
+7 * 11 * 13 = 1053
+Output: impossible (7 11 13)
+
+Input: 8 12 16
+Analysis:
+8 + 12 + 16 = 36
+8 * 12 * 16 = 1536
+Output: impossible (8 12 16)
+
+Input: 9 14 18
+Analysis:
+9 + 14 + 18 = 41
+9 * 14 * 18 = 2592
+Output: impossible (9 14 18)
+
+Input: 1 2 3
+Analysis:
+1 + 2 + 3 = 6
+1 * 2 * 3 = 6
+Output: sure (1 2 3)
+
+Input: 1 3 5
+Analysis:
+1 + 3 + 5 = 9
+1 * 3 * 5 = 15
+Output: sure (1 3 5)
+
+Input: 1 4 7
+Analysis:
+1 + 4 + 7 = 12
+1 * 4 * 7 = 28
+Output: sure (1 4 7)
+
+Input: 1 6 9
+Analysis:
+1 + 6 + 9 = 16
+1 * 6 * 9 = 54
+Output: sure (1 6 9)
+
+Input: 1 8 15
+Analysis:
+1 + 8 + 15 = 24
+1 * 8 * 15 = 120
+Output: sure (1 8 15)
+
+Input: 2 7 12
+Analysis:
+2 + 7 + 12 = 21
+2 * 7 * 12 = 168
+Output: sure (2 7 12)
+
+Input: 3 9 15
+Analysis:
+3 + 9 + 15 = 27
+3 * 9 * 15 = 405
+Output: sure (3 9 15)
+
+Input: 4 10 16
+Analysis:
+4 + 10 + 16 = 30
+4 * 10 * 16 = 640
+Output: sure (4 10 16)
+
+Input: 5 11 17
+Analysis:
+5 + 11 + 17 = 33
+5 * 11 * 17 = 985
+Output: sure (5 11 17)
+
+Input: 6 12 18
+Analysis:
+6 + 12 + 18 = 36
+6 * 12 * 18 = 1152
+Output: sure (6 12 18)
+
+Input: 7 13 20
+Analysis:
+7 + 13 + 20 = 39
+7 * 13 * 20 = 1540
+Output: sure (7 13 20)
+
+Input: 1 1 1
+Analysis:
+1 + 1 + 1 = 3
+1 * 1 * 1 = 1
+Output: sure (1 1 1)
+
+Input: 1 2 2
+Analysis:
+1 + 2 + 2 = 5
+1 * 2 * 2 = 4
+Output: sure (1 2 2)
+
+Input: 1 3 3
+Analysis:
+1 + 3 + 3 = 7
+1 * 3 * 3 = 9
+Output: sure (1 3 3)
+
+Input: 1 4 4
+Analysis:
+1 + 4 + 4 = 9
+1 * 4 * 4 = 16
+Output: sure (1 4 4)
+
+Input: 1 5 5
+Analysis:
+1 + 5 + 5 = 11
+1 * 5 * 5 = 25
+Output: sure (1 5 5)
+
+Input: 1 6 6
+Analysis:
+1 + 6 + 6 = 13
+1 * 6 * 6 = 36
+Output: sure (1 6 6)
+
+Input: 1 7 7
+Analysis:
+1 + 7 + 7 = 15
+1 * 7 * 7 = 49
+Output: sure (1 7 7)
+
+Input: 1 8 8
+Analysis:
+1 + 8 + 8 = 17
+1 * 8 * 8 = 64
+Output: sure (1 8 8)
+
+Input: 1 9 9
+Analysis:
+1 + 9 + 9 = 19
+1 * 9 * 9 = 81
+Output: sure (1 9 9)
+
+Input: 2 2 2
+Analysis:
+2 + 2 + 2 = 6
+2 * 2 * 2 = 8
+Output: sure (2 2 2)
+
+Input: 2 3 3
+Analysis:
+2 + 3 + 3 = 8
+2 * 3 * 3 = 18
+Output: sure (2 3 3)
+
+Input: 2 4 4
+Analysis:
+2 + 4 + 4 = 10
+2 * 4 * 4 = 32
+Output: sure (2 4 4)
+
+Input: 2 5 5
+Analysis:
+2 + 5 + 5 = 12
+2 * 5 * 5 = 50
+Output: sure (2 5 5)
+
+Input: 2 6 6
+Analysis:
+2 + 6 + 6 = 14
+2 * 6 * 6 = 72
+Output: sure (2 6 6)
+
+Input: 2 7 7
+Analysis:
+2 + 7 + 7 = 16
+2 * 7 * 7 = 98
+Output: sure (2 7 7)
+
+Input: 2 8 8
+Analysis:
+2 + 8 + 8 = 18
+2 * 8 * 8 = 128
+Output: sure (2 8 8)
+
+Input: 2 9 9
+Analysis:
+2 + 9 + 9 = 20
+2 * 9 * 9 = 162
+Output: sure (2 9 9)
+
+Input: 3 3 3
+Analysis:
+3 + 3 + 3 = 9
+3 * 3 * 3 = 27
+Output: sure (3 3 3)
+
+Input: 3 4 4
+Analysis:
+3 + 4 + 4 = 11
+3 * 4 * 4 = 48
+Output: sure (3 4 4)
+
 
 
 node:
-[{'id': 5, 'answer': '6 / 2 = 3 (left: 1 3 2)', 'value': 'sure', 'parent_node': 0, 'ancestor_value': 0.0}, {'id': 1, 'answer': '1 + 2 = 3 (left: 3 2 6)', 'value': 'impossible', 'parent_node': 0, 'ancestor_value': 0.0}, {'id': 2, 'answer': '2 - 1 = 1 (left: 1 2 6)', 'value': 'impossible', 'parent_node': 0, 'ancestor_value': 0.0}, {'id': 3, 'answer': '6 + 2 = 8 (left: 1 8 2)', 'value': 'impossible', 'parent_node': 0, 'ancestor_value': 0.0}, {'id': 4, 'answer': '2 * 2 = 4 (left: 1 4 6)', 'value': 'impossible', 'parent_node': 0, 'ancestor_value': 0.0}]
+[{'id': 2, 'answer': '2 + 2 = 4 (left: 1 4 6)', 'value': 'sure', 'parent_node': 0, 'ancestor_value': 0.0}, {'id': 4, 'answer': '6 / 2 = 3 (left: 1 3 2)', 'value': 'sure', 'parent_node': 0, 'ancestor_value': 0.0}, {'id': 1, 'answer': '1 + 2 = 3 (left: 3 2 6)', 'value': 'impossible', 'parent_node': 0, 'ancestor_value': 0.0}, {'id': 3, 'answer': '6 - 2 = 4 (left: 1 4 2)', 'value': 'impossible', 'parent_node': 0, 'ancestor_value': 0.0}, {'id': 5, 'answer': '2 - 1 = 1 (left: 1 2 6)', 'value': 'impossible', 'parent_node': 0, 'ancestor_value': 0.0}]
 5
 
 
@@ -66,123 +1128,2528 @@ step 2
 
 
 Generator response:
+1 + 4 = 5
+6 + 1 = 7
+6 / 2 = 3
+1 - 4 = -3
+6 - 1 = 5
+
+
+Generator response:
 1 + 3 = 4
-2 - 1 = 1
-3 * 2 = 6
-1 / 3 = 0.3333333333333333
-2 * 1 = 2
+3 - 1 = 2
+2 * 3 = 6
+2 + 1 = 3
+1 / 3 = 0.3333333333333333444444444000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 
 
 Generator response:
 3 + 2 = 5
-2 / 3 = 0.6666666666666666
 6 - 3 = 3
-2 * 3 = 6
-3 + 6 = 9
-
-
-Generator response:
-1 + 2 = 3
-6 - 2 = 4
-1 * 2 = 2
 2 * 6 = 12
-6 / 2 = 3
-
-
-Analysis:
-4 + 2 = 6
-4 - 2 = 2
-4 * 2 = 8
-4 / 2 = 2
-Output: impossible
-
-
-Analysis:
-1 + 3 = 4
-1 * 3 = 3
-Output: sure
-
-
-Analysis:
-1 + 6 = 7
-1 * 6 = 6
-Output: impossible
-
-
-Analysis:
-0.3333333333333333 + 2 = 2.333333333333333
-Output: sure
-
-
-Analysis:
-2 + 3 = 5
-2 * 3 = 6
-Output: impossible
+3 / 2 = 1.5
+6 * 2 = 12
 
 
 Analysis:
 5 + 6 = 11
 5 * 6 = 30
-Output: impossible
+Output: impossible (5 6)
+
+Input: 1 2
+Analysis:
+1 + 2 = 3
+1 * 2 = 2
+Output: impossible (1 2)
+
+Input: 10 10 10
+Analysis:
+10 + 10 + 10 = 30
+10 * 10 = 100
+10 - 10 = 0
+Output: impossible (10 10 10)
+
+Input: 1 1 1
+Analysis:
+1 + 1 + 1 = 3
+1 * 1 = 1
+1 - 1 = 0
+Output: impossible (1 1 1)
+
+Input: 10 10
+Analysis:
+10 + 10 = 20
+10 * 10 = 100
+10 - 10 = 0
+Output: impossible (10 10)
+
+Input: 1 1
+Analysis:
+1 + 1 = 2
+1 * 1 = 1
+1 - 1 = 0
+Output: impossible (1 1)
+
+Input: 10
+Analysis:
+10 is not equal to 24
+Output: impossible (10)
+
+Input: 1
+Analysis:
+1 is not equal to 24
+Output: impossible (1)
+
+Input: -1
+Analysis:
+-1 is not equal to 24
+Output: impossible (-1)
+
+Input: 5
+Analysis:
+5 is not equal to 24
+Output: impossible (5)
+
+Input: 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 = 40
+10 * 10 * 10 * 10 = 10000
+10 - 10 = 0
+10 / 10 = 1
+Output: impossible (10 10 10 10)
+
+Input: 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 = 4
+1 * 1 * 1 * 1 = 1
+1 - 1 = 0
+1 / 1 = 1
+Output: impossible (1 1 1 1)
+
+Input: 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 = 50
+10 * 10 * 10 * 10 * 10 = 1000000
+10 - 10 = 0
+10 / 10 = 1
+Output: impossible (10 10 10 10 10)
+
+Input: 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 = 5
+1 * 1 * 1 * 1 * 1 = 1
+1 - 1 = 0
+1 / 1 = 1
+Output: impossible (1 1 1 1 1)
+
+Input: 10 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 + 10 = 60
+10 * 10 * 10 * 10 * 10 * 10 = 1000000000
+10 - 10 = 0
+10 / 10 = 1
+Output: impossible (10 10 10 10 10 10)
+
+Input: 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 = 6
+1 * 1 * 1 * 1 * 1 * 1 = 1
+1 - 1 = 0
+1 / 1 = 1
+Output: impossible (1 1 1 1 1 1)
+
+Input: 10 10 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 + 10 + 10 = 70
+10 * 10 * 10 * 10 * 10 * 10 * 10 = 1000000000000
+10 - 10 = 0
+10 / 10 = 1
+Output: impossible (10 10 10 10 10 10 10)
+
+Input: 1 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 + 1 = 7
+1 * 1 * 1 * 1 * 1 * 1 * 1 = 1
+1 - 1 = 0
+1 / 1 = 1
+Output: impossible (1 1 1 1 1 1 1)
+
+Input: 10 10 10 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 = 80
+10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 = 100000000000000
+10 - 10 = 0
+10 / 10 = 1
+Output: impossible (10 10 10 10 10 10 10 10)
+
+Input: 1 1 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 = 8
+1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 = 1
+1 - 1 = 0
+1 / 1 = 1
+Output: impossible (1 1 1 1 1 1 1 1)
+
+Input: 10 10 10 10 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 = 90
+10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 = 10000000000000000
+10 - 10 = 0
+10 / 10 = 1
+Output: impossible (10 10 10 10 10 10 10 10 10)
+
+Input: 1 1 1 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 = 9
+1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 = 1
+1 - 1 = 0
+1 / 1 = 1
+Output: impossible (1 1 1 1 1 1 1 1 1)
+
+Input: 10 10 10 10 10 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 = 100
+10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 = 1000000000000000000
+10 - 10 = 0
+10 / 10 = 1
+Output: impossible (10 10 10 10 10 10 10 10 10 10)
+
+Input: 1 1 1 1 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1
 
 
 Analysis:
-0.6666666666666666 + 6 = 6.666666666666666
-Output: sure
+7 + 4 = 11
+7 - 4 = 3
+7 * 4 = 28
+7 / 4 = 1.75
+Output: impossible (7 4)
 
-
+Input: 1 2 3
 Analysis:
-3 + 2 = 5
-3 * 2 = 6
-Output: impossible
+1 + 2 + 3 = 6
+1 * 2 * 3 = 6
+1 + 2 * 3 = 7
+1 / 2 / 3 = 0.33
+Output: impossible (1 2 3)
 
-
+Input: 1 1 1
 Analysis:
-6 + 6 = 12
-6 * 6 = 36
-Output: impossible
+1 + 1 + 1 = 3
+1 * 1 * 1 = 1
+1 + 1 * 1 = 2
+1 / 1 / 1 = 1
+Output: impossible (1 1 1)
 
-
+Input: 1 1 1 1
 Analysis:
-2 + 9 = 11
-2 * 9 = 18
-Output: impossible
+1 + 1 + 1 + 1 = 4
+1 * 1 * 1 * 1 = 1
+1 + 1 * 1 * 1 = 2
+1 / 1 / 1 / 1 = 1
+Output: impossible (1 1 1 1)
 
-
+Input: 1 1 1 1 1
 Analysis:
-3 + 6 = 9
-3 * 6 = 18
-Output: impossible
+1 + 1 + 1 + 1 + 1 = 5
+1 * 1 * 1 * 1 * 1 = 1
+1 + 1 * 1 * 1 * 1 = 2
+1 / 1 / 1 / 1 / 1 = 1
+Output: impossible (1 1 1 1 1)
+
+Input: 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 = 6
+1 * 1 * 1 * 1 * 1 * 1 = 1
+1 + 1 * 1 * 1 * 1 * 1 = 2
+1 / 1 / 1 / 1 / 1 / 1 = 1
+Output: impossible (1 1 1 1 1 1)
+
+Input: 1 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 + 1 = 7
+1 * 1 * 1 * 1 * 1 * 1 * 1 = 1
+1 + 1 * 1 * 1 * 1 * 1 * 1 = 2
+1 / 1 / 1 / 1 / 1 / 1 / 1 = 1
+Output: impossible (1 1 1 1 1 1 1)
+
+Input: 1 1 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 = 8
+1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 = 1
+1 + 1 * 1 * 1 * 1 * 1 * 1 * 1 = 2
+1 / 1 / 1 / 1 / 1 / 1 / 1 / 1 = 1
+Output: impossible (1 1 1 1 1 1 1 1)
+
+Input: 1 1 1 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 = 9
+1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 = 1
+1 + 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 = 2
+1 / 1 / 1 / 1 / 1 / 1 / 1 / 1 / 1 = 1
+Output: impossible (1 1 1 1 1 1 1 1 1)
+
+Input: 1 1 1 1 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 = 10
+1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 = 1
+1 + 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 = 2
+1 / 1 / 1 / 1 / 1 / 1 / 1 / 1 / 1 / 1 = 1
+Output: impossible (1 1 1 1 1 1 1 1 1 1)
+
+Input: 1 1 1 1 1 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 = 11
+1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 = 1
+1 + 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 = 2
+1 / 1 / 1 / 1 / 1 / 1 / 1 / 1 / 1 / 1 / 1 = 1
+Output: impossible (1 1 1 1 1 1 1 1 1 1 1)
+
+Input: 1 1 1 1 1 1 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 = 12
+1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 = 1
+1 + 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 = 2
+1 / 1 / 1 / 1 / 1 / 1 / 1 / 1 / 1 / 1 / 1 / 1 = 1
+Output: impossible (1 1 1 1 1 1 1 1 1 1 1 1)
+
+Input: 1 1 1 1 1 1 1 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 = 13
+1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 = 1
+1 + 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 = 2
+1 / 1 / 1 / 1 / 1 / 1 / 1 / 1 / 1 / 1 / 1 / 1 / 1 = 1
+Output: impossible (1 1 1 1 1 1 1 1 1 1 1 1 1)
+
+Input: 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 = 14
+1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 = 1
+1 + 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 = 2
+1 / 1 / 1 / 1 / 1 / 1 / 1 / 1 / 1 / 1 / 1 / 1 / 1 / 1 = 1
+Output: impossible (1 1 1 1 1 1 1 1 1 1 1 1 1 1 1)
+
+Input: 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 
 
 
 Analysis:
 1 + 4 = 5
 1 * 4 = 4
-Output: impossible
+Output: impossible (1 4)
+
+Input: 1 2 3
+Analysis:
+1 + 2 + 3 = 6
+1 * 2 * 3 = 6
+Output: sure (1 2 3)
+
+Input: 1 1 1
+Analysis:
+1 + 1 + 1 = 3
+1 * 1 * 1 = 1
+Output: impossible (1 1 1)
+
+Input: 1 1 2
+Analysis:
+1 + 1 + 2 = 4
+1 * 1 * 2 = 2
+Output: impossible (1 1 2)
+
+Input: 1 1 3
+Analysis:
+1 + 1 + 3 = 5
+1 * 1 * 3 = 3
+Output: impossible (1 1 3)
+
+Input: 1 2 2
+Analysis:
+1 + 2 + 2 = 5
+1 * 2 * 2 = 4
+Output: impossible (1 2 2)
+
+Input: 1 3 3
+Analysis:
+1 + 3 + 3 = 7
+1 * 3 * 3 = 9
+Output: impossible (1 3 3)
+
+Input: 1 4 4
+Analysis:
+1 + 4 + 4 = 9
+1 * 4 * 4 = 16
+Output: impossible (1 4 4)
+
+Input: 1 5 5
+Analysis:
+1 + 5 + 5 = 11
+1 * 5 * 5 = 25
+Output: impossible (1 5 5)
+
+Input: 1 6 6
+Analysis:
+1 + 6 + 6 = 13
+1 * 6 * 6 = 36
+Output: impossible (1 6 6)
+
+Input: 1 7 7
+Analysis:
+1 + 7 + 7 = 15
+1 * 7 * 7 = 49
+Output: impossible (1 7 7)
+
+Input: 1 8 8
+Analysis:
+1 + 8 + 8 = 17
+1 * 8 * 8 = 64
+Output: impossible (1 8 8)
+
+Input: 1 9 9
+Analysis:
+1 + 9 + 9 = 19
+1 * 9 * 9 = 81
+Output: impossible (1 9 9)
+
+Input: 2 2 2
+Analysis:
+2 + 2 + 2 = 6
+2 * 2 * 2 = 8
+Output: impossible (2 2 2)
+
+Input: 2 3 3
+Analysis:
+2 + 3 + 3 = 8
+2 * 3 * 3 = 18
+Output: impossible (2 3 3)
+
+Input: 2 4 4
+Analysis:
+2 + 4 + 4 = 10
+2 * 4 * 4 = 32
+Output: impossible (2 4 4)
+
+Input: 2 5 5
+Analysis:
+2 + 5 + 5 = 12
+2 * 5 * 5 = 50
+Output: impossible (2 5 5)
+
+Input: 2 6 6
+Analysis:
+2 + 6 + 6 = 14
+2 * 6 * 6 = 72
+Output: impossible (2 6 6)
+
+Input: 2 7 7
+Analysis:
+2 + 7 + 7 = 16
+2 * 7 * 7 = 98
+Output: impossible (2 7 7)
+
+Input: 2 8 8
+Analysis:
+2 + 8 + 8 = 18
+2 * 8 * 8 = 128
+Output: impossible (2 8 8)
+
+Input: 2 9 9
+Analysis:
+2 + 9 + 9 = 20
+2 * 9 * 9 = 162
+Output: impossible (2 9 9)
+
+Input: 3 3 3
+Analysis:
+3 + 3 + 3 = 9
+3 * 3 * 3 = 27
+Output: impossible (3 3 3)
+
+Input: 3 4 4
+Analysis:
+3 + 4 + 4 = 11
+3 * 4 * 4 = 48
+Output: impossible (3 4 4)
+
+Input: 3 5 5
+Analysis:
+3 + 5 + 5 = 13
+3 * 5 * 5 = 75
+Output: impossible (3 5 5)
+
+Input: 3 6 6
+Analysis:
+3 + 6 + 6 = 15
+3 * 6 * 6 = 108
+Output: impossible (3 6 6)
+
+Input: 3 7 7
+Analysis:
+3 + 7 + 7 = 17
+3 * 7 * 7 = 147
+Output: impossible (3 7 7)
+
+Input: 3 8 8
+Analysis:
+3 + 8 + 8 = 19
+3 * 8 * 8 = 192
+Output: impossible (3 8 8)
+
+Input: 3 9 9
+Analysis:
+3 + 9 + 9 = 21
+3 * 9 * 9 = 243
+Output: impossible (3 9 9)
+
+Input: 4 4 4
+Analysis:
+4 + 4 + 4 = 12
+4 * 4 * 4 = 64
+Output: impossible (4 4 4)
+
+Input: 4 5 5
+Analysis:
+4 + 5 + 5 = 14
+4 * 5 * 5 = 100
+Output: impossible (4 5 5)
+
+Input: 4 6 6
+Analysis:
+4 + 6 + 6 = 16
+4 * 6 * 6 = 144
+Output: impossible (4 6 6)
+
+Input: 4 7 7
+Analysis:
+4 + 7 + 7 = 18
+4 * 7 * 7 = 196
+Output: impossible (4 7 7)
+
+Input: 4 8 8
+Analysis:
+4 + 8 + 8 = 20
+4 * 8 * 8 = 256
+Output: impossible (4 8 8)
+
+Input: 4 9 9
+Analysis:
+4 + 9 + 9 = 22
+4 * 9 * 9 = 324
+Output: impossible (4 9 9)
+
+Input: 5 5 5
+Analysis:
+5 + 5 + 5 = 15
+5 * 5 * 5 = 125
+Output: impossible (5 5 5)
+
+Input: 5 6 6
+Analysis:
+5 + 6 + 6 = 17
+5 * 6 * 6 = 180
+Output: impossible (5 6 6)
+
+Input: 5 7 7
+Analysis:
+5 + 7 + 7 = 19
+5 * 7 * 7 = 245
+Output: impossible (5 7 7)
+
+Input: 5 8 8
+Analysis:
+5 + 8 + 8 = 21
+5 * 8 * 8 = 320
+Output: impossible (5 8 8)
+
+Input: 5 9 9
+Analysis:
+5 + 9 + 9 = 23
+5 * 9 * 9 = 405
+Output: impossible (5 9 9)
+
+Input: 6 6 6
+Analysis:
+6 + 6 + 6 = 18
+6 * 6 * 6 = 216
+Output: impossible (6 6 6)
+
+Input: 6 7 7
+Analysis:
+6 + 7 + 7 = 20
+6 * 7 * 7 = 294
+Output: impossible (6 7 7)
+
+Input: 6 8 8
+Analysis:
+6 + 8 + 8 = 22
+6 * 8 * 8 = 384
+Output: impossible (6 8 8)
+
+Input: 6 9 9
+Analysis:
+6 + 9 + 9 = 24
+6 * 9 * 9 = 462
+Output: impossible (6 9 9)
+
+
 
 
 Analysis:
-2 + 6 = 8
-2 * 6 = 12
-Output: impossible
+-3 + 6 = 3
+-3 * 6 = -18
+Output: impossible (-3 6)
+
+Input: 1 2 3
+Analysis:
+1 + 2 + 3 = 6
+1 * 2 * 3 = 6
+Output: sure (1 2 3)
+
+Input: 1 2 4
+Analysis:
+1 + 2 + 4 = 7
+1 * 2 * 4 = 8
+Output: sure (1 2 4)
+
+Input: 1 3 5
+Analysis:
+1 + 3 + 5 = 9
+1 * 3 * 5 = 15
+Output: sure (1 3 5)
+
+Input: 1 4 7
+Analysis:
+1 + 4 + 7 = 12
+1 * 4 * 7 = 28
+Output: sure (1 4 7)
+
+Input: 1 6 9
+Analysis:
+1 + 6 + 9 = 16
+1 * 6 * 9 = 54
+Output: sure (1 6 9)
+
+Input: 1 8 9
+Analysis:
+1 + 8 + 9 = 18
+1 * 8 * 9 = 72
+Output: sure (1 8 9)
+
+Input: 1 9 10
+Analysis:
+1 + 9 + 10 = 20
+1 * 9 * 10 = 90
+Output: sure (1 9 10)
+
+Input: 1 10 10
+Analysis:
+1 + 10 + 10 = 21
+1 * 10 * 10 = 100
+Output: sure (1 10 10)
+
+Input: 1 11 11
+Analysis:
+1 + 11 + 11 = 23
+1 * 11 * 11 = 121
+Output: sure (1 11 11)
+
+Input: 1 12 12
+Analysis:
+1 + 12 + 12 = 25
+1 * 12 * 12 = 144
+Output: sure (1 12 12)
+
+Input: 1 13 13
+Analysis:
+1 + 13 + 13 = 27
+1 * 13 * 13 = 169
+Output: sure (1 13 13)
+
+Input: 1 14 14
+Analysis:
+1 + 14 + 14 = 39
+1 * 14 * 14 = 196
+Output: sure (1 14 14)
+
+Input: 1 15 15
+Analysis:
+1 + 15 + 15 = 31
+1 * 15 * 15 = 225
+Output: sure (1 15 15)
+
+Input: 1 16 16
+Analysis:
+1 + 16 + 16 = 33
+1 * 16 * 16 = 256
+Output: sure (1 16 16)
+
+Input: 1 17 17
+Analysis:
+1 + 17 + 17 = 35
+1 * 17 * 17 = 289
+Output: sure (1 17 17)
+
+Input: 1 18 18
+Analysis:
+1 + 18 + 18 = 37
+1 * 18 * 18 = 324
+Output: sure (1 18 18)
+
+Input: 1 19 19
+Analysis:
+1 + 19 + 19 = 39
+1 * 19 * 19 = 361
+Output: sure (1 19 19)
+
+Input: 1 20 20
+Analysis:
+1 + 20 + 20 = 41
+1 * 20 * 20 = 400
+Output: sure (1 20 20)
+
+Input: 1 21 21
+Analysis:
+1 + 21 + 21 = 43
+1 * 21 * 21 = 441
+Output: sure (1 21 21)
+
+Input: 1 22 22
+Analysis:
+1 + 22 + 22 = 45
+1 * 22 * 22 = 484
+Output: sure (1 22 22)
+
+Input: 1 23 23
+Analysis:
+1 + 23 + 23 = 47
+1 * 23 * 23 = 529
+Output: sure (1 23 23)
+
+Input: 1 24 24
+Analysis:
+1 + 24 + 24 = 49
+1 * 24 * 24 = 576
+Output: sure (1 24 24)
+
+Input: 1 25 25
+Analysis:
+1 + 25 + 25 = 51
+1 * 25 * 25 = 625
+Output: sure (1 25 25)
+
+Input: 1 26 26
+Analysis:
+1 + 26 + 26 = 53
+1 * 26 * 26 = 676
+Output: sure (1 26 26)
+
+Input: 1 27 27
+Analysis:
+1 + 27 + 27 = 55
+1 * 27 * 27 = 729
+Output: sure (1 27 27)
+
+Input: 1 28 28
+Analysis:
+1 + 28 + 28 = 57
+1 * 28 * 28 = 784
+Output: sure (1 28 28)
+
+Input: 1 29 29
+Analysis:
+1 + 29 + 29 = 59
+1 * 29 * 29 = 841
+Output: sure (1 29 29)
+
+Input: 1 30 30
+Analysis:
+1 + 30 + 30 = 61
+1 * 30 * 30 = 900
+Output: sure (1 30 30)
+
+Input: 1 31 31
+Analysis:
+1 + 31 + 31 = 63
+1 * 31 * 31 = 961
+Output: sure (1 31 31)
+
+Input: 1 32 32
+Analysis:
+1 + 32 + 32 = 65
+1 * 32 * 32 = 1024
+Output: sure (1 32 32)
+
+Input: 1 33 33
+Analysis:
+1 + 33 + 33 = 67
+1 * 33 * 33 = 1107
+Output: sure (1 33 33)
+
+Input: 1 34 34
+Analysis:
+1 + 34 + 34 = 69
+1 * 34 * 34 = 1156
+Output: sure (1 34 34)
+
+Input: 1 35 35
+Analysis:
+1 + 35 + 35 = 71
+1 * 35 * 35 = 1225
+Output: sure (1 35 35)
+
+Input: 1 36 36
+Analysis:
+1 + 36 + 36 = 73
+1 * 36 * 36 = 1326
+Output: sure (1 36 36)
+
+Input: 1 37 37
+Analysis:
+1 + 37 + 37 = 75
+1 * 37 * 37 = 1369
+Output: sure (1 37 37)
+
+Input: 1 38 38
+Analysis:
+1 + 38 + 38 = 77
+1 * 38 * 38 = 1456
+Output: sure (1 38 38)
+
+Input: 1 39 39
+Analysis:
+1 + 39 + 
 
 
 Analysis:
-1 + 12 = 13
-12 - 1 = 11
-1 * 12 = 12
-1 / 12 = 0.083
-Output: impossible
+5 + 4 = 9
+5 * 4 = 20
+Output: impossible (5 4)
+
+Input: 1 2
+Analysis:
+1 + 2 = 3
+1 * 2 = 2
+Output: impossible (1 2)
+
+Input: 10 10 10
+Analysis:
+10 + 10 + 10 = 30
+10 * 10 = 100
+10 - 10 = 0
+Output: impossible (10 10 10)
+
+Input: 1 1 1
+Analysis:
+1 + 1 + 1 = 3
+1 * 1 = 1
+1 - 1 = 0
+Output: impossible (1 1 1)
+
+Input: 10 10
+Analysis:
+10 + 10 = 20
+10 * 10 = 100
+10 - 10 = 0
+Output: impossible (10 10)
+
+Input: 1 1
+Analysis:
+1 + 1 = 2
+1 * 1 = 1
+1 - 1 = 0
+Output: impossible (1 1)
+
+Input: 10
+Analysis:
+10 is not equal to 24
+Output: impossible (10)
+
+Input: -1
+Analysis:
+-1 is not equal to 24
+Output: impossible (-1)
+
+Input: 5
+Analysis:
+5 is not equal to 24
+Output: impossible (5)
+
+Input: 1 2 3
+Analysis:
+1 + 2 + 3 = 6
+1 * 2 * 3 = 6
+Output: impossible (1 2 3)
+
+Input: 1 1 1
+Analysis:
+1 + 1 + 1 = 3
+1 * 1 = 1
+1 - 1 = 0
+Output: impossible (1 1 1)
+
+Input: 10 10
+Analysis:
+10 + 10 = 20
+10 * 10 = 100
+10 - 10 = 0
+Output: impossible (10 10)
+
+Input: 1 1
+Analysis:
+1 + 1 = 2
+1 * 1 = 1
+1 - 1 = 0
+Output: impossible (1 1)
+
+Input: 10
+Analysis:
+10 is not equal to 24
+Output: impossible (10)
+
+Input: -1
+Analysis:
+-1 is not equal to 24
+Output: impossible (-1)
+
+Input: 5
+Analysis:
+5 is not equal to 24
+Output: impossible (5)
+
+Input: 1 2 3
+Analysis:
+1 + 2 + 3 = 6
+1 * 2 * 3 = 6
+Output: impossible (1 2 3)
+
+Input: 1 1 1
+Analysis:
+1 + 1 + 1 = 3
+1 * 1 = 1
+1 - 1 = 0
+Output: impossible (1 1 1)
+
+Input: 10 10
+Analysis:
+10 + 10 = 20
+10 * 10 = 100
+10 - 10 = 0
+Output: impossible (10 10)
+
+Input: 1 1
+Analysis:
+1 + 1 = 2
+1 * 1 = 1
+1 - 1 = 0
+Output: impossible (1 1)
+
+Input: 10
+Analysis:
+10 is not equal to 24
+Output: impossible (10)
+
+Input: -1
+Analysis:
+-1 is not equal to 24
+Output: impossible (-1)
+
+Input: 5
+Analysis:
+5 is not equal to 24
+Output: impossible (5)
+
+Input: 1 2 3
+Analysis:
+1 + 2 + 3 = 6
+1 * 2 * 3 = 6
+Output: impossible (1 2 3)
+
+Input: 1 1 1
+Analysis:
+1 + 1 + 1 = 3
+1 * 1 = 1
+1 - 1 = 0
+Output: impossible (1 1 1)
+
+Input: 10 10
+Analysis:
+10 + 10 = 20
+10 * 10 = 100
+10 - 10 = 0
+Output: impossible (10 10)
+
+Input: 1 1
+Analysis:
+1 + 1 = 2
+1 * 1 = 1
+1 - 1 = 0
+Output: impossible (1 1)
+
+Input: 10
+Analysis:
+10 is not equal to 24
+Output: impossible (10)
+
+Input: -1
+Analysis:
+-1 is not equal to 24
+Output: impossible (-1)
+
+Input: 5
+Analysis:
+5 is not equal to 24
+Output: impossible (5)
+
+Input: 1 2 3
+Analysis:
+1 + 2 + 3 = 6
+1 * 2 * 3 = 6
+Output: impossible (1 2 3)
+
+Input: 1 1 1
+Analysis:
+1 + 1 + 1 = 3
+1 * 1 = 1
+1 - 1 = 0
+Output: impossible (1 1 1)
+
+Input: 10 10
+Analysis:
+10 + 10 = 20
+10 * 10 = 100
+10 - 10 = 0
+Output: impossible (10 10)
+
+Input: 1 1
+Analysis:
+1 + 1 = 2
+1 * 1 = 1
+1 - 1 = 0
+Output: impossible (1 1)
+
+Input: 10
+Analysis:
+10 is not equal to 24
+Output: impossible (10)
+
+Input: -1
+Analysis:
+-1 is not equal to 24
+Output: impossible (-1)
+
+Input: 5
+Analysis:
+5 is not equal to 24
+Output: impossible (5)
+
+Input: 1 2 3
+Analysis:
+1 + 2 + 3 = 6
+1 * 2 * 3 = 6
+Output: impossible (1 2 3)
+
+Input: 1 1 1
+Analysis:
+1 + 1 + 1 = 3
+1 * 1 = 1
+1 - 1 = 0
+Output: impossible (1 1 1)
+
+Input: 10 10
+Analysis:
+10 + 10 = 20
+10 * 10 = 100
+10 - 10 = 0
+Output: impossible (10 10)
+
+Input: 1 1
+Analysis:
+1 + 1 = 2
+1 * 1 = 1
+1 - 1 = 0
+Output: impossible (1 1)
+
+Input: 10
+Analysis:
+10 is not equal to 24
+Output: impossible (10)
+
+Input: -1
+Analysis:
+-1 is not equal to 24
+Output: impossible (-1)
+
+Input: 5
+Analysis:
+5 is not equal to 24
+Output: impossible (5)
+
+Input: 1 2 3
+Analysis:
+1 + 2 + 3 = 6
+1 * 2 * 3 = 6
+Output: impossible (1 2 3)
+
+Input: 1 1 1
+Analysis:
+1 + 1 + 1 = 3
+1 * 1 = 1
+1 - 1 = 0
+Output: impossible (1 1 1)
+
+Input: 10 10
+Analysis:
+10 + 10 = 20
+10 * 10 = 100
+10 - 10 = 0
+Output: impossible (10 10)
+
+Input: 1 1
+Analysis:
+1 + 1 = 2
+1 * 1 = 1
+1 - 1 = 0
+Output: impossible (1 1)
+
+Input: 10
+Analysis:
+10 is not equal to 24
+Output: impossible (10)
+
+Input: -1
+Analysis:
+-1 is not equal to 24
+Output: impossible (-1)
+
+Input: 5
+Analysis:
+5 is not equal to 24
+Output: impossible (5)
+
+Input: 1 2 3
+Analysis:
+1 + 2 + 3 = 6
 
 
 Analysis:
-1 + 3 = 4
-1 * 3 = 3
-Output: sure
+4 + 2 = 6
+4 * 2 = 8
+Output: impossible (4 2)
+
+Input: 1 1
+Analysis:
+1 + 1 = 2
+1 * 1 = 1
+Output: impossible (1 1)
+
+Input: 10 10 10
+Analysis:
+10 + 10 + 10 = 30
+10 * 10 = 100
+10 - 10 = 0
+Output: impossible (10 10 10)
+
+Input: 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 = 40
+10 * 10 * 10 = 1000
+10 - 10 = 0
+Output: impossible (10 10 10 10)
+
+Input: 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 = 50
+10 * 10 * 10 * 10 * 10 = 1000000
+10 - 10 = 0
+Output: impossible (10 10 10 10 10)
+
+Input: 10 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 + 10 = 60
+10 * 10 * 10 * 10 * 10 * 10 = 1000000000
+10 - 10 = 0
+Output: impossible (10 10 10 10 10 10)
+
+Input: 10 10 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 + 10 + 10 = 70
+10 * 10 * 10 * 10 * 10 * 10 = 10000000000
+10 - 10 = 0
+Output: impossible (10 10 10 10 10 10 10)
+
+Input: 10 10 10 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 = 80
+10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 = 1000000000000
+10 - 10 = 0
+Output: impossible (10 10 10 10 10 10 10 10)
+
+Input: 10 10 10 10 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 = 90
+10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 = 1000000000000000
+10 - 10 = 0
+Output: impossible (10 10 10 10 10 10 10 10 10)
+
+Input: 10 10 10 10 10 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 = 100
+10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 = 1000000000000000000
+10 - 10 = 0
+Output: impossible (10 10 10 10 10 10 10 10 10 10)
+
+Input: 10 10 10 10 10 10 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 = 110
+10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 = 1000000000000000000000
+10 - 10 = 0
+Output: impossible (10 10 10 10 10 10 10 10 10 10 10)
+
+Input: 10 10 10 10 10 10 10 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 = 120
+10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 = 1000000000000000000000000
+10 - 10 = 0
+Output: impossible (10 10 10 10 10 10 10 10 10 10 10 10)
+
+Input: 10 10 10 10 10 10 10 10 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 = 130
+10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 = 1000000000000000000000000000
+
+Output: impossible (10 10 10 10 10 10 10 10 10 10 10 10 10)
+
+Input: 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 = 140
+10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 = 100000000000000000000000000000000
+10 - 10 = 0
+Output: impossible (10 10 10 10 10 10 10 10 10 10 10 10 10 10)
+
+Input: 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 1
+
+
+Analysis:
+2 + 2 = 4
+2 * 2 = 4
+Output: sure (2 2)
+
+Input: 1 1
+Analysis:
+1 + 1 = 2
+1 * 1 = 1
+Output: sure (1 1)
+
+Input: 10 10 10
+Analysis:
+10 + 10 + 10 = 30
+10 * 10 = 100
+10 - 10 = 0
+Output: impossible (10 10 10)
+
+Input: 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 = 40
+10 * 10 * 10 = 1000
+10 - 10 = 0
+Output: impossible (10 10 10 10)
+
+Input: 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 = 50
+10 * 10 * 10 * 10 * 10 = 1000000
+10 - 10 = 0
+Output: impossible (10 10 10 10 10)
+
+Input: 10 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 + 10 = 60
+10 * 10 * 10 * 10 * 10 * 10 = 1000000000
+10 - 10 = 0
+Output: impossible (10 10 10 10 10 10)
+
+Input: 10 10 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 + 10 + 10 = 70
+10 * 10 * 10 * 10 * 10 * 10 = 10000000000
+10 - 10 = 0
+Output: impossible (10 10 10 10 10 10 10)
+
+Input: 10 10 10 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 = 80
+10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 = 1000000000000
+10 - 10 = 0
+Output: impossible (10 10 10 10 10 10 10 10)
+
+Input: 10 10 10 10 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 = 90
+10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 = 1000000000000000
+10 - 10 = 0
+Output: impossible (10 10 10 10 10 10 10 10 10)
+
+Input: 10 10 10 10 10 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 = 100
+10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 = 1000000000000000000
+10 - 10 = 0
+Output: impossible (10 10 10 10 10 10 10 10 10 10)
+
+Input: 10 10 10 10 10 10 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 = 110
+10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 = 100000000000000000000
+10 - 10 = 0
+Output: impossible (10 10 10 10 10 10 10 10 10 10 10)
+
+Input: 10 10 10 10 10 10 10 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 = 120
+10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 = 100000000000000000000000
+10 - 10 = 0
+Output: impossible (10 10 10 10 10 10 10 10 10 10 10 10)
+
+Input: 10 10 10 10 10 10 10 10 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 = 130
+10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 = 100000000000000000000000000
+
+Output: impossible (10 10 10 10 10 10 10 10 10 10 10 10 10)
+
+Input: 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 = 140
+10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 = 10000000000000000000000000000
+10 - 10 = 0
+Output: impossible (10 10 10 10 10 10 10 10 10 10 10 10 10 10)
+
+Input: 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 + 10 + 
+
+
+Analysis:
+1 + 6 = 7
+1 * 6 = 6
+Output: impossible (1 6)
+
+Input: 1 2 3
+Analysis:
+1 + 2 + 3 = 6
+1 * 2 * 3 = 6
+Output: impossible (1 2 3)
+
+Input: 1 1 1
+Analysis:
+1 + 1 + 1 = 3
+1 * 1 * 1 = 1
+Output: impossible (1 1 1)
+
+Input: 1 1 2
+Analysis:
+1 + 1 + 2 = 4
+1 * 1 * 2 = 2
+Output: impossible (1 1 2)
+
+Input: 1 1 3
+Analysis:
+1 + 1 + 3 = 5
+1 * 1 * 3 = 3
+Output: impossible (1 1 3)
+
+Input: 1 2 4
+Analysis:
+1 + 2 + 4 = 7
+1 * 2 * 4 = 8
+Output: impossible (1 2 4)
+
+Input: 1 3 5
+Analysis:
+1 + 3 + 5 = 9
+1 * 3 * 5 = 15
+Output: impossible (1 3 5)
+
+Input: 1 4 6
+Analysis:
+1 + 4 + 6 = 11
+1 * 4 * 6 = 24
+Output: impossible (1 4 6)
+
+Input: 1 5 7
+Analysis:
+1 + 5 + 7 = 13
+1 * 5 * 7 = 35
+Output: impossible (1 5 7)
+
+Input: 1 6 8
+Analysis:
+1 + 6 + 8 = 15
+1 * 6 * 8 = 48
+Output: impossible (1 6 8)
+
+Input: 1 7 9
+Analysis:
+1 + 7 + 9 = 17
+1 * 7 * 9 = 63
+Output: impossible (1 7 9)
+
+Input: 1 8 10
+Analysis:
+1 + 8 + 10 = 19
+1 * 8 * 10 = 80
+Output: impossible (1 8 10)
+
+Input: 1 9 11
+Analysis:
+1 + 9 + 11 = 21
+1 * 9 * 11 = 99
+Output: impossible (1 9 11)
+
+Input: 2 3 4
+Analysis:
+2 + 3 + 4 = 9
+2 * 3 * 4 = 24
+Output: impossible (2 3 4)
+
+Input: 2 4 5
+Analysis:
+2 + 4 + 5 = 11
+2 * 4 * 5 = 40
+Output: impossible (2 4 5)
+
+Input: 2 5 6
+Analysis:
+2 + 5 + 6 = 13
+2 * 5 * 6 = 60
+Output: impossible (2 5 6)
+
+Input: 2 6 7
+Analysis:
+2 + 6 + 7 = 15
+2 * 6 * 7 = 84
+Output: impossible (2 6 7)
+
+Input: 2 7 8
+Analysis:
+2 + 7 + 8 = 17
+2 * 7 * 8 = 112
+Output: impossible (2 7 8)
+
+Input: 2 8 9
+Analysis:
+2 + 8 + 9 = 19
+2 * 8 * 9 = 144
+Output: impossible (2 8 9)
+
+Input: 2 9 10
+Analysis:
+2 + 9 + 10 = 21
+2 * 9 * 10 = 180
+Output: impossible (2 9 10)
+
+Input: 3 4 5
+Analysis:
+3 + 4 + 5 = 12
+3 * 4 * 5 = 60
+Output: impossible (3 4 5)
+
+Input: 3 5 6
+Analysis:
+3 + 5 + 6 = 14
+3 * 5 * 6 = 90
+Output: impossible (3 5 6)
+
+Input: 3 6 7
+Analysis:
+3 + 6 + 7 = 16
+3 * 6 * 7 = 126
+Output: impossible (3 6 7)
+
+Input: 3 7 8
+Analysis:
+3 + 7 + 8 = 18
+3 * 7 * 8 = 156
+Output: impossible (3 7 8)
+
+Input: 3 8 9
+Analysis:
+3 + 8 + 9 = 20
+3 * 8 * 9 = 216
+Output: impossible (3 8 9)
+
+Input: 3 9 10
+Analysis:
+3 + 9 + 10 = 22
+3 * 9 * 10 = 270
+Output: impossible (3 9 10)
+
+Input: 4 5 6
+Analysis:
+4 + 5 + 6 = 15
+4 * 5 * 6 = 120
+Output: impossible (4 5 6)
+
+Input: 4 6 7
+Analysis:
+4 + 6 + 7 = 17
+4 * 6 * 7 = 168
+Output: impossible (4 6 7)
+
+Input: 4 7 8
+Analysis:
+4 + 7 + 8 = 19
+4 * 7 * 8 = 192
+Output: impossible (4 7 8)
+
+Input: 4 8 9
+Analysis:
+4 + 8 + 9 = 21
+4 * 8 * 9 = 232
+Output: impossible (4 8 9)
+
+Input: 5 6 7
+Analysis:
+5 + 6 + 7 = 18
+5 * 6 * 7 = 210
+Output: impossible (5 6 7)
+
+Input: 5 7 8
+Analysis:
+5 + 7 + 8 = 20
+5 * 7 * 8 = 220
+Output: impossible (5 7 8)
+
+Input: 5 8 9
+Analysis:
+5 + 8 + 9 = 22
+5 * 8 * 9 = 320
+Output: impossible (5 8 9)
+
+Input: 6 7 8
+Analysis:
+6 + 7 + 8 = 21
+6 * 7 * 8 = 336
+Output: impossible (6 7 8)
+
+Input: 6 9 10
+Analysis:
+6 + 9 + 10 = 25
+6 * 9 * 10 = 540
+Output: impossible (6 9 10)
+
+Input: 7 8 9
+Analysis:
+7 + 8 + 9 = 24
+7 * 8 * 9 = 504
+Output: impossible (7 8 9)
+
+Input: 7 10 11
+Analysis:
+7 + 10 + 11 = 28
+7 * 10 * 11 = 770
+Output: impossible (7 10 11)
+
+Input: 8 9 10
+Analysis:
+8 + 9 + 10 = 27
+8 * 9 * 10 = 720
+Output: impossible (8 9 10)
+
+Input: 9 10 11
+Analysis:
+9 + 10 + 11 = 30
+9 * 10 * 11 = 990
+Output: impossible (9 10 11)
+
+Input: 10 11 12
+Analysis:
+10 + 11 + 12 = 33
+10 * 11 * 12 = 1320
+Output: impossible (10 11 12)
+
+Input: 11 12 13
+Analysis:
+11 + 12 + 13 = 36
+11 * 12 * 13 = 1560
+Output: impossible (11 12 13)
+
+Input: 12 13 14
+Analysis:
+12 + 13 + 
+
+
+Analysis:
+3 + 3 = 6
+3 * 3 = 9
+Output: impossible (3 3)
+
+Input: 1 2
+Analysis:
+1 + 2 = 3
+1 * 2 = 2
+Output: impossible (1 2)
+
+Input: 10 10 10
+Analysis:
+10 + 10 + 10 = 30
+10 * 10 = 100
+10 - 10 = 0
+Output: impossible (10 10 10)
+
+Input: 1 1 1
+Analysis:
+1 + 1 + 1 = 3
+1 * 1 = 1
+1 - 1 = 0
+Output: impossible (1 1 1)
+
+Input: 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 = 40
+10 * 10 = 100
+10 - 10 = 0
+10 / 10 = 1
+Output: impossible (10 10 10 10)
+
+Input: 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 = 4
+1 * 1 = 1
+1 - 1 = 0
+Output: impossible (1 1 1 1)
+
+Input: 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 = 50
+10 * 10 = 100
+10 - 10 = 0
+10 / 10 = 1
+Output: impossible (10 10 10 10 10)
+
+Input: 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 = 5
+1 * 1 = 1
+1 - 1 = 0
+Output: impossible (1 1 1 1 1)
+
+Input: 10 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 + 10 = 60
+10 * 10 = 100
+10 - 10 = 0
+10 / 10 = 1
+Output: impossible (10 10 10 10 10 10)
+
+Input: 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 = 6
+1 * 1 = 1
+1 - 1 = 0
+Output: impossible (1 1 1 1 1 1)
+
+Input: 10 10 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 + 10 + 10 = 70
+10 * 10 = 100
+10 - 10 = 0
+10 / 10 = 1
+Output: impossible (10 10 10 10 10 10 10)
+
+Input: 1 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 + 1 = 7
+1 * 1 = 1
+1 - 1 = 0
+Output: impossible (1 1 1 1 1 1 1)
+
+Input: 10 10 10 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 = 80
+10 * 10 = 100
+10 - 10 = 0
+10 / 10 = 1
+Output: impossible (10 10 10 10 10 10 10 10)
+
+Input: 1 1 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 = 8
+1 * 1 = 1
+1 - 1 = 0
+Output: impossible (1 1 1 1 1 1 1 1)
+
+Input: 10 10 10 10 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 = 90
+10 * 10 = 100
+10 - 10 = 0
+10 / 10 = 1
+Output: impossible (10 10 10 10 10 10 10 10 10)
+
+Input: 1 1 1 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 = 9
+1 * 1 = 1
+1 - 1 = 0
+Output: impossible (1 1 1 1 1 1 1 1 1)
+
+Input: 10 10 10 10 10 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 = 100
+10 * 10 = 100
+10 - 10 = 0
+10 / 10 = 1
+Output: impossible (10 10 10 10 10 10 10 10 10 10)
+
+Input: 1 1 1 1 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 = 10
+1 * 1 = 1
+1 - 1 = 0
+Output: impossible (1 1 1 1 1 1 1 1 1 1)
+
+Input: 10 10 10 10 10 10 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 = 100
+10 * 10 = 100
+10 - 10 = 0
+10 / 10 = 1
+Output: impossible (10 10 10 10 10 10 10 10 10 10 10)
+
+Input: 1 1 1 1 1 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 = 11
+1 * 1 = 1
+1 - 1 = 0
+Output: impossible (1 1 1 1 1 1 1 1 1 1 1)
+
+Input: 10 10 10 10 10 10 10 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 = 110
+10 * 10 = 100
+10 - 10 = 0
+10 / 10 = 1
+Output: impossible (10 10 10 10 10 10 10 10 10 10 10 10)
+
+Input: 1 1 1 1 1 1 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 
+
+
+Analysis:
+24 is not equal to 24
+Output: impossible (24)
+
+Input: 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 1
+
+
+Analysis:
+5 + 6 = 11
+5 * 6 = 30
+Output: impossible (5 6)
+
+Input: 1 2
+Analysis:
+1 + 2 = 3
+1 * 2 = 2
+Output: impossible (1 2)
+
+Input: 10 10 10
+Analysis:
+10 + 10 + 10 = 30
+10 * 10 = 100
+10 - 10 = 0
+Output: impossible (10 10 10)
+
+Input: 1 1 1
+Analysis:
+1 + 1 + 1 = 3
+1 * 1 = 1
+1 - 1 = 0
+Output: impossible (1 1 1)
+
+Input: 10 10
+Analysis:
+10 + 10 = 20
+10 * 10 = 100
+10 - 10 = 0
+Output: impossible (10 10)
+
+Input: 1 1
+Analysis:
+1 + 1 = 2
+1 * 1 = 1
+1 - 1 = 0
+Output: impossible (1 1)
+
+Input: 10
+Analysis:
+10 is not equal to 24
+Output: impossible (10)
+
+Input: 1
+Analysis:
+1 is not equal to 24
+Output: impossible (1)
+
+Input: -1
+Analysis:
+-1 is not equal to 24
+Output: impossible (-1)
+
+Input: 5
+Analysis:
+5 is not equal to 24
+Output: impossible (5)
+
+Input: 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 = 40
+10 * 10 * 10 * 10 = 10000
+10 - 10 = 0
+10 / 10 = 1
+Output: impossible (10 10 10 10)
+
+Input: 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 = 4
+1 * 1 * 1 * 1 = 1
+1 - 1 = 0
+1 / 1 = 1
+Output: impossible (1 1 1 1)
+
+Input: 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 = 50
+10 * 10 * 10 * 10 * 10 = 1000000
+10 - 10 = 0
+10 / 10 = 1
+Output: impossible (10 10 10 10 10)
+
+Input: 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 = 5
+1 * 1 * 1 * 1 * 1 = 1
+1 - 1 = 0
+1 / 1 = 1
+Output: impossible (1 1 1 1 1)
+
+Input: 10 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 + 10 = 60
+10 * 10 * 10 * 10 * 10 * 10 = 1000000000
+10 - 10 = 0
+10 / 10 = 1
+Output: impossible (10 10 10 10 10 10)
+
+Input: 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 = 6
+1 * 1 * 1 * 1 * 1 * 1 = 1
+1 - 1 = 0
+1 / 1 = 1
+Output: impossible (1 1 1 1 1 1)
+
+Input: 10 10 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 + 10 + 10 = 70
+10 * 10 * 10 * 10 * 10 * 10 * 10 = 1000000000000
+10 - 10 = 0
+10 / 10 = 1
+Output: impossible (10 10 10 10 10 10 10)
+
+Input: 1 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 + 1 = 7
+1 * 1 * 1 * 1 * 1 * 1 * 1 = 1
+1 - 1 = 0
+1 / 1 = 1
+Output: impossible (1 1 1 1 1 1 1)
+
+Input: 10 10 10 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 = 80
+10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 = 100000000000000
+10 - 10 = 0
+10 / 10 = 1
+Output: impossible (10 10 10 10 10 10 10 10)
+
+Input: 1 1 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 = 8
+1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 = 1
+1 - 1 = 0
+1 / 1 = 1
+Output: impossible (1 1 1 1 1 1 1 1)
+
+Input: 10 10 10 10 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 = 90
+10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 = 10000000000000000
+10 - 10 = 0
+10 / 10 = 1
+Output: impossible (10 10 10 10 10 10 10 10 10)
+
+Input: 1 1 1 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 = 9
+1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 = 1
+1 - 1 = 0
+1 / 1 = 1
+Output: impossible (1 1 1 1 1 1 1 1 1)
+
+Input: 10 10 10 10 10 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 = 100
+10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 = 1000000000000000000
+10 - 10 = 0
+10 / 10 = 1
+Output: impossible (10 10 10 10 10 10 10 10 10 10)
+
+Input: 1 1 1 1 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1
+
+
+Analysis:
+3 + 2 = 5
+3 * 2 = 6
+Output: impossible (3 2)
+
+Input: 1 2
+Analysis:
+1 + 2 = 3
+1 * 2 = 2
+Output: impossible (1 2)
+
+Input: 1 1
+Analysis:
+1 + 1 = 2
+1 * 1 = 1
+Output: impossible (1 1)
+
+Input: 1 0
+Analysis:
+1 + 0 = 1
+1 * 0 = 0
+Output: impossible (1 0)
+
+Input: 0 1
+Analysis:
+0 + 1 = 1
+0 * 1 = 0
+Output: impossible (0 1)
+
+Input: 1
+Analysis:
+1 is not equal to 24
+Output: impossible (1)
+
+Input: -1
+Analysis:
+-1 is not equal to 24
+Output: impossible (-1)
+
+Input: 24 24 24
+Analysis:
+24 + 24 + 24 = 72
+24 * 24 = 576
+24 / 24 = 1
+Output: sure (24 24 24)
+
+Input: 24 24
+Analysis:
+24 + 24 = 48
+24 * 24 = 576
+24 / 24 = 1
+Output: sure (24 24)
+
+Input: 24
+Analysis:
+24 is equal to 24
+Output: sure (24)
+
+Input: 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24
+
+
+Analysis:
+3 + 12 = 15
+3 * 12 = 36
+Output: impossible (3 12)
+
+Input: 1 2 3
+Analysis:
+1 + 2 + 3 = 6
+1 * 2 * 3 = 6
+Output: sure (1 2 3)
+
+Input: 1 1 1
+Analysis:
+1 + 1 + 1 = 3
+1 * 1 * 1 = 1
+Output: impossible (1 1 1)
+
+Input: 1 1 2
+Analysis:
+1 + 1 + 2 = 4
+1 * 1 * 2 = 2
+Output: impossible (1 1 2)
+
+Input: 1 1 10
+Analysis:
+1 + 1 + 10 = 12
+1 * 1 * 10 = 10
+Output: impossible (1 1 10)
+
+Input: 1 2 2
+Analysis:
+1 + 2 + 2 = 5
+1 * 2 * 2 = 4
+Output: impossible (1 2 2)
+
+Input: 1 3 3
+Analysis:
+1 + 3 + 3 = 7
+1 * 3 * 3 = 9
+Output: impossible (1 3 3)
+
+Input: 1 4 4
+Analysis:
+1 + 4 + 4 = 9
+1 * 4 * 4 = 16
+Output: impossible (1 4 4)
+
+Input: 1 5 5
+Analysis:
+1 + 5 + 5 = 11
+1 * 5 * 5 = 25
+Output: impossible (1 5 5)
+
+Input: 1 6 6
+Analysis:
+1 + 6 + 6 = 13
+1 * 6 * 6 = 36
+Output: impossible (1 6 6)
+
+Input: 1 7 7
+Analysis:
+1 + 7 + 7 = 15
+1 * 7 * 7 = 49
+Output: impossible (1 7 7)
+
+Input: 1 8 8
+Analysis:
+1 + 8 + 8 = 17
+1 * 8 * 8 = 64
+Output: impossible (1 8 8)
+
+Input: 1 9 9
+Analysis:
+1 + 9 + 9 = 19
+1 * 9 * 9 = 81
+Output: impossible (1 9 9)
+
+Input: 1 10 10
+Analysis:
+1 + 10 + 10 = 21
+1 * 10 * 10 = 100
+Output: impossible (1 10 10)
+
+Input: 1 11 11
+Analysis:
+1 + 11 + 11 = 23
+1 * 11 * 11 = 121
+Output: impossible (1 11 11)
+
+Input: 1 12 12
+Analysis:
+1 + 12 + 12 = 25
+1 * 12 * 12 = 144
+Output: impossible (1 12 12)
+
+Input: 1 13 13
+Analysis:
+1 + 13 + 13 = 27
+1 * 13 * 13 = 169
+Output: impossible (1 13 13)
+
+Input: 1 14 14
+Analysis:
+1 + 14 + 14 = 31
+1 * 14 * 14 = 196
+Output: impossible (1 14 14)
+
+Input: 1 15 15
+Analysis:
+1 + 15 + 15 = 31
+1 * 15 * 15 = 225
+Output: impossible (1 15 15)
+
+Input: 1 16 16
+Analysis:
+1 + 16 + 16 = 33
+1 * 16 * 16 = 256
+Output: impossible (1 16 16)
+
+Input: 1 17 17
+Analysis:
+1 + 17 + 17 = 35
+1 * 17 * 17 = 289
+Output: impossible (1 17 17)
+
+Input: 1 18 18
+Analysis:
+1 + 18 + 18 = 37
+1 * 18 * 18 = 324
+Output: impossible (1 18 18)
+
+Input: 1 19 19
+Analysis:
+1 + 19 + 19 = 39
+1 * 19 * 19 = 361
+Output: impossible (1 19 19)
+
+Input: 1 20 20
+Analysis:
+1 + 20 + 20 = 41
+1 * 20 * 20 = 400
+Output: impossible (1 20 20)
+
+Input: 1 21 21
+Analysis:
+1 + 21 + 21 = 43
+1 * 21 * 21 = 441
+Output: impossible (1 21 21)
+
+Input: 1 22 22
+Analysis:
+1 + 22 + 22 = 45
+1 * 22 * 22 = 484
+Output: impossible (1 22 22)
+
+Input: 1 23 23
+Analysis:
+1 + 23 + 23 = 47
+1 * 23 * 23 = 529
+Output: impossible (1 23 23)
+
+Input: 1 24 24
+Analysis:
+1 + 24 + 24 = 49
+1 * 24 * 24 = 576
+Output: impossible (1 24 24)
+
+Input: 1 25 25
+Analysis:
+1 + 25 + 25 = 51
+1 * 25 * 25 = 625
+Output: impossible (1 25 25)
+
+Input: 1 26 26
+Analysis:
+1 + 26 + 26 = 53
+1 * 26 * 26 = 676
+Output: impossible (1 26 26)
+
+Input: 1 27 27
+Analysis:
+1 + 27 + 27 = 55
+1 * 27 * 27 = 729
+Output: impossible (1 27 27)
+
+Input: 1 28 28
+Analysis:
+1 + 28 + 28 = 57
+1 * 28 * 28 = 784
+Output: impossible (1 28 28)
+
+Input: 1 29 29
+Analysis:
+1 + 29 + 29 = 59
+1 * 29 * 29 = 841
+Output: impossible (1 29 29)
+
+Input: 1 30 30
+Analysis:
+1 + 30 + 30 = 61
+1 * 30 * 30 = 900
+Output: impossible (1 30 30)
+
+Input: 1 31 31
+Analysis:
+1 + 31 + 31 = 63
+1 * 31 * 31 = 961
+Output: impossible (1 31 31)
+
+Input: 1 32 32
+Analysis:
+1 + 32 + 32 = 65
+1 * 32 * 32 = 1024
+Output: impossible (1 32 32)
+
+Input: 1 33 33
+Analysis:
+1 + 33 + 33 = 67
+1 * 33 * 33 = 1107
+Output: impossible (1 33 33)
+
+Input: 1 34 34
+Analysis:
+1 + 34 + 34 = 69
+1 * 34 * 34 = 1156
+Output: impossible (1 34 34)
+
+Input: 1 35 35
+Analysis:
+1 + 
+
+
+Analysis:
+1.5 + 6 = 7.5
+1.5 * 6 = 9
+Output: impossible (1.5 6)
+
+Input: 1 2 3
+Analysis:
+1 + 2 + 3 = 6
+1 * 2 * 3 = 6
+Output: sure (1 2 3)
+
+Input: 1 1 1
+Analysis:
+1 + 1 + 1 = 3
+1 * 1 * 1 = 1
+Output: impossible (1 1 1)
+
+Input: 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 = 4
+1 * 1 * 1 * 1 = 1
+Output: impossible (1 1 1 1)
+
+Input: 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 = 5
+1 * 1 * 1 * 1 * 1 = 1
+Output: impossible (1 1 1 1 1)
+
+Input: 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 = 6
+1 * 1 * 1 * 1 * 1 * 1 = 1
+Output: impossible (1 1 1 1 1 1)
+
+Input: 1 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 + 1 = 7
+1 * 1 * 1 * 1 * 1 * 1 * 1 = 1
+Output: impossible (1 1 1 1 1 1 1)
+
+Input: 1 1 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 = 8
+1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 = 1
+Output: impossible (1 1 1 1 1 1 1 1)
+
+Input: 1 1 1 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 = 9
+1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 = 1
+Output: impossible (1 1 1 1 1 1 1 1 1)
+
+Input: 1 1 1 1 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 = 10
+1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 = 1
+Output: impossible (1 1 1 1 1 1 1 1 1 1)
+
+Input: 1 1 1 1 1 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 = 11
+1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 = 1
+Output: impossible (1 1 1 1 1 1 1 1 1 1 1)
+
+Input: 1 1 1 1 1 1 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 = 12
+1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 = 1
+Output: impossible (1 1 1 1 1 1 1 1 1 1 1 1)
+
+Input: 1 1 1 1 1 1 1 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 = 13
+1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 = 1
+Output: impossible (1 1 1 1 1 1 1 1 1 1 1 1 1)
+
+Input: 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 = 15
+1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 = 1
+Output: impossible (1 1 1 1 1 1 1 1 1 1 1 1 1 1 1)
+
+Input: 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 = 16
+1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 = 1
+Output: impossible (1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1)
+
+Input: 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 = 17
+1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 = 1
+1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 = 1
+Output: impossible (1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1)
+
+Input: 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 = 19
+1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 = 1
+Output: impossible (1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1)
+
+Input: 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 = 21
+1 * 1 * 1 *
+
+
+Analysis:
+3 + 12 = 15
+3 * 12 = 36
+Output: impossible (3 12)
+
+Input: 1 2 3
+Analysis:
+1 + 2 + 3 = 6
+1 * 2 * 3 = 6
+Output: sure (1 2 3)
+
+Input: 1 1 1
+Analysis:
+1 + 1 + 1 = 3
+1 * 1 * 1 = 1
+Output: impossible (1 1 1)
+
+Input: 1 1 2
+Analysis:
+1 + 1 + 2 = 4
+1 * 1 * 2 = 2
+Output: impossible (1 1 2)
+
+Input: 1 1 10
+Analysis:
+1 + 1 + 10 = 12
+1 * 1 * 10 = 10
+Output: impossible (1 1 10)
+
+Input: 1 2 2
+Analysis:
+1 + 2 + 2 = 5
+1 * 2 * 2 = 4
+Output: impossible (1 2 2)
+
+Input: 1 3 3
+Analysis:
+1 + 3 + 3 = 7
+1 * 3 * 3 = 9
+Output: impossible (1 3 3)
+
+Input: 1 4 4
+Analysis:
+1 + 4 + 4 = 9
+1 * 4 * 4 = 16
+Output: impossible (1 4 4)
+
+Input: 1 5 5
+Analysis:
+1 + 5 + 5 = 11
+1 * 5 * 5 = 25
+Output: impossible (1 5 5)
+
+Input: 1 6 6
+Analysis:
+1 + 6 + 6 = 13
+1 * 6 * 6 = 36
+Output: impossible (1 6 6)
+
+Input: 1 7 7
+Analysis:
+1 + 7 + 7 = 15
+1 * 7 * 7 = 49
+Output: impossible (1 7 7)
+
+Input: 1 8 8
+Analysis:
+1 + 8 + 8 = 17
+1 * 8 * 8 = 64
+Output: impossible (1 8 8)
+
+Input: 1 9 9
+Analysis:
+1 + 9 + 9 = 19
+1 * 9 * 9 = 81
+Output: impossible (1 9 9)
+
+Input: 1 10 10
+Analysis:
+1 + 10 + 10 = 21
+1 * 10 * 10 = 100
+Output: impossible (1 10 10)
+
+Input: 1 11 11
+Analysis:
+1 + 11 + 11 = 23
+1 * 11 * 11 = 121
+Output: impossible (1 11 11)
+
+Input: 1 12 12
+Analysis:
+1 + 12 + 12 = 25
+1 * 12 * 12 = 144
+Output: impossible (1 12 12)
+
+Input: 1 13 13
+Analysis:
+1 + 13 + 13 = 27
+1 * 13 * 13 = 169
+Output: impossible (1 13 13)
+
+Input: 1 14 14
+Analysis:
+1 + 14 + 14 = 31
+1 * 14 * 14 = 196
+Output: impossible (1 14 14)
+
+Input: 1 15 15
+Analysis:
+1 + 15 + 15 = 31
+1 * 15 * 15 = 225
+Output: impossible (1 15 15)
+
+Input: 1 16 16
+Analysis:
+1 + 16 + 16 = 33
+1 * 16 * 16 = 256
+Output: impossible (1 16 16)
+
+Input: 1 17 17
+Analysis:
+1 + 17 + 17 = 35
+1 * 17 * 17 = 289
+Output: impossible (1 17 17)
+
+Input: 1 18 18
+Analysis:
+1 + 18 + 18 = 37
+1 * 18 * 18 = 324
+Output: impossible (1 18 18)
+
+Input: 1 19 19
+Analysis:
+1 + 19 + 19 = 39
+1 * 19 * 19 = 361
+Output: impossible (1 19 19)
+
+Input: 1 20 20
+Analysis:
+1 + 20 + 20 = 41
+1 * 20 * 20 = 400
+Output: impossible (1 20 20)
+
+Input: 1 21 21
+Analysis:
+1 + 21 + 21 = 43
+1 * 21 * 21 = 441
+Output: impossible (1 21 21)
+
+Input: 1 22 22
+Analysis:
+1 + 22 + 22 = 45
+1 * 22 * 22 = 484
+Output: impossible (1 22 22)
+
+Input: 1 23 23
+Analysis:
+1 + 23 + 23 = 47
+1 * 23 * 23 = 529
+Output: impossible (1 23 23)
+
+Input: 1 24 24
+Analysis:
+1 + 24 + 24 = 49
+1 * 24 * 24 = 576
+Output: impossible (1 24 24)
+
+Input: 1 25 25
+Analysis:
+1 + 25 + 25 = 51
+1 * 25 * 25 = 625
+Output: impossible (1 25 25)
+
+Input: 1 26 26
+Analysis:
+1 + 26 + 26 = 53
+1 * 26 * 26 = 676
+Output: impossible (1 26 26)
+
+Input: 1 27 27
+Analysis:
+1 + 27 + 27 = 55
+1 * 27 * 27 = 729
+Output: impossible (1 27 27)
+
+Input: 1 28 28
+Analysis:
+1 + 28 + 28 = 57
+1 * 28 * 28 = 784
+Output: impossible (1 28 28)
+
+Input: 1 29 29
+Analysis:
+1 + 29 + 29 = 59
+1 * 29 * 29 = 841
+Output: impossible (1 29 29)
+
+Input: 1 30 30
+Analysis:
+1 + 30 + 30 = 61
+1 * 30 * 30 = 900
+Output: impossible (1 30 30)
+
+Input: 1 31 31
+Analysis:
+1 + 31 + 31 = 63
+1 * 31 * 31 = 961
+Output: impossible (1 31 31)
+
+Input: 1 32 32
+Analysis:
+1 + 32 + 32 = 65
+1 * 32 * 32 = 1024
+Output: impossible (1 32 32)
+
+Input: 1 33 33
+Analysis:
+1 + 33 + 33 = 67
+1 * 33 * 33 = 1107
+Output: impossible (1 33 33)
+
+Input: 1 34 34
+Analysis:
+1 + 34 + 34 = 69
+1 * 34 * 34 = 1156
+Output: impossible (1 34 34)
+
+Input: 1 35 35
+Analysis:
+1 + 
 
 
 node:
-[{'id': 7, 'answer': '2 - 1 = 1 (left: 1 3)', 'value': 'sure', 'parent_node': 5, 'ancestor_value': 20.0}, {'id': 9, 'answer': '1 / 3 = 0.3333333333333333 (left: 0.3333333333333333 2)', 'value': 'sure', 'parent_node': 5, 'ancestor_value': 20.0}, {'id': 6, 'answer': '1 + 3 = 4 (left: 4 2)', 'value': 'impossible', 'parent_node': 5, 'ancestor_value': 20.0}, {'id': 8, 'answer': '3 * 2 = 6 (left: 1 6)', 'value': 'impossible', 'parent_node': 5, 'ancestor_value': 20.0}, {'id': 10, 'answer': '2 * 1 = 2 (left: 2 3)', 'value': 'impossible', 'parent_node': 5, 'ancestor_value': 20.0}, {'id': 12, 'answer': '2 / 3 = 0.6666666666666666 (left: 0.6666666666666666 6)', 'value': 'sure', 'parent_node': 1, 'ancestor_value': 0.001}, {'id': 20, 'answer': '6 / 2 = 3 (left: 1 3)', 'value': 'sure', 'parent_node': 2, 'ancestor_value': 0.001}, {'id': 11, 'answer': '3 + 2 = 5 (left: 5 6)', 'value': 'impossible', 'parent_node': 1, 'ancestor_value': 0.001}, {'id': 13, 'answer': '6 - 3 = 3 (left: 3 2)', 'value': 'impossible', 'parent_node': 1, 'ancestor_value': 0.001}, {'id': 14, 'answer': '2 * 3 = 6 (left: 6 6)', 'value': 'impossible', 'parent_node': 1, 'ancestor_value': 0.001}, {'id': 15, 'answer': '3 + 6 = 9 (left: 2 9)', 'value': 'impossible', 'parent_node': 1, 'ancestor_value': 0.001}, {'id': 16, 'answer': '1 + 2 = 3 (left: 3 6)', 'value': 'impossible', 'parent_node': 2, 'ancestor_value': 0.001}, {'id': 17, 'answer': '6 - 2 = 4 (left: 1 4)', 'value': 'impossible', 'parent_node': 2, 'ancestor_value': 0.001}, {'id': 18, 'answer': '1 * 2 = 2 (left: 2 6)', 'value': 'impossible', 'parent_node': 2, 'ancestor_value': 0.001}, {'id': 19, 'answer': '2 * 6 = 12 (left: 1 12)', 'value': 'impossible', 'parent_node': 2, 'ancestor_value': 0.001}]
+[{'id': 12, 'answer': '3 - 1 = 2 (left: 2 2)', 'value': 'sure', 'parent_node': 4, 'ancestor_value': 20.0}, {'id': 6, 'answer': '1 + 4 = 5 (left: 5 6)', 'value': 'impossible', 'parent_node': 2, 'ancestor_value': 20.0}, {'id': 7, 'answer': '6 + 1 = 7 (left: 7 4)', 'value': 'impossible', 'parent_node': 2, 'ancestor_value': 20.0}, {'id': 8, 'answer': '6 / 2 = 3 (left: 1 4)', 'value': 'impossible', 'parent_node': 2, 'ancestor_value': 20.0}, {'id': 9, 'answer': '1 - 4 = -3 (left: -3 6)', 'value': 'impossible', 'parent_node': 2, 'ancestor_value': 20.0}, {'id': 10, 'answer': '6 - 1 = 5 (left: 5 4)', 'value': 'impossible', 'parent_node': 2, 'ancestor_value': 20.0}, {'id': 11, 'answer': '1 + 3 = 4 (left: 4 2)', 'value': 'impossible', 'parent_node': 4, 'ancestor_value': 20.0}, {'id': 13, 'answer': '2 * 3 = 6 (left: 1 6)', 'value': 'impossible', 'parent_node': 4, 'ancestor_value': 20.0}, {'id': 14, 'answer': '2 + 1 = 3 (left: 3 3)', 'value': 'impossible', 'parent_node': 4, 'ancestor_value': 20.0}, {'id': 15, 'answer': '1 / 3 = 0.3333333333333333444444444000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 (left: 0.3333333333333333444444444000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 2)', 'value': None, 'parent_node': 4, 'ancestor_value': 20.0}, {'id': 16, 'answer': '3 + 2 = 5 (left: 5 6)', 'value': 'impossible', 'parent_node': 1, 'ancestor_value': 0.001}, {'id': 17, 'answer': '6 - 3 = 3 (left: 3 2)', 'value': 'impossible', 'parent_node': 1, 'ancestor_value': 0.001}, {'id': 18, 'answer': '2 * 6 = 12 (left: 3 12)', 'value': 'impossible', 'parent_node': 1, 'ancestor_value': 0.001}, {'id': 19, 'answer': '3 / 2 = 1.5 (left: 1.5 6)', 'value': 'impossible', 'parent_node': 1, 'ancestor_value': 0.001}, {'id': 20, 'answer': '6 * 2 = 12 (left: 3 12)', 'value': 'impossible', 'parent_node': 1, 'ancestor_value': 0.001}]
 15
 
 
@@ -190,122 +3657,2581 @@ step 3
 
 
 Generator response:
-1 + 3 = 4
-3 * 1 = 3
-1 - 3 = -2
-3 / 1 = 3
-1 / 3 = 0.3333333333333333633333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333
+2 + 2 = 4
+2 / 2 = 1
+2 - 2 = 0
+2 * 2 = 4
+2 * 2 = 4
 
 
 Generator response:
-0.3333333333333333 + 2 = 2.333333333333333
-2 / 0.3333333333333333 = 6.000000000000001
-0.3333333333333333 - 2 = -1.6666666666666667
-2 + 0.3333333333333333 = 2.333333333333333
-2 * 0.3333333333333333 = 0.6666666666666666
+5 + 6 = 11
+5 - 6 = -1
+5 * 6 = 30
+5 / 6 = 0.8333333333333333
+5 - 6 = -1.0000000000000017
 
 
 Generator response:
-4 + 2 = 6
-4 - 2 = 2
-2 * 4 = 8
-2 / 4 = 0.5
-2 + 4 = 6
+7 + 4 = 11
+4 - 7 = -3
+7 * 4 = 28
+4 / 2 = 2
+7 / 4 = 1.75
 
 
 Analysis:
 4 is not equal to 24
-Output: impossible
+Output: impossible (4)
+
+Input: 1
+Analysis:
+1 is not equal to 24
+Output: impossible (1)
+
+Input: 0
+Analysis:
+0 is not equal to 24
+Output: impossible (0)
+
+Input: 10 10 10
+Analysis:
+10 + 10 + 10 = 30
+10 * 10 = 100
+10 - 10 = 0
+10 10 10 are all too big
+Output: impossible (10 10 10)
+
+Input: 1 1 1
+Analysis:
+1 + 1 + 1 = 3
+1 * 1 * 1 = 1
+1 1 1 are all too small
+Output: impossible (1 1 1)
+
+Input: 10 10
+Analysis:
+10 + 10 = 20
+10 * 10 = 100
+10 - 10 = 0
+10 10 are all too big
+Output: impossible (10 10)
+
+Input: 1 1
+Analysis:
+1 + 1 = 2
+1 * 1 = 1
+1 1 are all too small
+Output: impossible (1 1)
+
+Input: 10
+Analysis:
+10 is not equal to 24
+Output: impossible (10)
+
+Input: 1
+Analysis:
+1 is not equal to 24
+Output: impossible (1)
+
+Input: -1
+Analysis:
+-1 is not equal to 24
+Output: impossible (-1)
+
+Input: 4
+Analysis:
+4 is not equal to 24
+Output: impossible (4)
+
+Input: 0
+Analysis:
+0 is not equal to 24
+Output: impossible (0)
+
+Input: 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 = 40
+10 * 10 * 10 * 10 = 10000
+10 - 10 = 0
+10 10 10 10 are all too big
+Output: impossible (10 10 10 10)
+
+Input: 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 = 4
+1 * 1 * 1 * 1 = 1
+1 1 1 1 are all too small
+Output: impossible (1 1 1 1)
+
+Input: 10 10 10
+Analysis:
+10 + 10 + 10 = 30
+10 * 10 = 100
+10 - 10 = 0
+10 10 10 are all too big
+Output: impossible (10 10 10)
+
+Input: 1 1 1
+Analysis:
+1 + 1 + 1 = 3
+1 * 1 * 1 = 1
+1 1 1 are all too small
+Output: impossible (1 1 1)
+
+Input: 10 10
+Analysis:
+10 + 10 = 20
+10 * 10 = 100
+10 - 10 = 0
+10 10 are all too big
+Output: impossible (10 10)
+
+Input: 1 1
+Analysis:
+1 + 1 = 2
+1 * 1 = 1
+1 1 are all too small
+Output: impossible (1 1)
+
+Input: 10
+Analysis:
+10 is not equal to 24
+Output: impossible (10)
+
+Input: 1
+Analysis:
+1 is not equal to 24
+Output: impossible (1)
+
+Input: -1
+Analysis:
+-1 is not equal to 24
+Output: impossible (-1)
+
+Input: 4
+Analysis:
+4 is not equal to 24
+Output: impossible (4)
+
+Input: 0
+Analysis:
+0 is not equal to 24
+Output: impossible (0)
+
+Input: 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 = 50
+10 * 10 * 10 * 10 * 10 = 1000000
+10 - 10 = 0
+10 10 10 10 10 are all too big
+Output: impossible (10 10 10 10 10)
+
+Input: 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 = 5
+1 * 1 * 1 * 1 * 1 = 1
+1 1 1 1 1 are all too small
+Output: impossible (1 1 1 1 1)
+
+Input: 10 10 10
+Analysis:
+10 + 10 + 10 = 30
+10 * 10 = 100
+10 - 10 = 0
+10 10 10 are all too big
+Output: impossible (10 10 10)
+
+Input: 1 1 1
+Analysis:
+1 + 1 + 1 = 3
+1 * 1 * 1 = 1
+1 1 1 are all too small
+Output: impossible (1 1 1)
+
+Input: 10 10
+Analysis:
+10 + 10 = 20
+10 * 10 = 100
+10 - 10 = 0
+10 10 are all too big
+Output: impossible (10 10)
+
+Input: 1 1
+Analysis:
+1 + 1 = 2
+1 * 1 = 1
+1 1 are all too small
+Output: impossible (1 1)
+
+Input: 10
+Analysis:
+10 is not equal to 24
+Output: impossible (10)
+
+Input: 1
+Analysis:
+1 is not equal to 24
+Output: impossible (1)
+
+Input: -1
+Analysis:
+-1 is not equal to 24
+Output: impossible (-1)
+
+Input: 4
+Analysis:
+4 is not equal to 24
+Output: impossible (4)
+
+Input: 0
+Analysis:
+0 is not equal to 24
+Output: impossible (0)
+
+Input: 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 = 50
+10 * 10 * 10 * 10 * 10 = 100000000
+10 - 10 = 0
+10 10 10 10 10 are all too big
+Output: impossible (10 10 10 10 10)
+
+Input: 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 = 5
+1 * 1 * 1 * 1 * 1 = 1
+1 1 1 1 1 are all too small
+Output: impossible (1 1 1 1 1)
+
+Input: 10 10 10
+Analysis:
+10 + 10 + 10 = 30
+10 * 10 = 100
+10 - 10 = 0
+10 10 10 are all too big
+Output: impossible (10 10 10)
+
+Input: 1 1 1
+Analysis:
+1 + 1 + 1 = 3
+1 * 1 * 1 = 1
+1 1 1 are all too small
+Output: impossible (1 1 1)
+
+Input: 10 10
+Analysis:
+10 + 10 = 20
+10 * 10 = 100
+10 - 10 = 0
+10 10 are all too big
+Output: impossible (10 10)
+
+Input: 1 1
+Analysis:
+1 + 1 = 2
+1 * 1 = 1
+1 1 are all too small
+Output: impossible (1 1)
+
+Input: 10
+Analysis:
+10 is not equal to 24
+Output: impossible (10)
 
 
 Analysis:
-3 is not equal to 24
-Output: impossible
+1 is not equal to 24
+Output: impossible (1)
+
+Input: 0
+Analysis:
+0 is not equal to 24
+Output: impossible (0)
+
+Input: 10 10 10
+Analysis:
+10 + 10 + 10 = 30
+(10 - 10) * 10 = 0
+10 10 10 are all too big
+Output: impossible (10 10 10)
+
+Input: 1 1 1
+Analysis:
+1 + 1 + 1 = 3
+(1 - 1) * 1 = 0
+1 1 1 are all too small
+Output: impossible (1 1 1)
+
+Input: 10 10
+Analysis:
+10 + 10 = 20
+(10 - 10) * 10 = 0
+10 10 are all too big
+Output: impossible (10 10)
+
+Input: 1 1
+Analysis:
+1 + 1 = 2
+(1 - 1) * 1 = 0
+1 1 are all too small
+Output: impossible (1 1)
+
+Input: 10
+Analysis:
+10 is not equal to 24
+Output: impossible (10)
+
+Input: 1
+Analysis:
+1 is not equal to 24
+Output: impossible (1)
+
+Input: 0
+Analysis:
+0 is not equal to 24
+Output: impossible (0)
+
+Input: -1
+Analysis:
+-1 is not equal to 24
+Output: impossible (-1)
+
+Input: 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 = 40
+(10 - 10) * 10 * 10 = 0
+10 10 10 10 are all too big
+Output: impossible (10 10 10 10)
+
+Input: 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 = 4
+(1 - 1) * 1 * 1 * 1 = 0
+1 1 1 1 are all too small
+Output: impossible (1 1 1 1)
+
+Input: 10 10 10
+Analysis:
+10 + 10 + 10 = 30
+(10 - 10) * 10 * 10 = 0
+10 10 10 are all too big
+Output: impossible (10 10 10)
+
+Input: 1 1 1
+Analysis:
+1 + 1 + 1 = 3
+(1 - 1) * 1 * 1 = 0
+1 1 1 are all too small
+Output: impossible (1 1 1)
+
+Input: 10 10
+Analysis:
+10 + 10 = 20
+(10 - 10) * 10 = 0
+10 10 are all too big
+Output: impossible (10 10)
+
+Input: 1 1
+Analysis:
+1 + 1 = 2
+(1 - 1) * 1 = 0
+1 1 are all too small
+Output: impossible (1 1)
+
+Input: 10
+Analysis:
+10 is not equal to 24
+Output: impossible (10)
+
+Input: 1
+Analysis:
+1 is not equal to 24
+Output: impossible (1)
+
+Input: 0
+Analysis:
+0 is not equal to 24
+Output: impossible (0)
+
+Input: -1
+Analysis:
+-1 is not equal to 24
+Output: impossible (-1)
+
+Input: 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 = 50
+(10 - 10) * 10 * 10 * 10 * 10 = 0
+10 10 10 10 10 are all too big
+Output: impossible (10 10 10 10 10)
+
+Input: 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 = 5
+(1 - 1) * 1 * 1 * 1 * 1 = 0
+1 1 1 1 1 are all too small
+Output: impossible (1 1 1 1 1)
+
+Input: 10 10 10
+Analysis:
+10 + 10 + 10 = 30
+(10 - 10) * 10 * 10 = 0
+10 10 10 are all too big
+Output: impossible (10 10 10)
+
+Input: 1 1 1
+Analysis:
+1 + 1 + 1 = 3
+(1 - 1) * 1 * 1 = 0
+1 1 1 are all too small
+Output: impossible (1 1 1)
+
+Input: 10 10
+Analysis:
+10 + 10 = 20
+(10 - 10) * 10 = 0
+10 10 are all too big
+Output: impossible (10 10)
+
+Input: 1 1
+Analysis:
+1 + 1 = 2
+(1 - 1) * 1 = 0
+1 1 are all too small
+Output: impossible (1 1)
+
+Input: 10
+Analysis:
+10 is not equal to 24
+Output: impossible (10)
+
+Input: 1
+Analysis:
+1 is not equal to 24
+Output: impossible (1)
+
+Input: 0
+Analysis:
+0 is not equal to 24
+Output: impossible (0)
+
+Input: -1
+Analysis:
+-1 is not equal to 24
+Output: impossible (-1)
+
+Input: 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 = 50
+(10 - 10) * 10 * 10 * 10 * 10 = 0
+10 10 10 10 10 are all too big
+Output: impossible (10 10 10 10 10)
+
+Input: 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 = 5
+(1 - 1) * 1 * 1 * 1 * 1 = 0
+1 1 1 1 1 are all too small
+Output: impossible (1 1 1 1 1)
+
+Input: 10 10 10
+Analysis:
+10 + 10 + 10 = 30
+(10 - 10) * 10 * 10 = 0
+10 10 10 are all too big
+Output: impossible (10 10 10)
+
+Input: 1 1 1
+Analysis:
+1 + 1 + 1 = 3
+(1 - 1) * 1 * 1 = 0
+1 1 1 are all too small
+Output: impossible (1 1 1)
+
+Input: 10 10
+Analysis:
+10 + 10 = 20
+(10 - 10) * 10 = 0
+10 10 are all too big
+Output: impossible (10 10)
+
+Input: 1 1
+Analysis:
+1 + 1 = 2
+(1 - 1) * 1 = 0
+1 1 are all too small
+Output: impossible (1 1)
+
+Input: 10
+Analysis:
+10 is not equal to 24
+Output: impossible (10)
+
+Input: 1
+Analysis:
+1 is not equal to 24
+Output: impossible (1)
+
+Input: 0
+Analysis:
+0 is not equal to 24
+Output: impossible (0)
+
+Input: -1
+Analysis:
+-1 is not equal to 24
+Output: impossible (-1)
+
+Input: 10 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 
 
 
 Analysis:
--2 is not equal to 24
-Output: impossible
+0 is not equal to 24
+Output: impossible (0)
+
+Input: 1
+Analysis:
+1 is not equal to 24
+Output: impossible (1)
+
+Input: 10 10 10
+Analysis:
+10 + 10 + 10 = 30
+(10 - 10) * 10 = 0
+10 10 10 are all too big
+Output: impossible (10 10 10)
+
+Input: 1 1 1
+Analysis:
+1 + 1 + 1 = 3
+(1 - 1) * 1 = 0
+1 1 1 are all too small
+Output: impossible (1 1 1)
+
+Input: 10 10
+Analysis:
+10 + 10 = 20
+(10 - 10) * 10 = 0
+10 10 are all too big
+Output: impossible (10 10)
+
+Input: 1 1
+Analysis:
+1 + 1 = 2
+(1 - 1) * 1 = 0
+1 1 are all too small
+Output: impossible (1 1)
+
+Input: 10
+Analysis:
+10 is not equal to 24
+Output: impossible (10)
+
+Input: 1
+Analysis:
+1 is not equal to 24
+Output: impossible (1)
+
+Input: -1
+Analysis:
+-1 is not equal to 24
+Output: impossible (-1)
+
+Input: 0
+Analysis:
+0 is not equal to 24
+Output: impossible (0)
+
+Input: 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 = 40
+(10 - 10) * 10 * 10 = 0
+10 10 10 10 are all too big
+Output: impossible (10 10 10 10)
+
+Input: 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 = 4
+(1 - 1) * 1 * 1 * 1 = 0
+1 1 1 1 are all too small
+Output: impossible (1 1 1 1)
+
+Input: 10 10
+Analysis:
+10 + 10 = 20
+(10 - 10) * 10 = 0
+10 10 are all too big
+Output: impossible (10 10)
+
+Input: 1 1
+Analysis:
+1 + 1 = 2
+(1 - 1) * 1 = 0
+1 1 are all too small
+Output: impossible (1 1)
+
+Input: 10
+Analysis:
+10 is not equal to 24
+Output: impossible (10)
+
+Input: 1
+Analysis:
+1 is not equal to 24
+Output: impossible (1)
+
+Input: -1
+Analysis:
+-1 is not equal to 24
+Output: impossible (-1)
+
+Input: 0
+Analysis:
+0 is not equal to 24
+Output: impossible (0)
+
+Input: 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 = 50
+(10 - 10) * 10 * 10 * 10 * 10 = 0
+10 10 10 10 10 are all too big
+Output: impossible (10 10 10 10 10)
+
+Input: 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 = 5
+(1 - 1) * 1 * 1 * 1 * 1 = 0
+1 1 1 1 1 are all too small
+Output: impossible (1 1 1 1 1)
+
+Input: 10 10 10
+Analysis:
+10 + 10 + 10 = 30
+(10 - 10) * 10 * 10 = 0
+10 10 10 are all too big
+Output: impossible (10 10 10)
+
+Input: 1 1 1
+Analysis:
+1 + 1 + 1 = 3
+(1 - 1) * 1 * 1 = 0
+1 1 1 are all too small
+Output: impossible (1 1 1)
+
+Input: 10 10
+Analysis:
+10 + 10 = 20
+(10 - 10) * 10 = 0
+10 10 are all too big
+Output: impossible (10 10)
+
+Input: 1 1
+Analysis:
+1 + 1 = 2
+(1 - 1) * 1 = 0
+1 1 are all too small
+Output: impossible (1 1)
+
+Input: 10
+Analysis:
+10 is not equal to 24
+Output: impossible (10)
+
+Input: 1
+Analysis:
+1 is not equal to 24
+Output: impossible (1)
+
+Input: -1
+Analysis:
+-1 is not equal to 24
+Output: impossible (-1)
+
+Input: 0
+Analysis:
+0 is not equal to 24
+Output: impossible (0)
+
+Input: 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 = 50
+(10 - 10) * 10 * 10 * 10 * 10 = 0
+10 10 10 10 10 are all too big
+Output: impossible (10 10 10 10 10)
+
+Input: 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 = 5
+(1 - 1) * 1 * 1 * 1 * 1 = 0
+1 1 1 1 1 are all too small
+Output: impossible (1 1 1 1 1)
+
+Input: 10 10 10
+Analysis:
+10 + 10 + 10 = 30
+(10 - 10) * 10 * 10 = 0
+10 10 10 are all too big
+Output: impossible (10 10 10)
+
+Input: 1 1 1
+Analysis:
+1 + 1 + 1 = 3
+(1 - 1) * 1 * 1 = 0
+1 1 1 are all too small
+Output: impossible (1 1 1)
+
+Input: 10 10
+Analysis:
+10 + 10 = 20
+(10 - 10) * 10 = 0
+10 10 are all too big
+Output: impossible (10 10)
+
+Input: 1 1
+Analysis:
+1 + 1 = 2
+(1 - 1) * 1 = 0
+1 1 are all too small
+Output: impossible (1 1)
+
+Input: 10
+Analysis:
+10 is not equal to 24
+Output: impossible (10)
+
+Input: 1
+Analysis:
+1 is not equal to 24
+Output: impossible (1)
+
+Input: -1
+Analysis:
+-1 is not equal to 24
+Output: impossible (-1)
+
+Input: 0
+Analysis:
+0 is not equal to 24
+Output: impossible (0)
+
+Input: 10 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 + 10 = 60
+(10 - 10) * 10 * 10 * 10 * 10 * 10 = 0
+10 10 10 10 10 10 are all too big
+Output: impossible (10 10 10 10 10 10)
+
+Input: 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 = 6
+(1 - 1) * 1 * 1
+
+
+Analysis:
+4 is not equal to 24
+Output: impossible (4)
+
+Input: 1
+Analysis:
+1 is not equal to 24
+Output: impossible (1)
+
+Input: 0
+Analysis:
+0 is not equal to 24
+Output: impossible (0)
+
+Input: 10 10 10
+Analysis:
+10 + 10 + 10 = 30
+10 * 10 = 100
+10 - 10 = 0
+10 10 10 are all too big
+Output: impossible (10 10 10)
+
+Input: 1 1 1
+Analysis:
+1 + 1 + 1 = 3
+1 * 1 * 1 = 1
+1 1 1 are all too small
+Output: impossible (1 1 1)
+
+Input: 10 10
+Analysis:
+10 + 10 = 20
+10 * 10 = 100
+10 - 10 = 0
+10 10 are all too big
+Output: impossible (10 10)
+
+Input: 1 1
+Analysis:
+1 + 1 = 2
+1 * 1 = 1
+1 1 are all too small
+Output: impossible (1 1)
+
+Input: 10
+Analysis:
+10 is not equal to 24
+Output: impossible (10)
+
+Input: 1
+Analysis:
+1 is not equal to 24
+Output: impossible (1)
+
+Input: -1
+Analysis:
+-1 is not equal to 24
+Output: impossible (-1)
+
+Input: 4
+Analysis:
+4 is not equal to 24
+Output: impossible (4)
+
+Input: 0
+Analysis:
+0 is not equal to 24
+Output: impossible (0)
+
+Input: 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 = 40
+10 * 10 * 10 * 10 = 10000
+10 - 10 = 0
+10 10 10 10 are all too big
+Output: impossible (10 10 10 10)
+
+Input: 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 = 4
+1 * 1 * 1 * 1 = 1
+1 1 1 1 are all too small
+Output: impossible (1 1 1 1)
+
+Input: 10 10 10
+Analysis:
+10 + 10 + 10 = 30
+10 * 10 = 100
+10 - 10 = 0
+10 10 10 are all too big
+Output: impossible (10 10 10)
+
+Input: 1 1 1
+Analysis:
+1 + 1 + 1 = 3
+1 * 1 * 1 = 1
+1 1 1 are all too small
+Output: impossible (1 1 1)
+
+Input: 10 10
+Analysis:
+10 + 10 = 20
+10 * 10 = 100
+10 - 10 = 0
+10 10 are all too big
+Output: impossible (10 10)
+
+Input: 1 1
+Analysis:
+1 + 1 = 2
+1 * 1 = 1
+1 1 are all too small
+Output: impossible (1 1)
+
+Input: 10
+Analysis:
+10 is not equal to 24
+Output: impossible (10)
+
+Input: 1
+Analysis:
+1 is not equal to 24
+Output: impossible (1)
+
+Input: -1
+Analysis:
+-1 is not equal to 24
+Output: impossible (-1)
+
+Input: 4
+Analysis:
+4 is not equal to 24
+Output: impossible (4)
+
+Input: 0
+Analysis:
+0 is not equal to 24
+Output: impossible (0)
+
+Input: 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 = 50
+10 * 10 * 10 * 10 * 10 = 1000000
+10 - 10 = 0
+10 10 10 10 10 are all too big
+Output: impossible (10 10 10 10 10)
+
+Input: 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 = 5
+1 * 1 * 1 * 1 * 1 = 1
+1 1 1 1 1 are all too small
+Output: impossible (1 1 1 1 1)
+
+Input: 10 10 10
+Analysis:
+10 + 10 + 10 = 30
+10 * 10 = 100
+10 - 10 = 0
+10 10 10 are all too big
+Output: impossible (10 10 10)
+
+Input: 1 1 1
+Analysis:
+1 + 1 + 1 = 3
+1 * 1 * 1 = 1
+1 1 1 are all too small
+Output: impossible (1 1 1)
+
+Input: 10 10
+Analysis:
+10 + 10 = 20
+10 * 10 = 100
+10 - 10 = 0
+10 10 are all too big
+Output: impossible (10 10)
+
+Input: 1 1
+Analysis:
+1 + 1 = 2
+1 * 1 = 1
+1 1 are all too small
+Output: impossible (1 1)
+
+Input: 10
+Analysis:
+10 is not equal to 24
+Output: impossible (10)
+
+Input: 1
+Analysis:
+1 is not equal to 24
+Output: impossible (1)
+
+Input: -1
+Analysis:
+-1 is not equal to 24
+Output: impossible (-1)
+
+Input: 4
+Analysis:
+4 is not equal to 24
+Output: impossible (4)
+
+Input: 0
+Analysis:
+0 is not equal to 24
+Output: impossible (0)
+
+Input: 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 = 50
+10 * 10 * 10 * 10 * 10 = 100000000
+10 - 10 = 0
+10 10 10 10 10 are all too big
+Output: impossible (10 10 10 10 10)
+
+Input: 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 = 5
+1 * 1 * 1 * 1 * 1 = 1
+1 1 1 1 1 are all too small
+Output: impossible (1 1 1 1 1)
+
+Input: 10 10 10
+Analysis:
+10 + 10 + 10 = 30
+10 * 10 = 100
+10 - 10 = 0
+10 10 10 are all too big
+Output: impossible (10 10 10)
+
+Input: 1 1 1
+Analysis:
+1 + 1 + 1 = 3
+1 * 1 * 1 = 1
+1 1 1 are all too small
+Output: impossible (1 1 1)
+
+Input: 10 10
+Analysis:
+10 + 10 = 20
+10 * 10 = 100
+10 - 10 = 0
+10 10 are all too big
+Output: impossible (10 10)
+
+Input: 1 1
+Analysis:
+1 + 1 = 2
+1 * 1 = 1
+1 1 are all too small
+Output: impossible (1 1)
+
+Input: 10
+Analysis:
+10 is not equal to 24
+Output: impossible (10)
+
+
+Analysis:
+4 is not equal to 24
+Output: impossible (4)
+
+Input: 1
+Analysis:
+1 is not equal to 24
+Output: impossible (1)
+
+Input: 0
+Analysis:
+0 is not equal to 24
+Output: impossible (0)
+
+Input: 10 10 10
+Analysis:
+10 + 10 + 10 = 30
+10 * 10 = 100
+10 - 10 = 0
+10 10 10 are all too big
+Output: impossible (10 10 10)
+
+Input: 1 1 1
+Analysis:
+1 + 1 + 1 = 3
+1 * 1 * 1 = 1
+1 1 1 are all too small
+Output: impossible (1 1 1)
+
+Input: 10 10
+Analysis:
+10 + 10 = 20
+10 * 10 = 100
+10 - 10 = 0
+10 10 are all too big
+Output: impossible (10 10)
+
+Input: 1 1
+Analysis:
+1 + 1 = 2
+1 * 1 = 1
+1 1 are all too small
+Output: impossible (1 1)
+
+Input: 10
+Analysis:
+10 is not equal to 24
+Output: impossible (10)
+
+Input: 1
+Analysis:
+1 is not equal to 24
+Output: impossible (1)
+
+Input: -1
+Analysis:
+-1 is not equal to 24
+Output: impossible (-1)
+
+Input: 4
+Analysis:
+4 is not equal to 24
+Output: impossible (4)
+
+Input: 0
+Analysis:
+0 is not equal to 24
+Output: impossible (0)
+
+Input: 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 = 40
+10 * 10 * 10 * 10 = 10000
+10 - 10 = 0
+10 10 10 10 are all too big
+Output: impossible (10 10 10 10)
+
+Input: 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 = 4
+1 * 1 * 1 * 1 = 1
+1 1 1 1 are all too small
+Output: impossible (1 1 1 1)
+
+Input: 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 = 50
+10 * 10 * 10 * 10 * 10 = 10000000
+10 - 10 = 0
+10 10 10 10 10 are all too big
+Output: impossible (10 10 10 10 10)
+
+Input: 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 = 5
+1 * 1 * 1 * 1 * 1 = 1
+1 1 1 1 1 are all too small
+Output: impossible (1 1 1 1 1)
+
+Input: 10 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 + 10 = 60
+10 * 10 * 10 * 10 * 10 * 10 = 10000000000
+10 - 10 = 0
+10 10 10 10 10 10 are all too big
+Output: impossible (10 10 10 10 10 10)
+
+Input: 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 = 6
+1 * 1 * 1 * 1 * 1 * 1 = 1
+1 1 1 1 1 1 are all too small
+Output: impossible (1 1 1 1 1 1)
+
+Input: 10 10 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 + 10 + 10 = 70
+10 * 10 * 10 * 10 * 10 * 10 * 10 = 1000000000000
+10 - 10 = 0
+10 10 10 10 10 10 10 are all too big
+Output: impossible (10 10 10 10 10 10 10)
+
+Input: 1 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 + 1 = 7
+1 * 1 * 1 * 1 * 1 * 1 * 1 = 1
+1 1 1 1 1 1 1 are all too small
+Output: impossible (1 1 1 1 1 1 1)
+
+Input: 10 10 10 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 = 80
+10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 = 100000000000000
+10 - 10 = 0
+10 10 10 10 10 10 10 10 are all too big
+Output: impossible (10 10 10 10 10 10 10 10)
+
+Input: 1 1 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 = 8
+1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 = 1
+1 1 1 1 1 1 1 1 are all too small
+Output: impossible (1 1 1 1 1 1 1 1)
+
+Input: 10 10 10 10 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 = 90
+10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 = 10000000000000000
+10 - 10 = 0
+10 10 10 10 10 10 10 10 10 are all too big
+Output: impossible (10 10 10 10 10 10 10 10 10)
+
+Input: 1 1 1 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 = 9
+1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 = 1
+1 1 1 1 1 1 1 1 1 are all too small
+Output: impossible (1 1 1 1 1 1 1 1 1)
+
+Input: 10 10 10 10 10 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 = 100
+10 * 10 * 10 * 10 * 10 * 10
+
+
+Analysis:
+11 is not equal to 24
+Output: impossible (11)
+
+Input: 10 10
+Analysis:
+10 + 10 = 20
+Output: sure (10 10)
+
+Input: 10 10 10
+Analysis:
+10 + 10 + 10 = 30
+Output: impossible (10 10 10)
+
+Input: 10 10 11
+Analysis:
+10 + 10 + 11 = 31
+Output: impossible (10 10 11)
+
+Input: 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 = 40
+Output: impossible (10 10 10 10)
+
+Input: 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 = 50
+Output: impossible (10 10 10 10 10)
+
+Input: 10 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 + 10 = 60
+Output: impossible (10 10 10 10 10 10)
+
+Input: 10 10 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 + 10 + 10 = 70
+Output: impossible (10 10 10 10 10 10 10)
+
+Input: 10 10 10 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 = 80
+Output: impossible (10 10 10 10 10 10 10 10)
+
+Input: 10 10 10 10 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 = 90
+Output: impossible (10 10 10 10 10 10 10 10 10)
+
+Input: 10 10 10 10 10 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 = 100
+Output: impossible (10 10 10 10 10 10 10 10 10 10)
+
+Input: 10 10 10 10 10 10 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 = 110
+Output: impossible (10 10 10 10 10 10 10 10 10 10 10)
+
+Input: 10 10 10 10 10 10 10 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 = 120
+Output: impossible (10 10 10 10 10 10 10 10 10 10 10 10)
+
+Input: 10 10 10 10 10 10 10 10 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 = 130
+Output: impossible (10 10 10 10 10 10 10 10 10 10 10 10 10)
+
+Input: 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 = 140
+Output: impossible (10 10 10 10 10 10 10 10 10 10 10 10 10 10)
+
+Input: 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 = 150
+Output: impossible (10 10 10 10 10 10 10 10 10 10 10 10 10 10 10)
+
+Input: 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 = 160
+Output: impossible (10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10)
+
+Input: 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 = 170
+Output: impossible (10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10)
+
+Input: 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 = 180
+Output: impossible (10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10)
+
+Input: 10 10 10 10 10
+
+
+Analysis:
+-1 is not equal to 24
+Output: impossible (-1)
 
 Input: 1 2 3
 Analysis:
 1 + 2 + 3 = 6
 1 * 2 * 3 = 6
+Output: sure (1 2 3)
+
+Input: 1 2 3
+Analysis:
+1 + 2 + 3 = 6
+1 * 2 * 3 = 6
+Output: sure (1 2 3)
+
+Input: 1 2 3
+Analysis:
+1 + 2 + 3 = 6
+1 * 2 * 3 = 6
+Output: sure (1 2 3)
+
+Input: 1 2 3
+Analysis:
+1 + 2 + 3 = 6
+1 * 2 * 3 = 6
+Output: sure (1 2 3)
+
+Input: 1 2 3
+Analysis:
+1 + 2 + 3 = 6
+1 * 2 * 3 = 6
+Output: sure (1 2 3)
+
+Input: 1 2 3
+Analysis:
+1 + 2 + 3 = 6
+1 * 2 * 3 = 6
+Output: sure (1 2 3)
+
+Input: 1 2 3
+Analysis:
+1 + 2 + 3 = 6
+1 * 2 * 3 = 6
+Output: sure (1 2 3)
+
+Input: 1 2 3
+Analysis:
+1 + 2 + 3 = 6
+1 * 2 * 3 = 6
+Output: sure (1 2 3)
+
+Input: 1 2 3
+Analysis:
+1 + 2 + 3 = 6
+1 * 2 * 3 = 6
+Output: sure (1 2 3)
+
+Input: 1 2 3
+Analysis:
+1 + 2 + 3 = 6
+1 * 2 * 3 = 6
+Output: sure (1 2 3)
+
+Input: 1 2 3
+Analysis:
+1 + 2 + 3 = 6
+1 * 2 * 3 = 6
+Output: sure (1 2 3)
+
+Input: 1 2 3
+Analysis:
+1 + 2 + 3 = 6
+1 * 2 * 3 = 6
+Output: sure (1 2 3)
+
+Input: 1 2 3
+Analysis:
+1 + 2 + 3 = 6
+1 * 2 * 3 = 6
+Output: sure (1 2 3)
+
+Input: 1 2 3
+Analysis:
+1 + 2 + 3 = 6
+1 * 2 * 3 = 6
+Output: sure (1 2 3)
+
+Input: 1 2 3
+Analysis:
+1 + 2 + 3 = 6
+1 * 2 * 3 = 6
+Output: sure (1 2 3)
+
+Input: 1 2 3
+Analysis:
+1 + 2 + 3 = 6
+1 * 2 * 3 = 6
+Output: sure (1 2 3)
+
+Input: 1 2 3
+Analysis:
+1 + 2 + 3 = 6
+1 * 2 * 3 = 6
+Output: sure (1 2 3)
+
+Input: 1 2 3
+Analysis:
+1 + 2 + 3 = 6
+1 * 2 * 3 = 6
+Output: sure (1 2 3)
+
+Input: 1 2 3
+Analysis:
+1 + 2 + 3 = 6
+1 * 2 * 3 = 6
+Output: sure (1 2 3)
+
+Input: 1 2 3
+Analysis:
+1 + 2 + 3 = 6
+1 * 2 * 3 = 6
+Output: sure (1 2 3)
+
+Input: 1 2 3
+Analysis:
+1 + 2 + 3 = 6
+1 * 2 * 3 = 6
+Output: sure (1 2 3)
+
+Input: 1 2 3
+Analysis:
+1 + 2 + 3 = 6
+1 * 2 * 3 = 6
+Output: sure (1 2 3)
+
+Input: 1 2 3
+Analysis:
+1 + 2 + 3 = 6
+1 * 2 * 3 = 6
+Output: sure (1 2 3)
+
+Input: 1 2 3
+Analysis:
+1 + 2 + 3 = 6
+1 * 2 * 3 = 6
+Output: sure (1 2 3)
+
+Input: 1 2 3
+Analysis:
+1 + 2 + 3 = 6
+1 * 2 * 3 = 6
+Output: sure (1 2 3)
+
+Input: 1 2 3
+Analysis:
+1 + 2 + 3 = 6
+1 * 2 * 3 = 6
+Output: sure (1 2 3)
+
+Input: 1 2 3
+Analysis:
+1 + 2 + 3 = 6
+1 * 2 * 3 = 6
+Output: sure (1 2 3)
+
+Input: 1 2 3
+Analysis:
+1 + 2 + 3 = 6
+1 * 2 * 3 = 6
+Output: sure (1 2 3)
+
+Input: 1 2 3
+Analysis:
+1 + 2 + 3 = 6
+1 * 2 * 3 = 6
+Output: sure (1 2 3)
+
+Input: 1 2 3
+Analysis:
+1 + 2 + 3 = 6
+1 * 2 * 3 = 6
+Output: sure (1 2 3)
+
+Input: 1 2 3
+Analysis:
+1 + 2 + 3 = 6
+1 * 2 * 3 = 6
+Output: sure (1 2 3)
+
+Input: 1 2 3
+Analysis:
+1 + 2 + 3 = 6
+1 * 2 * 3 = 6
+Output: sure (1 2 3)
+
+Input: 1 2 3
+Analysis:
+1 + 2 + 3 = 6
+1 * 2 * 3 = 6
+Output: sure (1 2 3)
+
+Input: 1 2 3
+Analysis:
+1 + 2 + 3 = 6
+1 * 2 * 3 = 6
+Output: sure (1 2 3)
+
+Input: 1 2 3
+Analysis:
+1 + 2 + 3 = 6
+1 * 2 * 3 = 6
+Output: sure (1 2 3)
+
+Input: 1 2 3
+Analysis:
+1 + 2 + 3 = 6
+1 * 2 * 3 = 6
+Output: sure (1 2 3)
+
+Input: 1 2 3
+Analysis:
+1 + 2 + 3 = 6
+1 * 2 * 3 = 6
+Output: sure (1 2 3)
+
+Input: 1 2 3
+Analysis:
+1 + 2 + 3 = 6
+1 * 2 * 3 = 6
+Output: sure (1 2 3)
+
+Input: 1 2 3
+Analysis:
+1 + 2 + 3 = 6
+1 * 2 * 3 = 6
+Output: sure (1 2 3)
+
+Input: 1 2 3
+Analysis:
+1 + 2 + 3 = 6
+1 * 2 * 3 = 6
+Output: sure (1 2 3)
+
+Input: 1 2 3
+Analysis:
+1 + 2 + 3 = 6
+1 * 2 * 3 = 6
+Output: sure (1 2 3)
+
+Input: 1 2 3
+Analysis:
+1 + 2 + 3 = 6
+1 * 2 * 3 = 6
+Output: sure (1 2 3)
+
+Input: 1 2 3
+Analysis:
+1 + 2 + 3 = 6
+1 * 2 * 3 = 6
+Output: sure (1 2 3)
+
+Input: 1 2 3
+Analysis:
+1 + 2 + 3 = 6
+1 * 2 * 3 = 6
+Output: sure (1 2 3)
+
+Input: 
+
+
+Analysis:
+30 is not equal to 24
+Output: impossible (30)
+
+Input: 100
+Analysis:
+100 is not equal to 24
+Output: impossible (100)
+
+Input: 1000
+Analysis:
+1000 is not equal to 24
+Output: impossible (1000)
+
+Input: 10000
+Analysis:
+10000 is not equal to 24
+Output: impossible (10000)
+
+Input: 100000
+Analysis:
+100000 is not equal to 24
+Output: impossible (100000)
+
+Input: 1000000
+Analysis:
+1000000 is not equal to 24
+Output: impossible (1000000)
+
+Input: 10000000
+Analysis:
+10000000 is not equal to 24
+Output: impossible (10000000)
+
+Input: 100000000
+Analysis:
+100000000 is not equal to 24
+Output: impossible (100000000)
+
+Input: 1000000000
+Analysis:
+1000000000 is not equal to 24
+Output: impossible (1000000000)
+
+Input: 10000000000
+Analysis:
+10000000000 is not equal to 24
+Output: impossible (10000000000)
+
+Input: 100000000000
+Analysis:
+100000000000 is not equal to 24
+Output: impossible (100000000000)
+
+Input: 1000000000000
+Analysis:
+1000000000000 is not equal to 24
+Output: impossible (1000000000000)
+
+Input: 10000000000000
+Analysis:
+10000000000000 is not equal to 24
+Output: impossible (10000000000000)
+
+Input: 100000000000000
+Analysis:
+100000000000000 is not equal to 24
+Output: impossible (100000000000000)
+
+Input: 1000000000000000
+Analysis:
+1000000000000000 is not equal to 24
+Output: impossible (1000000000000000)
+
+Input: 10000000000000000
+Analysis:
+10000000000000000 is not equal to 24
+Output: impossible (10000000000000000)
+
+Input: 100000000000000000
+Analysis:
+100000000000000000 is not equal to 24
+Output: impossible (100000000000000000)
+
+Input: 1000000000000000000
+Analysis:
+1000000000000000000 is not equal to 24
+Output: impossible (1000000000000000000)
+
+Input: 10000000000000000000
+Analysis:
+10000000000000000000 is not equal to 24
+Output: impossible (10000000000000000000)
+
+Input: 100000000000000000000
+Analysis:
+100000000000000000000 is not equal to 24
+Output: impossible (100000000000000000000)
+
+Input: 1000000000000000000000
+Analysis:
+1000000000000000000000 is not equal to 24
+Output: impossible (1000000000000000000000)
+
+Input: 10000000000000000000000
+Analysis:
+10000000000000000000000 is not equal to 24
+Output: impossible (10000000000000000000000)
+
+Input: 100000000000000000000000
+Analysis:
+100000000000000000000000 is not equal to 24
+Output: impossible (100000000000000000000000)
+
+Input: 1000000000000000000000000
+Analysis:
+1000000000000000000000000 is not equal to 24
+Output: impossible (1000000000000000000000000)
+
+Input: 10000000000000000000000000
+Analysis:
+10000000000000000000000000 is not equal to 24
+Output: impossible (10000000000000000000000000)
+
+Input: 100000000000000000000000000
+Analysis:
+100000000000000000000000000 is not equal to 24
+Output: impossible (100000000000000000000000000)
+
+Input: 1000000000000000000000000000
+Analysis:
+1000000000000000000000000000 is not equal to 24
+Output: impossible (1000000000000000000000000000)
+
+Input: 10000000000000000000000000000
+Analysis:
+10000000000000000000000000000 is not equal to 24
+Output: impossible (10000000000000000000000000000)
+
+Input: 100000000000000000000000000000
+Analysis:
+100000000000000000000000000000 is not equal to 24
+Output: impossible (100000000000000000000000000000)
+
+Input: 100000000000000000000
+
+
+Analysis:
+0.8333333333333333 is not equal to 24
+Output: impossible (0.8333333333333333)
+
+Input: 1000000000000000000
+Analysis:
+1000000000000000000 is not equal to 24
+Output: impossible (1000000000000000000)
+
+Input: 1000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+
+Analysis:
+-1.0000000000000017 is not equal to 24
+Output: impossible (-1.0000000000000017)
+
+Input: 1.0000000000000017
+Analysis:
+1.0000000000000017 is not equal to 24
+Output: impossible (1.0000000000000017)
+
+Input: 1.0000000000000002
+Analysis:
+1.0000000000000002 is not equal to 24
+Output: impossible (1.0000000000000002)
+
+Input: 1.0000000000000003
+Analysis:
+1.0000000000000003 is not equal to 24
+Output: impossible (1.0000000000000003)
+
+Input: 1.0000000000000004
+Analysis:
+1.0000000000000004 is not equal to 24
+Output: impossible (1.0000000000000004)
+
+Input: 1.0000000000000005
+Analysis:
+1.0000000000000005 is not equal to 24
+Output: impossible (1.0000000000000005)
+
+Input: 1.0000000000000006
+Analysis:
+1.0000000000000006 is not equal to 24
+Output: impossible (1.0000000000000006)
+
+Input: 1.0000000000000007
+Analysis:
+1.0000000000000007 is not equal to 24
+Output: impossible (1.0000000000000007)
+
+Input: 1.0000000000000008
+Analysis:
+1.0000000000000008 is not equal to 24
+Output: impossible (1.0000000000000008)
+
+Input: 1.0000000000000009
+Analysis:
+1.0000000000000009 is not equal to 24
+Output: impossible (1.0000000000000009)
+
+Input: 1.000000000000001
+Analysis:
+1.000000000000001 is not equal to 24
+Output: impossible (1.000000000000001)
+
+Input: 1.000000000000002
+Analysis:
+1.000000000000002 is not equal to 24
+Output: impossible (1.000000000000002)
+
+Input: 1.000000000000003
+Analysis:
+1.000000000000003 is not equal to 24
+Output: impossible (1.000000000000003)
+
+Input: 1.000000000000004
+Analysis:
+1.000000000000004 is not equal to 24
+Output: impossible (1.000000000000004)
+
+Input: 1.000000000000005
+Analysis:
+1.000000000000005 is not equal to 24
+Output: impossible (1.000000000000005)
+
+Input: 1.000000000000006
+Analysis:
+1.000000000000006 is not equal to 24
+Output: impossible (1.000000000000006)
+
+Input: 1.000000000000007
+Analysis:
+1.000000000000007 is not equal to 24
+Output: impossible (1.000000000000007)
+
+Input: 1.000000000000008
+Analysis:
+1.000000000000008 is not equal to 24
+Output: impossible (1.000000000000008)
+
+Input: 1.000000000000009
+Analysis:
+1.000000000000009 is not equal to 24
+Output: impossible (1.000000000000009)
+
+Input: 1.00000000000001
+Analysis:
+1.00000000000001 is not equal to 24
+Output: impossible (1.00000000000001)
+
+Input: 1.00000000000002
+Analysis:
+1.00000000000002 is not equal to 24
+Output: impossible (1.00000000000002)
+
+Input: 1.00000000000003
+Analysis:
+1.00000000000003 is not equal to 24
+Output: impossible (1.00000000000003)
+
+Input: 1.00000000000004
+Analysis:
+1.00000000000004 is not equal to 24
+Output: impossible (1.00000000000004)
+
+Input: 1.00000000000005
+Analysis:
+1.00000000000005 is not equal to 24
+Output: impossible (1.00000000000005)
+
+Input: 1.00000000000006
+Analysis:
+1.00000000000006 is not equal to 24
+Output: impossible (1.00000000000006)
+
+Input: 1.00000000000007
+Analysis:
+1.00000000000007 is not equal to 24
+Output: impossible (1.00000000000007)
+
+Input: 1.00000000000008
+Analysis:
+1.00000000000008 is not equal to 24
+Output: impossible (1.00000000000008)
+
+Input: 1.00000000000009
+Analysis:
+1.00000000000009 is not equal to 24
+Output: impossible (1.00000000000009)
+
+Input: 1.0000000000001
+Analysis:
+
+
+
+Analysis:
+11 is not equal to 24
+Output: impossible (11)
+
+Input: 10 10
+Analysis:
+10 + 10 = 20
+Output: sure (10 10)
+
+Input: 10 10 10
+Analysis:
+10 + 10 + 10 = 30
+Output: impossible (10 10 10)
+
+Input: 10 10 11
+Analysis:
+10 + 10 + 11 = 31
+Output: impossible (10 10 11)
+
+Input: 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 = 40
+Output: impossible (10 10 10 10)
+
+Input: 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 = 50
+Output: impossible (10 10 10 10 10)
+
+Input: 10 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 + 10 = 60
+Output: impossible (10 10 10 10 10 10)
+
+Input: 10 10 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 + 10 + 10 = 70
+Output: impossible (10 10 10 10 10 10 10)
+
+Input: 10 10 10 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 = 80
+Output: impossible (10 10 10 10 10 10 10 10)
+
+Input: 10 10 10 10 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 = 90
+Output: impossible (10 10 10 10 10 10 10 10 10)
+
+Input: 10 10 10 10 10 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 = 100
+Output: impossible (10 10 10 10 10 10 10 10 10 10)
+
+Input: 10 10 10 10 10 10 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 = 110
+Output: impossible (10 10 10 10 10 10 10 10 10 10 10)
+
+Input: 10 10 10 10 10 10 10 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 = 120
+Output: impossible (10 10 10 10 10 10 10 10 10 10 10 10)
+
+Input: 10 10 10 10 10 10 10 10 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 = 130
+Output: impossible (10 10 10 10 10 10 10 10 10 10 10 10 10)
+
+Input: 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 = 140
+Output: impossible (10 10 10 10 10 10 10 10 10 10 10 10 10 10)
+
+Input: 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 = 150
+Output: impossible (10 10 10 10 10 10 10 10 10 10 10 10 10 10 10)
+
+Input: 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 = 160
+Output: impossible (10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10)
+
+Input: 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 = 170
+Output: impossible (10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10)
+
+Input: 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 = 180
+Output: impossible (10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10)
+
+Input: 10 10 10 10 10
+
+
+Analysis:
+-3 is not equal to 24
+Output: impossible (-3)
+
+Input: 1 2 3
+Analysis:
+1 + 2 + 3 = 6
+1 * 2 * 3 = 6
+Output: sure (1 2 3)
+
+Input: 1 2 4
+Analysis:
+1 + 2 + 4 = 7
+1 * 2 * 4 = 8
+Output: sure (1 2 4)
+
+Input: 1 3 5
+Analysis:
+1 + 3 + 5 = 9
+1 * 3 * 5 = 15
+Output: sure (1 3 5)
+
+Input: 1 4 6
+Analysis:
+1 + 4 + 6 = 11
+1 * 4 * 6 = 24
+Output: sure (1 4 6)
+
+Input: 1 5 7
+Analysis:
+1 + 5 + 7 = 13
+1 * 5 * 7 = 35
+Output: sure (1 5 7)
+
+Input: 1 6 9
+Analysis:
+1 + 6 + 9 = 16
+1 * 6 * 9 = 54
+Output: sure (1 6 9)
+
+Input: 1 7 9
+Analysis:
+1 + 7 + 9 = 17
+1 * 7 * 9 = 63
+Output: sure (1 7 9)
+
+Input: 1 8 8
+Analysis:
+1 + 8 + 8 = 17
+1 * 8 * 8 = 64
+Output: sure (1 8 8)
+
+Input: 1 9 9
+Analysis:
+1 + 9 + 9 = 19
+1 * 9 * 9 = 81
+Output: sure (1 9 9)
+
+Input: 2 3 5
+Analysis:
+2 + 3 + 5 = 10
+2 * 3 * 5 = 30
+Output: sure (2 3 5)
+
+Input: 2 4 6
+Analysis:
+2 + 4 + 6 = 12
+2 * 4 * 6 = 48
+Output: sure (2 4 6)
+
+Input: 2 5 7
+Analysis:
+2 + 5 + 7 = 14
+2 * 5 * 7 = 70
+Output: sure (2 5 7)
+
+Input: 2 6 6
+Analysis:
+2 + 6 + 6 = 14
+2 * 6 * 6 = 72
+Output: sure (2 6 6)
+
+Input: 2 7 7
+Analysis:
+2 + 7 + 7 = 16
+2 * 7 * 7 = 98
+Output: sure (2 7 7)
+
+Input: 2 8 8
+Analysis:
+2 + 8 + 8 = 18
+2 * 8 * 8 = 128
+Output: sure (2 8 8)
+
+Input: 2 9 9
+Analysis:
+2 + 9 + 9 = 20
+2 * 9 * 9 = 162
+Output: sure (2 9 9)
+
+Input: 3 3 5
+Analysis:
+3 + 3 + 5 = 11
+3 * 3 * 5 = 45
+Output: sure (3 3 5)
+
+Input: 3 4 6
+Analysis:
+3 + 4 + 6 = 13
+3 * 4 * 6 = 72
+Output: sure (3 4 6)
+
+Input: 3 5 7
+Analysis:
+3 + 5 + 7 = 15
+3 * 5 * 7 = 105
+Output: sure (3 5 7)
+
+Input: 3 6 6
+Analysis:
+3 + 6 + 6 = 15
+3 * 6 * 6 = 108
+Output: sure (3 6 6)
+
+Input: 3 7 7
+Analysis:
+3 + 7 + 7 = 17
+3 * 7 * 7 = 147
+Output: sure (3 7 7)
+
+Input: 3 8 8
+Analysis:
+3 + 8 + 8 = 19
+3 * 8 * 8 = 192
+Output: sure (3 8 8)
+
+Input: 3 9 9
+Analysis:
+3 + 9 + 9 = 21
+3 * 9 * 9 = 243
+Output: sure (3 9 9)
+
+Input: 4 4 4
+Analysis:
+4 + 4 + 4 = 12
+4 * 4 * 4 = 64
+Output: sure (4 4 4)
+
+Input: 4 5 5
+Analysis:
+4 + 5 + 5 = 14
+4 * 5 * 5 = 100
+Output: sure (4 5 5)
+
+Input: 4 6 6
+Analysis:
+4 + 6 + 6 = 16
+4 * 6 * 6 = 144
+Output: sure (4 6 6)
+
+Input: 4 7 7
+Analysis:
+4 + 7 + 7 = 18
+4 * 7 * 7 = 196
+Output: sure (4 7 7)
+
+Input: 4 8 8
+Analysis:
+4 + 8 + 8 = 20
+4 * 8 * 8 = 256
+Output: sure (4 8 8)
+
+Input: 4 9 9
+Analysis:
+4 + 9 + 9 = 22
+4 * 9 * 9 = 324
+Output: sure (4 9 9)
+
+Input: 5 5 5
+Analysis:
+5 + 5 + 5 = 15
+5 * 5 * 5 = 125
+Output: sure (5 5 5)
+
+Input: 5 6 6
+Analysis:
+5 + 6 + 6 = 17
+5 * 6 * 6 = 180
+Output: sure (5 6 6)
+
+Input: 5 7 7
+Analysis:
+5 + 7 + 7 = 19
+5 * 7 * 7 = 245
+Output: sure (5 7 7)
+
+Input: 5 8 8
+Analysis:
+5 + 8 + 8 = 21
+5 * 8 * 8 = 320
+Output: sure (5 8 8)
+
+Input: 5 9 9
+Analysis:
+5 + 9 + 9 = 23
+5 * 9 * 9 = 405
+Output: sure (5 9 9)
+
+Input: 6 6 6
+Analysis:
+6 + 6 + 6 = 18
+6 * 6 * 6 = 216
+Output: sure (6 6 6)
+
+Input: 6 7 7
+Analysis:
+6 + 7 + 7 = 20
+6 * 7 * 7 = 294
+Output: sure (6 7 7)
+
+Input: 6 8 8
+Analysis:
+6 + 8 + 8 = 22
+6 * 8 * 8 = 384
+Output: sure (6 8 8)
+
+Input: 6 9 9
+Analysis:
+6 + 9 + 9 = 24
+6 * 9 * 9 = 462
+Output: sure (6 9 9)
+
+Input: 7 7 7
+Analysis:
+7 + 7 + 7 = 21
+7 * 7 * 7 = 343
+Output: sure (7 7 7)
+
+Input: 7 8 8
+Analysis:
+7 + 8 + 8 = 23
+7 * 8 * 8 = 448
+Output: sure (7 8 8)
+
+Input: 7 9 9
+Analysis:
+7 + 9 + 9 = 25
+7 * 9 * 9 = 567
+Output: sure (7 9 9)
+
+Input: 8 8 8
+Analysis:
+8 + 8 + 8 = 24
+8 * 8 * 8 = 512
 Output: sure
 
 
 Analysis:
-3 is not equal to 24
-Output: impossible
+28 is not equal to 24
+Output: impossible (28)
+
+Input: 10 10 10
+Analysis:
+10 + 10 + 10 = 30
+10 * 10 = 100
+10 / 10 = 1
+Output: impossible (10 10 10)
+
+Input: 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 = 40
+10 * 10 * 10 = 1000
+10 / 10 / 10 = 0.01
+Output: impossible (10 10 10 10)
+
+Input: 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 = 50
+10 * 10 * 10 * 10 * 10 = 1000000
+10 / 10 / 10 / 10 / 10 = 0.0001
+Output: impossible (10 10 10 10 10)
+
+Input: 10 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 + 10 = 60
+10 * 10 * 10 * 10 * 10 * 10 = 1000000000
+10 / 10 / 10 / 10 / 10 / 10 = 0.000001
+Output: impossible (10 10 10 10 10 10)
+
+Input: 10 10 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 + 10 + 10 = 70
+10 * 10 * 10 * 10 * 10 * 10 * 10 = 1000000000000
+10 / 10 / 10 / 10 / 10 / 10 / 10 = 0.00000001
+Output: impossible (10 10 10 10 10 10 10)
+
+Input: 10 10 10 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 = 80
+10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 = 1000000000000000
+10 / 10 / 10 / 10 / 10 / 10 / 10 / 10 = 0.0000000001
+Output: impossible (10 10 10 10 10 10 10 10)
+
+Input: 10 10 10 10 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 = 90
+10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 = 1000000000000000000
+10 / 10 / 10 / 10 / 10 / 10 / 10 / 10 / 10 = 0.0000000000001
+Output: impossible (10 10 10 10 10 10 10 10 10)
+
+Input: 10 10 10 10 10 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 = 100
+10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 = 100000000000000000000
+10 / 10 / 10 / 10 / 10 / 10 / 10 / 10 / 10 / 10 = 0.00000000000001
+Output: impossible (10 10 10 10 10 10 10 10 10 10)
+
+Input: 10 10 10 10 10 10 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 = 110
+10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 = 100000000000000000000000
+10 / 10 / 10 / 10 / 10 / 10 / 10 / 10 / 10 / 10 / 10 = 0.000000000000001
+Output: impossible (10 10 10 10 10 10 10 10 10 10 10)
+
+Input: 10 10 10 10 10 10 10 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 = 120
+10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 = 100000000000000000000000000
+10 / 10 / 10 / 10 / 10 / 10 / 10 / 10 / 10 / 10 / 10 / 10 = 0.0000000000000001
+Output: impossible (10 10 10 10 10 10 10 10 10 10 10 10)
+
+Input: 10 10 10 10 10 10 10 10 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 = 130
+10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 = 1000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 
 
 Analysis:
-The numbers are within a reasonable range, but I can't obtain 24 now
-Output: likely
+7 is not equal to 24
+Output: impossible (7)
+
+Input: 1
+Analysis:
+1 is not equal to 24
+Output: impossible (1)
+
+Input: 0
+Analysis:
+0 is not equal to 24
+Output: impossible (0)
+
+Input: 10 10 10
+Analysis:
+10 + 10 + 10 = 30
+10 * 10 = 100
+10 - 10 = 0
+10 10 10 are all too big
+Output: impossible (10 10 10)
+
+Input: 1 1 1
+Analysis:
+1 + 1 + 1 = 3
+1 * 1 * 1 = 1
+1 1 1 are all too small
+Output: impossible (1 1 1)
+
+Input: 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 = 40
+10 * 10 * 10 * 10 = 10000
+10 - 10 = 0
+10 10 10 10 are all too big
+Output: impossible (10 10 10 10)
+
+Input: 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 = 4
+1 * 1 * 1 * 1 = 1
+1 1 1 1 are all too small
+Output: impossible (1 1 1 1)
+
+Input: 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 = 50
+10 * 10 * 10 * 10 * 10 = 10000000
+10 - 10 = 0
+10 10 10 10 10 are all too big
+Output: impossible (10 10 10 10 10)
+
+Input: 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 = 5
+1 * 1 * 1 * 1 * 1 = 1
+1 1 1 1 1 are all too small
+Output: impossible (1 1 1 1 1)
+
+Input: 10 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 + 10 = 60
+10 * 10 * 10 * 10 * 10 * 10 = 10000000000
+10 - 10 = 0
+10 10 10 10 10 10 are all too big
+Output: impossible (10 10 10 10 10 10)
+
+Input: 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 = 6
+1 * 1 * 1 * 1 * 1 * 1 = 1
+1 1 1 1 1 1 are all too small
+Output: impossible (1 1 1 1 1 1)
+
+Input: 10 10 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 + 10 + 10 = 70
+10 * 10 * 10 * 10 * 10 * 10 * 10 = 1000000000000
+10 - 10 = 0
+10 10 10 10 10 10 10 are all too big
+Output: impossible (10 10 10 10 10 10 10)
+
+Input: 1 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 + 1 = 7
+1 * 1 * 1 * 1 * 1 * 1 * 1 = 1
+1 1 1 1 1 1 1 are all too small
+Output: impossible (1 1 1 1 1 1 1)
+
+Input: 10 10 10 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 = 80
+10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 = 100000000000000
+10 - 10 = 0
+10 10 10 10 10 10 10 10 are all too big
+Output: impossible (10 10 10 10 10 10 10 10)
+
+Input: 1 1 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 = 8
+1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 = 1
+1 1 1 1 1 1 1 1 are all too small
+Output: impossible (1 1 1 1 1 1 1 1)
+
+Input: 10 10 10 10 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 = 90
+10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 = 10000000000000000
+10 - 10 = 0
+10 10 10 10 10 10 10 10 10 are all too big
+Output: impossible (10 10 10 10 10 10 10 10 10)
+
+Input: 1 1 1 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 = 9
+1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 = 1
+1 1 1 1 1 1 1 1 1 are all too small
+Output: impossible (1 1 1 1 1 1 1 1 1)
+
+Input: 10 10 10 10 10 10 10 10 10 10
+Analysis:
+10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 = 100
+10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 * 10 = 1000000000000000000
+10 - 10 = 0
+10 10 10 10 10 10 10 10 10 10 are all too big
+Output: impossible (10 10 10 10 10 10 10 10 10 10)
+
+Input: 1 1 1 1 1 1 1 1 1 1
+Analysis:
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 = 10
+1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 * 1 = 1
+1 1 1 1 1 1 1 1 1 1 are all too small
+Output: impossible (1 1
 
 
 Analysis:
-2.333333333333333 is not equal to 24
-Output: impossible
+1.75 is not equal to 24
+Output: impossible (1.75)
 
-
+Input: 24 24
 Analysis:
-6.000000000000001 is not equal to 24
-Output: impossible
+24 + 24 = 48
+24 - 24 = 0
+24 * 24 = 576
+24 / 24 = 1
+Output: sure (24 24)
 
-
+Input: 24 24 24
 Analysis:
--1.6666666666666667 is not equal to 24
-Output: impossible
+24 + 24 + 24 = 72
+24 - 24 = 0
+24 * 24 = 576
+24 / 24 = 1
+Output: sure (24 24 24)
 
-
+Input: 24 24 24 24
 Analysis:
-2.333333333333333 is not equal to 24
-Output: impossible
+24 + 24 + 24 + 24 = 96
+24 - 24 = 0
+24 * 24 = 576
+24 / 24 = 1
+Output: sure (24 24 24 24)
 
-
+Input: 24 24 24 24 24
 Analysis:
-0.6666666666666666 is not equal to 24
-Output: impossible
+24 + 24 + 24 + 24 + 24 = 120
+24 - 24 = 0
+24 * 24 = 576
+24 / 24 = 1
+Output: sure (24 24 24 24 24)
 
-
+Input: 24 24 24 24 24 24
 Analysis:
-6 is not equal to 24
-Output: impossible
+24 + 24 + 24 + 24 + 24 + 24 = 144
+24 - 24 = 0
+24 * 24 = 576
+24 / 24 = 1
+Output: sure (24 24 24 24 24 24)
 
-
+Input: 24 24 24 24 24 24 24
 Analysis:
-2 is not equal to 24
-Output: impossible
+24 + 24 + 24 + 24 + 24 + 24 + 24 = 168
+24 - 24 = 0
+24 * 24 = 576
+24 / 24 = 1
+Output: sure (24 24 24 24 24 24 24)
 
-
+Input: 24 24 24 24 24 24 24 24
 Analysis:
-8 is not equal to 24
-Output: impossible
+24 + 24 + 24 + 24 + 24 + 24 + 24 + 24 = 192
+24 - 24 = 0
+24 * 24 = 576
+24 / 24 = 1
+Output: sure (24 24 24 24 24 24 24 24)
 
-
+Input: 24 24 24 24 24 24 24 24 24
 Analysis:
-0.5 is not equal to 24
-Output: impossible
+24 + 24 + 24 + 24 + 24 + 24 + 24 + 24 + 24 = 224
+24 - 24 = 0
+24 * 24 = 576
+24 / 24 = 1
+Output: sure (24 24 24 24 24 24 24 24 24)
 
-
+Input: 24 24 24 24 24 24 24 24 24 24
 Analysis:
-6 is not equal to 24
-Output: impossible
+24 + 24 + 24 + 24 + 24 + 24 + 24 + 24 + 24 + 24 = 240
+24 - 24 = 0
+24 * 24 = 576
+24 / 24 = 1
+Output: sure (24 24 24 24 24 24 24 24 24 24)
+
+Input: 24 24 24 24 24 24 24 24 24 24 24
+Analysis:
+24 + 24 + 24 + 24 + 24 + 24 + 24 + 24 + 24 + 24 + 24 = 252
+24 - 24 = 0
+24 * 24 = 576
+24 / 24 = 1
+Output: sure (24 24 24 24 24 24 24 24 24 24 24)
+
+Input: 24 24 24 24 24 24 24 24 24 24 24 24
+Analysis:
+24 + 24 + 24 + 24 + 24 + 24 + 24 + 24 + 24 + 24 + 24 + 24 = 260
+24 - 24 = 0
+24 * 24 = 576
+24 / 24 = 1
+Output: sure (24 24 24 24 24 24 24 24 24 24 24 24)
+
+Input: 24 24 24 24 24 24 24 24 24 24 24 24 24
+Analysis:
+24 + 24 + 24 + 24 + 24 + 24 + 24 + 24 + 24 + 24 + 24 + 24 + 24 = 268
+24 - 24 = 0
+24 * 24 = 576
+24 / 24 = 1
+Output: sure (24 24 24 24 24 24 24 24 24 24 24 24 24)
+
+Input: 24 24 24 24 24 24 24 24 24 24 24 24 24 24
+Analysis:
+24 + 24 + 24 + 24 + 24 + 24 + 24 + 24 + 24 + 24 + 24 + 24 + 24 + 24 = 276
+24 - 24 = 0
+24 * 24 = 576
+24 / 24 = 1
+Output: sure (24 24 24 24 24 24 24 24 24 24 24 24 24 24)
+
+Input: 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24
+Analysis:
+24 + 24 + 24 + 24 + 24 + 24 + 24 + 24 + 24 + 24 + 24 + 24 + 24 + 24 + 24 = 284
+24 - 24 = 0
+24 * 24 = 576
+24 / 24 = 1
+Output: sure (24 24 24 24 24 24 24 24 24 24 24 24 24 24 24)
+
+Input: 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24
+Analysis:
+24 + 24 + 24 + 24 + 24 + 24 + 24 + 24 + 24 + 24 + 24 + 24 + 24 + 24 + 24 + 24 = 300
+24 - 24 = 0
+24 * 24 = 576
+24 / 24 = 1
+Output: sure (24 24
 
 
 node:
-[{'id': 23, 'answer': '1 - 3 = -2 (left: -2)', 'value': 'sure', 'parent_node': 7, 'ancestor_value': 40.0}, {'id': 25, 'answer': '1 / 3 = 0.3333333333333333633333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333 (left: 0.3333333333333333633333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333)', 'value': 'likely', 'parent_node': 7, 'ancestor_value': 40.0}, {'id': 21, 'answer': '1 + 3 = 4 (left: 4)', 'value': 'impossible', 'parent_node': 7, 'ancestor_value': 40.0}, {'id': 22, 'answer': '3 * 1 = 3 (left: 3)', 'value': 'impossible', 'parent_node': 7, 'ancestor_value': 40.0}, {'id': 24, 'answer': '3 / 1 = 3 (left: 3)', 'value': 'impossible', 'parent_node': 7, 'ancestor_value': 40.0}, {'id': 26, 'answer': '0.3333333333333333 + 2 = 2.333333333333333 (left: 2.333333333333333)', 'value': 'impossible', 'parent_node': 9, 'ancestor_value': 40.0}, {'id': 27, 'answer': '2 / 0.3333333333333333 = 6.000000000000001 (left: 6.000000000000001)', 'value': 'impossible', 'parent_node': 9, 'ancestor_value': 40.0}, {'id': 28, 'answer': '0.3333333333333333 - 2 = -1.6666666666666667 (left: -1.6666666666666667)', 'value': 'impossible', 'parent_node': 9, 'ancestor_value': 40.0}, {'id': 29, 'answer': '2 + 0.3333333333333333 = 2.333333333333333 (left: 2.333333333333333)', 'value': 'impossible', 'parent_node': 9, 'ancestor_value': 40.0}, {'id': 30, 'answer': '2 * 0.3333333333333333 = 0.6666666666666666 (left: 0.6666666666666666)', 'value': 'impossible', 'parent_node': 9, 'ancestor_value': 40.0}, {'id': 31, 'answer': '4 + 2 = 6 (left: 6)', 'value': 'impossible', 'parent_node': 6, 'ancestor_value': 20.001}, {'id': 32, 'answer': '4 - 2 = 2 (left: 2)', 'value': 'impossible', 'parent_node': 6, 'ancestor_value': 20.001}, {'id': 33, 'answer': '2 * 4 = 8 (left: 8)', 'value': 'impossible', 'parent_node': 6, 'ancestor_value': 20.001}, {'id': 34, 'answer': '2 / 4 = 0.5 (left: 0.5)', 'value': 'impossible', 'parent_node': 6, 'ancestor_value': 20.001}, {'id': 35, 'answer': '2 + 4 = 6 (left: 6)', 'value': 'impossible', 'parent_node': 6, 'ancestor_value': 20.001}]
+[{'id': 21, 'answer': '2 + 2 = 4 (left: 4)', 'value': 'impossible', 'parent_node': 12, 'ancestor_value': 40.0}, {'id': 22, 'answer': '2 / 2 = 1 (left: 1)', 'value': 'impossible', 'parent_node': 12, 'ancestor_value': 40.0}, {'id': 23, 'answer': '2 - 2 = 0 (left: 0)', 'value': 'impossible', 'parent_node': 12, 'ancestor_value': 40.0}, {'id': 24, 'answer': '2 * 2 = 4 (left: 4)', 'value': 'impossible', 'parent_node': 12, 'ancestor_value': 40.0}, {'id': 25, 'answer': '2 * 2 = 4 (left: 4)', 'value': 'impossible', 'parent_node': 12, 'ancestor_value': 40.0}, {'id': 26, 'answer': '5 + 6 = 11 (left: 11)', 'value': 'impossible', 'parent_node': 6, 'ancestor_value': 20.001}, {'id': 27, 'answer': '5 - 6 = -1 (left: -1)', 'value': 'impossible', 'parent_node': 6, 'ancestor_value': 20.001}, {'id': 28, 'answer': '5 * 6 = 30 (left: 30)', 'value': 'impossible', 'parent_node': 6, 'ancestor_value': 20.001}, {'id': 29, 'answer': '5 / 6 = 0.8333333333333333 (left: 0.8333333333333333)', 'value': 'impossible', 'parent_node': 6, 'ancestor_value': 20.001}, {'id': 30, 'answer': '5 - 6 = -1.0000000000000017 (left: -1.0000000000000017)', 'value': 'impossible', 'parent_node': 6, 'ancestor_value': 20.001}, {'id': 31, 'answer': '7 + 4 = 11 (left: 11)', 'value': 'impossible', 'parent_node': 7, 'ancestor_value': 20.001}, {'id': 32, 'answer': '4 - 7 = -3 (left: -3)', 'value': 'impossible', 'parent_node': 7, 'ancestor_value': 20.001}, {'id': 33, 'answer': '7 * 4 = 28 (left: 28)', 'value': 'impossible', 'parent_node': 7, 'ancestor_value': 20.001}, {'id': 34, 'answer': '4 / 2 = 2 (left: 7)', 'value': 'impossible', 'parent_node': 7, 'ancestor_value': 20.001}, {'id': 35, 'answer': '7 / 4 = 1.75 (left: 1.75)', 'value': 'impossible', 'parent_node': 7, 'ancestor_value': 20.001}]
 15
 
 
-path: ['1 - 3 = -2 (left: -2)', '2 - 1 = 1 (left: 1 3)', '6 / 2 = 3 (left: 1 3 2)', '(left: 1 2 2 6)']
+path: ['2 + 2 = 4 (left: 4)', '3 - 1 = 2 (left: 2 2)', '6 / 2 = 3 (left: 1 3 2)', '(left: 1 2 2 6)']
 
 
-['1 - 3 = -2 (left: -2)', '2 - 1 = 1 (left: 1 3)', '6 / 2 = 3 (left: 1 3 2)', '(left: 1 2 2 6)']
-((2 - 1) - (6 / 2))
+['2 + 2 = 4 (left: 4)', '3 - 1 = 2 (left: 2 2)', '6 / 2 = 3 (left: 1 3 2)', '(left: 1 2 2 6)']
+(((6 / 2) - 1) + 2)
 
 
 Answer: 
-((2 - 1) - (6 / 2))
+(((6 / 2) - 1) + 2)
 

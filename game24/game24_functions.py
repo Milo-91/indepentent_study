@@ -78,8 +78,9 @@ def Generator(llm, nodes: dict):
 
 def Parse_value_response(response, input):
     #if can't parse return None
-    pattern = r"Output: ((?:sure)|(?:likely)|(?:impossible)) \({input}\)".format(input = input)
+    pattern = fr"Output: ((?:sure)|(?:likely)|(?:impossible)) \({input}\)".format(input = input)
     answer = re.search(pattern, response)
+    print(pattern)
     print(f'evaluator parse: {answer}')
     if answer:
         return answer.group(1)
@@ -105,7 +106,7 @@ def Evaluator(llm, nodes: dict, t):
         
         print('evaluator: \n' + response + '\n')
         record.Record_txt(parameters.file_name, '\n' + response + '\n\n')
-        value = Parse_value_response(response, input_string)
+        value = Parse_value_response(response, propose_response)
 
         node['value'] = value
         new_nodes.append(node)
