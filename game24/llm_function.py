@@ -1,7 +1,10 @@
+import parameters
+from dotenv import load_dotenv
+import os
 from openai import OpenAI
+'''
 from llama_cpp import Llama
 from vllm import LLM, SamplingParams
-import parameters
 import lmformatenforcer
 from llama_index.prompts.lmformatenforcer_utils import (
     activate_lm_format_enforcer,
@@ -25,17 +28,19 @@ def vllm_with_character_level_parser(llm, prompt: ListOrStrList, tokenizer_data,
         return results[0].outputs[0].text
     else:
         return [result.outputs[0].text for result in results]
+'''
 
 def get_llm():
     # llama-cpp
-    # llm = Llama(model_path = parameters.model_path, n_ctx = parameters.n_ctx, n_gpu_layers = parameters.n_gpu_layers)
-
+    '''
+    llm = Llama(model_path = parameters.model_path, n_ctx = parameters.n_ctx, n_gpu_layers = parameters.n_gpu_layers)
+    '''
     # openai
-    '''
+    load_dotenv()
     llm = OpenAI(
-        api_key = parameters.OPENAI_API_KEY,
+        api_key = os.getenv("OPENAI_API_KEY"),
     )
-    '''
+    
     # llama_index (llama-cpp)
     '''
     llm = LlamaCPP(
@@ -65,9 +70,9 @@ def get_llm():
     '''
 
     # vllm
-    
+    '''
     llm = LLM(model = parameters.huggingface_model_path, trust_remote_code = True, enforce_eager = True)
-
+    '''
     
     return llm
 
@@ -83,10 +88,12 @@ def call_llm(llm, question, pattern_format, temperature):
     '''
     
     # openai
-    '''
+    
     response = llm.chat.completions.create(
-        model = 'gpt-4-0613',
-        temperature = parameters.temperature,
+        # model = 'gpt-4-0613',
+        model = 'gpt-3.5-turbo-1106',
+
+        temperature = temperature,
         messages = [
             {
                 'role': 'user',
@@ -95,7 +102,7 @@ def call_llm(llm, question, pattern_format, temperature):
         ]
     )
     output = response.choices[0].message.content
-    '''
+    
     # llama_index (llama-cpp)
     '''
     regex_parser = lmformatenforcer.RegexParser(pattern_format)
@@ -110,9 +117,9 @@ def call_llm(llm, question, pattern_format, temperature):
     '''
 
     # vllm
-
+    '''
     tokenizer_data = build_vllm_token_enforcer_tokenizer_data(llm)
     output = vllm_with_character_level_parser(llm, question, tokenizer_data, temperature, RegexParser(pattern_format))
-
+    '''
     
     return output

@@ -89,7 +89,7 @@ def Parse_value_response(response, input):
     
 
 
-def Evaluator(llm, nodes: dict, t):
+def Evaluator(llm, nodes: dict):
     new_nodes = list()
     for node in nodes:
         if node['answer'] == 'wrong answer':

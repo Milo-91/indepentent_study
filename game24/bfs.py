@@ -7,15 +7,13 @@ import datetime
 def bfs(llm, nodes):
     steps = list()
     top_b = nodes.copy()
-    record.Init_record_file(parameters.file_name, parameters.huggingface_model_path + '\ntemperature: ' + str(parameters.generator_temperature) + ', ' +  str(parameters.evaluator_temperature) + '\ndate: ' + str(datetime.date.today()) + '\n\n')
-    record.Init_record_file(parameters.json_file_name, '')
 
     for t in range(parameters.T):
         record.Record_txt(parameters.file_name, f'\nstep {t + 1}\n\n')
         # Generator
         new_nodes = game24.Generator(llm, top_b)
         # Evaluator
-        new_nodes = game24.Evaluator(llm, new_nodes, t)
+        new_nodes = game24.Evaluator(llm, new_nodes)
         # sort nodes
         new_nodes = sorted(new_nodes, key = game24.Sorted_by_value, reverse = True)
         record.Record_txt(parameters.file_name, '\nnode:\n' + str(new_nodes) + '\n' + str(len(new_nodes)) + '\n\n')
