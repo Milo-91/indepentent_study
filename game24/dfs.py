@@ -47,11 +47,11 @@ def dfs(llm, node):
     all_nodes.append(node[0].copy())
     best_node, max_value = __dfs__(llm, node[0], best_node, max_value)
     print(all_nodes)
+    record.Record_txt(parameters.file_name, '\nall_nodes:\n' + '\n'.join(list(map(str, all_nodes.copy()))) + '\n\n')
 
     # generate a final answer
     best = best_node
     path = list()
-    path.append(best['answer'])
     while best['parent_node'] != None:
         path.append(best['answer'])
         best = all_nodes[best['parent_node']]
