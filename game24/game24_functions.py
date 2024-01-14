@@ -34,7 +34,7 @@ def Parse_propose_response(question: str, response: str):
                 # print('x1 found')
             check = re.search(re.compile(x2), input_string)
             if check:
-                input_string = input_string.replace(x2, y, 1)
+                input_string = input_string.replace(x2, str(round(float(y), 2)).replace('.0', ''), 1)
                 # print('x2 found')
             input_string = input_string.strip()
             input_string = input_string.replace('  ', ' ')
@@ -49,6 +49,7 @@ def Parse_propose_response(question: str, response: str):
     for i in range(parameters.k):
         answers.append(output_list[i])
         
+    record.Record_txt(parameters.file_name, '\nGenerated answers:\n' + str(answers) + '\n\n')
     return answers
 
 
@@ -57,6 +58,8 @@ def Generator(llm, nodes: dict):
     print('Generator: ')
     for node in nodes:
         question = node['answer']
+        if question == 'wrong answer':
+            continue
         if re.search('left.+', node['answer']) != None:
             question = re.search('left.+', node['answer']).group().replace('left: ', '').replace(')', '')
         input_string = propose_prompt.format(input = question, k = parameters.k)
@@ -93,6 +96,7 @@ def Evaluator(llm, nodes: dict):
     new_nodes = list()
     for node in nodes:
         if node['answer'] == 'wrong answer':
+            new_nodes.append(node)
             continue
         propose_response = node['answer']
         if re.search('left.+', node['answer']) != None:

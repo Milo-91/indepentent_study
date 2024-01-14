@@ -28,7 +28,8 @@ def __dfs__(llm, node, best_node, max_value):
     # Evaluator
     new_nodes = game24.Evaluator(llm, new_nodes)
     # record
-    record.Record_txt(parameters.file_name, '\nnode:\n' + str(new_nodes) + '\n' + str(len(new_nodes)) + '\n\n')
+    if new_nodes != None:
+        record.Record_txt(parameters.file_name, '\nnode:\n' + str(new_nodes) + '\n' + str(len(new_nodes)) + '\n\n')
     all_nodes.extend(new_nodes)
     for new_node in new_nodes:
         # put new_nodes into next step
@@ -52,9 +53,11 @@ def dfs(llm, node):
     # generate a final answer
     best = best_node
     path = list()
+    record.Record_txt(parameters.file_name, '\nbest node: ' + str(best) + '\n')
     while best['parent_node'] != None:
         path.append(best['answer'])
         best = all_nodes[best['parent_node']]
+        record.Record_txt(parameters.file_name, '\nbest node: ' + str(best) + '\n')
     path.append('(left: ' + all_nodes[0]['answer'] + ')')
     print('\npath: ' + str(path) + '\n')
     record.Record_txt(parameters.file_name, '\npath: ' + str(path) + '\n\n')
