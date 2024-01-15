@@ -15,7 +15,7 @@ generator_temperature = 0.5
 evaluator_temperature = 0
 n_ctx = 2048
 n_gpu_layers = -1
-question_sets = 1
+question_sets = 10
 initial_idx = 0
 b = 3
 T = 3
@@ -24,7 +24,7 @@ k = 5
 id = 0
 idx = 0
 t = 0
-method = 'dfs'
+method = 'bfs'
 
 def increase_id():
     global id

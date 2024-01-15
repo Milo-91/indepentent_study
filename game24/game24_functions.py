@@ -19,22 +19,22 @@ def Parse_propose_response(question: str, response: str):
     answers = []
     output_list = response.strip().split('\n')
     # add (left: numbers)
-    pattern = r"(-?[0-9\.]+)[\+\-\*\/ ]*(-?[0-9\.]+)[\s]*=[\s]*(-?[0-9\.]+)[\s]*"
+    pattern = r"(-?[0-9\.]+)[\s]*([\+\-\*\/])[\s]*(-?[0-9\.]+)[\s]*=[\s]*(-?[0-9\.]+)[\s]*"
     for i in range(len(output_list)):
         input_string = question
         match = re.match(pattern, output_list[i])
         if match:
-            print(match.group(1), match.group(2), match.group(3))
+            print(match.group(1), match.group(3), match.group(4))
             x1 = match.group(1)
-            x2 = match.group(2)
-            y = match.group(3)
+            x2 = match.group(3)
+            y = match.group(4)
             check = re.search(re.compile(x1), input_string)
             if check:
                 input_string = input_string.replace(x1, '', 1)
                 # print('x1 found')
             check = re.search(re.compile(x2), input_string)
             if check:
-                input_string = input_string.replace(x2, str(round(float(y), 2)).replace('.0', ''), 1)
+                input_string = input_string.replace(x2, y, 1)
                 # print('x2 found')
             input_string = input_string.strip()
             input_string = input_string.replace('  ', ' ')
@@ -105,7 +105,8 @@ def Evaluator(llm, nodes: dict):
         input_string = value_prompt.format(input = propose_response)
         print('input:\n' + input_string)
 
-        pattern = r"Analysis:[\w|\W]*[\n]Output: ((?:sure)|(?:likely)|(?:impossible))"
+        # pattern = r"Analysis:[\w|\W]*[\n]Output: ((?:sure)|(?:likely)|(?:impossible))"
+        pattern = None
         response = llm_function.call_llm(llm, input_string, pattern, parameters.evaluator_temperature)
         
         print('evaluator: \n' + response + '\n')

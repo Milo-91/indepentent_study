@@ -2,7 +2,7 @@ import parameters
 from dotenv import load_dotenv
 import os
 from openai import OpenAI
-'''
+
 from llama_cpp import Llama
 from vllm import LLM, SamplingParams
 import lmformatenforcer
@@ -17,8 +17,7 @@ from lmformatenforcer import CharacterLevelParser, RegexParser
 from lmformatenforcer.integrations.vllm import build_vllm_logits_processor, build_vllm_token_enforcer_tokenizer_data
 ListOrStrList = Union[str, List[str]]
 
-def vllm_with_character_level_parser(llm, prompt: ListOrStrList, tokenizer_data, temperature, parser: Optional[CharacterLevelParser] = None) -> ListOrStrList:   
-    sampling_params = SamplingParams(temperature = temperature, max_tokens = parameters.n_ctx)
+def vllm_with_character_level_parser(llm, prompt: ListOrStrList, tokenizer_data, temperature, sampling_params, parser: Optional[CharacterLevelParser] = None) -> ListOrStrList:   
     if parser:
         logits_processor = build_vllm_logits_processor(tokenizer_data, parser)
         sampling_params.logits_processors = [logits_processor]
@@ -28,7 +27,7 @@ def vllm_with_character_level_parser(llm, prompt: ListOrStrList, tokenizer_data,
         return results[0].outputs[0].text
     else:
         return [result.outputs[0].text for result in results]
-'''
+
 
 def get_llm():
     # llama-cpp
@@ -36,11 +35,12 @@ def get_llm():
     llm = Llama(model_path = parameters.model_path, n_ctx = parameters.n_ctx, n_gpu_layers = parameters.n_gpu_layers)
     '''
     # openai
+    '''
     load_dotenv()
     llm = OpenAI(
         api_key = os.getenv("OPENAI_API_KEY"),
     )
-    
+    '''
     # llama_index (llama-cpp)
     '''
     llm = LlamaCPP(
@@ -70,9 +70,9 @@ def get_llm():
     '''
 
     # vllm
-    '''
+    
     llm = LLM(model = parameters.huggingface_model_path, trust_remote_code = True, enforce_eager = True)
-    '''
+    
     
     return llm
 
@@ -88,7 +88,7 @@ def call_llm(llm, question, pattern_format, temperature):
     '''
     
     # openai
-    
+    '''
     response = llm.chat.completions.create(
         # model = 'gpt-4-0613',
         model = 'gpt-3.5-turbo-1106',
@@ -102,7 +102,7 @@ def call_llm(llm, question, pattern_format, temperature):
         ]
     )
     output = response.choices[0].message.content
-    
+    '''
     # llama_index (llama-cpp)
     '''
     regex_parser = lmformatenforcer.RegexParser(pattern_format)
@@ -117,9 +117,13 @@ def call_llm(llm, question, pattern_format, temperature):
     '''
 
     # vllm
-    '''
-    tokenizer_data = build_vllm_token_enforcer_tokenizer_data(llm)
-    output = vllm_with_character_level_parser(llm, question, tokenizer_data, temperature, RegexParser(pattern_format))
-    '''
+    
+    sampling_params = SamplingParams(temperature = temperature, max_tokens = parameters.n_ctx)
+    if pattern_format != None:
+        tokenizer_data = build_vllm_token_enforcer_tokenizer_data(llm)
+        output = vllm_with_character_level_parser(llm, question, tokenizer_data, temperature, sampling_params, RegexParser(pattern_format))
+    else:
+        results = llm.generate(question, sampling_params = sampling_params)
+        output = results[0].outputs[0].text
     
     return output

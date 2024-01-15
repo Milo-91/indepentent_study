@@ -19,15 +19,15 @@ def Parse_propose_response(question: str, response: str):
     answers = []
     output_list = response.strip().split('\n')
     # add (left: numbers)
-    pattern = r"(-?[0-9\.]+)[\+\-\*\/ ]*(-?[0-9\.]+)[\s]*=[\s]*(-?[0-9\.]+)[\s]*"
+    pattern = r"(-?[0-9\.]+)[\s]*([\+\-\*\/])[\s]*(-?[0-9\.]+)[\s]*=[\s]*(-?[0-9\.]+)[\s]*"
     for i in range(len(output_list)):
         input_string = question
         match = re.match(pattern, output_list[i])
         if match:
-            print(match.group(1), match.group(2), match.group(3))
+            print(match.group(1), match.group(3), match.group(4))
             x1 = match.group(1)
-            x2 = match.group(2)
-            y = match.group(3)
+            x2 = match.group(3)
+            y = match.group(4)
             check = re.search(re.compile(x1), input_string)
             if check:
                 input_string = input_string.replace(x1, '', 1)
@@ -49,6 +49,7 @@ def Parse_propose_response(question: str, response: str):
     for i in range(parameters.k):
         answers.append(output_list[i])
         
+    record.Record_txt(parameters.file_name, '\nGenerated answers:\n' + str(answers) + '\n\n')
     return answers
 
 
@@ -57,6 +58,8 @@ def Generator(llm, nodes: dict):
     print('Generator: ')
     for node in nodes:
         question = node['answer']
+        if question == 'wrong answer':
+            continue
         if re.search('left.+', node['answer']) != None:
             question = re.search('left.+', node['answer']).group().replace('left: ', '').replace(')', '')
         input_string = propose_prompt.format(input = question, k = parameters.k)
@@ -89,10 +92,11 @@ def Parse_value_response(response, input):
     
 
 
-def Evaluator(llm, nodes: dict, t):
+def Evaluator(llm, nodes: dict):
     new_nodes = list()
     for node in nodes:
         if node['answer'] == 'wrong answer':
+            new_nodes.append(node)
             continue
         propose_response = node['answer']
         if re.search('left.+', node['answer']) != None:
@@ -101,7 +105,8 @@ def Evaluator(llm, nodes: dict, t):
         input_string = value_prompt.format(input = propose_response)
         print('input:\n' + input_string)
 
-        pattern = r"Analysis:[\w|\W]*[\n]Output: ((?:sure)|(?:likely)|(?:impossible))"
+        # pattern = r"Analysis:[\w|\W]*[\n]Output: ((?:sure)|(?:likely)|(?:impossible))"
+        pattern = None
         response = llm_function.call_llm(llm, input_string, pattern, parameters.evaluator_temperature)
         
         print('evaluator: \n' + response + '\n')

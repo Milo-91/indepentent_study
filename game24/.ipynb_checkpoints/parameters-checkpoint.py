@@ -23,6 +23,8 @@ k = 5
 
 id = 0
 idx = 0
+t = 0
+method = 'bfs'
 
 def increase_id():
     global id
@@ -40,3 +42,15 @@ def reset_idx():
     global idx
     global initial_idx
     idx = initial_idx
+
+def increase_t():
+    global t
+    t += 1
+
+def decrease_t():
+    global t
+    t -= 1
+
+def reset_t():
+    global t
+    t = 0
