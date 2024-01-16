@@ -17,7 +17,7 @@ n_ctx = 2048
 n_gpu_layers = -1
 question_sets = 100
 initial_idx = 901
-b = 3
+b = 5
 T = 3
 k = 5
 
