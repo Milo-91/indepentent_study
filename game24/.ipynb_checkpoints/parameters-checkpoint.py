@@ -19,7 +19,7 @@ question_sets = 100
 initial_idx = 901
 b = 5
 T = 3
-k = 5
+k = 8
 
 id = 0
 idx = 0
