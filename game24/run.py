@@ -53,9 +53,11 @@ if __name__ == '__main__':
         loc['id'] = i
         loc['correct'] = Acc(loc['answer'], data_game24, i)
         loc['cost time'] = end_time - start_time
+        if parameters.model_import_method == 'openai':
+            loc['cost'] = llm_function.openai_usage()
         locs.append(loc)
         record.Record_json(parameters.json_file_name, loc)
-        print(loc)
+        # print(loc)
         record.Record_txt(parameters.acc_file_name, 'id ' + str(i) + ': ' + data_game24['Puzzles'][i] + ', ' + loc['answer'] + '\n')
         if loc['correct'] == True:
             acc_count += 1
@@ -66,4 +68,6 @@ if __name__ == '__main__':
     record.Record_txt(parameters.acc_file_name, '\nacc: ' + str(acc_count) + '\ntotal cost time: ' + str(total_cost_time))
     # draw
     if parameters.method == 'bfs':
-        draw.Draw(parameters.all_json_file_name.format(file_path = parameters.record_files_folder))
+        draw.bfs_Draw(parameters.all_json_file_name.format(file_path = parameters.record_files_folder))
+    if parameters.method == 'dfs':
+        draw.dfs_Draw(parameters.all_json_file_name.format(file_path = parameters.record_files_folder))

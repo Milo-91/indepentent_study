@@ -39,7 +39,7 @@ def Parse_propose_response(question: str, response: str):
             input_string = input_string.strip()
             input_string = input_string.replace('  ', ' ')
             print(input_string)
-            output_list[i] = output_list[i] + f' (left: {input_string})'
+            output_list[i] = output_list[i] + f' ( left: {input_string} )'
         else:
             print('wrong format')
             output_list[i] = 'wrong answer'
@@ -61,7 +61,7 @@ def Generator(llm, nodes: dict):
         if question == 'wrong answer':
             continue
         if re.search('left.+', node['answer']) != None:
-            question = re.search('left.+', node['answer']).group().replace('left: ', '').replace(')', '')
+            question = re.search('left.+', node['answer']).group().replace('left: ', '').replace(')', '').strip()
         input_string = propose_prompt.format(input = question, k = parameters.k)
         print('input:\n' + input_string)
         
@@ -100,7 +100,7 @@ def Evaluator(llm, nodes: dict):
             continue
         propose_response = node['answer']
         if re.search('left.+', node['answer']) != None:
-            propose_response = re.search('left.+', node['answer']).group().replace('left: ', '').replace(')', '')
+            propose_response = re.search('left.+', node['answer']).group().replace('left: ', '').replace(')', '').strip()
         # propose_response += f' (len: {3 - t})'
         input_string = value_prompt.format(input = propose_response)
         print('input:\n' + input_string)
@@ -136,11 +136,12 @@ def Final_Generator(llm, path):
     '''
     left = None
     for i in range(3):
-        match = re.search(r'(.+)[\s]*=[\s]*(-?[\d.]+)[\s]*\(left: (.+)\)', path[i])
-        check = re.search(r'\(left: (.+)\)', path[i + 1]).group(1)
+        match = re.search(r'(.+)[\s]*=[\s]*(-?[\d.]+)[\s]*\( left:(.+)\)', path[i])
+        check = re.search(r'\( left:(.+)\)', path[i + 1]).group(1)
         if match:
-            x = '(' + match.group(1).strip() + ')' # not replace ' ' to '' (negative numbers problem)
+            x = ' ( ' + match.group(1).strip() + ' ) ' # not replace ' ' to '' (negative numbers problem)
             y = match.group(2)
+            y = ' ' + y + ' '
             print(x, y)
             if left == None:
                 left = match.group(3)
@@ -164,7 +165,8 @@ def Final_Generator(llm, path):
 
 
 def Value_mapping(value):
-    order = {'sure': 20, 'likely': 1, 'impossible': 0.001, '0': 0}
+    # sure 10, likely 5, impossible 1
+    order = {'sure': 10, 'likely': 5, 'impossible': 1, '0': 0}
     return order.get(value, float(0))
 
 
