@@ -1,226 +1,107 @@
 // tree_24
 digraph {
 	0 [label="0
-7 9 9 13
-parent: None" color=red]
+3 3 5 12
+parent: None
+value: None"]
 	1 [label="1
-7 + 9 = 16 ( left: 16 9 13 )
-parent: 0"]
-	0 -> 1
+3 + 3 = 6 ( left: 6 5 12 )
+parent: 0
+value: impossible" color=yellow]
+	0 -> 1 [label=9 fontsize=32]
 	2 [label="2
-9 + 7 = 16 ( left: 16 9 13 )
-parent: 0"]
-	0 -> 2
+12 + 3 = 15 ( left: 15 3 5 )
+parent: 0
+value: impossible" color=yellow]
+	0 -> 2 [label=9 fontsize=32]
 	3 [label="3
-13 - 7 = 6 ( left: 6 9 9 )
-parent: 0" color=red]
-	0 -> 3
+12 - 3 = 9 ( left: 9 3 5 )
+parent: 0
+value: impossible" color=yellow]
+	0 -> 3 [label=9 fontsize=32]
 	4 [label="4
-13 - 9 = 4 ( left: 7 4 9 )
-parent: 0"]
-	0 -> 4
+3 * 5 = 15 ( left: 3 15 12 )
+parent: 0
+value: impossible" color=yellow]
+	0 -> 4 [label=9 fontsize=32]
 	5 [label="5
-7 * 9 = 63 ( left: 63 9 13 )
-parent: 0"]
-	0 -> 5
+3 / 3 = 1 ( left: 1 5 12 )
+parent: 0
+value: sure" color=yellow]
+	0 -> 5 [label=0 fontsize=32]
 	6 [label="6
-6 + 9 = 15 ( left: 15 9 )
-parent: 3" color=red]
-	3 -> 6
+1 + 5 = 6 ( left: 6 12 )
+parent: 5
+value: impossible" color=yellow]
+	5 -> 6 [label=9 fontsize=32]
 	7 [label="7
-9 - 6 = 3 ( left: 3 9 )
-parent: 3"]
-	3 -> 7
+12 - 5 = 7 ( left: 1 7 )
+parent: 5
+value: sure" color=yellow]
+	5 -> 7 [label=0 fontsize=32]
 	8 [label="8
-9 / 6 = 1.5 ( left: 1.5 9 )
-parent: 3"]
-	3 -> 8
+12 + 5 = 17 ( left: 1 17 )
+parent: 5
+value: sure" color=yellow]
+	5 -> 8 [label=0 fontsize=32]
 	9 [label="9
-6 * 9 = 54 ( left: 54 9 )
-parent: 3"]
-	3 -> 9
+5 * 12 = 60 ( left: 1 60 )
+parent: 5
+value: impossible" color=yellow]
+	5 -> 9 [label=9 fontsize=32]
 	10 [label="10
-9 - 9 = 0 ( left: 6 0 )
-parent: 3"]
-	3 -> 10
+1 - 5 = -4 ( left: -4 12 )
+parent: 5
+value: impossible" color=yellow]
+	5 -> 10 [label=9 fontsize=32]
 	11 [label="11
-16 + 9 = 25 ( left: 25 13 )
-parent: 1"]
-	1 -> 11
+1 + 7 = 8 ( left: 8 )
+parent: 7
+value: impossible" color=blue]
+	7 -> 11 [label=9 fontsize=32]
 	12 [label="12
-16 - 9 = 7 ( left: 7 13 )
-parent: 1"]
-	1 -> 12
+7 - 1 = 6 ( left: 6 )
+parent: 7
+value: impossible" color=blue]
+	7 -> 12 [label=9 fontsize=32]
 	13 [label="13
-9 * 13 = 117 ( left: 16 117 )
-parent: 1"]
-	1 -> 13
+1 * 7 = 7 ( left: 7 )
+parent: 7
+value: impossible" color=blue]
+	7 -> 13 [label=9 fontsize=32]
 	14 [label="14
-16 / 9 = 1.7777777777777777 ( left: 1.7777777777777777 13 )
-parent: 1"]
-	1 -> 14
+1 / 7 = 0.14285714285714285 ( left: 0.14285714285714285 )
+parent: 7
+value: impossible" color=yellow]
+	7 -> 14 [label=9 fontsize=32]
 	15 [label="15
-13 + 9 = 22 ( left: 16 22 )
-parent: 1"]
-	1 -> 15
+7 / 1 = 7.0000000000000015 ( left: 7.0000000000000015 )
+parent: 7
+value: impossible" color=yellow]
+	7 -> 15 [label=9 fontsize=32]
 	16 [label="16
-16 / 9 = 1.777777777778 ( left: 1.777777777778 13 )
-parent: 2"]
-	2 -> 16
+1 + 17 = 18 ( left: 18 )
+parent: 8
+value: impossible" color=yellow]
+	8 -> 16 [label=9 fontsize=32]
 	17 [label="17
-16 - 9 = 7 ( left: 7 13 )
-parent: 2"]
-	2 -> 17
+1 * 17 = 17 ( left: 17 )
+parent: 8
+value: impossible" color=yellow]
+	8 -> 17 [label=9 fontsize=32]
 	18 [label="18
-13 + 9 = 22 ( left: 16 22 )
-parent: 2"]
-	2 -> 18
+1 - 17 = -16 ( left: -16 )
+parent: 8
+value: impossible" color=yellow]
+	8 -> 18 [label=9 fontsize=32]
 	19 [label="19
-16 * 9 = 144 ( left: 144 13 )
-parent: 2"]
-	2 -> 19
+17 + 1 = 18 ( left: 18 )
+parent: 8
+value: impossible" color=yellow]
+	8 -> 19 [label=9 fontsize=32]
 	20 [label="20
-13 - 9 = 4 ( left: 16 4 )
-parent: 2"]
-	2 -> 20
-	21 [label="21
-7 + 4 = 11 ( left: 11 9 )
-parent: 4"]
-	4 -> 21
-	22 [label="22
-4 * 9 = 36 ( left: 7 36 )
-parent: 4"]
-	4 -> 22
-	23 [label="23
-9 - 7 = 2 ( left: 2 4 )
-parent: 4"]
-	4 -> 23
-	24 [label="24
-7 / 4 = 1.75 ( left: 1.75 9 )
-parent: 4"]
-	4 -> 24
-	25 [label="25
-9 + 4 = 13 ( left: 7 13 )
-parent: 4"]
-	4 -> 25
-	26 [label="26
-63 + 9 = 72 ( left: 72 13 )
-parent: 5"]
-	5 -> 26
-	27 [label="27
-9 * 13 = 117 ( left: 63 117 )
-parent: 5"]
-	5 -> 27
-	28 [label="28
-13 - 9 = 4 ( left: 63 4 )
-parent: 5"]
-	5 -> 28
-	29 [label="29
-63 - 9 = 54 ( left: 54 13 )
-parent: 5"]
-	5 -> 29
-	30 [label="30
-63 / 9 = 7 ( left: 7 13 )
-parent: 5"]
-	5 -> 30
-	31 [label="31
-15 + 9 = 24 ( left: 24 )
-parent: 6" color=red]
-	6 -> 31
-	32 [label="32
-15 - 9 = 6 ( left: 6 )
-parent: 6"]
-	6 -> 32
-	33 [label="33
-9 * 15 = 135 ( left: 135 )
-parent: 6"]
-	6 -> 33
-	34 [label="34
-15 / 9 = 1.6666666666666666 ( left: 1.6666666666666666 )
-parent: 6"]
-	6 -> 34
-	35 [label="35
-15 - 9 = 6 ( left: 6 )
-parent: 6"]
-	6 -> 35
-	36 [label="36
-3 + 9 = 12 ( left: 12 )
-parent: 7"]
-	7 -> 36
-	37 [label="37
-3 * 9 = 27 ( left: 27 )
-parent: 7"]
-	7 -> 37
-	38 [label="38
-9 - 3 = 6 ( left: 6 )
-parent: 7"]
-	7 -> 38
-	39 [label="39
-3 / 9 = 0.333 ( left: 0.333 )
-parent: 7"]
-	7 -> 39
-	40 [label="40
-9 / 3 = 3.000 ( left: 3.000 )
-parent: 7"]
-	7 -> 40
-	41 [label="41
-1.5 + 9 = 10.5 ( left: 10.5 )
-parent: 8"]
-	8 -> 41
-	42 [label="42
-1.5 * 9 = 13.5 ( left: 13.5 )
-parent: 8"]
-	8 -> 42
-	43 [label="43
-9 - 1.5 = 7.5 ( left: 7.5 )
-parent: 8"]
-	8 -> 43
-	44 [label="44
-1.5 / 9 = 0.16666666666666666 ( left: 0.16666666666666666 )
-parent: 8"]
-	8 -> 44
-	45 [label="45
-1.5 / 9 = 0.16666666666666666 ( left: 0.16666666666666666 )
-parent: 8"]
-	8 -> 45
-	46 [label="46
-54 + 9 = 63 ( left: 63 )
-parent: 9"]
-	9 -> 46
-	47 [label="47
-54 - 9 = 45 ( left: 45 )
-parent: 9"]
-	9 -> 47
-	48 [label="48
-54 * 9 = 486 ( left: 486 )
-parent: 9"]
-	9 -> 48
-	49 [label="49
-54 / 9 = 6 ( left: 6 )
-parent: 9"]
-	9 -> 49
-	50 [label="50
-54 - 9 = 45 ( left: 45 )
-parent: 9"]
-	9 -> 50
-	51 [label="51
-6 + 0 = 6 ( left: 6 )
-parent: 10"]
-	10 -> 51
-	52 [label="52
-6 - 0 = 6 ( left: 6 )
-parent: 10"]
-	10 -> 52
-	53 [label="53
-6 * 0 = 0 ( left: 0 )
-parent: 10"]
-	10 -> 53
-	54 [label="54
-6 / 0 = 6 ( left: 6 )
-parent: 10"]
-	10 -> 54
-	55 [label="55
-0 - 6 = -6 ( left: -6 )
-parent: 10"]
-	10 -> 55
+17 - 1 = 16 ( left: 16 )
+parent: 8
+value: impossible" color=yellow]
+	8 -> 20 [label=9 fontsize=32]
 }

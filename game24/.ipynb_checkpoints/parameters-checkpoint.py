@@ -29,7 +29,7 @@ k = 5
 id = 0
 idx = 0
 t = 0
-method = 'bfs'
+method = 'dfs'
 model_import_method = 'vllm'
 with_lmformatenforcer = True
 
