@@ -1,0 +1,813 @@
+{
+    "id": 956,
+    "steps": [
+        {
+            "step": 0,
+            "nodes": [
+                {
+                    "id": 0,
+                    "answer": "3 4 6 8",
+                    "value": null,
+                    "parent_node": null,
+                    "ancestor_value": null
+                },
+                {
+                    "id": 1,
+                    "answer": "3 + 4 = 7 ( left: 7 6 8 )",
+                    "value": "impossible",
+                    "parent_node": 0,
+                    "ancestor_value": 0.0
+                },
+                {
+                    "id": 2,
+                    "answer": "8 / 3 = 2.6666666666666665 ( left: 2.6666666666666665 4 6 )",
+                    "value": "sure",
+                    "parent_node": 0,
+                    "ancestor_value": 0.0
+                },
+                {
+                    "id": 3,
+                    "answer": "6 + 8 = 14 ( left: 3 4 14 )",
+                    "value": "impossible",
+                    "parent_node": 0,
+                    "ancestor_value": 0.0
+                },
+                {
+                    "id": 4,
+                    "answer": "8 * 4 = 32 ( left: 3 32 6 )",
+                    "value": "impossible",
+                    "parent_node": 0,
+                    "ancestor_value": 0.0
+                },
+                {
+                    "id": 5,
+                    "answer": "4 - 3 = 1 ( left: 1 6 8 )",
+                    "value": "sure",
+                    "parent_node": 0,
+                    "ancestor_value": 0.0
+                }
+            ],
+            "top_b": [
+                {
+                    "id": 2,
+                    "answer": "8 / 3 = 2.6666666666666665 ( left: 2.6666666666666665 4 6 )",
+                    "value": "sure",
+                    "parent_node": 0,
+                    "ancestor_value": 0.0
+                },
+                {
+                    "id": 5,
+                    "answer": "4 - 3 = 1 ( left: 1 6 8 )",
+                    "value": "sure",
+                    "parent_node": 0,
+                    "ancestor_value": 0.0
+                },
+                {
+                    "id": 1,
+                    "answer": "3 + 4 = 7 ( left: 7 6 8 )",
+                    "value": "impossible",
+                    "parent_node": 0,
+                    "ancestor_value": 0.0
+                },
+                {
+                    "id": 3,
+                    "answer": "6 + 8 = 14 ( left: 3 4 14 )",
+                    "value": "impossible",
+                    "parent_node": 0,
+                    "ancestor_value": 0.0
+                },
+                {
+                    "id": 4,
+                    "answer": "8 * 4 = 32 ( left: 3 32 6 )",
+                    "value": "impossible",
+                    "parent_node": 0,
+                    "ancestor_value": 0.0
+                }
+            ],
+            "is_best": false,
+            "is_back": false,
+            "selected_node": {
+                "id": 2,
+                "answer": "8 / 3 = 2.6666666666666665 ( left: 2.6666666666666665 4 6 )",
+                "value": "sure",
+                "parent_node": 0,
+                "ancestor_value": 0.0
+            }
+        },
+        {
+            "step": 1,
+            "nodes": [
+                {
+                    "id": 0,
+                    "answer": "3 4 6 8",
+                    "value": null,
+                    "parent_node": null,
+                    "ancestor_value": null
+                },
+                {
+                    "id": 1,
+                    "answer": "3 + 4 = 7 ( left: 7 6 8 )",
+                    "value": "impossible",
+                    "parent_node": 0,
+                    "ancestor_value": 0.0
+                },
+                {
+                    "id": 2,
+                    "answer": "8 / 3 = 2.6666666666666665 ( left: 2.6666666666666665 4 6 )",
+                    "value": "sure",
+                    "parent_node": 0,
+                    "ancestor_value": 0.0
+                },
+                {
+                    "id": 3,
+                    "answer": "6 + 8 = 14 ( left: 3 4 14 )",
+                    "value": "impossible",
+                    "parent_node": 0,
+                    "ancestor_value": 0.0
+                },
+                {
+                    "id": 4,
+                    "answer": "8 * 4 = 32 ( left: 3 32 6 )",
+                    "value": "impossible",
+                    "parent_node": 0,
+                    "ancestor_value": 0.0
+                },
+                {
+                    "id": 5,
+                    "answer": "4 - 3 = 1 ( left: 1 6 8 )",
+                    "value": "sure",
+                    "parent_node": 0,
+                    "ancestor_value": 0.0
+                },
+                {
+                    "id": 6,
+                    "answer": "2.6666666666666665 + 4 = 6.666666666666667 ( left: 6.666666666666667 6 )",
+                    "value": "impossible",
+                    "parent_node": 2,
+                    "ancestor_value": 10.0
+                },
+                {
+                    "id": 7,
+                    "answer": "2.6666666666666665 * 4 = 10.666666666666668 ( left: 10.666666666666668 6 )",
+                    "value": "sure",
+                    "parent_node": 2,
+                    "ancestor_value": 10.0
+                },
+                {
+                    "id": 8,
+                    "answer": "4 - 2.6666666666666665 = 1.3333333333333334 ( left: 1.3333333333333334 6 )",
+                    "value": "sure",
+                    "parent_node": 2,
+                    "ancestor_value": 10.0
+                },
+                {
+                    "id": 9,
+                    "answer": "6 / 2 = 3 ( left: 3.666666666666665 4 6 )",
+                    "value": "impossible",
+                    "parent_node": 2,
+                    "ancestor_value": 10.0
+                },
+                {
+                    "id": 10,
+                    "answer": "2.6666666666666665 * 4 = 10.666666666666668 ( left: 10.666666666666668 6 )",
+                    "value": "sure",
+                    "parent_node": 2,
+                    "ancestor_value": 10.0
+                },
+                {
+                    "id": 11,
+                    "answer": "1 + 6 = 7 ( left: 7 8 )",
+                    "value": "impossible",
+                    "parent_node": 5,
+                    "ancestor_value": 10.0
+                },
+                {
+                    "id": 12,
+                    "answer": "6 / 2 = 3 ( left: 1 8 )",
+                    "value": "impossible",
+                    "parent_node": 5,
+                    "ancestor_value": 10.0
+                },
+                {
+                    "id": 13,
+                    "answer": "8 + 6 = 14 ( left: 1 14 )",
+                    "value": "impossible",
+                    "parent_node": 5,
+                    "ancestor_value": 10.0
+                },
+                {
+                    "id": 14,
+                    "answer": "1 - 6 = -5 ( left: -5 8 )",
+                    "value": "impossible",
+                    "parent_node": 5,
+                    "ancestor_value": 10.0
+                },
+                {
+                    "id": 15,
+                    "answer": "8 * 6 = 48 ( left: 1 48 )",
+                    "value": "impossible",
+                    "parent_node": 5,
+                    "ancestor_value": 10.0
+                },
+                {
+                    "id": 16,
+                    "answer": "7 + 6 = 13 ( left: 13 8 )",
+                    "value": "impossible",
+                    "parent_node": 1,
+                    "ancestor_value": 1.0
+                },
+                {
+                    "id": 17,
+                    "answer": "6 / 3 = 2 ( left: 7 8 )",
+                    "value": "impossible",
+                    "parent_node": 1,
+                    "ancestor_value": 1.0
+                },
+                {
+                    "id": 18,
+                    "answer": "8 - 7 = 1 ( left: 1 6 )",
+                    "value": "impossible",
+                    "parent_node": 1,
+                    "ancestor_value": 1.0
+                },
+                {
+                    "id": 19,
+                    "answer": "7 * 6 = 42 ( left: 42 8 )",
+                    "value": "impossible",
+                    "parent_node": 1,
+                    "ancestor_value": 1.0
+                },
+                {
+                    "id": 20,
+                    "answer": "6 - 8 = -2 ( left: 7 -2 )",
+                    "value": "impossible",
+                    "parent_node": 1,
+                    "ancestor_value": 1.0
+                },
+                {
+                    "id": 21,
+                    "answer": "14 + 3 = 17 ( left: 17 4 )",
+                    "value": "impossible",
+                    "parent_node": 3,
+                    "ancestor_value": 1.0
+                },
+                {
+                    "id": 22,
+                    "answer": "14 - 3 = 11 ( left: 11 4 )",
+                    "value": "impossible",
+                    "parent_node": 3,
+                    "ancestor_value": 1.0
+                },
+                {
+                    "id": 23,
+                    "answer": "14 * 3 = 42 ( left: 42 4 )",
+                    "value": "impossible",
+                    "parent_node": 3,
+                    "ancestor_value": 1.0
+                },
+                {
+                    "id": 24,
+                    "answer": "14 / 3 = 4.666666666666667 ( left: 4.666666666666667 4 )",
+                    "value": "sure",
+                    "parent_node": 3,
+                    "ancestor_value": 1.0
+                },
+                {
+                    "id": 25,
+                    "answer": "3 - 4 = -1 ( left: -1 14 )",
+                    "value": "impossible",
+                    "parent_node": 3,
+                    "ancestor_value": 1.0
+                },
+                {
+                    "id": 26,
+                    "answer": "3 + 32 = 35 ( left: 35 6 )",
+                    "value": "impossible",
+                    "parent_node": 4,
+                    "ancestor_value": 1.0
+                },
+                {
+                    "id": 27,
+                    "answer": "3 * 32 = 96 ( left: 96 6 )",
+                    "value": "impossible",
+                    "parent_node": 4,
+                    "ancestor_value": 1.0
+                },
+                {
+                    "id": 28,
+                    "answer": "6 + 3 = 9 ( left: 9 32 )",
+                    "value": "impossible",
+                    "parent_node": 4,
+                    "ancestor_value": 1.0
+                },
+                {
+                    "id": 29,
+                    "answer": "6 - 3 = 3 ( left: 3 32 )",
+                    "value": "impossible",
+                    "parent_node": 4,
+                    "ancestor_value": 1.0
+                },
+                {
+                    "id": 30,
+                    "answer": "32 - 3 = 29 ( left: 29 6 )",
+                    "value": "impossible",
+                    "parent_node": 4,
+                    "ancestor_value": 1.0
+                }
+            ],
+            "top_b": [
+                {
+                    "id": 7,
+                    "answer": "2.6666666666666665 * 4 = 10.666666666666668 ( left: 10.666666666666668 6 )",
+                    "value": "sure",
+                    "parent_node": 2,
+                    "ancestor_value": 10.0
+                },
+                {
+                    "id": 8,
+                    "answer": "4 - 2.6666666666666665 = 1.3333333333333334 ( left: 1.3333333333333334 6 )",
+                    "value": "sure",
+                    "parent_node": 2,
+                    "ancestor_value": 10.0
+                },
+                {
+                    "id": 10,
+                    "answer": "2.6666666666666665 * 4 = 10.666666666666668 ( left: 10.666666666666668 6 )",
+                    "value": "sure",
+                    "parent_node": 2,
+                    "ancestor_value": 10.0
+                },
+                {
+                    "id": 6,
+                    "answer": "2.6666666666666665 + 4 = 6.666666666666667 ( left: 6.666666666666667 6 )",
+                    "value": "impossible",
+                    "parent_node": 2,
+                    "ancestor_value": 10.0
+                },
+                {
+                    "id": 9,
+                    "answer": "6 / 2 = 3 ( left: 3.666666666666665 4 6 )",
+                    "value": "impossible",
+                    "parent_node": 2,
+                    "ancestor_value": 10.0
+                }
+            ],
+            "is_best": false,
+            "is_back": false,
+            "selected_node": {
+                "id": 7,
+                "answer": "2.6666666666666665 * 4 = 10.666666666666668 ( left: 10.666666666666668 6 )",
+                "value": "sure",
+                "parent_node": 2,
+                "ancestor_value": 10.0
+            }
+        },
+        {
+            "step": 2,
+            "nodes": [
+                {
+                    "id": 0,
+                    "answer": "3 4 6 8",
+                    "value": null,
+                    "parent_node": null,
+                    "ancestor_value": null
+                },
+                {
+                    "id": 1,
+                    "answer": "3 + 4 = 7 ( left: 7 6 8 )",
+                    "value": "impossible",
+                    "parent_node": 0,
+                    "ancestor_value": 0.0
+                },
+                {
+                    "id": 2,
+                    "answer": "8 / 3 = 2.6666666666666665 ( left: 2.6666666666666665 4 6 )",
+                    "value": "sure",
+                    "parent_node": 0,
+                    "ancestor_value": 0.0
+                },
+                {
+                    "id": 3,
+                    "answer": "6 + 8 = 14 ( left: 3 4 14 )",
+                    "value": "impossible",
+                    "parent_node": 0,
+                    "ancestor_value": 0.0
+                },
+                {
+                    "id": 4,
+                    "answer": "8 * 4 = 32 ( left: 3 32 6 )",
+                    "value": "impossible",
+                    "parent_node": 0,
+                    "ancestor_value": 0.0
+                },
+                {
+                    "id": 5,
+                    "answer": "4 - 3 = 1 ( left: 1 6 8 )",
+                    "value": "sure",
+                    "parent_node": 0,
+                    "ancestor_value": 0.0
+                },
+                {
+                    "id": 6,
+                    "answer": "2.6666666666666665 + 4 = 6.666666666666667 ( left: 6.666666666666667 6 )",
+                    "value": "impossible",
+                    "parent_node": 2,
+                    "ancestor_value": 10.0
+                },
+                {
+                    "id": 7,
+                    "answer": "2.6666666666666665 * 4 = 10.666666666666668 ( left: 10.666666666666668 6 )",
+                    "value": "sure",
+                    "parent_node": 2,
+                    "ancestor_value": 10.0
+                },
+                {
+                    "id": 8,
+                    "answer": "4 - 2.6666666666666665 = 1.3333333333333334 ( left: 1.3333333333333334 6 )",
+                    "value": "sure",
+                    "parent_node": 2,
+                    "ancestor_value": 10.0
+                },
+                {
+                    "id": 9,
+                    "answer": "6 / 2 = 3 ( left: 3.666666666666665 4 6 )",
+                    "value": "impossible",
+                    "parent_node": 2,
+                    "ancestor_value": 10.0
+                },
+                {
+                    "id": 10,
+                    "answer": "2.6666666666666665 * 4 = 10.666666666666668 ( left: 10.666666666666668 6 )",
+                    "value": "sure",
+                    "parent_node": 2,
+                    "ancestor_value": 10.0
+                },
+                {
+                    "id": 11,
+                    "answer": "1 + 6 = 7 ( left: 7 8 )",
+                    "value": "impossible",
+                    "parent_node": 5,
+                    "ancestor_value": 10.0
+                },
+                {
+                    "id": 12,
+                    "answer": "6 / 2 = 3 ( left: 1 8 )",
+                    "value": "impossible",
+                    "parent_node": 5,
+                    "ancestor_value": 10.0
+                },
+                {
+                    "id": 13,
+                    "answer": "8 + 6 = 14 ( left: 1 14 )",
+                    "value": "impossible",
+                    "parent_node": 5,
+                    "ancestor_value": 10.0
+                },
+                {
+                    "id": 14,
+                    "answer": "1 - 6 = -5 ( left: -5 8 )",
+                    "value": "impossible",
+                    "parent_node": 5,
+                    "ancestor_value": 10.0
+                },
+                {
+                    "id": 15,
+                    "answer": "8 * 6 = 48 ( left: 1 48 )",
+                    "value": "impossible",
+                    "parent_node": 5,
+                    "ancestor_value": 10.0
+                },
+                {
+                    "id": 16,
+                    "answer": "7 + 6 = 13 ( left: 13 8 )",
+                    "value": "impossible",
+                    "parent_node": 1,
+                    "ancestor_value": 1.0
+                },
+                {
+                    "id": 17,
+                    "answer": "6 / 3 = 2 ( left: 7 8 )",
+                    "value": "impossible",
+                    "parent_node": 1,
+                    "ancestor_value": 1.0
+                },
+                {
+                    "id": 18,
+                    "answer": "8 - 7 = 1 ( left: 1 6 )",
+                    "value": "impossible",
+                    "parent_node": 1,
+                    "ancestor_value": 1.0
+                },
+                {
+                    "id": 19,
+                    "answer": "7 * 6 = 42 ( left: 42 8 )",
+                    "value": "impossible",
+                    "parent_node": 1,
+                    "ancestor_value": 1.0
+                },
+                {
+                    "id": 20,
+                    "answer": "6 - 8 = -2 ( left: 7 -2 )",
+                    "value": "impossible",
+                    "parent_node": 1,
+                    "ancestor_value": 1.0
+                },
+                {
+                    "id": 21,
+                    "answer": "14 + 3 = 17 ( left: 17 4 )",
+                    "value": "impossible",
+                    "parent_node": 3,
+                    "ancestor_value": 1.0
+                },
+                {
+                    "id": 22,
+                    "answer": "14 - 3 = 11 ( left: 11 4 )",
+                    "value": "impossible",
+                    "parent_node": 3,
+                    "ancestor_value": 1.0
+                },
+                {
+                    "id": 23,
+                    "answer": "14 * 3 = 42 ( left: 42 4 )",
+                    "value": "impossible",
+                    "parent_node": 3,
+                    "ancestor_value": 1.0
+                },
+                {
+                    "id": 24,
+                    "answer": "14 / 3 = 4.666666666666667 ( left: 4.666666666666667 4 )",
+                    "value": "sure",
+                    "parent_node": 3,
+                    "ancestor_value": 1.0
+                },
+                {
+                    "id": 25,
+                    "answer": "3 - 4 = -1 ( left: -1 14 )",
+                    "value": "impossible",
+                    "parent_node": 3,
+                    "ancestor_value": 1.0
+                },
+                {
+                    "id": 26,
+                    "answer": "3 + 32 = 35 ( left: 35 6 )",
+                    "value": "impossible",
+                    "parent_node": 4,
+                    "ancestor_value": 1.0
+                },
+                {
+                    "id": 27,
+                    "answer": "3 * 32 = 96 ( left: 96 6 )",
+                    "value": "impossible",
+                    "parent_node": 4,
+                    "ancestor_value": 1.0
+                },
+                {
+                    "id": 28,
+                    "answer": "6 + 3 = 9 ( left: 9 32 )",
+                    "value": "impossible",
+                    "parent_node": 4,
+                    "ancestor_value": 1.0
+                },
+                {
+                    "id": 29,
+                    "answer": "6 - 3 = 3 ( left: 3 32 )",
+                    "value": "impossible",
+                    "parent_node": 4,
+                    "ancestor_value": 1.0
+                },
+                {
+                    "id": 30,
+                    "answer": "32 - 3 = 29 ( left: 29 6 )",
+                    "value": "impossible",
+                    "parent_node": 4,
+                    "ancestor_value": 1.0
+                },
+                {
+                    "id": 31,
+                    "answer": "10.666666666666668 + 6 = 16.666666666666666 ( left: 16.666666666666666 )",
+                    "value": "impossible",
+                    "parent_node": 7,
+                    "ancestor_value": 20.0
+                },
+                {
+                    "id": 32,
+                    "answer": "10.666666666666668 - 6 = 4.666666666666667 ( left: 4.666666666666667 )",
+                    "value": "impossible",
+                    "parent_node": 7,
+                    "ancestor_value": 20.0
+                },
+                {
+                    "id": 33,
+                    "answer": "10.666666666666668 / 6 = 1.7777777777777778 ( left: 1.7777777777777778 )",
+                    "value": "impossible",
+                    "parent_node": 7,
+                    "ancestor_value": 20.0
+                },
+                {
+                    "id": 34,
+                    "answer": "6.0 + 10.666666666666668 = 16.666666666666666 ( left: 16.666666666666666 6 )",
+                    "value": "impossible",
+                    "parent_node": 7,
+                    "ancestor_value": 20.0
+                },
+                {
+                    "id": 35,
+                    "answer": "6 - 10.666666666666668 = -4.666666666666667 ( left: 10.66666666666668 6 )",
+                    "value": "impossible",
+                    "parent_node": 7,
+                    "ancestor_value": 20.0
+                },
+                {
+                    "id": 36,
+                    "answer": "1.3333333333333334 + 6 = 7.3333333333333335 ( left: 7.3333333333333335 )",
+                    "value": "impossible",
+                    "parent_node": 8,
+                    "ancestor_value": 20.0
+                },
+                {
+                    "id": 37,
+                    "answer": "1.3333333333333334 * 6 = 7.999999999999999 ( left: 7.999999999999999 )",
+                    "value": "impossible",
+                    "parent_node": 8,
+                    "ancestor_value": 20.0
+                },
+                {
+                    "id": 38,
+                    "answer": "6 / 1.3333333333333334 = 4.5 ( left: 4.5 )",
+                    "value": "impossible",
+                    "parent_node": 8,
+                    "ancestor_value": 20.0
+                },
+                {
+                    "id": 39,
+                    "answer": "6 - 1.3333333333333334 = 4.666666666666667 ( left: 4.666666666666667 )",
+                    "value": "impossible",
+                    "parent_node": 8,
+                    "ancestor_value": 20.0
+                },
+                {
+                    "id": 40,
+                    "answer": "1.3333333333333334 * 6 = 7.9999999999999995 ( left: 7.9999999999999995 )",
+                    "value": "impossible",
+                    "parent_node": 8,
+                    "ancestor_value": 20.0
+                },
+                {
+                    "id": 41,
+                    "answer": "10.666666666666668 + 6 = 16.666666666666666 ( left: 16.666666666666666 )",
+                    "value": "impossible",
+                    "parent_node": 10,
+                    "ancestor_value": 20.0
+                },
+                {
+                    "id": 42,
+                    "answer": "10.666666666666668 * 6 = 63.99999999999999 ( left: 63.99999999999999 )",
+                    "value": "impossible",
+                    "parent_node": 10,
+                    "ancestor_value": 20.0
+                },
+                {
+                    "id": 43,
+                    "answer": "10.666666666666668 / 6 = 1.7777777777777777 ( left: 1.7777777777777777 )",
+                    "value": "impossible",
+                    "parent_node": 10,
+                    "ancestor_value": 20.0
+                },
+                {
+                    "id": 44,
+                    "answer": "10.666666666666668 - 6 = 4.6666666666666665 ( left: 4.6666666666666665 )",
+                    "value": "impossible",
+                    "parent_node": 10,
+                    "ancestor_value": 20.0
+                },
+                {
+                    "id": 45,
+                    "answer": "6 / 10.666666666666668 = 0.5619444444444445 ( left: 10.66666666666668 6 )",
+                    "value": "impossible",
+                    "parent_node": 10,
+                    "ancestor_value": 20.0
+                },
+                {
+                    "id": 46,
+                    "answer": "6.666666666666667 + 6 = 12.666666666666667 ( left: 12.666666666666667 )",
+                    "value": "impossible",
+                    "parent_node": 6,
+                    "ancestor_value": 11.0
+                },
+                {
+                    "id": 47,
+                    "answer": "6.666666666666667 * 6 = 39.99999999999999 ( left: 39.99999999999999 )",
+                    "value": "impossible",
+                    "parent_node": 6,
+                    "ancestor_value": 11.0
+                },
+                {
+                    "id": 48,
+                    "answer": "6.666666666666667 - 6 = 0.6666666666666666 ( left: 0.6666666666666666 )",
+                    "value": "impossible",
+                    "parent_node": 6,
+                    "ancestor_value": 11.0
+                },
+                {
+                    "id": 49,
+                    "answer": "6 / 2 = 3 ( left: .666666666666667 6 )",
+                    "value": "sure",
+                    "parent_node": 6,
+                    "ancestor_value": 11.0
+                },
+                {
+                    "id": 50,
+                    "answer": "6.666666666666667 + 6 = 12.666666666666667 ( left: 12.666666666666667 )",
+                    "value": "impossible",
+                    "parent_node": 6,
+                    "ancestor_value": 11.0
+                },
+                {
+                    "id": 51,
+                    "answer": "3.666666666666665 + 4 = 7.666666666666666 ( left: 7.666666666666666 6 )",
+                    "value": "impossible",
+                    "parent_node": 9,
+                    "ancestor_value": 11.0
+                },
+                {
+                    "id": 52,
+                    "answer": "3.666666666666665 * 4 = 14.666666666666666 ( left: 14.666666666666666 6 )",
+                    "value": "sure",
+                    "parent_node": 9,
+                    "ancestor_value": 11.0
+                },
+                {
+                    "id": 53,
+                    "answer": "4 / 3.666666666666665 = 1.090909090909091 ( left: 1.090909090909091 6 )",
+                    "value": "sure",
+                    "parent_node": 9,
+                    "ancestor_value": 11.0
+                },
+                {
+                    "id": 54,
+                    "answer": "6 + 4 = 10 ( left: 3.66666666666665 10 6 )",
+                    "value": "sure",
+                    "parent_node": 9,
+                    "ancestor_value": 11.0
+                },
+                {
+                    "id": 55,
+                    "answer": "6 - 4 = 2 ( left: 3.66666666666665 2 6 )",
+                    "value": "impossible",
+                    "parent_node": 9,
+                    "ancestor_value": 11.0
+                }
+            ],
+            "top_b": [
+                {
+                    "id": 31,
+                    "answer": "10.666666666666668 + 6 = 16.666666666666666 ( left: 16.666666666666666 )",
+                    "value": "impossible",
+                    "parent_node": 7,
+                    "ancestor_value": 20.0
+                },
+                {
+                    "id": 32,
+                    "answer": "10.666666666666668 - 6 = 4.666666666666667 ( left: 4.666666666666667 )",
+                    "value": "impossible",
+                    "parent_node": 7,
+                    "ancestor_value": 20.0
+                },
+                {
+                    "id": 33,
+                    "answer": "10.666666666666668 / 6 = 1.7777777777777778 ( left: 1.7777777777777778 )",
+                    "value": "impossible",
+                    "parent_node": 7,
+                    "ancestor_value": 20.0
+                },
+                {
+                    "id": 34,
+                    "answer": "6.0 + 10.666666666666668 = 16.666666666666666 ( left: 16.666666666666666 6 )",
+                    "value": "impossible",
+                    "parent_node": 7,
+                    "ancestor_value": 20.0
+                },
+                {
+                    "id": 35,
+                    "answer": "6 - 10.666666666666668 = -4.666666666666667 ( left: 10.66666666666668 6 )",
+                    "value": "impossible",
+                    "parent_node": 7,
+                    "ancestor_value": 20.0
+                }
+            ],
+            "is_best": true,
+            "is_back": false,
+            "selected_node": {
+                "id": 31,
+                "answer": "10.666666666666668 + 6 = 16.666666666666666 ( left: 16.666666666666666 )",
+                "value": "impossible",
+                "parent_node": 7,
+                "ancestor_value": 20.0
+            }
+        }
+    ],
+    "answer": " ( ( ( 8 / 3 ) * 4 ) + 6 ) ",
+    "path_value": 21.0,
+    "correct": false,
+    "cost time": 125.32459497451782
+}
