@@ -29,15 +29,9 @@ k = 5
 id = 0
 idx = 0
 t = 0
-<<<<<<< HEAD
-method = 'bfs'
-model_import_method = 'openai'
-with_lmformatenforcer = False
-=======
 method = 'dfs'
 model_import_method = 'vllm'
 with_lmformatenforcer = True
->>>>>>> 12f8ed1edebfb364fa03f740ecb7c1edfbe3add2
 
 def increase_id():
     global id
