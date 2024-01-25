@@ -10,6 +10,7 @@ from bfs import *
 steps = list()
 all_nodes = list()
 d_thres = 0
+level_count = [0] * (parameters.T + 1)
 
 
 def Greedy(llm, node, graph):
@@ -24,8 +25,8 @@ def Greedy(llm, node, graph):
     steps.extend(loc['steps'])
     return best_node, max_value
 
-def __dfs__(llm, node, best_node, max_value, graph, distance):
-    global d_thres
+def __dfs__(llm, node, best_node, max_value, graph, distance, sd = False, ksd = False):
+    global d_thres, level_count
     record.Record_txt(parameters.file_name, f'\nstep {parameters.t}\n\n')
     # if achieving leaf node
     if parameters.t == parameters.T:
@@ -53,6 +54,7 @@ def __dfs__(llm, node, best_node, max_value, graph, distance):
         new_nodes = game24.Generator(llm, [node])
         # Evaluator
         new_nodes = game24.Evaluator(llm, new_nodes)
+        new_nodes = sorted(new_nodes, key = game24.Sorted_by_value, reverse = True)
         # record
         if new_nodes != None:
             record.Record_txt(parameters.file_name, '\nnode:\n' + str(new_nodes) + '\n' + str(len(new_nodes)) + '\n\n')
@@ -62,6 +64,9 @@ def __dfs__(llm, node, best_node, max_value, graph, distance):
     # use graph to traversal
     input = graph.tree_head[parent]['next_node']
     while input['node'] != None:
+        if ksd == True:
+            if level_count[parameters.t] == parameters.b:
+                break
         input_node = input['node']
         # if distance > d_thres -> prune
         distance += 10 - game24.Value_mapping(input_node['value'])
@@ -73,20 +78,25 @@ def __dfs__(llm, node, best_node, max_value, graph, distance):
             parameters.increase_t()
             print(f't: {parameters.t}, new_node: {input_node}')
             print(f'distance: {distance}')
-            best_node, max_value = __dfs__(llm, input_node, best_node, max_value, graph, distance)
+            best_node, max_value = __dfs__(llm, input_node, best_node, max_value, graph, distance, sd = sd, ksd = ksd)
         else:
             steps.append({'step': parameters.t, 'nodes': all_nodes.copy(), 'is_best': False, 'is_back': True, 'selected_node': input_node})
             record.Record_txt(parameters.file_name, '\n(prune)input_node:' + str(input_node) + '\n\n')
 
         distance -= 10 - game24.Value_mapping(input_node['value'])
         input = input['next_node']
+        level_count[parameters.t] += 1
+        record.Record_txt(parameters.file_name, '\n(k-best)count = ' + str(level_count[parameters.t]) + '\n')
     
     parameters.decrease_t()
     return best_node, max_value
 
-def dfs(llm, node):
-    global d_thres
+def dfs(llm, node, sd = False, ksd = False):
+    global d_thres, all_nodes, steps
     # initialize
+    # reset all_nodes & steps
+    all_nodes = list()
+    steps = list()
     graph = tree_graph.graph()
     max_value = 0
     best_node = None
@@ -94,7 +104,7 @@ def dfs(llm, node):
     # Greedy to define d_thres
     best_node, max_value = Greedy(llm, node, graph)
     print(f'd_thres: {d_thres}')
-    best_node, max_value = __dfs__(llm, node[0], best_node, max_value, graph, 0)
+    best_node, max_value = __dfs__(llm, node[0], best_node, max_value, graph, 0, sd = sd, ksd = ksd)
     print(all_nodes)
     record.Record_txt(parameters.file_name, '\nall_nodes:\n' + '\n'.join(list(map(str, all_nodes.copy()))) + '\n\n')
 

@@ -20,16 +20,17 @@ generator_temperature = 0.5
 evaluator_temperature = 0
 n_ctx = 2048
 n_gpu_layers = -1
-question_sets = 100
+question_sets = 5
 initial_idx = 901
 b = 5
 T = 3
-k = 5
+k = 8
 
 id = 0
 idx = 0
 t = 0
-method = 'dfs'
+# (bfs, dfs, dfs+sd, dfs+ksd)
+method = 'dfs+ksd'
 model_import_method = 'vllm'
 with_lmformatenforcer = True
 

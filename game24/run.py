@@ -48,6 +48,16 @@ if __name__ == '__main__':
             record.Init_record_file(parameters.file_name, parameters.huggingface_model_path + '\ntemperature: ' + str(parameters.generator_temperature) + ', ' +  str(parameters.evaluator_temperature) + '\ndate: ' + str(datetime.date.today()) + '\n\n')
             record.Init_record_file(parameters.json_file_name, '')
             loc = dfs(llm, nodes)
+        elif parameters.method == 'dfs+sd':
+            parameters.reset_t()
+            record.Init_record_file(parameters.file_name, parameters.huggingface_model_path + '\ntemperature: ' + str(parameters.generator_temperature) + ', ' +  str(parameters.evaluator_temperature) + '\ndate: ' + str(datetime.date.today()) + '\n\n')
+            record.Init_record_file(parameters.json_file_name, '')
+            loc = dfs(llm, nodes, sd = True)
+        elif parameters.method == 'dfs+ksd':
+            parameters.reset_t()
+            record.Init_record_file(parameters.file_name, parameters.huggingface_model_path + '\ntemperature: ' + str(parameters.generator_temperature) + ', ' +  str(parameters.evaluator_temperature) + '\ndate: ' + str(datetime.date.today()) + '\n\n')
+            record.Init_record_file(parameters.json_file_name, '')
+            loc = dfs(llm, nodes, ksd = True)
         end_time = time.time()
         # record
         loc['id'] = i
@@ -69,5 +79,5 @@ if __name__ == '__main__':
     # draw
     if parameters.method == 'bfs':
         draw.bfs_Draw(parameters.all_json_file_name.format(file_path = parameters.record_files_folder))
-    if parameters.method == 'dfs':
+    if parameters.method == 'dfs' or parameters.method == 'dfs+sd' or parameters.method == 'dfs+ksd':
         draw.dfs_Draw(parameters.all_json_file_name.format(file_path = parameters.record_files_folder))
