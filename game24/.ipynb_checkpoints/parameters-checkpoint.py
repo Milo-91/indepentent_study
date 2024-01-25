@@ -1,8 +1,13 @@
+# llamacpp
 repo_id = 'TheBloke/OpenHermes-2.5-neural-chat-7B-v3-1-7B-GGUF'
 model_name = 'openhermes-2.5-neural-chat-7b-v3-1-7b.Q8_0.gguf'
-huggingface_model_path = 'TheBloke/OpenHermes-2.5-Mistral-7B-GPTQ'
 local_dir = '../models'
 model_path = local_dir + '/' + model_name
+# vllm
+huggingface_model_path = 'TheBloke/OpenHermes-2.5-Mistral-7B-GPTQ'
+# openai
+openai_model = 'gpt-3.5-turbo-1106'
+
 record_files_folder = 'record'
 file_name = '{file_path}/record_game24_{idx}.txt'
 json_file_name = '{file_path}/tree_game24_{idx}.json'
@@ -19,12 +24,14 @@ question_sets = 100
 initial_idx = 901
 b = 5
 T = 3
-k = 8
+k = 5
 
 id = 0
 idx = 0
 t = 0
-method = 'bfs'
+method = 'dfs'
+model_import_method = 'vllm'
+with_lmformatenforcer = True
 
 def increase_id():
     global id
@@ -54,3 +61,7 @@ def decrease_t():
 def reset_t():
     global t
     t = 0
+
+def set_b(initial_b):
+    global b
+    b = initial_b

@@ -1,0 +1,926 @@
+TheBloke/OpenHermes-2.5-Mistral-7B-GPTQ
+temperature: 0.5, 0
+date: 2024-01-18
+
+
+step 1
+
+
+Generator response:
+3 * 5 = 15
+10 - 5 = 5
+5 + 7 = 12
+3 - 5 = -2
+10 / 5 = 2
+
+
+Generated answers:
+['3 * 5 = 15 ( left: 15 7 10 )', '10 - 5 = 5 ( left: 3 5 7 )', '5 + 7 = 12 ( left: 3 12 10 )', '3 - 5 = -2 ( left: -2 7 10 )', '10 / 5 = 2 ( left: 3 2 7 )']
+
+
+Analysis:
+15 + 7 + 10 = 24
+Output: sure (15 7 10)
+
+
+Analysis:
+3 + 5 + 7 = 15
+3 * 5 * 7 = 105
+Output: impossible (3 5 7)
+
+
+Analysis:
+3 + 12 + 10 = 25
+3 * 12 * 10 = 360
+Output: impossible (3 12 10)
+
+
+Analysis:
+-2 + 7 + 10 = 15
+-2 * 7 * 10 = -140
+Output: impossible (-2 7 10)
+
+
+Analysis:
+3 + 2 + 7 = 12
+3 * 2 * 7 = 42
+Output: impossible (3 2 7)
+
+
+node:
+[{'id': 1, 'answer': '3 * 5 = 15 ( left: 15 7 10 )', 'value': 'sure', 'parent_node': 0, 'ancestor_value': 0.0}, {'id': 2, 'answer': '10 - 5 = 5 ( left: 3 5 7 )', 'value': 'impossible', 'parent_node': 0, 'ancestor_value': 0.0}, {'id': 3, 'answer': '5 + 7 = 12 ( left: 3 12 10 )', 'value': 'impossible', 'parent_node': 0, 'ancestor_value': 0.0}, {'id': 4, 'answer': '3 - 5 = -2 ( left: -2 7 10 )', 'value': 'impossible', 'parent_node': 0, 'ancestor_value': 0.0}, {'id': 5, 'answer': '10 / 5 = 2 ( left: 3 2 7 )', 'value': 'impossible', 'parent_node': 0, 'ancestor_value': 0.0}]
+5
+
+
+step 2
+
+
+Generator response:
+15 + 7 = 22
+15 - 7 = 8
+7 * 10 = 70
+10 / 7 = 1.4285714285714285
+10 - 7 = 3
+
+
+Generated answers:
+['15 + 7 = 22 ( left: 22 10 )', '15 - 7 = 8 ( left: 8 10 )', '7 * 10 = 70 ( left: 15 70 )', '10 / 7 = 1.4285714285714285 ( left: 15 1.4285714285714285 )', '10 - 7 = 3 ( left: 15 3 )']
+
+
+Analysis:
+22 + 10 = 32
+Output: impossible (22 10)
+
+
+Analysis:
+8 + 10 = 18
+8 * 10 = 80
+Output: impossible (8 10)
+
+
+Analysis:
+15 + 70 = 85
+15 * 70 = 1050
+Output: impossible (15 70)
+
+
+Analysis:
+15 + 1.4285714285714285 = 16.428571428571428
+Output: sure (15 1.4285714285714285)
+
+
+Analysis:
+15 + 3 = 18
+15 - 3 = 12
+15 * 3 = 45
+15 / 3 = 5
+Output: impossible (15 3)
+
+
+node:
+[{'id': 9, 'answer': '10 / 7 = 1.4285714285714285 ( left: 15 1.4285714285714285 )', 'value': 'sure', 'parent_node': 1, 'ancestor_value': 10.0}, {'id': 6, 'answer': '15 + 7 = 22 ( left: 22 10 )', 'value': 'impossible', 'parent_node': 1, 'ancestor_value': 10.0}, {'id': 7, 'answer': '15 - 7 = 8 ( left: 8 10 )', 'value': 'impossible', 'parent_node': 1, 'ancestor_value': 10.0}, {'id': 8, 'answer': '7 * 10 = 70 ( left: 15 70 )', 'value': 'impossible', 'parent_node': 1, 'ancestor_value': 10.0}, {'id': 10, 'answer': '10 - 7 = 3 ( left: 15 3 )', 'value': 'impossible', 'parent_node': 1, 'ancestor_value': 10.0}]
+5
+
+
+step 3
+
+
+Generator response:
+15 + 1.4285714285714285 = 16.428571428571428
+15 - 1.4285714285714285 = 13.571428571428571
+15 * 1.4285714285714285 = 21.428571428571428
+15 / 1.4285714285714285 = 10.571428571428571
+15 - 1.4285714285714285 = 13.571428571428571
+
+
+Generated answers:
+['15 + 1.4285714285714285 = 16.428571428571428 ( left: 16.428571428571428 )', '15 - 1.4285714285714285 = 13.571428571428571 ( left: 13.571428571428571 )', '15 * 1.4285714285714285 = 21.428571428571428 ( left: 21.428571428571428 )', '15 / 1.4285714285714285 = 10.571428571428571 ( left: 10.571428571428571 )', '15 - 1.4285714285714285 = 13.571428571428571 ( left: 13.571428571428571 )']
+
+
+Analysis:
+16.428571428571428 is not equal to 24
+Output: impossible (16.428571428571428)
+
+
+Analysis:
+13.571428571428571 is not equal to 24
+Output: impossible (13.571428571428571)
+
+
+Analysis:
+21.428571428571428 is not equal to 24
+Output: impossible (21.428571428571428)
+
+
+Analysis:
+10.571428571428571 is not equal to 24
+Output: impossible (10.571428571428571)
+
+
+Analysis:
+13.571428571428571 is not equal to 24
+Output: impossible (13.571428571428571)
+
+
+node:
+[{'id': 11, 'answer': '15 + 1.4285714285714285 = 16.428571428571428 ( left: 16.428571428571428 )', 'value': 'impossible', 'parent_node': 9, 'ancestor_value': 20.0}, {'id': 12, 'answer': '15 - 1.4285714285714285 = 13.571428571428571 ( left: 13.571428571428571 )', 'value': 'impossible', 'parent_node': 9, 'ancestor_value': 20.0}, {'id': 13, 'answer': '15 * 1.4285714285714285 = 21.428571428571428 ( left: 21.428571428571428 )', 'value': 'impossible', 'parent_node': 9, 'ancestor_value': 20.0}, {'id': 14, 'answer': '15 / 1.4285714285714285 = 10.571428571428571 ( left: 10.571428571428571 )', 'value': 'impossible', 'parent_node': 9, 'ancestor_value': 20.0}, {'id': 15, 'answer': '15 - 1.4285714285714285 = 13.571428571428571 ( left: 13.571428571428571 )', 'value': 'impossible', 'parent_node': 9, 'ancestor_value': 20.0}]
+5
+
+
+linked list:
+000 -> 1 -> 2 -> 3 -> 4 -> 5
+
+001 -> 9 -> 6 -> 7 -> 8 -> 10
+
+002
+
+003
+
+004
+
+005
+
+006
+
+007
+
+008
+
+009 -> 11 -> 12 -> 13 -> 14 -> 15
+
+010
+
+011
+
+012
+
+013
+
+014
+
+015
+
+016
+
+017
+
+018
+
+019
+
+020
+
+021
+
+022
+
+023
+
+024
+
+025
+
+026
+
+027
+
+028
+
+029
+
+030
+
+031
+
+032
+
+033
+
+034
+
+035
+
+036
+
+037
+
+038
+
+039
+
+040
+
+041
+
+042
+
+043
+
+044
+
+045
+
+046
+
+047
+
+048
+
+049
+
+050
+
+051
+
+052
+
+053
+
+054
+
+055
+
+056
+
+057
+
+058
+
+059
+
+060
+
+061
+
+062
+
+063
+
+064
+
+065
+
+066
+
+067
+
+068
+
+069
+
+070
+
+071
+
+072
+
+073
+
+074
+
+075
+
+076
+
+077
+
+078
+
+079
+
+080
+
+081
+
+082
+
+083
+
+084
+
+085
+
+086
+
+087
+
+088
+
+089
+
+090
+
+091
+
+092
+
+093
+
+094
+
+095
+
+096
+
+097
+
+098
+
+099
+
+100
+
+101
+
+102
+
+103
+
+104
+
+105
+
+106
+
+107
+
+108
+
+109
+
+110
+
+111
+
+112
+
+113
+
+114
+
+115
+
+116
+
+117
+
+118
+
+119
+
+120
+
+121
+
+122
+
+123
+
+124
+
+125
+
+126
+
+127
+
+128
+
+129
+
+130
+
+131
+
+132
+
+133
+
+134
+
+135
+
+136
+
+137
+
+138
+
+139
+
+140
+
+141
+
+142
+
+143
+
+144
+
+145
+
+146
+
+147
+
+148
+
+149
+
+150
+
+151
+
+152
+
+153
+
+154
+
+155
+
+
+path: ['15 + 1.4285714285714285 = 16.428571428571428 ( left: 16.428571428571428 )', '10 / 7 = 1.4285714285714285 ( left: 15 1.4285714285714285 )', '3 * 5 = 15 ( left: 15 7 10 )', '( left: 3 5 7 10 )']
+
+
+['15 + 1.4285714285714285 = 16.428571428571428 ( left: 16.428571428571428 )', '10 / 7 = 1.4285714285714285 ( left: 15 1.4285714285714285 )', '3 * 5 = 15 ( left: 15 7 10 )', '( left: 3 5 7 10 )']
+ ( ( 3 * 5 ) + ( 10 / 7 ) ) 
+
+
+Answer: 
+ ( ( 3 * 5 ) + ( 10 / 7 ) ) 
+
+
+d_thres: 9.0
+
+step 0
+
+
+distance: 0
+d_threshold: 9.0
+
+input_node:{'id': 1, 'answer': '3 * 5 = 15 ( left: 15 7 10 )', 'value': 'sure', 'parent_node': 0, 'ancestor_value': 0.0}
+
+
+step 1
+
+
+distance: 0
+d_threshold: 9.0
+
+input_node:{'id': 9, 'answer': '10 / 7 = 1.4285714285714285 ( left: 15 1.4285714285714285 )', 'value': 'sure', 'parent_node': 1, 'ancestor_value': 10.0}
+
+
+step 2
+
+
+distance: 9
+d_threshold: 9.0
+
+(prune)input_node:{'id': 11, 'answer': '15 + 1.4285714285714285 = 16.428571428571428 ( left: 16.428571428571428 )', 'value': 'impossible', 'parent_node': 9, 'ancestor_value': 20.0}
+
+
+distance: 9
+d_threshold: 9.0
+
+(prune)input_node:{'id': 12, 'answer': '15 - 1.4285714285714285 = 13.571428571428571 ( left: 13.571428571428571 )', 'value': 'impossible', 'parent_node': 9, 'ancestor_value': 20.0}
+
+
+distance: 9
+d_threshold: 9.0
+
+(prune)input_node:{'id': 13, 'answer': '15 * 1.4285714285714285 = 21.428571428571428 ( left: 21.428571428571428 )', 'value': 'impossible', 'parent_node': 9, 'ancestor_value': 20.0}
+
+
+distance: 9
+d_threshold: 9.0
+
+(prune)input_node:{'id': 14, 'answer': '15 / 1.4285714285714285 = 10.571428571428571 ( left: 10.571428571428571 )', 'value': 'impossible', 'parent_node': 9, 'ancestor_value': 20.0}
+
+
+distance: 9
+d_threshold: 9.0
+
+(prune)input_node:{'id': 15, 'answer': '15 - 1.4285714285714285 = 13.571428571428571 ( left: 13.571428571428571 )', 'value': 'impossible', 'parent_node': 9, 'ancestor_value': 20.0}
+
+
+distance: 9
+d_threshold: 9.0
+
+(prune)input_node:{'id': 6, 'answer': '15 + 7 = 22 ( left: 22 10 )', 'value': 'impossible', 'parent_node': 1, 'ancestor_value': 10.0}
+
+
+distance: 9
+d_threshold: 9.0
+
+(prune)input_node:{'id': 7, 'answer': '15 - 7 = 8 ( left: 8 10 )', 'value': 'impossible', 'parent_node': 1, 'ancestor_value': 10.0}
+
+
+distance: 9
+d_threshold: 9.0
+
+(prune)input_node:{'id': 8, 'answer': '7 * 10 = 70 ( left: 15 70 )', 'value': 'impossible', 'parent_node': 1, 'ancestor_value': 10.0}
+
+
+distance: 9
+d_threshold: 9.0
+
+(prune)input_node:{'id': 10, 'answer': '10 - 7 = 3 ( left: 15 3 )', 'value': 'impossible', 'parent_node': 1, 'ancestor_value': 10.0}
+
+
+distance: 9
+d_threshold: 9.0
+
+(prune)input_node:{'id': 2, 'answer': '10 - 5 = 5 ( left: 3 5 7 )', 'value': 'impossible', 'parent_node': 0, 'ancestor_value': 0.0}
+
+
+distance: 9
+d_threshold: 9.0
+
+(prune)input_node:{'id': 3, 'answer': '5 + 7 = 12 ( left: 3 12 10 )', 'value': 'impossible', 'parent_node': 0, 'ancestor_value': 0.0}
+
+
+distance: 9
+d_threshold: 9.0
+
+(prune)input_node:{'id': 4, 'answer': '3 - 5 = -2 ( left: -2 7 10 )', 'value': 'impossible', 'parent_node': 0, 'ancestor_value': 0.0}
+
+
+distance: 9
+d_threshold: 9.0
+
+(prune)input_node:{'id': 5, 'answer': '10 / 5 = 2 ( left: 3 2 7 )', 'value': 'impossible', 'parent_node': 0, 'ancestor_value': 0.0}
+
+
+all_nodes:
+{'id': 0, 'answer': '3 5 7 10', 'value': None, 'parent_node': None, 'ancestor_value': None}
+{'id': 1, 'answer': '3 * 5 = 15 ( left: 15 7 10 )', 'value': 'sure', 'parent_node': 0, 'ancestor_value': 0.0}
+{'id': 2, 'answer': '10 - 5 = 5 ( left: 3 5 7 )', 'value': 'impossible', 'parent_node': 0, 'ancestor_value': 0.0}
+{'id': 3, 'answer': '5 + 7 = 12 ( left: 3 12 10 )', 'value': 'impossible', 'parent_node': 0, 'ancestor_value': 0.0}
+{'id': 4, 'answer': '3 - 5 = -2 ( left: -2 7 10 )', 'value': 'impossible', 'parent_node': 0, 'ancestor_value': 0.0}
+{'id': 5, 'answer': '10 / 5 = 2 ( left: 3 2 7 )', 'value': 'impossible', 'parent_node': 0, 'ancestor_value': 0.0}
+{'id': 6, 'answer': '15 + 7 = 22 ( left: 22 10 )', 'value': 'impossible', 'parent_node': 1, 'ancestor_value': 10.0}
+{'id': 7, 'answer': '15 - 7 = 8 ( left: 8 10 )', 'value': 'impossible', 'parent_node': 1, 'ancestor_value': 10.0}
+{'id': 8, 'answer': '7 * 10 = 70 ( left: 15 70 )', 'value': 'impossible', 'parent_node': 1, 'ancestor_value': 10.0}
+{'id': 9, 'answer': '10 / 7 = 1.4285714285714285 ( left: 15 1.4285714285714285 )', 'value': 'sure', 'parent_node': 1, 'ancestor_value': 10.0}
+{'id': 10, 'answer': '10 - 7 = 3 ( left: 15 3 )', 'value': 'impossible', 'parent_node': 1, 'ancestor_value': 10.0}
+{'id': 11, 'answer': '15 + 1.4285714285714285 = 16.428571428571428 ( left: 16.428571428571428 )', 'value': 'impossible', 'parent_node': 9, 'ancestor_value': 20.0}
+{'id': 12, 'answer': '15 - 1.4285714285714285 = 13.571428571428571 ( left: 13.571428571428571 )', 'value': 'impossible', 'parent_node': 9, 'ancestor_value': 20.0}
+{'id': 13, 'answer': '15 * 1.4285714285714285 = 21.428571428571428 ( left: 21.428571428571428 )', 'value': 'impossible', 'parent_node': 9, 'ancestor_value': 20.0}
+{'id': 14, 'answer': '15 / 1.4285714285714285 = 10.571428571428571 ( left: 10.571428571428571 )', 'value': 'impossible', 'parent_node': 9, 'ancestor_value': 20.0}
+{'id': 15, 'answer': '15 - 1.4285714285714285 = 13.571428571428571 ( left: 13.571428571428571 )', 'value': 'impossible', 'parent_node': 9, 'ancestor_value': 20.0}
+
+
+linked list:
+000 -> 1 -> 2 -> 3 -> 4 -> 5
+
+001 -> 9 -> 6 -> 7 -> 8 -> 10
+
+002
+
+003
+
+004
+
+005
+
+006
+
+007
+
+008
+
+009 -> 11 -> 12 -> 13 -> 14 -> 15
+
+010
+
+011
+
+012
+
+013
+
+014
+
+015
+
+016
+
+017
+
+018
+
+019
+
+020
+
+021
+
+022
+
+023
+
+024
+
+025
+
+026
+
+027
+
+028
+
+029
+
+030
+
+031
+
+032
+
+033
+
+034
+
+035
+
+036
+
+037
+
+038
+
+039
+
+040
+
+041
+
+042
+
+043
+
+044
+
+045
+
+046
+
+047
+
+048
+
+049
+
+050
+
+051
+
+052
+
+053
+
+054
+
+055
+
+056
+
+057
+
+058
+
+059
+
+060
+
+061
+
+062
+
+063
+
+064
+
+065
+
+066
+
+067
+
+068
+
+069
+
+070
+
+071
+
+072
+
+073
+
+074
+
+075
+
+076
+
+077
+
+078
+
+079
+
+080
+
+081
+
+082
+
+083
+
+084
+
+085
+
+086
+
+087
+
+088
+
+089
+
+090
+
+091
+
+092
+
+093
+
+094
+
+095
+
+096
+
+097
+
+098
+
+099
+
+100
+
+101
+
+102
+
+103
+
+104
+
+105
+
+106
+
+107
+
+108
+
+109
+
+110
+
+111
+
+112
+
+113
+
+114
+
+115
+
+116
+
+117
+
+118
+
+119
+
+120
+
+121
+
+122
+
+123
+
+124
+
+125
+
+126
+
+127
+
+128
+
+129
+
+130
+
+131
+
+132
+
+133
+
+134
+
+135
+
+136
+
+137
+
+138
+
+139
+
+140
+
+141
+
+142
+
+143
+
+144
+
+145
+
+146
+
+147
+
+148
+
+149
+
+150
+
+151
+
+152
+
+153
+
+154
+
+155
+
+
+best node: {'id': 11, 'answer': '15 + 1.4285714285714285 = 16.428571428571428 ( left: 16.428571428571428 )', 'value': 'impossible', 'parent_node': 9, 'ancestor_value': 20.0}
+
+best node: {'id': 9, 'answer': '10 / 7 = 1.4285714285714285 ( left: 15 1.4285714285714285 )', 'value': 'sure', 'parent_node': 1, 'ancestor_value': 10.0}
+
+best node: {'id': 1, 'answer': '3 * 5 = 15 ( left: 15 7 10 )', 'value': 'sure', 'parent_node': 0, 'ancestor_value': 0.0}
+
+best node: {'id': 0, 'answer': '3 5 7 10', 'value': None, 'parent_node': None, 'ancestor_value': None}
+
+path: ['15 + 1.4285714285714285 = 16.428571428571428 ( left: 16.428571428571428 )', '10 / 7 = 1.4285714285714285 ( left: 15 1.4285714285714285 )', '3 * 5 = 15 ( left: 15 7 10 )', '( left: 3 5 7 10 )']
+
+
+['15 + 1.4285714285714285 = 16.428571428571428 ( left: 16.428571428571428 )', '10 / 7 = 1.4285714285714285 ( left: 15 1.4285714285714285 )', '3 * 5 = 15 ( left: 15 7 10 )', '( left: 3 5 7 10 )']
+ ( ( 3 * 5 ) + ( 10 / 7 ) ) 
+
+
+Answer: 
+ ( ( 3 * 5 ) + ( 10 / 7 ) ) 
+

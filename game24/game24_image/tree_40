@@ -1,0 +1,107 @@
+// tree_40
+digraph {
+	0 [label="0
+3 3 5 12
+parent: None
+value: None"]
+	1 [label="1
+3 + 3 = 6 ( left: 6 5 12 )
+parent: 0
+value: impossible" color=yellow]
+	0 -> 1 [label=9 fontsize=32]
+	2 [label="2
+12 + 3 = 15 ( left: 15 3 5 )
+parent: 0
+value: impossible" color=yellow]
+	0 -> 2 [label=9 fontsize=32]
+	3 [label="3
+12 - 3 = 9 ( left: 9 3 5 )
+parent: 0
+value: impossible" color=yellow]
+	0 -> 3 [label=9 fontsize=32]
+	4 [label="4
+3 * 5 = 15 ( left: 3 15 12 )
+parent: 0
+value: impossible" color=yellow]
+	0 -> 4 [label=9 fontsize=32]
+	5 [label="5
+3 / 3 = 1 ( left: 1 5 12 )
+parent: 0
+value: sure" color=yellow]
+	0 -> 5 [label=0 fontsize=32]
+	6 [label="6
+1 + 5 = 6 ( left: 6 12 )
+parent: 5
+value: impossible" color=yellow]
+	5 -> 6 [label=9 fontsize=32]
+	7 [label="7
+12 - 5 = 7 ( left: 1 7 )
+parent: 5
+value: sure" color=yellow]
+	5 -> 7 [label=0 fontsize=32]
+	8 [label="8
+12 + 5 = 17 ( left: 1 17 )
+parent: 5
+value: sure" color=yellow]
+	5 -> 8 [label=0 fontsize=32]
+	9 [label="9
+5 * 12 = 60 ( left: 1 60 )
+parent: 5
+value: impossible" color=yellow]
+	5 -> 9 [label=9 fontsize=32]
+	10 [label="10
+1 - 5 = -4 ( left: -4 12 )
+parent: 5
+value: impossible" color=yellow]
+	5 -> 10 [label=9 fontsize=32]
+	11 [label="11
+1 + 7 = 8 ( left: 8 )
+parent: 7
+value: impossible" color=blue]
+	7 -> 11 [label=9 fontsize=32]
+	12 [label="12
+7 - 1 = 6 ( left: 6 )
+parent: 7
+value: impossible" color=blue]
+	7 -> 12 [label=9 fontsize=32]
+	13 [label="13
+1 * 7 = 7 ( left: 7 )
+parent: 7
+value: impossible" color=blue]
+	7 -> 13 [label=9 fontsize=32]
+	14 [label="14
+1 / 7 = 0.14285714285714285 ( left: 0.14285714285714285 )
+parent: 7
+value: impossible" color=yellow]
+	7 -> 14 [label=9 fontsize=32]
+	15 [label="15
+7 / 1 = 7.0000000000000015 ( left: 7.0000000000000015 )
+parent: 7
+value: impossible" color=yellow]
+	7 -> 15 [label=9 fontsize=32]
+	16 [label="16
+1 + 17 = 18 ( left: 18 )
+parent: 8
+value: impossible" color=yellow]
+	8 -> 16 [label=9 fontsize=32]
+	17 [label="17
+1 * 17 = 17 ( left: 17 )
+parent: 8
+value: impossible" color=yellow]
+	8 -> 17 [label=9 fontsize=32]
+	18 [label="18
+1 - 17 = -16 ( left: -16 )
+parent: 8
+value: impossible" color=yellow]
+	8 -> 18 [label=9 fontsize=32]
+	19 [label="19
+17 + 1 = 18 ( left: 18 )
+parent: 8
+value: impossible" color=yellow]
+	8 -> 19 [label=9 fontsize=32]
+	20 [label="20
+17 - 1 = 16 ( left: 16 )
+parent: 8
+value: impossible" color=yellow]
+	8 -> 20 [label=9 fontsize=32]
+}

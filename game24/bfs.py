@@ -11,6 +11,8 @@ def bfs(llm, nodes, graph=None):
     if graph == None:
         graph = tree_graph.graph()
 
+    print('here')
+
     for t in range(parameters.T):
         print(f't: {t}')
         record.Record_txt(parameters.file_name, f'\nstep {t + 1}\n\n')

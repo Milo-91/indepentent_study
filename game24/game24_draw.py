@@ -70,7 +70,7 @@ def dfs_Draw(file_name):
         if not os.path.exists(parameters.image_folder):
             os.makedirs(parameters.image_folder)
         output_path = os.path.join(parameters.image_folder, f'tree_{i}')
-        dot.render(output_path, view = True)
+        dot.render(output_path, view = False)
 
 if __name__ == '__main__':
     dfs_Draw(parameters.all_json_file_name.format(file_path = parameters.record_files_folder))

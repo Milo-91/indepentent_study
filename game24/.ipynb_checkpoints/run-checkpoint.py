@@ -4,6 +4,7 @@ import parameters
 import llm_function
 import game24_draw as draw
 from bfs import *
+from dfs import *
 import record_function as record
 import sympy
 import re
@@ -31,22 +32,32 @@ if __name__ == '__main__':
     
     print('llm ok')
     record.Init_record_file(parameters.all_json_file_name, '')
-    record.Init_record_file(parameters.acc_file_name, 'model: ' + parameters.huggingface_model_path + '\ntemperature: ' + str(parameters.generator_temperature) + ', ' + str(parameters.evaluator_temperature) + '\ndate: ' + str(datetime.date.today()) + '\nquestions index: ' + str(parameters.initial_idx) + '-' + str(parameters.initial_idx + parameters.question_sets) + '\n\n')
+    record.Init_record_file(parameters.acc_file_name, 'model: ' + parameters.huggingface_model_path + '\ntemperature: ' + str(parameters.generator_temperature) + ', ' + str(parameters.evaluator_temperature) + '\ndate: ' + str(datetime.date.today()) + '\nquestions index: ' + str(parameters.initial_idx) + '-' + str(parameters.initial_idx + parameters.question_sets) + '\nmethod: ' + parameters.method + '\n\n')
     parameters.reset_idx()
     for i in range(parameters.initial_idx, parameters.initial_idx + parameters.question_sets):
         #call llm
         start_time = time.time()
         nodes = [{'id': parameters.id, 'answer': data_game24['Puzzles'][i], 'value': None, 'parent_node': None, 'ancestor_value': None}]
         parameters.increase_id()
-        loc = bfs(llm, nodes)
+        if parameters.method == 'bfs':
+            record.Init_record_file(parameters.file_name, parameters.huggingface_model_path + '\ntemperature: ' + str(parameters.generator_temperature) + ', ' +  str(parameters.evaluator_temperature) + '\ndate: ' + str(datetime.date.today()) + '\n\n')
+            record.Init_record_file(parameters.json_file_name, '')
+            loc = bfs(llm, nodes)
+        elif parameters.method == 'dfs':
+            parameters.reset_t()
+            record.Init_record_file(parameters.file_name, parameters.huggingface_model_path + '\ntemperature: ' + str(parameters.generator_temperature) + ', ' +  str(parameters.evaluator_temperature) + '\ndate: ' + str(datetime.date.today()) + '\n\n')
+            record.Init_record_file(parameters.json_file_name, '')
+            loc = dfs(llm, nodes)
         end_time = time.time()
         # record
         loc['id'] = i
         loc['correct'] = Acc(loc['answer'], data_game24, i)
         loc['cost time'] = end_time - start_time
+        if parameters.model_import_method == 'openai':
+            loc['cost'] = llm_function.openai_usage()
         locs.append(loc)
         record.Record_json(parameters.json_file_name, loc)
-        print(loc)
+        # print(loc)
         record.Record_txt(parameters.acc_file_name, 'id ' + str(i) + ': ' + data_game24['Puzzles'][i] + ', ' + loc['answer'] + '\n')
         if loc['correct'] == True:
             acc_count += 1
@@ -56,4 +67,7 @@ if __name__ == '__main__':
     record.Record_json(parameters.all_json_file_name, locs)
     record.Record_txt(parameters.acc_file_name, '\nacc: ' + str(acc_count) + '\ntotal cost time: ' + str(total_cost_time))
     # draw
-    draw.Draw(parameters.all_json_file_name.format(file_path = parameters.record_files_folder))
+    if parameters.method == 'bfs':
+        draw.bfs_Draw(parameters.all_json_file_name.format(file_path = parameters.record_files_folder))
+    if parameters.method == 'dfs':
+        draw.dfs_Draw(parameters.all_json_file_name.format(file_path = parameters.record_files_folder))
