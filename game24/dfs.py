@@ -3,7 +3,7 @@ import parameters
 import record_function as record
 import datetime
 import tree_graph
-import bfs
+from bfs import *
 
 
 # global variables
@@ -15,7 +15,7 @@ d_thres = 0
 def Greedy(llm, node, graph):
     global d_thres, all_nodes
     parameters.set_b(initial_b = 1)
-    loc = bfs.bfs(llm, node, graph)
+    loc = bfs(llm, node, graph)
     best_node = loc['steps'][-1]['top_b'][0]
     max_value = loc['path_value']
     d_thres = 30 - loc['path_value']

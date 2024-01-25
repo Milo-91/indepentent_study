@@ -24,12 +24,12 @@ question_sets = 5
 initial_idx = 901
 b = 1
 T = 3
-k = 8
+k = 5
 
 id = 0
 idx = 0
 t = 0
-method = 'dfs'
+method = 'bfs'
 model_import_method = 'openai'
 with_lmformatenforcer = False
 
