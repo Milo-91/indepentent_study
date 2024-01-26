@@ -44,6 +44,7 @@ def dfs_Draw(file_name):
     for i in range(len(data)):
         dot = graphviz.Digraph(comment = 'tree_' + str(i), format = 'png')
         Final = data[i]['steps'][-1]['nodes']
+        print(data[i]['id'])
         selected_nodes = set()
         for step in data[i]['steps']:
             selected_nodes.add(step['selected_node']['id'])
@@ -57,6 +58,7 @@ def dfs_Draw(file_name):
                 back_nodes.add(step['selected_node']['id'])
         
         print(selected_nodes)
+        print(Final)
         for node in Final:
             if node['id'] in best_nodes:
                 dot.node(str(node['id']), str(node['id']) + '\n' + str(node['answer']) + '\nparent: ' + str(node['parent_node']) + '\nvalue: ' + str(node['value']), color = 'blue')

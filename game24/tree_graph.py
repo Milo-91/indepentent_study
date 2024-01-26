@@ -7,6 +7,7 @@ class graph():
     def __init__(self):
         self.total_element = parameters.k**3 + parameters.k**2 + parameters.k + 1
         self.tree_head = self.init_tree_head()
+        self.visited = [0] * (self.total_element)
     
     def init_tree_head(self):
         # {node: None, prev_node: self, next_node: self}
@@ -41,6 +42,11 @@ class graph():
             count += 1
             print('')
             record.Record_txt(parameters.file_name, '\n\n')
+
+    def visit_nodes(self, nodes):
+        for node in nodes:
+            id = node['id']
+            self.visited[id] = 1
 
 
 if __name__ == '__main__':
