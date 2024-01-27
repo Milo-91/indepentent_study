@@ -11,7 +11,7 @@ import re
 import time
 import model_download
 import datetime
-
+from dfs import all_nodes
 
 def Acc(answer, data, puzzles_id):
     numbers = re.findall(r'\d+', answer)
@@ -57,12 +57,15 @@ if __name__ == '__main__':
             record.Init_record_file(parameters.file_name, parameters.huggingface_model_path + '\ntemperature: ' + str(parameters.generator_temperature) + ', ' +  str(parameters.evaluator_temperature) + '\ndate: ' + str(datetime.date.today()) + '\n\n')
             record.Init_record_file(parameters.json_file_name, '')
             graph = tree_graph.graph()
-            level_nodes = [[]] * (parameters.T + 1)
+            level_nodes = [[] for _ in range(parameters.T + 1)]
             # Greedy to define d_thres
             print(level_nodes)
             best_node, max_value = Greedy(llm, nodes, graph, level_nodes=level_nodes)
+            from dfs import all_nodes
+            print(all_nodes)
             print(level_nodes)
-            loc = ksd(llm, nodes, max_value, best_node, d_thres, level_nodes, graph)
+            record.Record_txt(parameters.file_name, '\nlevel_nodes:\n' + str(level_nodes.copy()) + '\n\n')
+            loc = ksd(llm, all_nodes, max_value, best_node, level_nodes, graph)
         end_time = time.time()
         # record
         loc['id'] = i

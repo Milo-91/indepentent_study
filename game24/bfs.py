@@ -23,9 +23,12 @@ def bfs(llm, nodes, graph=None, level_nodes=None):
         # sort nodes
         new_nodes = sorted(new_nodes, key = game24.Sorted_by_value, reverse = True)
         if level_nodes != None:
-            print(level_nodes)
+            print('level_nodes\n' + str(level_nodes))
             print(t)
-            level_nodes[t].extend(new_nodes)
+            record.Record_txt(parameters.file_name, '\nnew_node:\n' + '\n'.join(list(map(str, new_nodes.copy()))) + '\n\n')
+            (level_nodes[t]).extend(new_nodes.copy())
+            record.Record_txt(parameters.file_name, '\n(' + str(t) + ')level_nodes:\n' + '\n'.join(list(map(str, level_nodes[t].copy()))) + '\n\n')
+            record.Record_txt(parameters.file_name, '\nlevel_nodes:\n' + str(level_nodes.copy()) + '\n\n')
         record.Record_txt(parameters.file_name, '\nnode:\n' + str(new_nodes) + '\n' + str(len(new_nodes)) + '\n\n')
         # choose top b as the next input nodes
         top_b = new_nodes[:parameters.b]
@@ -43,6 +46,7 @@ def bfs(llm, nodes, graph=None, level_nodes=None):
 
     graph.show_in_linked_list()
     best = top_b[0]
+    graph.visit_nodes([best])
     print(best)
     # calculate best path value
     path_value = game24.Value_mapping(best['value']) + best['ancestor_value']
@@ -60,18 +64,21 @@ def bfs(llm, nodes, graph=None, level_nodes=None):
     loc = {'id': None, 'steps': steps, 'answer': answer, 'path_value': path_value, 'correct': None}
     return loc
 
-def ksd(llm, nodes, max_value, best_node, d_thres, level_nodes, graph=None):
+def ksd(llm, nodes, max_value, best_node, level_nodes, graph=None):
     steps = list()
-    top_b = nodes.copy()
     if graph == None:
         graph = tree_graph.graph()
+    root_node = nodes[0].copy()
+    d_thres = 30 - max_value
 
+    print('b = ' + str(parameters.b))
     for _ in range(parameters.b):
         distance = 0
+        top_b = [root_node]
         for t in range(parameters.T):
             if distance > d_thres:
                 # prune
-                record.Record_txt(parameters.file_name, '\n(prune)distance: ' + str(distance) + 'd_thres: ' + str(d_thres) + '\n\n')
+                record.Record_txt(parameters.file_name, '\n(prune)distance: ' + str(distance) + ', d_thres: ' + str(d_thres) + '\n\n')
                 break
             print(top_b)
             graph.visit_nodes(top_b)
@@ -87,13 +94,14 @@ def ksd(llm, nodes, max_value, best_node, d_thres, level_nodes, graph=None):
                 # record
                 record.Record_txt(parameters.file_name, '\ncreate new nodes: \n' + '\n'.join(list(map(str, new_nodes.copy()))) + '\n\n')
                 # sort nodes
-                level_nodes[t].extend(new_nodes)
+                level_nodes[t].extend(new_nodes.copy())
                 level_nodes[t] = sorted(level_nodes[t], key = game24.Sorted_by_value, reverse = True)
 
                 nodes.extend(new_nodes)
                 # add new_nodes in graph
                 graph.add_nodes(new_nodes)
             record.Record_txt(parameters.file_name, '\n(' + str(t) + ')level nodes: \n' + '\n'.join(list(map(str, level_nodes[t].copy()))) + '\n\n')
+            record.Record_txt(parameters.file_name, '\nlevel_nodes:\n' + str(level_nodes.copy()) + '\n\n')
             count = 0
             print(graph.visited)
             print(level_nodes[t][count]['id'])
@@ -120,6 +128,7 @@ def ksd(llm, nodes, max_value, best_node, d_thres, level_nodes, graph=None):
 
     graph.show_in_linked_list()
     best = best_node
+    graph.visit_nodes([best])
     print(best)
     # calculate best path value
     path_value = max_value

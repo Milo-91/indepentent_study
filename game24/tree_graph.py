@@ -46,6 +46,7 @@ class graph():
     def visit_nodes(self, nodes):
         for node in nodes:
             id = node['id']
+            print('visited id: ' + str(id))
             self.visited[id] = 1
 
 
