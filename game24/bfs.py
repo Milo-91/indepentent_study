@@ -51,6 +51,7 @@ def bfs(llm, nodes, graph=None, level_nodes=None):
     # calculate best path value
     path_value = game24.Value_mapping(best['value']) + best['ancestor_value']
     # generate a final answer
+    loc = {'id': None, 'steps': steps, 'answer': None, 'path_value': path_value, 'correct': None, 'best_node': best}
     path = list()
     while best['parent_node'] != None:
         path.append(best['answer'])
@@ -61,18 +62,19 @@ def bfs(llm, nodes, graph=None, level_nodes=None):
     answer = game24.Final_Generator(llm, path)
     record.Record_txt(parameters.file_name, '\nAnswer: \n' + answer + '\n\n')
 
-    loc = {'id': None, 'steps': steps, 'answer': answer, 'path_value': path_value, 'correct': None}
+    loc['answer'] = answer
     return loc
 
-def ksd(llm, nodes, max_value, best_node, level_nodes, graph=None):
-    steps = list()
+def ksd(llm, nodes, max_value, best_node, Greedy_steps, level_nodes, graph=None):
+    steps = Greedy_steps.copy()
     if graph == None:
         graph = tree_graph.graph()
     root_node = nodes[0].copy()
     d_thres = 30 - max_value
 
     print('b = ' + str(parameters.b))
-    for _ in range(parameters.b):
+    record.Record_txt(parameters.file_name, '\nb = ' + str(parameters.b) + '\n\n')
+    for _ in range(parameters.b - 1):
         distance = 0
         top_b = [root_node]
         for t in range(parameters.T):
@@ -133,6 +135,7 @@ def ksd(llm, nodes, max_value, best_node, level_nodes, graph=None):
     # calculate best path value
     path_value = max_value
     # generate a final answer
+    loc = {'id': None, 'steps': steps, 'answer': None, 'path_value': path_value, 'correct': None, 'best_node': best}
     path = list()
     while best['parent_node'] != None:
         path.append(best['answer'])
@@ -143,6 +146,6 @@ def ksd(llm, nodes, max_value, best_node, level_nodes, graph=None):
     answer = game24.Final_Generator(llm, path)
     record.Record_txt(parameters.file_name, '\nAnswer: \n' + answer + '\n\n')
 
-    loc = {'id': None, 'steps': steps, 'answer': answer, 'path_value': path_value, 'correct': None}
+    loc['answer'] = answer
     return loc
 

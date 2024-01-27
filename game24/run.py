@@ -60,12 +60,14 @@ if __name__ == '__main__':
             level_nodes = [[] for _ in range(parameters.T + 1)]
             # Greedy to define d_thres
             print(level_nodes)
+            temp_b = parameters.b # only run b times in ksd
             best_node, max_value = Greedy(llm, nodes, graph, level_nodes=level_nodes)
-            from dfs import all_nodes
+            from dfs import all_nodes, steps
             print(all_nodes)
             print(level_nodes)
             record.Record_txt(parameters.file_name, '\nlevel_nodes:\n' + str(level_nodes.copy()) + '\n\n')
-            loc = ksd(llm, all_nodes, max_value, best_node, level_nodes, graph)
+            parameters.set_b(initial_b = temp_b)
+            loc = ksd(llm, all_nodes, max_value, best_node, steps, level_nodes, graph)
         end_time = time.time()
         # record
         loc['id'] = i
@@ -76,7 +78,7 @@ if __name__ == '__main__':
         locs.append(loc)
         record.Record_json(parameters.json_file_name, loc)
         # print(loc)
-        record.Record_txt(parameters.acc_file_name, 'id ' + str(i) + ': ' + data_game24['Puzzles'][i] + ', ' + loc['answer'] + '\n')
+        record.Record_txt(parameters.acc_file_name, 'id ' + str(i) + ': ' + data_game24['Puzzles'][i] + ', ' + loc['answer'] + (' o' if loc['correct'] else '') + (' (prune)' if parameters.method == 'dfs+ksd' and len(loc['steps'][-1]['nodes']) < (7 * parameters.k + 1) else '') + '\n')
         if loc['correct'] == True:
             acc_count += 1
         total_cost_time += loc['cost time']

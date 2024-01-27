@@ -12,11 +12,10 @@ def bfs_Draw(file_name):
     for i in range(len(data)):
         dot = graphviz.Digraph(comment = 'tree_' + str(i), format = 'png')
         Final = data[i]['steps'][-1]['nodes']
-        top_b = data[i]['steps'][-1]['top_b']
+        answer_path = [data[i]['best_node']]
         for step in data[i]['steps']:
             Nodes = step['nodes']
         
-        answer_path = [top_b[0]]
         while answer_path[-1]['parent_node'] != None:
             answer_path.append(Final[answer_path[-1]['parent_node']])
         
@@ -36,6 +35,7 @@ def bfs_Draw(file_name):
             os.makedirs(parameters.image_folder)
         output_path = os.path.join(parameters.image_folder, f'tree_{i}')
         dot.render(output_path, view = False)
+
 
 def dfs_Draw(file_name):
     with open(file_name, 'r') as file:
