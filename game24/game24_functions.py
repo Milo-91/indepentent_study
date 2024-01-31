@@ -147,8 +147,9 @@ def Final_Generator(llm, path):
                 left = match.group(3)
         else:
             print("cant match path format")
-            record.Record_txt(parameters.file_name, '\nwrong path format\n' + str(path) + '\n\n')
+            # record.Record_txt(parameters.file_name, '\nwrong path format\n' + str(path) + '\n\n')
             break
+
         left = left.replace(y, x, 1)
         print(sorted(re.findall(r'-?\d+', left), key = lambda x: int(x)))
         print(sorted(re.findall(r'-?\d+', check),  key = lambda x: int(x)))
@@ -160,7 +161,8 @@ def Final_Generator(llm, path):
             print(f'check: {check}')
             record.Record_txt(parameters.file_name, '\nwrong format\n' + left + '\n' + check + '\n\n')
             break
-    record.Record_txt(parameters.file_name, '\n' + str(path) + '\n' + left + '\n\n')
+    if path != None and left != None:
+        record.Record_txt(parameters.file_name, '\n' + str(path) + '\n' + left + '\n\n')
     return left
 
 

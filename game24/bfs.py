@@ -144,7 +144,8 @@ def ksd(llm, nodes, max_value, best_node, Greedy_steps, level_nodes, graph=None)
     print('\npath: ' + str(path) + '\n')
     record.Record_txt(parameters.file_name, '\npath: ' + str(path) + '\n\n')
     answer = game24.Final_Generator(llm, path)
-    record.Record_txt(parameters.file_name, '\nAnswer: \n' + answer + '\n\n')
+    if answer != None:
+        record.Record_txt(parameters.file_name, '\nAnswer: \n' + answer + '\n\n')
 
     loc['answer'] = answer
     return loc

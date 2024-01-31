@@ -115,7 +115,8 @@ def dfs(llm, node, sd = False):
     print('\npath: ' + str(path) + '\n')
     record.Record_txt(parameters.file_name, '\npath: ' + str(path) + '\n\n')
     answer = game24.Final_Generator(llm, path)
-    record.Record_txt(parameters.file_name, '\nAnswer: \n' + answer + '\n\n')
+    if answer != None:
+        record.Record_txt(parameters.file_name, '\nAnswer: \n' + answer + '\n\n')
     
     loc = {'id': None, 'steps': steps, 'answer': answer, 'correct': None}
     # print(f'loc: {loc}')

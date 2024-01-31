@@ -71,7 +71,7 @@ if __name__ == '__main__':
         end_time = time.time()
         # record
         loc['id'] = i
-        loc['correct'] = Acc(loc['answer'], data_game24, i)
+        loc['correct'] = Acc(loc['answer'], data_game24, i) if loc['answer'] != None else False
         loc['cost time'] = end_time - start_time
         if parameters.model_import_method == 'openai':
             loc['cost'] = llm_function.openai_usage()
