@@ -1,0 +1,146 @@
+// tree_63
+digraph {
+	0 [label="0
+1 7 10 13
+parent: None" color=red]
+	1 [label="1
+1 + 7 = 8 ( left: 8 10 13 )
+parent: 0"]
+	0 -> 1
+	2 [label="2
+10 / 2 = 5 ( left: 1 7 13 )
+parent: 0"]
+	0 -> 2
+	3 [label="3
+13 - 7 = 6 ( left: 1 6 10 )
+parent: 0"]
+	0 -> 3
+	4 [label="4
+10 - 13 = -3 ( left: 1 7 -3 )
+parent: 0" color=red]
+	0 -> 4
+	5 [label="5
+10 + 7 = 17 ( left: 1 17 13 )
+parent: 0"]
+	0 -> 5
+	6 [label="6
+1 + 7 = 8 ( left: 8 -3 )
+parent: 4" color=red]
+	4 -> 6
+	7 [label="7
+7 - 1 = 6 ( left: 6 -3 )
+parent: 4"]
+	4 -> 7
+	8 [label="8
+-3 * 1 = -3 ( left: -3 7 )
+parent: 4"]
+	4 -> 8
+	9 [label="9
+-3 - 1 = -4 ( left: -4 7 )
+parent: 4"]
+	4 -> 9
+	10 [label="10
+-3 + 7 = 4 ( left: 1 4 )
+parent: 4"]
+	4 -> 10
+	11 [label="11
+8 + 3 = 11 ( left: -11 )
+parent: 6" color=red]
+	6 -> 11
+	12 [label="12
+8 / 3 = 2 ( left: -2 )
+parent: 6"]
+	6 -> 12
+	13 [label="13
+-3 + 8 = 5 ( left: 5 )
+parent: 6"]
+	6 -> 13
+	14 [label="14
+-3 * 8 = -24 ( left: -24 )
+parent: 6"]
+	6 -> 14
+	15 [label="15
+-3 - 8 = -11 ( left: -11 )
+parent: 6"]
+	6 -> 15
+	16 [label="16
+8 + 10 = 18 ( left: 18 13 )
+parent: 1"]
+	1 -> 16
+	17 [label="17
+13 - 8 = 5 ( left: 5 10 )
+parent: 1"]
+	1 -> 17
+	18 [label="18
+10 / 2 = 5 ( left: 8 13 )
+parent: 1"]
+	1 -> 18
+	19 [label="19
+13 + 10 = 23 ( left: 8 23 )
+parent: 1"]
+	1 -> 19
+	20 [label="20
+8 * 13 = 104 ( left: 10 104 )
+parent: 1"]
+	1 -> 20
+	21 [label="21
+6 + 3 = 9 ( left: -9 )
+parent: 7"]
+	7 -> 21
+	22 [label="22
+6 * 3 = 18 ( left: -18 )
+parent: 7"]
+	7 -> 22
+	23 [label="23
+6 - 3 = 3 ( left: -3 )
+parent: 7"]
+	7 -> 23
+	24 [label="24
+6 / 3 = 2 ( left: -2 )
+parent: 7"]
+	7 -> 24
+	25 [label="25
+3 + 3 = 6 ( left: 6 - )
+parent: 7"]
+	7 -> 25
+	26 [label="26
+1 + 7 = 8 ( left: 8 13 )
+parent: 2"]
+	2 -> 26
+	27 [label="27
+13 - 7 = 6 ( left: 1 6 )
+parent: 2"]
+	2 -> 27
+	28 [label="28
+13 + 1 = 14 ( left: 14 7 )
+parent: 2"]
+	2 -> 28
+	29 [label="29
+7 * 1 = 7 ( left: 7 13 )
+parent: 2"]
+	2 -> 29
+	30 [label="30
+13 - 1 = 12 ( left: 12 7 )
+parent: 2"]
+	2 -> 30
+	31 [label="31
+-3 - 7 = -10 ( left: -10 )
+parent: 8"]
+	8 -> 31
+	32 [label="32
+-3 + 7 = 4 ( left: 4 )
+parent: 8"]
+	8 -> 32
+	33 [label="33
+-3 * 7 = -21 ( left: -21 )
+parent: 8"]
+	8 -> 33
+	34 [label="34
+-3 / 7 = -0.42857142857142855 ( left: -0.42857142857142855 )
+parent: 8"]
+	8 -> 34
+	35 [label="35
+-3 - 7 = -10 ( left: -10 )
+parent: 8"]
+	8 -> 35
+}

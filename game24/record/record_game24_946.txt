@@ -1,0 +1,920 @@
+TheBloke/OpenHermes-2.5-Mistral-7B-GPTQ
+temperature: 0.5, 0
+date: 2024-02-07
+
+
+step 1
+
+
+Generator response:
+1 + 4 = 5
+1 + 11 = 12
+4 + 11 = 15
+4 / 1 = 4
+11 - 1 = 10
+
+
+Generated answers:
+['1 + 4 = 5 ( left: 5 4 11 )', '1 + 11 = 12 ( left: 4 4 12 )', '4 + 11 = 15 ( left: 1 4 15 )', '4 / 1 = 4 ( left: 4 4 11 )', '11 - 1 = 10 ( left: 10 4 4 )']
+
+
+Analysis:
+5 + 4 + 11 = 20
+5 * 4 = 20
+5 - 4 = 1
+(11 - 5) * 4 = 6 * 4 = 24
+Output: sure (5 4 11)
+
+
+Analysis:
+4 + 4 + 12 = 20
+4 * 12 = 48
+4 - 12 = -8
+Output: impossible (4 4 12)
+
+
+Analysis:
+1 + 4 + 15 = 20
+1 * 4 * 15 = 60
+Output: impossible (1 4 15)
+
+
+Analysis:
+4 + 4 + 11 = 19
+4 * 11 = 44
+4 / 11 = 0.36
+Output: impossible (4 4 11)
+
+
+Analysis:
+10 + 4 + 4 = 18
+10 * 4 = 40
+10 / 4 = 2.5
+Output: impossible (10 4 4)
+
+
+new_node:
+{'id': 1, 'answer': '1 + 4 = 5 ( left: 5 4 11 )', 'value': 'sure', 'parent_node': 0, 'ancestor_value': 0.0}
+{'id': 2, 'answer': '1 + 11 = 12 ( left: 4 4 12 )', 'value': 'impossible', 'parent_node': 0, 'ancestor_value': 0.0}
+{'id': 3, 'answer': '4 + 11 = 15 ( left: 1 4 15 )', 'value': 'impossible', 'parent_node': 0, 'ancestor_value': 0.0}
+{'id': 4, 'answer': '4 / 1 = 4 ( left: 4 4 11 )', 'value': 'impossible', 'parent_node': 0, 'ancestor_value': 0.0}
+{'id': 5, 'answer': '11 - 1 = 10 ( left: 10 4 4 )', 'value': 'impossible', 'parent_node': 0, 'ancestor_value': 0.0}
+
+
+(0)level_nodes:
+{'id': 1, 'answer': '1 + 4 = 5 ( left: 5 4 11 )', 'value': 'sure', 'parent_node': 0, 'ancestor_value': 0.0}
+{'id': 2, 'answer': '1 + 11 = 12 ( left: 4 4 12 )', 'value': 'impossible', 'parent_node': 0, 'ancestor_value': 0.0}
+{'id': 3, 'answer': '4 + 11 = 15 ( left: 1 4 15 )', 'value': 'impossible', 'parent_node': 0, 'ancestor_value': 0.0}
+{'id': 4, 'answer': '4 / 1 = 4 ( left: 4 4 11 )', 'value': 'impossible', 'parent_node': 0, 'ancestor_value': 0.0}
+{'id': 5, 'answer': '11 - 1 = 10 ( left: 10 4 4 )', 'value': 'impossible', 'parent_node': 0, 'ancestor_value': 0.0}
+
+
+level_nodes:
+[[{'id': 1, 'answer': '1 + 4 = 5 ( left: 5 4 11 )', 'value': 'sure', 'parent_node': 0, 'ancestor_value': 0.0}, {'id': 2, 'answer': '1 + 11 = 12 ( left: 4 4 12 )', 'value': 'impossible', 'parent_node': 0, 'ancestor_value': 0.0}, {'id': 3, 'answer': '4 + 11 = 15 ( left: 1 4 15 )', 'value': 'impossible', 'parent_node': 0, 'ancestor_value': 0.0}, {'id': 4, 'answer': '4 / 1 = 4 ( left: 4 4 11 )', 'value': 'impossible', 'parent_node': 0, 'ancestor_value': 0.0}, {'id': 5, 'answer': '11 - 1 = 10 ( left: 10 4 4 )', 'value': 'impossible', 'parent_node': 0, 'ancestor_value': 0.0}], [], [], []]
+
+
+node:
+[{'id': 1, 'answer': '1 + 4 = 5 ( left: 5 4 11 )', 'value': 'sure', 'parent_node': 0, 'ancestor_value': 0.0}, {'id': 2, 'answer': '1 + 11 = 12 ( left: 4 4 12 )', 'value': 'impossible', 'parent_node': 0, 'ancestor_value': 0.0}, {'id': 3, 'answer': '4 + 11 = 15 ( left: 1 4 15 )', 'value': 'impossible', 'parent_node': 0, 'ancestor_value': 0.0}, {'id': 4, 'answer': '4 / 1 = 4 ( left: 4 4 11 )', 'value': 'impossible', 'parent_node': 0, 'ancestor_value': 0.0}, {'id': 5, 'answer': '11 - 1 = 10 ( left: 10 4 4 )', 'value': 'impossible', 'parent_node': 0, 'ancestor_value': 0.0}]
+5
+
+
+step 2
+
+
+Generator response:
+5 + 4 = 9
+4 * 5 = 20
+11 + 5 = 16
+11 - 5 = 6
+4 / 5 = 0.8000000000000001
+
+
+Generated answers:
+['5 + 4 = 9 ( left: 9 11 )', '4 * 5 = 20 ( left: 20 11 )', '11 + 5 = 16 ( left: 16 4 )', '11 - 5 = 6 ( left: 6 4 )', '4 / 5 = 0.8000000000000001 ( left: 0.8000000000000001 11 )']
+
+
+Analysis:
+9 + 11 = 20
+9 * 11 = 99
+Output: impossible (9 11)
+
+
+Analysis:
+20 + 11 = 31
+20 - 11 = 9
+20 * 11 = 220
+20 / 11 = 1.818
+Output: impossible (20 11)
+
+
+Analysis:
+16 + 4 = 20
+16 - 4 = 12
+16 * 4 = 64
+16 / 4 = 4
+Output: impossible (16 4)
+
+
+Analysis:
+6 + 4 = 10
+6 * 4 = 24
+Output: sure (6 4)
+
+
+Analysis:
+0.8000000000000001 + 11 = 11.800000000000001
+Output: impossible (0.8000000000000001 11)
+
+
+new_node:
+{'id': 9, 'answer': '11 - 5 = 6 ( left: 6 4 )', 'value': 'sure', 'parent_node': 1, 'ancestor_value': 10.0}
+{'id': 6, 'answer': '5 + 4 = 9 ( left: 9 11 )', 'value': 'impossible', 'parent_node': 1, 'ancestor_value': 10.0}
+{'id': 7, 'answer': '4 * 5 = 20 ( left: 20 11 )', 'value': 'impossible', 'parent_node': 1, 'ancestor_value': 10.0}
+{'id': 8, 'answer': '11 + 5 = 16 ( left: 16 4 )', 'value': 'impossible', 'parent_node': 1, 'ancestor_value': 10.0}
+{'id': 10, 'answer': '4 / 5 = 0.8000000000000001 ( left: 0.8000000000000001 11 )', 'value': 'impossible', 'parent_node': 1, 'ancestor_value': 10.0}
+
+
+(1)level_nodes:
+{'id': 9, 'answer': '11 - 5 = 6 ( left: 6 4 )', 'value': 'sure', 'parent_node': 1, 'ancestor_value': 10.0}
+{'id': 6, 'answer': '5 + 4 = 9 ( left: 9 11 )', 'value': 'impossible', 'parent_node': 1, 'ancestor_value': 10.0}
+{'id': 7, 'answer': '4 * 5 = 20 ( left: 20 11 )', 'value': 'impossible', 'parent_node': 1, 'ancestor_value': 10.0}
+{'id': 8, 'answer': '11 + 5 = 16 ( left: 16 4 )', 'value': 'impossible', 'parent_node': 1, 'ancestor_value': 10.0}
+{'id': 10, 'answer': '4 / 5 = 0.8000000000000001 ( left: 0.8000000000000001 11 )', 'value': 'impossible', 'parent_node': 1, 'ancestor_value': 10.0}
+
+
+level_nodes:
+[[{'id': 1, 'answer': '1 + 4 = 5 ( left: 5 4 11 )', 'value': 'sure', 'parent_node': 0, 'ancestor_value': 0.0}, {'id': 2, 'answer': '1 + 11 = 12 ( left: 4 4 12 )', 'value': 'impossible', 'parent_node': 0, 'ancestor_value': 0.0}, {'id': 3, 'answer': '4 + 11 = 15 ( left: 1 4 15 )', 'value': 'impossible', 'parent_node': 0, 'ancestor_value': 0.0}, {'id': 4, 'answer': '4 / 1 = 4 ( left: 4 4 11 )', 'value': 'impossible', 'parent_node': 0, 'ancestor_value': 0.0}, {'id': 5, 'answer': '11 - 1 = 10 ( left: 10 4 4 )', 'value': 'impossible', 'parent_node': 0, 'ancestor_value': 0.0}], [{'id': 9, 'answer': '11 - 5 = 6 ( left: 6 4 )', 'value': 'sure', 'parent_node': 1, 'ancestor_value': 10.0}, {'id': 6, 'answer': '5 + 4 = 9 ( left: 9 11 )', 'value': 'impossible', 'parent_node': 1, 'ancestor_value': 10.0}, {'id': 7, 'answer': '4 * 5 = 20 ( left: 20 11 )', 'value': 'impossible', 'parent_node': 1, 'ancestor_value': 10.0}, {'id': 8, 'answer': '11 + 5 = 16 ( left: 16 4 )', 'value': 'impossible', 'parent_node': 1, 'ancestor_value': 10.0}, {'id': 10, 'answer': '4 / 5 = 0.8000000000000001 ( left: 0.8000000000000001 11 )', 'value': 'impossible', 'parent_node': 1, 'ancestor_value': 10.0}], [], []]
+
+
+node:
+[{'id': 9, 'answer': '11 - 5 = 6 ( left: 6 4 )', 'value': 'sure', 'parent_node': 1, 'ancestor_value': 10.0}, {'id': 6, 'answer': '5 + 4 = 9 ( left: 9 11 )', 'value': 'impossible', 'parent_node': 1, 'ancestor_value': 10.0}, {'id': 7, 'answer': '4 * 5 = 20 ( left: 20 11 )', 'value': 'impossible', 'parent_node': 1, 'ancestor_value': 10.0}, {'id': 8, 'answer': '11 + 5 = 16 ( left: 16 4 )', 'value': 'impossible', 'parent_node': 1, 'ancestor_value': 10.0}, {'id': 10, 'answer': '4 / 5 = 0.8000000000000001 ( left: 0.8000000000000001 11 )', 'value': 'impossible', 'parent_node': 1, 'ancestor_value': 10.0}]
+5
+
+
+step 3
+
+
+Generator response:
+6 + 4 = 10
+4 * 6 = 24
+6 - 4 = 2
+6 / 4 = 1.5
+4 / 6 = 0.6666666666666666
+
+
+Generated answers:
+['6 + 4 = 10 ( left: 10 )', '4 * 6 = 24 ( left: 24 )', '6 - 4 = 2 ( left: 2 )', '6 / 4 = 1.5 ( left: 1.5 )', '4 / 6 = 0.6666666666666666 ( left: 0.6666666666666666 )']
+
+
+Analysis:
+10 is not equal to 24
+Output: impossible (10)
+
+
+Analysis:
+24 is equal to 24
+Output: sure (24)
+
+
+Analysis:
+2 is not equal to 24
+Output: impossible (2)
+
+
+Analysis:
+1.5 is not equal to 24
+Output: impossible (1.5)
+
+
+Analysis:
+0.6666666666666666 is not equal to 24
+Output: impossible (0.6666666666666666)
+
+
+new_node:
+{'id': 12, 'answer': '4 * 6 = 24 ( left: 24 )', 'value': 'sure', 'parent_node': 9, 'ancestor_value': 20.0}
+{'id': 11, 'answer': '6 + 4 = 10 ( left: 10 )', 'value': 'impossible', 'parent_node': 9, 'ancestor_value': 20.0}
+{'id': 13, 'answer': '6 - 4 = 2 ( left: 2 )', 'value': 'impossible', 'parent_node': 9, 'ancestor_value': 20.0}
+{'id': 14, 'answer': '6 / 4 = 1.5 ( left: 1.5 )', 'value': 'impossible', 'parent_node': 9, 'ancestor_value': 20.0}
+{'id': 15, 'answer': '4 / 6 = 0.6666666666666666 ( left: 0.6666666666666666 )', 'value': 'impossible', 'parent_node': 9, 'ancestor_value': 20.0}
+
+
+(2)level_nodes:
+{'id': 12, 'answer': '4 * 6 = 24 ( left: 24 )', 'value': 'sure', 'parent_node': 9, 'ancestor_value': 20.0}
+{'id': 11, 'answer': '6 + 4 = 10 ( left: 10 )', 'value': 'impossible', 'parent_node': 9, 'ancestor_value': 20.0}
+{'id': 13, 'answer': '6 - 4 = 2 ( left: 2 )', 'value': 'impossible', 'parent_node': 9, 'ancestor_value': 20.0}
+{'id': 14, 'answer': '6 / 4 = 1.5 ( left: 1.5 )', 'value': 'impossible', 'parent_node': 9, 'ancestor_value': 20.0}
+{'id': 15, 'answer': '4 / 6 = 0.6666666666666666 ( left: 0.6666666666666666 )', 'value': 'impossible', 'parent_node': 9, 'ancestor_value': 20.0}
+
+
+level_nodes:
+[[{'id': 1, 'answer': '1 + 4 = 5 ( left: 5 4 11 )', 'value': 'sure', 'parent_node': 0, 'ancestor_value': 0.0}, {'id': 2, 'answer': '1 + 11 = 12 ( left: 4 4 12 )', 'value': 'impossible', 'parent_node': 0, 'ancestor_value': 0.0}, {'id': 3, 'answer': '4 + 11 = 15 ( left: 1 4 15 )', 'value': 'impossible', 'parent_node': 0, 'ancestor_value': 0.0}, {'id': 4, 'answer': '4 / 1 = 4 ( left: 4 4 11 )', 'value': 'impossible', 'parent_node': 0, 'ancestor_value': 0.0}, {'id': 5, 'answer': '11 - 1 = 10 ( left: 10 4 4 )', 'value': 'impossible', 'parent_node': 0, 'ancestor_value': 0.0}], [{'id': 9, 'answer': '11 - 5 = 6 ( left: 6 4 )', 'value': 'sure', 'parent_node': 1, 'ancestor_value': 10.0}, {'id': 6, 'answer': '5 + 4 = 9 ( left: 9 11 )', 'value': 'impossible', 'parent_node': 1, 'ancestor_value': 10.0}, {'id': 7, 'answer': '4 * 5 = 20 ( left: 20 11 )', 'value': 'impossible', 'parent_node': 1, 'ancestor_value': 10.0}, {'id': 8, 'answer': '11 + 5 = 16 ( left: 16 4 )', 'value': 'impossible', 'parent_node': 1, 'ancestor_value': 10.0}, {'id': 10, 'answer': '4 / 5 = 0.8000000000000001 ( left: 0.8000000000000001 11 )', 'value': 'impossible', 'parent_node': 1, 'ancestor_value': 10.0}], [{'id': 12, 'answer': '4 * 6 = 24 ( left: 24 )', 'value': 'sure', 'parent_node': 9, 'ancestor_value': 20.0}, {'id': 11, 'answer': '6 + 4 = 10 ( left: 10 )', 'value': 'impossible', 'parent_node': 9, 'ancestor_value': 20.0}, {'id': 13, 'answer': '6 - 4 = 2 ( left: 2 )', 'value': 'impossible', 'parent_node': 9, 'ancestor_value': 20.0}, {'id': 14, 'answer': '6 / 4 = 1.5 ( left: 1.5 )', 'value': 'impossible', 'parent_node': 9, 'ancestor_value': 20.0}, {'id': 15, 'answer': '4 / 6 = 0.6666666666666666 ( left: 0.6666666666666666 )', 'value': 'impossible', 'parent_node': 9, 'ancestor_value': 20.0}], []]
+
+
+node:
+[{'id': 12, 'answer': '4 * 6 = 24 ( left: 24 )', 'value': 'sure', 'parent_node': 9, 'ancestor_value': 20.0}, {'id': 11, 'answer': '6 + 4 = 10 ( left: 10 )', 'value': 'impossible', 'parent_node': 9, 'ancestor_value': 20.0}, {'id': 13, 'answer': '6 - 4 = 2 ( left: 2 )', 'value': 'impossible', 'parent_node': 9, 'ancestor_value': 20.0}, {'id': 14, 'answer': '6 / 4 = 1.5 ( left: 1.5 )', 'value': 'impossible', 'parent_node': 9, 'ancestor_value': 20.0}, {'id': 15, 'answer': '4 / 6 = 0.6666666666666666 ( left: 0.6666666666666666 )', 'value': 'impossible', 'parent_node': 9, 'ancestor_value': 20.0}]
+5
+
+
+linked list:
+000 -> 1 -> 2 -> 3 -> 4 -> 5
+
+001 -> 9 -> 6 -> 7 -> 8 -> 10
+
+002
+
+003
+
+004
+
+005
+
+006
+
+007
+
+008
+
+009 -> 12 -> 11 -> 13 -> 14 -> 15
+
+010
+
+011
+
+012
+
+013
+
+014
+
+015
+
+016
+
+017
+
+018
+
+019
+
+020
+
+021
+
+022
+
+023
+
+024
+
+025
+
+026
+
+027
+
+028
+
+029
+
+030
+
+031
+
+032
+
+033
+
+034
+
+035
+
+036
+
+037
+
+038
+
+039
+
+040
+
+041
+
+042
+
+043
+
+044
+
+045
+
+046
+
+047
+
+048
+
+049
+
+050
+
+051
+
+052
+
+053
+
+054
+
+055
+
+056
+
+057
+
+058
+
+059
+
+060
+
+061
+
+062
+
+063
+
+064
+
+065
+
+066
+
+067
+
+068
+
+069
+
+070
+
+071
+
+072
+
+073
+
+074
+
+075
+
+076
+
+077
+
+078
+
+079
+
+080
+
+081
+
+082
+
+083
+
+084
+
+085
+
+086
+
+087
+
+088
+
+089
+
+090
+
+091
+
+092
+
+093
+
+094
+
+095
+
+096
+
+097
+
+098
+
+099
+
+100
+
+101
+
+102
+
+103
+
+104
+
+105
+
+106
+
+107
+
+108
+
+109
+
+110
+
+111
+
+112
+
+113
+
+114
+
+115
+
+116
+
+117
+
+118
+
+119
+
+120
+
+121
+
+122
+
+123
+
+124
+
+125
+
+126
+
+127
+
+128
+
+129
+
+130
+
+131
+
+132
+
+133
+
+134
+
+135
+
+136
+
+137
+
+138
+
+139
+
+140
+
+141
+
+142
+
+143
+
+144
+
+145
+
+146
+
+147
+
+148
+
+149
+
+150
+
+151
+
+152
+
+153
+
+154
+
+155
+
+
+path: ['4 * 6 = 24 ( left: 24 )', '11 - 5 = 6 ( left: 6 4 )', '1 + 4 = 5 ( left: 5 4 11 )', '( left: 1 4 4 11 )']
+
+
+['4 * 6 = 24 ( left: 24 )', '11 - 5 = 6 ( left: 6 4 )', '1 + 4 = 5 ( left: 5 4 11 )', '( left: 1 4 4 11 )']
+ ( 4 * ( 11 - ( 1 + 4 ) ) ) 
+
+
+Answer: 
+ ( 4 * ( 11 - ( 1 + 4 ) ) ) 
+
+
+d_thres: 0.0
+
+level_nodes:
+[[{'id': 1, 'answer': '1 + 4 = 5 ( left: 5 4 11 )', 'value': 'sure', 'parent_node': 0, 'ancestor_value': 0.0}, {'id': 2, 'answer': '1 + 11 = 12 ( left: 4 4 12 )', 'value': 'impossible', 'parent_node': 0, 'ancestor_value': 0.0}, {'id': 3, 'answer': '4 + 11 = 15 ( left: 1 4 15 )', 'value': 'impossible', 'parent_node': 0, 'ancestor_value': 0.0}, {'id': 4, 'answer': '4 / 1 = 4 ( left: 4 4 11 )', 'value': 'impossible', 'parent_node': 0, 'ancestor_value': 0.0}, {'id': 5, 'answer': '11 - 1 = 10 ( left: 10 4 4 )', 'value': 'impossible', 'parent_node': 0, 'ancestor_value': 0.0}], [{'id': 9, 'answer': '11 - 5 = 6 ( left: 6 4 )', 'value': 'sure', 'parent_node': 1, 'ancestor_value': 10.0}, {'id': 6, 'answer': '5 + 4 = 9 ( left: 9 11 )', 'value': 'impossible', 'parent_node': 1, 'ancestor_value': 10.0}, {'id': 7, 'answer': '4 * 5 = 20 ( left: 20 11 )', 'value': 'impossible', 'parent_node': 1, 'ancestor_value': 10.0}, {'id': 8, 'answer': '11 + 5 = 16 ( left: 16 4 )', 'value': 'impossible', 'parent_node': 1, 'ancestor_value': 10.0}, {'id': 10, 'answer': '4 / 5 = 0.8000000000000001 ( left: 0.8000000000000001 11 )', 'value': 'impossible', 'parent_node': 1, 'ancestor_value': 10.0}], [{'id': 12, 'answer': '4 * 6 = 24 ( left: 24 )', 'value': 'sure', 'parent_node': 9, 'ancestor_value': 20.0}, {'id': 11, 'answer': '6 + 4 = 10 ( left: 10 )', 'value': 'impossible', 'parent_node': 9, 'ancestor_value': 20.0}, {'id': 13, 'answer': '6 - 4 = 2 ( left: 2 )', 'value': 'impossible', 'parent_node': 9, 'ancestor_value': 20.0}, {'id': 14, 'answer': '6 / 4 = 1.5 ( left: 1.5 )', 'value': 'impossible', 'parent_node': 9, 'ancestor_value': 20.0}, {'id': 15, 'answer': '4 / 6 = 0.6666666666666666 ( left: 0.6666666666666666 )', 'value': 'impossible', 'parent_node': 9, 'ancestor_value': 20.0}], []]
+
+
+b = 3
+
+
+visited list: 
+[1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+
+
+step 1
+
+
+(0)level nodes: 
+{'id': 1, 'answer': '1 + 4 = 5 ( left: 5 4 11 )', 'value': 'sure', 'parent_node': 0, 'ancestor_value': 0.0}
+{'id': 2, 'answer': '1 + 11 = 12 ( left: 4 4 12 )', 'value': 'impossible', 'parent_node': 0, 'ancestor_value': 0.0}
+{'id': 3, 'answer': '4 + 11 = 15 ( left: 1 4 15 )', 'value': 'impossible', 'parent_node': 0, 'ancestor_value': 0.0}
+{'id': 4, 'answer': '4 / 1 = 4 ( left: 4 4 11 )', 'value': 'impossible', 'parent_node': 0, 'ancestor_value': 0.0}
+{'id': 5, 'answer': '11 - 1 = 10 ( left: 10 4 4 )', 'value': 'impossible', 'parent_node': 0, 'ancestor_value': 0.0}
+
+
+level_nodes:
+[[{'id': 1, 'answer': '1 + 4 = 5 ( left: 5 4 11 )', 'value': 'sure', 'parent_node': 0, 'ancestor_value': 0.0}, {'id': 2, 'answer': '1 + 11 = 12 ( left: 4 4 12 )', 'value': 'impossible', 'parent_node': 0, 'ancestor_value': 0.0}, {'id': 3, 'answer': '4 + 11 = 15 ( left: 1 4 15 )', 'value': 'impossible', 'parent_node': 0, 'ancestor_value': 0.0}, {'id': 4, 'answer': '4 / 1 = 4 ( left: 4 4 11 )', 'value': 'impossible', 'parent_node': 0, 'ancestor_value': 0.0}, {'id': 5, 'answer': '11 - 1 = 10 ( left: 10 4 4 )', 'value': 'impossible', 'parent_node': 0, 'ancestor_value': 0.0}], [{'id': 9, 'answer': '11 - 5 = 6 ( left: 6 4 )', 'value': 'sure', 'parent_node': 1, 'ancestor_value': 10.0}, {'id': 6, 'answer': '5 + 4 = 9 ( left: 9 11 )', 'value': 'impossible', 'parent_node': 1, 'ancestor_value': 10.0}, {'id': 7, 'answer': '4 * 5 = 20 ( left: 20 11 )', 'value': 'impossible', 'parent_node': 1, 'ancestor_value': 10.0}, {'id': 8, 'answer': '11 + 5 = 16 ( left: 16 4 )', 'value': 'impossible', 'parent_node': 1, 'ancestor_value': 10.0}, {'id': 10, 'answer': '4 / 5 = 0.8000000000000001 ( left: 0.8000000000000001 11 )', 'value': 'impossible', 'parent_node': 1, 'ancestor_value': 10.0}], [{'id': 12, 'answer': '4 * 6 = 24 ( left: 24 )', 'value': 'sure', 'parent_node': 9, 'ancestor_value': 20.0}, {'id': 11, 'answer': '6 + 4 = 10 ( left: 10 )', 'value': 'impossible', 'parent_node': 9, 'ancestor_value': 20.0}, {'id': 13, 'answer': '6 - 4 = 2 ( left: 2 )', 'value': 'impossible', 'parent_node': 9, 'ancestor_value': 20.0}, {'id': 14, 'answer': '6 / 4 = 1.5 ( left: 1.5 )', 'value': 'impossible', 'parent_node': 9, 'ancestor_value': 20.0}, {'id': 15, 'answer': '4 / 6 = 0.6666666666666666 ( left: 0.6666666666666666 )', 'value': 'impossible', 'parent_node': 9, 'ancestor_value': 20.0}], []]
+
+
+(prune)distance: 9, d_thres: 0.0
+
+
+visited list: 
+[1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+
+
+step 1
+
+
+(0)level nodes: 
+{'id': 1, 'answer': '1 + 4 = 5 ( left: 5 4 11 )', 'value': 'sure', 'parent_node': 0, 'ancestor_value': 0.0}
+{'id': 2, 'answer': '1 + 11 = 12 ( left: 4 4 12 )', 'value': 'impossible', 'parent_node': 0, 'ancestor_value': 0.0}
+{'id': 3, 'answer': '4 + 11 = 15 ( left: 1 4 15 )', 'value': 'impossible', 'parent_node': 0, 'ancestor_value': 0.0}
+{'id': 4, 'answer': '4 / 1 = 4 ( left: 4 4 11 )', 'value': 'impossible', 'parent_node': 0, 'ancestor_value': 0.0}
+{'id': 5, 'answer': '11 - 1 = 10 ( left: 10 4 4 )', 'value': 'impossible', 'parent_node': 0, 'ancestor_value': 0.0}
+
+
+level_nodes:
+[[{'id': 1, 'answer': '1 + 4 = 5 ( left: 5 4 11 )', 'value': 'sure', 'parent_node': 0, 'ancestor_value': 0.0}, {'id': 2, 'answer': '1 + 11 = 12 ( left: 4 4 12 )', 'value': 'impossible', 'parent_node': 0, 'ancestor_value': 0.0}, {'id': 3, 'answer': '4 + 11 = 15 ( left: 1 4 15 )', 'value': 'impossible', 'parent_node': 0, 'ancestor_value': 0.0}, {'id': 4, 'answer': '4 / 1 = 4 ( left: 4 4 11 )', 'value': 'impossible', 'parent_node': 0, 'ancestor_value': 0.0}, {'id': 5, 'answer': '11 - 1 = 10 ( left: 10 4 4 )', 'value': 'impossible', 'parent_node': 0, 'ancestor_value': 0.0}], [{'id': 9, 'answer': '11 - 5 = 6 ( left: 6 4 )', 'value': 'sure', 'parent_node': 1, 'ancestor_value': 10.0}, {'id': 6, 'answer': '5 + 4 = 9 ( left: 9 11 )', 'value': 'impossible', 'parent_node': 1, 'ancestor_value': 10.0}, {'id': 7, 'answer': '4 * 5 = 20 ( left: 20 11 )', 'value': 'impossible', 'parent_node': 1, 'ancestor_value': 10.0}, {'id': 8, 'answer': '11 + 5 = 16 ( left: 16 4 )', 'value': 'impossible', 'parent_node': 1, 'ancestor_value': 10.0}, {'id': 10, 'answer': '4 / 5 = 0.8000000000000001 ( left: 0.8000000000000001 11 )', 'value': 'impossible', 'parent_node': 1, 'ancestor_value': 10.0}], [{'id': 12, 'answer': '4 * 6 = 24 ( left: 24 )', 'value': 'sure', 'parent_node': 9, 'ancestor_value': 20.0}, {'id': 11, 'answer': '6 + 4 = 10 ( left: 10 )', 'value': 'impossible', 'parent_node': 9, 'ancestor_value': 20.0}, {'id': 13, 'answer': '6 - 4 = 2 ( left: 2 )', 'value': 'impossible', 'parent_node': 9, 'ancestor_value': 20.0}, {'id': 14, 'answer': '6 / 4 = 1.5 ( left: 1.5 )', 'value': 'impossible', 'parent_node': 9, 'ancestor_value': 20.0}, {'id': 15, 'answer': '4 / 6 = 0.6666666666666666 ( left: 0.6666666666666666 )', 'value': 'impossible', 'parent_node': 9, 'ancestor_value': 20.0}], []]
+
+
+(prune)distance: 9, d_thres: 0.0
+
+
+linked list:
+000 -> 1 -> 2 -> 3 -> 4 -> 5
+
+001 -> 9 -> 6 -> 7 -> 8 -> 10
+
+002
+
+003
+
+004
+
+005
+
+006
+
+007
+
+008
+
+009 -> 12 -> 11 -> 13 -> 14 -> 15
+
+010
+
+011
+
+012
+
+013
+
+014
+
+015
+
+016
+
+017
+
+018
+
+019
+
+020
+
+021
+
+022
+
+023
+
+024
+
+025
+
+026
+
+027
+
+028
+
+029
+
+030
+
+031
+
+032
+
+033
+
+034
+
+035
+
+036
+
+037
+
+038
+
+039
+
+040
+
+041
+
+042
+
+043
+
+044
+
+045
+
+046
+
+047
+
+048
+
+049
+
+050
+
+051
+
+052
+
+053
+
+054
+
+055
+
+056
+
+057
+
+058
+
+059
+
+060
+
+061
+
+062
+
+063
+
+064
+
+065
+
+066
+
+067
+
+068
+
+069
+
+070
+
+071
+
+072
+
+073
+
+074
+
+075
+
+076
+
+077
+
+078
+
+079
+
+080
+
+081
+
+082
+
+083
+
+084
+
+085
+
+086
+
+087
+
+088
+
+089
+
+090
+
+091
+
+092
+
+093
+
+094
+
+095
+
+096
+
+097
+
+098
+
+099
+
+100
+
+101
+
+102
+
+103
+
+104
+
+105
+
+106
+
+107
+
+108
+
+109
+
+110
+
+111
+
+112
+
+113
+
+114
+
+115
+
+116
+
+117
+
+118
+
+119
+
+120
+
+121
+
+122
+
+123
+
+124
+
+125
+
+126
+
+127
+
+128
+
+129
+
+130
+
+131
+
+132
+
+133
+
+134
+
+135
+
+136
+
+137
+
+138
+
+139
+
+140
+
+141
+
+142
+
+143
+
+144
+
+145
+
+146
+
+147
+
+148
+
+149
+
+150
+
+151
+
+152
+
+153
+
+154
+
+155
+
+
+path: ['4 * 6 = 24 ( left: 24 )', '11 - 5 = 6 ( left: 6 4 )', '1 + 4 = 5 ( left: 5 4 11 )', '( left: 1 4 4 11 )']
+
+
+['4 * 6 = 24 ( left: 24 )', '11 - 5 = 6 ( left: 6 4 )', '1 + 4 = 5 ( left: 5 4 11 )', '( left: 1 4 4 11 )']
+ ( 4 * ( 11 - ( 1 + 4 ) ) ) 
+
+
+Answer: 
+ ( 4 * ( 11 - ( 1 + 4 ) ) ) 
+

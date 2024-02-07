@@ -1,0 +1,66 @@
+// tree_15
+digraph {
+	0 [label="0
+2 4 8 9
+parent: None" color=red]
+	1 [label="1
+2 + 4 = 6 ( left: 6 8 9 )
+parent: 0"]
+	0 -> 1
+	2 [label="2
+2 * 4 = 8 ( left: 8 8 9 )
+parent: 0"]
+	0 -> 2
+	3 [label="3
+8 - 2 = 6 ( left: 6 4 9 )
+parent: 0" color=red]
+	0 -> 3
+	4 [label="4
+8 + 2 = 10 ( left: 10 4 9 )
+parent: 0"]
+	0 -> 4
+	5 [label="5
+4 / 2 = 2.00000000000000111956260327794659544403447568359375 ( left: 2.00000000000000111956260327794659544403447568359375 8 9 )
+parent: 0"]
+	0 -> 5
+	6 [label="6
+6 + 4 = 10 ( left: 10 9 )
+parent: 3"]
+	3 -> 6
+	7 [label="7
+9 / 3 = 3 ( left: 6 4 )
+parent: 3" color=red]
+	3 -> 7
+	8 [label="8
+6 - 4 = 2 ( left: 2 9 )
+parent: 3"]
+	3 -> 8
+	9 [label="9
+9 + 4 = 13 ( left: 6 13 )
+parent: 3"]
+	3 -> 9
+	10 [label="10
+4 * 9 = 36 ( left: 6 36 )
+parent: 3"]
+	3 -> 10
+	11 [label="11
+6 + 4 = 10 ( left: 10 )
+parent: 7"]
+	7 -> 11
+	12 [label="12
+6 - 4 = 2 ( left: 2 )
+parent: 7"]
+	7 -> 12
+	13 [label="13
+4 / 2 = 2 ( left: 6 )
+parent: 7"]
+	7 -> 13
+	14 [label="14
+4 * 2 = 8 ( left: 6 )
+parent: 7"]
+	7 -> 14
+	15 [label="15
+6 * 4 = 24 ( left: 24 )
+parent: 7" color=red]
+	7 -> 15
+}
