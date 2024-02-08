@@ -32,7 +32,7 @@ if __name__ == '__main__':
     
     print('llm ok')
     record.Init_record_file(parameters.all_json_file_name, '')
-    record.Init_record_file(parameters.acc_file_name, 'model: ' + parameters.huggingface_model_path + '\ntemperature: ' + str(parameters.generator_temperature) + ', ' + str(parameters.evaluator_temperature) + '\ndate: ' + str(datetime.date.today()) + '\nquestions index: ' + str(parameters.initial_idx) + '-' + str(parameters.initial_idx + parameters.question_sets) + '\nmethod: ' + parameters.method + '\n\n')
+    record.Init_record_file(parameters.acc_file_name, 'model: ' + parameters.huggingface_model_path + '\ntemperature: ' + str(parameters.generator_temperature) + ', ' + str(parameters.evaluator_temperature) + '\ndate: ' + str(datetime.date.today()) + '\nquestions index: ' + str(parameters.initial_idx) + '-' + str(parameters.initial_idx + parameters.question_sets - 1) + '\nmethod: ' + parameters.method + '\n\n')
     parameters.reset_idx()
     for i in range(parameters.initial_idx, parameters.initial_idx + parameters.question_sets):
         #call llm
