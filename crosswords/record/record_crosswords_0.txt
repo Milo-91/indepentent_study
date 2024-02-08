@@ -1,0 +1,2855 @@
+../models/vicuna-7b-v1.5.Q8_0.gguf
+temperature: 0.5, 0
+data: 2024-02-08
+questions index: 0-0
+method: tot-dfs
+
+
+Generator: 
+[('h2. motor', 0.5), ('v2. motor', 0.5), ('h4. foyer', 0.2), ('v4. foyer', 0.2)]
+Generator nodes:
+[{'id': 1, 'answer': 'h2. motor', 'value': None, 'parent_node': 0, 'ancestor_value': 0}, {'id': 2, 'answer': 'v2. motor', 'value': None, 'parent_node': 0, 'ancestor_value': 0}, {'id': 3, 'answer': 'h4. foyer', 'value': None, 'parent_node': 0, 'ancestor_value': 0}, {'id': 4, 'answer': 'v4. foyer', 'value': None, 'parent_node': 0, 'ancestor_value': 0}]
+cost time: 5.968641996383667
+
+
+input: An engine: motor
+Evaluator response: This word does not fit the letter constraints given, as it has 5 letters but does not have the specific letter constraints mentioned. Therefore, it is impossible to find a word that fits the given constraints.
+cost time: 1.3718147277832031
+
+answer: h2. motor
+Count: {'sure': 0, 'maybe': 0, 'impossible': 0}
+
+
+input: An Indian antelope: motor
+Evaluator response: impossible
+cost time: 2.663318157196045
+
+answer: v2. motor
+Count: {'sure': 0, 'maybe': 0, 'impossible': 1}
+
+
+input: A salon; a hall: foyer
+Evaluator response: : f o y e r
+The letter constraint is: 5 letters, letter 1 is f, letter 5 is r.
+Some possible words that mean "A salon; a hall":
+I cannot think of any words now. 3 letters are constrained, and it is extremely unlikely to have a word with pattern f _ _ _ r to mean "A salon; a hall"
+impossible
+cost time: 1.9804139137268066
+
+answer: h4. foyer
+Count: {'sure': 0, 'maybe': 0, 'impossible': 1}
+
+
+input: A nozzle: foyer
+Evaluator response: The letter constraint is: 5 letters, letter 1 is f, letter 5 is r.
+Some possible words that mean "A nozzle":
+I cannot think of any words now. Only 2 letters are constrained, it is still likely
+maybe
+cost time: 3.4518818855285645
+
+answer: v4. foyer
+Count: {'sure': 0, 'maybe': 1, 'impossible': 0}
+
+
+now step: 0
+board:
+Current Board
+_____
+_____
+_____
+_____
+_____
+
+
+
+Steps: 
+0
+Nodes:
+[{'id': 4, 'answer': 'v4. foyer', 'value': {'sure': 0, 'maybe': 1, 'impossible': 0}, 'parent_node': 0, 'ancestor_value': 0}, {'id': 2, 'answer': 'v2. motor', 'value': {'sure': 0, 'maybe': 0, 'impossible': 1}, 'parent_node': 0, 'ancestor_value': 0}, {'id': 3, 'answer': 'h4. foyer', 'value': {'sure': 0, 'maybe': 0, 'impossible': 1}, 'parent_node': 0, 'ancestor_value': 0}, {'id': 1, 'answer': 'h2. motor', 'value': {'sure': 0, 'maybe': 0, 'impossible': 0}, 'parent_node': 0, 'ancestor_value': 0}]
+Selected node:
+{'id': 4, 'answer': 'v4. foyer', 'value': {'sure': 0, 'maybe': 1, 'impossible': 0}, 'parent_node': 0, 'ancestor_value': 0}
+
+
+Generator: 
+[('h3. showy', 0.5), ('h2. motor', 0.2), ('h1. apple', 0.1)]
+Generator nodes:
+[{'id': 5, 'answer': 'h3. showy', 'value': None, 'parent_node': 4, 'ancestor_value': 1.0}, {'id': 6, 'answer': 'h2. motor', 'value': None, 'parent_node': 4, 'ancestor_value': 1.0}, {'id': 7, 'answer': 'h1. apple', 'value': None, 'parent_node': 4, 'ancestor_value': 1.0}]
+cost time: 4.492202043533325
+
+
+input: Pretentious; flowery: showy
+Evaluator response: The letter constraint is: 5 letters, letter 1 is s, letter 5 is y.
+Some possible words that mean "Pretentious; flowery":
+showy (s h o w y): 5 letters, letter 1 is s, letter 5 is y. fit!
+sure
+cost time: 1.559406042098999
+
+input: A nozzle: fower
+Evaluator response: I cannot think of any words that fit the letter constraints "fower" to mean "A nozzle." It is unlikely that a word with this specific pattern exists.
+impossible
+cost time: 3.9764480590820312
+
+answer: h3. showy
+Count: {'sure': 1, 'maybe': 0, 'impossible': 1}
+
+
+input: An engine: motor
+Evaluator response: This word does not fit the letter constraints given, as it has 5 letters but does not have the specified letters in the specified positions. Therefore, it is impossible to find a word that fits the given constraints.
+cost time: 3.683148145675659
+
+input: A nozzle: foyer
+Evaluator response: The letter constraint is: 5 letters, letter 1 is f, letter 5 is r.
+Some possible words that mean "A nozzle":
+I cannot think of any words now. 2 letters are constrained, and it is still likely
+maybe
+cost time: 3.392047166824341
+
+answer: h2. motor
+Count: {'sure': 0, 'maybe': 1, 'impossible': 0}
+
+
+input: An agendum; something to be done: apple
+Evaluator response: impossible
+cost time: 3.76926326751709
+
+input: A nozzle: loyer
+Evaluator response: I cannot think of any words that fit the letter constraints and mean "A nozzle." It is unlikely that a word with the pattern loyer exists to mean "A nozzle."
+impossible
+cost time: 2.559929132461548
+
+answer: h1. apple
+Count: {'sure': 0, 'maybe': 0, 'impossible': 2}
+
+
+now step: 1
+board:
+Current Board
+___f_
+___o_
+___y_
+___e_
+___r_
+
+
+
+Steps: 
+1
+Nodes:
+[{'id': 4, 'answer': 'v4. foyer', 'value': {'sure': 0, 'maybe': 1, 'impossible': 0}, 'parent_node': 0, 'ancestor_value': 0}, {'id': 2, 'answer': 'v2. motor', 'value': {'sure': 0, 'maybe': 0, 'impossible': 1}, 'parent_node': 0, 'ancestor_value': 0}, {'id': 3, 'answer': 'h4. foyer', 'value': {'sure': 0, 'maybe': 0, 'impossible': 1}, 'parent_node': 0, 'ancestor_value': 0}, {'id': 1, 'answer': 'h2. motor', 'value': {'sure': 0, 'maybe': 0, 'impossible': 0}, 'parent_node': 0, 'ancestor_value': 0}, {'id': 5, 'answer': 'h3. showy', 'value': {'sure': 1, 'maybe': 0, 'impossible': 1}, 'parent_node': 4, 'ancestor_value': 1.0}, {'id': 6, 'answer': 'h2. motor', 'value': {'sure': 0, 'maybe': 1, 'impossible': 0}, 'parent_node': 4, 'ancestor_value': 1.0}, {'id': 7, 'answer': 'h1. apple', 'value': {'sure': 0, 'maybe': 0, 'impossible': 2}, 'parent_node': 4, 'ancestor_value': 1.0}]
+Selected node:
+{'id': 5, 'answer': 'h3. showy', 'value': {'sure': 1, 'maybe': 0, 'impossible': 1}, 'parent_node': 4, 'ancestor_value': 1.0}
+
+
+Generator: 
+[('v3. showy', 1), ('h4. foyer', 0.2)]
+Generator nodes:
+[{'id': 8, 'answer': 'v3. showy', 'value': None, 'parent_node': 5, 'ancestor_value': 21.001}, {'id': 9, 'answer': 'h4. foyer', 'value': None, 'parent_node': 5, 'ancestor_value': 21.001}]
+cost time: 6.526918172836304
+
+
+input: An agendum; something to be done: __sf_
+Evaluator response: The letter constraint is: 5 letters, letter 4 is s, letter 5 is f.
+Some possible words that mean "An agendum; something to be done":
+task (t a s k): 4 letters, not 5
+I cannot think of any words now. 3 letters are constrained, and it is extremely unlikely to have a word with pattern __sf_ to mean "An agendum; something to be done"
+impossible
+cost time: 4.428814649581909
+
+input: An engine: __ho_
+Evaluator response: The letter constraint is: 5 letters, letter 3 is h, letter 4 is o.
+Some possible words that mean "An engine":
+I cannot think of any words now. 2 letters are constrained, and it is still likely to have a word with pattern __ho_ to mean "An engine"
+maybe
+cost time: 4.816183090209961
+
+input: Pretentious; flowery: showy
+Evaluator response: The letter constraint is: 5 letters, letter 1 is s, letter 5 is y.
+Some possible words that mean "Pretentious; flowery":
+showy (s h o w y): 5 letters, letter 1 is s, letter 5 is y. fit!
+sure
+cost time: 5.3340959548950195
+
+input: A salon; a hall: __we_
+Evaluator response: The letter constraint is: 5 letters, letter 4 is w, letter 5 is e.
+Some possible words that mean "A salon; a hall":
+stew (s t e w): 4 letters, not 5
+I cannot think of any words now. 3 letters are constrained, and it is extremely unlikely to have a word with pattern __we_ to mean "A salon; a hall"
+impossible
+cost time: 5.714647054672241
+
+input: To mock; to sneer: __yr_
+Evaluator response: The letter constraint is: 5 letters, letter 3 is y, letter 5 is r.
+Some possible words that mean "To mock; to sneer":
+jeer (j e e r): 4 letters, not 5
+I cannot think of any words now. 3 letters are constrained, and it is extremely unlikely to have a word with pattern __yr_ to mean "To mock; to sneer"
+impossible
+cost time: 2.500001907348633
+
+input: To intend; to plan; to devise; a nettle; to guess: showy
+Evaluator response: The letter constraint is: 5 letters, letter 5 is y.
+Some possible words that mean "To intend; to plan; to devise; a nettle; to guess":
+I cannot think of any words now. 4 letters are constrained, and it is extremely unlikely to have a word with pattern _ _ _ _ y to mean "To intend; to plan; to devise; a nettle; to guess"
+impossible
+cost time: 4.270432949066162
+
+input: A nozzle: fower
+Evaluator response: The letter constraint is: 5 letters, letter 1 is f, letter 5 is r.
+Some possible words that mean "A nozzle":
+I cannot think of any words now. 3 letters are constrained, and it is extremely unlikely to have a word with pattern f _ _ _ r to mean "A nozzle"
+impossible
+cost time: 5.623758792877197
+
+answer: v3. showy
+Count: {'sure': 1, 'maybe': 1, 'impossible': 5}
+
+
+input: Pretentious; flowery: showy
+Evaluator response: The letter constraint is: 5 letters, letter 1 is s, letter 5 is y.
+Some possible words that mean "Pretentious; flowery":
+showy (s h o w y): 5 letters, letter 1 is s, letter 5 is y. fit!
+sure
+cost time: 1.838974952697754
+
+input: A salon; a hall: foyer
+Evaluator response: The letter constraint is: 5 letters, letter 1 is f, letter 5 is r.
+Some possible words that mean "A salon; a hall":
+I cannot think of any words now. 3 letters are constrained, and it is extremely unlikely to have a word with pattern f _ _ _ r to mean "A salon; a hall"
+impossible
+cost time: 2.032947063446045
+
+input: To heap: __sf_
+Evaluator response: The letter constraint is: 5 letters, letter 4 is s, letter 5 is f.
+Some possible words that mean "To heap":
+amass (a m a s s): 5 letters, letter 4 is s, not f
+I cannot think of any words now. 3 letters are constrained, and it is extremely unlikely to have a word with pattern __sf_ to mean "To heap"
+impossible
+cost time: 6.365517854690552
+
+input: An Indian antelope: __ho_
+Evaluator response: The letter constraint is: 5 letters, letter 3 is h, letter 4 is o.
+Some possible words that mean "An Indian antelope":
+nilgai (n i l g a i): 6 letters, not 5
+I cannot think of any words now. 2 letters are constrained, and it is still likely
+maybe
+cost time: 2.0542731285095215
+
+input: To intend; to plan; to devise; a nettle; to guess: __oy_
+Evaluator response: The letter constraint is: 5 letters, letter 3 is o, letter 4 is y.
+Some possible words that mean "To intend; to plan; to devise; a nettle; to guess":
+enjoy (e n j o y): 5 letters, letter 3 is j, not o
+annoy (a n n o y): 5 letters, letter 3 is n, not o
+I cannot think of any words now. 3 letters are constrained, and it is extremely unlikely to have a word with pattern __oy_ to mean "To intend; to plan; to devise; a nettle; to guess"
+impossible
+cost time: 6.285006761550903
+
+input: A nozzle: fower
+Evaluator response: I cannot think of any words that fit the letter constraints "fower" to mean "A nozzle." It is unlikely that a word exists with this specific combination of letters to fit the given meaning.
+cost time: 3.8294310569763184
+
+input: Desiccator; more dry: __yr_
+Evaluator response: The letter constraint is: 5 letters, letter 4 is y, letter 5 is r.
+Some possible words that mean "Desiccator; more dry":
+dryer (d r y e r): 5 letters, letter 4 is e, not y
+I cannot think of any words now. 3 letters are constrained, and it is extremely unlikely to have a word with pattern __yr_ to mean "Desiccator; more dry"
+impossible
+cost time: 3.716848134994507
+
+answer: h4. foyer
+Count: {'sure': 1, 'maybe': 1, 'impossible': 4}
+
+
+(prune)
+Steps: 2
+Nodes:
+[{'id': 4, 'answer': 'v4. foyer', 'value': {'sure': 0, 'maybe': 1, 'impossible': 0}, 'parent_node': 0, 'ancestor_value': 0}, {'id': 2, 'answer': 'v2. motor', 'value': {'sure': 0, 'maybe': 0, 'impossible': 1}, 'parent_node': 0, 'ancestor_value': 0}, {'id': 3, 'answer': 'h4. foyer', 'value': {'sure': 0, 'maybe': 0, 'impossible': 1}, 'parent_node': 0, 'ancestor_value': 0}, {'id': 1, 'answer': 'h2. motor', 'value': {'sure': 0, 'maybe': 0, 'impossible': 0}, 'parent_node': 0, 'ancestor_value': 0}, {'id': 5, 'answer': 'h3. showy', 'value': {'sure': 1, 'maybe': 0, 'impossible': 1}, 'parent_node': 4, 'ancestor_value': 1.0}, {'id': 6, 'answer': 'h2. motor', 'value': {'sure': 0, 'maybe': 1, 'impossible': 0}, 'parent_node': 4, 'ancestor_value': 1.0}, {'id': 7, 'answer': 'h1. apple', 'value': {'sure': 0, 'maybe': 0, 'impossible': 2}, 'parent_node': 4, 'ancestor_value': 1.0}, {'id': 8, 'answer': 'v3. showy', 'value': {'sure': 1, 'maybe': 1, 'impossible': 5}, 'parent_node': 5, 'ancestor_value': 21.001}, {'id': 9, 'answer': 'h4. foyer', 'value': {'sure': 1, 'maybe': 1, 'impossible': 4}, 'parent_node': 5, 'ancestor_value': 21.001}]
+Selected node:
+{'id': 8, 'answer': 'v3. showy', 'value': {'sure': 1, 'maybe': 1, 'impossible': 5}, 'parent_node': 5, 'ancestor_value': 21.001}
+
+
+Generator: 
+[('h3. artsy', 0.2), ('h4. aisle', 0.2)]
+Generator nodes:
+[{'id': 10, 'answer': 'h3. artsy', 'value': None, 'parent_node': 6, 'ancestor_value': 2.0}, {'id': 11, 'answer': 'h4. aisle', 'value': None, 'parent_node': 6, 'ancestor_value': 2.0}]
+cost time: 1.0451619625091553
+
+
+input: An engine: motor
+Evaluator response: This word does not fit the letter constraints given, as it has 5 letters but does not have the specific letters required. Therefore, it is impossible to find a word that fits the given constraints.
+cost time: 2.7899398803710938
+
+input: Pretentious; flowery: artsy
+Evaluator response: The letter constraint is: 5 letters, letter 1 is a, letter 5 is y.
+Some possible words that mean "Pretentious; flowery":
+I cannot think of any words now. Only 2 letters are constrained, it is still likely
+maybe
+cost time: 4.637057065963745
+
+input: To heap: _ma__
+Evaluator response: The letter constraint is: 5 letters, letter 2 is m, letter 4 is a.
+Some possible words that mean "To heap":
+mound (m o u n d): 5 letters, letter 2 is o, not m
+I cannot think of any words now. 2 letters are constrained, and it is still likely to have a word with pattern _ m a _ to mean "To heap"
+maybe
+cost time: 4.1421098709106445
+
+input: An Indian antelope: _or__
+Evaluator response: The letter constraint is: 5 letters, letter 2 is o, letter 5 is r.
+Some possible words that mean "An Indian antelope":
+chink (c h i n k): 5 letters, letter 2 is h, not o
+I cannot think of any words now. 3 letters are constrained, and it is extremely unlikely to have a word with pattern _ o r _ _ to mean "An Indian antelope"
+impossible
+cost time: 4.4294610023498535
+
+input: To intend; to plan; to devise; a nettle; to guess: _tt__
+Evaluator response: The letter constraint is: 5 letters, letter 3 is t, letter 4 is t.
+Some possible words that mean "To intend; to plan; to devise; a nettle; to guess":
+plot (p l o t): 4 letters, not 5
+I cannot think of any words now. 2 letters are constrained, and it is still likely to have a word with pattern _tt__ to mean "To intend; to plan; to devise; a nettle; to guess"
+maybe
+cost time: 2.403640031814575
+
+input: A nozzle: foser
+Evaluator response: I cannot think of any word that fits the letter constraints "foser" to mean "A nozzle." It is highly unlikely that a word with this specific pattern exists. 
+impossible
+cost time: 1.2160720825195312
+
+input: Desiccator; more dry: _ry__
+Evaluator response: The letter constraint is: 5 letters, letter 3 is y, letter 5 is y.
+Some possible words that mean "Desiccator; more dry":
+dryer (d r y e r): 5 letters, letter 3 is y, letter 5 is r
+sure
+cost time: 3.7876029014587402
+
+answer: h3. artsy
+Count: {'sure': 1, 'maybe': 3, 'impossible': 2}
+
+
+input: An engine: motor
+Evaluator response: This word does not fit the letter constraints given, as it has 5 letters but does not have the specific letter constraints mentioned. Therefore, it is not possible to find a word that fits the given constraints.
+cost time: 3.7933671474456787
+
+input: A salon; a hall: aisle
+Evaluator response: The letter constraint is: 5 letters, letter 1 is a, letter 5 is e.
+Some possible words that mean "A salon; a hall":
+aisle (a i s l e): 5 letters, letter 1 is a, letter 5 is e. fit!
+sure
+cost time: 5.884807348251343
+
+input: To heap: _m_a_
+Evaluator response: The letter constraint is: 5 letters, letter 2 is m, letter 4 is a.
+Some possible words that mean "To heap":
+smash (s m a s h): 5 letters, letter 2 is m, letter 4 is s, not a
+I cannot think of any words now. 2 letters are constrained, and it is still likely to have a word with pattern _m_a_ to mean "To heap"
+maybe
+cost time: 2.0836901664733887
+
+input: An Indian antelope: _o_i_
+Evaluator response: The letter constraint is: 5 letters, letter 2 is o, letter 4 is i.
+Some possible words that mean "An Indian antelope":
+nilgai (n i l g a i): 6 letters, not 5
+I cannot think of any words now. 2 letters are constrained, and it is still likely to have a word with pattern _o_i_
+maybe
+cost time: 1.9488048553466797
+
+input: To intend; to plan; to devise; a nettle; to guess: _t_s_
+Evaluator response: The letter constraint is: 5 letters, letter 2 is t, letter 4 is s.
+Some possible words that mean "To intend; to plan; to devise; a nettle; to guess":
+plots (p l o t s): 5 letters, letter 2 is l, not t
+I cannot think of any words now. 3 letters are constrained, and it is extremely unlikely to have a word with pattern _t_s_ to mean "To intend; to plan; to devise; a nettle; to guess"
+impossible
+cost time: 8.386378049850464
+
+input: A nozzle: foylr
+Evaluator response: I cannot think of any words that fit the letter constraints and mean "A nozzle." It is highly unlikely that a word with the pattern foylr would fit this meaning. 
+impossible
+cost time: 2.7724711894989014
+
+input: Desiccator; more dry: _r_e_
+Evaluator response: The letter constraint is: 5 letters, letter 2 is r, letter 5 is e.
+Some possible words that mean "Desiccator; more dry":
+arid (a r i d): 4 letters, not 5
+I cannot think of any words now. 3 letters are constrained, and it is extremely unlikely to have a word with pattern _r_e_ to mean "Desiccator; more dry"
+impossible
+cost time: 5.3355982303619385
+
+answer: h4. aisle
+Count: {'sure': 1, 'maybe': 2, 'impossible': 3}
+
+
+now step: 2
+board:
+Current Board
+___f_
+motor
+___y_
+___e_
+___r_
+
+
+
+Steps: 
+2
+Nodes:
+[{'id': 4, 'answer': 'v4. foyer', 'value': {'sure': 0, 'maybe': 1, 'impossible': 0}, 'parent_node': 0, 'ancestor_value': 0}, {'id': 2, 'answer': 'v2. motor', 'value': {'sure': 0, 'maybe': 0, 'impossible': 1}, 'parent_node': 0, 'ancestor_value': 0}, {'id': 3, 'answer': 'h4. foyer', 'value': {'sure': 0, 'maybe': 0, 'impossible': 1}, 'parent_node': 0, 'ancestor_value': 0}, {'id': 1, 'answer': 'h2. motor', 'value': {'sure': 0, 'maybe': 0, 'impossible': 0}, 'parent_node': 0, 'ancestor_value': 0}, {'id': 5, 'answer': 'h3. showy', 'value': {'sure': 1, 'maybe': 0, 'impossible': 1}, 'parent_node': 4, 'ancestor_value': 1.0}, {'id': 6, 'answer': 'h2. motor', 'value': {'sure': 0, 'maybe': 1, 'impossible': 0}, 'parent_node': 4, 'ancestor_value': 1.0}, {'id': 7, 'answer': 'h1. apple', 'value': {'sure': 0, 'maybe': 0, 'impossible': 2}, 'parent_node': 4, 'ancestor_value': 1.0}, {'id': 8, 'answer': 'v3. showy', 'value': {'sure': 1, 'maybe': 1, 'impossible': 5}, 'parent_node': 5, 'ancestor_value': 21.001}, {'id': 9, 'answer': 'h4. foyer', 'value': {'sure': 1, 'maybe': 1, 'impossible': 4}, 'parent_node': 5, 'ancestor_value': 21.001}, {'id': 10, 'answer': 'h3. artsy', 'value': {'sure': 1, 'maybe': 3, 'impossible': 2}, 'parent_node': 6, 'ancestor_value': 2.0}, {'id': 11, 'answer': 'h4. aisle', 'value': {'sure': 1, 'maybe': 2, 'impossible': 3}, 'parent_node': 6, 'ancestor_value': 2.0}]
+Selected node:
+{'id': 10, 'answer': 'h3. artsy', 'value': {'sure': 1, 'maybe': 3, 'impossible': 2}, 'parent_node': 6, 'ancestor_value': 2.0}
+
+
+Generator: 
+[('v2. motor', 1), ('h1. frame', 0.2), ('h4. atria', 0.2), ('v1. frame', 0.2)]
+Generator nodes:
+[{'id': 12, 'answer': 'v2. motor', 'value': None, 'parent_node': 10, 'ancestor_value': 25.002}, {'id': 13, 'answer': 'h1. frame', 'value': None, 'parent_node': 10, 'ancestor_value': 25.002}, {'id': 14, 'answer': 'h4. atria', 'value': None, 'parent_node': 10, 'ancestor_value': 25.002}, {'id': 15, 'answer': 'v1. frame', 'value': None, 'parent_node': 10, 'ancestor_value': 25.002}]
+cost time: 1.4207451343536377
+
+
+input: An agendum; something to be done: _m_f_
+Evaluator response: The letter constraint is: 5 letters, letter 2 is m, letter 4 is f.
+Some possible words that mean "An agendum; something to be done":
+muff (m u f f): 4 letters, not 5
+I cannot think of any words now. 2 letters are constrained, and it is still likely
+maybe
+cost time: 3.17486310005188
+
+input: An engine: motor
+Evaluator response: This word does not fit the letter constraints given, as it has 5 letters but does not have the specific letter constraints mentioned. Therefore, it is not possible to find a word that fits the given constraints.
+cost time: 3.4539170265197754
+
+input: Pretentious; flowery: attsy
+Evaluator response: I cannot think of any words that fit the letter constraints and mean "Pretentious; flowery" with the pattern attsy. It is extremely unlikely to have a word with this pattern to mean "Pretentious; flowery."
+impossible
+cost time: 4.219168186187744
+
+input: A salon; a hall: _o_e_
+Evaluator response: The letter constraint is: 5 letters, letter 2 is o, letter 4 is e.
+Some possible words that mean "A salon; a hall":
+lobby (l o b b y): 5 letters, letter 2 is o, not e
+I cannot think of any words now. 2 letters are constrained, and it is still likely to have a word with pattern _o_e_ to mean "A salon; a hall"
+maybe
+cost time: 7.305490732192993
+
+input: To mock; to sneer: _r_r_
+Evaluator response: The letter constraint is: 5 letters, letter 2 is r, letter 4 is r.
+Some possible words that mean "To mock; to sneer":
+jeer (j e e r): 4 letters, not 5
+I cannot think of any words now. 2 letters are constrained, and it is still likely
+maybe
+cost time: 4.779466867446899
+
+input: To heap: _ma__
+Evaluator response: The letter constraint is: 5 letters, letter 2 is m, letter 4 is a.
+Some possible words that mean "To heap":
+mound (m o u n d): 5 letters, letter 2 is o, not m
+I cannot think of any words now. 2 letters are constrained, and it is still likely
+maybe
+cost time: 3.0701191425323486
+
+input: An Indian antelope: motor
+Evaluator response: impossible
+cost time: 1.0255849361419678
+
+input: To intend; to plan; to devise; a nettle; to guess: _tt__
+Evaluator response: The letter constraint is: 5 letters, letter 3 is t, letter 4 is t.
+Some possible words that mean "To intend; to plan; to devise; a nettle; to guess":
+batty (b a t t y): 5 letters, letter 3 is t, letter 4 is t. fit!
+sure
+cost time: 4.094240188598633
+
+input: A nozzle: foser
+Evaluator response: I cannot think of any word that fits the letter constraints "foser" to mean "A nozzle." It is highly unlikely that a word with this specific combination of letters exists.
+cost time: 4.395596027374268
+
+input: Desiccator; more dry: _ry__
+Evaluator response: The letter constraint is: 5 letters, letter 1 is any, letter 3 is y, letter 5 is any.
+Some possible words that mean "Desiccator; more dry":
+dryer (d r y e r): 5 letters, letter 1 is d, letter 3 is e, letter 5 is r. fit!
+sure
+cost time: 1.7475039958953857
+
+answer: v2. motor
+Count: {'sure': 2, 'maybe': 4, 'impossible': 2}
+
+
+input: An agendum; something to be done: frame
+Evaluator response: The letter constraint is: 5 letters, letter 1 is f, letter 5 is e.
+Some possible words that mean "An agendum; something to be done":
+There are no words that fit the letter constraints provided.
+impossible
+cost time: 1.9620060920715332
+
+input: An engine: motor
+Evaluator response: This word does not fit the letter constraints given, as it has 5 letters but does not have the specific letter constraints provided. Therefore, it is impossible to find a word that fits the given constraints.
+cost time: 6.736921787261963
+
+input: Pretentious; flowery: artsy
+Evaluator response: The letter constraint is: 5 letters, letter 1 is a, letter 2 is r, letter 3 is t, letter 4 is s, letter 5 is y.
+Some possible words that mean "Pretentious; flowery":
+I cannot think of any words now. 5 letters are constrained, and it is extremely unlikely to have a word with pattern a r t s y to mean "Pretentious; flowery"
+impossible
+cost time: 5.327000856399536
+
+input: To heap: fma__
+Evaluator response: The letter constraint is: 5 letters, letter 1 is f, letter 4 is a.
+Some possible words that mean "To heap":
+fumar (f u m a r): 5 letters, letter 1 is f, letter 4 is a. fit!
+sure
+cost time: 4.709157943725586
+
+input: An Indian antelope: ror__
+Evaluator response: The letter constraint is: 5 letters, letter 1 is r, letter 4 is o, letter 5 is r.
+Some possible words that mean "An Indian antelope":
+nilgai (n i l g a i): 6 letters, not 5
+I cannot think of any words now. 3 letters are constrained, and it is extremely unlikely to have a word with pattern ror__ to mean "An Indian antelope"
+impossible
+cost time: 4.207242012023926
+
+input: To intend; to plan; to devise; a nettle; to guess: att__
+Evaluator response: The letter constraint is: 5 letters, letter 1 is a, letter 4 is t, letter 5 is t.
+Some possible words that mean "To intend; to plan; to devise; a nettle; to guess":
+attempt (a t t e m p t): 7 letters, not 5
+I cannot think of any words now. 3 letters are constrained, and it is extremely unlikely to have a word with pattern att__ to mean "To intend; to plan; to devise; a nettle; to guess"
+impossible
+cost time: 2.6516380310058594
+
+input: A nozzle: moser
+Evaluator response: I cannot think of any word that fits the letter constraints "moser" to mean "A nozzle." It is highly unlikely that a word with this specific pattern exists.
+cost time: 3.2770278453826904
+
+input: Desiccator; more dry: ery__
+Evaluator response: The letter constraint is: 5 letters, letter 1 is e, letter 4 is y, letter 5 is _.
+Some possible words that mean "Desiccator; more dry":
+arid (a r i d): 4 letters, not 5
+I cannot think of any words now. Only 3 letters are constrained, and it is still likely
+maybe
+cost time: 6.761883020401001
+
+answer: h1. frame
+Count: {'sure': 1, 'maybe': 1, 'impossible': 4}
+
+
+input: An engine: motor
+Evaluator response: This word does not fit the letter constraints given, as it has 5 letters but does not have the specific letter constraints provided. Therefore, it is impossible to find a word that fits the given constraints.
+cost time: 1.3100740909576416
+
+input: Pretentious; flowery: artsy
+Evaluator response: The letter constraint is: 5 letters, letter 1 is a, letter 5 is y.
+Some possible words that mean "Pretentious; flowery":
+I cannot think of any words now. Only 2 letters are constrained, it is still likely
+maybe
+cost time: 3.5441319942474365
+
+input: A salon; a hall: atria
+Evaluator response: The letter constraint is: 5 letters, letter 1 is a, letter 5 is a.
+Some possible words that mean "A salon; a hall":
+I cannot think of any words now. 2 letters are constrained, and it is still likely
+maybe
+cost time: 4.62529993057251
+
+input: To heap: _maa_
+Evaluator response: The letter constraint is: 5 letters, letter 2 is m, letter 4 is a, letter 5 is a.
+Some possible words that mean "To heap":
+swarm (s w a r m): 5 letters, letter 2 is w, not m
+I cannot think of any words now. 3 letters are constrained, and it is extremely unlikely to have a word with pattern _ m a a _ to mean "To heap"
+impossible
+cost time: 4.440889835357666
+
+input: An Indian antelope: _ort_
+Evaluator response: The letter constraint is: 5 letters, letter 2 is o, letter 4 is t.
+Some possible words that mean "An Indian antelope":
+chort (c h o r t): 5 letters, letter 2 is h, not o
+I cannot think of any words now. 3 letters are constrained, and it is extremely unlikely to have a word with pattern _ o r t _ to mean "An Indian antelope"
+impossible
+cost time: 5.114320993423462
+
+input: To intend; to plan; to devise; a nettle; to guess: _ttr_
+Evaluator response: The letter constraint is: 5 letters, letter 2 is t, letter 3 is t, letter 4 is r.
+Some possible words that mean "To intend; to plan; to devise; a nettle; to guess":
+butter (b u t t e r): 6 letters, not 5
+I cannot think of any words now. 3 letters are constrained, and it is extremely unlikely to have a word with pattern _ t t r _ to mean "To intend; to plan; to devise; a nettle; to guess"
+impossible
+cost time: 2.7161977291107178
+
+input: A nozzle: fosir
+Evaluator response: I cannot think of any word that fits the letter constraints "fosir" to mean "A nozzle." It is highly unlikely that a word with this specific pattern exists. 
+impossible
+cost time: 2.301654100418091
+
+input: Desiccator; more dry: _rya_
+Evaluator response: The letter constraint is: 5 letters, letter 2 is r, letter 4 is a.
+Some possible words that mean "Desiccator; more dry":
+dryad (d r y a d): 5 letters, letter 2 is r, letter 4 is a. fit!
+sure
+cost time: 3.2798731327056885
+
+answer: h4. atria
+Count: {'sure': 1, 'maybe': 2, 'impossible': 4}
+
+
+input: An agendum; something to be done: f__f_
+Evaluator response: The letter constraint is: 5 letters, letter 1 is f, letter 5 is f.
+Some possible words that mean "An agendum; something to be done":
+There are no words that fit the constraints provided.
+impossible
+cost time: 1.634544849395752
+
+input: An engine: rotor
+Evaluator response: The letter constraint is: 5 letters, letter 1 is r, letter 5 is r.
+The word "rotor" fits the letter constraints and means "an engine."
+sure
+cost time: 5.2210633754730225
+
+input: Pretentious; flowery: artsy
+Evaluator response: The letter constraint is: 5 letters, letter 1 is a, letter 2 is r, letter 3 is t, letter 4 is s, letter 5 is y.
+Some possible words that mean "Pretentious; flowery":
+I cannot think of any words now. The word "artsy" fits the letter constraints and means "Pretentious; flowery"
+sure
+cost time: 4.503586053848267
+
+input: A salon; a hall: m__e_
+Evaluator response: The letter constraint is: 5 letters, letter 2 is m, letter 5 is e.
+Some possible words that mean "A salon; a hall":
+movie (m o v i e): 5 letters, letter 2 is o, not m
+I cannot think of any words now. 3 letters are constrained, and it is extremely unlikely to have a word with pattern m__e_ to mean "A salon; a hall"
+impossible
+cost time: 4.097263813018799
+
+input: To mock; to sneer: e__r_
+Evaluator response: The letter constraint is: 5 letters, letter 2 is e, letter 5 is r.
+Some possible words that mean "To mock; to sneer":
+jeer (j e e r): 4 letters, not 5
+sneer (s n e e r): 5 letters, letter 2 is n, not e
+I cannot think of any words now. 3 letters are constrained, and it is extremely unlikely to have a word with pattern e__r_ to mean "To mock; to sneer"
+impossible
+cost time: 2.4574289321899414
+
+input: To heap: frame
+Evaluator response: The letter constraint is: 5 letters, letter 1 is f, letter 5 is e.
+Some possible words that mean "To heap":
+I cannot think of any words now. 3 letters are constrained, and it is extremely unlikely to have a word with pattern f _ _ _ e to mean "To heap"
+impossible
+cost time: 3.6974308490753174
+
+input: An Indian antelope: _or__
+Evaluator response: The letter constraint is: 5 letters, letter 2 is o, letter 5 is r.
+Some possible words that mean "An Indian antelope":
+chinkara (c h i n k a r a): 7 letters, not 5
+I cannot think of any words now. 3 letters are constrained, and it is extremely unlikely to have a word with pattern _ o r _ _ to mean "An Indian antelope"
+impossible
+cost time: 2.2387869358062744
+
+input: To intend; to plan; to devise; a nettle; to guess: _tt__
+Evaluator response: The letter constraint is: 5 letters, letter 3 is t, letter 4 is t.
+Some possible words that mean "To intend; to plan; to devise; a nettle; to guess":
+plot (p l o t): 4 letters, not 5
+I cannot think of any words now. 2 letters are constrained, and it is still likely to have a word with pattern _tt__ to mean "To intend; to plan; to devise; a nettle; to guess"
+maybe
+cost time: 2.6050162315368652
+
+input: A nozzle: foser
+Evaluator response: impossible
+cost time: 2.6148321628570557
+
+input: Desiccator; more dry: _ry__
+Evaluator response: The letter constraint is: 5 letters, letter 3 is y, letter 5 is y.
+Some possible words that mean "Desiccator; more dry":
+dryer (d r y e r): 5 letters, letter 3 is y, letter 5 is r
+I cannot think of any words now. 2 letters are constrained, and _ry__ seems a common pattern
+maybe
+cost time: 6.04799222946167
+
+answer: v1. frame
+Count: {'sure': 2, 'maybe': 2, 'impossible': 6}
+
+
+now step: 3
+board:
+Current Board
+___f_
+motor
+artsy
+___e_
+___r_
+
+
+
+Steps: 
+3
+Nodes:
+[{'id': 4, 'answer': 'v4. foyer', 'value': {'sure': 0, 'maybe': 1, 'impossible': 0}, 'parent_node': 0, 'ancestor_value': 0}, {'id': 2, 'answer': 'v2. motor', 'value': {'sure': 0, 'maybe': 0, 'impossible': 1}, 'parent_node': 0, 'ancestor_value': 0}, {'id': 3, 'answer': 'h4. foyer', 'value': {'sure': 0, 'maybe': 0, 'impossible': 1}, 'parent_node': 0, 'ancestor_value': 0}, {'id': 1, 'answer': 'h2. motor', 'value': {'sure': 0, 'maybe': 0, 'impossible': 0}, 'parent_node': 0, 'ancestor_value': 0}, {'id': 5, 'answer': 'h3. showy', 'value': {'sure': 1, 'maybe': 0, 'impossible': 1}, 'parent_node': 4, 'ancestor_value': 1.0}, {'id': 6, 'answer': 'h2. motor', 'value': {'sure': 0, 'maybe': 1, 'impossible': 0}, 'parent_node': 4, 'ancestor_value': 1.0}, {'id': 7, 'answer': 'h1. apple', 'value': {'sure': 0, 'maybe': 0, 'impossible': 2}, 'parent_node': 4, 'ancestor_value': 1.0}, {'id': 8, 'answer': 'v3. showy', 'value': {'sure': 1, 'maybe': 1, 'impossible': 5}, 'parent_node': 5, 'ancestor_value': 21.001}, {'id': 9, 'answer': 'h4. foyer', 'value': {'sure': 1, 'maybe': 1, 'impossible': 4}, 'parent_node': 5, 'ancestor_value': 21.001}, {'id': 10, 'answer': 'h3. artsy', 'value': {'sure': 1, 'maybe': 3, 'impossible': 2}, 'parent_node': 6, 'ancestor_value': 2.0}, {'id': 11, 'answer': 'h4. aisle', 'value': {'sure': 1, 'maybe': 2, 'impossible': 3}, 'parent_node': 6, 'ancestor_value': 2.0}, {'id': 12, 'answer': 'v2. motor', 'value': {'sure': 2, 'maybe': 4, 'impossible': 2}, 'parent_node': 10, 'ancestor_value': 25.002}, {'id': 15, 'answer': 'v1. frame', 'value': {'sure': 2, 'maybe': 2, 'impossible': 6}, 'parent_node': 10, 'ancestor_value': 25.002}, {'id': 14, 'answer': 'h4. atria', 'value': {'sure': 1, 'maybe': 2, 'impossible': 4}, 'parent_node': 10, 'ancestor_value': 25.002}, {'id': 13, 'answer': 'h1. frame', 'value': {'sure': 1, 'maybe': 1, 'impossible': 4}, 'parent_node': 10, 'ancestor_value': 25.002}]
+Selected node:
+{'id': 12, 'answer': 'v2. motor', 'value': {'sure': 2, 'maybe': 4, 'impossible': 2}, 'parent_node': 10, 'ancestor_value': 25.002}
+
+
+Generator: 
+[('h1. amend', 0.2), ('h4. foyer', 0.2), ('v1. manor', 0.2), ('v3. tawny', 0.1)]
+Generator nodes:
+[{'id': 16, 'answer': 'h1. amend', 'value': None, 'parent_node': 12, 'ancestor_value': 69.004}, {'id': 17, 'answer': 'h4. foyer', 'value': None, 'parent_node': 12, 'ancestor_value': 69.004}, {'id': 18, 'answer': 'v1. manor', 'value': None, 'parent_node': 12, 'ancestor_value': 69.004}, {'id': 19, 'answer': 'v3. tawny', 'value': None, 'parent_node': 12, 'ancestor_value': 69.004}]
+cost time: 3.7051291465759277
+
+
+input: An agendum; something to be done: amend
+Evaluator response: The letter constraint is: 5 letters, letter 1 is a, letter 5 is d.
+Some possible words that mean "An agendum; something to be done":
+amend (a m e n d): 5 letters, letter 1 is a, letter 5 is d. fit!
+sure
+cost time: 1.7392299175262451
+
+input: An engine: motor
+Evaluator response: This word does not fit the letter constraints given, as it has 5 letters but does not have the specific letter constraints mentioned. Therefore, it is impossible to find a word that fits the given constraints.
+cost time: 2.3260679244995117
+
+input: Pretentious; flowery: attsy
+Evaluator response: I cannot think of any words that fit the letter constraints and mean "Pretentious; flowery" with the letters provided. It is unlikely that a word with the pattern attsy exists to mean "Pretentious; flowery."
+impossible
+cost time: 1.667813777923584
+
+input: A salon; a hall: _o_e_
+Evaluator response: The letter constraint is: 5 letters, letter 2 is o, letter 4 is e.
+Some possible words that mean "A salon; a hall":
+lobby (l o b b y): 5 letters, letter 2 is o, not e
+I cannot think of any words now. 2 letters are constrained, and it is still likely to have a word with pattern _o_e_ to mean "A salon; a hall"
+maybe
+cost time: 4.065358638763428
+
+input: To mock; to sneer: _r_r_
+Evaluator response: The letter constraint is: 5 letters, letter 2 is r, letter 4 is r.
+Some possible words that mean "To mock; to sneer":
+jeer (j e e r): 4 letters, not 5
+I cannot think of any words now. 2 letters are constrained, and it is still likely to have a word with pattern _r_r_ to mean "To mock; to sneer"
+maybe
+cost time: 6.243862152099609
+
+input: To heap: ama__
+Evaluator response: The letter constraint is: 5 letters, letter 1 is a, letter 4 is a.
+Some possible words that mean "To heap":
+amass (a m a s s): 5 letters, letter 4 is s, not a
+I cannot think of any words now. 3 letters are constrained, and it is extremely unlikely to have a word with pattern ama__ to mean "To heap"
+impossible
+cost time: 7.579302072525024
+
+input: An Indian antelope: motor
+Evaluator response: I cannot think of any word that fits the letter constraints and means "An Indian antelope." It is highly unlikely that a word with the pattern motor would fit this meaning.
+impossible
+cost time: 3.7106270790100098
+
+input: To intend; to plan; to devise; a nettle; to guess: ett__
+Evaluator response: The letter constraint is: 5 letters, letter 1 is e, letter 2 is t, letter 3 is t.
+Some possible words that mean "To intend; to plan; to devise; a nettle; to guess":
+nettle (n e t t l e): 6 letters, not 5
+I cannot think of any words now. 3 letters are constrained, and it is extremely unlikely to have a word with pattern e t t _ _ to mean "To intend; to plan; to devise; a nettle; to guess"
+impossible
+cost time: 2.6637320518493652
+
+input: A nozzle: noser
+Evaluator response: The letter constraint is: 5 letters, letter 1 is n, letter 5 is r.
+Some possible words that mean "A nozzle":
+I cannot think of any words now. Only 2 letters are constrained, it is still likely
+maybe
+cost time: 4.138702154159546
+
+input: Desiccator; more dry: dry__
+Evaluator response: The letter constraint is: 5 letters, letter 1 is d, letter 5 is y.
+Some possible words that mean "Desiccator; more dry":
+dryer (d r y e r): 5 letters, letter 1 is d, letter 5 is r, not y
+I cannot think of any words now. 3 letters are constrained, and it is extremely unlikely to have a word with pattern dry__ to mean "Desiccator; more dry"
+impossible
+cost time: 2.0299251079559326
+
+answer: h1. amend
+Count: {'sure': 1, 'maybe': 3, 'impossible': 5}
+
+
+input: An agendum; something to be done: _m_f_
+Evaluator response: The letter constraint is: 5 letters, letter 2 is m, letter 4 is f.
+Some possible words that mean "An agendum; something to be done":
+imply (i m p l y): 5 letters, letter 2 is m, letter 4 is y, not f
+I cannot think of any words now. 2 letters are constrained, and it is still likely
+maybe
+cost time: 3.4480397701263428
+
+input: An engine: motor
+Evaluator response: This word does not fit the letter constraints given, as it has 5 letters but does not have the specific letter constraints mentioned. Therefore, it is impossible to find a word that fits the given constraints.
+cost time: 2.690715789794922
+
+input: Pretentious; flowery: attsy
+Evaluator response: I cannot think of any words that fit the letter constraints and mean "Pretentious; flowery" with the pattern attsy. It is extremely unlikely to have a word with this pattern to mean "Pretentious; flowery".
+impossible
+cost time: 3.3682749271392822
+
+input: A salon; a hall: foyer
+Evaluator response: The letter constraint is: 5 letters, letter 1 is f, letter 5 is r.
+Some possible words that mean "A salon; a hall":
+I cannot think of any words now. 3 letters are constrained, and it is extremely unlikely to have a word with pattern f _ _ _ r to mean "A salon; a hall"
+impossible
+cost time: 1.8912811279296875
+
+input: To mock; to sneer: _r_r_
+Evaluator response: The letter constraint is: 5 letters, letter 2 is r, letter 4 is r.
+Some possible words that mean "To mock; to sneer":
+jeer (j e e r): 4 letters, not 5
+I cannot think of any words now. 2 letters are constrained, and it is still likely to have a word with pattern _r_r_
+maybe
+cost time: 4.853458881378174
+
+input: To heap: _maf_
+Evaluator response: The letter constraint is: 5 letters, letter 2 is m, letter 4 is f.
+Some possible words that mean "To heap":
+amass (a m a s s): 5 letters, letter 2 is m, not f
+I cannot think of any words now. 2 letters are constrained, and it is still likely to have a word with pattern _ m a f _ to mean "To heap"
+maybe
+cost time: 1.8340659141540527
+
+input: An Indian antelope: motor
+Evaluator response: impossible
+cost time: 6.334774017333984
+
+input: To intend; to plan; to devise; a nettle; to guess: _tty_
+Evaluator response: The letter constraint is: 5 letters, letter 2 is t, letter 3 is t, letter 4 is y.
+Some possible words that mean "To intend; to plan; to devise; a nettle; to guess":
+netty (n e t t y): 5 letters, letter 2 is e, not t
+I cannot think of any words now. 3 letters are constrained, and it is extremely unlikely to have a word with pattern _ t t y _ to mean "To intend; to plan; to devise; a nettle; to guess"
+impossible
+cost time: 6.409150123596191
+
+input: A nozzle: foser
+Evaluator response: I cannot think of any word that fits the letter constraints "foser" to mean "A nozzle." It is highly unlikely that a word with this specific combination of letters exists. Therefore, it is impossible to find a word that fits these constraints.
+cost time: 1.3576109409332275
+
+input: Desiccator; more dry: _ryr_
+Evaluator response: The letter constraint is: 5 letters, letter 1 is r, letter 5 is r.
+Some possible words that mean "Desiccator; more dry":
+I cannot think of any words now. 3 letters are constrained, and it is extremely unlikely to have a word with pattern _ r y r _ to mean "Desiccator; more dry"
+impossible
+cost time: 3.1945993900299072
+
+answer: h4. foyer
+Count: {'sure': 0, 'maybe': 3, 'impossible': 5}
+
+
+input: An agendum; something to be done: mm_f_
+Evaluator response: The letter constraint is: 5 letters, letter 1 is m, letter 2 is m, letter 4 is f.
+Some possible words that mean "An agendum; something to be done":
+mimic (m i m i c): 5 letters, letter 4 is c, not f
+I cannot think of any words now. 3 letters are constrained, and it is extremely unlikely to have a word with pattern mm_f_ to mean "An agendum; something to be done"
+impossible
+cost time: 4.620342016220093
+
+input: An engine: aotor
+Evaluator response: impossible
+cost time: 3.4492101669311523
+
+input: Pretentious; flowery: nttsy
+Evaluator response: The letter constraint is: 5 letters, no specific letter constraints.
+Some possible words that mean "Pretentious; flowery":
+fancy (f a n c y): 5 letters, fits the meaning
+sure
+cost time: 2.984323024749756
+
+input: A salon; a hall: oo_e_
+Evaluator response: The letter constraint is: 5 letters, letter 3 is e, letter 4 is _.
+Some possible words that mean "A salon; a hall":
+lobby (l o b b y): 5 letters, letter 3 is b, not e
+I cannot think of any words now. 3 letters are constrained, and it is extremely unlikely to have a word with pattern oo_e_ to mean "A salon; a hall"
+impossible
+cost time: 4.289777994155884
+
+input: To mock; to sneer: rr_r_
+Evaluator response: The letter constraint is: 5 letters, letter 1 is r, letter 4 is r.
+Some possible words that mean "To mock; to sneer":
+jeer (j e e r): 4 letters, not 5
+I cannot think of any words now. 3 letters are constrained, and it is extremely unlikely to have a word with pattern rr_r_ to mean "To mock; to sneer"
+impossible
+cost time: 2.067790985107422
+
+input: To heap: manor
+Evaluator response: I cannot think of any word that fits the given constraints "manor" to mean "To heap". It is unlikely to have a word with this pattern to mean "To heap".
+impossible
+cost time: 1.4120721817016602
+
+input: An Indian antelope: motor
+Evaluator response: impossible
+cost time: 0.8196191787719727
+
+input: To intend; to plan; to devise; a nettle; to guess: _tt__
+Evaluator response: The letter constraint is: 5 letters, letter 3 is t, letter 4 is t.
+Some possible words that mean "To intend; to plan; to devise; a nettle; to guess":
+plot (p l o t): 4 letters, not 5
+I cannot think of any words now. 2 letters are constrained, and it is still likely to have a word with pattern _tt__ to mean "To intend; to plan; to devise; a nettle; to guess"
+maybe
+cost time: 2.483459949493408
+
+input: A nozzle: foser
+Evaluator response: I cannot think of any word that fits the letter constraints "foser" to mean "A nozzle." It is highly unlikely that a word with this specific pattern exists. 
+impossible
+cost time: 4.948559284210205
+
+input: Desiccator; more dry: _ry__
+Evaluator response: The letter constraint is: 5 letters, letter 1 is any, letter 3 is y, letter 5 is any.
+Some possible words that mean "Desiccator; more dry":
+dryer (d r y e r): 5 letters, letter 1 is d, letter 3 is y, letter 5 is r. fit!
+sure
+cost time: 1.6795530319213867
+
+answer: v1. manor
+Count: {'sure': 2, 'maybe': 1, 'impossible': 7}
+
+
+input: An agendum; something to be done: _mtf_
+Evaluator response: The letter constraint is: 5 letters, letter 1 is m, letter 4 is t, letter 5 is f.
+Some possible words that mean "An agendum; something to be done":
+I cannot think of any words now. 3 letters are constrained, and it is extremely unlikely to have a word with pattern _ m t f _ to mean "An agendum; something to be done"
+impossible
+cost time: 2.0483570098876953
+
+input: An engine: moaor
+Evaluator response: I cannot think of any word that fits the letter constraints and means "An engine." It is highly unlikely that a word with the pattern moaor exists. 
+impossible
+cost time: 2.5563859939575195
+
+input: Pretentious; flowery: atwsy
+Evaluator response: I cannot think of any words that fit the letter constraints and mean "Pretentious; flowery" with the letters provided. It is unlikely that a word exists with the given constraints.
+cost time: 1.5479180812835693
+
+input: A salon; a hall: _one_
+Evaluator response: The letter constraint is: 5 letters, letter 2 is o, letter 4 is e.
+Some possible words that mean "A salon; a hall":
+none (n o n e): 4 letters, not 5
+I cannot think of any words now. 3 letters are constrained, and it is extremely unlikely to have a word with pattern _ o n e _ to mean "A salon; a hall"
+impossible
+cost time: 4.91261887550354
+
+input: To mock; to sneer: _ryr_
+Evaluator response: The letter constraint is: 5 letters, letter 2 is r, letter 3 is y, letter 4 is r.
+Some possible words that mean "To mock; to sneer":
+Sorry (s o r r y): 5 letters, letter 2 is o, not r
+I cannot think of any words now. 3 letters are constrained, and it is extremely unlikely to have a word with pattern _ r y r _ to mean "To mock; to sneer"
+impossible
+cost time: 2.443524122238159
+
+input: To heap: _ma__
+Evaluator response: The letter constraint is: 5 letters, letter 2 is m, letter 4 is a.
+Some possible words that mean "To heap":
+mound (m o u n d): 5 letters, letter 2 is o, not m
+I cannot think of any words now. 2 letters are constrained, and it is still likely to have a word with pattern _ m a _ to mean "To heap"
+maybe
+cost time: 3.7561769485473633
+
+input: An Indian antelope: motor
+Evaluator response: impossible
+cost time: 0.7607879638671875
+
+input: To intend; to plan; to devise; a nettle; to guess: tawny
+Evaluator response: The letter constraint is: 5 letters, letter 1 is t, letter 5 is y.
+Some possible words that mean "To intend; to plan; to devise; a nettle; to guess":
+I cannot think of any words now. 4 letters are constrained, and it is extremely unlikely to have a word with pattern t _ _ _ y to mean "To intend; to plan; to devise; a nettle; to guess"
+impossible
+cost time: 3.4307892322540283
+
+input: A nozzle: foser
+Evaluator response: There is no five-letter word that fits the letter constraint "foser" to mean "A nozzle." 
+impossible
+cost time: 2.8366341590881348
+
+input: Desiccator; more dry: _ry__
+Evaluator response: The letter constraint is: 5 letters, letter 4 is y, letter 5 is _.
+Some possible words that mean "Desiccator; more dry":
+dryer (d r y e r): 5 letters, letter 4 is r, not y
+I cannot think of any words now. 3 letters are constrained, and it is extremely unlikely to have a word with pattern _ r y _ _ to mean "Desiccator; more dry"
+impossible
+cost time: 4.106210947036743
+
+answer: v3. tawny
+Count: {'sure': 0, 'maybe': 1, 'impossible': 8}
+
+
+(prune)
+Steps: 4
+Nodes:
+[{'id': 4, 'answer': 'v4. foyer', 'value': {'sure': 0, 'maybe': 1, 'impossible': 0}, 'parent_node': 0, 'ancestor_value': 0}, {'id': 2, 'answer': 'v2. motor', 'value': {'sure': 0, 'maybe': 0, 'impossible': 1}, 'parent_node': 0, 'ancestor_value': 0}, {'id': 3, 'answer': 'h4. foyer', 'value': {'sure': 0, 'maybe': 0, 'impossible': 1}, 'parent_node': 0, 'ancestor_value': 0}, {'id': 1, 'answer': 'h2. motor', 'value': {'sure': 0, 'maybe': 0, 'impossible': 0}, 'parent_node': 0, 'ancestor_value': 0}, {'id': 5, 'answer': 'h3. showy', 'value': {'sure': 1, 'maybe': 0, 'impossible': 1}, 'parent_node': 4, 'ancestor_value': 1.0}, {'id': 6, 'answer': 'h2. motor', 'value': {'sure': 0, 'maybe': 1, 'impossible': 0}, 'parent_node': 4, 'ancestor_value': 1.0}, {'id': 7, 'answer': 'h1. apple', 'value': {'sure': 0, 'maybe': 0, 'impossible': 2}, 'parent_node': 4, 'ancestor_value': 1.0}, {'id': 8, 'answer': 'v3. showy', 'value': {'sure': 1, 'maybe': 1, 'impossible': 5}, 'parent_node': 5, 'ancestor_value': 21.001}, {'id': 9, 'answer': 'h4. foyer', 'value': {'sure': 1, 'maybe': 1, 'impossible': 4}, 'parent_node': 5, 'ancestor_value': 21.001}, {'id': 10, 'answer': 'h3. artsy', 'value': {'sure': 1, 'maybe': 3, 'impossible': 2}, 'parent_node': 6, 'ancestor_value': 2.0}, {'id': 11, 'answer': 'h4. aisle', 'value': {'sure': 1, 'maybe': 2, 'impossible': 3}, 'parent_node': 6, 'ancestor_value': 2.0}, {'id': 12, 'answer': 'v2. motor', 'value': {'sure': 2, 'maybe': 4, 'impossible': 2}, 'parent_node': 10, 'ancestor_value': 25.002}, {'id': 15, 'answer': 'v1. frame', 'value': {'sure': 2, 'maybe': 2, 'impossible': 6}, 'parent_node': 10, 'ancestor_value': 25.002}, {'id': 14, 'answer': 'h4. atria', 'value': {'sure': 1, 'maybe': 2, 'impossible': 4}, 'parent_node': 10, 'ancestor_value': 25.002}, {'id': 13, 'answer': 'h1. frame', 'value': {'sure': 1, 'maybe': 1, 'impossible': 4}, 'parent_node': 10, 'ancestor_value': 25.002}, {'id': 18, 'answer': 'v1. manor', 'value': {'sure': 2, 'maybe': 1, 'impossible': 7}, 'parent_node': 12, 'ancestor_value': 69.004}, {'id': 16, 'answer': 'h1. amend', 'value': {'sure': 1, 'maybe': 3, 'impossible': 5}, 'parent_node': 12, 'ancestor_value': 69.004}, {'id': 17, 'answer': 'h4. foyer', 'value': {'sure': 0, 'maybe': 3, 'impossible': 5}, 'parent_node': 12, 'ancestor_value': 69.004}, {'id': 19, 'answer': 'v3. tawny', 'value': {'sure': 0, 'maybe': 1, 'impossible': 8}, 'parent_node': 12, 'ancestor_value': 69.004}]
+Selected node:
+{'id': 18, 'answer': 'v1. manor', 'value': {'sure': 2, 'maybe': 1, 'impossible': 7}, 'parent_node': 12, 'ancestor_value': 69.004}
+
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[('v3. artsy', 1), ('h4. manor', 0.5), ('v2. motor', 0.5), ('v5. deris', 0.2)]
+refine
+cost time: 2.8496861457824707
+
+refine
+cost time: 1.4384629726409912
+
+refine
+cost time: 1.756718635559082
+
+refine
+cost time: 3.3293092250823975
+
+refine
+cost time: 6.19009804725647
+
+refine
+cost time: 2.563270330429077
+
+refine
+cost time: 5.625088930130005
+
+refine
+cost time: 1.940850019454956
+
+refine
+cost time: 6.303343057632446
+
+Generator nodes:
+[{'id': 20, 'answer': 'v3. artsy', 'value': None, 'parent_node': 15, 'ancestor_value': 67.008}, {'id': 21, 'answer': 'h4. manor', 'value': None, 'parent_node': 15, 'ancestor_value': 67.008}, {'id': 22, 'answer': 'v2. motor', 'value': None, 'parent_node': 15, 'ancestor_value': 67.008}, {'id': 23, 'answer': 'v5. deris', 'value': None, 'parent_node': 15, 'ancestor_value': 67.008}]
+cost time: 6.354501008987427
+
+
+input: An agendum; something to be done: f_af_
+Evaluator response: The letter constraint is: 5 letters, letter 1 is f, letter 4 is f.
+Some possible words that mean "An agendum; something to be done":
+There are no words that fit the constraints provided.
+impossible
+cost time: 2.754488229751587
+
+input: An engine: roror
+Evaluator response: I cannot think of any words now. The letter constraint is 5 letters, and the pattern r o r o r does not seem to fit any word that means "An engine."
+impossible
+cost time: 1.32989501953125
+
+input: Pretentious; flowery: artsy
+Evaluator response: The letter constraint is: 5 letters, letter 1 is a, letter 5 is y.
+Some possible words that mean "Pretentious; flowery":
+I cannot think of any words now. Only 2 letters are constrained, it is still likely
+maybe
+cost time: 5.430968999862671
+
+input: A salon; a hall: m_se_
+Evaluator response: The letter constraint is: 5 letters, letter 2 is s, letter 4 is e.
+Some possible words that mean "A salon; a hall":
+musee (m u s e e): 5 letters, letter 2 is u, not s
+I cannot think of any words now. 3 letters are constrained, and it is extremely unlikely to have a word with pattern m_se_ to mean "A salon; a hall"
+impossible
+cost time: 4.140321969985962
+
+input: To mock; to sneer: e_yr_
+Evaluator response: The letter constraint is: 5 letters, letter 2 is y, letter 4 is r.
+Some possible words that mean "To mock; to sneer":
+jeer (j e e r): 4 letters, not 5
+I cannot think of any words now. Only 2 letters are constrained, it is still likely
+maybe
+cost time: 2.0205600261688232
+
+input: To heap: frame
+Evaluator response: The letter constraint is: 5 letters, letter 1 is f, letter 5 is e.
+Some possible words that mean "To heap":
+I cannot think of any words now. 2 letters are constrained, and it is still likely
+maybe
+cost time: 3.9747626781463623
+
+input: An Indian antelope: _or__
+Evaluator response: The letter constraint is: 5 letters, letter 2 is o, letter 5 is r.
+Some possible words that mean "An Indian antelope":
+chinkara (c h i n k a r a): 7 letters, not 5
+I cannot think of any words now. 2 letters are constrained, and it is still likely to have a word with pattern _ o r _ _ to mean "An Indian antelope"
+maybe
+cost time: 5.323876142501831
+
+input: To intend; to plan; to devise; a nettle; to guess: artsy
+Evaluator response: The letter constraint is: 5 letters, letter 1 is a, letter 2 is r, letter 3 is t, letter 4 is s, letter 5 is y.
+Some possible words that mean "To intend; to plan; to devise; a nettle; to guess":
+I cannot think of any words now. 5 letters are constrained, and it is extremely unlikely to have a word with pattern a r t s y to mean "To intend; to plan; to devise; a nettle; to guess"
+impossible
+cost time: 2.457580089569092
+
+input: A nozzle: foser
+Evaluator response: There is no five-letter word that fits the letter constraints "foser" to mean "a nozzle." 
+impossible
+cost time: 3.9868581295013428
+
+input: Desiccator; more dry: _ry__
+Evaluator response: The letter constraint is: 5 letters, letter 1 is any, letter 3 is y, letter 5 is any.
+Some possible words that mean "Desiccator; more dry":
+dryer (d r y e r): 5 letters, letter 1 is d, letter 3 is y, letter 5 is r. fit!
+sure
+cost time: 3.7362098693847656
+
+answer: v3. artsy
+Count: {'sure': 1, 'maybe': 4, 'impossible': 5}
+
+
+input: An agendum; something to be done: f__f_
+Evaluator response: The letter constraint is: 5 letters, letter 1 is f, letter 5 is f.
+Some possible words that mean "An agendum; something to be done":
+There are no words that fit the letter constraints provided.
+impossible
+cost time: 1.3227612972259521
+
+input: An engine: rotor
+Evaluator response: The letter constraint is: 5 letters, letter 1 is r, letter 5 is r.
+The word "rotor" fits the constraints and means "An engine."
+sure
+cost time: 1.2466278076171875
+
+input: Pretentious; flowery: artsy
+Evaluator response: The letter constraint is: 5 letters, letter 1 is a, letter 5 is y.
+Some possible words that mean "Pretentious; flowery":
+I cannot think of any words now. Only 2 letters are constrained, it is still likely
+maybe
+cost time: 3.046860933303833
+
+input: A salon; a hall: manor
+Evaluator response: The letter constraint is: 5 letters, no specific letter constraints.
+Some possible words that mean "A salon; a hall":
+manor (m a n o r): 5 letters, fits the constraints
+sure
+cost time: 5.125083923339844
+
+input: To mock; to sneer: e__r_
+Evaluator response: The letter constraint is: 5 letters, letter 2 is e, letter 5 is r.
+Some possible words that mean "To mock; to sneer":
+jeer (j e e r): 4 letters, not 5
+sneer (s n e e r): 5 letters, letter 2 is n, not e
+I cannot think of any words now. 3 letters are constrained, and it is extremely unlikely to have a word with pattern e__r_ to mean "To mock; to sneer"
+impossible
+cost time: 5.688716888427734
+
+input: To heap: frame
+Evaluator response: The letter constraint is: 5 letters, letter 1 is f, letter 5 is e.
+Some possible words that mean "To heap":
+I cannot think of any words now. 2 letters are constrained, and it is still likely
+maybe
+cost time: 1.3604209423065186
+
+input: An Indian antelope: _ora_
+Evaluator response: The letter constraint is: 5 letters, letter 1 is o, letter 5 is a.
+Some possible words that mean "An Indian antelope":
+nilgai (n i l g a i): 6 letters, not 5
+I cannot think of any words now. 3 letters are constrained, and it is extremely unlikely to have a word with pattern _ o r a _ to mean "An Indian antelope"
+impossible
+cost time: 3.757513999938965
+
+input: To intend; to plan; to devise; a nettle; to guess: _ttn_
+Evaluator response: The letter constraint is: 5 letters, letter 2 is t, letter 4 is t, letter 5 is n.
+Some possible words that mean "To intend; to plan; to devise; a nettle; to guess":
+plot (p l o t): 4 letters, not 5
+I cannot think of any words now. 3 letters are constrained, and it is extremely unlikely to have a word with pattern _ t t n _ to mean "To intend; to plan; to devise; a nettle; to guess"
+impossible
+cost time: 7.043622016906738
+
+input: A nozzle: fosor
+Evaluator response: I cannot think of any word that fits the letter constraints "fosor" to mean "A nozzle." It is highly unlikely that a word with this specific pattern exists. Therefore, it is impossible to find a word that fits these constraints.
+cost time: 3.9110238552093506
+
+input: Desiccator; more dry: _ryr_
+Evaluator response: The letter constraint is: 5 letters, letter 2 is r, letter 4 is r.
+Some possible words that mean "Desiccator; more dry":
+dryer (d r y e r): 5 letters, letter 2 is r, letter 4 is r. fit!
+sure
+cost time: 4.482540845870972
+
+answer: h4. manor
+Count: {'sure': 3, 'maybe': 2, 'impossible': 4}
+
+
+input: An agendum; something to be done: fm_f_
+Evaluator response: The letter constraint is: 5 letters, letter 1 is f, letter 4 is f.
+Some possible words that mean "An agendum; something to be done":
+I cannot think of any words now. 3 letters are constrained, and it is extremely unlikely to have a word with pattern fm_f_ to mean "An agendum; something to be done"
+impossible
+cost time: 1.9985060691833496
+
+input: An engine: rotor
+Evaluator response: The letter constraint is: 5 letters, letter 1 is r, letter 5 is r.
+The word "rotor" fits the constraints and means "An engine."
+sure
+cost time: 1.3868000507354736
+
+input: Pretentious; flowery: attsy
+Evaluator response: I cannot think of any words that fit the letter constraints and mean "Pretentious; flowery" with the pattern attsy. It is extremely unlikely to have a word with this pattern to mean "Pretentious; flowery".
+impossible
+cost time: 3.691640853881836
+
+input: A salon; a hall: mo_e_
+Evaluator response: The letter constraint is: 5 letters, letter 1 is m, letter 4 is e.
+Some possible words that mean "A salon; a hall":
+movie (m o v i e): 5 letters, letter 1 is m, letter 4 is e. fit!
+sure
+cost time: 1.5282549858093262
+
+input: To mock; to sneer: er_r_
+Evaluator response: The letter constraint is: 5 letters, letter 3 is r, letter 5 is r.
+Some possible words that mean "To mock; to sneer":
+jeer (j e e r): 4 letters, not 5
+I cannot think of any words now. 3 letters are constrained, and it is extremely unlikely to have a word with pattern er_r_ to mean "To mock; to sneer"
+impossible
+cost time: 2.2722561359405518
+
+input: To heap: frame
+Evaluator response: The letter constraint is: 5 letters, letter 1 is f, letter 5 is e.
+Some possible words that mean "To heap":
+I cannot think of any words now. 2 letters are constrained, and it is still likely
+maybe
+cost time: 2.7060601711273193
+
+input: An Indian antelope: motor
+Evaluator response: I cannot think of any word that fits the letter constraints "5 letters, letter 1 is m, letter 5 is r" to mean "An Indian antelope." It is unlikely that a word with this specific pattern exists to fit the meaning. 
+impossible
+cost time: 3.536663055419922
+
+input: To intend; to plan; to devise; a nettle; to guess: _tt__
+Evaluator response: The letter constraint is: 5 letters, letter 3 is t, letter 4 is t.
+Some possible words that mean "To intend; to plan; to devise; a nettle; to guess":
+batty (b a t t y): 5 letters, letter 3 is t, letter 4 is t. fit!
+sure
+cost time: 5.299828052520752
+
+input: A nozzle: foser
+Evaluator response: There is no five-letter word that fits the letter constraints "foser" to mean "A nozzle." 
+impossible
+cost time: 4.402334928512573
+
+input: Desiccator; more dry: _ry__
+Evaluator response: The letter constraint is: 5 letters, letter 4 is y, letter 5 is _.
+Some possible words that mean "Desiccator; more dry":
+dryer (d r y e r): 5 letters, letter 4 is r, not y
+I cannot think of any words now. 3 letters are constrained, and it is extremely unlikely to have a word with pattern _ r y _ _ to mean "Desiccator; more dry"
+impossible
+cost time: 4.403264045715332
+
+answer: v2. motor
+Count: {'sure': 3, 'maybe': 1, 'impossible': 6}
+
+
+input: An agendum; something to be done: f__fd
+Evaluator response: The letter constraint is: 5 letters, letter 1 is f, letter 5 is d.
+Some possible words that mean "An agendum; something to be done":
+fixed (f i x e d): 5 letters, letter 1 is f, letter 5 is d. fit!
+sure
+cost time: 1.7630128860473633
+
+input: An engine: rotoe
+Evaluator response: I cannot think of any word that fits the letter constraints and means "An engine." It is highly unlikely that a word with the pattern rotoe exists to mean "An engine."
+impossible
+cost time: 1.2978401184082031
+
+input: Pretentious; flowery: artsr
+Evaluator response: I cannot think of any words now. The pattern does not seem to fit any common 5-letter words that mean "Pretentious; flowery"
+impossible
+cost time: 3.7127139568328857
+
+input: A salon; a hall: m__ei
+Evaluator response: The letter constraint is: 5 letters, letter 2 is e, letter 4 is i.
+Some possible words that mean "A salon; a hall":
+I cannot think of any words now. 3 letters are constrained, and it is extremely unlikely to have a word with pattern m__ei to mean "A salon; a hall"
+impossible
+cost time: 2.029438018798828
+
+input: To mock; to sneer: e__rs
+Evaluator response: The letter constraint is: 5 letters, letter 2 is r, letter 4 is s.
+Some possible words that mean "To mock; to sneer":
+jeers (j e e r s): 5 letters, letter 2 is e, not r
+I cannot think of any words now. 3 letters are constrained, and it is extremely unlikely to have a word with pattern e__rs to mean "To mock; to sneer"
+impossible
+cost time: 4.497504949569702
+
+input: To heap: frame
+Evaluator response: The letter constraint is: 5 letters, letter 1 is f, letter 5 is e.
+Some possible words that mean "To heap":
+I cannot think of any words now. 2 letters are constrained, and it is still likely to have a word with pattern f _ _ _ e to mean "To heap"
+maybe
+cost time: 3.849079132080078
+
+input: An Indian antelope: _or__
+Evaluator response: The letter constraint is: 5 letters, letter 2 is o, letter 5 is o.
+Some possible words that mean "An Indian antelope":
+chinkara (c h i n k a r a): 7 letters, not 5
+I cannot think of any words now. 3 letters are constrained, and it is extremely unlikely to have a word with pattern _ o r _ _ to mean "An Indian antelope"
+impossible
+cost time: 2.3128719329833984
+
+input: To intend; to plan; to devise; a nettle; to guess: _tt__
+Evaluator response: The letter constraint is: 5 letters, letter 3 is t, letter 4 is t.
+Some possible words that mean "To intend; to plan; to devise; a nettle; to guess":
+fettle (f e t t l e): 6 letters, not 5
+I cannot think of any words now. 2 letters are constrained, and it is still likely to have a word with pattern _tt__ to mean "To intend; to plan; to devise; a nettle; to guess"
+maybe
+cost time: 4.529836177825928
+
+input: A nozzle: foser
+Evaluator response: There is no five-letter word that fits the letter constraints "foser" to mean "A nozzle." 
+impossible
+cost time: 3.0585720539093018
+
+input: Desiccator; more dry: deris
+Evaluator response: The letter constraint is: 5 letters, letter 5 is r.
+Some possible words that mean "Desiccator; more dry":
+I cannot think of any words now. 4 letters are constrained, and it is extremely unlikely to have a word with pattern deris to mean "Desiccator; more dry"
+impossible
+cost time: 3.562542676925659
+
+answer: v5. deris
+Count: {'sure': 1, 'maybe': 2, 'impossible': 7}
+
+
+now step: 4
+board:
+Current Board
+f__f_
+rotor
+artsy
+m__e_
+e__r_
+
+
+
+Steps: 
+4
+Nodes:
+[{'id': 4, 'answer': 'v4. foyer', 'value': {'sure': 0, 'maybe': 1, 'impossible': 0}, 'parent_node': 0, 'ancestor_value': 0}, {'id': 2, 'answer': 'v2. motor', 'value': {'sure': 0, 'maybe': 0, 'impossible': 1}, 'parent_node': 0, 'ancestor_value': 0}, {'id': 3, 'answer': 'h4. foyer', 'value': {'sure': 0, 'maybe': 0, 'impossible': 1}, 'parent_node': 0, 'ancestor_value': 0}, {'id': 1, 'answer': 'h2. motor', 'value': {'sure': 0, 'maybe': 0, 'impossible': 0}, 'parent_node': 0, 'ancestor_value': 0}, {'id': 5, 'answer': 'h3. showy', 'value': {'sure': 1, 'maybe': 0, 'impossible': 1}, 'parent_node': 4, 'ancestor_value': 1.0}, {'id': 6, 'answer': 'h2. motor', 'value': {'sure': 0, 'maybe': 1, 'impossible': 0}, 'parent_node': 4, 'ancestor_value': 1.0}, {'id': 7, 'answer': 'h1. apple', 'value': {'sure': 0, 'maybe': 0, 'impossible': 2}, 'parent_node': 4, 'ancestor_value': 1.0}, {'id': 8, 'answer': 'v3. showy', 'value': {'sure': 1, 'maybe': 1, 'impossible': 5}, 'parent_node': 5, 'ancestor_value': 21.001}, {'id': 9, 'answer': 'h4. foyer', 'value': {'sure': 1, 'maybe': 1, 'impossible': 4}, 'parent_node': 5, 'ancestor_value': 21.001}, {'id': 10, 'answer': 'h3. artsy', 'value': {'sure': 1, 'maybe': 3, 'impossible': 2}, 'parent_node': 6, 'ancestor_value': 2.0}, {'id': 11, 'answer': 'h4. aisle', 'value': {'sure': 1, 'maybe': 2, 'impossible': 3}, 'parent_node': 6, 'ancestor_value': 2.0}, {'id': 12, 'answer': 'v2. motor', 'value': {'sure': 2, 'maybe': 4, 'impossible': 2}, 'parent_node': 10, 'ancestor_value': 25.002}, {'id': 15, 'answer': 'v1. frame', 'value': {'sure': 2, 'maybe': 2, 'impossible': 6}, 'parent_node': 10, 'ancestor_value': 25.002}, {'id': 14, 'answer': 'h4. atria', 'value': {'sure': 1, 'maybe': 2, 'impossible': 4}, 'parent_node': 10, 'ancestor_value': 25.002}, {'id': 13, 'answer': 'h1. frame', 'value': {'sure': 1, 'maybe': 1, 'impossible': 4}, 'parent_node': 10, 'ancestor_value': 25.002}, {'id': 18, 'answer': 'v1. manor', 'value': {'sure': 2, 'maybe': 1, 'impossible': 7}, 'parent_node': 12, 'ancestor_value': 69.004}, {'id': 16, 'answer': 'h1. amend', 'value': {'sure': 1, 'maybe': 3, 'impossible': 5}, 'parent_node': 12, 'ancestor_value': 69.004}, {'id': 17, 'answer': 'h4. foyer', 'value': {'sure': 0, 'maybe': 3, 'impossible': 5}, 'parent_node': 12, 'ancestor_value': 69.004}, {'id': 19, 'answer': 'v3. tawny', 'value': {'sure': 0, 'maybe': 1, 'impossible': 8}, 'parent_node': 12, 'ancestor_value': 69.004}, {'id': 21, 'answer': 'h4. manor', 'value': {'sure': 3, 'maybe': 2, 'impossible': 4}, 'parent_node': 15, 'ancestor_value': 67.008}, {'id': 22, 'answer': 'v2. motor', 'value': {'sure': 3, 'maybe': 1, 'impossible': 6}, 'parent_node': 15, 'ancestor_value': 67.008}, {'id': 20, 'answer': 'v3. artsy', 'value': {'sure': 1, 'maybe': 4, 'impossible': 5}, 'parent_node': 15, 'ancestor_value': 67.008}, {'id': 23, 'answer': 'v5. deris', 'value': {'sure': 1, 'maybe': 2, 'impossible': 7}, 'parent_node': 15, 'ancestor_value': 67.008}]
+Selected node:
+{'id': 21, 'answer': 'h4. manor', 'value': {'sure': 3, 'maybe': 2, 'impossible': 4}, 'parent_node': 15, 'ancestor_value': 67.008}
+
+
+Generator: 
+[('v2. flora', 0.2), ('v5. sorry', 0.2), ('h1. fifer', 0.1), ('v3. tatty', 0.1)]
+Generator nodes:
+[{'id': 24, 'answer': 'v2. flora', 'value': None, 'parent_node': 21, 'ancestor_value': 129.012}, {'id': 25, 'answer': 'v5. sorry', 'value': None, 'parent_node': 21, 'ancestor_value': 129.012}, {'id': 26, 'answer': 'h1. fifer', 'value': None, 'parent_node': 21, 'ancestor_value': 129.012}, {'id': 27, 'answer': 'v3. tatty', 'value': None, 'parent_node': 21, 'ancestor_value': 129.012}]
+cost time: 3.8294601440429688
+
+
+input: An agendum; something to be done: ff_f_
+Evaluator response: The letter constraint is: 5 letters, letter 1 is f, letter 2 is f, letter 5 is f.
+Some possible words that mean "An agendum; something to be done":
+There are no words that fit the letter constraints provided.
+impossible
+cost time: 3.123115062713623
+
+input: An engine: rltor
+Evaluator response: I cannot think of any word that fits the letter constraints "rltor" to mean "An engine." It is highly unlikely that a meaningful word exists with these specific letter constraints. Therefore, it is impossible to find a word that fits these constraints.
+cost time: 3.2753379344940186
+
+input: Pretentious; flowery: aotsy
+Evaluator response: I cannot think of any words that fit the letter constraints and mean "Pretentious; flowery" with the given letters. It is extremely unlikely to have a word with the pattern aotsy to mean "Pretentious; flowery."
+cost time: 2.781090021133423
+
+input: A salon; a hall: mrnor
+Evaluator response: I cannot think of any words that fit the letter constraints and mean "A salon; a hall" with the given letters. It is extremely unlikely to have a word with the pattern mrnor to mean "A salon; a hall."
+cost time: 3.0534329414367676
+
+input: To mock; to sneer: ea_r_
+Evaluator response: The letter constraint is: 5 letters, letter 3 is r.
+Some possible words that mean "To mock; to sneer":
+jeer (j e e r): 4 letters, not 5
+sneer (s n e e r): 5 letters, letter 3 is e, not r
+I cannot think of any words now. Only 1 letter is constrained, it is still likely
+maybe
+cost time: 3.497041940689087
+
+input: To heap: frame
+Evaluator response: The letter constraint is: 5 letters, letter 1 is f, letter 5 is e.
+Some possible words that mean "To heap":
+I cannot think of any words now. 2 letters are constrained, and it is still likely to have a word with pattern f _ _ _ e to mean "To heap"
+maybe
+cost time: 1.721992015838623
+
+input: An Indian antelope: flora
+Evaluator response: impossible
+cost time: 0.6861271858215332
+
+input: To intend; to plan; to devise; a nettle; to guess: _ttn_
+Evaluator response: The letter constraint is: 5 letters, letter 2 is t, letter 4 is t, letter 5 is n.
+Some possible words that mean "To intend; to plan; to devise; a nettle; to guess":
+plot (p l o t): 4 letters, not 5
+I cannot think of any words now. 3 letters are constrained, and it is extremely unlikely to have a word with pattern _ t t n _ to mean "To intend; to plan; to devise; a nettle; to guess"
+impossible
+cost time: 6.0747950077056885
+
+input: A nozzle: fosor
+Evaluator response: impossible
+cost time: 4.399707078933716
+
+input: Desiccator; more dry: _ryr_
+Evaluator response: The letter constraint is: 5 letters, letter 2 is r, letter 4 is r.
+Some possible words that mean "Desiccator; more dry":
+dryer (d r y e r): 5 letters, letter 2 is r, letter 4 is r. fit!
+sure
+cost time: 6.300577878952026
+
+answer: v2. flora
+Count: {'sure': 1, 'maybe': 2, 'impossible': 4}
+
+
+input: An agendum; something to be done: f__fs
+Evaluator response: The letter constraint is: 5 letters, letter 1 is f, letter 5 is s.
+Some possible words that mean "An agendum; something to be done":
+tasks (t a s k s): 5 letters, letter 1 is t, not f
+I cannot think of any words now. 3 letters are constrained, and it is extremely unlikely to have a word with pattern f__fs to mean "An agendum; something to be done"
+impossible
+cost time: 2.4181771278381348
+
+input: An engine: rotoo
+Evaluator response: I cannot think of any word that fits the letter constraints "rotoo" to mean "An engine." It is highly unlikely that a word with this specific pattern exists. 
+impossible
+cost time: 4.5288472175598145
+
+input: Pretentious; flowery: artsr
+Evaluator response: I cannot think of any words now. 5 letters are constrained, and it is extremely unlikely to have a word with pattern artsr to mean "Pretentious; flowery"
+impossible
+cost time: 4.976464033126831
+
+input: A salon; a hall: manor
+Evaluator response: : m a n o r
+The letter constraint is: 5 letters, no specific letter constraints.
+Some possible words that mean "A salon; a hall":
+manor (m a n o r): 5 letters, fits the constraints
+sure
+cost time: 2.8064019680023193
+
+input: To mock; to sneer: e__ry
+Evaluator response: The letter constraint is: 5 letters, letter 2 is _.
+Some possible words that mean "To mock; to sneer":
+jeer (j e e r): 4 letters, not 5
+I cannot think of any words now. Only 1 letter is constrained, it is still likely
+maybe
+cost time: 1.801914930343628
+
+input: To heap: frame
+Evaluator response: The letter constraint is: 5 letters, letter 1 is f, letter 5 is e.
+Some possible words that mean "To heap":
+I cannot think of any words now. 3 letters are constrained, and it is extremely unlikely to have a word with pattern f _ _ _ e to mean "To heap"
+impossible
+cost time: 3.4826502799987793
+
+input: An Indian antelope: _ora_
+Evaluator response: The letter constraint is: 5 letters, letter 1 is o, letter 5 is a.
+Some possible words that mean "An Indian antelope":
+nilgai (n i l g a i): 6 letters, not 5
+I cannot think of any words now. 3 letters are constrained, and it is extremely unlikely to have a word with pattern _ o r a _ to mean "An Indian antelope"
+impossible
+cost time: 8.066004037857056
+
+input: To intend; to plan; to devise; a nettle; to guess: _ttn_
+Evaluator response: The letter constraint is: 5 letters, letter 2 is t, letter 4 is t, letter 5 is n.
+Some possible words that mean "To intend; to plan; to devise; a nettle; to guess":
+plot (p l o t): 4 letters, not 5
+I cannot think of any words now. 3 letters are constrained, and it is extremely unlikely to have a word with pattern _ t t n _ to mean "To intend; to plan; to devise; a nettle; to guess"
+impossible
+cost time: 3.551903247833252
+
+input: A nozzle: fosor
+Evaluator response: I cannot think of any word that fits the letter constraints "fosor" to mean "A nozzle." It is highly unlikely that a word with this specific combination of letters exists. Therefore, it is impossible to find a word that fits these constraints.
+cost time: 1.5836899280548096
+
+input: Desiccator; more dry: sorry
+Evaluator response: There are no five-letter words that fit the given letter constraints for "Desiccator; more dry." Therefore, it is impossible to find a word that fits the criteria.
+cost time: 1.2303440570831299
+
+answer: v5. sorry
+Count: {'sure': 1, 'maybe': 1, 'impossible': 6}
+
+
+input: An agendum; something to be done: fifer
+Evaluator response: I cannot think of any words that fit the letter constraints given (5 letters, letter 1 is f, letter 5 is r) to mean "An agendum; something to be done."
+impossible
+cost time: 1.6482300758361816
+
+input: An engine: rotor
+Evaluator response: The letter constraint is: 5 letters, letter 1 is r, letter 5 is r.
+The word "rotor" fits the constraints and means "An engine."
+sure
+cost time: 3.011415958404541
+
+input: Pretentious; flowery: artsy
+Evaluator response: The letter constraint is: 5 letters, letter 1 is a, letter 5 is y.
+Some possible words that mean "Pretentious; flowery":
+I cannot think of any words now. Only 2 letters are constrained, it is still likely
+maybe
+cost time: 1.7879910469055176
+
+input: A salon; a hall: manor
+Evaluator response: : m a n o r
+The letter constraint is: 5 letters, no specific letter constraints.
+Some possible words that mean "A salon; a hall":
+manor (m a n o r): 5 letters, fits the constraints
+sure
+cost time: 1.442704200744629
+
+input: To mock; to sneer: e__r_
+Evaluator response: The letter constraint is: 5 letters, letter 2 is e, letter 5 is r.
+Some possible words that mean "To mock; to sneer":
+jeer (j e e r): 4 letters, not 5
+I cannot think of any words now. 2 letters are constrained, and it is still likely to have a word with pattern e__r_ to mean "To mock; to sneer"
+maybe
+cost time: 4.494147062301636
+
+input: To heap: frame
+Evaluator response: The letter constraint is: 5 letters, letter 1 is f, letter 5 is e.
+Some possible words that mean "To heap":
+I cannot think of any words now. 2 letters are constrained, and it is still likely
+maybe
+cost time: 2.0503039360046387
+
+input: An Indian antelope: iora_
+Evaluator response: The letter constraint is: 5 letters, letter 1 is i, letter 5 is r.
+Some possible words that mean "An Indian antelope":
+nilgai (n i l g a i): 6 letters, not 5
+I cannot think of any words now. 4 letters are constrained, and it is extremely unlikely to have a word with pattern iora_ to mean "An Indian antelope"
+impossible
+cost time: 4.399353981018066
+
+input: To intend; to plan; to devise; a nettle; to guess: fttn_
+Evaluator response: The letter constraint is: 5 letters, letter 1 is f, letter 2 is t, letter 3 is t, letter 4 is n.
+Some possible words that mean "To intend; to plan; to devise; a nettle; to guess":
+fetid (f e t i d): 5 letters, letter 1 is f, letter 2 is e, letter 3 is t, letter 4 is i, not n
+I cannot think of any words now. 4 letters are constrained, and it is extremely unlikely to have a word with pattern fttn_ to mean "To intend; to plan; to devise; a nettle; to guess"
+impossible
+cost time: 3.378293991088867
+
+input: A nozzle: eosor
+Evaluator response: I cannot think of any words that fit the letter constraints "eosor" to mean "A nozzle." It is highly unlikely that a word exists with this specific combination of letters. 
+impossible
+cost time: 5.23007607460022
+
+input: Desiccator; more dry: rryr_
+Evaluator response: The letter constraint is: 5 letters, letter 1 is r, letter 4 is r, letter 5 is _. 
+Some possible words that mean "Desiccator; more dry":
+I cannot think of any words now. 3 letters are constrained, and it is extremely unlikely to have a word with pattern rryr_ to mean "Desiccator; more dry"
+impossible
+cost time: 5.11090612411499
+
+answer: h1. fifer
+Count: {'sure': 2, 'maybe': 3, 'impossible': 5}
+
+
+input: An agendum; something to be done: f_tf_
+Evaluator response: The letter constraint is: 5 letters, letter 1 is f, letter 4 is t, letter 5 is f.
+Some possible words that mean "An agendum; something to be done":
+There are no words that fit the letter constraints and meaning provided.
+impossible
+cost time: 4.908191442489624
+
+input: An engine: roaor
+Evaluator response: I cannot think of any words that fit the letter constraints and mean "An engine." It is highly unlikely that a word with the pattern roaor exists to mean "An engine."
+impossible
+cost time: 4.819911956787109
+
+input: Pretentious; flowery: artsy
+Evaluator response: The letter constraint is: 5 letters, letter 1 is a, letter 5 is y.
+Some possible words that mean "Pretentious; flowery":
+I cannot think of any words now. Only 2 letters are constrained, it is still likely
+maybe
+cost time: 2.1458017826080322
+
+input: A salon; a hall: mator
+Evaluator response: I cannot think of any words that fit the letter constraints and mean "A salon; a hall" with the pattern m a t o r. It is extremely unlikely to have a word with this pattern to mean "A salon; a hall".
+impossible
+cost time: 3.6387581825256348
+
+input: To mock; to sneer: e_yr_
+Evaluator response: The letter constraint is: 5 letters, letter 1 is e, letter 4 is r.
+Some possible words that mean "To mock; to sneer":
+jeer (j e e r): 4 letters, not 5
+I cannot think of any words now. Only 2 letters are constrained, it is still likely
+maybe
+cost time: 2.3710737228393555
+
+input: To heap: frame
+Evaluator response: I cannot think of any words that fit the letter constraints "frame" to mean "To heap." It is unlikely that a word with the pattern "frame" would fit this meaning.
+cost time: 2.8253543376922607
+
+input: An Indian antelope: _ora_
+Evaluator response: The letter constraint is: 5 letters, letter 2 is o, letter 4 is a.
+Some possible words that mean "An Indian antelope":
+nilgai (n i l g a i): 6 letters, not 5
+I cannot think of any words now. 3 letters are constrained, and it is extremely unlikely to have a word with pattern _ o r a _ to mean "An Indian antelope"
+impossible
+cost time: 3.1426241397857666
+
+input: To intend; to plan; to devise; a nettle; to guess: tatty
+Evaluator response: The letter constraint is: 5 letters, letter 1 is t, letter 5 is y.
+Some possible words that mean "To intend; to plan; to devise; a nettle; to guess":
+I cannot think of any words now. 4 letters are constrained, and it is extremely unlikely to have a word with pattern t _ _ _ y to mean "To intend; to plan; to devise; a nettle; to guess"
+impossible
+cost time: 3.622015953063965
+
+input: A nozzle: fosor
+Evaluator response: I cannot think of any word that fits the letter constraints and means "A nozzle." It is highly unlikely that a word with the pattern fosor exists. 
+impossible
+cost time: 2.723728895187378
+
+input: Desiccator; more dry: _ryr_
+Evaluator response: The letter constraint is: 5 letters, letter 2 is r, letter 4 is r.
+Some possible words that mean "Desiccator; more dry":
+I cannot think of any words now. 2 letters are constrained, and it is still likely
+maybe
+cost time: 6.860655784606934
+
+answer: v3. tatty
+Count: {'sure': 0, 'maybe': 3, 'impossible': 6}
+
+
+(prune)
+Steps: 5
+Nodes:
+[{'id': 4, 'answer': 'v4. foyer', 'value': {'sure': 0, 'maybe': 1, 'impossible': 0}, 'parent_node': 0, 'ancestor_value': 0}, {'id': 2, 'answer': 'v2. motor', 'value': {'sure': 0, 'maybe': 0, 'impossible': 1}, 'parent_node': 0, 'ancestor_value': 0}, {'id': 3, 'answer': 'h4. foyer', 'value': {'sure': 0, 'maybe': 0, 'impossible': 1}, 'parent_node': 0, 'ancestor_value': 0}, {'id': 1, 'answer': 'h2. motor', 'value': {'sure': 0, 'maybe': 0, 'impossible': 0}, 'parent_node': 0, 'ancestor_value': 0}, {'id': 5, 'answer': 'h3. showy', 'value': {'sure': 1, 'maybe': 0, 'impossible': 1}, 'parent_node': 4, 'ancestor_value': 1.0}, {'id': 6, 'answer': 'h2. motor', 'value': {'sure': 0, 'maybe': 1, 'impossible': 0}, 'parent_node': 4, 'ancestor_value': 1.0}, {'id': 7, 'answer': 'h1. apple', 'value': {'sure': 0, 'maybe': 0, 'impossible': 2}, 'parent_node': 4, 'ancestor_value': 1.0}, {'id': 8, 'answer': 'v3. showy', 'value': {'sure': 1, 'maybe': 1, 'impossible': 5}, 'parent_node': 5, 'ancestor_value': 21.001}, {'id': 9, 'answer': 'h4. foyer', 'value': {'sure': 1, 'maybe': 1, 'impossible': 4}, 'parent_node': 5, 'ancestor_value': 21.001}, {'id': 10, 'answer': 'h3. artsy', 'value': {'sure': 1, 'maybe': 3, 'impossible': 2}, 'parent_node': 6, 'ancestor_value': 2.0}, {'id': 11, 'answer': 'h4. aisle', 'value': {'sure': 1, 'maybe': 2, 'impossible': 3}, 'parent_node': 6, 'ancestor_value': 2.0}, {'id': 12, 'answer': 'v2. motor', 'value': {'sure': 2, 'maybe': 4, 'impossible': 2}, 'parent_node': 10, 'ancestor_value': 25.002}, {'id': 15, 'answer': 'v1. frame', 'value': {'sure': 2, 'maybe': 2, 'impossible': 6}, 'parent_node': 10, 'ancestor_value': 25.002}, {'id': 14, 'answer': 'h4. atria', 'value': {'sure': 1, 'maybe': 2, 'impossible': 4}, 'parent_node': 10, 'ancestor_value': 25.002}, {'id': 13, 'answer': 'h1. frame', 'value': {'sure': 1, 'maybe': 1, 'impossible': 4}, 'parent_node': 10, 'ancestor_value': 25.002}, {'id': 18, 'answer': 'v1. manor', 'value': {'sure': 2, 'maybe': 1, 'impossible': 7}, 'parent_node': 12, 'ancestor_value': 69.004}, {'id': 16, 'answer': 'h1. amend', 'value': {'sure': 1, 'maybe': 3, 'impossible': 5}, 'parent_node': 12, 'ancestor_value': 69.004}, {'id': 17, 'answer': 'h4. foyer', 'value': {'sure': 0, 'maybe': 3, 'impossible': 5}, 'parent_node': 12, 'ancestor_value': 69.004}, {'id': 19, 'answer': 'v3. tawny', 'value': {'sure': 0, 'maybe': 1, 'impossible': 8}, 'parent_node': 12, 'ancestor_value': 69.004}, {'id': 21, 'answer': 'h4. manor', 'value': {'sure': 3, 'maybe': 2, 'impossible': 4}, 'parent_node': 15, 'ancestor_value': 67.008}, {'id': 22, 'answer': 'v2. motor', 'value': {'sure': 3, 'maybe': 1, 'impossible': 6}, 'parent_node': 15, 'ancestor_value': 67.008}, {'id': 20, 'answer': 'v3. artsy', 'value': {'sure': 1, 'maybe': 4, 'impossible': 5}, 'parent_node': 15, 'ancestor_value': 67.008}, {'id': 23, 'answer': 'v5. deris', 'value': {'sure': 1, 'maybe': 2, 'impossible': 7}, 'parent_node': 15, 'ancestor_value': 67.008}, {'id': 26, 'answer': 'h1. fifer', 'value': {'sure': 2, 'maybe': 3, 'impossible': 5}, 'parent_node': 21, 'ancestor_value': 129.012}, {'id': 24, 'answer': 'v2. flora', 'value': {'sure': 1, 'maybe': 2, 'impossible': 4}, 'parent_node': 21, 'ancestor_value': 129.012}, {'id': 25, 'answer': 'v5. sorry', 'value': {'sure': 1, 'maybe': 1, 'impossible': 6}, 'parent_node': 21, 'ancestor_value': 129.012}, {'id': 27, 'answer': 'v3. tatty', 'value': {'sure': 0, 'maybe': 3, 'impossible': 6}, 'parent_node': 21, 'ancestor_value': 129.012}]
+Selected node:
+{'id': 26, 'answer': 'h1. fifer', 'value': {'sure': 2, 'maybe': 3, 'impossible': 5}, 'parent_node': 21, 'ancestor_value': 129.012}
+
+
+Generator: 
+[('h1. frame', 0.2), ('h5. sorry', 0.2), ('v3. tatty', 0.2), ('v5. wryly', 0.2), ('h4. moire', 0.1)]
+Generator nodes:
+[{'id': 28, 'answer': 'h1. frame', 'value': None, 'parent_node': 22, 'ancestor_value': 128.014}, {'id': 29, 'answer': 'h5. sorry', 'value': None, 'parent_node': 22, 'ancestor_value': 128.014}, {'id': 30, 'answer': 'v3. tatty', 'value': None, 'parent_node': 22, 'ancestor_value': 128.014}, {'id': 31, 'answer': 'v5. wryly', 'value': None, 'parent_node': 22, 'ancestor_value': 128.014}, {'id': 32, 'answer': 'h4. moire', 'value': None, 'parent_node': 22, 'ancestor_value': 128.014}]
+cost time: 4.691229343414307
+
+
+input: An agendum; something to be done: frame
+Evaluator response: The word "frame" does not fit the letter constraints given (5 letters, no specific letter constraints). Therefore, it is impossible to find a word that fits the given constraints and means "An agendum; something to be done."
+cost time: 1.392232894897461
+
+input: An engine: rotor
+Evaluator response: The letter constraint is: 5 letters, letter 1 is r, letter 5 is r.
+The word "rotor" fits the constraints and means "An engine."
+sure
+cost time: 5.61164402961731
+
+input: Pretentious; flowery: attsy
+Evaluator response: I cannot think of any words that fit the letter constraints and mean "Pretentious; flowery" with the given letters. It is unlikely that a word exists with the given constraints.
+cost time: 5.3571741580963135
+
+input: A salon; a hall: mo_e_
+Evaluator response: The letter constraint is: 5 letters, letter 1 is m, letter 4 is e.
+Some possible words that mean "A salon; a hall":
+movie (m o v i e): 5 letters, letter 1 is m, letter 4 is e. fit!
+sure
+cost time: 7.729806900024414
+
+input: To mock; to sneer: er_r_
+Evaluator response: The letter constraint is: 5 letters, letter 3 is r, letter 5 is r.
+Some possible words that mean "To mock; to sneer":
+jeer (j e e r): 4 letters, not 5
+I cannot think of any words now. 2 letters are constrained, and it is still likely to have a word with pattern er_r_ to mean "To mock; to sneer"
+maybe
+cost time: 7.003659009933472
+
+input: To heap: frame
+Evaluator response: The letter constraint is: 5 letters, letter 1 is f, letter 5 is e.
+Some possible words that mean "To heap":
+I cannot think of any words now. 3 letters are constrained, and it is extremely unlikely to have a word with pattern f _ _ _ e to mean "To heap"
+impossible
+cost time: 1.6982769966125488
+
+input: An Indian antelope: rotor
+Evaluator response: The letter constraint is: 5 letters, letter 1 is r, letter 5 is r.
+Some possible words that mean "An Indian antelope":
+nilgai (n i l g a i): 6 letters, not 5
+I cannot think of any words now. 2 letters are constrained, and it is still likely
+maybe
+cost time: 3.181570053100586
+
+input: To intend; to plan; to devise; a nettle; to guess: att__
+Evaluator response: The letter constraint is: 5 letters, letter 1 is a, letter 2 is t, letter 5 is t.
+Some possible words that mean "To intend; to plan; to devise; a nettle; to guess":
+attempt (a t t e m p t): 7 letters, not 5
+I cannot think of any words now. 3 letters are constrained, and it is extremely unlikely to have a word with pattern att__ to mean "To intend; to plan; to devise; a nettle; to guess"
+impossible
+cost time: 2.506416082382202
+
+input: A nozzle: moser
+Evaluator response: I cannot think of any word that fits the letter constraints "moser" to mean "A nozzle." It is highly unlikely that a word with this specific pattern exists. 
+impossible
+cost time: 5.156800985336304
+
+input: Desiccator; more dry: ery__
+Evaluator response: The letter constraint is: 5 letters, letter 1 is e, letter 4 is y, letter 5 is _.
+Some possible words that mean "Desiccator; more dry":
+arid (a r i d): 4 letters, not 5
+I cannot think of any words now. Only 3 letters are constrained, and it is still likely
+maybe
+cost time: 1.7731540203094482
+
+answer: h1. frame
+Count: {'sure': 2, 'maybe': 3, 'impossible': 3}
+
+
+input: An agendum; something to be done: fm_f_
+Evaluator response: The letter constraint is: 5 letters, letter 1 is f, letter 4 is f.
+Some possible words that mean "An agendum; something to be done":
+I cannot think of any words now. 4 letters are constrained, and it is extremely unlikely to have a word with pattern fm_f_ to mean "An agendum; something to be done"
+impossible
+cost time: 3.4424550533294678
+
+input: An engine: rotor
+Evaluator response: The letter constraint is: 5 letters, letter 1 is r, letter 5 is r.
+The word "rotor" fits the constraints and means "An engine."
+sure
+cost time: 2.248425245285034
+
+input: Pretentious; flowery: attsy
+Evaluator response: I cannot think of any words that fit the letter constraints and mean "Pretentious; flowery" with the given letters. It is extremely unlikely to have a word with the pattern attsy to mean "Pretentious; flowery."
+impossible
+cost time: 1.4396579265594482
+
+input: A salon; a hall: mo_e_
+Evaluator response: The letter constraint is: 5 letters, letter 1 is m, letter 4 is e.
+Some possible words that mean "A salon; a hall":
+movie (m o v i e): 5 letters, letter 1 is m, letter 4 is e. fit!
+sure
+cost time: 3.580826759338379
+
+input: To mock; to sneer: sorry
+Evaluator response: I cannot think of any words now. The letter constraints do not match any common patterns for words that mean "To mock; to sneer."
+impossible
+cost time: 3.244431257247925
+
+input: To heap: frams
+Evaluator response: I cannot think of any word that fits the letter constraints and means "to heap." It is unlikely that a word with the pattern frams exists.
+cost time: 1.9112348556518555
+
+input: An Indian antelope: motoo
+Evaluator response: I cannot think of any word that fits the letter constraints "motoo" to mean "An Indian antelope." It is likely impossible to find a word that fits these constraints.
+cost time: 1.0926330089569092
+
+input: To intend; to plan; to devise; a nettle; to guess: _tt_r
+Evaluator response: The letter constraint is: 5 letters, letter 3 is t, letter 5 is r.
+Some possible words that mean "To intend; to plan; to devise; a nettle; to guess":
+butter (b u t t e r): 6 letters, not 5
+I cannot think of any words now. 3 letters are constrained, and it is extremely unlikely to have a word with pattern _tt_r to mean "To intend; to plan; to devise; a nettle; to guess"
+impossible
+cost time: 1.9508678913116455
+
+input: A nozzle: foser
+Evaluator response: There is no five-letter word that fits the letter constraints "foser" to mean "A nozzle." 
+impossible
+cost time: 1.9275660514831543
+
+input: Desiccator; more dry: _ry_y
+Evaluator response: The letter constraint is: 5 letters, letter 1 is any letter, letter 4 is y, letter 5 is y.
+Some possible words that mean "Desiccator; more dry":
+dryly (d r y l y): 5 letters, letter 1 is d, not any letter
+sure
+cost time: 3.390881061553955
+
+answer: h5. sorry
+Count: {'sure': 3, 'maybe': 0, 'impossible': 5}
+
+
+input: An agendum; something to be done: fmtf_
+Evaluator response: The letter constraint is: 5 letters, letter 1 is f, letter 5 is f.
+Some possible words that mean "An agendum; something to be done":
+I cannot think of any words now. 4 letters are constrained, and it is extremely unlikely to have a word with pattern fmtf_ to mean "An agendum; something to be done"
+impossible
+cost time: 3.6950111389160156
+
+input: An engine: roaor
+Evaluator response: I cannot think of any words that fit the letter constraints and mean "An engine." It is highly unlikely that a word with the pattern roaor exists to mean "An engine."
+impossible
+cost time: 2.342978000640869
+
+input: Pretentious; flowery: attsy
+Evaluator response: I cannot think of any words that fit the letter constraints and mean "Pretentious; flowery" with the pattern attsy. It is extremely unlikely to have a word with this pattern to mean "Pretentious; flowery".
+impossible
+cost time: 4.814887762069702
+
+input: A salon; a hall: mote_
+Evaluator response: The letter constraint is: 5 letters, letter 5 is t.
+Some possible words that mean "A salon; a hall":
+motel (m o t e l): 5 letters, letter 5 is l, not t
+I cannot think of any words now. 4 letters are constrained, and it is extremely unlikely to have a word with pattern mote_ to mean "A salon; a hall"
+impossible
+cost time: 4.2948150634765625
+
+input: To mock; to sneer: eryr_
+Evaluator response: The letter constraint is: 5 letters, letter 1 is e, letter 2 is r, letter 3 is y, letter 4 is r.
+Some possible words that mean "To mock; to sneer":
+jeer (j e e r): 4 letters, not 5
+I cannot think of any words now. 4 letters are constrained, and it is extremely unlikely to have a word with pattern eryr_ to mean "To mock; to sneer"
+impossible
+cost time: 6.191835880279541
+
+input: To heap: frame
+Evaluator response: The letter constraint is: 5 letters, letter 1 is f, letter 5 is e.
+Some possible words that mean "To heap":
+I cannot think of any words now. Only 2 letters are constrained, it is still likely
+maybe
+cost time: 1.3958609104156494
+
+input: An Indian antelope: motor
+Evaluator response: impossible
+cost time: 3.4562888145446777
+
+input: To intend; to plan; to devise; a nettle; to guess: tatty
+Evaluator response: The letter constraint is: 5 letters, letter 1 is t, letter 5 is y.
+Some possible words that mean "To intend; to plan; to devise; a nettle; to guess":
+I cannot think of any words now. 4 letters are constrained, and it is extremely unlikely to have a word with pattern t _ _ _ y to mean "To intend; to plan; to devise; a nettle; to guess"
+impossible
+cost time: 2.2676777839660645
+
+input: A nozzle: foser
+Evaluator response: There is no five-letter word that fits the letter constraints "foser" to mean "A nozzle." 
+impossible
+cost time: 1.003373146057129
+
+input: Desiccator; more dry: _ry__
+Evaluator response: The letter constraint is: 5 letters, letter 2 is r, letter 5 is y.
+Some possible words that mean "Desiccator; more dry":
+dryer (d r y e r): 5 letters, letter 2 is r, letter 5 is r
+sure
+cost time: 1.8124339580535889
+
+answer: v3. tatty
+Count: {'sure': 1, 'maybe': 1, 'impossible': 8}
+
+
+input: An agendum; something to be done: fm_fw
+Evaluator response: I cannot think of any words that fit the letter constraints and mean "An agendum; something to be done." It is extremely unlikely to have a word with the pattern fm_fw.
+cost time: 4.063244104385376
+
+input: An engine: rotor
+Evaluator response: The letter constraint is: 5 letters, letter 1 is r, letter 5 is r.
+Some possible words that mean "An engine":
+I cannot think of any words now. Only 2 letters are constrained, it is still likely
+maybe
+cost time: 1.7023918628692627
+
+input: Pretentious; flowery: attsy
+Evaluator response: I cannot think of any words that fit the letter constraints and mean "Pretentious; flowery" with the given letters. It is unlikely to find a word that fits the constraints and has a meaningful definition. 
+impossible
+cost time: 1.3885653018951416
+
+input: A salon; a hall: mo_el
+Evaluator response: The letter constraint is: 5 letters, letter 3 is o, letter 5 is l.
+Some possible words that mean "A salon; a hall":
+model (m o d e l): 5 letters, letter 3 is d, not o
+I cannot think of any words now. 3 letters are constrained, and it is extremely unlikely to have a word with pattern mo_el to mean "A salon; a hall"
+impossible
+cost time: 5.905810832977295
+
+input: To mock; to sneer: er_ry
+Evaluator response: The letter constraint is: 5 letters, letter 3 is r, letter 4 is r, letter 5 is y.
+Some possible words that mean "To mock; to sneer":
+derby (d e r b y): 5 letters, letter 3 is r, letter 4 is b, not r
+I cannot think of any words now. 2 letters are constrained, and it is still likely
+maybe
+cost time: 2.2399420738220215
+
+input: To heap: frame
+Evaluator response: The letter constraint is: 5 letters, letter 1 is f, letter 5 is e.
+Some possible words that mean "To heap":
+I cannot think of any words now. 2 letters are constrained, and it is still likely to have a word with pattern f _ _ _ e to mean "To heap"
+maybe
+cost time: 1.62483811378479
+
+input: An Indian antelope: motor
+Evaluator response: impossible
+cost time: 0.7315809726715088
+
+input: To intend; to plan; to devise; a nettle; to guess: _tt__
+Evaluator response: The letter constraint is: 5 letters, letter 3 is t, letter 4 is t.
+Some possible words that mean "To intend; to plan; to devise; a nettle; to guess":
+batty (b a t t y): 5 letters, letter 3 is t, letter 4 is t. fit!
+sure
+cost time: 5.852039813995361
+
+input: A nozzle: foser
+Evaluator response: I cannot think of any word that fits the letter constraints "foser" to mean "A nozzle." It is highly unlikely that a word with this specific combination of letters exists. 
+impossible
+cost time: 1.544862985610962
+
+input: Desiccator; more dry: wryly
+Evaluator response: The letter constraint is: 5 letters, letter 1 is w, letter 5 is y.
+Some possible words that mean "Desiccator; more dry":
+I cannot think of any words now. 4 letters are constrained, and it is extremely unlikely to have a word with pattern w _ _ _ y to mean "Desiccator; more dry"
+impossible
+cost time: 1.6397011280059814
+
+answer: v5. wryly
+Count: {'sure': 1, 'maybe': 3, 'impossible': 5}
+
+
+input: An agendum; something to be done: fm_f_
+Evaluator response: The letter constraint is: 5 letters, letter 1 is f, letter 4 is f.
+Some possible words that mean "An agendum; something to be done":
+I cannot think of any words now. 2 letters are constrained, and _m_f_ seems a common pattern
+maybe
+cost time: 3.863403081893921
+
+input: An engine: rotor
+Evaluator response: The letter constraint is: 5 letters, letter 1 is r, letter 5 is r.
+The word "rotor" fits the constraints and means "An engine."
+sure
+cost time: 1.302962303161621
+
+input: Pretentious; flowery: attsy
+Evaluator response: I cannot think of any words that fit the letter constraints and mean "Pretentious; flowery" with the letters provided. It is unlikely that a word with the pattern attsy exists to mean "Pretentious; flowery."
+impossible
+cost time: 4.2245283126831055
+
+input: A salon; a hall: moire
+Evaluator response: The letter constraint is: 5 letters, letter 1 is m, letter 2 is o, letter 3 is i, letter 4 is r, letter 5 is e.
+Some possible words that mean "A salon; a hall":
+I cannot think of any words now. 5 letters are constrained, and it is extremely unlikely to have a word with pattern moire to mean "A salon; a hall"
+impossible
+cost time: 2.557704210281372
+
+input: To mock; to sneer: er_r_
+Evaluator response: The letter constraint is: 5 letters, letter 3 is r, letter 5 is r.
+Some possible words that mean "To mock; to sneer":
+error (e r r o r): 5 letters, letter 3 and 5 are r. fit!
+sure
+cost time: 1.6372709274291992
+
+input: To heap: frame
+Evaluator response: I cannot think of any words now. The word "frame" does not fit the letter constraint given (5 letters, no specific letter constraints). 
+impossible
+cost time: 5.020528078079224
+
+input: An Indian antelope: motor
+Evaluator response: impossible
+cost time: 4.294232130050659
+
+input: To intend; to plan; to devise; a nettle; to guess: _tti_
+Evaluator response: The letter constraint is: 5 letters, letter 2 is t, letter 4 is i.
+Some possible words that mean "To intend; to plan; to devise; a nettle; to guess":
+plot (p l o t): 4 letters, not 5
+I cannot think of any words now. 2 letters are constrained, and it is still likely
+maybe
+cost time: 2.0508999824523926
+
+input: A nozzle: fosrr
+Evaluator response: I cannot think of any words that fit the letter constraints "fosrr" to mean "A nozzle." It is highly unlikely that a word with this pattern exists.
+cost time: 4.539715051651001
+
+input: Desiccator; more dry: _rye_
+Evaluator response: The letter constraint is: 5 letters, letter 2 is r, letter 4 is e, letter 5 is y.
+Some possible words that mean "Desiccator; more dry":
+dryer (d r y e r): 5 letters, letter 2 is r, letter 4 is e, letter 5 is r
+I cannot think of any words now. 3 letters are constrained, and it is extremely unlikely to have a word with pattern _ r y e _ to mean "Desiccator; more dry"
+impossible
+cost time: 2.839355945587158
+
+answer: h4. moire
+Count: {'sure': 2, 'maybe': 2, 'impossible': 5}
+
+
+(prune)
+Steps: 5
+Nodes:
+[{'id': 4, 'answer': 'v4. foyer', 'value': {'sure': 0, 'maybe': 1, 'impossible': 0}, 'parent_node': 0, 'ancestor_value': 0}, {'id': 2, 'answer': 'v2. motor', 'value': {'sure': 0, 'maybe': 0, 'impossible': 1}, 'parent_node': 0, 'ancestor_value': 0}, {'id': 3, 'answer': 'h4. foyer', 'value': {'sure': 0, 'maybe': 0, 'impossible': 1}, 'parent_node': 0, 'ancestor_value': 0}, {'id': 1, 'answer': 'h2. motor', 'value': {'sure': 0, 'maybe': 0, 'impossible': 0}, 'parent_node': 0, 'ancestor_value': 0}, {'id': 5, 'answer': 'h3. showy', 'value': {'sure': 1, 'maybe': 0, 'impossible': 1}, 'parent_node': 4, 'ancestor_value': 1.0}, {'id': 6, 'answer': 'h2. motor', 'value': {'sure': 0, 'maybe': 1, 'impossible': 0}, 'parent_node': 4, 'ancestor_value': 1.0}, {'id': 7, 'answer': 'h1. apple', 'value': {'sure': 0, 'maybe': 0, 'impossible': 2}, 'parent_node': 4, 'ancestor_value': 1.0}, {'id': 8, 'answer': 'v3. showy', 'value': {'sure': 1, 'maybe': 1, 'impossible': 5}, 'parent_node': 5, 'ancestor_value': 21.001}, {'id': 9, 'answer': 'h4. foyer', 'value': {'sure': 1, 'maybe': 1, 'impossible': 4}, 'parent_node': 5, 'ancestor_value': 21.001}, {'id': 10, 'answer': 'h3. artsy', 'value': {'sure': 1, 'maybe': 3, 'impossible': 2}, 'parent_node': 6, 'ancestor_value': 2.0}, {'id': 11, 'answer': 'h4. aisle', 'value': {'sure': 1, 'maybe': 2, 'impossible': 3}, 'parent_node': 6, 'ancestor_value': 2.0}, {'id': 12, 'answer': 'v2. motor', 'value': {'sure': 2, 'maybe': 4, 'impossible': 2}, 'parent_node': 10, 'ancestor_value': 25.002}, {'id': 15, 'answer': 'v1. frame', 'value': {'sure': 2, 'maybe': 2, 'impossible': 6}, 'parent_node': 10, 'ancestor_value': 25.002}, {'id': 14, 'answer': 'h4. atria', 'value': {'sure': 1, 'maybe': 2, 'impossible': 4}, 'parent_node': 10, 'ancestor_value': 25.002}, {'id': 13, 'answer': 'h1. frame', 'value': {'sure': 1, 'maybe': 1, 'impossible': 4}, 'parent_node': 10, 'ancestor_value': 25.002}, {'id': 18, 'answer': 'v1. manor', 'value': {'sure': 2, 'maybe': 1, 'impossible': 7}, 'parent_node': 12, 'ancestor_value': 69.004}, {'id': 16, 'answer': 'h1. amend', 'value': {'sure': 1, 'maybe': 3, 'impossible': 5}, 'parent_node': 12, 'ancestor_value': 69.004}, {'id': 17, 'answer': 'h4. foyer', 'value': {'sure': 0, 'maybe': 3, 'impossible': 5}, 'parent_node': 12, 'ancestor_value': 69.004}, {'id': 19, 'answer': 'v3. tawny', 'value': {'sure': 0, 'maybe': 1, 'impossible': 8}, 'parent_node': 12, 'ancestor_value': 69.004}, {'id': 21, 'answer': 'h4. manor', 'value': {'sure': 3, 'maybe': 2, 'impossible': 4}, 'parent_node': 15, 'ancestor_value': 67.008}, {'id': 22, 'answer': 'v2. motor', 'value': {'sure': 3, 'maybe': 1, 'impossible': 6}, 'parent_node': 15, 'ancestor_value': 67.008}, {'id': 20, 'answer': 'v3. artsy', 'value': {'sure': 1, 'maybe': 4, 'impossible': 5}, 'parent_node': 15, 'ancestor_value': 67.008}, {'id': 23, 'answer': 'v5. deris', 'value': {'sure': 1, 'maybe': 2, 'impossible': 7}, 'parent_node': 15, 'ancestor_value': 67.008}, {'id': 26, 'answer': 'h1. fifer', 'value': {'sure': 2, 'maybe': 3, 'impossible': 5}, 'parent_node': 21, 'ancestor_value': 129.012}, {'id': 24, 'answer': 'v2. flora', 'value': {'sure': 1, 'maybe': 2, 'impossible': 4}, 'parent_node': 21, 'ancestor_value': 129.012}, {'id': 25, 'answer': 'v5. sorry', 'value': {'sure': 1, 'maybe': 1, 'impossible': 6}, 'parent_node': 21, 'ancestor_value': 129.012}, {'id': 27, 'answer': 'v3. tatty', 'value': {'sure': 0, 'maybe': 3, 'impossible': 6}, 'parent_node': 21, 'ancestor_value': 129.012}, {'id': 29, 'answer': 'h5. sorry', 'value': {'sure': 3, 'maybe': 0, 'impossible': 5}, 'parent_node': 22, 'ancestor_value': 128.014}, {'id': 28, 'answer': 'h1. frame', 'value': {'sure': 2, 'maybe': 3, 'impossible': 3}, 'parent_node': 22, 'ancestor_value': 128.014}, {'id': 32, 'answer': 'h4. moire', 'value': {'sure': 2, 'maybe': 2, 'impossible': 5}, 'parent_node': 22, 'ancestor_value': 128.014}, {'id': 31, 'answer': 'v5. wryly', 'value': {'sure': 1, 'maybe': 3, 'impossible': 5}, 'parent_node': 22, 'ancestor_value': 128.014}, {'id': 30, 'answer': 'v3. tatty', 'value': {'sure': 1, 'maybe': 1, 'impossible': 8}, 'parent_node': 22, 'ancestor_value': 128.014}]
+Selected node:
+{'id': 29, 'answer': 'h5. sorry', 'value': {'sure': 3, 'maybe': 0, 'impossible': 5}, 'parent_node': 22, 'ancestor_value': 128.014}
+
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]
+
+Generator: 
+[]

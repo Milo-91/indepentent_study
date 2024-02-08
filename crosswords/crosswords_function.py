@@ -32,7 +32,7 @@ def Generator(llm, node, refine = False):
     pattern = r'([hv][1-5])\. ([a-zA-Z]{5}) \((certain|high|medium|low)\)'
     patterns = '\n'.join([pattern for i in range(parameters.k)])
     start_time = time.time()
-    response = llm_function.call_llm(llm, question, patterns)
+    response = llm_function.call_llm(llm, question, patterns, parameters.generator_temperature)
     end_time = time.time()
     print('\nresponse:\n' + response + '\n')
     # parse response & return 
@@ -88,7 +88,7 @@ def Evaluator(llm, nodes):
             pattern = r"[\w|\W]*((?:sure)|(?:likely)|(?:impossible))$"
             # call llm
             start_time = time.time()
-            response = llm_function.call_llm(llm, question, pattern)
+            response = llm_function.call_llm(llm, question, pattern, parameters.evaluator_temperature)
             end_time = time.time()
             # parse response & return
             print(response)

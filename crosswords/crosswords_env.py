@@ -2,6 +2,7 @@ import json
 import parameters
 import re
 
+# board, ans, status, t, id
 class CrosswordsEnv():
     def __init__(self, file_name):
         self.all_data = self.load_data(file_name)
