@@ -266,61 +266,130 @@ Input:
 {input}
 '''
 
+propose_prompt = '''Let's play a 5 x 5 mini crossword, where each possible Answer should have exactly 5 letters.
+The format of question will be like "h1. One who saws: SA__R" and _ in the answer means unfilled words.
+Avoid to override current words in the answer when generating possible answers.
+Given the current status and question, list {k} possible answers for unfilled words.
 
-propose_prompt = '''Let's play a 5 x 5 mini crossword, where each word should have exactly 5 letters.
+Current Board
+_____
+_____
+OUTRO
+_____
+_____
+Unfilled:
+h1. Scald; an ancient Scandinavian bard: _____
+h2. H2O; to irrigate: _____
+h4. An artificial fabric: _____
+h5. Deep religious feeling: _____
+v1. To rush; to stoop; a descent: __O__
+v2. A New Zealand fir tree: __U__
+v3. Mine refuse: __T__
+v4. The garden dormouse: __R__
+v5. Like a drone; humming: __O__
+
+4 possible Answer:
+h1. Scald; an ancient Scandinavian bard: SKALD
+h2. H2O; to irrigate: WATER
+v1. To rush; to stoop; a descent: SWOOP
+v3. Mine refuse: ATTLE
+
+Current Board
+SKAL_
+WATER
+OUTRO
+O_LO_
+PIETY
+Unfilled:
+h1. Scald; an ancient Scandinavian bard: SKAL_
+h4. An artificial fabric: O_LO_
+v2. A New Zealand fir tree: KAU_I
+v5. Like a drone; humming: _RO_Y
+
+5 possible Answer:
+h1. Scald; an ancient Scandinavian bard: SKALD
+h4. An artificial fabric: ORLON
+v2. A New Zealand fir tree: KAURI
+v5. Like a drone; humming: PROTY
+h1. Scald; an ancient Scandinavian bard: SKALE
+
+Current Board:
+_____
+_____
+_____
+_____
+Unfilled:
+h1. A lunar valley: _____
+h2. A fatty oil: _____
+h3. To entice: _____
+h4. To lower; to reduce: _____
+h5. A solitary person: _____
+v1. According to the roster: _____
+v2. Another name for Port-Francqui: _____
+v3. An illicit lover; a European lake: _____
+v4. To lisp: _____
+v5. To come in: _____
+
+8 possible Answer:
+h1. A lunar valley: RILLE
+h2. A fatty oil: OLEIN
+h3. To entice: TEMPT
+v1. According to the roster: ROTAL
+v2. Another name for Port-Francqui: ILEBO
+v3. An illicit lover; a European lake: LEMAN
+v4. To lisp: LIPSE
+v5. To come in: ENTER
 
 {input}
-
-Given the current status, list all possible answers for unfilled or changed words, and your confidence levels (certain/high/medium/low), using the format "h1. apple (medium)". Use "certain" cautiously and only when you are 100% sure this is the correct word. You need to generate {k} possible answers.
+{k} possible Answer:
 '''
-
 
 value_prompt = '''Evaluate if there exists a five letter word of some meaning that fit some letter constraints (sure/maybe/impossible).
 
-Incorrect; to injure: w _ o _ g
+h1. Incorrect; to injure: w _ o _ g
 The letter constraint is: 5 letters, letter 1 is w, letter 3 is o, letter 5 is g.
 Some possible words that mean "Incorrect; to injure":
 wrong (w r o n g): 5 letters, letter 1 is w, letter 3 is o, letter 5 is g. fit!
-sure
+h1. sure
 
-A person with an all-consuming enthusiasm, such as for computers or anime: _ _ _ _ u
+v2. A person with an all-consuming enthusiasm, such as for computers or anime: _ _ _ _ u
 The letter constraint is: 5 letters, letter 5 is u.
 Some possible words that mean "A person with an all-consuming enthusiasm, such as for computers or anime":
 geek (g e e k): 4 letters, not 5
 otaku (o t a k u): 5 letters, letter 5 is u
-sure
+v2. sure
 
-Dewy; roscid: r _ _ _ l
+h2. Dewy; roscid: r _ _ _ l
 The letter constraint is: 5 letters, letter 1 is r, letter 5 is l.
 Some possible words that mean "Dewy; roscid":
 moist (m o i s t): 5 letters, letter 1 is m, not r
 humid (h u m i d): 5 letters, letter 1 is h, not r
 I cannot think of any words now. Only 2 letters are constrained, it is still likely
-maybe
+h2. maybe
 
-A woodland: _ l _ d e
+v5. A woodland: _ l _ d e
 The letter constraint is: 5 letters, letter 2 is l, letter 4 is d, letter 5 is e.
 Some possible words that mean "A woodland":
 forest (f o r e s t): 6 letters, not 5
 woods (w o o d s): 5 letters, letter 2 is o, not l
 grove (g r o v e): 5 letters, letter 2 is r, not l
 I cannot think of any words now. 3 letters are constrained, and _ l _ d e seems a common pattern
-maybe
+v5. maybe
 
-An inn: _ d _ w f
+v1. An inn: _ d _ w f
 The letter constraint is: 5 letters, letter 2 is d, letter 4 is w, letter 5 is f.
 Some possible words that mean "An inn":
 hotel (h o t e l): 5 letters, letter 2 is o, not d
 lodge (l o d g e): 5 letters, letter 2 is o, not d
 I cannot think of any words now. 3 letters are constrained, and it is extremely unlikely to have a word with pattern _ d _ w f to mean "An inn"
-impossible
+v1. impossible
 
-Chance; a parasitic worm; a fish: w r a k _
+v5. Chance; a parasitic worm; a fish: w r a k _
 The letter constraint is: 5 letters, letter 1 is w, letter 2 is r, letter 3 is a, letter 4 is k.
 Some possible words that mean "Chance; a parasitic worm; a fish":
 fluke (f l u k e): 5 letters, letter 1 is f, not w
 I cannot think of any words now. 4 letters are constrained, and it is extremely unlikely to have a word with pattern w r a k _ to mean "Chance; a parasitic worm; a fish"
-impossible
+v5. impossible
 
 {input}
 '''

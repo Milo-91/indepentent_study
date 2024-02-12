@@ -10,13 +10,13 @@ import time
 env = crosswords_env.CrosswordsEnv(file_name = parameters.data_path_crosswords)
 
 def Parse_propose_response(response: str):
-    format = r'^([hv][1-5])\. ([a-zA-Z]{5}) \((certain|high|medium|low)\)$'
+    format = r'([hv][1-5])\. .*\: ([a-zA-Z]{5})'
     parsed_lines = list()
     for line in response.split('\n'):
         print( 'line: ' + line + '\n')
         match = re.match(format, line)
         if match:
-            parts = [match.group(1), match.group(2), match.group(3)]
+            parts = [match.group(1), match.group(2)]
             parsed_lines.append(parts)
     return parsed_lines
 
@@ -28,42 +28,52 @@ def Generator(llm, node, refine = False):
     # call llm
     input_string = env.board_render() + env.ans_render()
     question = propose_prompt.format(input = input_string, k = parameters.k)
-    print('\nquestion:\n' +  question + '\n')
-    pattern = r'([hv][1-5])\. ([a-zA-Z]{5}) \((certain|high|medium|low)\)'
+    print('\nquestion:\n' +  question)
+    pattern = r'([hv][1-5])\. .*\: ([a-zA-Z]{5})'
     patterns = '\n'.join([pattern for i in range(parameters.k)])
     start_time = time.time()
     response = llm_function.call_llm(llm, question, patterns, parameters.generator_temperature)
     end_time = time.time()
-    print('\nresponse:\n' + response + '\n')
+    print('\nresponse:\n' + response)
+    record.Record_txt(parameters.file_name, '\nGenerator response: \n' + response + '\n\n')
     # parse response & return 
-    parsed_lines = Parse_propose_response(response + '\n')
-    parsed_lines = [(line[0].lower() + '. ' + line[1].lower(), confidence_to_value.get(line[2], 0)) for line in parsed_lines]
-    parsed_lines = sorted(parsed_lines, key = lambda x: x[1], reverse = True)   
+    parsed_lines = Parse_propose_response(response)
+    parsed_lines = [line[0].lower() + '. ' + line[1].lower()for line in parsed_lines]
     print('\nparsed lines:\n')
     print(parsed_lines)
-    record.Record_txt(parameters.file_name, '\nGenerator: \n' + str(parsed_lines) + '\n')
+    record.Record_txt(parameters.file_name, '\nparsed Generator: \n' + str(parsed_lines) + '\n')
     for i in range(len(parsed_lines)):
         if i == parameters.k:
             break
-        new_nodes.append({'id': env.get_id(), 'answer': parsed_lines[i][0], 'value': None, 'parent_node': node['id'], 'ancestor_value': Value_mapping(node['value']) + (0 if node['ancestor_value'] == None else node['ancestor_value'])})
+        new_nodes.append({'id': env.get_id(), 'answer': parsed_lines[i], 'value': None, 'parent_node': node['id'], 'ancestor_value': Value_mapping(node['value']) + (0 if node['ancestor_value'] == None else node['ancestor_value'])})
+    # add worng answer
+    if len(parsed_lines) < parameters.k:
+        new_nodes.extend([{'id': env.get_id(), 'answer': 'wrong answer', 'value': None, 'parent_node': None, 'ancestor_value': None} for _ in range(parameters.k - len(parsed_lines))])
+
     # refine
+    '''
     if len(new_nodes) == 0:
         print('refine')
         new_nodes = Generator(llm, node, refine = True)
+    '''
     if refine == False:
         print(f'cost time: {end_time - start_time}')
         record.Record_txt(parameters.file_name, 'Generator nodes:\n' + str(new_nodes) + '\ncost time: ' + str(end_time - start_time) + '\n\n')
     else:
         print(f'refine\ncost time: {end_time - start_time}')
         record.Record_txt(parameters.file_name, 'refine\ncost time: ' + str(end_time - start_time) + '\n\n')
+
     return new_nodes
 
 
 def Parse_value_response(response):
     answer = response.strip().split('\n')[-1]
-    if (answer != 'sure') and (answer != 'maybe') and (answer != 'impossible'):
+    format = r'[hv][1-5]\. ((?:sure)|(?:maybe)|(?:impossible))'
+    match = re.match(format, answer)
+    if match:
+        return match.group(1)
+    else:
         return None
-    return answer
 
 
 def Evaluator(llm, nodes):
@@ -74,15 +84,22 @@ def Evaluator(llm, nodes):
         board = env.board.copy()
         status = env.status.copy()
         t = env.t
+        # skip wrong answer
+        if node['answer'] == 'wrong answer':
+            continue
         env.change_env(node['answer'])
         for i in range(10):
             print(env.board_render())
             print(f'env.ans: {env.ans[i]}')
             # skip _____ & ____ answers
             if env.ans[i].count('_') >= 4:
+                count['sure'] += 1
                 continue
-            ans = ''.join(env.ans[i].lower())
-            line = f'{env.data[i]}: {ans}'
+            ans = ' '.join(env.ans[i].lower())
+            if i < 5:
+                line = f'h{i + 1}. {env.data[i]}: {ans}'
+            else:
+                line = f'v{i - 4}. {env.data[i]}: {ans}'
             print('each ans: ' + line)
             question = value_prompt.format(input = line)
             pattern = r"[\w|\W]*((?:sure)|(?:likely)|(?:impossible))$"
@@ -108,7 +125,7 @@ def Value_mapping(value):
     if value == None:
         return 0
     count = 0
-    count += value['sure'] * 20 + value['maybe'] + value['impossible'] * 0.001
+    count += value['sure'] * 10 + value['maybe'] * 5 + value['impossible'] * 1
     return count
 
 

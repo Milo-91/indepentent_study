@@ -20,7 +20,7 @@ def dfs(llm, nodes):
             new_nodes = crosswords.Evaluator(llm, new_nodes)
             new_nodes = sorted(new_nodes, key = crosswords.Sorted_by_value, reverse = True)
             all_nodes.extend(new_nodes)
-            if new_nodes[0]['value']['impossible'] < 5:# change threshold
+            if crosswords.Value_mapping(new_nodes[0]['value']) >= 50:# change threshold
                 # possible branches
                 print('-'*10)
                 print(f'now step = {crosswords.env.t}\n')
