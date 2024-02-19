@@ -82,6 +82,11 @@ class CrosswordsEnv():
         l = int(line_index[1]) - 1
         print(f'line_index = {l}')
         direction = line_index[0]
+        # board
+        if direction == 'h':
+            self.board[l * 5 : (l + 1) * 5] = [char.upper() for char in answer]
+        if direction == 'v':
+            self.board[l::5] = [char.upper() for char in answer]
         # status
         for i in range(5):
             self.status[i] = 0
@@ -91,12 +96,13 @@ class CrosswordsEnv():
             self.status[i + 5] = 0
             if all(element != '_' for element in self.board[i::5]):
                 self.status[i + 5] = 1
-        # board
-        if direction == 'h':
-            self.board[l * 5 : (l + 1) * 5] = [char.upper() for char in answer]
-        if direction == 'v':
-            self.board[l::5] = [char.upper() for char in answer]
         # t
         self.t += 1
         #ans
         self.ans = self.get_ans(self.board)
+
+    def board_complete(self):
+        if '_' in self.board:
+            return False
+        else:
+            return True

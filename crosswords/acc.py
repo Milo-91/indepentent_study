@@ -1,5 +1,6 @@
 import json
 import parameters
+import record_function as record
 
 def acc(crosswords, idx):
     acc_dict = {'letter': 0, 'word': 0, 'game': 0}
@@ -40,4 +41,5 @@ def acc(crosswords, idx):
     if acc_dict['word'] == 10:
         acc_dict['game'] += 1
 
+    record.Record_txt(parameters.acc_file_name, 'idx ' + str(idx) + ': '  + ', ' + str(acc_dict) + '\n' + str(crosswords) + '\n' + str(answer) + '\n')
     return acc_dict

@@ -269,6 +269,7 @@ Input:
 propose_prompt = '''Let's play a 5 x 5 mini crossword, where each possible Answer should have exactly 5 letters.
 The format of question will be like "h1. One who saws: SA__R" and _ in the answer means unfilled words.
 Avoid to override current words in the answer when generating possible answers.
+The line index and question number must match.
 Given the current status and question, list {k} possible answers for unfilled words.
 
 Current Board

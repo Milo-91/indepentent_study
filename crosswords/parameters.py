@@ -16,7 +16,7 @@ acc_file_name = '{file_path}/acc_info_crosswords.txt'
 data_path_crosswords = 'data/mini0505.json'
 image_folder = 'crosswords_image'
 max_tokens = 1024
-generator_temperature = 0.5
+generator_temperature = 0.7
 evaluator_temperature = 0
 n_ctx = 2048
 n_gpu_layers = -1
@@ -30,7 +30,7 @@ id = 0
 idx = 0
 
 # (tot-dfs, dfs+sd)
-method = 'tot-dfs'
+method = 'dfs+sd'
 model_import_method = 'openai'
 with_lmformatenforcer = False
 

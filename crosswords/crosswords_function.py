@@ -23,12 +23,14 @@ def Parse_propose_response(response: str):
 
 def Generator(llm, node, refine = False):
     # initialize
+    record.Record_txt(parameters.file_name, '\n' + '-'*5 + 'Generator' + '-'*5 + '\n')
     confidence_to_value = {'certain': 1, 'high': 0.5, 'medium': 0.2, 'low': 0.1}
     new_nodes = list()
     # call llm
     input_string = env.board_render() + env.ans_render()
     question = propose_prompt.format(input = input_string, k = parameters.k)
     print('\nquestion:\n' +  question)
+    record.Record_txt(parameters.file_name, '\nGenerator question: \n' + question + '\n\n')
     pattern = r'([hv][1-5])\. .*\: ([a-zA-Z]{5})'
     patterns = '\n'.join([pattern for i in range(parameters.k)])
     start_time = time.time()
@@ -41,7 +43,6 @@ def Generator(llm, node, refine = False):
     parsed_lines = [line[0].lower() + '. ' + line[1].lower()for line in parsed_lines]
     print('\nparsed lines:\n')
     print(parsed_lines)
-    record.Record_txt(parameters.file_name, '\nparsed Generator: \n' + str(parsed_lines) + '\n')
     for i in range(len(parsed_lines)):
         if i == parameters.k:
             break
@@ -58,11 +59,12 @@ def Generator(llm, node, refine = False):
     '''
     if refine == False:
         print(f'cost time: {end_time - start_time}')
-        record.Record_txt(parameters.file_name, 'Generator nodes:\n' + str(new_nodes) + '\ncost time: ' + str(end_time - start_time) + '\n\n')
+        record.Record_txt(parameters.file_name, 'Generator nodes:\n' + '\n'.join(list(map(str, new_nodes.copy()))) + '\ncost time: ' + str(end_time - start_time) + '\n\n')
     else:
         print(f'refine\ncost time: {end_time - start_time}')
         record.Record_txt(parameters.file_name, 'refine\ncost time: ' + str(end_time - start_time) + '\n\n')
 
+    record.Record_txt(parameters.file_name, '-'*10 + '\n\n')
     return new_nodes
 
 
@@ -77,6 +79,7 @@ def Parse_value_response(response):
 
 
 def Evaluator(llm, nodes):
+    record.Record_txt(parameters.file_name, '\n' + '-'*5 + 'Evaluator' + '-'*5 + '\n')
     new_nodes = list()
     for node in nodes:
         # initialize
@@ -118,6 +121,7 @@ def Evaluator(llm, nodes):
         record.Record_txt(parameters.file_name, '\nanswer: ' + str(node['answer']) + '\nCount: ' + str(node['value']) + '\n\n')
         new_nodes.append(node)
         env.reset(board = board, status = status, t = t, id = env.id)
+    record.Record_txt(parameters.file_name, '-'*10 + '\n\n')
     return new_nodes
 
 

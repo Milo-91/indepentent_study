@@ -11,6 +11,7 @@ import model_download
 import datetime
 import crosswords_function as crosswords
 import acc
+import dfs_sd as sd
 
 if __name__ == '__main__':
     llm = llm_function.get_llm()
@@ -36,7 +37,7 @@ if __name__ == '__main__':
         if parameters.method == 'tot-dfs':
             loc = dfs(llm, nodes)
         elif parameters.method == 'dfs+sd':
-            pass
+            loc = sd.dfs(llm, nodes)
         end_time = time.time()
         # record
         loc['id'] = parameters.idx
@@ -44,7 +45,6 @@ if __name__ == '__main__':
         loc['correct'] = acc.acc(loc['answer'], parameters.idx)
         locs.append(loc)
         record.Record_json(parameters.json_file_name, loc)
-        record.Record_txt(parameters.acc_file_name, 'id ' + str(parameters.idx) + ': ' + str(loc['answer']) + ', ' + str(loc['correct']) + '\n')
         acc_letter_count += loc['correct']['letter'] 
         acc_word_count += loc['correct']['word']
         acc_game_count += loc['correct']['game']
