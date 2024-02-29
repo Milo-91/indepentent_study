@@ -269,7 +269,7 @@ Input:
 propose_prompt = '''Let's play a 5 x 5 mini crossword, where each possible Answer should have exactly 5 letters.
 The format of question will be like "h1. One who saws: SA__R" and _ in the answer means unfilled words.
 Avoid to override current words in the answer when generating possible answers.
-The line index and question number must match.
+The index and question must match.
 Given the current status and question, list {k} possible answers for unfilled words.
 
 Current Board
@@ -279,21 +279,21 @@ OUTRO
 _____
 _____
 Unfilled:
-h1. Scald; an ancient Scandinavian bard: _____
-h2. H2O; to irrigate: _____
-h4. An artificial fabric: _____
-h5. Deep religious feeling: _____
-v1. To rush; to stoop; a descent: __O__
-v2. A New Zealand fir tree: __U__
-v3. Mine refuse: __T__
-v4. The garden dormouse: __R__
-v5. Like a drone; humming: __O__
+1. Scald; an ancient Scandinavian bard: _____
+2. H2O; to irrigate: _____
+3. An artificial fabric: _____
+4. Deep religious feeling: _____
+5. To rush; to stoop; a descent: __O__
+6. A New Zealand fir tree: __U__
+7. Mine refuse: __T__
+8. The garden dormouse: __R__
+9. Like a drone; humming: __O__
 
 4 possible Answer:
-h1. Scald; an ancient Scandinavian bard: SKALD
-h2. H2O; to irrigate: WATER
-v1. To rush; to stoop; a descent: SWOOP
-v3. Mine refuse: ATTLE
+1. Scald; an ancient Scandinavian bard: SKALD
+2. H2O; to irrigate: WATER
+5. To rush; to stoop; a descent: SWOOP
+7. Mine refuse: ATTLE
 
 Current Board
 SKAL_
@@ -302,17 +302,17 @@ OUTRO
 O_LO_
 PIETY
 Unfilled:
-h1. Scald; an ancient Scandinavian bard: SKAL_
-h4. An artificial fabric: O_LO_
-v2. A New Zealand fir tree: KAU_I
-v5. Like a drone; humming: _RO_Y
+1. Scald; an ancient Scandinavian bard: SKAL_
+4. An artificial fabric: O_LO_
+6. A New Zealand fir tree: KAU_I
+10. Like a drone; humming: _RO_Y
 
 5 possible Answer:
-h1. Scald; an ancient Scandinavian bard: SKALD
-h4. An artificial fabric: ORLON
-v2. A New Zealand fir tree: KAURI
-v5. Like a drone; humming: PROTY
-h1. Scald; an ancient Scandinavian bard: SKALE
+1. Scald; an ancient Scandinavian bard: SKALD
+4. An artificial fabric: ORLON
+6. A New Zealand fir tree: KAURI
+10. Like a drone; humming: PROTY
+1. Scald; an ancient Scandinavian bard: SKALE
 
 Current Board:
 _____
@@ -320,26 +320,26 @@ _____
 _____
 _____
 Unfilled:
-h1. A lunar valley: _____
-h2. A fatty oil: _____
-h3. To entice: _____
-h4. To lower; to reduce: _____
-h5. A solitary person: _____
-v1. According to the roster: _____
-v2. Another name for Port-Francqui: _____
-v3. An illicit lover; a European lake: _____
-v4. To lisp: _____
-v5. To come in: _____
+1. A lunar valley: _____
+2. A fatty oil: _____
+3. To entice: _____
+4. To lower; to reduce: _____
+5. A solitary person: _____
+6. According to the roster: _____
+7. Another name for Port-Francqui: _____
+8. An illicit lover; a European lake: _____
+9. To lisp: _____
+10. To come in: _____
 
 8 possible Answer:
-h1. A lunar valley: RILLE
-h2. A fatty oil: OLEIN
-h3. To entice: TEMPT
-v1. According to the roster: ROTAL
-v2. Another name for Port-Francqui: ILEBO
-v3. An illicit lover; a European lake: LEMAN
-v4. To lisp: LIPSE
-v5. To come in: ENTER
+1. A lunar valley: RILLE
+2. A fatty oil: OLEIN
+3. To entice: TEMPT
+6. According to the roster: ROTAL
+7. Another name for Port-Francqui: ILEBO
+8. An illicit lover; a European lake: LEMAN
+9. To lisp: LIPSE
+10. To come in: ENTER
 
 {input}
 {k} possible Answer:
@@ -347,50 +347,57 @@ v5. To come in: ENTER
 
 value_prompt = '''Evaluate if there exists a five letter word of some meaning that fit some letter constraints (sure/maybe/impossible).
 
-h1. Incorrect; to injure: w _ o _ g
+Input: Incorrect; to injure: w _ o _ g
+Analysis:
 The letter constraint is: 5 letters, letter 1 is w, letter 3 is o, letter 5 is g.
 Some possible words that mean "Incorrect; to injure":
 wrong (w r o n g): 5 letters, letter 1 is w, letter 3 is o, letter 5 is g. fit!
-h1. sure
+Output: sure
 
-v2. A person with an all-consuming enthusiasm, such as for computers or anime: _ _ _ _ u
+Input: A person with an all-consuming enthusiasm, such as for computers or anime: _ _ _ _ u
+Analysis:
 The letter constraint is: 5 letters, letter 5 is u.
 Some possible words that mean "A person with an all-consuming enthusiasm, such as for computers or anime":
 geek (g e e k): 4 letters, not 5
 otaku (o t a k u): 5 letters, letter 5 is u
-v2. sure
+Output: sure
 
-h2. Dewy; roscid: r _ _ _ l
+Input: Dewy; roscid: r _ _ _ l
+Analysis:
 The letter constraint is: 5 letters, letter 1 is r, letter 5 is l.
 Some possible words that mean "Dewy; roscid":
 moist (m o i s t): 5 letters, letter 1 is m, not r
 humid (h u m i d): 5 letters, letter 1 is h, not r
 I cannot think of any words now. Only 2 letters are constrained, it is still likely
-h2. maybe
+Output: maybe
 
-v5. A woodland: _ l _ d e
+Input: A woodland: _ l _ d e
+Analysis:
 The letter constraint is: 5 letters, letter 2 is l, letter 4 is d, letter 5 is e.
 Some possible words that mean "A woodland":
 forest (f o r e s t): 6 letters, not 5
 woods (w o o d s): 5 letters, letter 2 is o, not l
 grove (g r o v e): 5 letters, letter 2 is r, not l
 I cannot think of any words now. 3 letters are constrained, and _ l _ d e seems a common pattern
-v5. maybe
+Output: maybe
 
-v1. An inn: _ d _ w f
+Input: An inn: _ d _ w f
+Analysis:
 The letter constraint is: 5 letters, letter 2 is d, letter 4 is w, letter 5 is f.
 Some possible words that mean "An inn":
 hotel (h o t e l): 5 letters, letter 2 is o, not d
 lodge (l o d g e): 5 letters, letter 2 is o, not d
 I cannot think of any words now. 3 letters are constrained, and it is extremely unlikely to have a word with pattern _ d _ w f to mean "An inn"
-v1. impossible
+Output: impossible
 
-v5. Chance; a parasitic worm; a fish: w r a k _
+Input: Chance; a parasitic worm; a fish: w r a k _
+Analysis:
 The letter constraint is: 5 letters, letter 1 is w, letter 2 is r, letter 3 is a, letter 4 is k.
 Some possible words that mean "Chance; a parasitic worm; a fish":
 fluke (f l u k e): 5 letters, letter 1 is f, not w
 I cannot think of any words now. 4 letters are constrained, and it is extremely unlikely to have a word with pattern w r a k _ to mean "Chance; a parasitic worm; a fish"
-v5. impossible
+Output: impossible
 
-{input}
+Input: {input}
+Analysis:
 '''

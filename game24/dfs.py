@@ -100,6 +100,7 @@ def dfs(llm, node, sd = False):
     print(f'd_thres: {d_thres}')
     best_node, max_value = __dfs__(llm, node[0], best_node, max_value, graph, 0, sd = sd)
     print(all_nodes)
+    all_nodes = sorted(all_nodes, key = game24.Sorted_by_id, reverse = False)
     record.Record_txt(parameters.file_name, '\nall_nodes:\n' + '\n'.join(list(map(str, all_nodes.copy()))) + '\n\n')
 
     graph.show_in_linked_list()

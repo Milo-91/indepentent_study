@@ -48,11 +48,11 @@ class CrosswordsEnv():
         for i in range(5):
             #print(self.data[i])
             if status == None or self.status[i] == status:
-                lines.append(f'h{i + 1}. ' + self.data[i] + ': ' + ''.join(self.board[i * 5 : (i + 1) * 5]))
+                lines.append(f'{i + 1}. ' + self.data[i] + ': ' + ''.join(self.board[i * 5 : (i + 1) * 5]))
         # vertical
         for i in range(5):
             if status == None or self.status[i + 5] == status:
-                lines.append(f'v{i + 1}. ' + self.data[i] + ': ' + ''.join(self.board[i::5]))
+                lines.append(f'{i + 6}. ' + self.data[i + 5] + ': ' + ''.join(self.board[i::5]))
         return lines
 
     def get_ans(self, board):
@@ -74,18 +74,18 @@ class CrosswordsEnv():
     def change_env(self, ans):
         if ans == None:
             return
-        format = r'^([hv][1-5])\. ([a-zA-Z]{5}).*$'
+        format = r'^(\d+)\. ([a-zA-Z]{5}).*$'
         match = re.match(format, ans)
         if not match:
             return
         line_index, answer = match.group(1), match.group(2)
-        l = int(line_index[1]) - 1
+        l = int(line_index) - 1
         print(f'line_index = {l}')
-        direction = line_index[0]
         # board
-        if direction == 'h':
+        if l < 5:
             self.board[l * 5 : (l + 1) * 5] = [char.upper() for char in answer]
-        if direction == 'v':
+        else:
+            l -= 5
             self.board[l::5] = [char.upper() for char in answer]
         # status
         for i in range(5):

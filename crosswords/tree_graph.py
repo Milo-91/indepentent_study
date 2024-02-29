@@ -19,6 +19,18 @@ class graph():
             tree_head.append(new_node)
         
         return tree_head
+    
+    def append_tree_head(self, origin_tree_head):
+        # need to adjust total_element before call this function
+        tree_head = origin_tree_head
+        new_len = self.total_element - len(origin_tree_head)
+        for _ in range(new_len):
+            new_node = {'node': None, 'prev_node': None, 'next_node': None}
+            new_node['prev_node'] = new_node
+            new_node['next_node'] = new_node
+            tree_head.append(new_node)
+
+        return tree_head
        
     def add_nodes(self, new_nodes):
         # add in tail
@@ -48,6 +60,15 @@ class graph():
             id = node['id']
             print('visited id: ' + str(id))
             self.visited[id] = 1
+
+    def add_head_list_len(self, new_len):
+        # adjust length of visited & total_element & tree_head
+        if new_len >= self.total_element:
+            record.Record_txt(parameters.file_name, '\nadjust graph list length ' + str(self.total_element))
+            self.visited.extend([0] * (new_len - self.total_element + 1))
+            self.total_element = new_len + 1
+            self.tree_head = self.append_tree_head(self.tree_head)
+            record.Record_txt(parameters.file_name, ' -> ' + str(self.total_element) + '\n\n')
 
 
 if __name__ == '__main__':

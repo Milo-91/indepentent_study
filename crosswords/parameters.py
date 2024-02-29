@@ -25,11 +25,12 @@ initial_idx = 0
 b = 3
 T = 10
 k = 5
+max_steps = 150
 
 id = 0
 idx = 0
 
-# (tot-dfs, dfs+sd)
+# (tot-dfs, dfs+sd, dfs+ksd)
 method = 'dfs+sd'
 model_import_method = 'openai'
 with_lmformatenforcer = False

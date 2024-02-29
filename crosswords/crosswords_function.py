@@ -10,7 +10,7 @@ import time
 env = crosswords_env.CrosswordsEnv(file_name = parameters.data_path_crosswords)
 
 def Parse_propose_response(response: str):
-    format = r'([hv][1-5])\. .*\: ([a-zA-Z]{5})'
+    format = r'(\d+)\. .*\: ([a-zA-Z]{5})'
     parsed_lines = list()
     for line in response.split('\n'):
         print( 'line: ' + line + '\n')
@@ -31,7 +31,7 @@ def Generator(llm, node, refine = False):
     question = propose_prompt.format(input = input_string, k = parameters.k)
     print('\nquestion:\n' +  question)
     record.Record_txt(parameters.file_name, '\nGenerator question: \n' + question + '\n\n')
-    pattern = r'([hv][1-5])\. .*\: ([a-zA-Z]{5})'
+    pattern = r'(\d+)\. .*\: ([a-zA-Z]{5})'
     patterns = '\n'.join([pattern for i in range(parameters.k)])
     start_time = time.time()
     response = llm_function.call_llm(llm, question, patterns, parameters.generator_temperature)
@@ -46,10 +46,10 @@ def Generator(llm, node, refine = False):
     for i in range(len(parsed_lines)):
         if i == parameters.k:
             break
-        new_nodes.append({'id': env.get_id(), 'answer': parsed_lines[i], 'value': None, 'parent_node': node['id'], 'ancestor_value': Value_mapping(node['value']) + (0 if node['ancestor_value'] == None else node['ancestor_value'])})
+        new_nodes.append({'id': env.get_id(), 'answer': parsed_lines[i], 'value': None, 'parent_node': node['id'], 'ancestor_value': Value_mapping(node['value']) + (0 if node['ancestor_value'] == None else node['ancestor_value']), 'ancestor_distance': distance_calculator(node['value'], (0 if node['ancestor_distance'] == None or node['ancestor_distance'] == -1 else node['ancestor_distance'])), 'board': None, 'status': None})
     # add worng answer
     if len(parsed_lines) < parameters.k:
-        new_nodes.extend([{'id': env.get_id(), 'answer': 'wrong answer', 'value': None, 'parent_node': None, 'ancestor_value': None} for _ in range(parameters.k - len(parsed_lines))])
+        new_nodes.extend([{'id': env.get_id(), 'answer': 'wrong answer', 'value': None, 'parent_node': node['id'], 'ancestor_value': None, 'ancestor_distance': None, 'board': None, 'status': None} for _ in range(parameters.k - len(parsed_lines))])
 
     # refine
     '''
@@ -70,7 +70,7 @@ def Generator(llm, node, refine = False):
 
 def Parse_value_response(response):
     answer = response.strip().split('\n')[-1]
-    format = r'[hv][1-5]\. ((?:sure)|(?:maybe)|(?:impossible))'
+    format = r'Output\: ((?:sure)|(?:maybe)|(?:impossible))'
     match = re.match(format, answer)
     if match:
         return match.group(1)
@@ -89,8 +89,11 @@ def Evaluator(llm, nodes):
         t = env.t
         # skip wrong answer
         if node['answer'] == 'wrong answer':
+            new_nodes.append(node)
             continue
         env.change_env(node['answer'])
+        node['board'] = env.board.copy()
+        node['status'] = env.status.copy()
         for i in range(10):
             print(env.board_render())
             print(f'env.ans: {env.ans[i]}')
@@ -99,10 +102,7 @@ def Evaluator(llm, nodes):
                 count['sure'] += 1
                 continue
             ans = ' '.join(env.ans[i].lower())
-            if i < 5:
-                line = f'h{i + 1}. {env.data[i]}: {ans}'
-            else:
-                line = f'v{i - 4}. {env.data[i]}: {ans}'
+            line = f'{env.data[i]}: {ans}'
             print('each ans: ' + line)
             question = value_prompt.format(input = line)
             pattern = r"[\w|\W]*((?:sure)|(?:likely)|(?:impossible))$"
@@ -129,16 +129,26 @@ def Value_mapping(value):
     if value == None:
         return 0
     count = 0
-    count += value['sure'] * 10 + value['maybe'] * 5 + value['impossible'] * 1
+    count += value['sure'] * 10 + value['maybe'] * 9 + value['impossible'] * 1
     return count
 
 
 def Sorted_by_value(node):
-    return Value_mapping(node['value']) + node['ancestor_value']
+    return Value_mapping(node['value']) + (0 if node['ancestor_value'] == None else node['ancestor_value'])
 
 
 def Sorted_by_id(node):
     return node['id']
+
+def distance_calculator(value, ancestor_distance):
+    # {'sure': 10, 'maybe': 9, 'impossible': 1}
+    if value == None:
+        return -1
+    # distance = ancestor_distance
+    distance = 0
+    distance += value['maybe'] * 1
+    distance += value['impossible'] * 9
+    return distance
     
 
 if __name__ == '__main__':
