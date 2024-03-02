@@ -1,0 +1,30 @@
+// tree_906
+digraph {
+	0 [label="0
+1 8 10 11"]
+	72 [label="72
+1 + 8 = 9 (left: 9 10 11)
+parent: 71
+value: 1.001" color=yellow]
+	71 -> 72 [label=58.999 fontsize=32]
+	73 [label="73
+8 + 1 = 9 (left: 9 10 11)
+parent: 71
+value: 1.001" color=yellow]
+	71 -> 73 [label=58.999 fontsize=32]
+	74 [label="74
+10 + 1 = 11 (left: 8 11 11)
+parent: 71
+value: 3.0" color=yellow]
+	71 -> 74 [label=57.0 fontsize=32]
+	75 [label="75
+11 - 1 = 10 (left: 8 10 11)
+parent: 71
+value: 2.001" color=yellow]
+	71 -> 75 [label=57.999 fontsize=32]
+	76 [label="76
+11 - 8 = 3 (left: 1 8 10)
+parent: 71
+value: 3.0" color=yellow]
+	71 -> 76 [label=57.0 fontsize=32]
+}

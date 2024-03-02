@@ -1,0 +1,931 @@
+model: gpt-3.5-turbo
+temperature: 0.7
+algorithm: dfs+sd
+k: 5
+b: 3
+idx: 908
+date: 2024-03-03
+
+
+----------step 0----------
+
+
+distance: 0
+
+
+propose prompt: Input: 2 8 8 14
+8 Possible next steps:
+2 + 8 = 10 (left: 8 10 14)
+8 / 2 = 4 (left: 4 8 14)
+14 + 2 = 16 (left: 8 8 16)
+2 * 8 = 16 (left: 8 14 16)
+8 - 2 = 6 (left: 6 8 14)
+14 - 8 = 6 (left: 2 6 8)
+14 /  2 = 7 (left: 7 8 8)
+14 - 2 = 12 (left: 8 8 12)
+Input: 1 3 5 9
+5 Possible next steps:
+
+
+
+res(n=1): {
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "1 + 3 = 4 (left: 4 5 9)\n3 + 5 = 8 (left: 1 8 9)\n5 * 3 = 15 (left: 1 15 9)\n9 - 1 = 8 (left: 3 5 8)\n9 - 3 = 6 (left: 1 5 6)",
+        "role": "assistant"
+      }
+    }
+  ],
+  "created": 1709405600,
+  "id": "chatcmpl-8yOm0r2gzLVj8hkkOGgZRA7Atbnon",
+  "model": "gpt-3.5-turbo-0125",
+  "object": "chat.completion",
+  "system_fingerprint": "fp_2b778c6b35",
+  "usage": {
+    "completion_tokens": 85,
+    "prompt_tokens": 176,
+    "total_tokens": 261
+  }
+}
+
+
+outputs:
+1 + 3 = 4 (left: 4 5 9)
+3 + 5 = 8 (left: 1 8 9)
+5 * 3 = 15 (left: 1 15 9)
+9 - 1 = 8 (left: 3 5 8)
+9 - 3 = 6 (left: 1 5 6)
+
+
+value prompt: Evaluate if given numbers can reach 24 (sure/likely/impossible)
+10 14
+10 + 14 = 24
+sure
+11 12
+11 + 12 = 23
+12 - 11 = 1
+11 * 12 = 132
+11 / 12 = 0.91
+impossible
+4 4 10
+4 + 4 + 10 = 8 + 10 = 18
+4 * 10 - 4 = 40 - 4 = 36
+(10 - 4) * 4 = 6 * 4 = 24
+sure
+4 9 11
+9 + 11 + 4 = 20 + 4 = 24
+sure
+5 7 8
+5 + 7 + 8 = 12 + 8 = 20
+(8 - 5) * 7 = 3 * 7 = 21
+I cannot obtain 24 now, but numbers are within a reasonable range
+likely
+5 6 6
+5 + 6 + 6 = 17
+(6 - 5) * 6 = 1 * 6 = 6
+I cannot obtain 24 now, but numbers are within a reasonable range
+likely
+10 10 11
+10 + 10 + 11 = 31
+(11 - 10) * 10 = 10
+10 10 10 are all too big
+impossible
+1 3 3
+1 * 3 * 3 = 9
+(1 + 3) * 3 = 12
+1 3 3 are all too small
+impossible
+4 5 9
+
+
+
+res(n=3): {
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "4 * 5 + 9 = 20 + 9 = 29\n(9 - 4) * 5 = 5 * 5 = 25\n4 5 9 are within a reasonable range\nlikely",
+        "role": "assistant"
+      }
+    },
+    {
+      "finish_reason": "stop",
+      "index": 1,
+      "logprobs": null,
+      "message": {
+        "content": "4 * 5 + 9 = 20 + 9 = 29\n(9 - 4) * 5 = 5 * 5 = 25\n4 5 9 are close, but cannot obtain 24\nlikely",
+        "role": "assistant"
+      }
+    },
+    {
+      "finish_reason": "stop",
+      "index": 2,
+      "logprobs": null,
+      "message": {
+        "content": "4 * 5 + 9 = 20 + 9 = 29\n4 + 5 * 9 = 4 + 45 = 49\n4 5 9 are all reasonable numbers, but cannot reach 24\nimpossible",
+        "role": "assistant"
+      }
+    }
+  ],
+  "created": 1709405602,
+  "id": "chatcmpl-8yOm2sUBRTtfaZS6wwDdHgNVT6ghS",
+  "model": "gpt-3.5-turbo-0125",
+  "object": "chat.completion",
+  "system_fingerprint": "fp_2b778c6b35",
+  "usage": {
+    "completion_tokens": 151,
+    "prompt_tokens": 367,
+    "total_tokens": 518
+  }
+}
+
+
+outputs:
+4 * 5 + 9 = 20 + 9 = 29
+(9 - 4) * 5 = 5 * 5 = 25
+4 5 9 are within a reasonable range
+likely
+4 * 5 + 9 = 20 + 9 = 29
+(9 - 4) * 5 = 5 * 5 = 25
+4 5 9 are close, but cannot obtain 24
+likely
+4 * 5 + 9 = 20 + 9 = 29
+4 + 5 * 9 = 4 + 45 = 49
+4 5 9 are all reasonable numbers, but cannot reach 24
+impossible
+
+
+value prompt: Evaluate if given numbers can reach 24 (sure/likely/impossible)
+10 14
+10 + 14 = 24
+sure
+11 12
+11 + 12 = 23
+12 - 11 = 1
+11 * 12 = 132
+11 / 12 = 0.91
+impossible
+4 4 10
+4 + 4 + 10 = 8 + 10 = 18
+4 * 10 - 4 = 40 - 4 = 36
+(10 - 4) * 4 = 6 * 4 = 24
+sure
+4 9 11
+9 + 11 + 4 = 20 + 4 = 24
+sure
+5 7 8
+5 + 7 + 8 = 12 + 8 = 20
+(8 - 5) * 7 = 3 * 7 = 21
+I cannot obtain 24 now, but numbers are within a reasonable range
+likely
+5 6 6
+5 + 6 + 6 = 17
+(6 - 5) * 6 = 1 * 6 = 6
+I cannot obtain 24 now, but numbers are within a reasonable range
+likely
+10 10 11
+10 + 10 + 11 = 31
+(11 - 10) * 10 = 10
+10 10 10 are all too big
+impossible
+1 3 3
+1 * 3 * 3 = 9
+(1 + 3) * 3 = 12
+1 3 3 are all too small
+impossible
+1 8 9
+
+
+
+res(n=3): {
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "1 * 8 * 9 = 72\n(8 - 1) * 9 = 63\n1 8 9 are all too small\nimpossible",
+        "role": "assistant"
+      }
+    },
+    {
+      "finish_reason": "stop",
+      "index": 1,
+      "logprobs": null,
+      "message": {
+        "content": "1 + 8 + 9 = 18\n(8 - 1) * 9 = 63\n(9 - 1) * 8 = 64\nunlikely",
+        "role": "assistant"
+      }
+    },
+    {
+      "finish_reason": "stop",
+      "index": 2,
+      "logprobs": null,
+      "message": {
+        "content": "1 * 8 * 9 = 72\n(9 - 8) * 1 = 1\n1 8 9 are all too big\nimpossible",
+        "role": "assistant"
+      }
+    }
+  ],
+  "created": 1709405603,
+  "id": "chatcmpl-8yOm3HJIpecQ3i5eJGtmJk3blk4z9",
+  "model": "gpt-3.5-turbo-0125",
+  "object": "chat.completion",
+  "system_fingerprint": "fp_2b778c6b35",
+  "usage": {
+    "completion_tokens": 110,
+    "prompt_tokens": 367,
+    "total_tokens": 477
+  }
+}
+
+
+outputs:
+1 * 8 * 9 = 72
+(8 - 1) * 9 = 63
+1 8 9 are all too small
+impossible
+1 + 8 + 9 = 18
+(8 - 1) * 9 = 63
+(9 - 1) * 8 = 64
+unlikely
+1 * 8 * 9 = 72
+(9 - 8) * 1 = 1
+1 8 9 are all too big
+impossible
+
+
+value prompt: Evaluate if given numbers can reach 24 (sure/likely/impossible)
+10 14
+10 + 14 = 24
+sure
+11 12
+11 + 12 = 23
+12 - 11 = 1
+11 * 12 = 132
+11 / 12 = 0.91
+impossible
+4 4 10
+4 + 4 + 10 = 8 + 10 = 18
+4 * 10 - 4 = 40 - 4 = 36
+(10 - 4) * 4 = 6 * 4 = 24
+sure
+4 9 11
+9 + 11 + 4 = 20 + 4 = 24
+sure
+5 7 8
+5 + 7 + 8 = 12 + 8 = 20
+(8 - 5) * 7 = 3 * 7 = 21
+I cannot obtain 24 now, but numbers are within a reasonable range
+likely
+5 6 6
+5 + 6 + 6 = 17
+(6 - 5) * 6 = 1 * 6 = 6
+I cannot obtain 24 now, but numbers are within a reasonable range
+likely
+10 10 11
+10 + 10 + 11 = 31
+(11 - 10) * 10 = 10
+10 10 10 are all too big
+impossible
+1 3 3
+1 * 3 * 3 = 9
+(1 + 3) * 3 = 12
+1 3 3 are all too small
+impossible
+1 15 9
+
+
+
+res(n=3): {
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "1 * 15 * 9 = 135\n(15 - 1) * 9 = 14 * 9 = 126\n1 15 9 are all too big\nimpossible",
+        "role": "assistant"
+      }
+    },
+    {
+      "finish_reason": "stop",
+      "index": 1,
+      "logprobs": null,
+      "message": {
+        "content": "1 + 15 + 9 = 25\n(15 - 1) * 9 = 14 * 9 = 126\n(15 + 1) * 9 = 16 * 9 = 144\nI cannot obtain 24 now, but numbers are within a reasonable range\nlikely",
+        "role": "assistant"
+      }
+    },
+    {
+      "finish_reason": "stop",
+      "index": 2,
+      "logprobs": null,
+      "message": {
+        "content": "1 * 15 * 9 = 135\nI cannot obtain 24 now, but numbers are within a reasonable range\nlikely",
+        "role": "assistant"
+      }
+    }
+  ],
+  "created": 1709405604,
+  "id": "chatcmpl-8yOm4PL6GH6IMHNCaKzFkLd2u5PCk",
+  "model": "gpt-3.5-turbo-0125",
+  "object": "chat.completion",
+  "system_fingerprint": "fp_2b778c6b35",
+  "usage": {
+    "completion_tokens": 134,
+    "prompt_tokens": 367,
+    "total_tokens": 501
+  }
+}
+
+
+outputs:
+1 * 15 * 9 = 135
+(15 - 1) * 9 = 14 * 9 = 126
+1 15 9 are all too big
+impossible
+1 + 15 + 9 = 25
+(15 - 1) * 9 = 14 * 9 = 126
+(15 + 1) * 9 = 16 * 9 = 144
+I cannot obtain 24 now, but numbers are within a reasonable range
+likely
+1 * 15 * 9 = 135
+I cannot obtain 24 now, but numbers are within a reasonable range
+likely
+
+
+value prompt: Evaluate if given numbers can reach 24 (sure/likely/impossible)
+10 14
+10 + 14 = 24
+sure
+11 12
+11 + 12 = 23
+12 - 11 = 1
+11 * 12 = 132
+11 / 12 = 0.91
+impossible
+4 4 10
+4 + 4 + 10 = 8 + 10 = 18
+4 * 10 - 4 = 40 - 4 = 36
+(10 - 4) * 4 = 6 * 4 = 24
+sure
+4 9 11
+9 + 11 + 4 = 20 + 4 = 24
+sure
+5 7 8
+5 + 7 + 8 = 12 + 8 = 20
+(8 - 5) * 7 = 3 * 7 = 21
+I cannot obtain 24 now, but numbers are within a reasonable range
+likely
+5 6 6
+5 + 6 + 6 = 17
+(6 - 5) * 6 = 1 * 6 = 6
+I cannot obtain 24 now, but numbers are within a reasonable range
+likely
+10 10 11
+10 + 10 + 11 = 31
+(11 - 10) * 10 = 10
+10 10 10 are all too big
+impossible
+1 3 3
+1 * 3 * 3 = 9
+(1 + 3) * 3 = 12
+1 3 3 are all too small
+impossible
+3 5 8
+
+
+
+res(n=3): {
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "3 * 5 + 8 = 15 + 8 = 23\n(8 - 3) * 5 = 5 * 5 = 25\nI cannot obtain 24 now, but numbers are within a reasonable range\nlikely",
+        "role": "assistant"
+      }
+    },
+    {
+      "finish_reason": "stop",
+      "index": 1,
+      "logprobs": null,
+      "message": {
+        "content": "3 * 5 + 8 = 15 + 8 = 23\n(8 - 3) * 5 = 5 * 5 = 25\nI cannot obtain 24 now, but numbers are within a reasonable range\nlikely",
+        "role": "assistant"
+      }
+    },
+    {
+      "finish_reason": "stop",
+      "index": 2,
+      "logprobs": null,
+      "message": {
+        "content": "3 * 5 + 8 = 15 + 8 = 23\n(8 - 3) * 5 = 5 * 5 = 25\nI cannot obtain 24 now, but numbers are within a reasonable range\nlikely",
+        "role": "assistant"
+      }
+    }
+  ],
+  "created": 1709405605,
+  "id": "chatcmpl-8yOm58bjjecLeXIPAphPb2vgze2HO",
+  "model": "gpt-3.5-turbo-0125",
+  "object": "chat.completion",
+  "system_fingerprint": "fp_2b778c6b35",
+  "usage": {
+    "completion_tokens": 156,
+    "prompt_tokens": 367,
+    "total_tokens": 523
+  }
+}
+
+
+outputs:
+3 * 5 + 8 = 15 + 8 = 23
+(8 - 3) * 5 = 5 * 5 = 25
+I cannot obtain 24 now, but numbers are within a reasonable range
+likely
+3 * 5 + 8 = 15 + 8 = 23
+(8 - 3) * 5 = 5 * 5 = 25
+I cannot obtain 24 now, but numbers are within a reasonable range
+likely
+3 * 5 + 8 = 15 + 8 = 23
+(8 - 3) * 5 = 5 * 5 = 25
+I cannot obtain 24 now, but numbers are within a reasonable range
+likely
+
+
+value prompt: Evaluate if given numbers can reach 24 (sure/likely/impossible)
+10 14
+10 + 14 = 24
+sure
+11 12
+11 + 12 = 23
+12 - 11 = 1
+11 * 12 = 132
+11 / 12 = 0.91
+impossible
+4 4 10
+4 + 4 + 10 = 8 + 10 = 18
+4 * 10 - 4 = 40 - 4 = 36
+(10 - 4) * 4 = 6 * 4 = 24
+sure
+4 9 11
+9 + 11 + 4 = 20 + 4 = 24
+sure
+5 7 8
+5 + 7 + 8 = 12 + 8 = 20
+(8 - 5) * 7 = 3 * 7 = 21
+I cannot obtain 24 now, but numbers are within a reasonable range
+likely
+5 6 6
+5 + 6 + 6 = 17
+(6 - 5) * 6 = 1 * 6 = 6
+I cannot obtain 24 now, but numbers are within a reasonable range
+likely
+10 10 11
+10 + 10 + 11 = 31
+(11 - 10) * 10 = 10
+10 10 10 are all too big
+impossible
+1 3 3
+1 * 3 * 3 = 9
+(1 + 3) * 3 = 12
+1 3 3 are all too small
+impossible
+1 5 6
+
+
+
+res(n=3): {
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "1 * 5 * 6 = 30\n(6 - 5) * 1 = 1\nI cannot obtain 24 now, but numbers are within a reasonable range\nlikely",
+        "role": "assistant"
+      }
+    },
+    {
+      "finish_reason": "stop",
+      "index": 1,
+      "logprobs": null,
+      "message": {
+        "content": "1 * 5 * 6 = 30\n(5 - 1) * 6 = 4 * 6 = 24\nsure",
+        "role": "assistant"
+      }
+    },
+    {
+      "finish_reason": "stop",
+      "index": 2,
+      "logprobs": null,
+      "message": {
+        "content": "1 + 5 + 6 = 12\n(6 - 1) * 5 = 5 * 5 = 25\nI cannot obtain 24 now, but numbers are within a reasonable range\nlikely",
+        "role": "assistant"
+      }
+    }
+  ],
+  "created": 1709405606,
+  "id": "chatcmpl-8yOm6nmKJngxRLEy6ZQONQaYHBp94",
+  "model": "gpt-3.5-turbo-0125",
+  "object": "chat.completion",
+  "system_fingerprint": "fp_2b778c6b35",
+  "usage": {
+    "completion_tokens": 117,
+    "prompt_tokens": 367,
+    "total_tokens": 484
+  }
+}
+
+
+outputs:
+1 * 5 * 6 = 30
+(6 - 5) * 1 = 1
+I cannot obtain 24 now, but numbers are within a reasonable range
+likely
+1 * 5 * 6 = 30
+(5 - 1) * 6 = 4 * 6 = 24
+sure
+1 + 5 + 6 = 12
+(6 - 1) * 5 = 5 * 5 = 25
+I cannot obtain 24 now, but numbers are within a reasonable range
+likely
+
+
+distance: 57.999
+d_thres: 38.0
+
+(prune)selected node: {'id': 84, 'answer': '1 + 3 = 4 (left: 4 5 9)\n', 'value': 2.001, 'parent_node': 83, 'ancestor_distance': 0}
+
+
+distance: 59.998
+d_thres: 38.0
+
+(prune)selected node: {'id': 85, 'answer': '3 + 5 = 8 (left: 1 8 9)\n', 'value': 0.002, 'parent_node': 83, 'ancestor_distance': 0}
+
+
+distance: 57.999
+d_thres: 38.0
+
+(prune)selected node: {'id': 86, 'answer': '5 * 3 = 15 (left: 1 15 9)\n', 'value': 2.001, 'parent_node': 83, 'ancestor_distance': 0}
+
+
+distance: 57.0
+d_thres: 38.0
+
+(prune)selected node: {'id': 87, 'answer': '9 - 1 = 8 (left: 3 5 8)\n', 'value': 3.0, 'parent_node': 83, 'ancestor_distance': 0}
+
+
+distance: 38.0
+d_thres: 38.0
+
+(prune)selected node: {'id': 88, 'answer': '9 - 3 = 6 (left: 1 5 6)\n', 'value': 22.0, 'parent_node': 83, 'ancestor_distance': 0}
+
+
+best node: 5 - 4 = 1 (left: 1 5 6 10)
+1 + 5 = 6 (left: 6 6 10)
+10 - 6 = 4 (left: 4 6)
+4 + 6 = 10 (left: 10)
+
+d_thres: 38.0
+
+
+linked list:
+000
+
+001
+
+002
+
+003
+
+004
+
+005
+
+006
+
+007
+
+008
+
+009
+
+010
+
+011
+
+012
+
+013
+
+014
+
+015
+
+016
+
+017
+
+018
+
+019
+
+020
+
+021
+
+022
+
+023
+
+024
+
+025
+
+026
+
+027
+
+028
+
+029
+
+030
+
+031
+
+032
+
+033
+
+034
+
+035
+
+036
+
+037
+
+038
+
+039
+
+040
+
+041
+
+042
+
+043
+
+044
+
+045
+
+046
+
+047
+
+048
+
+049
+
+050
+
+051
+
+052
+
+053
+
+054
+
+055
+
+056
+
+057
+
+058
+
+059
+
+060
+
+061
+
+062
+
+063
+
+064
+
+065
+
+066
+
+067
+
+068
+
+069
+
+070
+
+071
+
+072
+
+073
+
+074
+
+075
+
+076
+
+077
+
+078
+
+079
+
+080
+
+081
+
+082
+
+083 -> 84 -> 85 -> 86 -> 87 -> 88
+
+084
+
+085
+
+086
+
+087
+
+088
+
+089
+
+090
+
+091
+
+092
+
+093
+
+094
+
+095
+
+096
+
+097
+
+098
+
+099
+
+100
+
+101
+
+102
+
+103
+
+104
+
+105
+
+106
+
+107
+
+108
+
+109
+
+110
+
+111
+
+112
+
+113
+
+114
+
+115
+
+116
+
+117
+
+118
+
+119
+
+120
+
+121
+
+122
+
+123
+
+124
+
+125
+
+126
+
+127
+
+128
+
+129
+
+130
+
+131
+
+132
+
+133
+
+134
+
+135
+
+136
+
+137
+
+138
+
+139
+
+140
+
+141
+
+142
+
+143
+
+144
+
+145
+
+146
+
+147
+
+148
+
+149
+
+150
+
+151
+
+152
+
+153
+
+154
+
+155
+
+{'id': 84, 'answer': '1 + 3 = 4 (left: 4 5 9)\n', 'value': 2.001, 'parent_node': 83, 'ancestor_distance': 0}
+{'id': 85, 'answer': '3 + 5 = 8 (left: 1 8 9)\n', 'value': 0.002, 'parent_node': 83, 'ancestor_distance': 0}
+{'id': 86, 'answer': '5 * 3 = 15 (left: 1 15 9)\n', 'value': 2.001, 'parent_node': 83, 'ancestor_distance': 0}
+{'id': 87, 'answer': '9 - 1 = 8 (left: 3 5 8)\n', 'value': 3.0, 'parent_node': 83, 'ancestor_distance': 0}
+{'id': 88, 'answer': '9 - 3 = 6 (left: 1 5 6)\n', 'value': 22.0, 'parent_node': 83, 'ancestor_distance': 0}
+
+
+ys = ['5 - 4 = 1 (left: 1 5 6 10)\n1 + 5 = 6 (left: 6 6 10)\n10 - 6 = 4 (left: 4 6)\n4 + 6 = 10 (left: 10)\n']
+
+
+-----task complete-----
+
+ys: ['5 - 4 = 1 (left: 1 5 6 10)\n1 + 5 = 6 (left: 6 6 10)\n10 - 6 = 4 (left: 4 6)\n4 + 6 = 10 (left: 10)\n']
+infos: [{'r': 0}]
+
+
+cost time: 7.4277496337890625
+
