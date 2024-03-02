@@ -20,7 +20,7 @@ generator_temperature = 0.5
 evaluator_temperature = 0
 n_ctx = 2048
 n_gpu_layers = -1
-question_sets = 100
+question_sets = 1
 initial_idx = 901
 b = 3
 T = 3
@@ -30,9 +30,9 @@ id = 0
 idx = 0
 t = 0
 # (bfs, dfs, dfs+sd, dfs+ksd)
-method = 'dfs+ksd'
-model_import_method = 'vllm'
-with_lmformatenforcer = True
+method = 'dfs+sd'
+model_import_method = 'openai'
+with_lmformatenforcer = False
 
 def increase_id():
     global id
