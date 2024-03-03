@@ -32,6 +32,18 @@ class graph():
             self.tree_head[parent]['prev_node']['next_node'] = new_element
             self.tree_head[parent]['prev_node'] = new_element
 
+    def append_tree_head(self, origin_tree_head):
+        # need to adjust total_element before call this function
+        tree_head = origin_tree_head
+        new_len = self.total_element - len(origin_tree_head)
+        for _ in range(new_len):
+            new_node = {'node': None, 'prev_node': None, 'next_node': None}
+            new_node['prev_node'] = new_node
+            new_node['next_node'] = new_node
+            tree_head.append(new_node)
+
+        return tree_head
+
     def show_in_linked_list(self):
         count = 0
         record.Record_txt(record.record_file_name, '\nlinked list:\n', self.idx)

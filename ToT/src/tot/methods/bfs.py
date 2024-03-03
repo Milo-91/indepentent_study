@@ -60,6 +60,7 @@ def solve(args, task, idx, to_print=True):
     x = task.get_input(idx)  # input
     ys = ['']  # current output candidates
     infos = []
+
     for step in range(task.steps):
         # generation
         record.Record_txt(record.record_file_name, '\n-----Generator-----\n\n', idx)

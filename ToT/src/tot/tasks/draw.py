@@ -5,7 +5,7 @@ import json
 image_folder = 'logs/game24/record/image'
 
 # use tree_graph to draw
-def dfs_Draw(task, args, infos, graph, idx):
+def dfs_Draw(task, args, infos, graph, idx, path):
     dot = graphviz.Digraph(comment = 'tree_' + str(idx), format = 'png')
     # json file
     best_nodes = set()
@@ -16,13 +16,16 @@ def dfs_Draw(task, args, infos, graph, idx):
             best_nodes.add(step['select_id'])
         if step['is_back'] == True:
             back_nodes.add(step['select_id'])
+    
     # graph
     dot.node('0', '0' + '\n' + task.get_input(idx))
     for node in graph.tree_head:
         while node['next_node']['node'] != None:
             now_node = node['next_node']['node']
             # draw nodes
-            if now_node['id'] in best_nodes:
+            if now_node['id'] in path:
+                dot.node(str(now_node['id']), str(now_node['id']) + '\n' + str(now_node['answer'].split('\n')[-2]) + '\nparent: ' + str(now_node['parent_node']) + '\nvalue: ' + str(now_node['value']), color = 'red')
+            elif now_node['id'] in best_nodes:
                 dot.node(str(now_node['id']), str(now_node['id']) + '\n' + str(now_node['answer'].split('\n')[-2]) + '\nparent: ' + str(now_node['parent_node']) + '\nvalue: ' + str(now_node['value']), color = 'blue')
             elif now_node['id'] in back_nodes:
                 dot.node(str(now_node['id']), str(now_node['id']) + '\n' + str(now_node['answer'].split('\n')[-2]) + '\nparent: ' + str(now_node['parent_node']) + '\nvalue: ' + str(now_node['value']), color = 'yellow')

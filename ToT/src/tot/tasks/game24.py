@@ -58,6 +58,12 @@ class Game24Task(Task):
     def get_id(self):
         self.id += 1
         return self.id - 1
+    
+    def reset_id(self, id = None):
+        if id == None:
+            self.id = 0
+        else:
+            self.id = id
             
     @staticmethod
     def standard_prompt_wrap(x: str, y:str='') -> str:

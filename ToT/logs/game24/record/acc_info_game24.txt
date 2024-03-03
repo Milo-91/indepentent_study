@@ -1,18 +1,18 @@
 model: gpt-3.5-turbo
 temperature: 0.7
-algorithm: dfs+sd
+algorithm: bfs
 k: 5
 b: 3
 start_index: 900
-end_index: 910
-date: 2024-03-03
+end_index: 901
+date: 2024-03-04
 
-900: ys: 5 * 4 = 20 (left: 6 10 20)
-10 - 6 = 4 (left: 4 10 20)
-10 - 4 = 6 (left: 6 10 20)
-10 - 6 = 4 (left: 4 20)
-, acc: {'r': 0}
+900: ys: 5 * 6 = 30 (left: 4 30 10)
+10 + 4 = 14 (left: 14 10)
+14 + 10 = 24 (left: 24)
+Answer: (5 * 6) + (10 + 4) = 24
+, acc: {'r': 0}, traversal nodes: 0
 
-
-sum(acc): 0, cnt_avg: 0.0, cnt_any: 0
-total cost time: 121.55648612976074
+acc: 0.0, acc avg: 0.0
+total cost time: 42.321022510528564
+usage: {'completion_tokens': 2129, 'prompt_tokens': 15478, 'cost': 0.027475000000000003}

@@ -8,6 +8,8 @@ import tot.tasks.draw as draw
 
 d_thres = 10000
 best_ans = ''
+best_path = set()
+path = set()
 infos = []
 index = 0 # idx
 
@@ -43,7 +45,7 @@ def get_proposals(task, x, y, k):
 
 # x: question, y: (id, ans, value)
 def __dfs__(args, task, idx, x, y, graph, distance, t, to_print = True, sd = False, greedy = False):
-    global best_ans, d_thres, infos
+    global best_ans, best_path, path, d_thres, infos
     record.Record_txt(record.record_file_name, f'\n----------step {t}----------\n\n', idx = idx)
     record.Record_txt(record.record_file_name, '\ndistance: ' + str(distance) + '\n\n', idx = idx)
     # if achieving leaf node
@@ -61,6 +63,7 @@ def __dfs__(args, task, idx, x, y, graph, distance, t, to_print = True, sd = Fal
         if distance < d_thres:
             print('max')
             best_ans = answer
+            best_path = path.copy()
             is_best = True
             # dfs with sphere decoding
             d_thres = distance
@@ -71,8 +74,7 @@ def __dfs__(args, task, idx, x, y, graph, distance, t, to_print = True, sd = Fal
 
     # Graph
     parent = y[0]
-    if parent > graph.total_element:
-        graph.add_head_list_len(parent - graph.total_element)
+    graph.add_head_list_len(parent)
     # if has not visited yet
     if graph.tree_head[parent]['next_node']['node'] == None:
         # Generator
@@ -109,7 +111,9 @@ def __dfs__(args, task, idx, x, y, graph, distance, t, to_print = True, sd = Fal
                 record.Record_txt(record.record_file_name, '\nselected node: ' + str(input_node) + '\n\n', idx = idx)
                 infos.append({'step': t, 'select_id': input_node['id'], 'select_new_ys': input_node['answer'], 'values': values, 'is_best': False, 'is_back': False})
                 print(f'distance: {distance}')
+                path.add(input_node['id'])
                 __dfs__(args, task, idx, x, (input_node['id'], input_node['answer'], input_node['value']), graph, distance, t + 1, to_print = True, sd = sd)
+                path.remove(input_node['id'])
             else:
                 infos.append({'step': t, 'select_id': input_node['id'], 'select_new_ys': input_node['answer'], 'values': values, 'is_best': False, 'is_back': True})
                 record.Record_txt(record.record_file_name, '\n(prune)selected node: ' + str(input_node) + '\n\n', idx = idx)
@@ -121,11 +125,13 @@ def __dfs__(args, task, idx, x, y, graph, distance, t, to_print = True, sd = Fal
     return
 
 def dfs(args, task, idx, to_print = True, sd = False):
-    global d_thres, gpt, best_ans, infos, index
+    global d_thres, gpt, best_ans, best_path, path, infos, index
     # reset global variables
     index = idx
     d_thres = 10000
     best_ans = ''
+    best_path = set()
+    path = set()
     infos = []
     # initialize
     gpt = partial(gpt, model=args.backend, temperature=args.temperature)
@@ -148,5 +154,5 @@ def dfs(args, task, idx, to_print = True, sd = False):
 
     if to_print:
         print(infos)
-    draw.dfs_Draw(task, args, infos, graph, idx)
-    return [best_ans], {'steps': infos}
+    draw.dfs_Draw(task, args, infos, graph, idx, best_path)
+    return [best_ans], {'steps': infos}, task.id

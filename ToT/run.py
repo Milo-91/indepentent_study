@@ -22,7 +22,10 @@ def run(args):
     record.Init_record_file(record.acc_file_name, f'model: {args.backend}\ntemperature: {args.temperature}\nalgorithm: {args.algorithm}\nk: {args.k}\nb: {args.n_select_sample}\nstart_index: {args.task_start_index}\nend_index: {args.task_end_index}\ndate: {datetime.date.today()}\n\n')
     print('start task')
     for i in range(args.task_start_index, args.task_end_index):
+        traversal_nodes = 0
         record.Init_record_file(record.record_file_name, f'model: {args.backend}\ntemperature: {args.temperature}\nalgorithm: {args.algorithm}\nk: {args.k}\nb: {args.n_select_sample}\nidx: {i}\ndate: {datetime.date.today()}\n\n', idx = i)
+        # reset id
+        task.reset_id()
         # solve
         start_time = time.time()
         if args.algorithm == 'bfs':
@@ -31,7 +34,7 @@ def run(args):
             else:
                 ys, info = solve(args, task, i)
         elif args.algorithm == 'dfs+sd':
-            ys, info = dfs(args, task, i)
+            ys, info, traversal_nodes = dfs(args, task, i)
         end_time = time.time()
         print(end_time - start_time)
         total_cost_time += end_time - start_time
@@ -39,10 +42,10 @@ def run(args):
         record.Record_txt(record.record_file_name, '\n-----task complete-----\n', idx = i)
         # log
         infos = [task.test_output(i, y) for y in ys]
-        info.update({'idx': i, 'ys': ys, 'infos': infos, 'usage_so_far': gpt_usage(args.backend)})
+        info.update({'idx': i, 'ys': ys, 'infos': infos, 'traversal_nodes': traversal_nodes, 'usage_so_far': gpt_usage(args.backend)}) # bfs no traversal nodes
         record.Record_txt(record.record_file_name, '\nys: ' + str(ys) + '\ninfos: ' + str(infos) + '\n\n', idx = i)
         record.Record_txt(record.record_file_name, '\ncost time: ' + str(end_time - start_time) + '\n\n', idx = i)
-        record.Record_txt(record.acc_file_name, str(i) + ': ys: ' + str(ys[0]) + ', acc: ' + str(infos[0]) + '\n')
+        record.Record_txt(record.acc_file_name, str(i) + ': ys: ' + str(ys[0]) + ', acc: ' + str(infos[0]) + ', traversal nodes: ' + str(traversal_nodes) + '\n')
         logs.append(info)
         with open(file, 'w') as f:
             json.dump(logs, f, indent=4)
@@ -52,10 +55,10 @@ def run(args):
         cnt_avg += sum(accs) / len(accs)
         cnt_any += any(accs)
         print(i, 'sum(accs)', sum(accs), 'cnt_avg', cnt_avg, 'cnt_any', cnt_any, '\n')
-        record.Record_txt(record.acc_file_name, '\n\nsum(acc): ' + str(sum(accs)) + ', cnt_avg: ' + str(cnt_avg) + ', cnt_any: ' + str(cnt_any) + '\ntotal cost time: ' + str(total_cost_time) + '\n')
-    
+
     n = args.task_end_index - args.task_start_index
     print(cnt_avg / n, cnt_any / n)
+    record.Record_txt(record.acc_file_name, '\nacc: ' + str(cnt_avg) + ', acc avg: ' + str(cnt_avg / n) + '\ntotal cost time: ' + str(total_cost_time) + '\nusage: ' + str(gpt_usage(args.backend)) + '\n')
     print('usage_so_far', gpt_usage(args.backend))
 
 
