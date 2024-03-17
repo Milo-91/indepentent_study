@@ -1,133 +1,133 @@
 model: gpt-3.5-turbo
 temperature: 0.7
 algorithm: dfs+sd
-k: 8
-b: 5
+k: 5
+b: 3
 start_index: 900
 end_index: 920
-date: 2024-03-05
+date: 2024-03-18
 
-900: ys: 4 + 5 = 9 (left: 6 9 10)
-10 / 6 = 1 (left: 1 9)
-9 / 1 = 9 (left: 1 9)
-9 / 1 = 9 (left: 1 9)
-, acc: {'r': 0}, traversal nodes: 89
+900: ys: 10 - 4 = 6 ( left: 6 5 6 )
+6 * 5 = 30 ( left: 30 6 )
+30 - 6 = 24 ( left: 24 )
+Answer: ((10 - 4) * 5) - 6 = 24
+, acc: {'r': 1}, traversal nodes: 21
 
-901: ys: 2 * 4 = 8 (left: 1 8 7)
-7 - 1 = 6 (left: 1 6)
-6 + 1 = 7 (left: 1 7)
-7 / 7 = 1 (left: 1)
-, acc: {'r': 0}, traversal nodes: 222
+901: ys: 7 - 4 = 3 ( left: 1 2 3 )
+2 * 3 = 6 ( left: 1 6 )
+1 * 6 = 6 ( left: 6 )
+6 / 2 = 3 ( left:  )
+, acc: {'r': 0}, traversal nodes: 133
 
-902: ys: 2 + 5 = 7 (left: 7 8 11)
-11 - 8 = 3 (left: 3 8 11)
-11 - 8 = 3 (left: 3 8 11)
-11 - 8 = 3 (left: 3 8 11)
-, acc: {'r': 0}, traversal nodes: 57
+902: ys: 11 - 5 = 6 ( left: 2 6 8 )
+8 / 2 = 4 ( left: 4 6 )
+4 * 6 = 24 ( left: 24 )
+Answer: (11 - 5) * (8 / 2) = 24
+, acc: {'r': 1}, traversal nodes: 91
 
-903: ys: 4 / 3 = 1 (left: 1 4 13)
-13 - 4 = 9 (left: 1 9)
-9 / 1 = 9 (left: 1 9)
-1 + 9 = 10 (left: 10)
-, acc: {'r': 0}, traversal nodes: 81
+903: ys: 13 - 3 = 10 ( left: 10 4 4 )
+10 - 4 = 6 ( left: 6 4 )
+6 * 4 = 24 ( left: 24 )
+Answer: (13 - 3) * (4 - 4) = 24
+, acc: {'r': 0}, traversal nodes: 21
 
-904: ys: 9 / 3 = 3 (left: 6 7 3)
-7 - 3 = 4 (left: 6 4)
-6 * 4 = 24 (left: 24)
-Answer: 6 * (7 - (9 / 3)) = 24
-, acc: {'r': 0}, traversal nodes: 295
+904: ys: 7 + 8 = 15 ( left: 6 15 9 )
+15 - 9 = 6 ( left: 6 6 )
+6 * 6 = 36 ( left: 36 )
+36 + 1 = 37 ( left:  )
+, acc: {'r': 0}, traversal nodes: 50
 
-905: ys: 13 - 11 = 2 (left: 1 11 2)
-1 + 11 = 12 (left: 2 12)
-12 * 2 = 24 (left: 24)
-Answer: (1 + 11) * (13 - 11) = 24
-, acc: {'r': 1}, traversal nodes: 89
+905: ys: 1 + 11 = 12 ( left: 12 11 13 )
+13 - 11 = 2 ( left: 12 2 )
+12 * 2 = 24 ( left: 24 )
+Answer: (1 + 11) * (11 - 13) = 24
+, acc: {'r': 0}, traversal nodes: 36
 
-906: ys: 11 - 1 = 10 (left: 8 10 10)
-8 / 10 = 0.8 (left: 0.8 10)
-0.8 + 10 = 10.8 (left: 10.8)
-10 + 8 = 18 (left: 8 18)
-, acc: {'r': 0}, traversal nodes: 195
+906: ys: 10 - 1 = 9 ( left: 9 8 11 )
+9 - 8 = 1 ( left: 1 11 )
+1 + 11 = 12 ( left: 12 )
+12 / 2 = 6 ( left:  )
+, acc: {'r': 0}, traversal nodes: 51
 
-907: ys: 9 / 3 = 3 (left: 2 3 6)
-6 / 3 = 2 (left: 2 2 6)
-2 / 2 = 1 (left: 1 6)
-1 + 6 = 7 (left: 6)
-, acc: {'r': 0}, traversal nodes: 121
+907: ys: 9 / 3 = 3 ( left: 2 3 6 )
+6 + 2 = 8 ( left: 8 3 )
+8 * 3 = 24 ( left: 24 )
+Answer: (9 / 3) * (6 + 2) = 24
+, acc: {'r': 1}, traversal nodes: 16
 
-908: ys: 1 + 3 = 4 (left: 4 5 9)
-5 - 4 = 1 (left: 1 9)
-9 / 1 = 9 (left: 1 9)
-9 / 1 = 9 (left: 1 9)
+908: ys: 5 * 1 = 5 ( left: 5 3 9 )
+5 * 3 = 15 ( left: 15 9 )
+15 + 9 = 24 ( left: 24 )
+Answer: ((5 * 1) * 3) + 9 = 24
+, acc: {'r': 1}, traversal nodes: 16
+
+909: ys: 7 - 3 = 4 ( left: 4 3 12 )
+3 * 4 = 12 ( left: 12 12 )
+12 + 12 = 24 ( left: 24 )
+Answer: (3 * (7 - 3)) + 12 = 24
+, acc: {'r': 1}, traversal nodes: 16
+
+910: ys: 4 * 5 = 20 ( left: 20 7 9 )
+20 + 7 = 27 ( left: 27 9 )
+27 + 9 = 36 ( left: 36 )
+36 / 2 = 18 ( left:  )
 , acc: {'r': 0}, traversal nodes: 95
 
-909: ys: 7 - 3 = 4 (left: 3 4 12)
-12 - 4 = 8 (left: 3 8 12)
-3 * 8 = 24 (left: 24 8 12)
-24 / 8 = 3 (left: 3 8 12)
-, acc: {'r': 0}, traversal nodes: 89
+911: ys: 1 + 2 = 3 ( left: 3 8 13 )
+3 + 8 = 11 ( left: 11 13 )
+11 + 13 = 24 ( left: 24 )
+Answer: ((1 + 2) + 8) + 13 = 24
+, acc: {'r': 1}, traversal nodes: 16
 
-910: ys: 7 + 9 = 16 (left: 4 5 16)
-16 + 4 = 20 (left: 4 5 20)
-5 - 4 = 1 (left: 1 20)
-20 / 1 = 20 (left: 1 20)
-, acc: {'r': 0}, traversal nodes: 271
+912: ys: 4 + 6 = 10 ( left: 10 6 9 )
+10 - 6 = 4 ( left: 4 9 )
+4 * 9 = 36 ( left: 36 )
+36 / 2 = 18 ( left:  )
+, acc: {'r': 0}, traversal nodes: 75
 
-911: ys: 1 + 2 = 3 (left: 3 8 13)
-3 * 8 = 24 (left: 24 8 13)
-24 / 8 = 3 (left: 3 8 13)
-13 / 3 = 4.33 (left: 4.33 8 13)
-, acc: {'r': 0}, traversal nodes: 123
+913: ys: 4 / 1 = 4 ( left: 4 4 8 )
+8 * 4 = 32 ( left: 32 4 )
+32 + 4 = 36 ( left: 36 )
+36 + 1 = 37 ( left:  )
+, acc: {'r': 0}, traversal nodes: 26
 
-912: ys: 4 + 6 = 10 (left: 6 6 9)
-6 / 6 = 1 (left: 1 9)
-9 / 1 = 9 (left: 1 9)
-9 / 1 = 9 (left: 1 9)
-, acc: {'r': 0}, traversal nodes: 49
+914: ys: 11 - 10 = 1 ( left: 1 5 1 )
+1 + 5 = 6 ( left: 6 1 )
+6 * 1 = 6 ( left: 6 )
+6 + 6 = 12 ( left:  )
+, acc: {'r': 0}, traversal nodes: 104
 
-913: ys: 4 / 1 = 4 (left: 4 4 8)
-4 * 4 = 16 (left: 16 8)
-8 + 16 = 24 (left: 24)
-Answer: (4 / 1) * (4 * 4) = 24
-, acc: {'r': 0}, traversal nodes: 82
-
-914: ys: 5 * 10 = 50 (left: 1 50 11)
-11 - 1 = 10 (left: 50 10)
-50 - 10 = 40 (left: 40 10)
-10 * 40 = 400 (left: 40 400)
-, acc: {'r': 0}, traversal nodes: 227
-
-915: ys: 3 + 4 = 7 (left: 6 7 11)
-6 + 7 = 13 (left: 13 11)
-13 + 11 = 24 (left: 24)
+915: ys: 3 + 4 = 7 ( left: 7 6 11 )
+6 + 11 = 17 ( left: 7 17 )
+7 + 17 = 24 ( left: 24 )
 Answer: ((3 + 4) + 6) + 11 = 24
-, acc: {'r': 1}, traversal nodes: 65
+, acc: {'r': 1}, traversal nodes: 21
 
-916: ys: 9 - 2 = 7 (left: 4 7 8)
-7 + 8 = 15 (left: 3 5 15)
-15 / 5 = 3 (left: 3 3 15)
-15 / 3 = 5 (left: 3 5 15)
-, acc: {'r': 0}, traversal nodes: 136
+916: ys: 2 + 4 = 6 ( left: 6 8 9 )
+9 - 6 = 3 ( left: 3 8 )
+3 * 8 = 24 ( left: 24 )
+Answer: (2 + 4) * (9 - 8) * 8 = 24
+, acc: {'r': 0}, traversal nodes: 46
 
-917: ys: 5 - 1 = 4 (left: 4 4 13)
-4 * 13 = 52 (left: 4 52)
-4 * 52 = 208 (left: 52 208)
-52 + 208 = 260 (left: 208 260)
-, acc: {'r': 0}, traversal nodes: 249
+917: ys: 13 - 5 = 8 ( left: 1 4 8 )
+8 - 4 = 4 ( left: 1 4 )
+1 + 4 = 5 ( left: 5 )
+5 + 5 = 10 ( left:  )
+, acc: {'r': 0}, traversal nodes: 150
 
-918: ys: 12 - 2 = 10 (left: 2 7 10)
-7 * 2 = 14 (left: 14 10)
-14 + 10 = 24 (left: 24)
-Answer: (12 - 2) + (7 * 2) = 24
-, acc: {'r': 1}, traversal nodes: 154
+918: ys: 2 * 2 = 4 ( left: 4 7 12 )
+7 - 4 = 3 ( left: 3 12 )
+3 * 12 = 36 ( left: 36 )
+36 + 1 = 37 ( left:  )
+, acc: {'r': 0}, traversal nodes: 74
 
-919: ys: 6 - 3 = 3 (left: 3 3 3)
-3 * 3 = 9 (left: 3 9 3)
-3 * 9 = 27 (left: 3 27 3)
-27 / 3 = 9 (left: 3 9)
-, acc: {'r': 0}, traversal nodes: 313
+919: ys: 3 + 3 = 6 ( left: 6 6 7 )
+7 - 6 = 1 ( left: 1 6 )
+1 * 6 = 6 ( left: 6 )
+6 + 2 = 8 ( left:  )
+, acc: {'r': 0}, traversal nodes: 56
 
 
-acc: 3.0, acc avg: 0.15
-total cost time: 3301.06752038002
-usage: {'completion_tokens': 184144, 'prompt_tokens': 754337, 'cost': 1.4997935}
+acc: 7.0, acc avg: 0.35
+total cost time: 881.7058651447296
+usage: {'completion_tokens': 35912, 'prompt_tokens': 228967, 'cost': 0.41527450000000005}

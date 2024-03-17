@@ -5,8 +5,9 @@ from tot.models import gpt
 import tot.record_functions as record
 import tot.tasks.tree_graph as tree_graph
 import tot.tasks.draw as draw
+import re
 
-d_thres = 10000
+d_thres = 10000 # a large number
 best_ans = ''
 best_path = set()
 path = set()
@@ -15,7 +16,7 @@ index = 0 # idx
 
 def get_value(task, x, y, n_evaluate_sample, cache_value=True):
     value_prompt = task.value_prompt_wrap(x, y)
-    record.Record_txt(record.record_file_name, '\nvalue prompt: ' + value_prompt + '\n\n', idx = index)
+    # record.Record_txt(record.record_file_name, '\nvalue prompt: ' + value_prompt + '\n\n', idx = index)
     if cache_value and value_prompt in task.value_cache:
         return task.value_cache[value_prompt]
     value_outputs = gpt(value_prompt, n=n_evaluate_sample, stop=None, idx = index)
@@ -39,12 +40,48 @@ def get_values(task, x, ys, n_evaluate_sample, cache_value=True):
 def get_proposals(task, x, y, k):
     global index
     propose_prompt = task.propose_prompt_wrap(x, y, k)
-    record.Record_txt(record.record_file_name, '\npropose prompt: ' + propose_prompt + '\n\n', idx = index)
+    # record.Record_txt(record.record_file_name, '\npropose prompt: ' + propose_prompt + '\n\n', idx = index)
     proposals = gpt(propose_prompt, n=1, stop=None, idx = index)[0].split('\n')
+    # add left
+    for i in range(len(proposals)):
+        if 'answer' in proposals[i].lower():
+            continue
+        # record.Record_txt(record.record_file_name, '\nget current numbers: ' + get_current_numbers(y if y else x) + '\n\n', idx = index)
+        proposals[i] = add_left(proposals[i], get_current_numbers(y if y else x))
     return [y + _ + '\n' for _ in proposals]
 
+def add_left(response, input_string):
+    pattern = r"(-?[0-9\.]+)[\s]*([\+\-\*\/])[\s]*(-?[0-9\.]+)[\s]*=[\s]*(-?[0-9\.]+)[\s]*"
+    match = re.match(pattern, response)
+    if match:
+        print(match.group(1), match.group(3), match.group(4))
+        x1 = ' ' + match.group(1) + ' '
+        x2 = ' ' + match.group(3) + ' '
+        y = ' ' + match.group(4) + ' '
+        check = re.search(re.compile(x1), input_string)
+        if check:
+            input_string = input_string.replace(x1, ' ', 1)
+            # print('x1 found')
+        check = re.search(re.compile(x2), input_string)
+        if check:
+            input_string = input_string.replace(x2, y, 1)
+            # print('x2 found')
+        input_string = input_string.strip()
+        input_string = input_string.replace('  ', ' ')
+        print(input_string)
+        response = response + f' ( left: {input_string} )'
+    else:
+        print('wrong format')
+        response = 'wrong answer'
+
+    return response
+
+def get_current_numbers(y: str) -> str:
+    last_line = y.strip().split('\n')[-1]
+    return ' ' + last_line.split('left: ')[-1].split(')')[0].strip() + ' '
+
 # x: question, y: (id, ans, value)
-def __dfs__(args, task, idx, x, y, graph, distance, t, to_print = True, sd = False, greedy = False):
+def __dfs__(args, task, idx, x, y, graph, distance, t, to_print = True, sd = False, greedy = False, sorting = False, high_acc_mode = False):
     global best_ans, best_path, path, d_thres, infos
     record.Record_txt(record.record_file_name, f'\n----------step {t}----------\n\n', idx = idx)
     record.Record_txt(record.record_file_name, '\ndistance: ' + str(distance) + '\n\n', idx = idx)
@@ -62,8 +99,14 @@ def __dfs__(args, task, idx, x, y, graph, distance, t, to_print = True, sd = Fal
         is_best = False
         if distance < d_thres:
             print('max')
-            best_ans = answer
-            best_path = path.copy()
+            if high_acc_mode:
+                acc = task.test_output(idx = idx, output = answer)
+                if acc['r'] == 1:
+                    best_ans = answer
+                    best_path = path.copy()
+            else:
+                best_ans = answer
+                best_path = path.copy()
             is_best = True
             # dfs with sphere decoding
             d_thres = distance
@@ -78,13 +121,23 @@ def __dfs__(args, task, idx, x, y, graph, distance, t, to_print = True, sd = Fal
     # if has not visited yet
     if graph.tree_head[parent]['next_node']['node'] == None:
         # Generator
+        record.Record_txt(record.record_file_name, '\n-----Generator-----\n\n', idx)
         new_ys = [get_proposals(task, x, y[1], args.k)]
         new_ys = list(itertools.chain(*new_ys))
         ids = [task.get_id() for _ in range(len(new_ys))]
+        record.Record_txt(record.record_file_name, '\nnew_ys after itertools\n' + '\n'.join(list(map(str, new_ys.copy()))), idx)
+        record.Record_txt(record.record_file_name, '\n-----end Generator-----\n\n', idx)
         # Evaluator
+        record.Record_txt(record.record_file_name, '\n-----Evaluator-----\n\n', idx)
         values = get_values(task, x, new_ys, args.n_evaluate_sample)
-
+        record.Record_txt(record.record_file_name, '\nvalues:\n' + '\n'.join(list(map(str, values.copy()))) + '\n\n', idx)
+        record.Record_txt(record.record_file_name, '\n-----end Evaluator-----\n\n', idx)
+        
         new_ys = list(zip(ids, new_ys, values))
+        # Sort
+        if sorting:
+            new_ys = sorted(new_ys, key  = lambda x: x[2], reverse = True)
+
         new_nodes = list()
         for i in range(len(new_ys)):
             node = {'id': new_ys[i][0], 'answer': new_ys[i][1], 'value': new_ys[i][2], 'parent_node': parent, 'ancestor_distance': distance}
@@ -96,7 +149,7 @@ def __dfs__(args, task, idx, x, y, graph, distance, t, to_print = True, sd = Fal
         select_id = np.argmax([x[2] for x in new_ys])
         next_y = new_ys[select_id]
         distance = task.distance_calculator(next_y[2], distance, args.n_evaluate_sample)
-        __dfs__(args, task, idx, x, next_y, graph, distance, t + 1, to_print = True, sd = sd, greedy = True)
+        __dfs__(args, task, idx, x, next_y, graph, distance, t + 1, to_print = True, sd = sd, greedy = True, sorting = sorting, high_acc_mode = high_acc_mode)
     else:
         input = graph.tree_head[parent]['next_node']
         while input['node'] != None:
@@ -112,7 +165,7 @@ def __dfs__(args, task, idx, x, y, graph, distance, t, to_print = True, sd = Fal
                 infos.append({'step': t, 'select_id': input_node['id'], 'select_new_ys': input_node['answer'], 'values': values, 'is_best': False, 'is_back': False})
                 print(f'distance: {distance}')
                 path.add(input_node['id'])
-                __dfs__(args, task, idx, x, (input_node['id'], input_node['answer'], input_node['value']), graph, distance, t + 1, to_print = True, sd = sd)
+                __dfs__(args, task, idx, x, (input_node['id'], input_node['answer'], input_node['value']), graph, distance, t + 1, to_print = True, sd = sd, sorting = sorting, high_acc_mode = high_acc_mode)
                 path.remove(input_node['id'])
             else:
                 infos.append({'step': t, 'select_id': input_node['id'], 'select_new_ys': input_node['answer'], 'values': values, 'is_best': False, 'is_back': True})
@@ -124,11 +177,12 @@ def __dfs__(args, task, idx, x, y, graph, distance, t, to_print = True, sd = Fal
     
     return
 
-def dfs(args, task, idx, to_print = True, sd = False):
+# sd, greedy flag not using
+def dfs(args, task, idx, to_print = True, sd = False, sorting = False, high_acc_mode = False):
     global d_thres, gpt, best_ans, best_path, path, infos, index
     # reset global variables
     index = idx
-    d_thres = 10000
+    d_thres = 10000 # a large number
     best_ans = ''
     best_path = set()
     path = set()
@@ -144,7 +198,7 @@ def dfs(args, task, idx, to_print = True, sd = False):
     # Greedy to define d_thres
     # best_node, max_value = Greedy(llm, node, graph)
     print(f'd_thres: {d_thres}')
-    __dfs__(args, task, idx, x, y, graph, distance = 0, t = 0, to_print = to_print, sd = sd)
+    __dfs__(args, task, idx, x, y, graph, distance = 0, t = 0, to_print = to_print, sd = sd, sorting = sorting, high_acc_mode = high_acc_mode)
     print(f'd_thres: {d_thres}')
     print(best_ans)
     record.Record_txt(record.record_file_name, '\nbest node: ' + str(best_ans) + '\nd_thres: ' + str(d_thres) + '\n\n', idx = idx)

@@ -34,7 +34,7 @@ def run(args):
             else:
                 ys, info = solve(args, task, i)
         elif args.algorithm == 'dfs+sd':
-            ys, info, traversal_nodes = dfs(args, task, i)
+            ys, info, traversal_nodes = dfs(args, task, i, sd = True, sorting = True, high_acc_mode = False)
         end_time = time.time()
         print(end_time - start_time)
         total_cost_time += end_time - start_time

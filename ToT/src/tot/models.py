@@ -33,9 +33,9 @@ def chatgpt(messages, model="gpt-4", temperature=0.7, max_tokens=1000, n=1, stop
         n -= cnt
         res = completions_with_backoff(model=model, messages=messages, temperature=temperature, max_tokens=max_tokens, n=cnt, stop=stop)
         print(res)
-        record.Record_txt(record.record_file_name, f'\nres(n={cnt}): ' + str(res) +'\n\n', idx)
+        # record.Record_txt(record.record_file_name, f'\nres(n={cnt}): ' + str(res) +'\n\n', idx)
         outputs.extend([choice["message"]["content"] for choice in res["choices"]])
-        record.Record_txt(record.record_file_name, '\noutputs:\n' + '\n'.join(list(map(str, outputs.copy()))) +'\n\n', idx)
+        # record.Record_txt(record.record_file_name, '\noutputs:\n' + '\n'.join(list(map(str, outputs.copy()))) +'\n\n', idx)
         # log completion tokens
         completion_tokens += res["usage"]["completion_tokens"]
         prompt_tokens += res["usage"]["prompt_tokens"]

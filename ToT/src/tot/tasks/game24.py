@@ -8,7 +8,7 @@ from tot.prompts.game24 import *
 
 def get_current_numbers(y: str) -> str:
     last_line = y.strip().split('\n')[-1]
-    return last_line.split('left: ')[-1].split(')')[0]
+    return last_line.split('left: ')[-1].split(')')[0].strip()
 
 
 class Game24Task(Task):

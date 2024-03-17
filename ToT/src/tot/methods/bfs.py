@@ -3,12 +3,15 @@ import numpy as np
 from functools import partial
 from tot.models import gpt
 import tot.record_functions as record
+import re
 
 index = 0 # idx
 
 def get_value(task, x, y, n_evaluate_sample, cache_value=True):
     value_prompt = task.value_prompt_wrap(x, y)
-    record.Record_txt(record.record_file_name, '\nvalue prompt: ' + value_prompt + '\n\n', idx = index)
+    # record.Record_txt(record.record_file_name, '\nvalue prompt: ' + value_prompt + '\n\n', idx = index)
+    if 'wrong answer' in y:
+        return 0
     if cache_value and value_prompt in task.value_cache:
         return task.value_cache[value_prompt]
     value_outputs = gpt(value_prompt, n=n_evaluate_sample, stop=None, idx = index)
@@ -38,8 +41,14 @@ def get_votes(task, x, ys, n_evaluate_sample):
 def get_proposals(task, x, y, k):
     global index
     propose_prompt = task.propose_prompt_wrap(x, y, k)
-    record.Record_txt(record.record_file_name, '\npropose prompt: ' + propose_prompt + '\n\n', idx = index)
+    # record.Record_txt(record.record_file_name, '\npropose prompt: ' + propose_prompt + '\n\n', idx = index)
     proposals = gpt(propose_prompt, n=1, stop=None, idx = index)[0].split('\n')
+    # add left
+    for i in range(len(proposals)):
+        if 'answer' in proposals[i].lower():
+            continue
+        # record.Record_txt(record.record_file_name, '\nget current numbers: ' + get_current_numbers(y if y else x) + '\n\n', idx = index)
+        proposals[i] = add_left(proposals[i], get_current_numbers(y if y else x))
     return [y + _ + '\n' for _ in proposals]
 
 def get_samples(task, x, y, n_generate_sample, prompt_sample, stop):
@@ -51,6 +60,36 @@ def get_samples(task, x, y, n_generate_sample, prompt_sample, stop):
         raise ValueError(f'prompt_sample {prompt_sample} not recognized')
     samples = gpt(prompt, n=n_generate_sample, stop=stop)
     return [y + _ for _ in samples]
+
+def add_left(response, input_string):
+    pattern = r"(-?[0-9\.]+)[\s]*([\+\-\*\/])[\s]*(-?[0-9\.]+)[\s]*=[\s]*(-?[0-9\.]+)[\s]*"
+    match = re.match(pattern, response)
+    if match:
+        print(match.group(1), match.group(3), match.group(4))
+        x1 = ' ' + match.group(1) + ' '
+        x2 = ' ' + match.group(3) + ' '
+        y = ' ' + match.group(4) + ' '
+        check = re.search(re.compile(x1), input_string)
+        if check:
+            input_string = input_string.replace(x1, ' ', 1)
+            # print('x1 found')
+        check = re.search(re.compile(x2), input_string)
+        if check:
+            input_string = input_string.replace(x2, y, 1)
+            # print('x2 found')
+        input_string = input_string.strip()
+        input_string = input_string.replace('  ', ' ')
+        print(input_string)
+        response = response + f' ( left: {input_string} )'
+    else:
+        print('wrong format')
+        response = 'wrong answer'
+
+    return response
+
+def get_current_numbers(y: str) -> str:
+    last_line = y.strip().split('\n')[-1]
+    return ' ' + last_line.split('left: ')[-1].split(')')[0].strip() + ' '
 
 def solve(args, task, idx, to_print=True):
     global gpt, index
@@ -93,8 +132,9 @@ def solve(args, task, idx, to_print=True):
             if step == task.steps - 1:
                 select_ids = [select_ids[0]]
         select_new_ys = [new_ys[select_id] for select_id in select_ids]
+        select_value = [values[select_id] for select_id in select_ids]
         print(select_new_ys)
-        record.Record_txt(record.record_file_name, '\nselected nodes:\n' + '\n'.join(list(map(str, select_new_ys.copy()))) + '\n\n', idx)
+        record.Record_txt(record.record_file_name, '\nselected nodes:\n' + '\n'.join(list(map(str, select_new_ys.copy()))) + '\n' + '\n'.join(list(map(str, select_value.copy()))) + '\n\n', idx)
 
         # log
         if to_print: 
