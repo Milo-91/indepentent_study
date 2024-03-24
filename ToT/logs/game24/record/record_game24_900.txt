@@ -1,16 +1,10 @@
 model: gpt-3.5-turbo
 temperature: 0.7
-algorithm: dfs+sd
+algorithm: dfs+ksd
 k: 5
 b: 3
 idx: 900
-date: 2024-03-18
-
-
-----------step 0----------
-
-
-distance: 0
+date: 2024-03-24
 
 
 -----Generator-----
@@ -21,11 +15,11 @@ new_ys after itertools
 
 5 + 6 = 11 ( left: 4 11 10 )
 
-6 + 10 = 16 ( left: 4 5 16 )
-
-4 * 5 = 20 ( left: 20 6 10 )
+6 * 4 = 24 ( left: 24 5 10 )
 
 10 - 4 = 6 ( left: 6 5 6 )
+
+wrong answer
 
 -----end Generator-----
 
@@ -36,24 +30,16 @@ new_ys after itertools
 values:
 2.001
 2.001
-2.001
-2.001
+21.0
 60.0
+0
 
 
 -----end Evaluator-----
 
 
-distance: 0.0
-d_thres: 10000
-
-selected node: {'id': 5, 'answer': '10 - 4 = 6 ( left: 6 5 6 )\n', 'value': 60.0, 'parent_node': 0, 'ancestor_distance': 0}
-
-
-----------step 1----------
-
-
-distance: 0.0
+selected nodes:
+(4, '10 - 4 = 6 ( left: 6 5 6 )\n', 60.0)
 
 
 -----Generator-----
@@ -83,25 +69,17 @@ new_ys after itertools
 
 values:
 0.003
-0.002
-21.0
+0.003
+20.002
 60.0
-3.0
+2.001
 
 
 -----end Evaluator-----
 
 
-distance: 0.0
-d_thres: 10000
-
-selected node: {'id': 9, 'answer': '10 - 4 = 6 ( left: 6 5 6 )\n6 - 5 = 1 ( left: 1 6 )\n', 'value': 60.0, 'parent_node': 5, 'ancestor_distance': 0.0}
-
-
-----------step 2----------
-
-
-distance: 0.0
+selected nodes:
+(9, '10 - 4 = 6 ( left: 6 5 6 )\n6 - 5 = 1 ( left: 1 6 )\n', 60.0)
 
 
 -----Generator-----
@@ -114,7 +92,7 @@ new_ys after itertools
 
 10 - 4 = 6 ( left: 6 5 6 )
 6 - 5 = 1 ( left: 1 6 )
-1 * 6 = 6 ( left: 6 )
+6 - 1 = 5 ( left: 5 )
 
 10 - 4 = 6 ( left: 6 5 6 )
 6 - 5 = 1 ( left: 1 6 )
@@ -122,7 +100,7 @@ new_ys after itertools
 
 10 - 4 = 6 ( left: 6 5 6 )
 6 - 5 = 1 ( left: 1 6 )
-6 - 1 = 5 ( left: 5 )
+1 * 6 = 6 ( left: 6 )
 
 10 - 4 = 6 ( left: 6 5 6 )
 6 - 5 = 1 ( left: 1 6 )
@@ -136,30 +114,22 @@ new_ys after itertools
 
 values:
 0.0
-0.003
-0.003
 0.002
+0.001
+0.001
 0.0
 
 
 -----end Evaluator-----
 
 
-distance: 59.997
-d_thres: 10000
-
-selected node: {'id': 12, 'answer': '10 - 4 = 6 ( left: 6 5 6 )\n6 - 5 = 1 ( left: 1 6 )\n1 * 6 = 6 ( left: 6 )\n', 'value': 0.003, 'parent_node': 9, 'ancestor_distance': 0.0}
-
-
-----------step 3----------
-
-
-distance: 59.997
+selected nodes:
+(12, '10 - 4 = 6 ( left: 6 5 6 )\n6 - 5 = 1 ( left: 1 6 )\n6 - 1 = 5 ( left: 5 )\n', 0.002)
 
 
 answer: 10 - 4 = 6 ( left: 6 5 6 )
 6 - 5 = 1 ( left: 1 6 )
-1 * 6 = 6 ( left: 6 )
+6 - 1 = 5 ( left: 5 )
 wrong answer
 
 
@@ -167,71 +137,25 @@ wrong answer
 change best answer
 best_ans: 10 - 4 = 6 ( left: 6 5 6 )
 6 - 5 = 1 ( left: 1 6 )
-1 * 6 = 6 ( left: 6 )
+6 - 1 = 5 ( left: 5 )
 wrong answer
 
-d_thres: 59.997
-
-
-distance: 59.997
-d_thres: 59.997
-
-(prune)selected node: {'id': 13, 'answer': '10 - 4 = 6 ( left: 6 5 6 )\n6 - 5 = 1 ( left: 1 6 )\n6 / 1 = 6 ( left: 6 )\n', 'value': 0.003, 'parent_node': 9, 'ancestor_distance': 0.0}
-
-
-distance: 59.998
-d_thres: 59.997
-
-(prune)selected node: {'id': 14, 'answer': '10 - 4 = 6 ( left: 6 5 6 )\n6 - 5 = 1 ( left: 1 6 )\n6 - 1 = 5 ( left: 5 )\n', 'value': 0.002, 'parent_node': 9, 'ancestor_distance': 0.0}
-
-
-distance: 60.0
-d_thres: 59.997
-
-(prune)selected node: {'id': 11, 'answer': '10 - 4 = 6 ( left: 6 5 6 )\n6 - 5 = 1 ( left: 1 6 )\n1 + 6 = 7 ( left: 7 )\n', 'value': 0.0, 'parent_node': 9, 'ancestor_distance': 0.0}
-
-
-distance: 60.0
-d_thres: 59.997
-
-(prune)selected node: {'id': 15, 'answer': '10 - 4 = 6 ( left: 6 5 6 )\n6 - 5 = 1 ( left: 1 6 )\n6 + 1 = 7 ( left: 7 )\n', 'value': 0.0, 'parent_node': 9, 'ancestor_distance': 0.0}
-
-
-distance: 39.0
-d_thres: 59.997
-
-selected node: {'id': 8, 'answer': '10 - 4 = 6 ( left: 6 5 6 )\n6 * 5 = 30 ( left: 30 6 )\n', 'value': 21.0, 'parent_node': 5, 'ancestor_distance': 0.0}
-
-
-----------step 2----------
-
-
-distance: 39.0
+d_thres: 59.998
 
 
 -----Generator-----
 
 
 new_ys after itertools
-10 - 4 = 6 ( left: 6 5 6 )
-6 * 5 = 30 ( left: 30 6 )
-30 / 6 = 5 ( left: 5 )
+4 + 5 = 9 ( left: 9 6 10 )
 
-10 - 4 = 6 ( left: 6 5 6 )
-6 * 5 = 30 ( left: 30 6 )
-30 - 6 = 24 ( left: 24 )
+5 + 6 = 11 ( left: 4 11 10 )
 
-10 - 4 = 6 ( left: 6 5 6 )
-6 * 5 = 30 ( left: 30 6 )
-30 * 6 = 180 ( left: 180 )
+6 + 10 = 16 ( left: 4 5 16 )
 
-10 - 4 = 6 ( left: 6 5 6 )
-6 * 5 = 30 ( left: 30 6 )
-30 + 6 = 36 ( left: 36 )
+4 * 5 = 20 ( left: 20 6 10 )
 
-10 - 4 = 6 ( left: 6 5 6 )
-6 * 5 = 30 ( left: 30 6 )
-6 / 30 = 0.2 ( left: 0.2 )
+6 - 4 = 2 ( left: 2 5 10 )
 
 -----end Generator-----
 
@@ -240,136 +164,223 @@ new_ys after itertools
 
 
 values:
+2.001
+2.001
+1.001
+3.0
+0.003
+
+
+-----end Evaluator-----
+
+
+selected nodes:
+(3, '6 * 4 = 24 ( left: 24 5 10 )\n', 21.0)
+
+
+-----Generator-----
+
+
+new_ys after itertools
+6 * 4 = 24 ( left: 24 5 10 )
+24 / 5 = 4.8 ( left: 4.8 10 )
+
+6 * 4 = 24 ( left: 24 5 10 )
+24 - 5 = 19 ( left: 19 10 )
+
+6 * 4 = 24 ( left: 24 5 10 )
+24 + 5 = 29 ( left: 29 10 )
+
+6 * 4 = 24 ( left: 24 5 10 )
+5 * 10 = 50 ( left: 24 50 )
+
+6 * 4 = 24 ( left: 24 5 10 )
+10 + 24 = 34 ( left: 34 5 )
+
+-----end Generator-----
+
+
+-----Evaluator-----
+
+
+values:
+0.003
+0.001
 0.002
+1.002
+0.003
+
+
+-----end Evaluator-----
+
+
+selected nodes:
+(8, '10 - 4 = 6 ( left: 6 5 6 )\n6 * 5 = 30 ( left: 30 6 )\n', 20.002)
+
+
+(prune)distance: 78.998, d_thres: 59.998
+
+
+answer: 10 - 4 = 6 ( left: 6 5 6 )
+6 * 5 = 30 ( left: 30 6 )
+30 - 6 = 24 ( left: 24 )
+
+
+
+-----Generator-----
+
+
+new_ys after itertools
+4 + 5 = 9 ( left: 9 6 10 )
+
+5 + 6 = 11 ( left: 4 11 10 )
+
+6 + 10 = 16 ( left: 4 5 16 )
+
+4 * 5 = 20 ( left: 20 6 10 )
+
+6 - 4 = 2 ( left: 2 5 10 )
+
+-----end Generator-----
+
+
+-----Evaluator-----
+
+
+values:
+2.001
+2.001
+1.001
+3.0
+0.003
+
+
+-----end Evaluator-----
+
+
+selected nodes:
+(20, '4 * 5 = 20 ( left: 20 6 10 )\n', 3.0)
+
+
+-----Generator-----
+
+
+new_ys after itertools
+4 * 5 = 20 ( left: 20 6 10 )
+20 - 6 = 14 ( left: 14 10 )
+
+4 * 5 = 20 ( left: 20 6 10 )
+20 / 6 = 3.33 (rounded to 2 decimal places) ( left: 3.33 10 )
+
+4 * 5 = 20 ( left: 20 6 10 )
+10 + 6 = 16 ( left: 20 16 )
+
+4 * 5 = 20 ( left: 20 6 10 )
+20 * 6 = 120 ( left: 120 10 )
+
+4 * 5 = 20 ( left: 20 6 10 )
+20 - 10 = 10 ( left: 6 10 )
+
+-----end Generator-----
+
+
+-----Evaluator-----
+
+
+values:
 60.0
+0.001
 0.003
 60.0
+0.003
+
+
+-----end Evaluator-----
+
+
+selected nodes:
+(33, '4 * 5 = 20 ( left: 20 6 10 )\n20 - 6 = 14 ( left: 14 10 )\n', 60.0)
+
+
+-----Generator-----
+
+
+new_ys after itertools
+4 * 5 = 20 ( left: 20 6 10 )
+20 - 6 = 14 ( left: 14 10 )
+14 + 10 = 24 ( left: 24 )
+
+4 * 5 = 20 ( left: 20 6 10 )
+20 - 6 = 14 ( left: 14 10 )
+14 / 10 = 1.4 ( left: 1.4 )
+
+4 * 5 = 20 ( left: 20 6 10 )
+20 - 6 = 14 ( left: 14 10 )
+14 * 10 = 140 ( left: 140 )
+
+4 * 5 = 20 ( left: 20 6 10 )
+20 - 6 = 14 ( left: 14 10 )
+14 - 10 = 4 ( left: 4 )
+
+4 * 5 = 20 ( left: 20 6 10 )
+20 - 6 = 14 ( left: 14 10 )
+10 - 14 = -4 ( left: -4 )
+
+-----end Generator-----
+
+
+-----Evaluator-----
+
+
+values:
+60.0
+0.0
+0.003
+0.002
 0.001
 
 
 -----end Evaluator-----
 
 
-distance: 39.0
-d_thres: 59.997
-
-selected node: {'id': 17, 'answer': '10 - 4 = 6 ( left: 6 5 6 )\n6 * 5 = 30 ( left: 30 6 )\n30 - 6 = 24 ( left: 24 )\n', 'value': 60.0, 'parent_node': 8, 'ancestor_distance': 39.0}
+selected nodes:
+(38, '4 * 5 = 20 ( left: 20 6 10 )\n20 - 6 = 14 ( left: 14 10 )\n14 + 10 = 24 ( left: 24 )\n', 60.0)
 
 
-----------step 3----------
-
-
-distance: 39.0
-
-
-answer: 10 - 4 = 6 ( left: 6 5 6 )
-6 * 5 = 30 ( left: 30 6 )
-30 - 6 = 24 ( left: 24 )
-Answer: ((10 - 4) * 5) - 6 = 24
+answer: 4 * 5 = 20 ( left: 20 6 10 )
+20 - 6 = 14 ( left: 14 10 )
+14 + 10 = 24 ( left: 24 )
+Answer: (4 * 5 - 6) + 10 = 24
 
 
 
 change best answer
-best_ans: 10 - 4 = 6 ( left: 6 5 6 )
-6 * 5 = 30 ( left: 30 6 )
-30 - 6 = 24 ( left: 24 )
-Answer: ((10 - 4) * 5) - 6 = 24
+best_ans: 4 * 5 = 20 ( left: 20 6 10 )
+20 - 6 = 14 ( left: 14 10 )
+14 + 10 = 24 ( left: 24 )
+Answer: (4 * 5 - 6) + 10 = 24
 
-d_thres: 39.0
-
-
-distance: 39.0
-d_thres: 39.0
-
-(prune)selected node: {'id': 19, 'answer': '10 - 4 = 6 ( left: 6 5 6 )\n6 * 5 = 30 ( left: 30 6 )\n30 + 6 = 36 ( left: 36 )\n', 'value': 60.0, 'parent_node': 8, 'ancestor_distance': 39.0}
-
-
-distance: 98.997
-d_thres: 39.0
-
-(prune)selected node: {'id': 18, 'answer': '10 - 4 = 6 ( left: 6 5 6 )\n6 * 5 = 30 ( left: 30 6 )\n30 * 6 = 180 ( left: 180 )\n', 'value': 0.003, 'parent_node': 8, 'ancestor_distance': 39.0}
-
-
-distance: 98.99799999999999
-d_thres: 39.0
-
-(prune)selected node: {'id': 16, 'answer': '10 - 4 = 6 ( left: 6 5 6 )\n6 * 5 = 30 ( left: 30 6 )\n30 / 6 = 5 ( left: 5 )\n', 'value': 0.002, 'parent_node': 8, 'ancestor_distance': 39.0}
-
-
-distance: 98.999
-d_thres: 39.0
-
-(prune)selected node: {'id': 20, 'answer': '10 - 4 = 6 ( left: 6 5 6 )\n6 * 5 = 30 ( left: 30 6 )\n6 / 30 = 0.2 ( left: 0.2 )\n', 'value': 0.001, 'parent_node': 8, 'ancestor_distance': 39.0}
-
-
-distance: 57.0
-d_thres: 39.0
-
-(prune)selected node: {'id': 10, 'answer': '10 - 4 = 6 ( left: 6 5 6 )\n5 / 6 = 0.83 ( left: 0.83 6 )\n', 'value': 3.0, 'parent_node': 5, 'ancestor_distance': 0.0}
-
-
-distance: 59.997
-d_thres: 39.0
-
-(prune)selected node: {'id': 6, 'answer': '10 - 4 = 6 ( left: 6 5 6 )\n6 + 5 = 11 ( left: 11 6 )\n', 'value': 0.003, 'parent_node': 5, 'ancestor_distance': 0.0}
-
-
-distance: 59.998
-d_thres: 39.0
-
-(prune)selected node: {'id': 7, 'answer': '10 - 4 = 6 ( left: 6 5 6 )\n6 / 5 = 1.2 ( left: 1.2 6 )\n', 'value': 0.002, 'parent_node': 5, 'ancestor_distance': 0.0}
-
-
-distance: 57.999
-d_thres: 39.0
-
-(prune)selected node: {'id': 1, 'answer': '4 + 5 = 9 ( left: 9 6 10 )\n', 'value': 2.001, 'parent_node': 0, 'ancestor_distance': 0}
-
-
-distance: 57.999
-d_thres: 39.0
-
-(prune)selected node: {'id': 2, 'answer': '5 + 6 = 11 ( left: 4 11 10 )\n', 'value': 2.001, 'parent_node': 0, 'ancestor_distance': 0}
-
-
-distance: 57.999
-d_thres: 39.0
-
-(prune)selected node: {'id': 3, 'answer': '6 + 10 = 16 ( left: 4 5 16 )\n', 'value': 2.001, 'parent_node': 0, 'ancestor_distance': 0}
-
-
-distance: 57.999
-d_thres: 39.0
-
-(prune)selected node: {'id': 4, 'answer': '4 * 5 = 20 ( left: 20 6 10 )\n', 'value': 2.001, 'parent_node': 0, 'ancestor_distance': 0}
-
-
-best node: 10 - 4 = 6 ( left: 6 5 6 )
-6 * 5 = 30 ( left: 30 6 )
-30 - 6 = 24 ( left: 24 )
-Answer: ((10 - 4) * 5) - 6 = 24
-
-d_thres: 39.0
+d_thres: 57.0
 
 
 linked list:
-000 -> 5 -> 1 -> 2 -> 3 -> 4
+000 -> 4 -> 3 -> 1 -> 2 -> 5
 
 001
 
 002
 
-003
+003 -> 25 -> 22 -> 26 -> 24 -> 23
 
-004
+004 -> 9 -> 8 -> 10 -> 6 -> 7
 
-005 -> 9 -> 8 -> 10 -> 6 -> 7
+005
 
 006
 
 007
 
-008 -> 17 -> 19 -> 18 -> 16 -> 20
+008
 
 009 -> 12 -> 13 -> 14 -> 11 -> 15
 
@@ -385,7 +396,7 @@ linked list:
 
 015
 
-016
+016 -> 20 -> 17 -> 18 -> 19 -> 21
 
 017
 
@@ -393,7 +404,7 @@ linked list:
 
 019
 
-020
+020 -> 33 -> 36 -> 35 -> 37 -> 34
 
 021
 
@@ -407,7 +418,7 @@ linked list:
 
 026
 
-027
+027 -> 31 -> 28 -> 29 -> 30 -> 32
 
 028
 
@@ -419,7 +430,7 @@ linked list:
 
 032
 
-033
+033 -> 38 -> 40 -> 41 -> 42 -> 39
 
 034
 
@@ -665,36 +676,56 @@ linked list:
 
 155
 
-{'id': 5, 'answer': '10 - 4 = 6 ( left: 6 5 6 )\n', 'value': 60.0, 'parent_node': 0, 'ancestor_distance': 0}
+{'id': 4, 'answer': '10 - 4 = 6 ( left: 6 5 6 )\n', 'value': 60.0, 'parent_node': 0, 'ancestor_distance': 0}
+{'id': 3, 'answer': '6 * 4 = 24 ( left: 24 5 10 )\n', 'value': 21.0, 'parent_node': 0, 'ancestor_distance': 0}
 {'id': 1, 'answer': '4 + 5 = 9 ( left: 9 6 10 )\n', 'value': 2.001, 'parent_node': 0, 'ancestor_distance': 0}
 {'id': 2, 'answer': '5 + 6 = 11 ( left: 4 11 10 )\n', 'value': 2.001, 'parent_node': 0, 'ancestor_distance': 0}
-{'id': 3, 'answer': '6 + 10 = 16 ( left: 4 5 16 )\n', 'value': 2.001, 'parent_node': 0, 'ancestor_distance': 0}
-{'id': 4, 'answer': '4 * 5 = 20 ( left: 20 6 10 )\n', 'value': 2.001, 'parent_node': 0, 'ancestor_distance': 0}
-{'id': 9, 'answer': '10 - 4 = 6 ( left: 6 5 6 )\n6 - 5 = 1 ( left: 1 6 )\n', 'value': 60.0, 'parent_node': 5, 'ancestor_distance': 0.0}
-{'id': 8, 'answer': '10 - 4 = 6 ( left: 6 5 6 )\n6 * 5 = 30 ( left: 30 6 )\n', 'value': 21.0, 'parent_node': 5, 'ancestor_distance': 0.0}
-{'id': 10, 'answer': '10 - 4 = 6 ( left: 6 5 6 )\n5 / 6 = 0.83 ( left: 0.83 6 )\n', 'value': 3.0, 'parent_node': 5, 'ancestor_distance': 0.0}
-{'id': 6, 'answer': '10 - 4 = 6 ( left: 6 5 6 )\n6 + 5 = 11 ( left: 11 6 )\n', 'value': 0.003, 'parent_node': 5, 'ancestor_distance': 0.0}
-{'id': 7, 'answer': '10 - 4 = 6 ( left: 6 5 6 )\n6 / 5 = 1.2 ( left: 1.2 6 )\n', 'value': 0.002, 'parent_node': 5, 'ancestor_distance': 0.0}
-{'id': 17, 'answer': '10 - 4 = 6 ( left: 6 5 6 )\n6 * 5 = 30 ( left: 30 6 )\n30 - 6 = 24 ( left: 24 )\n', 'value': 60.0, 'parent_node': 8, 'ancestor_distance': 39.0}
-{'id': 19, 'answer': '10 - 4 = 6 ( left: 6 5 6 )\n6 * 5 = 30 ( left: 30 6 )\n30 + 6 = 36 ( left: 36 )\n', 'value': 60.0, 'parent_node': 8, 'ancestor_distance': 39.0}
-{'id': 18, 'answer': '10 - 4 = 6 ( left: 6 5 6 )\n6 * 5 = 30 ( left: 30 6 )\n30 * 6 = 180 ( left: 180 )\n', 'value': 0.003, 'parent_node': 8, 'ancestor_distance': 39.0}
-{'id': 16, 'answer': '10 - 4 = 6 ( left: 6 5 6 )\n6 * 5 = 30 ( left: 30 6 )\n30 / 6 = 5 ( left: 5 )\n', 'value': 0.002, 'parent_node': 8, 'ancestor_distance': 39.0}
-{'id': 20, 'answer': '10 - 4 = 6 ( left: 6 5 6 )\n6 * 5 = 30 ( left: 30 6 )\n6 / 30 = 0.2 ( left: 0.2 )\n', 'value': 0.001, 'parent_node': 8, 'ancestor_distance': 39.0}
-{'id': 12, 'answer': '10 - 4 = 6 ( left: 6 5 6 )\n6 - 5 = 1 ( left: 1 6 )\n1 * 6 = 6 ( left: 6 )\n', 'value': 0.003, 'parent_node': 9, 'ancestor_distance': 0.0}
-{'id': 13, 'answer': '10 - 4 = 6 ( left: 6 5 6 )\n6 - 5 = 1 ( left: 1 6 )\n6 / 1 = 6 ( left: 6 )\n', 'value': 0.003, 'parent_node': 9, 'ancestor_distance': 0.0}
-{'id': 14, 'answer': '10 - 4 = 6 ( left: 6 5 6 )\n6 - 5 = 1 ( left: 1 6 )\n6 - 1 = 5 ( left: 5 )\n', 'value': 0.002, 'parent_node': 9, 'ancestor_distance': 0.0}
+{'id': 5, 'answer': 'wrong answer\n', 'value': 0, 'parent_node': 0, 'ancestor_distance': 0}
+{'id': 25, 'answer': '6 * 4 = 24 ( left: 24 5 10 )\n5 * 10 = 50 ( left: 24 50 )\n', 'value': 1.002, 'parent_node': 3, 'ancestor_distance': 39.0}
+{'id': 22, 'answer': '6 * 4 = 24 ( left: 24 5 10 )\n24 / 5 = 4.8 ( left: 4.8 10 )\n', 'value': 0.003, 'parent_node': 3, 'ancestor_distance': 39.0}
+{'id': 26, 'answer': '6 * 4 = 24 ( left: 24 5 10 )\n10 + 24 = 34 ( left: 34 5 )\n', 'value': 0.003, 'parent_node': 3, 'ancestor_distance': 39.0}
+{'id': 24, 'answer': '6 * 4 = 24 ( left: 24 5 10 )\n24 + 5 = 29 ( left: 29 10 )\n', 'value': 0.002, 'parent_node': 3, 'ancestor_distance': 39.0}
+{'id': 23, 'answer': '6 * 4 = 24 ( left: 24 5 10 )\n24 - 5 = 19 ( left: 19 10 )\n', 'value': 0.001, 'parent_node': 3, 'ancestor_distance': 39.0}
+{'id': 9, 'answer': '10 - 4 = 6 ( left: 6 5 6 )\n6 - 5 = 1 ( left: 1 6 )\n', 'value': 60.0, 'parent_node': 4, 'ancestor_distance': 0.0}
+{'id': 8, 'answer': '10 - 4 = 6 ( left: 6 5 6 )\n6 * 5 = 30 ( left: 30 6 )\n', 'value': 20.002, 'parent_node': 4, 'ancestor_distance': 0.0}
+{'id': 10, 'answer': '10 - 4 = 6 ( left: 6 5 6 )\n5 / 6 = 0.83 ( left: 0.83 6 )\n', 'value': 2.001, 'parent_node': 4, 'ancestor_distance': 0.0}
+{'id': 6, 'answer': '10 - 4 = 6 ( left: 6 5 6 )\n6 + 5 = 11 ( left: 11 6 )\n', 'value': 0.003, 'parent_node': 4, 'ancestor_distance': 0.0}
+{'id': 7, 'answer': '10 - 4 = 6 ( left: 6 5 6 )\n6 / 5 = 1.2 ( left: 1.2 6 )\n', 'value': 0.003, 'parent_node': 4, 'ancestor_distance': 0.0}
+{'id': 12, 'answer': '10 - 4 = 6 ( left: 6 5 6 )\n6 - 5 = 1 ( left: 1 6 )\n6 - 1 = 5 ( left: 5 )\n', 'value': 0.002, 'parent_node': 9, 'ancestor_distance': 0.0}
+{'id': 13, 'answer': '10 - 4 = 6 ( left: 6 5 6 )\n6 - 5 = 1 ( left: 1 6 )\n6 / 1 = 6 ( left: 6 )\n', 'value': 0.001, 'parent_node': 9, 'ancestor_distance': 0.0}
+{'id': 14, 'answer': '10 - 4 = 6 ( left: 6 5 6 )\n6 - 5 = 1 ( left: 1 6 )\n1 * 6 = 6 ( left: 6 )\n', 'value': 0.001, 'parent_node': 9, 'ancestor_distance': 0.0}
 {'id': 11, 'answer': '10 - 4 = 6 ( left: 6 5 6 )\n6 - 5 = 1 ( left: 1 6 )\n1 + 6 = 7 ( left: 7 )\n', 'value': 0.0, 'parent_node': 9, 'ancestor_distance': 0.0}
 {'id': 15, 'answer': '10 - 4 = 6 ( left: 6 5 6 )\n6 - 5 = 1 ( left: 1 6 )\n6 + 1 = 7 ( left: 7 )\n', 'value': 0.0, 'parent_node': 9, 'ancestor_distance': 0.0}
+{'id': 20, 'answer': '4 * 5 = 20 ( left: 20 6 10 )\n', 'value': 3.0, 'parent_node': 16, 'ancestor_distance': 0}
+{'id': 17, 'answer': '4 + 5 = 9 ( left: 9 6 10 )\n', 'value': 2.001, 'parent_node': 16, 'ancestor_distance': 0}
+{'id': 18, 'answer': '5 + 6 = 11 ( left: 4 11 10 )\n', 'value': 2.001, 'parent_node': 16, 'ancestor_distance': 0}
+{'id': 19, 'answer': '6 + 10 = 16 ( left: 4 5 16 )\n', 'value': 1.001, 'parent_node': 16, 'ancestor_distance': 0}
+{'id': 21, 'answer': '6 - 4 = 2 ( left: 2 5 10 )\n', 'value': 0.003, 'parent_node': 16, 'ancestor_distance': 0}
+{'id': 33, 'answer': '4 * 5 = 20 ( left: 20 6 10 )\n20 - 6 = 14 ( left: 14 10 )\n', 'value': 60.0, 'parent_node': 20, 'ancestor_distance': 57.0}
+{'id': 36, 'answer': '4 * 5 = 20 ( left: 20 6 10 )\n20 * 6 = 120 ( left: 120 10 )\n', 'value': 60.0, 'parent_node': 20, 'ancestor_distance': 57.0}
+{'id': 35, 'answer': '4 * 5 = 20 ( left: 20 6 10 )\n10 + 6 = 16 ( left: 20 16 )\n', 'value': 0.003, 'parent_node': 20, 'ancestor_distance': 57.0}
+{'id': 37, 'answer': '4 * 5 = 20 ( left: 20 6 10 )\n20 - 10 = 10 ( left: 6 10 )\n', 'value': 0.003, 'parent_node': 20, 'ancestor_distance': 57.0}
+{'id': 34, 'answer': '4 * 5 = 20 ( left: 20 6 10 )\n20 / 6 = 3.33 (rounded to 2 decimal places) ( left: 3.33 10 )\n', 'value': 0.001, 'parent_node': 20, 'ancestor_distance': 57.0}
+{'id': 31, 'answer': '4 * 5 = 20 ( left: 20 6 10 )\n', 'value': 3.0, 'parent_node': 27, 'ancestor_distance': 0}
+{'id': 28, 'answer': '4 + 5 = 9 ( left: 9 6 10 )\n', 'value': 2.001, 'parent_node': 27, 'ancestor_distance': 0}
+{'id': 29, 'answer': '5 + 6 = 11 ( left: 4 11 10 )\n', 'value': 2.001, 'parent_node': 27, 'ancestor_distance': 0}
+{'id': 30, 'answer': '6 + 10 = 16 ( left: 4 5 16 )\n', 'value': 1.001, 'parent_node': 27, 'ancestor_distance': 0}
+{'id': 32, 'answer': '6 - 4 = 2 ( left: 2 5 10 )\n', 'value': 0.003, 'parent_node': 27, 'ancestor_distance': 0}
+{'id': 38, 'answer': '4 * 5 = 20 ( left: 20 6 10 )\n20 - 6 = 14 ( left: 14 10 )\n14 + 10 = 24 ( left: 24 )\n', 'value': 60.0, 'parent_node': 33, 'ancestor_distance': 57.0}
+{'id': 40, 'answer': '4 * 5 = 20 ( left: 20 6 10 )\n20 - 6 = 14 ( left: 14 10 )\n14 * 10 = 140 ( left: 140 )\n', 'value': 0.003, 'parent_node': 33, 'ancestor_distance': 57.0}
+{'id': 41, 'answer': '4 * 5 = 20 ( left: 20 6 10 )\n20 - 6 = 14 ( left: 14 10 )\n14 - 10 = 4 ( left: 4 )\n', 'value': 0.002, 'parent_node': 33, 'ancestor_distance': 57.0}
+{'id': 42, 'answer': '4 * 5 = 20 ( left: 20 6 10 )\n20 - 6 = 14 ( left: 14 10 )\n10 - 14 = -4 ( left: -4 )\n', 'value': 0.001, 'parent_node': 33, 'ancestor_distance': 57.0}
+{'id': 39, 'answer': '4 * 5 = 20 ( left: 20 6 10 )\n20 - 6 = 14 ( left: 14 10 )\n14 / 10 = 1.4 ( left: 1.4 )\n', 'value': 0.0, 'parent_node': 33, 'ancestor_distance': 57.0}
 
 
-ys = ['10 - 4 = 6 ( left: 6 5 6 )\n6 * 5 = 30 ( left: 30 6 )\n30 - 6 = 24 ( left: 24 )\nAnswer: ((10 - 4) * 5) - 6 = 24\n']
+ys = ['4 * 5 = 20 ( left: 20 6 10 )\n20 - 6 = 14 ( left: 14 10 )\n14 + 10 = 24 ( left: 24 )\nAnswer: (4 * 5 - 6) + 10 = 24\n']
 
 
 -----task complete-----
 
-ys: ['10 - 4 = 6 ( left: 6 5 6 )\n6 * 5 = 30 ( left: 30 6 )\n30 - 6 = 24 ( left: 24 )\nAnswer: ((10 - 4) * 5) - 6 = 24\n']
+ys: ['4 * 5 = 20 ( left: 20 6 10 )\n20 - 6 = 14 ( left: 14 10 )\n14 + 10 = 24 ( left: 24 )\nAnswer: (4 * 5 - 6) + 10 = 24\n']
 infos: [{'r': 1}]
 
 
-cost time: 21.074806213378906
+cost time: 42.65475630760193
 

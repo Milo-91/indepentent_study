@@ -8,6 +8,7 @@ import time
 from tot.tasks import get_task
 from tot.methods.bfs import solve, naive_solve
 from tot.methods.dfs_sd import dfs
+from tot.methods.dfs_ksd import ksd
 from tot.models import gpt_usage
 
 def run(args):
@@ -24,6 +25,7 @@ def run(args):
     for i in range(args.task_start_index, args.task_end_index):
         traversal_nodes = 0
         record.Init_record_file(record.record_file_name, f'model: {args.backend}\ntemperature: {args.temperature}\nalgorithm: {args.algorithm}\nk: {args.k}\nb: {args.n_select_sample}\nidx: {i}\ndate: {datetime.date.today()}\n\n', idx = i)
+        record.Init_record_file(record.debug_file_name, '', idx = i)
         # reset id
         task.reset_id()
         # solve
@@ -35,6 +37,8 @@ def run(args):
                 ys, info = solve(args, task, i)
         elif args.algorithm == 'dfs+sd':
             ys, info, traversal_nodes = dfs(args, task, i, sd = True, sorting = True, high_acc_mode = False)
+        elif args.algorithm == 'dfs+ksd':
+            ys, info, traversal_nodes = ksd(args, task, i)
         end_time = time.time()
         print(end_time - start_time)
         total_cost_time += end_time - start_time
@@ -81,7 +85,7 @@ def parse_args():
     args.add_argument('--n_evaluate_sample', type=int, default=1)
     args.add_argument('--n_select_sample', type=int, default=1) # b
     args.add_argument('--k', type = int, default = 1) # k
-    args.add_argument('--algorithm', type=str, default='bfs') # (bfs, dfs+sd)
+    args.add_argument('--algorithm', type=str, default='bfs') # (bfs, dfs+sd, dfs+ksd)
 
     args = args.parse_args()
     return args

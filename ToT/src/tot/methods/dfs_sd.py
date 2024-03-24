@@ -38,9 +38,11 @@ def get_values(task, x, ys, n_evaluate_sample, cache_value=True):
     return values
 
 def get_proposals(task, x, y, k):
-    global index
+    global index, gpt
     propose_prompt = task.propose_prompt_wrap(x, y, k)
-    # record.Record_txt(record.record_file_name, '\npropose prompt: ' + propose_prompt + '\n\n', idx = index)
+    if 'Answer' in propose_prompt:
+        gpt = partial(gpt, model='gpt-4')
+    record.Record_txt(record.debug_file_name, '\npropose prompt: ' + propose_prompt + '\n\n', idx = index)
     proposals = gpt(propose_prompt, n=1, stop=None, idx = index)[0].split('\n')
     # add left
     for i in range(len(proposals)):
@@ -59,17 +61,24 @@ def add_left(response, input_string):
         x2 = ' ' + match.group(3) + ' '
         y = ' ' + match.group(4) + ' '
         check = re.search(re.compile(x1), input_string)
+        x1_fount = 0
+        x2_fount = 0
         if check:
             input_string = input_string.replace(x1, ' ', 1)
             # print('x1 found')
+            x1_fount = 1
         check = re.search(re.compile(x2), input_string)
         if check:
             input_string = input_string.replace(x2, y, 1)
             # print('x2 found')
+            x2_fount = 1
         input_string = input_string.strip()
         input_string = input_string.replace('  ', ' ')
         print(input_string)
-        response = response + f' ( left: {input_string} )'
+        if x1_fount and x2_fount:
+            response = response + f' ( left: {input_string} )'
+        else:
+            response = 'wrong answer'
     else:
         print('wrong format')
         response = 'wrong answer'
@@ -82,13 +91,14 @@ def get_current_numbers(y: str) -> str:
 
 # x: question, y: (id, ans, value)
 def __dfs__(args, task, idx, x, y, graph, distance, t, to_print = True, sd = False, greedy = False, sorting = False, high_acc_mode = False):
-    global best_ans, best_path, path, d_thres, infos
+    global best_ans, best_path, path, d_thres, infos, gpt
     record.Record_txt(record.record_file_name, f'\n----------step {t}----------\n\n', idx = idx)
     record.Record_txt(record.record_file_name, '\ndistance: ' + str(distance) + '\n\n', idx = idx)
     # if achieving leaf node
     if t == task.steps - 1:
         # final generation
         new_ys = [get_proposals(task, x, y[1], args.k)]
+        gpt = partial(gpt, model=args.backend, temperature=args.temperature)
         new_ys = list(itertools.chain(*new_ys))
         ids = list(range(len(new_ys)))
         values = get_values(task, x, new_ys, args.n_evaluate_sample)

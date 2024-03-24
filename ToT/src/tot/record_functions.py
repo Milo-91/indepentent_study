@@ -6,6 +6,7 @@ record_file_name = '{file_path}/record_game24_{idx}.txt'
 tree_json_file_name = '{file_path}/tree_game24_{idx}.json'
 all_json_file_name = '{file_path}/all_tree_game24.json'
 acc_file_name = '{file_path}/acc_info_game24.txt'
+debug_file_name = '{file_path}/debug_info_{idx}.txt'
 
 def Init_record_file(file_name, initial_string, idx = 0):
     global record_files_folder

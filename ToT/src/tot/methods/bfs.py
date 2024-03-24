@@ -39,9 +39,13 @@ def get_votes(task, x, ys, n_evaluate_sample):
     return values
 
 def get_proposals(task, x, y, k):
-    global index
+    global index, gpt
     propose_prompt = task.propose_prompt_wrap(x, y, k)
-    # record.Record_txt(record.record_file_name, '\npropose prompt: ' + propose_prompt + '\n\n', idx = index)
+    record.Record_txt(record.debug_file_name, '\npropose prompt: ' + propose_prompt + '\n\n', idx = index)
+    
+    # Final Generator use Gpt-4
+    if 'Answer' in propose_prompt:
+        gpt = partial(gpt, model='gpt-4')
     proposals = gpt(propose_prompt, n=1, stop=None, idx = index)[0].split('\n')
     # add left
     for i in range(len(proposals)):
@@ -70,17 +74,24 @@ def add_left(response, input_string):
         x2 = ' ' + match.group(3) + ' '
         y = ' ' + match.group(4) + ' '
         check = re.search(re.compile(x1), input_string)
+        x1_fount = 0
+        x2_fount = 0
         if check:
             input_string = input_string.replace(x1, ' ', 1)
             # print('x1 found')
+            x1_fount = 1
         check = re.search(re.compile(x2), input_string)
         if check:
             input_string = input_string.replace(x2, y, 1)
             # print('x2 found')
+            x2_fount = 1
         input_string = input_string.strip()
         input_string = input_string.replace('  ', ' ')
         print(input_string)
-        response = response + f' ( left: {input_string} )'
+        if x1_fount and x2_fount:
+            response = response + f' ( left: {input_string} )'
+        else:
+            response = 'wrong answer'
     else:
         print('wrong format')
         response = 'wrong answer'
@@ -108,6 +119,7 @@ def solve(args, task, idx, to_print=True):
         elif args.method_generate == 'propose':
             new_ys = [get_proposals(task, x, y, args.k) for y in ys]
         new_ys = list(itertools.chain(*new_ys))
+        gpt = partial(gpt, model=args.backend, temperature=args.temperature)
         print(new_ys)
         record.Record_txt(record.record_file_name, '\nnew_ys after itertools\n' + '\n'.join(list(map(str, new_ys.copy()))), idx)
         
