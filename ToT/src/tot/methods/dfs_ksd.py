@@ -149,6 +149,7 @@ def ksd(args, task, idx, to_print=True):
                     for i in range(len(new_ys)):
                         node = {'id': new_ys[i][0], 'answer': new_ys[i][1], 'value': new_ys[i][2], 'parent_node': parent, 'ancestor_distance': distance}
                         new_nodes.append(node)
+                    graph.add_head_list_len(new_ys[-1][0])
                     graph.add_nodes(new_nodes)
                     
                     # Put outputs into level_nodes

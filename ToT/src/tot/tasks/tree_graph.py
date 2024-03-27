@@ -33,15 +33,14 @@ class graph():
                 new_element = {'node': new_node, 'prev_node': self.tree_head[parent]['prev_node'], 'next_node': self.tree_head[parent]}
                 self.tree_head[parent]['prev_node']['next_node'] = new_element
                 self.tree_head[parent]['prev_node'] = new_element
-            
+            if new_node['id'] > self.total_element:
+                self.append_tree_head
             self.nodes[new_node['id']] = new_node
 
     def append_tree_head(self, origin_tree_head):
         # need to adjust total_element before call this function
         tree_head = origin_tree_head
         new_len = self.total_element - len(origin_tree_head)
-        self.nodes.extend([None for _ in range(new_len)])
-        self.visited.extend([0] * (new_len))
         for _ in range(new_len):
             new_node = {'node': None, 'prev_node': None, 'next_node': None}
             new_node['prev_node'] = new_node
@@ -76,6 +75,7 @@ class graph():
         if new_len >= self.total_element:
             record.Record_txt(record.record_file_name, '\nadjust graph list length ' + str(self.total_element), self.idx)
             self.visited.extend([0] * (new_len - self.total_element + 1))
+            self.nodes.extend([None for _ in range(new_len - self.total_element + 1)])
             self.total_element = new_len + 1
             self.tree_head = self.append_tree_head(self.tree_head)
             record.Record_txt(record.record_file_name, ' -> ' + str(self.total_element) + '\n\n', self.idx)
