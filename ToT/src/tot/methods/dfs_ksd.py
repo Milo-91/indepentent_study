@@ -97,74 +97,82 @@ def ksd(args, task, idx, to_print=True):
     best_path = set()
     level_nodes = [[] for _ in range(task.steps)]
     infos = []
-    graph = tree_graph.graph(k = args.k, idx = idx)
+    zero_id = task.get_id()
+    graph = tree_graph.graph(k = args.k, b = args.n_select_sample, idx = idx)
+    graph.add_nodes([{'id': zero_id, 'answer': x, 'value': None, 'parent_node': None, 'ancestor_distance': 0}])
 
     # x: question, y: (id, ans, value)
     for b in range(args.n_select_sample):
         gpt = partial(gpt, model=args.backend, temperature=args.temperature)
         print(gpt)
-        y = (task.get_id(), '', 0)  # current output candidates
+        y = (zero_id, '', 0) # current output candidates
         path = set()
         distance = 0
         for step in range(task.steps - 1):
-            # prune
-            if distance > d_thres:
-                record.Record_txt(record.record_file_name, '\n(prune)distance: ' + str(distance) + ', d_thres: ' + str(d_thres) + '\n\n', idx = idx)
-                infos.append({'step': step, 'select_id': y[0], 'select_new_ys': y[1], 'values': y[2], 'is_best': False, 'is_back': True})
-                break
+            is_prune = 0
+            record.Record_txt(record.record_file_name, '\ndistance: ' + str(distance) + ', d_thres: ' + str(d_thres) + '\n\n', idx = idx)
+            record.Record_txt(record.record_file_name, '\nlevel_nodes\n' + '\n'.join(list(map(str, level_nodes.copy()))), idx)
             print(y[0])
             graph.visit_nodes([{'id': y[0]}])
+            # prune
+            if distance >= d_thres:
+                record.Record_txt(record.record_file_name, '\n(prune)distance: ' + str(distance) + ', d_thres: ' + str(d_thres) + '\n\n', idx = idx)
+                infos.append({'step': step, 'select_id': y[0], 'select_new_ys': y[1], 'values': y[2], 'is_best': False, 'is_back': True})
+                is_prune = 1
 
-            # Graph
-            parent = y[0]
-            graph.add_head_list_len(parent)
-            # if has not visited yet
-            if graph.tree_head[parent]['next_node']['node'] == None:
-                # Generator
-                record.Record_txt(record.record_file_name, '\n-----Generator-----\n\n', idx)
-                new_ys = [get_proposals(task, x, y[1], args.k)]
-                new_ys = list(itertools.chain(*new_ys))
-                ids = [task.get_id() for _ in range(len(new_ys))]
-                print(new_ys)
-                record.Record_txt(record.record_file_name, '\nnew_ys after itertools\n' + '\n'.join(list(map(str, new_ys.copy()))), idx)
-                record.Record_txt(record.record_file_name, '\n-----end Generator-----\n\n', idx)
-                
-                # Evaluator
-                record.Record_txt(record.record_file_name, '\n-----Evaluator-----\n\n', idx)
-                values = get_values(task, x, new_ys, args.n_evaluate_sample)
-                print(values)
-                record.Record_txt(record.record_file_name, '\nvalues:\n' + '\n'.join(list(map(str, values.copy()))) + '\n\n', idx)
-                record.Record_txt(record.record_file_name, '\n-----end Evaluator-----\n\n', idx)
-                new_ys = list(zip(ids, new_ys, values))
-                # Sort
-                new_ys = sorted(new_ys, key = lambda x: x[2], reverse = True)
+            # if prune this node, then no expand but still find best node in this level
+            if not is_prune:
+                # Graph
+                parent = y[0]
+                graph.add_head_list_len(parent)
+                # if has not visited yet
+                if graph.tree_head[parent]['next_node']['node'] == None:
+                    # Generator
+                    record.Record_txt(record.record_file_name, '\n-----Generator-----\n\n', idx)
+                    new_ys = [get_proposals(task, x, y[1], args.k)]
+                    new_ys = list(itertools.chain(*new_ys))
+                    ids = [task.get_id() for _ in range(len(new_ys))]
+                    print(new_ys)
+                    record.Record_txt(record.record_file_name, '\nnew_ys after itertools\n' + '\n'.join(list(map(str, new_ys.copy()))), idx)
+                    record.Record_txt(record.record_file_name, '\n-----end Generator-----\n\n', idx)
+                    
+                    # Evaluator
+                    record.Record_txt(record.record_file_name, '\n-----Evaluator-----\n\n', idx)
+                    values = get_values(task, x, new_ys, args.n_evaluate_sample)
+                    print(values)
+                    record.Record_txt(record.record_file_name, '\nvalues:\n' + '\n'.join(list(map(str, values.copy()))) + '\n\n', idx)
+                    record.Record_txt(record.record_file_name, '\n-----end Evaluator-----\n\n', idx)
+                    new_ys = list(zip(ids, new_ys, values))
 
-                # Put nodes into graph
-                new_nodes = list()
-                for i in range(len(new_ys)):
-                    node = {'id': new_ys[i][0], 'answer': new_ys[i][1], 'value': new_ys[i][2], 'parent_node': parent, 'ancestor_distance': distance}
-                    new_nodes.append(node)
-                graph.add_nodes(new_nodes)
-                
-                # Put outputs into level_nodes
-                level_nodes[step].extend(new_ys.copy())
-                level_nodes[step] = sorted(level_nodes[step], key = lambda x: x[2], reverse = True)
+                    # Put nodes into graph
+                    new_nodes = list()
+                    for i in range(len(new_ys)):
+                        node = {'id': new_ys[i][0], 'answer': new_ys[i][1], 'value': new_ys[i][2], 'parent_node': parent, 'ancestor_distance': distance}
+                        new_nodes.append(node)
+                    graph.add_nodes(new_nodes)
+                    
+                    # Put outputs into level_nodes
+                    level_nodes[step].extend(new_ys.copy())
+                    level_nodes[step] = sorted(level_nodes[step], key = lambda x: task.distance_calculator(x[2], graph.nodes[x[0]]['ancestor_distance'], args.n_evaluate_sample))
 
             # selection
             count = 0
             while graph.visited[level_nodes[step][count][0]] == 1:
                 count += 1
             select_new_ys = [level_nodes[step][count]]
-            distance = task.distance_calculator(select_new_ys[0][2], distance, args.n_evaluate_sample)
+            distance = task.distance_calculator(select_new_ys[0][2], graph.nodes[select_new_ys[0][0]]['ancestor_distance'], args.n_evaluate_sample)
 
             print(select_new_ys)
-            record.Record_txt(record.record_file_name, '\nselected nodes:\n' + '\n'.join(list(map(str, select_new_ys.copy()))) + '\n\n', idx)
+            record.Record_txt(record.record_file_name, '\nselected nodes:\n' + '\n'.join(list(map(str, select_new_ys.copy()))) + '\nnode: ' + str(graph.nodes[select_new_ys[0][0]]) + '\n\n', idx)
             
             y = select_new_ys[0]
             path.add(y[0])
             infos.append({'step': step, 'select_id': y[0], 'select_new_ys': y[1], 'values': y[2], 'is_best': False, 'is_back': False})
-        
+                
+        graph.visit_nodes([{'id': y[0]}])
         # Final Generator
+        if is_prune == 1:
+            continue
         new_ys = [get_proposals(task, x, y[1], args.k)]
         new_ys = list(itertools.chain(*new_ys))
         ids = list(range(len(new_ys)))

@@ -4,9 +4,10 @@ import tot.record_functions as record
 class graph():
     # element {node: dict, prev node: dict, next node: dict}
     # node: {id, answer, value, parent_node, ancestor_distance}
-    def __init__(self, k, idx):
-        self.total_element = k**3 + k**2 + k + 1
+    def __init__(self, k, b, idx):
+        self.total_element = (2 * b + 1) * k + 1
         self.tree_head = self.init_tree_head()
+        self.nodes = [None for _ in range(self.total_element)]
         self.visited = [0] * (self.total_element)
         self.idx = idx
 
@@ -28,14 +29,19 @@ class graph():
         # add in tail
         for new_node in new_nodes:
             parent = new_node['parent_node']
-            new_element = {'node': new_node, 'prev_node': self.tree_head[parent]['prev_node'], 'next_node': self.tree_head[parent]}
-            self.tree_head[parent]['prev_node']['next_node'] = new_element
-            self.tree_head[parent]['prev_node'] = new_element
+            if parent != None:
+                new_element = {'node': new_node, 'prev_node': self.tree_head[parent]['prev_node'], 'next_node': self.tree_head[parent]}
+                self.tree_head[parent]['prev_node']['next_node'] = new_element
+                self.tree_head[parent]['prev_node'] = new_element
+            
+            self.nodes[new_node['id']] = new_node
 
     def append_tree_head(self, origin_tree_head):
         # need to adjust total_element before call this function
         tree_head = origin_tree_head
         new_len = self.total_element - len(origin_tree_head)
+        self.nodes.extend([None for _ in range(new_len)])
+        self.visited.extend([0] * (new_len))
         for _ in range(new_len):
             new_node = {'node': None, 'prev_node': None, 'next_node': None}
             new_node['prev_node'] = new_node

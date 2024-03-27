@@ -203,7 +203,7 @@ def dfs(args, task, idx, to_print = True, sd = False, sorting = False, high_acc_
     x = task.get_input(idx)  # input
     y = (task.get_id(), '', 0)  # current output candidates (id, answer, value)
     
-    graph = tree_graph.graph(k = args.k, idx = idx)
+    graph = tree_graph.graph(k = args.k, b = args.n_select_sample, idx = idx)
     
     # Greedy to define d_thres
     # best_node, max_value = Greedy(llm, node, graph)
