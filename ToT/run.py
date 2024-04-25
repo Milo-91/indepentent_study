@@ -6,14 +6,20 @@ import datetime
 import time
 
 from tot.tasks import get_task
+from tot.tasks import draw
+import tot.tasks.tree_graph as tree_graph
 from tot.methods.bfs import solve, naive_solve
+from tot.methods.bfs_2 import bfs
 from tot.methods.dfs_sd import dfs
 from tot.methods.dfs_ksd import ksd
+from tot.methods.whole_tree import build
 from tot.models import gpt_usage
 
 def run(args):
     task = get_task(args.task)
     logs, cnt_avg, cnt_any = [], 0, 0
+    bfs_cnt_avg = 0
+    dfs_cnt_avg = 0
     total_cost_time = 0
     if args.naive_run:
         file = f'./logs/{args.task}/{args.backend}_{args.temperature}_naive_{args.prompt_sample}_sample_{args.n_generate_sample}_start{args.task_start_index}_end{args.task_end_index}.json'
@@ -34,35 +40,71 @@ def run(args):
             if args.naive_run:
                 ys, info = naive_solve(args, task, i) 
             else:
-                ys, info = solve(args, task, i)
+                # ys, info = solve(args, task, i)
+                ys, info = bfs(args, task, i)
         elif args.algorithm == 'dfs+sd':
             ys, info, traversal_nodes = dfs(args, task, i, sd = True, sorting = True, high_acc_mode = False)
         elif args.algorithm == 'dfs+ksd':
             ys, info, traversal_nodes = ksd(args, task, i)
+        elif args.algorithm == 'whole_tree':
+            graph = tree_graph.graph(k = args.k, b = args.n_select_sample, idx = i)
+            ys, info, traversal_nodes = build(args, task, i, graph = graph)
+            bfs_ys, bfs_info, bfs_traversal_nodes = bfs(args, task, i, graph = graph)
+            dfs_ys, dfs_info, dfs_traversal_nodes = dfs(args, task, i, sd = True, sorting = True, high_acc_mode = False, graph = graph)
         end_time = time.time()
         print(end_time - start_time)
         total_cost_time += end_time - start_time
-        record.Record_txt(record.record_file_name, '\nys = ' + str(ys) + '\n\n', idx = i)
+        if args.algorithm == 'whole_tree':
+            record.Record_txt(record.record_file_name, '\nbfs_ys = ' + str(bfs_ys) + '\ndfs_ys = ' + str(dfs_ys) + '\n\n', idx = i)
+        else:
+            record.Record_txt(record.record_file_name, '\nys = ' + str(ys) + '\n\n', idx = i)
         record.Record_txt(record.record_file_name, '\n-----task complete-----\n', idx = i)
         # log
-        infos = [task.test_output(i, y) for y in ys]
-        info.update({'idx': i, 'ys': ys, 'infos': infos, 'traversal_nodes': traversal_nodes, 'usage_so_far': gpt_usage(args.backend)}) # bfs no traversal nodes
-        record.Record_txt(record.record_file_name, '\nys: ' + str(ys) + '\ninfos: ' + str(infos) + '\n\n', idx = i)
-        record.Record_txt(record.record_file_name, '\ncost time: ' + str(end_time - start_time) + '\n\n', idx = i)
-        record.Record_txt(record.acc_file_name, str(i) + ': ys: ' + str(ys[0]) + ', acc: ' + str(infos[0]) + ', traversal nodes: ' + str(traversal_nodes) + '\n\n')
-        logs.append(info)
-        with open(file, 'w') as f:
-            json.dump(logs, f, indent=4)
+        if args.algorithm == 'whole_tree':
+            bfs_infos = [task.test_output(i, y) for y in bfs_ys]
+            dfs_infos = [task.test_output(i, y) for y in dfs_ys]
+            bfs_info.update({'idx': i, 'ys': bfs_ys, 'infos': bfs_infos, 'traversal_nodes': bfs_traversal_nodes, 'usage_so_far': gpt_usage(args.backend)})
+            dfs_info.update({'idx': i, 'ys': dfs_ys, 'infos': dfs_infos, 'traversal_nodes': dfs_traversal_nodes, 'usage_so_far': gpt_usage(args.backend)})
+            record.Record_txt(record.record_file_name, '\nbfs_ys: ' + str(bfs_ys)  + ', infos: ' + str(bfs_infos) + '\ndfs_ys: ' + str(dfs_ys) + ', infos: ' + str(dfs_infos) + '\n\n', idx = i) 
+            record.Record_txt(record.record_file_name, '\ncost time: ' + str(end_time - start_time) + '\n\n', idx = i)
+            record.Record_txt(record.acc_file_name, str(i) + '\n\b bfs_ys: ' + str(bfs_ys[0])  + ', acc: ' + str(bfs_infos[0]) + ', traversal nodes: ' + str(bfs_traversal_nodes) + '\n\n')
+            record.Record_txt(record.acc_file_name, '\b dfs_ys: ' + str(dfs_ys[0])  + ', acc: ' + str(dfs_infos[0]) + ', traversal nodes: ' + str(dfs_traversal_nodes) + '\n\n')
+            logs.append(bfs_info)
+            logs.append(dfs_info)
+            with open(file, 'w') as f:
+                json.dump(logs, f, indent=4)
+
+            # log main metric
+            bfs_accs = [info['r'] for info in bfs_infos]
+            dfs_accs = [info['r'] for info in dfs_infos]
+            bfs_cnt_avg += sum(bfs_accs) / len(bfs_accs)
+            print(i, 'bfs: sum(accs)', sum(bfs_accs), 'cnt_avg', bfs_cnt_avg, '\n')
+            dfs_cnt_avg += sum(dfs_accs) / len(dfs_accs)
+            print(i, 'dfs: sum(accs)', sum(dfs_accs), 'cnt_avg', dfs_cnt_avg, '\n')
+        else:
+            infos = [task.test_output(i, y) for y in ys]
+            info.update({'idx': i, 'ys': ys, 'infos': infos, 'traversal_nodes': traversal_nodes, 'usage_so_far': gpt_usage(args.backend)})
+            record.Record_txt(record.record_file_name, '\nys: ' + str(ys) + '\ninfos: ' + str(infos) + '\n\n', idx = i)
+            record.Record_txt(record.record_file_name, '\ncost time: ' + str(end_time - start_time) + '\n\n', idx = i)
+            record.Record_txt(record.acc_file_name, str(i) + ': ys: ' + str(ys[0]) + ', acc: ' + str(infos[0]) + ', traversal nodes: ' + str(traversal_nodes) + '\n\n')
+            logs.append(info)
+            with open(file, 'w') as f:
+                json.dump(logs, f, indent=4)
         
-        # log main metric
-        accs = [info['r'] for info in infos]
-        cnt_avg += sum(accs) / len(accs)
-        cnt_any += any(accs)
-        print(i, 'sum(accs)', sum(accs), 'cnt_avg', cnt_avg, 'cnt_any', cnt_any, '\n')
+            # log main metric
+            accs = [info['r'] for info in infos]
+            cnt_avg += sum(accs) / len(accs)
+            cnt_any += any(accs)
+            print(i, 'sum(accs)', sum(accs), 'cnt_avg', cnt_avg, 'cnt_any', cnt_any, '\n')
 
     n = args.task_end_index - args.task_start_index
-    print(cnt_avg / n, cnt_any / n)
-    record.Record_txt(record.acc_file_name, '\nacc: ' + str(cnt_avg) + ', acc avg: ' + str(cnt_avg / n) + '\ntotal cost time: ' + str(total_cost_time) + '\nusage: ' + str(gpt_usage(args.backend)) + '\n')
+    if args.algorithm == 'whole_tree':
+        print(bfs_cnt_avg / n, dfs_cnt_avg / n)
+        record.Record_txt(record.acc_file_name, '\nbfs: acc: ' + str(bfs_cnt_avg) + ', acc avg: ' + str(bfs_cnt_avg / n))
+        record.Record_txt(record.acc_file_name, '\ndfs: acc: ' + str(bfs_cnt_avg) + ', acc avg: ' + str(dfs_cnt_avg / n) + '\ntotal cost time: ' + str(total_cost_time) + '\nusage: ' + str(gpt_usage(args.backend)) + '\n')
+    else:
+        print(cnt_avg / n, cnt_any / n)
+        record.Record_txt(record.acc_file_name, '\nacc: ' + str(cnt_avg) + ', acc avg: ' + str(cnt_avg / n) + '\ntotal cost time: ' + str(total_cost_time) + '\nusage: ' + str(gpt_usage(args.backend)) + '\n')
     print('usage_so_far', gpt_usage(args.backend))
 
 

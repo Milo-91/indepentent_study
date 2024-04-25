@@ -153,9 +153,14 @@ def __dfs__(args, task, idx, x, y, graph, distance, t, to_print = True, sd = Fal
             node = {'id': new_ys[i][0], 'answer': new_ys[i][1], 'value': new_ys[i][2], 'parent_node': parent, 'ancestor_distance': distance}
             new_nodes.append(node)
         graph.add_nodes(new_nodes)
-    
+    else:
+        new_list, _ = graph.child_to_list(parent)
+        for item in new_list:
+            task.reset_id(item[0] + 1)
+
     # use graph to traversal
     if greedy:
+        new_ys, _ = graph.child_to_list(parent)
         select_id = np.argmax([x[2] for x in new_ys])
         next_y = new_ys[select_id]
         distance = task.distance_calculator(next_y[2], distance, args.n_evaluate_sample)
@@ -172,13 +177,13 @@ def __dfs__(args, task, idx, x, y, graph, distance, t, to_print = True, sd = Fal
             if distance < d_thres:    
                 # put input_node into next step
                 record.Record_txt(record.record_file_name, '\nselected node: ' + str(input_node) + '\n\n', idx = idx)
-                infos.append({'step': t, 'select_id': input_node['id'], 'select_new_ys': input_node['answer'], 'values': values, 'is_best': False, 'is_back': False})
+                infos.append({'step': t, 'select_id': input_node['id'], 'select_new_ys': input_node['answer'], 'values': input_node['value'], 'is_best': False, 'is_back': False})
                 print(f'distance: {distance}')
                 path.add(input_node['id'])
                 __dfs__(args, task, idx, x, (input_node['id'], input_node['answer'], input_node['value']), graph, distance, t + 1, to_print = True, sd = sd, sorting = sorting, high_acc_mode = high_acc_mode)
                 path.remove(input_node['id'])
             else:
-                infos.append({'step': t, 'select_id': input_node['id'], 'select_new_ys': input_node['answer'], 'values': values, 'is_best': False, 'is_back': True})
+                infos.append({'step': t, 'select_id': input_node['id'], 'select_new_ys': input_node['answer'], 'values': input_node['value'], 'is_best': False, 'is_back': True})
                 record.Record_txt(record.record_file_name, '\n(prune)selected node: ' + str(input_node) + '\n\n', idx = idx)
 
             # reset distance
@@ -188,7 +193,7 @@ def __dfs__(args, task, idx, x, y, graph, distance, t, to_print = True, sd = Fal
     return
 
 # sd, greedy flag not using
-def dfs(args, task, idx, to_print = True, sd = False, sorting = False, high_acc_mode = False):
+def dfs(args, task, idx, to_print = True, sd = False, sorting = False, high_acc_mode = False, graph = None):
     global d_thres, gpt, best_ans, best_path, path, infos, index
     # reset global variables
     index = idx
@@ -201,9 +206,11 @@ def dfs(args, task, idx, to_print = True, sd = False, sorting = False, high_acc_
     gpt = partial(gpt, model=args.backend, temperature=args.temperature)
     print(gpt)
     x = task.get_input(idx)  # input
+    task.reset_id()
     y = (task.get_id(), '', 0)  # current output candidates (id, answer, value)
     
-    graph = tree_graph.graph(k = args.k, b = args.n_select_sample, idx = idx)
+    if graph == None:
+        graph = tree_graph.graph(k = args.k, b = args.n_select_sample, idx = idx)
     
     # Greedy to define d_thres
     # best_node, max_value = Greedy(llm, node, graph)

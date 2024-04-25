@@ -33,8 +33,8 @@ class graph():
                 new_element = {'node': new_node, 'prev_node': self.tree_head[parent]['prev_node'], 'next_node': self.tree_head[parent]}
                 self.tree_head[parent]['prev_node']['next_node'] = new_element
                 self.tree_head[parent]['prev_node'] = new_element
-            if new_node['id'] > self.total_element:
-                self.append_tree_head
+            if new_node['id'] >= self.total_element:
+                self.add_head_list_len(new_node['id'])
             self.nodes[new_node['id']] = new_node
 
     def append_tree_head(self, origin_tree_head):
@@ -87,3 +87,13 @@ class graph():
                 print(node['next_node']['node'])
                 node = node['next_node']
         record.Record_txt(record.record_file_name, '\n', self.idx)
+
+    def child_to_list(self, id):
+        child_list = []
+        distance_list = []
+        next = self.tree_head[id]['next_node']
+        while next['node'] != None:
+            child_list.append((next['node']['id'], next['node']['answer'], next['node']['value']))
+            distance_list.append(next['node']['ancestor_distance'])
+            next = next['next_node']
+        return child_list, distance_list

@@ -36,7 +36,7 @@ def chatgpt(messages, model="gpt-4", temperature=0.7, max_tokens=1000, n=1, stop
         print(res)
         # record.Record_txt(record.record_file_name, f'\nres(n={cnt}): ' + str(res) +'\n\n', idx)
         outputs.extend([choice["message"]["content"] for choice in res["choices"]])
-        record.Record_txt(record.debug_file_name, f'\nres(n={cnt}, model={model}): ' + str(res) +'\n\n', idx)
+        # record.Record_txt(record.debug_file_name, f'\nres(n={cnt}, model={model}): ' + str(res) +'\n\n', idx)
         # log completion tokens
         if model == 'gpt-4':
             completion_tokens_4 += res["usage"]["completion_tokens"]
