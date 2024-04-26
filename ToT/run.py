@@ -21,17 +21,28 @@ def run(args):
     bfs_cnt_avg = 0
     dfs_cnt_avg = 0
     total_cost_time = 0
+    folder_index = 0
+    folder_name = f'./logs/{args.task}/{args.name_of_task}/k{args.k}b{args.n_select_sample}/{folder_index}'
+    while os.path.exists(folder_name):
+        folder_index += 1
+        folder_name = f'./logs/{args.task}/{args.name_of_task}/k{args.k}b{args.n_select_sample}/{folder_index}'
+    os.makedirs(os.path.dirname(folder_name), exist_ok=True)
+    record.Init_folder_path(folder_name)
+    draw.Init_image_folder_path(folder_name)
     if args.naive_run:
         file = f'./logs/{args.task}/{args.backend}_{args.temperature}_naive_{args.prompt_sample}_sample_{args.n_generate_sample}_start{args.task_start_index}_end{args.task_end_index}.json'
     else:
-        file = f'./logs/{args.task}/{args.backend}_{args.temperature}_{args.method_generate}{args.n_generate_sample}_{args.method_evaluate}{args.n_evaluate_sample}_{args.method_select}{args.n_select_sample}_start{args.task_start_index}_end{args.task_end_index}_{args.algorithm}.json'
-    os.makedirs(os.path.dirname(file), exist_ok=True)
+        file_index = 0
+        file = os.path.join(folder_name, f'{args.name_of_task}_start{args.task_start_index}_end{args.task_end_index}_{args.algorithm}_{file_index}.json')
+        while os.path.exists(file):
+            file_index += 1
+            file = os.path.join(folder_name, f'{args.name_of_task}_start{args.task_start_index}_end{args.task_end_index}_{args.algorithm}_{file_index}.json')
     record.Init_record_file(record.acc_file_name, f'model: {args.backend}\ntemperature: {args.temperature}\nalgorithm: {args.algorithm}\nk: {args.k}\nb: {args.n_select_sample}\nstart_index: {args.task_start_index}\nend_index: {args.task_end_index}\ndate: {datetime.date.today()}\n\n')
     print('start task')
     for i in range(args.task_start_index, args.task_end_index):
         traversal_nodes = 0
         record.Init_record_file(record.record_file_name, f'model: {args.backend}\ntemperature: {args.temperature}\nalgorithm: {args.algorithm}\nk: {args.k}\nb: {args.n_select_sample}\nidx: {i}\ndate: {datetime.date.today()}\n\n', idx = i)
-        record.Init_record_file(record.debug_file_name, '', idx = i)
+        # record.Init_record_file(record.debug_file_name, '', idx = i)
         # reset id
         task.reset_id()
         # solve
@@ -63,12 +74,14 @@ def run(args):
         if args.algorithm == 'whole_tree':
             bfs_infos = [task.test_output(i, y) for y in bfs_ys]
             dfs_infos = [task.test_output(i, y) for y in dfs_ys]
-            bfs_info.update({'idx': i, 'ys': bfs_ys, 'infos': bfs_infos, 'traversal_nodes': bfs_traversal_nodes, 'usage_so_far': gpt_usage(args.backend)})
-            dfs_info.update({'idx': i, 'ys': dfs_ys, 'infos': dfs_infos, 'traversal_nodes': dfs_traversal_nodes, 'usage_so_far': gpt_usage(args.backend)})
+            info.update({'idx': i, 'traversal_nodes': traversal_nodes})
+            bfs_info.update({'idx': i, 'ys': bfs_ys, 'infos': bfs_infos, 'traversal_nodes': bfs_traversal_nodes, 'usage_so_far': gpt_usage(args.backend)}) # even
+            dfs_info.update({'idx': i, 'ys': dfs_ys, 'infos': dfs_infos, 'traversal_nodes': dfs_traversal_nodes, 'usage_so_far': gpt_usage(args.backend)}) # odd
             record.Record_txt(record.record_file_name, '\nbfs_ys: ' + str(bfs_ys)  + ', infos: ' + str(bfs_infos) + '\ndfs_ys: ' + str(dfs_ys) + ', infos: ' + str(dfs_infos) + '\n\n', idx = i) 
             record.Record_txt(record.record_file_name, '\ncost time: ' + str(end_time - start_time) + '\n\n', idx = i)
             record.Record_txt(record.acc_file_name, str(i) + '\n\b bfs_ys: ' + str(bfs_ys[0])  + ', acc: ' + str(bfs_infos[0]) + ', traversal nodes: ' + str(bfs_traversal_nodes) + '\n\n')
             record.Record_txt(record.acc_file_name, '\b dfs_ys: ' + str(dfs_ys[0])  + ', acc: ' + str(dfs_infos[0]) + ', traversal nodes: ' + str(dfs_traversal_nodes) + '\n\n')
+            logs.append(info)
             logs.append(bfs_info)
             logs.append(dfs_info)
             with open(file, 'w') as f:
@@ -107,7 +120,6 @@ def run(args):
         record.Record_txt(record.acc_file_name, '\nacc: ' + str(cnt_avg) + ', acc avg: ' + str(cnt_avg / n) + '\ntotal cost time: ' + str(total_cost_time) + '\nusage: ' + str(gpt_usage(args.backend)) + '\n')
     print('usage_so_far', gpt_usage(args.backend))
 
-
 def parse_args():
     args = argparse.ArgumentParser()
     args.add_argument('--backend', type=str, choices=['gpt-4', 'gpt-3.5-turbo'], default='gpt-3.5-turbo')
@@ -127,7 +139,8 @@ def parse_args():
     args.add_argument('--n_evaluate_sample', type=int, default=1)
     args.add_argument('--n_select_sample', type=int, default=1) # b
     args.add_argument('--k', type = int, default = 1) # k
-    args.add_argument('--algorithm', type=str, default='bfs') # (bfs, dfs+sd, dfs+ksd)
+    args.add_argument('--algorithm', type=str, required=True, choices=['bfs', 'dfs+sd', 'dfs+ksd', 'whole_tree']) # (bfs, dfs+sd, dfs+ksd, whole_tree)
+    args.add_argument('--name_of_task', type=str, default='default')
 
     args = args.parse_args()
     return args

@@ -3,7 +3,11 @@ import os
 import json
 from tot.tasks import get_task
 
-image_folder = 'logs/game24/record/image'
+image_folder = f'./logs/game24/image'
+
+def Init_image_folder_path(path):
+    global image_folder
+    image_folder = os.path.join(path, 'image')
 
 # use tree_graph to draw
 def dfs_Draw(task, args, infos, graph, idx, path):

@@ -37,7 +37,7 @@ def get_values(task, x, ys, n_evaluate_sample, cache_value=True):
 def get_proposals(task, x, y, k):
     global index, gpt
     propose_prompt = task.propose_prompt_wrap(x, y, k)
-    record.Record_txt(record.debug_file_name, '\npropose prompt: ' + propose_prompt + '\n\n', idx = index)
+    # record.Record_txt(record.debug_file_name, '\npropose prompt: ' + propose_prompt + '\n\n', idx = index)
     
     # Final Generator use Gpt-4
     if 'Answer' in propose_prompt:

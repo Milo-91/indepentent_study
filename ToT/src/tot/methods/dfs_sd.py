@@ -42,7 +42,7 @@ def get_proposals(task, x, y, k):
     propose_prompt = task.propose_prompt_wrap(x, y, k)
     if 'Answer' in propose_prompt:
         gpt = partial(gpt, model='gpt-4')
-    record.Record_txt(record.debug_file_name, '\npropose prompt: ' + propose_prompt + '\n\n', idx = index)
+    # record.Record_txt(record.debug_file_name, '\npropose prompt: ' + propose_prompt + '\n\n', idx = index)
     proposals = gpt(propose_prompt, n=1, stop=None, idx = index)[0].split('\n')
     # add left
     for i in range(len(proposals)):
@@ -153,10 +153,6 @@ def __dfs__(args, task, idx, x, y, graph, distance, t, to_print = True, sd = Fal
             node = {'id': new_ys[i][0], 'answer': new_ys[i][1], 'value': new_ys[i][2], 'parent_node': parent, 'ancestor_distance': distance}
             new_nodes.append(node)
         graph.add_nodes(new_nodes)
-    else:
-        new_list, _ = graph.child_to_list(parent)
-        for item in new_list:
-            task.reset_id(item[0] + 1)
 
     # use graph to traversal
     if greedy:
@@ -206,8 +202,7 @@ def dfs(args, task, idx, to_print = True, sd = False, sorting = False, high_acc_
     gpt = partial(gpt, model=args.backend, temperature=args.temperature)
     print(gpt)
     x = task.get_input(idx)  # input
-    task.reset_id()
-    y = (task.get_id(), '', 0)  # current output candidates (id, answer, value)
+    y = (task.get_id() if task.id == 0 else 0, '', 0)  # current output candidates (id, answer, value)
     
     if graph == None:
         graph = tree_graph.graph(k = args.k, b = args.n_select_sample, idx = idx)

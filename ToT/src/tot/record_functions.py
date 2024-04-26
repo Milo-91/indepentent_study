@@ -8,6 +8,11 @@ all_json_file_name = '{file_path}/all_tree_game24.json'
 acc_file_name = '{file_path}/acc_info_game24.txt'
 debug_file_name = '{file_path}/debug_info_{idx}.txt'
 
+def Init_folder_path(folder_path):
+     global record_files_folder
+     record_files_folder = os.path.join(folder_path, 'record')
+     
+
 def Init_record_file(file_name, initial_string, idx = 0):
     global record_files_folder
     if not os.path.exists(record_files_folder):

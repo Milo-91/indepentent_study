@@ -37,7 +37,7 @@ def get_values(task, x, ys, n_evaluate_sample, cache_value=True):
 def get_proposals(task, x, y, k):
     global index, gpt
     propose_prompt = task.propose_prompt_wrap(x, y, k)
-    record.Record_txt(record.debug_file_name, '\npropose prompt: ' + propose_prompt + '\n\n', idx = index)
+    # record.Record_txt(record.debug_file_name, '\npropose prompt: ' + propose_prompt + '\n\n', idx = index)
     
     # Final Generator use Gpt-4
     if 'Answer' in propose_prompt:
@@ -94,8 +94,7 @@ def bfs(args, task, idx, to_print=True, graph = None):
     gpt = partial(gpt, model=args.backend, temperature=args.temperature)
     print(gpt)
     x = task.get_input(idx)  # input
-    task.reset_id()
-    ys = [(task.get_id(), '', 0)]  # current output candidates
+    ys = [(task.get_id() if task.id == 0 else 0, '', 0)]  # current output candidates
     infos = []
     distance_list = [0]
     if graph == None:
@@ -142,8 +141,6 @@ def bfs(args, task, idx, to_print=True, graph = None):
             else:
                 new_list, distance = graph.child_to_list(y[0])
                 tuple_ys += new_list
-                for item in new_list:
-                    task.reset_id(item[0] + 1)
                 distance_list.extend(distance)
                 print("already generated")
 
