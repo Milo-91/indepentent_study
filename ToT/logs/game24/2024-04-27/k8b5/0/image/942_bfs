@@ -1,0 +1,2685 @@
+// 942_bfs
+digraph {
+	0 [label="0
+1 2 7 11"]
+	1 [label="1
+1 + 2 = 3 ( left: 3 7 11 )
+parent: 0
+value: 1.002" color=blue]
+	0 -> 1 [label=117.996 fontsize=32]
+	2 [label="2
+2 * 7 = 14 ( left: 1 14 11 )
+parent: 0
+value: 1.002"]
+	0 -> 2 [label=117.996 fontsize=32]
+	3 [label="3
+7 + 2 = 9 ( left: 1 9 11 )
+parent: 0
+value: 1.002"]
+	0 -> 3 [label=117.996 fontsize=32]
+	4 [label="4
+2 - 1 = 1 ( left: 1 7 11 )
+parent: 0
+value: 3.0" color=blue]
+	0 -> 4 [label=114.0 fontsize=32]
+	5 [label="5
+11 - 7 = 4 ( left: 1 2 4 )
+parent: 0
+value: 1.002"]
+	0 -> 5 [label=117.996 fontsize=32]
+	6 [label="6
+11 - 2 = 9 ( left: 1 9 7 )
+parent: 0
+value: 2.001" color=blue]
+	0 -> 6 [label=115.998 fontsize=32]
+	7 [label="7
+11 - 1 = 10 ( left: 10 2 7 )
+parent: 0
+value: 22.0" color=blue]
+	0 -> 7 [label=76.0 fontsize=32]
+	8 [label="8
+11 / 1 = 11 ( left: 11 2 7 )
+parent: 0
+value: 2.001" color=blue]
+	0 -> 8 [label=115.998 fontsize=32]
+	9 [label="9
+3 + 7 = 10 ( left: 10 11 )
+parent: 1
+value: 1.002"]
+	1 -> 9 [label=176.994 fontsize=32]
+	10 [label="10
+7 / 3 = 2.33 ( left: 2.33 11 )
+parent: 1
+value: 1.002"]
+	1 -> 10 [label=176.994 fontsize=32]
+	11 [label="11
+11 + 3 = 14 ( left: 14 7 )
+parent: 1
+value: 1.001"]
+	1 -> 11 [label=176.996 fontsize=32]
+	12 [label="12
+3 * 7 = 21 ( left: 21 11 )
+parent: 1
+value: 0.002"]
+	1 -> 12 [label=178.994 fontsize=32]
+	13 [label="13
+7 - 3 = 4 ( left: 4 11 )
+parent: 1
+value: 0.003"]
+	1 -> 13 [label=178.99200000000002 fontsize=32]
+	14 [label="14
+11 - 7 = 4 ( left: 3 4 )
+parent: 1
+value: 40.0" color=blue]
+	1 -> 14 [label=98.99799999999999 fontsize=32]
+	15 [label="15
+11 / 3 = 3.67 ( left: 3.67 7 )
+parent: 1
+value: 1.002"]
+	1 -> 15 [label=176.994 fontsize=32]
+	16 [label="16
+11 - 3 = 8 ( left: 8 7 )
+parent: 1
+value: 20.002"]
+	1 -> 16 [label=138.99400000000003 fontsize=32]
+	17 [label="17
+1 + 14 = 15 ( left: 15 11 )
+parent: 2
+value: 1.002"]
+	2 -> 17 [label=176.994 fontsize=32]
+	18 [label="18
+14 - 1 = 13 ( left: 13 11 )
+parent: 2
+value: 60.0"]
+	2 -> 18 [label=58.998 fontsize=32]
+	19 [label="19
+11 + 1 = 12 ( left: 12 14 )
+parent: 2
+value: 0.003"]
+	2 -> 19 [label=178.99200000000002 fontsize=32]
+	20 [label="20
+1 * 14 = 14 ( left: 14 11 )
+parent: 2
+value: 0.003"]
+	2 -> 20 [label=178.99200000000002 fontsize=32]
+	21 [label="21
+14 / 1 = 14 ( left: 14 11 )
+parent: 2
+value: 0.003"]
+	2 -> 21 [label=178.99200000000002 fontsize=32]
+	22 [label="22
+14 - 11 = 3 ( left: 1 3 )
+parent: 2
+value: 20.0"]
+	2 -> 22 [label=138.998 fontsize=32]
+	23 [label="23
+11 - 1 = 10 ( left: 10 14 )
+parent: 2
+value: 60.0"]
+	2 -> 23 [label=58.998 fontsize=32]
+	24 [label="24
+14 / 11 = 1 ( left: 1 1 )
+parent: 2
+value: 0.003"]
+	2 -> 24 [label=178.99200000000002 fontsize=32]
+	25 [label="25
+1 + 9 = 10 ( left: 10 11 )
+parent: 3
+value: 1.002"]
+	3 -> 25 [label=176.994 fontsize=32]
+	26 [label="26
+9 + 1 = 10 ( left: 10 11 )
+parent: 3
+value: 1.002"]
+	3 -> 26 [label=176.994 fontsize=32]
+	27 [label="27
+1 * 9 = 9 ( left: 9 11 )
+parent: 3
+value: 0.001"]
+	3 -> 27 [label=178.996 fontsize=32]
+	28 [label="28
+9 - 1 = 8 ( left: 8 11 )
+parent: 3
+value: 40.001"]
+	3 -> 28 [label=98.99600000000001 fontsize=32]
+	29 [label="29
+11 - 9 = 2 ( left: 1 2 )
+parent: 3
+value: 0.003"]
+	3 -> 29 [label=178.99200000000002 fontsize=32]
+	30 [label="30
+11 - 1 = 10 ( left: 10 9 )
+parent: 3
+value: 0.003"]
+	3 -> 30 [label=178.99200000000002 fontsize=32]
+	31 [label="31
+11 / 1 = 11 ( left: 11 9 )
+parent: 3
+value: 0.003"]
+	3 -> 31 [label=178.99200000000002 fontsize=32]
+	32 [label="32
+11 / 9 = 1 ( left: 1 1 )
+parent: 3
+value: 0.003"]
+	3 -> 32 [label=178.99200000000002 fontsize=32]
+	33 [label="33
+1 + 7 = 8 ( left: 8 11 )
+parent: 4
+value: 40.001" color=blue]
+	4 -> 33 [label=96.99799999999999 fontsize=32]
+	34 [label="34
+7 * 11 = 77 ( left: 1 77 )
+parent: 4
+value: 0.003"]
+	4 -> 34 [label=176.994 fontsize=32]
+	35 [label="35
+11 - 7 = 4 ( left: 1 4 )
+parent: 4
+value: 41.0" color=blue]
+	4 -> 35 [label=95.0 fontsize=32]
+	36 [label="36
+7 - 1 = 6 ( left: 6 11 )
+parent: 4
+value: 0.001"]
+	4 -> 36 [label=176.998 fontsize=32]
+	37 [label="37
+11 - 1 = 10 ( left: 10 7 )
+parent: 4
+value: 1.001"]
+	4 -> 37 [label=174.998 fontsize=32]
+	38 [label="38
+7 / 1 = 7 ( left: 7 11 )
+parent: 4
+value: 0.003"]
+	4 -> 38 [label=176.994 fontsize=32]
+	39 [label="39
+11 / 7 = 1 ( left: 1 1 )
+parent: 4
+value: 0.003"]
+	4 -> 39 [label=176.994 fontsize=32]
+	40 [label="40
+11 + 1 = 12 ( left: 12 7 )
+parent: 4
+value: 0.003"]
+	4 -> 40 [label=176.994 fontsize=32]
+	41 [label="41
+1 + 2 = 3 ( left: 3 4 )
+parent: 5
+value: 40.0"]
+	5 -> 41 [label=98.99799999999999 fontsize=32]
+	42 [label="42
+2 * 4 = 8 ( left: 1 8 )
+parent: 5
+value: 60.0"]
+	5 -> 42 [label=58.998 fontsize=32]
+	43 [label="43
+4 - 2 = 2 ( left: 1 2 )
+parent: 5
+value: 0.003"]
+	5 -> 43 [label=178.99200000000002 fontsize=32]
+	44 [label="44
+4 / 2 = 2 ( left: 1 2 )
+parent: 5
+value: 0.003"]
+	5 -> 44 [label=178.99200000000002 fontsize=32]
+	45 [label="45
+1 * 2 = 2 ( left: 2 4 )
+parent: 5
+value: 0.001"]
+	5 -> 45 [label=178.996 fontsize=32]
+	46 [label="46
+2 + 4 = 6 ( left: 1 6 )
+parent: 5
+value: 41.0"]
+	5 -> 46 [label=96.99799999999999 fontsize=32]
+	47 [label="47
+4 + 1 = 5 ( left: 5 2 )
+parent: 5
+value: 60.0"]
+	5 -> 47 [label=58.998 fontsize=32]
+	48 [label="48
+1 / 2 = 0.5 ( left: 0.5 4 )
+parent: 5
+value: 0.001"]
+	5 -> 48 [label=178.996 fontsize=32]
+	49 [label="49
+1 + 9 = 10 ( left: 10 7 )
+parent: 6
+value: 1.001"]
+	6 -> 49 [label=175.997 fontsize=32]
+	50 [label="50
+9 - 1 = 8 ( left: 8 7 )
+parent: 6
+value: 20.002" color=blue]
+	6 -> 50 [label=137.995 fontsize=32]
+	51 [label="51
+9 / 1 = 9 ( left: 9 7 )
+parent: 6
+value: 0.003"]
+	6 -> 51 [label=177.993 fontsize=32]
+	52 [label="52
+7 + 1 = 8 ( left: 8 9 )
+parent: 6
+value: 0.003"]
+	6 -> 52 [label=177.993 fontsize=32]
+	53 [label="53
+1 * 9 = 9 ( left: 9 7 )
+parent: 6
+value: 0.003"]
+	6 -> 53 [label=177.993 fontsize=32]
+	54 [label="54
+9 + 7 = 16 ( left: 1 16 )
+parent: 6
+value: 0.002"]
+	6 -> 54 [label=177.995 fontsize=32]
+	55 [label="55
+9 - 7 = 2 ( left: 1 2 )
+parent: 6
+value: 0.003"]
+	6 -> 55 [label=177.993 fontsize=32]
+	56 [label="56
+7 - 1 = 6 ( left: 6 9 )
+parent: 6
+value: 0.003"]
+	6 -> 56 [label=177.993 fontsize=32]
+	57 [label="57
+10 + 2 = 12 ( left: 12 7 )
+parent: 7
+value: 0.003"]
+	7 -> 57 [label=157.994 fontsize=32]
+	58 [label="58
+10 / 2 = 5 ( left: 5 7 )
+parent: 7
+value: 0.0"]
+	7 -> 58 [label=158.0 fontsize=32]
+	59 [label="59
+7 + 10 = 17 ( left: 17 2 )
+parent: 7
+value: 0.003"]
+	7 -> 59 [label=157.994 fontsize=32]
+	60 [label="60
+10 * 2 = 20 ( left: 20 7 )
+parent: 7
+value: 0.003"]
+	7 -> 60 [label=157.994 fontsize=32]
+	61 [label="61
+10 - 2 = 8 ( left: 8 7 )
+parent: 7
+value: 20.002" color=blue]
+	7 -> 61 [label=117.99600000000001 fontsize=32]
+	62 [label="62
+7 - 2 = 5 ( left: 10 5 )
+parent: 7
+value: 0.003"]
+	7 -> 62 [label=157.994 fontsize=32]
+	63 [label="63
+7 / 2 = 3.5 ( left: 10 3.5 )
+parent: 7
+value: 0.003"]
+	7 -> 63 [label=157.994 fontsize=32]
+	64 [label="64
+7 - 10 = -3 ( left: -3 2 )
+parent: 7
+value: 0.003"]
+	7 -> 64 [label=157.994 fontsize=32]
+	65 [label="65
+11 - 2 = 9 ( left: 9 7 )
+parent: 8
+value: 0.003"]
+	8 -> 65 [label=177.993 fontsize=32]
+	66 [label="66
+11 / 2 = 5.5 ( left: 5.5 7 )
+parent: 8
+value: 1.002"]
+	8 -> 66 [label=175.995 fontsize=32]
+	67 [label="67
+7 - 2 = 5 ( left: 11 5 )
+parent: 8
+value: 0.003"]
+	8 -> 67 [label=177.993 fontsize=32]
+	68 [label="68
+11 + 2 = 13 ( left: 13 7 )
+parent: 8
+value: 20.0"]
+	8 -> 68 [label=137.999 fontsize=32]
+	69 [label="69
+11 * 2 = 22 ( left: 22 7 )
+parent: 8
+value: 0.003"]
+	8 -> 69 [label=177.993 fontsize=32]
+	70 [label="70
+7 + 2 = 9 ( left: 11 9 )
+parent: 8
+value: 0.003"]
+	8 -> 70 [label=177.993 fontsize=32]
+	71 [label="71
+7 / 2 = 3.5 ( left: 11 3.5 )
+parent: 8
+value: 0.003"]
+	8 -> 71 [label=177.993 fontsize=32]
+	72 [label="72
+7 * 2 = 14 ( left: 11 14 )
+parent: 8
+value: 0.003"]
+	8 -> 72 [label=177.993 fontsize=32]
+	73 [label="73
+10 + 11 = 21 ( left: 21 )
+parent: 9
+value: 0.001"]
+	9 -> 73 [label=237.994 fontsize=32]
+	74 [label="74
+10 - 11 = -1 ( left: -1 )
+parent: 9
+value: 0.0"]
+	9 -> 74 [label=237.99599999999998 fontsize=32]
+	75 [label="75
+10 * 11 = 110 ( left: 110 )
+parent: 9
+value: 0.003"]
+	9 -> 75 [label=237.99 fontsize=32]
+	76 [label="76
+11 - 10 = 1 ( left: 1 )
+parent: 9
+value: 0.003"]
+	9 -> 76 [label=237.99 fontsize=32]
+	77 [label="77
+11 / 10 = 1.1 ( left: 1.1 )
+parent: 9
+value: 0.003"]
+	9 -> 77 [label=237.99 fontsize=32]
+	78 [label="78
+wrong answer
+parent: 9
+value: 0"]
+	9 -> 78 [label=237.99599999999998 fontsize=32]
+	79 [label="79
+wrong answer
+parent: 9
+value: 0"]
+	9 -> 79 [label=237.99599999999998 fontsize=32]
+	80 [label="80
+11 + 10 = 21 ( left: 21 )
+parent: 9
+value: 0.001"]
+	9 -> 80 [label=237.994 fontsize=32]
+	81 [label="81
+2.33 + 11 = 13.33 ( left: 13.33 )
+parent: 10
+value: 0.002"]
+	10 -> 81 [label=237.992 fontsize=32]
+	82 [label="82
+2.33 / 11 = 0.21181818181818182 ( left: 0.21181818181818182 )
+parent: 10
+value: 0.003"]
+	10 -> 82 [label=237.99 fontsize=32]
+	83 [label="83
+2.33 * 11 = 25.63 ( left: 25.63 )
+parent: 10
+value: 0.003"]
+	10 -> 83 [label=237.99 fontsize=32]
+	84 [label="84
+11 - 2.33 = 8.67 ( left: 8.67 )
+parent: 10
+value: 0.002"]
+	10 -> 84 [label=237.992 fontsize=32]
+	85 [label="85
+11 / 2.33 = 4.725321888412017 ( left: 4.725321888412017 )
+parent: 10
+value: 0.001"]
+	10 -> 85 [label=237.994 fontsize=32]
+	86 [label="86
+11 + 2.33 = 13.33 ( left: 13.33 )
+parent: 10
+value: 0.002"]
+	10 -> 86 [label=237.992 fontsize=32]
+	87 [label="87
+11 - 2.33 = 8.67 ( left: 8.67 )
+parent: 10
+value: 0"]
+	10 -> 87 [label=237.99599999999998 fontsize=32]
+	88 [label="88
+11 * 2.33 = 25.63 ( left: 25.63 )
+parent: 10
+value: 0.003"]
+	10 -> 88 [label=237.99 fontsize=32]
+	89 [label="89
+14 + 7 = 21 ( left: 21 )
+parent: 11
+value: 0.001"]
+	11 -> 89 [label=237.995 fontsize=32]
+	90 [label="90
+14 / 7 = 2 ( left: 2 )
+parent: 11
+value: 0.0"]
+	11 -> 90 [label=237.997 fontsize=32]
+	91 [label="91
+14 * 7 = 98 ( left: 98 )
+parent: 11
+value: 0.002"]
+	11 -> 91 [label=237.993 fontsize=32]
+	92 [label="92
+14 - 7 = 7 ( left: 7 )
+parent: 11
+value: 0.001"]
+	11 -> 92 [label=237.995 fontsize=32]
+	93 [label="93
+7 / 14 = 0.5 ( left: 0.5 )
+parent: 11
+value: 0.002"]
+	11 -> 93 [label=237.993 fontsize=32]
+	94 [label="94
+7 + 14 = 21 ( left: 21 )
+parent: 11
+value: 0.001"]
+	11 -> 94 [label=237.995 fontsize=32]
+	95 [label="95
+7 - 14 = -7 ( left: -7 )
+parent: 11
+value: 0.002"]
+	11 -> 95 [label=237.993 fontsize=32]
+	96 [label="96
+7 * 14 = 98 ( left: 98 )
+parent: 11
+value: 0.002"]
+	11 -> 96 [label=237.993 fontsize=32]
+	97 [label="97
+21 + 11 = 32 ( left: 32 )
+parent: 12
+value: 0.003"]
+	12 -> 97 [label=238.99 fontsize=32]
+	98 [label="98
+21 - 11 = 10 ( left: 10 )
+parent: 12
+value: 0.003"]
+	12 -> 98 [label=238.99 fontsize=32]
+	99 [label="99
+21 * 11 = 231 ( left: 231 )
+parent: 12
+value: 0.003"]
+	12 -> 99 [label=238.99 fontsize=32]
+	100 [label="100
+21 / 11 = 1.9090909090909092 ( left: 1.9090909090909092 )
+parent: 12
+value: 0.003"]
+	12 -> 100 [label=238.99 fontsize=32]
+	101 [label="101
+11 + 21 = 32 ( left: 32 )
+parent: 12
+value: 0.003"]
+	12 -> 101 [label=238.99 fontsize=32]
+	102 [label="102
+11 - 21 = -10 ( left: -10 )
+parent: 12
+value: 0.002"]
+	12 -> 102 [label=238.992 fontsize=32]
+	103 [label="103
+11 * 21 = 231 ( left: 231 )
+parent: 12
+value: 0.003"]
+	12 -> 103 [label=238.99 fontsize=32]
+	104 [label="104
+11 / 21 = 0.5238095238095238 ( left: 0.5238095238095238 )
+parent: 12
+value: 0.003"]
+	12 -> 104 [label=238.99 fontsize=32]
+	105 [label="105
+4 + 11 = 15 ( left: 15 )
+parent: 13
+value: 0.002"]
+	13 -> 105 [label=238.99099999999999 fontsize=32]
+	106 [label="106
+4 - 11 = -7 ( left: -7 )
+parent: 13
+value: 0.002"]
+	13 -> 106 [label=238.99099999999999 fontsize=32]
+	107 [label="107
+4 * 11 = 44 ( left: 44 )
+parent: 13
+value: 0.002"]
+	13 -> 107 [label=238.99099999999999 fontsize=32]
+	108 [label="108
+4 / 11 = 0.36363636363636365 ( left: 0.36363636363636365 )
+parent: 13
+value: 0.002"]
+	13 -> 108 [label=238.99099999999999 fontsize=32]
+	109 [label="109
+3 + 4 = 7 ( left: 7 )
+parent: 14
+value: 0.001"]
+	14 -> 109 [label=198.99599999999998 fontsize=32]
+	110 [label="110
+3 / 4 = 0.75 ( left: 0.75 )
+parent: 14
+value: 0.002"]
+	14 -> 110 [label=198.99399999999997 fontsize=32]
+	111 [label="111
+3 * 4 = 12 ( left: 12 )
+parent: 14
+value: 0.002"]
+	14 -> 111 [label=198.99399999999997 fontsize=32]
+	112 [label="112
+4 - 3 = 1 ( left: 1 )
+parent: 14
+value: 0.003"]
+	14 -> 112 [label=198.99200000000002 fontsize=32]
+	113 [label="113
+4 / 3 = 1.33 ( left: 1.33 )
+parent: 14
+value: 0.003"]
+	14 -> 113 [label=198.99200000000002 fontsize=32]
+	114 [label="114
+4 + 3 = 7 ( left: 7 )
+parent: 14
+value: 0.001"]
+	14 -> 114 [label=198.99599999999998 fontsize=32]
+	115 [label="115
+4 * 3 = 12 ( left: 12 )
+parent: 14
+value: 0.002"]
+	14 -> 115 [label=198.99399999999997 fontsize=32]
+	116 [label="116
+4 / 3 = 1.33 ( left: 1.33 )
+parent: 14
+value: 0"]
+	14 -> 116 [label=198.998 fontsize=32]
+	117 [label="117
+3.67 + 7 = 10.67 ( left: 10.67 )
+parent: 15
+value: 0.002"]
+	15 -> 117 [label=237.992 fontsize=32]
+	118 [label="118
+3.67 / 7 = 0.5242857142857143 ( left: 0.5242857142857143 )
+parent: 15
+value: 0.002"]
+	15 -> 118 [label=237.992 fontsize=32]
+	119 [label="119
+7 + 3.67 = 10.67 ( left: 10.67 )
+parent: 15
+value: 0.002"]
+	15 -> 119 [label=237.992 fontsize=32]
+	120 [label="120
+3.67 * 7 = 25.69 ( left: 25.69 )
+parent: 15
+value: 0.003"]
+	15 -> 120 [label=237.99 fontsize=32]
+	121 [label="121
+7 - 3.67 = 3.33 ( left: 3.33 )
+parent: 15
+value: 0.003"]
+	15 -> 121 [label=237.99 fontsize=32]
+	122 [label="122
+7 / 3.67 = 1.9072164948453608 ( left: 1.9072164948453608 )
+parent: 15
+value: 0.002"]
+	15 -> 122 [label=237.992 fontsize=32]
+	123 [label="123
+7 - 3.67 = 3.33 ( left: 3.33 )
+parent: 15
+value: 0"]
+	15 -> 123 [label=237.99599999999998 fontsize=32]
+	124 [label="124
+7 * 3.67 = 25.69 ( left: 25.69 )
+parent: 15
+value: 0.003"]
+	15 -> 124 [label=237.99 fontsize=32]
+	125 [label="125
+8 + 7 = 15 ( left: 15 )
+parent: 16
+value: 0.002"]
+	16 -> 125 [label=218.992 fontsize=32]
+	126 [label="126
+8 - 7 = 1 ( left: 1 )
+parent: 16
+value: 0.003"]
+	16 -> 126 [label=218.99 fontsize=32]
+	127 [label="127
+8 * 7 = 56 ( left: 56 )
+parent: 16
+value: 0.003"]
+	16 -> 127 [label=218.99 fontsize=32]
+	128 [label="128
+8 / 7 = 1.14 (rounded to two decimal places) ( left: 1.14 )
+parent: 16
+value: 0.002"]
+	16 -> 128 [label=218.992 fontsize=32]
+	129 [label="129
+7 + 8 = 15 ( left: 15 )
+parent: 16
+value: 0.002"]
+	16 -> 129 [label=218.992 fontsize=32]
+	130 [label="130
+7 - 8 = -1 ( left: -1 )
+parent: 16
+value: 0.0"]
+	16 -> 130 [label=218.996 fontsize=32]
+	131 [label="131
+7 * 8 = 56 ( left: 56 )
+parent: 16
+value: 0.003"]
+	16 -> 131 [label=218.99 fontsize=32]
+	132 [label="132
+7 / 8 = 0.88 (rounded to two decimal places) ( left: 0.88 )
+parent: 16
+value: 0.003"]
+	16 -> 132 [label=218.99 fontsize=32]
+	133 [label="133
+15 + 11 = 26 ( left: 26 )
+parent: 17
+value: 0.002"]
+	17 -> 133 [label=237.992 fontsize=32]
+	134 [label="134
+15 - 11 = 4 ( left: 4 )
+parent: 17
+value: 0.001"]
+	17 -> 134 [label=237.994 fontsize=32]
+	135 [label="135
+15 * 11 = 165 ( left: 165 )
+parent: 17
+value: 0.003"]
+	17 -> 135 [label=237.99 fontsize=32]
+	136 [label="136
+15 / 11 = 1.36 ( left: 1.36 )
+parent: 17
+value: 0.003"]
+	17 -> 136 [label=237.99 fontsize=32]
+	137 [label="137
+11 + 15 = 26 ( left: 26 )
+parent: 17
+value: 0.002"]
+	17 -> 137 [label=237.992 fontsize=32]
+	138 [label="138
+11 - 15 = -4 ( left: -4 )
+parent: 17
+value: 0.003"]
+	17 -> 138 [label=237.99 fontsize=32]
+	139 [label="139
+11 * 15 = 165 ( left: 165 )
+parent: 17
+value: 0.003"]
+	17 -> 139 [label=237.99 fontsize=32]
+	140 [label="140
+11 / 15 = 0.73 ( left: 0.73 )
+parent: 17
+value: 0.003"]
+	17 -> 140 [label=237.99 fontsize=32]
+	141 [label="141
+13 + 11 = 24 ( left: 24 )
+parent: 18
+value: 60.0"]
+	18 -> 141 [label=58.998 fontsize=32]
+	142 [label="142
+13 / 11 = 1.1818181818181819 ( left: 1.1818181818181819 )
+parent: 18
+value: 0.003"]
+	18 -> 142 [label=178.99200000000002 fontsize=32]
+	143 [label="143
+13 * 11 = 143 ( left: 143 )
+parent: 18
+value: 0.002"]
+	18 -> 143 [label=178.994 fontsize=32]
+	144 [label="144
+13 - 11 = 2 ( left: 2 )
+parent: 18
+value: 0.0"]
+	18 -> 144 [label=178.998 fontsize=32]
+	145 [label="145
+11 - 13 = -2 ( left: -2 )
+parent: 18
+value: 0.002"]
+	18 -> 145 [label=178.994 fontsize=32]
+	146 [label="146
+11 / 13 = 0.8461538461538461 ( left: 0.8461538461538461 )
+parent: 18
+value: 0.002"]
+	18 -> 146 [label=178.994 fontsize=32]
+	147 [label="147
+11 * 13 = 143 ( left: 143 )
+parent: 18
+value: 0.002"]
+	18 -> 147 [label=178.994 fontsize=32]
+	148 [label="148
+11 + 13 = 24 ( left: 24 )
+parent: 18
+value: 60.0"]
+	18 -> 148 [label=58.998 fontsize=32]
+	149 [label="149
+12 + 14 = 26 ( left: 26 )
+parent: 19
+value: 0.002"]
+	19 -> 149 [label=238.99099999999999 fontsize=32]
+	150 [label="150
+14 - 12 = 2 ( left: 2 )
+parent: 19
+value: 0.0"]
+	19 -> 150 [label=238.995 fontsize=32]
+	151 [label="151
+12 / 14 = 0.857142857 ( left: 0.857142857 )
+parent: 19
+value: 0.002"]
+	19 -> 151 [label=238.99099999999999 fontsize=32]
+	152 [label="152
+14 / 12 = 1.166666667 ( left: 1.166666667 )
+parent: 19
+value: 0.003"]
+	19 -> 152 [label=238.98900000000003 fontsize=32]
+	153 [label="153
+12 * 14 = 168 ( left: 168 )
+parent: 19
+value: 0.003"]
+	19 -> 153 [label=238.98900000000003 fontsize=32]
+	154 [label="154
+14 + 12 = 26 ( left: 26 )
+parent: 19
+value: 0.002"]
+	19 -> 154 [label=238.99099999999999 fontsize=32]
+	155 [label="155
+wrong answer
+parent: 19
+value: 0"]
+	19 -> 155 [label=238.995 fontsize=32]
+	156 [label="156
+12 - 14 = -2 ( left: -2 )
+parent: 19
+value: 0.002"]
+	19 -> 156 [label=238.99099999999999 fontsize=32]
+	157 [label="157
+14 + 11 = 25 ( left: 25 )
+parent: 20
+value: 20.001"]
+	20 -> 157 [label=198.993 fontsize=32]
+	158 [label="158
+14 - 11 = 3 ( left: 3 )
+parent: 20
+value: 0.002"]
+	20 -> 158 [label=238.99099999999999 fontsize=32]
+	159 [label="159
+14 * 11 = 154 ( left: 154 )
+parent: 20
+value: 0.003"]
+	20 -> 159 [label=238.98900000000003 fontsize=32]
+	160 [label="160
+14 / 11 = 1.27 ( left: 1.27 )
+parent: 20
+value: 0.003"]
+	20 -> 160 [label=238.98900000000003 fontsize=32]
+	161 [label="161
+11 + 14 = 25 ( left: 25 )
+parent: 20
+value: 20.001"]
+	20 -> 161 [label=198.993 fontsize=32]
+	162 [label="162
+11 - 14 = -3 ( left: -3 )
+parent: 20
+value: 0.002"]
+	20 -> 162 [label=238.99099999999999 fontsize=32]
+	163 [label="163
+11 * 14 = 154 ( left: 154 )
+parent: 20
+value: 0.003"]
+	20 -> 163 [label=238.98900000000003 fontsize=32]
+	164 [label="164
+11 / 14 = 0.79 ( left: 0.79 )
+parent: 20
+value: 0.003"]
+	20 -> 164 [label=238.98900000000003 fontsize=32]
+	165 [label="165
+14 + 11 = 25 ( left: 25 )
+parent: 21
+value: 20.001"]
+	21 -> 165 [label=198.993 fontsize=32]
+	166 [label="166
+14 / 11 = 1.27 ( left: 1.27 )
+parent: 21
+value: 0.003"]
+	21 -> 166 [label=238.98900000000003 fontsize=32]
+	167 [label="167
+14 * 11 = 154 ( left: 154 )
+parent: 21
+value: 0.003"]
+	21 -> 167 [label=238.98900000000003 fontsize=32]
+	168 [label="168
+14 - 11 = 3 ( left: 3 )
+parent: 21
+value: 0.002"]
+	21 -> 168 [label=238.99099999999999 fontsize=32]
+	169 [label="169
+11 / 14 = 0.79 ( left: 0.79 )
+parent: 21
+value: 0.003"]
+	21 -> 169 [label=238.98900000000003 fontsize=32]
+	170 [label="170
+11 * 14 = 154 ( left: 154 )
+parent: 21
+value: 0.003"]
+	21 -> 170 [label=238.98900000000003 fontsize=32]
+	171 [label="171
+11 - 14 = -3 ( left: -3 )
+parent: 21
+value: 0.002"]
+	21 -> 171 [label=238.99099999999999 fontsize=32]
+	172 [label="172
+11 + 14 = 25 ( left: 25 )
+parent: 21
+value: 20.001"]
+	21 -> 172 [label=198.993 fontsize=32]
+	173 [label="173
+1 + 3 = 4 ( left: 4 )
+parent: 22
+value: 0.001"]
+	22 -> 173 [label=218.99599999999998 fontsize=32]
+	174 [label="174
+1 / 3 = 0.3333333333333333 ( left: 0.3333333333333333 )
+parent: 22
+value: 0.002"]
+	22 -> 174 [label=218.99399999999997 fontsize=32]
+	175 [label="175
+1 * 3 = 3 ( left: 3 )
+parent: 22
+value: 0.002"]
+	22 -> 175 [label=218.99399999999997 fontsize=32]
+	176 [label="176
+3 - 1 = 2 ( left: 2 )
+parent: 22
+value: 0.0"]
+	22 -> 176 [label=218.998 fontsize=32]
+	177 [label="177
+3 / 1 = 3 ( left: 3 )
+parent: 22
+value: 0.002"]
+	22 -> 177 [label=218.99399999999997 fontsize=32]
+	178 [label="178
+3 + 1 = 4 ( left: 4 )
+parent: 22
+value: 0.001"]
+	22 -> 178 [label=218.99599999999998 fontsize=32]
+	179 [label="179
+3 * 1 = 3 ( left: 3 )
+parent: 22
+value: 0.002"]
+	22 -> 179 [label=218.99399999999997 fontsize=32]
+	180 [label="180
+3 - 1 = 2 ( left: 2 )
+parent: 22
+value: 0"]
+	22 -> 180 [label=218.998 fontsize=32]
+	181 [label="181
+10 + 14 = 24 ( left: 24 )
+parent: 23
+value: 60.0"]
+	23 -> 181 [label=58.998 fontsize=32]
+	182 [label="182
+10 * 14 = 140 ( left: 140 )
+parent: 23
+value: 0.002"]
+	23 -> 182 [label=178.994 fontsize=32]
+	183 [label="183
+14 - 10 = 4 ( left: 4 )
+parent: 23
+value: 0.001"]
+	23 -> 183 [label=178.996 fontsize=32]
+	184 [label="184
+14 / 10 = 1.4 ( left: 1.4 )
+parent: 23
+value: 0.0"]
+	23 -> 184 [label=178.998 fontsize=32]
+	185 [label="185
+10 - 14 = -4 ( left: -4 )
+parent: 23
+value: 0.003"]
+	23 -> 185 [label=178.99200000000002 fontsize=32]
+	186 [label="186
+10 / 14 = 0.7142857142857143 ( left: 0.7142857142857143 )
+parent: 23
+value: 0.001"]
+	23 -> 186 [label=178.996 fontsize=32]
+	187 [label="187
+14 + 10 = 24 ( left: 24 )
+parent: 23
+value: 60.0"]
+	23 -> 187 [label=58.998 fontsize=32]
+	188 [label="188
+14 * 10 = 140 ( left: 140 )
+parent: 23
+value: 0.002"]
+	23 -> 188 [label=178.994 fontsize=32]
+	189 [label="189
+1 + 1 = 2 ( left: 2 )
+parent: 24
+value: 0.0"]
+	24 -> 189 [label=238.995 fontsize=32]
+	190 [label="190
+1 / 1 = 1 ( left: 1 )
+parent: 24
+value: 0.003"]
+	24 -> 190 [label=238.98900000000003 fontsize=32]
+	191 [label="191
+1 - 1 = 0 ( left: 0 )
+parent: 24
+value: 0.003"]
+	24 -> 191 [label=238.98900000000003 fontsize=32]
+	192 [label="192
+1 * 1 = 1 ( left: 1 )
+parent: 24
+value: 0.003"]
+	24 -> 192 [label=238.98900000000003 fontsize=32]
+	193 [label="193
+wrong answer
+parent: 24
+value: 0"]
+	24 -> 193 [label=238.995 fontsize=32]
+	194 [label="194
+1 + 1 = 2 ( left: 2 )
+parent: 24
+value: 0"]
+	24 -> 194 [label=238.995 fontsize=32]
+	195 [label="195
+1 / 1 = 1 ( left: 1 )
+parent: 24
+value: 0"]
+	24 -> 195 [label=238.995 fontsize=32]
+	196 [label="196
+1 - 1 = 0 ( left: 0 )
+parent: 24
+value: 0"]
+	24 -> 196 [label=238.995 fontsize=32]
+	197 [label="197
+10 + 11 = 21 ( left: 21 )
+parent: 25
+value: 0.001"]
+	25 -> 197 [label=237.994 fontsize=32]
+	198 [label="198
+10 - 11 = -1 ( left: -1 )
+parent: 25
+value: 0.0"]
+	25 -> 198 [label=237.99599999999998 fontsize=32]
+	199 [label="199
+10 * 11 = 110 ( left: 110 )
+parent: 25
+value: 0.003"]
+	25 -> 199 [label=237.99 fontsize=32]
+	200 [label="200
+wrong answer
+parent: 25
+value: 0"]
+	25 -> 200 [label=237.99599999999998 fontsize=32]
+	201 [label="201
+11 + 10 = 21 ( left: 21 )
+parent: 25
+value: 0.001"]
+	25 -> 201 [label=237.994 fontsize=32]
+	202 [label="202
+11 - 10 = 1 ( left: 1 )
+parent: 25
+value: 0.003"]
+	25 -> 202 [label=237.99 fontsize=32]
+	203 [label="203
+11 * 10 = 110 ( left: 110 )
+parent: 25
+value: 0.003"]
+	25 -> 203 [label=237.99 fontsize=32]
+	204 [label="204
+11 / 10 = 1.1 ( left: 1.1 )
+parent: 25
+value: 0.003"]
+	25 -> 204 [label=237.99 fontsize=32]
+	205 [label="205
+10 + 11 = 21 ( left: 21 )
+parent: 26
+value: 0.001"]
+	26 -> 205 [label=237.994 fontsize=32]
+	206 [label="206
+10 - 11 = -1 ( left: -1 )
+parent: 26
+value: 0.0"]
+	26 -> 206 [label=237.99599999999998 fontsize=32]
+	207 [label="207
+10 * 11 = 110 ( left: 110 )
+parent: 26
+value: 0.003"]
+	26 -> 207 [label=237.99 fontsize=32]
+	208 [label="208
+10 / 11 = 0.9090909090909091 ( left: 0.9090909090909091 )
+parent: 26
+value: 0.002"]
+	26 -> 208 [label=237.992 fontsize=32]
+	209 [label="209
+11 + 10 = 21 ( left: 21 )
+parent: 26
+value: 0.001"]
+	26 -> 209 [label=237.994 fontsize=32]
+	210 [label="210
+11 - 10 = 1 ( left: 1 )
+parent: 26
+value: 0.003"]
+	26 -> 210 [label=237.99 fontsize=32]
+	211 [label="211
+11 * 10 = 110 ( left: 110 )
+parent: 26
+value: 0.003"]
+	26 -> 211 [label=237.99 fontsize=32]
+	212 [label="212
+11 / 10 = 1.1 ( left: 1.1 )
+parent: 26
+value: 0.003"]
+	26 -> 212 [label=237.99 fontsize=32]
+	213 [label="213
+9 + 11 = 20 ( left: 20 )
+parent: 27
+value: 0.0"]
+	27 -> 213 [label=238.997 fontsize=32]
+	214 [label="214
+9 / 11 = 0.81 ( left: 0.81 )
+parent: 27
+value: 0.001"]
+	27 -> 214 [label=238.995 fontsize=32]
+	215 [label="215
+9 - 11 = -2 ( left: -2 )
+parent: 27
+value: 0.002"]
+	27 -> 215 [label=238.993 fontsize=32]
+	216 [label="216
+9 * 11 = 99 ( left: 99 )
+parent: 27
+value: 0.003"]
+	27 -> 216 [label=238.99099999999999 fontsize=32]
+	217 [label="217
+11 - 9 = 2 ( left: 2 )
+parent: 27
+value: 0.0"]
+	27 -> 217 [label=238.997 fontsize=32]
+	218 [label="218
+11 / 9 = 1.22 ( left: 1.22 )
+parent: 27
+value: 0.0"]
+	27 -> 218 [label=238.997 fontsize=32]
+	219 [label="219
+11 + 9 = 20 ( left: 20 )
+parent: 27
+value: 0.0"]
+	27 -> 219 [label=238.997 fontsize=32]
+	220 [label="220
+11 * 9 = 99 ( left: 99 )
+parent: 27
+value: 0.003"]
+	27 -> 220 [label=238.99099999999999 fontsize=32]
+	221 [label="221
+8 + 11 = 19 ( left: 19 )
+parent: 28
+value: 0.003"]
+	28 -> 221 [label=198.99099999999999 fontsize=32]
+	222 [label="222
+8 - 11 = -3 ( left: -3 )
+parent: 28
+value: 0.002"]
+	28 -> 222 [label=198.993 fontsize=32]
+	223 [label="223
+8 * 11 = 88 ( left: 88 )
+parent: 28
+value: 0.003"]
+	28 -> 223 [label=198.99099999999999 fontsize=32]
+	224 [label="224
+wrong answer
+parent: 28
+value: 0"]
+	28 -> 224 [label=198.997 fontsize=32]
+	225 [label="225
+11 - 8 = 3 ( left: 3 )
+parent: 28
+value: 0.002"]
+	28 -> 225 [label=198.993 fontsize=32]
+	226 [label="226
+wrong answer
+parent: 28
+value: 0"]
+	28 -> 226 [label=198.997 fontsize=32]
+	227 [label="227
+11 + 8 = 19 ( left: 19 )
+parent: 28
+value: 0.003"]
+	28 -> 227 [label=198.99099999999999 fontsize=32]
+	228 [label="228
+11 * 8 = 88 ( left: 88 )
+parent: 28
+value: 0.003"]
+	28 -> 228 [label=198.99099999999999 fontsize=32]
+	229 [label="229
+1 + 2 = 3 ( left: 3 )
+parent: 29
+value: 0.002"]
+	29 -> 229 [label=238.99099999999999 fontsize=32]
+	230 [label="230
+1 - 2 = -1 ( left: -1 )
+parent: 29
+value: 0.0"]
+	29 -> 230 [label=238.995 fontsize=32]
+	231 [label="231
+1 * 2 = 2 ( left: 2 )
+parent: 29
+value: 0.0"]
+	29 -> 231 [label=238.995 fontsize=32]
+	232 [label="232
+1 / 2 = 0.5 ( left: 0.5 )
+parent: 29
+value: 0.002"]
+	29 -> 232 [label=238.99099999999999 fontsize=32]
+	233 [label="233
+10 + 9 = 19 ( left: 19 )
+parent: 30
+value: 0.003"]
+	30 -> 233 [label=238.98900000000003 fontsize=32]
+	234 [label="234
+10 - 9 = 1 ( left: 1 )
+parent: 30
+value: 0.003"]
+	30 -> 234 [label=238.98900000000003 fontsize=32]
+	235 [label="235
+10 * 9 = 90 ( left: 90 )
+parent: 30
+value: 0.003"]
+	30 -> 235 [label=238.98900000000003 fontsize=32]
+	236 [label="236
+10 / 9 = 1.11 (rounded to 2 decimal places) ( left: 1.11 )
+parent: 30
+value: 0.003"]
+	30 -> 236 [label=238.98900000000003 fontsize=32]
+	237 [label="237
+wrong answer
+parent: 30
+value: 0"]
+	30 -> 237 [label=238.995 fontsize=32]
+	238 [label="238
+wrong answer
+parent: 30
+value: 0"]
+	30 -> 238 [label=238.995 fontsize=32]
+	239 [label="239
+wrong answer
+parent: 30
+value: 0"]
+	30 -> 239 [label=238.995 fontsize=32]
+	240 [label="240
+wrong answer
+parent: 30
+value: 0"]
+	30 -> 240 [label=238.995 fontsize=32]
+	241 [label="241
+11 + 9 = 20 ( left: 20 )
+parent: 31
+value: 0.0"]
+	31 -> 241 [label=238.995 fontsize=32]
+	242 [label="242
+11 - 9 = 2 ( left: 2 )
+parent: 31
+value: 0.0"]
+	31 -> 242 [label=238.995 fontsize=32]
+	243 [label="243
+11 * 9 = 99 ( left: 99 )
+parent: 31
+value: 0.003"]
+	31 -> 243 [label=238.98900000000003 fontsize=32]
+	244 [label="244
+11 / 9 = 1.22 (rounded to two decimal places) ( left: 1.22 )
+parent: 31
+value: 0.0"]
+	31 -> 244 [label=238.995 fontsize=32]
+	245 [label="245
+9 + 11 = 20 ( left: 20 )
+parent: 31
+value: 0.0"]
+	31 -> 245 [label=238.995 fontsize=32]
+	246 [label="246
+9 - 11 = -2 ( left: -2 )
+parent: 31
+value: 0.002"]
+	31 -> 246 [label=238.99099999999999 fontsize=32]
+	247 [label="247
+9 * 11 = 99 ( left: 99 )
+parent: 31
+value: 0.003"]
+	31 -> 247 [label=238.98900000000003 fontsize=32]
+	248 [label="248
+9 / 11 = 0.82 (rounded to two decimal places) ( left: 0.82 )
+parent: 31
+value: 0.002"]
+	31 -> 248 [label=238.99099999999999 fontsize=32]
+	249 [label="249
+1 + 1 = 2 ( left: 2 )
+parent: 32
+value: 0.0"]
+	32 -> 249 [label=238.995 fontsize=32]
+	250 [label="250
+1 / 1 = 1 ( left: 1 )
+parent: 32
+value: 0.003"]
+	32 -> 250 [label=238.98900000000003 fontsize=32]
+	251 [label="251
+1 * 1 = 1 ( left: 1 )
+parent: 32
+value: 0.003"]
+	32 -> 251 [label=238.98900000000003 fontsize=32]
+	252 [label="252
+1 - 1 = 0 ( left: 0 )
+parent: 32
+value: 0.003"]
+	32 -> 252 [label=238.98900000000003 fontsize=32]
+	253 [label="253
+8 + 11 = 19 ( left: 19 )
+parent: 33
+value: 0.003" color=blue]
+	33 -> 253 [label=196.993 fontsize=32]
+	254 [label="254
+8 - 11 = -3 ( left: -3 )
+parent: 33
+value: 0.002"]
+	33 -> 254 [label=196.99499999999998 fontsize=32]
+	255 [label="255
+8 * 11 = 88 ( left: 88 )
+parent: 33
+value: 0.003" color=blue]
+	33 -> 255 [label=196.993 fontsize=32]
+	256 [label="256
+8 / 11 = 0.7272727272727273 ( left: 0.7272727272727273 )
+parent: 33
+value: 0.003" color=blue]
+	33 -> 256 [label=196.993 fontsize=32]
+	257 [label="257
+11 + 8 = 19 ( left: 19 )
+parent: 33
+value: 0.003"]
+	33 -> 257 [label=196.993 fontsize=32]
+	258 [label="258
+11 - 8 = 3 ( left: 3 )
+parent: 33
+value: 0.002"]
+	33 -> 258 [label=196.99499999999998 fontsize=32]
+	259 [label="259
+11 * 8 = 88 ( left: 88 )
+parent: 33
+value: 0.003"]
+	33 -> 259 [label=196.993 fontsize=32]
+	260 [label="260
+11 / 8 = 1.375 ( left: 1.375 )
+parent: 33
+value: 0.003"]
+	33 -> 260 [label=196.993 fontsize=32]
+	261 [label="261
+1 + 77 = 78 ( left: 78 )
+parent: 34
+value: 0.003"]
+	34 -> 261 [label=236.99099999999999 fontsize=32]
+	262 [label="262
+77 / 1 = 77 ( left: 77 )
+parent: 34
+value: 0.002"]
+	34 -> 262 [label=236.993 fontsize=32]
+	263 [label="263
+77 - 1 = 76 ( left: 76 )
+parent: 34
+value: 0.003"]
+	34 -> 263 [label=236.99099999999999 fontsize=32]
+	264 [label="264
+77 * 1 = 77 ( left: 77 )
+parent: 34
+value: 0.002"]
+	34 -> 264 [label=236.993 fontsize=32]
+	265 [label="265
+77 + 1 = 78 ( left: 78 )
+parent: 34
+value: 0.003"]
+	34 -> 265 [label=236.99099999999999 fontsize=32]
+	266 [label="266
+77 - 1 = 76 ( left: 76 )
+parent: 34
+value: 0"]
+	34 -> 266 [label=236.997 fontsize=32]
+	267 [label="267
+77 / 1 = 77 ( left: 77 )
+parent: 34
+value: 0"]
+	34 -> 267 [label=236.997 fontsize=32]
+	268 [label="268
+77 - 1 = 76 ( left: 76 )
+parent: 34
+value: 0"]
+	34 -> 268 [label=236.997 fontsize=32]
+	269 [label="269
+1 + 4 = 5 ( left: 5 )
+parent: 35
+value: 0.003" color=red]
+	35 -> 269 [label=195.99400000000003 fontsize=32]
+	270 [label="270
+1 / 4 = 0.25 ( left: 0.25 )
+parent: 35
+value: 0.001"]
+	35 -> 270 [label=195.998 fontsize=32]
+	271 [label="271
+1 * 4 = 4 ( left: 4 )
+parent: 35
+value: 0.001"]
+	35 -> 271 [label=195.998 fontsize=32]
+	272 [label="272
+1 - 4 = -3 ( left: -3 )
+parent: 35
+value: 0.002"]
+	35 -> 272 [label=195.99599999999998 fontsize=32]
+	273 [label="273
+4 / 1 = 4 ( left: 4 )
+parent: 35
+value: 0.001"]
+	35 -> 273 [label=195.998 fontsize=32]
+	274 [label="274
+4 - 1 = 3 ( left: 3 )
+parent: 35
+value: 0.002"]
+	35 -> 274 [label=195.99599999999998 fontsize=32]
+	275 [label="275
+4 + 1 = 5 ( left: 5 )
+parent: 35
+value: 0.003" color=blue]
+	35 -> 275 [label=195.99400000000003 fontsize=32]
+	276 [label="276
+4 * 1 = 4 ( left: 4 )
+parent: 35
+value: 0.001"]
+	35 -> 276 [label=195.998 fontsize=32]
+	277 [label="277
+6 + 11 = 17 ( left: 17 )
+parent: 36
+value: 0.003"]
+	36 -> 277 [label=236.993 fontsize=32]
+	278 [label="278
+6 / 11 = 0.5454545454545454 ( left: 0.5454545454545454 )
+parent: 36
+value: 0.003"]
+	36 -> 278 [label=236.993 fontsize=32]
+	279 [label="279
+6 * 11 = 66 ( left: 66 )
+parent: 36
+value: 0.003"]
+	36 -> 279 [label=236.993 fontsize=32]
+	280 [label="280
+11 - 6 = 5 ( left: 5 )
+parent: 36
+value: 0.003"]
+	36 -> 280 [label=236.993 fontsize=32]
+	281 [label="281
+11 / 6 = 1.8333333333333333 ( left: 1.8333333333333333 )
+parent: 36
+value: 0.003"]
+	36 -> 281 [label=236.993 fontsize=32]
+	282 [label="282
+11 + 6 = 17 ( left: 17 )
+parent: 36
+value: 0.003"]
+	36 -> 282 [label=236.993 fontsize=32]
+	283 [label="283
+6 - 11 = -5 ( left: -5 )
+parent: 36
+value: 0.002"]
+	36 -> 283 [label=236.99499999999998 fontsize=32]
+	284 [label="284
+11 * 6 = 66 ( left: 66 )
+parent: 36
+value: 0.003"]
+	36 -> 284 [label=236.993 fontsize=32]
+	285 [label="285
+10 + 7 = 17 ( left: 17 )
+parent: 37
+value: 0.003"]
+	37 -> 285 [label=235.993 fontsize=32]
+	286 [label="286
+10 / 7 = 1.42857142857 ( left: 1.42857142857 )
+parent: 37
+value: 0.003"]
+	37 -> 286 [label=235.993 fontsize=32]
+	287 [label="287
+10 * 7 = 70 ( left: 70 )
+parent: 37
+value: 0.003"]
+	37 -> 287 [label=235.993 fontsize=32]
+	288 [label="288
+10 - 7 = 3 ( left: 3 )
+parent: 37
+value: 0.002"]
+	37 -> 288 [label=235.99499999999998 fontsize=32]
+	289 [label="289
+7 + 10 = 17 ( left: 17 )
+parent: 37
+value: 0.003"]
+	37 -> 289 [label=235.993 fontsize=32]
+	290 [label="290
+7 / 10 = 0.7 ( left: 0.7 )
+parent: 37
+value: 0.001"]
+	37 -> 290 [label=235.99699999999999 fontsize=32]
+	291 [label="291
+7 * 10 = 70 ( left: 70 )
+parent: 37
+value: 0.003"]
+	37 -> 291 [label=235.993 fontsize=32]
+	292 [label="292
+7 - 10 = -3 ( left: -3 )
+parent: 37
+value: 0.002"]
+	37 -> 292 [label=235.99499999999998 fontsize=32]
+	293 [label="293
+7 + 11 = 18 ( left: 18 )
+parent: 38
+value: 40.0"]
+	38 -> 293 [label=156.997 fontsize=32]
+	294 [label="294
+7 / 11 = 0.6363636363636364 ( left: 0.6363636363636364 )
+parent: 38
+value: 0.003"]
+	38 -> 294 [label=236.99099999999999 fontsize=32]
+	295 [label="295
+7 * 11 = 77 ( left: 77 )
+parent: 38
+value: 0.002"]
+	38 -> 295 [label=236.993 fontsize=32]
+	296 [label="296
+11 - 7 = 4 ( left: 4 )
+parent: 38
+value: 0.001"]
+	38 -> 296 [label=236.995 fontsize=32]
+	297 [label="297
+11 / 7 = 1.5714285714285714 ( left: 1.5714285714285714 )
+parent: 38
+value: 0.003"]
+	38 -> 297 [label=236.99099999999999 fontsize=32]
+	298 [label="298
+11 + 7 = 18 ( left: 18 )
+parent: 38
+value: 40.0"]
+	38 -> 298 [label=156.997 fontsize=32]
+	299 [label="299
+11 * 7 = 77 ( left: 77 )
+parent: 38
+value: 0.002"]
+	38 -> 299 [label=236.993 fontsize=32]
+	300 [label="300
+11 - 7 = 4 ( left: 4 )
+parent: 38
+value: 0"]
+	38 -> 300 [label=236.997 fontsize=32]
+	301 [label="301
+1 + 1 = 2 ( left: 2 )
+parent: 39
+value: 0.0"]
+	39 -> 301 [label=236.997 fontsize=32]
+	302 [label="302
+1 / 1 = 1 ( left: 1 )
+parent: 39
+value: 0.003"]
+	39 -> 302 [label=236.99099999999999 fontsize=32]
+	303 [label="303
+1 * 1 = 1 ( left: 1 )
+parent: 39
+value: 0.003"]
+	39 -> 303 [label=236.99099999999999 fontsize=32]
+	304 [label="304
+1 - 1 = 0 ( left: 0 )
+parent: 39
+value: 0.003"]
+	39 -> 304 [label=236.99099999999999 fontsize=32]
+	305 [label="305
+12 + 7 = 19 ( left: 19 )
+parent: 40
+value: 0.003"]
+	40 -> 305 [label=236.99099999999999 fontsize=32]
+	306 [label="306
+12 / 7 = 1.71 (rounded to 2 decimal places) ( left: 1.71 )
+parent: 40
+value: 0.003"]
+	40 -> 306 [label=236.99099999999999 fontsize=32]
+	307 [label="307
+7 + 12 = 19 ( left: 19 )
+parent: 40
+value: 0.003"]
+	40 -> 307 [label=236.99099999999999 fontsize=32]
+	308 [label="308
+12 * 7 = 84 ( left: 84 )
+parent: 40
+value: 0.003"]
+	40 -> 308 [label=236.99099999999999 fontsize=32]
+	309 [label="309
+12 - 7 = 5 ( left: 5 )
+parent: 40
+value: 0.003"]
+	40 -> 309 [label=236.99099999999999 fontsize=32]
+	310 [label="310
+7 - 12 = -5 ( left: -5 )
+parent: 40
+value: 0.002"]
+	40 -> 310 [label=236.993 fontsize=32]
+	311 [label="311
+7 / 12 = 0.58 (rounded to 2 decimal places) ( left: 0.58 )
+parent: 40
+value: 0.001"]
+	40 -> 311 [label=236.995 fontsize=32]
+	312 [label="312
+7 * 12 = 84 ( left: 84 )
+parent: 40
+value: 0.003"]
+	40 -> 312 [label=236.99099999999999 fontsize=32]
+	313 [label="313
+3 + 4 = 7 ( left: 7 )
+parent: 41
+value: 0.001"]
+	41 -> 313 [label=198.99599999999998 fontsize=32]
+	314 [label="314
+3 / 4 = 0.75 ( left: 0.75 )
+parent: 41
+value: 0.002"]
+	41 -> 314 [label=198.99399999999997 fontsize=32]
+	315 [label="315
+3 * 4 = 12 ( left: 12 )
+parent: 41
+value: 0.002"]
+	41 -> 315 [label=198.99399999999997 fontsize=32]
+	316 [label="316
+3 - 4 = -1 ( left: -1 )
+parent: 41
+value: 0.0"]
+	41 -> 316 [label=198.998 fontsize=32]
+	317 [label="317
+1 + 8 = 9 ( left: 9 )
+parent: 42
+value: 0.002"]
+	42 -> 317 [label=178.994 fontsize=32]
+	318 [label="318
+8 / 1 = 8 ( left: 8 )
+parent: 42
+value: 0.001"]
+	42 -> 318 [label=178.996 fontsize=32]
+	319 [label="319
+1 * 8 = 8 ( left: 8 )
+parent: 42
+value: 0.001"]
+	42 -> 319 [label=178.996 fontsize=32]
+	320 [label="320
+8 - 1 = 7 ( left: 7 )
+parent: 42
+value: 0.001"]
+	42 -> 320 [label=178.996 fontsize=32]
+	321 [label="321
+1 + 2 = 3 ( left: 3 )
+parent: 43
+value: 0.002"]
+	43 -> 321 [label=238.99099999999999 fontsize=32]
+	322 [label="322
+2 / 1 = 2 ( left: 2 )
+parent: 43
+value: 0.0"]
+	43 -> 322 [label=238.995 fontsize=32]
+	323 [label="323
+1 * 2 = 2 ( left: 2 )
+parent: 43
+value: 0.0"]
+	43 -> 323 [label=238.995 fontsize=32]
+	324 [label="324
+2 - 1 = 1 ( left: 1 )
+parent: 43
+value: 0.003"]
+	43 -> 324 [label=238.98900000000003 fontsize=32]
+	325 [label="325
+1 + 2 = 3 ( left: 3 )
+parent: 44
+value: 0.002"]
+	44 -> 325 [label=238.99099999999999 fontsize=32]
+	326 [label="326
+1 / 2 = 0.5 ( left: 0.5 )
+parent: 44
+value: 0.002"]
+	44 -> 326 [label=238.99099999999999 fontsize=32]
+	327 [label="327
+1 * 2 = 2 ( left: 2 )
+parent: 44
+value: 0.0"]
+	44 -> 327 [label=238.995 fontsize=32]
+	328 [label="328
+2 - 1 = 1 ( left: 1 )
+parent: 44
+value: 0.003"]
+	44 -> 328 [label=238.98900000000003 fontsize=32]
+	329 [label="329
+2 / 1 = 2 ( left: 2 )
+parent: 44
+value: 0.0"]
+	44 -> 329 [label=238.995 fontsize=32]
+	330 [label="330
+2 + 1 = 3 ( left: 3 )
+parent: 44
+value: 0.002"]
+	44 -> 330 [label=238.99099999999999 fontsize=32]
+	331 [label="331
+2 * 1 = 2 ( left: 2 )
+parent: 44
+value: 0.0"]
+	44 -> 331 [label=238.995 fontsize=32]
+	332 [label="332
+2 - 1 = 1 ( left: 1 )
+parent: 44
+value: 0"]
+	44 -> 332 [label=238.995 fontsize=32]
+	333 [label="333
+2 + 4 = 6 ( left: 6 )
+parent: 45
+value: 0.002"]
+	45 -> 333 [label=238.993 fontsize=32]
+	334 [label="334
+4 / 2 = 2 ( left: 2 )
+parent: 45
+value: 0.0"]
+	45 -> 334 [label=238.997 fontsize=32]
+	335 [label="335
+2 * 4 = 8 ( left: 8 )
+parent: 45
+value: 0.001"]
+	45 -> 335 [label=238.995 fontsize=32]
+	336 [label="336
+4 - 2 = 2 ( left: 2 )
+parent: 45
+value: 0.0"]
+	45 -> 336 [label=238.997 fontsize=32]
+	337 [label="337
+1 + 6 = 7 ( left: 7 )
+parent: 46
+value: 0.001"]
+	46 -> 337 [label=197.99599999999998 fontsize=32]
+	338 [label="338
+6 / 1 = 6 ( left: 6 )
+parent: 46
+value: 0.002"]
+	46 -> 338 [label=197.99399999999997 fontsize=32]
+	339 [label="339
+1 * 6 = 6 ( left: 6 )
+parent: 46
+value: 0.002"]
+	46 -> 339 [label=197.99399999999997 fontsize=32]
+	340 [label="340
+6 - 1 = 5 ( left: 5 )
+parent: 46
+value: 0.003"]
+	46 -> 340 [label=197.99200000000002 fontsize=32]
+	341 [label="341
+6 + 1 = 7 ( left: 7 )
+parent: 46
+value: 0.001"]
+	46 -> 341 [label=197.99599999999998 fontsize=32]
+	342 [label="342
+wrong answer
+parent: 46
+value: 0"]
+	46 -> 342 [label=197.998 fontsize=32]
+	343 [label="343
+wrong answer
+parent: 46
+value: 0"]
+	46 -> 343 [label=197.998 fontsize=32]
+	344 [label="344
+1 - 6 = -5 ( left: -5 )
+parent: 46
+value: 0.002"]
+	46 -> 344 [label=197.99399999999997 fontsize=32]
+	345 [label="345
+5 + 2 = 7 ( left: 7 )
+parent: 47
+value: 0.001"]
+	47 -> 345 [label=178.996 fontsize=32]
+	346 [label="346
+5 / 2 = 2.5 ( left: 2.5 )
+parent: 47
+value: 0.002"]
+	47 -> 346 [label=178.994 fontsize=32]
+	347 [label="347
+5 * 2 = 10 ( left: 10 )
+parent: 47
+value: 0.003"]
+	47 -> 347 [label=178.99200000000002 fontsize=32]
+	348 [label="348
+5 - 2 = 3 ( left: 3 )
+parent: 47
+value: 0.002"]
+	47 -> 348 [label=178.994 fontsize=32]
+	349 [label="349
+2 + 5 = 7 ( left: 7 )
+parent: 47
+value: 0.001"]
+	47 -> 349 [label=178.996 fontsize=32]
+	350 [label="350
+2 / 5 = 0.4 ( left: 0.4 )
+parent: 47
+value: 0.001"]
+	47 -> 350 [label=178.996 fontsize=32]
+	351 [label="351
+2 * 5 = 10 ( left: 10 )
+parent: 47
+value: 0.003"]
+	47 -> 351 [label=178.99200000000002 fontsize=32]
+	352 [label="352
+2 - 5 = -3 ( left: -3 )
+parent: 47
+value: 0.002"]
+	47 -> 352 [label=178.994 fontsize=32]
+	353 [label="353
+0.5 + 4 = 4.5 ( left: 4.5 )
+parent: 48
+value: 0.002"]
+	48 -> 353 [label=238.993 fontsize=32]
+	354 [label="354
+4 / 0.5 = 8 ( left: 8 )
+parent: 48
+value: 0.001"]
+	48 -> 354 [label=238.995 fontsize=32]
+	355 [label="355
+4 * 0.5 = 2 ( left: 2 )
+parent: 48
+value: 0.0"]
+	48 -> 355 [label=238.997 fontsize=32]
+	356 [label="356
+4 - 0.5 = 3 ( left: 3 )
+parent: 48
+value: 0.002"]
+	48 -> 356 [label=238.993 fontsize=32]
+	357 [label="357
+0.5 * 4 = 2 ( left: 2 )
+parent: 48
+value: 0.0"]
+	48 -> 357 [label=238.997 fontsize=32]
+	358 [label="358
+4 + 0.5 = 4.5 ( left: 4.5 )
+parent: 48
+value: 0.002"]
+	48 -> 358 [label=238.993 fontsize=32]
+	359 [label="359
+4 - 0.5 = 3.5 ( left: 3.5 )
+parent: 48
+value: 0.003"]
+	48 -> 359 [label=238.99099999999999 fontsize=32]
+	360 [label="360
+4 / 0.5 = 8 ( left: 8 )
+parent: 48
+value: 0"]
+	48 -> 360 [label=238.997 fontsize=32]
+	361 [label="361
+10 + 7 = 17 ( left: 17 )
+parent: 49
+value: 0.003"]
+	49 -> 361 [label=236.99200000000002 fontsize=32]
+	362 [label="362
+10 - 7 = 3 ( left: 3 )
+parent: 49
+value: 0.002"]
+	49 -> 362 [label=236.994 fontsize=32]
+	363 [label="363
+10 / 7 = 1.43 (rounded to 2 decimal places) ( left: 1.43 )
+parent: 49
+value: 0.002"]
+	49 -> 363 [label=236.994 fontsize=32]
+	364 [label="364
+10 * 7 = 70 ( left: 70 )
+parent: 49
+value: 0.003"]
+	49 -> 364 [label=236.99200000000002 fontsize=32]
+	365 [label="365
+7 + 10 = 17 ( left: 17 )
+parent: 49
+value: 0.003"]
+	49 -> 365 [label=236.99200000000002 fontsize=32]
+	366 [label="366
+7 - 10 = -3 ( left: -3 )
+parent: 49
+value: 0.002"]
+	49 -> 366 [label=236.994 fontsize=32]
+	367 [label="367
+7 / 10 = 0.7 ( left: 0.7 )
+parent: 49
+value: 0.001"]
+	49 -> 367 [label=236.996 fontsize=32]
+	368 [label="368
+7 * 10 = 70 ( left: 70 )
+parent: 49
+value: 0.003"]
+	49 -> 368 [label=236.99200000000002 fontsize=32]
+	369 [label="369
+8 + 7 = 15 ( left: 15 )
+parent: 50
+value: 0.002"]
+	50 -> 369 [label=217.993 fontsize=32]
+	370 [label="370
+8 / 7 = 1.1428571428571428 ( left: 1.1428571428571428 )
+parent: 50
+value: 0.001"]
+	50 -> 370 [label=217.995 fontsize=32]
+	371 [label="371
+8 * 7 = 56 ( left: 56 )
+parent: 50
+value: 0.003"]
+	50 -> 371 [label=217.99100000000004 fontsize=32]
+	372 [label="372
+8 - 7 = 1 ( left: 1 )
+parent: 50
+value: 0.003"]
+	50 -> 372 [label=217.99100000000004 fontsize=32]
+	373 [label="373
+9 + 7 = 16 ( left: 16 )
+parent: 51
+value: 0.003"]
+	51 -> 373 [label=237.99 fontsize=32]
+	374 [label="374
+9 / 7 = 1.2857142857142858 ( left: 1.2857142857142858 )
+parent: 51
+value: 0.001"]
+	51 -> 374 [label=237.994 fontsize=32]
+	375 [label="375
+9 * 7 = 63 ( left: 63 )
+parent: 51
+value: 0.003"]
+	51 -> 375 [label=237.99 fontsize=32]
+	376 [label="376
+9 - 7 = 2 ( left: 2 )
+parent: 51
+value: 0.0"]
+	51 -> 376 [label=237.996 fontsize=32]
+	377 [label="377
+7 / 9 = 0.7777777777777778 ( left: 0.7777777777777778 )
+parent: 51
+value: 0.002"]
+	51 -> 377 [label=237.992 fontsize=32]
+	378 [label="378
+7 + 9 = 16 ( left: 16 )
+parent: 51
+value: 0.003"]
+	51 -> 378 [label=237.99 fontsize=32]
+	379 [label="379
+7 * 9 = 63 ( left: 63 )
+parent: 51
+value: 0.003"]
+	51 -> 379 [label=237.99 fontsize=32]
+	380 [label="380
+7 - 9 = -2 ( left: -2 )
+parent: 51
+value: 0.002"]
+	51 -> 380 [label=237.992 fontsize=32]
+	381 [label="381
+8 + 9 = 17 ( left: 17 )
+parent: 52
+value: 0.003"]
+	52 -> 381 [label=237.99 fontsize=32]
+	382 [label="382
+8 / 9 = 0.8888888889 ( left: 0.8888888889 )
+parent: 52
+value: 0.003"]
+	52 -> 382 [label=237.99 fontsize=32]
+	383 [label="383
+8 * 9 = 72 ( left: 72 )
+parent: 52
+value: 0.003"]
+	52 -> 383 [label=237.99 fontsize=32]
+	384 [label="384
+8 - 9 = -1 ( left: -1 )
+parent: 52
+value: 0.0"]
+	52 -> 384 [label=237.996 fontsize=32]
+	385 [label="385
+9 + 7 = 16 ( left: 16 )
+parent: 53
+value: 0.003"]
+	53 -> 385 [label=237.99 fontsize=32]
+	386 [label="386
+9 / 7 = 1.2857 ( left: 1.2857 )
+parent: 53
+value: 0.002"]
+	53 -> 386 [label=237.992 fontsize=32]
+	387 [label="387
+9 * 7 = 63 ( left: 63 )
+parent: 53
+value: 0.003"]
+	53 -> 387 [label=237.99 fontsize=32]
+	388 [label="388
+9 - 7 = 2 ( left: 2 )
+parent: 53
+value: 0.0"]
+	53 -> 388 [label=237.996 fontsize=32]
+	389 [label="389
+7 - 9 = -2 ( left: -2 )
+parent: 53
+value: 0.002"]
+	53 -> 389 [label=237.992 fontsize=32]
+	390 [label="390
+7 / 9 = 0.7778 ( left: 0.7778 )
+parent: 53
+value: 0.003"]
+	53 -> 390 [label=237.99 fontsize=32]
+	391 [label="391
+7 * 9 = 63 ( left: 63 )
+parent: 53
+value: 0.003"]
+	53 -> 391 [label=237.99 fontsize=32]
+	392 [label="392
+7 + 9 = 16 ( left: 16 )
+parent: 53
+value: 0.003"]
+	53 -> 392 [label=237.99 fontsize=32]
+	393 [label="393
+1 + 16 = 17 ( left: 17 )
+parent: 54
+value: 0.003"]
+	54 -> 393 [label=237.99099999999999 fontsize=32]
+	394 [label="394
+16 / 1 = 16 ( left: 16 )
+parent: 54
+value: 0.003"]
+	54 -> 394 [label=237.99099999999999 fontsize=32]
+	395 [label="395
+16 - 1 = 15 ( left: 15 )
+parent: 54
+value: 0.002"]
+	54 -> 395 [label=237.993 fontsize=32]
+	396 [label="396
+1 * 16 = 16 ( left: 16 )
+parent: 54
+value: 0.003"]
+	54 -> 396 [label=237.99099999999999 fontsize=32]
+	397 [label="397
+16 + 1 = 17 ( left: 17 )
+parent: 54
+value: 0.003"]
+	54 -> 397 [label=237.99099999999999 fontsize=32]
+	398 [label="398
+wrong answer
+parent: 54
+value: 0"]
+	54 -> 398 [label=237.997 fontsize=32]
+	399 [label="399
+wrong answer
+parent: 54
+value: 0"]
+	54 -> 399 [label=237.997 fontsize=32]
+	400 [label="400
+16 * 1 = 16 ( left: 16 )
+parent: 54
+value: 0.003"]
+	54 -> 400 [label=237.99099999999999 fontsize=32]
+	401 [label="401
+1 + 2 = 3 ( left: 3 )
+parent: 55
+value: 0.002"]
+	55 -> 401 [label=237.992 fontsize=32]
+	402 [label="402
+2 - 1 = 1 ( left: 1 )
+parent: 55
+value: 0.003"]
+	55 -> 402 [label=237.99 fontsize=32]
+	403 [label="403
+1 * 2 = 2 ( left: 2 )
+parent: 55
+value: 0.0"]
+	55 -> 403 [label=237.996 fontsize=32]
+	404 [label="404
+2 / 1 = 2 ( left: 2 )
+parent: 55
+value: 0.0"]
+	55 -> 404 [label=237.996 fontsize=32]
+	405 [label="405
+2 + 1 = 3 ( left: 3 )
+parent: 55
+value: 0.002"]
+	55 -> 405 [label=237.992 fontsize=32]
+	406 [label="406
+2 - 1 = 1 ( left: 1 )
+parent: 55
+value: 0"]
+	55 -> 406 [label=237.996 fontsize=32]
+	407 [label="407
+2 * 1 = 2 ( left: 2 )
+parent: 55
+value: 0.0"]
+	55 -> 407 [label=237.996 fontsize=32]
+	408 [label="408
+2 / 1 = 2 ( left: 2 )
+parent: 55
+value: 0"]
+	55 -> 408 [label=237.996 fontsize=32]
+	409 [label="409
+6 + 9 = 15 ( left: 15 )
+parent: 56
+value: 0.002"]
+	56 -> 409 [label=237.992 fontsize=32]
+	410 [label="410
+6 / 9 = 0.6666666666666666 ( left: 0.6666666666666666 )
+parent: 56
+value: 0.002"]
+	56 -> 410 [label=237.992 fontsize=32]
+	411 [label="411
+6 * 9 = 54 ( left: 54 )
+parent: 56
+value: 0.003"]
+	56 -> 411 [label=237.99 fontsize=32]
+	412 [label="412
+9 - 6 = 3 ( left: 3 )
+parent: 56
+value: 0.002"]
+	56 -> 412 [label=237.992 fontsize=32]
+	413 [label="413
+9 / 6 = 1.5 ( left: 1.5 )
+parent: 56
+value: 0.0"]
+	56 -> 413 [label=237.996 fontsize=32]
+	414 [label="414
+9 * 6 = 54 ( left: 54 )
+parent: 56
+value: 0.003"]
+	56 -> 414 [label=237.99 fontsize=32]
+	415 [label="415
+9 + 6 = 15 ( left: 15 )
+parent: 56
+value: 0.002"]
+	56 -> 415 [label=237.992 fontsize=32]
+	416 [label="416
+9 - 6 = 3 ( left: 3 )
+parent: 56
+value: 0"]
+	56 -> 416 [label=237.996 fontsize=32]
+	417 [label="417
+12 - 7 = 5 ( left: 5 )
+parent: 57
+value: 0.003"]
+	57 -> 417 [label=217.99099999999999 fontsize=32]
+	418 [label="418
+12 / 7 = 1.71428571429 ( left: 1.71428571429 )
+parent: 57
+value: 0.001"]
+	57 -> 418 [label=217.995 fontsize=32]
+	419 [label="419
+12 + 7 = 19 ( left: 19 )
+parent: 57
+value: 0.003"]
+	57 -> 419 [label=217.99099999999999 fontsize=32]
+	420 [label="420
+12 * 7 = 84 ( left: 84 )
+parent: 57
+value: 0.003"]
+	57 -> 420 [label=217.99099999999999 fontsize=32]
+	421 [label="421
+12 / 7 = 1.71428571429 ( left: 1.71428571429 )
+parent: 57
+value: 0"]
+	57 -> 421 [label=217.997 fontsize=32]
+	422 [label="422
+12 - 7 = 5 ( left: 5 )
+parent: 57
+value: 0"]
+	57 -> 422 [label=217.997 fontsize=32]
+	423 [label="423
+12 * 7 = 84 ( left: 84 )
+parent: 57
+value: 0"]
+	57 -> 423 [label=217.997 fontsize=32]
+	424 [label="424
+12 / 7 = 1.71428571429 ( left: 1.71428571429 )
+parent: 57
+value: 0"]
+	57 -> 424 [label=217.997 fontsize=32]
+	425 [label="425
+5 + 7 = 12 ( left: 12 )
+parent: 58
+value: 0.002"]
+	58 -> 425 [label=217.99599999999998 fontsize=32]
+	426 [label="426
+5 / 7 = 0.714 ( left: 0.714 )
+parent: 58
+value: 0.002"]
+	58 -> 426 [label=217.99599999999998 fontsize=32]
+	427 [label="427
+5 * 7 = 35 ( left: 35 )
+parent: 58
+value: 0.003"]
+	58 -> 427 [label=217.99400000000003 fontsize=32]
+	428 [label="428
+7 - 5 = 2 ( left: 2 )
+parent: 58
+value: 0.0"]
+	58 -> 428 [label=218.0 fontsize=32]
+	429 [label="429
+7 / 5 = 1.4 ( left: 1.4 )
+parent: 58
+value: 0.0"]
+	58 -> 429 [label=218.0 fontsize=32]
+	430 [label="430
+7 + 5 = 12 ( left: 12 )
+parent: 58
+value: 0.002"]
+	58 -> 430 [label=217.99599999999998 fontsize=32]
+	431 [label="431
+7 * 5 = 35 ( left: 35 )
+parent: 58
+value: 0.003"]
+	58 -> 431 [label=217.99400000000003 fontsize=32]
+	432 [label="432
+7 / 5 = 1.4 ( left: 1.4 )
+parent: 58
+value: 0"]
+	58 -> 432 [label=218.0 fontsize=32]
+	433 [label="433
+17 + 2 = 19 ( left: 19 )
+parent: 59
+value: 0.003"]
+	59 -> 433 [label=217.99099999999999 fontsize=32]
+	434 [label="434
+17 / 2 = 8.5 ( left: 8.5 )
+parent: 59
+value: 0.001"]
+	59 -> 434 [label=217.995 fontsize=32]
+	435 [label="435
+17 - 2 = 15 ( left: 15 )
+parent: 59
+value: 0.002"]
+	59 -> 435 [label=217.993 fontsize=32]
+	436 [label="436
+17 * 2 = 34 ( left: 34 )
+parent: 59
+value: 0.001"]
+	59 -> 436 [label=217.995 fontsize=32]
+	437 [label="437
+2 + 17 = 19 ( left: 19 )
+parent: 59
+value: 0.003"]
+	59 -> 437 [label=217.99099999999999 fontsize=32]
+	438 [label="438
+2 / 17 = 0.1176470588 ( left: 0.1176470588 )
+parent: 59
+value: 0.003"]
+	59 -> 438 [label=217.99099999999999 fontsize=32]
+	439 [label="439
+2 - 17 = -15 ( left: -15 )
+parent: 59
+value: 0.001"]
+	59 -> 439 [label=217.995 fontsize=32]
+	440 [label="440
+2 * 17 = 34 ( left: 34 )
+parent: 59
+value: 0.001"]
+	59 -> 440 [label=217.995 fontsize=32]
+	441 [label="441
+20 + 7 = 27 ( left: 27 )
+parent: 60
+value: 0.002"]
+	60 -> 441 [label=217.993 fontsize=32]
+	442 [label="442
+20 / 7 = 2.857142857142857 ( left: 2.857142857142857 )
+parent: 60
+value: 0.0"]
+	60 -> 442 [label=217.997 fontsize=32]
+	443 [label="443
+20 * 7 = 140 ( left: 140 )
+parent: 60
+value: 0.002"]
+	60 -> 443 [label=217.993 fontsize=32]
+	444 [label="444
+20 - 7 = 13 ( left: 13 )
+parent: 60
+value: 0.003"]
+	60 -> 444 [label=217.99099999999999 fontsize=32]
+	445 [label="445
+7 / 20 = 0.35 ( left: 0.35 )
+parent: 60
+value: 0.003"]
+	60 -> 445 [label=217.99099999999999 fontsize=32]
+	446 [label="446
+7 + 20 = 27 ( left: 27 )
+parent: 60
+value: 0.002"]
+	60 -> 446 [label=217.993 fontsize=32]
+	447 [label="447
+7 * 20 = 140 ( left: 140 )
+parent: 60
+value: 0.002"]
+	60 -> 447 [label=217.993 fontsize=32]
+	448 [label="448
+7 - 20 = -13 ( left: -13 )
+parent: 60
+value: 0.003"]
+	60 -> 448 [label=217.99099999999999 fontsize=32]
+	449 [label="449
+8 + 7 = 15 ( left: 15 )
+parent: 61
+value: 0.002"]
+	61 -> 449 [label=197.994 fontsize=32]
+	450 [label="450
+8 / 7 = 1.14 ( left: 1.14 )
+parent: 61
+value: 0.002"]
+	61 -> 450 [label=197.994 fontsize=32]
+	451 [label="451
+8 * 7 = 56 ( left: 56 )
+parent: 61
+value: 0.003"]
+	61 -> 451 [label=197.99200000000002 fontsize=32]
+	452 [label="452
+8 - 7 = 1 ( left: 1 )
+parent: 61
+value: 0.003"]
+	61 -> 452 [label=197.99200000000002 fontsize=32]
+	453 [label="453
+10 + 5 = 15 ( left: 15 )
+parent: 62
+value: 0.002"]
+	62 -> 453 [label=217.993 fontsize=32]
+	454 [label="454
+10 - 5 = 5 ( left: 5 )
+parent: 62
+value: 0.003"]
+	62 -> 454 [label=217.99099999999999 fontsize=32]
+	455 [label="455
+10 * 5 = 50 ( left: 50 )
+parent: 62
+value: 0.003"]
+	62 -> 455 [label=217.99099999999999 fontsize=32]
+	456 [label="456
+10 / 5 = 2 ( left: 2 )
+parent: 62
+value: 0.0"]
+	62 -> 456 [label=217.997 fontsize=32]
+	457 [label="457
+10 + 3.5 = 13.5 ( left: 13.5 )
+parent: 63
+value: 0.003"]
+	63 -> 457 [label=217.99099999999999 fontsize=32]
+	458 [label="458
+10 / 3.5 = 2.857142857 ( left: 2.857142857 )
+parent: 63
+value: 0.001"]
+	63 -> 458 [label=217.995 fontsize=32]
+	459 [label="459
+10 * 3.5 = 35 ( left: 35 )
+parent: 63
+value: 0.003"]
+	63 -> 459 [label=217.99099999999999 fontsize=32]
+	460 [label="460
+10 - 3.5 = 6.5 ( left: 6.5 )
+parent: 63
+value: 0.003"]
+	63 -> 460 [label=217.99099999999999 fontsize=32]
+	461 [label="461
+wrong answer
+parent: 63
+value: 0"]
+	63 -> 461 [label=217.997 fontsize=32]
+	462 [label="462
+wrong answer
+parent: 63
+value: 0"]
+	63 -> 462 [label=217.997 fontsize=32]
+	463 [label="463
+wrong answer
+parent: 63
+value: 0"]
+	63 -> 463 [label=217.997 fontsize=32]
+	464 [label="464
+wrong answer
+parent: 63
+value: 0"]
+	63 -> 464 [label=217.997 fontsize=32]
+	465 [label="465
+-3 + 2 = -1 ( left: -1 )
+parent: 64
+value: 0.0"]
+	64 -> 465 [label=217.997 fontsize=32]
+	466 [label="466
+-3 * 2 = -6 ( left: -6 )
+parent: 64
+value: 0.0"]
+	64 -> 466 [label=217.997 fontsize=32]
+	467 [label="467
+wrong answer
+parent: 64
+value: 0"]
+	64 -> 467 [label=217.997 fontsize=32]
+	468 [label="468
+-3 / 2 = -1.5 ( left: -1.5 )
+parent: 64
+value: 0.001"]
+	64 -> 468 [label=217.995 fontsize=32]
+	469 [label="469
+2 / -3 = -0.6666666666666666 ( left: -0.6666666666666666 )
+parent: 64
+value: 0.0"]
+	64 -> 469 [label=217.997 fontsize=32]
+	470 [label="470
+wrong answer
+parent: 64
+value: 0"]
+	64 -> 470 [label=217.997 fontsize=32]
+	471 [label="471
+2 * -3 = -6 ( left: -6 )
+parent: 64
+value: 0.0"]
+	64 -> 471 [label=217.997 fontsize=32]
+	472 [label="472
+-3 - 2 = -5 ( left: -5 )
+parent: 64
+value: 0.002"]
+	64 -> 472 [label=217.993 fontsize=32]
+	473 [label="473
+9 + 7 = 16 ( left: 16 )
+parent: 65
+value: 0.003"]
+	65 -> 473 [label=237.99 fontsize=32]
+	474 [label="474
+9 - 7 = 2 ( left: 2 )
+parent: 65
+value: 0.0"]
+	65 -> 474 [label=237.996 fontsize=32]
+	475 [label="475
+9 * 7 = 63 ( left: 63 )
+parent: 65
+value: 0.003"]
+	65 -> 475 [label=237.99 fontsize=32]
+	476 [label="476
+9 / 7 = 1.2857142857142858 ( left: 1.2857142857142858 )
+parent: 65
+value: 0.001"]
+	65 -> 476 [label=237.994 fontsize=32]
+	477 [label="477
+7 + 9 = 16 ( left: 16 )
+parent: 65
+value: 0.003"]
+	65 -> 477 [label=237.99 fontsize=32]
+	478 [label="478
+7 - 9 = -2 ( left: -2 )
+parent: 65
+value: 0.002"]
+	65 -> 478 [label=237.992 fontsize=32]
+	479 [label="479
+7 * 9 = 63 ( left: 63 )
+parent: 65
+value: 0.003"]
+	65 -> 479 [label=237.99 fontsize=32]
+	480 [label="480
+7 / 9 = 0.7777777777777778 ( left: 0.7777777777777778 )
+parent: 65
+value: 0.002"]
+	65 -> 480 [label=237.992 fontsize=32]
+	481 [label="481
+5.5 + 7 = 12.5 ( left: 12.5 )
+parent: 66
+value: 0.002"]
+	66 -> 481 [label=236.993 fontsize=32]
+	482 [label="482
+5.5 / 7 = 0.7857142857142857 ( left: 0.7857142857142857 )
+parent: 66
+value: 0.003"]
+	66 -> 482 [label=236.99099999999999 fontsize=32]
+	483 [label="483
+5.5 * 7 = 38.5 ( left: 38.5 )
+parent: 66
+value: 0.001"]
+	66 -> 483 [label=236.995 fontsize=32]
+	484 [label="484
+7 - 5.5 = 1.5 ( left: 1.5 )
+parent: 66
+value: 0.0"]
+	66 -> 484 [label=236.997 fontsize=32]
+	485 [label="485
+7 / 5.5 = 1.2727272727272727 ( left: 1.2727272727272727 )
+parent: 66
+value: 0.002"]
+	66 -> 485 [label=236.993 fontsize=32]
+	486 [label="486
+7 + 5.5 = 12.5 ( left: 12.5 )
+parent: 66
+value: 0.002"]
+	66 -> 486 [label=236.993 fontsize=32]
+	487 [label="487
+7 * 5.5 = 38.5 ( left: 38.5 )
+parent: 66
+value: 0.001"]
+	66 -> 487 [label=236.995 fontsize=32]
+	488 [label="488
+7 - 5.5 = 1.5 ( left: 1.5 )
+parent: 66
+value: 0"]
+	66 -> 488 [label=236.997 fontsize=32]
+	489 [label="489
+11 + 5 = 16 ( left: 16 )
+parent: 67
+value: 0.003"]
+	67 -> 489 [label=237.99 fontsize=32]
+	490 [label="490
+11 / 5 = 2.2 ( left: 2.2 )
+parent: 67
+value: 0.002"]
+	67 -> 490 [label=237.992 fontsize=32]
+	491 [label="491
+11 * 5 = 55 ( left: 55 )
+parent: 67
+value: 0.003"]
+	67 -> 491 [label=237.99 fontsize=32]
+	492 [label="492
+11 - 5 = 6 ( left: 6 )
+parent: 67
+value: 0.002"]
+	67 -> 492 [label=237.992 fontsize=32]
+	493 [label="493
+5 + 11 = 16 ( left: 16 )
+parent: 67
+value: 0.003"]
+	67 -> 493 [label=237.99 fontsize=32]
+	494 [label="494
+5 / 11 = 0.45 ( left: 0.45 )
+parent: 67
+value: 0.002"]
+	67 -> 494 [label=237.992 fontsize=32]
+	495 [label="495
+5 * 11 = 55 ( left: 55 )
+parent: 67
+value: 0.003"]
+	67 -> 495 [label=237.99 fontsize=32]
+	496 [label="496
+5 - 11 = -6 ( left: -6 )
+parent: 67
+value: 0.0"]
+	67 -> 496 [label=237.996 fontsize=32]
+	497 [label="497
+13 + 7 = 20 ( left: 20 )
+parent: 68
+value: 0.0"]
+	68 -> 497 [label=217.999 fontsize=32]
+	498 [label="498
+13 / 7 = 1.85714285714 ( left: 1.85714285714 )
+parent: 68
+value: 0.003"]
+	68 -> 498 [label=217.993 fontsize=32]
+	499 [label="499
+13 * 7 = 91 ( left: 91 )
+parent: 68
+value: 0.003"]
+	68 -> 499 [label=217.993 fontsize=32]
+	500 [label="500
+13 - 7 = 6 ( left: 6 )
+parent: 68
+value: 0.002"]
+	68 -> 500 [label=217.99499999999998 fontsize=32]
+	501 [label="501
+7 / 13 = 0.538461538462 ( left: 0.538461538462 )
+parent: 68
+value: 0.001"]
+	68 -> 501 [label=217.99699999999999 fontsize=32]
+	502 [label="502
+7 + 13 = 20 ( left: 20 )
+parent: 68
+value: 0.0"]
+	68 -> 502 [label=217.999 fontsize=32]
+	503 [label="503
+7 - 13 = -6 ( left: -6 )
+parent: 68
+value: 0.0"]
+	68 -> 503 [label=217.999 fontsize=32]
+	504 [label="504
+7 * 13 = 91 ( left: 91 )
+parent: 68
+value: 0.003"]
+	68 -> 504 [label=217.993 fontsize=32]
+	505 [label="505
+22 + 7 = 29 ( left: 29 )
+parent: 69
+value: 0.003"]
+	69 -> 505 [label=237.99 fontsize=32]
+	506 [label="506
+22 - 7 = 15 ( left: 15 )
+parent: 69
+value: 0.002"]
+	69 -> 506 [label=237.992 fontsize=32]
+	507 [label="507
+22 * 7 = 154 ( left: 154 )
+parent: 69
+value: 0.003"]
+	69 -> 507 [label=237.99 fontsize=32]
+	508 [label="508
+22 / 7 = 3 ( left: 3 )
+parent: 69
+value: 0.002"]
+	69 -> 508 [label=237.992 fontsize=32]
+	509 [label="509
+7 + 22 = 29 ( left: 29 )
+parent: 69
+value: 0.003"]
+	69 -> 509 [label=237.99 fontsize=32]
+	510 [label="510
+7 - 22 = -15 ( left: -15 )
+parent: 69
+value: 0.001"]
+	69 -> 510 [label=237.994 fontsize=32]
+	511 [label="511
+7 * 22 = 154 ( left: 154 )
+parent: 69
+value: 0.003"]
+	69 -> 511 [label=237.99 fontsize=32]
+	512 [label="512
+7 / 22 = 0.3181818181818182 ( left: 0.3181818181818182 )
+parent: 69
+value: 0.003"]
+	69 -> 512 [label=237.99 fontsize=32]
+	513 [label="513
+11 + 9 = 20 ( left: 20 )
+parent: 70
+value: 0.0"]
+	70 -> 513 [label=237.996 fontsize=32]
+	514 [label="514
+11 / 9 = 1.22 (rounded to 2 decimal places) ( left: 1.22 )
+parent: 70
+value: 0.0"]
+	70 -> 514 [label=237.996 fontsize=32]
+	515 [label="515
+11 * 9 = 99 ( left: 99 )
+parent: 70
+value: 0.003"]
+	70 -> 515 [label=237.99 fontsize=32]
+	516 [label="516
+11 - 9 = 2 ( left: 2 )
+parent: 70
+value: 0.0"]
+	70 -> 516 [label=237.996 fontsize=32]
+	517 [label="517
+9 / 11 = 0.82 (rounded to 2 decimal places) ( left: 0.82 )
+parent: 70
+value: 0.002"]
+	70 -> 517 [label=237.992 fontsize=32]
+	518 [label="518
+9 * 11 = 99 ( left: 99 )
+parent: 70
+value: 0.003"]
+	70 -> 518 [label=237.99 fontsize=32]
+	519 [label="519
+9 - 11 = -2 ( left: -2 )
+parent: 70
+value: 0.002"]
+	70 -> 519 [label=237.992 fontsize=32]
+	520 [label="520
+9 + 11 = 20 ( left: 20 )
+parent: 70
+value: 0.0"]
+	70 -> 520 [label=237.996 fontsize=32]
+	521 [label="521
+11 + 3.5 = 14.5 ( left: 14.5 )
+parent: 71
+value: 0.003"]
+	71 -> 521 [label=237.99 fontsize=32]
+	522 [label="522
+11 / 3.5 = 3.142857142857143 ( left: 3.142857142857143 )
+parent: 71
+value: 0.002"]
+	71 -> 522 [label=237.992 fontsize=32]
+	523 [label="523
+11 * 3.5 = 38.5 ( left: 38.5 )
+parent: 71
+value: 0.001"]
+	71 -> 523 [label=237.994 fontsize=32]
+	524 [label="524
+11 - 3.5 = 7.5 ( left: 7.5 )
+parent: 71
+value: 0.001"]
+	71 -> 524 [label=237.994 fontsize=32]
+	525 [label="525
+3.5 + 11 = 14.5 ( left: 14.5 )
+parent: 71
+value: 0.003"]
+	71 -> 525 [label=237.99 fontsize=32]
+	526 [label="526
+3.5 / 11 = 0.3181818181818182 ( left: 0.3181818181818182 )
+parent: 71
+value: 0.003"]
+	71 -> 526 [label=237.99 fontsize=32]
+	527 [label="527
+3.5 * 11 = 38.5 ( left: 38.5 )
+parent: 71
+value: 0.001"]
+	71 -> 527 [label=237.994 fontsize=32]
+	528 [label="528
+3.5 - 11 = -7.5 ( left: -7.5 )
+parent: 71
+value: 0.001"]
+	71 -> 528 [label=237.994 fontsize=32]
+	529 [label="529
+11 + 14 = 25 ( left: 25 )
+parent: 72
+value: 20.001"]
+	72 -> 529 [label=197.994 fontsize=32]
+	530 [label="530
+11 / 14 = 0.7857142857142857 ( left: 0.7857142857142857 )
+parent: 72
+value: 0.003"]
+	72 -> 530 [label=237.99 fontsize=32]
+	531 [label="531
+11 * 14 = 154 ( left: 154 )
+parent: 72
+value: 0.003"]
+	72 -> 531 [label=237.99 fontsize=32]
+	532 [label="532
+14 - 11 = 3 ( left: 3 )
+parent: 72
+value: 0.002"]
+	72 -> 532 [label=237.992 fontsize=32]
+	533 [label="533
+14 / 11 = 1.2727272727272727 ( left: 1.2727272727272727 )
+parent: 72
+value: 0.002"]
+	72 -> 533 [label=237.992 fontsize=32]
+	534 [label="534
+11 - 14 = -3 ( left: -3 )
+parent: 72
+value: 0.002"]
+	72 -> 534 [label=237.992 fontsize=32]
+	535 [label="535
+14 + 11 = 25 ( left: 25 )
+parent: 72
+value: 20.001"]
+	72 -> 535 [label=197.994 fontsize=32]
+	536 [label="536
+14 / 11 = 1.2727272727272727 ( left: 1.2727272727272727 )
+parent: 72
+value: 0"]
+	72 -> 536 [label=237.996 fontsize=32]
+}

@@ -100,7 +100,7 @@ def build(args, task, idx, graph = None):
         graph = tree_graph.graph(k = args.k, b = args.n_select_sample, idx = idx)
     distance_list = [0]
 
-    for step in range(task.steps):
+    for step in range(task.steps - 1):
     # for step in range(1):
         tuple_ys = []
         for y in ys:
@@ -118,25 +118,21 @@ def build(args, task, idx, graph = None):
             print(values)
             new_ys = list(zip(ids, new_ys, values))
             new_ys = sorted(new_ys, key  = lambda x: x[0])
-            if step == task.steps - 1:
-                top_id = sorted(ids, key=lambda x: values[x], reverse=True)[0]
-                answer= new_ys[top_id]
             
             tuple_ys += new_ys
-            if step != task.steps - 1:
-                # append to graph
-                new_nodes = list()
-                for i in range(len(new_ys)):
-                    distance = task.distance_calculator(new_ys[i][2], distance_list[y[0]], args.n_evaluate_sample)
-                    distance_list.append(distance)
-                    node = {'id': new_ys[i][0], 'answer': new_ys[i][1], 'value': new_ys[i][2], 'parent_node': y[0], 'ancestor_distance': distance}
-                    new_nodes.append(node)
-                graph.add_head_list_len(task.id)
-                print('id: ' + str(task.id))
-                graph.add_nodes(new_nodes)
+            # append to graph
+            new_nodes = list()
+            for i in range(len(new_ys)):
+                distance = task.distance_calculator(new_ys[i][2], distance_list[y[0]], args.n_evaluate_sample)
+                distance_list.append(distance)
+                node = {'id': new_ys[i][0], 'answer': new_ys[i][1], 'value': new_ys[i][2], 'parent_node': y[0], 'ancestor_distance': distance}
+                new_nodes.append(node)
+            graph.add_head_list_len(task.id)
+            print('id: ' + str(task.id))
+            graph.add_nodes(new_nodes)
             
         # set output as next input
-        infos.append({'step': step, 'x': x, 'ys': ys, 'values': values, 'select_new_ys': tuple_ys})
+        infos.append({'step': step, 'x': x, 'ys': tuple_ys, 'values': values})
         ys = tuple_ys
         
 

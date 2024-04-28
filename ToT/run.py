@@ -60,8 +60,11 @@ def run(args):
         elif args.algorithm == 'whole_tree':
             graph = tree_graph.graph(k = args.k, b = args.n_select_sample, idx = i)
             ys, info, traversal_nodes = build(args, task, i, graph = graph)
+            record.Record_txt(record.record_file_name, '\nusage so far: ' + str(gpt_usage(args.backend)) + '\n\n', idx = i)
             bfs_ys, bfs_info, bfs_traversal_nodes = bfs(args, task, i, graph = graph)
+            record.Record_txt(record.record_file_name, '\nusage so far: ' + str(gpt_usage(args.backend)) + '\n\n', idx = i)
             dfs_ys, dfs_info, dfs_traversal_nodes = dfs(args, task, i, sd = True, sorting = True, high_acc_mode = False, graph = graph)
+            record.Record_txt(record.record_file_name, '\nusage so far: ' + str(gpt_usage(args.backend)) + '\n\n', idx = i)
         end_time = time.time()
         print(end_time - start_time)
         total_cost_time += end_time - start_time

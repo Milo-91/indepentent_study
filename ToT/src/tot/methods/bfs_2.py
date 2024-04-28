@@ -166,8 +166,12 @@ def bfs(args, task, idx, to_print=True, graph = None):
     top_id = sorted(ids, key=lambda x: values[x], reverse=True)[0]
     answer = new_ys[top_id]
 
-    path = {ys[0][0]}
-    draw.bfs_Draw(task, args, infos, graph, idx, path)
     if to_print: 
         print(infos)
-    return [answer], {'steps': infos}, task.id
+    path = {ys[0][0]}
+    draw.bfs_Draw(task, args, infos, graph, idx, path)
+    # count traversal nodes
+    traversal_nodes = 0
+    for step in infos:
+        traversal_nodes += len(step['ys'])
+    return [answer], {'steps': infos}, traversal_nodes
