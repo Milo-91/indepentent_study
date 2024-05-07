@@ -14,10 +14,13 @@ path = set()
 infos = []
 index = 0 # idx
 traversal_nodes = 0
+max_steps = 0
 
 def get_value(task, x, y, n_evaluate_sample, cache_value=True):
     value_prompt = task.value_prompt_wrap(x, y)
     # record.Record_txt(record.record_file_name, '\nvalue prompt: ' + value_prompt + '\n\n', idx = index)
+    if 'wrong answer' in y:
+        return 0
     if cache_value and value_prompt in task.value_cache:
         return task.value_cache[value_prompt]
     value_outputs = gpt(value_prompt, n=n_evaluate_sample, stop=None, idx = index)
@@ -105,7 +108,9 @@ def __dfs__(args, task, idx, x, y, graph, distance, t, to_print = True, sd = Fal
         values = get_values(task, x, new_ys, args.n_evaluate_sample)
         top_id = sorted(ids, key=lambda x: values[x], reverse=True)[0]
         answer= new_ys[top_id]
+        answer_value = values[top_id]
         record.Record_txt(record.record_file_name, '\nanswer: ' + str(answer) + '\n\n', idx = idx)
+        distance = task.distance_calculator(answer_value, distance, args.n_evaluate_sample)
         # save result and then back
         is_best = False
         if distance < d_thres:
@@ -122,8 +127,9 @@ def __dfs__(args, task, idx, x, y, graph, distance, t, to_print = True, sd = Fal
             # dfs with sphere decoding
             d_thres = distance
             record.Record_txt(record.record_file_name, '\nchange best answer\nbest_ans: ' + str(best_ans) + '\nd_thres: ' + str(d_thres) + '\n\n', idx = idx)
-        infos.append({'step': t, 'select_id': y[0], 'select_new_ys': answer, 'values': values, 'is_best': is_best, 'is_back': False})
-        
+        infos.append({'step': t, 'select_id': y[0], 'select_new_ys': answer, 'values': answer_value, 'is_best': is_best, 'is_back': False})
+        node = {'id': -1 * y[0], 'answer': answer, 'value': answer_value, 'parent_node': y[0], 'ancestor_distance': distance}
+        graph.add_nodes([node])
         return
 
     # Graph
@@ -192,7 +198,7 @@ def __dfs__(args, task, idx, x, y, graph, distance, t, to_print = True, sd = Fal
 
 # sd, greedy flag not using
 def dfs(args, task, idx, to_print = True, sd = False, sorting = False, high_acc_mode = False, graph = None):
-    global d_thres, gpt, best_ans, best_path, path, infos, index, traversal_nodes
+    global d_thres, gpt, best_ans, best_path, path, infos, index, traversal_nodes, max_steps
     # reset global variables
     index = idx
     d_thres = 10000 # a large number
@@ -201,6 +207,7 @@ def dfs(args, task, idx, to_print = True, sd = False, sorting = False, high_acc_
     path = set()
     infos = []
     traversal_nodes = 0
+    max_steps = 2 * (args.n_select_sample + 1) * args.k
     # initialize
     gpt = partial(gpt, model=args.backend, temperature=args.temperature)
     print(gpt)

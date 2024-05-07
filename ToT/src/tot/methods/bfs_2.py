@@ -130,13 +130,16 @@ def bfs(args, task, idx, to_print=True, graph = None):
                 new_ys = sorted(new_ys, key  = lambda x: x[0])
                 tuple_ys += new_ys
                 new_nodes = list()
+                # append to graph
+                new_nodes = list()
                 for i in range(len(new_ys)):
-                    print(y[0])
-                    print(distance_list)
                     distance = task.distance_calculator(new_ys[i][2], distance_list[y[0]], args.n_evaluate_sample)
                     distance_list.append(distance)
-                    node = {'id': new_ys[i][0], 'answer': new_ys[i][1], 'value': new_ys[i][2], 'parent_node': y[0], 'ancestor_distance': distance}
+                    node = {'id': new_ys[i][0], 'answer': new_ys[i][1], 'value': new_ys[i][2], 'parent_node': y[0], 'ancestor_distance': distance_list[y[0]]}
                     new_nodes.append(node)
+                graph.add_head_list_len(task.id)
+                print('id: ' + str(task.id))
+                new_nodes = sorted(new_nodes, key  = lambda x: task.distance_calculator(x['value'], x['ancestor_distance'], args.n_evaluate_sample))
                 graph.add_nodes(new_nodes)
             else:
                 new_list, distance = graph.child_to_list(y[0])
@@ -151,7 +154,7 @@ def bfs(args, task, idx, to_print=True, graph = None):
         print(selected_ys)
         record.Record_txt(record.record_file_name, '\nselected nodes:\n' + '\n'.join(list(map(str, selected_ys.copy()))) + '\n' + '\n\n', idx)
 
-        infos.append({'step': step, 'x': x, 'ys': [item[1] for item in tuple_ys], 'values': [item[2] for item in tuple_ys], 'select_new_ys': selected_ys})
+        infos.append({'step': step, 'ys': tuple_ys, 'select_new_ys': selected_ys})
         ys = selected_ys
     
     graph.show_in_linked_list()

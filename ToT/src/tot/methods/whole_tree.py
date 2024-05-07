@@ -103,7 +103,9 @@ def build(args, task, idx, graph = None):
     for step in range(task.steps - 1):
     # for step in range(1):
         tuple_ys = []
+        infos_ys = []
         for y in ys:
+            parent_id = y[0]
             # generator
             new_ys = get_proposals(task, x, y[1], args.k)
             print(new_ys)
@@ -125,14 +127,18 @@ def build(args, task, idx, graph = None):
             for i in range(len(new_ys)):
                 distance = task.distance_calculator(new_ys[i][2], distance_list[y[0]], args.n_evaluate_sample)
                 distance_list.append(distance)
-                node = {'id': new_ys[i][0], 'answer': new_ys[i][1], 'value': new_ys[i][2], 'parent_node': y[0], 'ancestor_distance': distance}
+                node = {'id': new_ys[i][0], 'answer': new_ys[i][1], 'value': new_ys[i][2], 'parent_node': y[0], 'ancestor_distance': distance_list[y[0]]}
                 new_nodes.append(node)
             graph.add_head_list_len(task.id)
             print('id: ' + str(task.id))
+            new_nodes = sorted(new_nodes, key  = lambda x: task.distance_calculator(x['value'], x['ancestor_distance'], args.n_evaluate_sample))
             graph.add_nodes(new_nodes)
             
+            # for json ys
+            for element in tuple_ys:
+                infos_ys.append(element + (parent_id,))
         # set output as next input
-        infos.append({'step': step, 'x': x, 'ys': tuple_ys, 'values': values})
+        infos.append({'step': step, 'ys': infos_ys})
         ys = tuple_ys
         
 

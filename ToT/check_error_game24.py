@@ -4,10 +4,16 @@ import argparse
 import os
 from openpyxl import Workbook, load_workbook
 from openpyxl.utils import get_column_letter
+from openpyxl.styles import *
+import time
 
 from tot.tasks import get_task
 
 excel_file = 'analysis.xlsx'
+task_name = ['k12b8', 'k8b5', 'k5b5', 'k5b3']
+table_name = ['theoretical' , 'actual', 'traversal nodes', 'no ans in tree', 'error cot', 'wrong path']
+algorithm_name = ['bfs', 'dfs+sd']
+all_pos_table = {}
 
 def parse_args():
     args = argparse.ArgumentParser()
@@ -21,13 +27,15 @@ def parse_args():
     args = args.parse_args()
     return args
 
-def Init(args):
-    path = f'./logs/{args.task}/{args.name_of_task}/k{args.k}b{args.n_select_sample}'
-    if os.path.exists(os.path.join(path, excel_file)) == False:
+def Init(excel_path):
+    print(os.listdir(excel_path))
+    if os.path.exists(os.path.join(excel_path, excel_file)) == False:
+        print('create a new excel file')
         wb = Workbook()
         wb.save(excel_file)
     else:
-        wb = load_workbook(excel_file)
+        print('already have excel file')
+        wb = load_workbook(os.path.join(excel_path, excel_file))
     return wb
 
 def error_cot(states, task):
@@ -54,6 +62,7 @@ def no_ans_in_base(tree):
                 leaf_nodes = step['ys']
         # print(leaf_nodes)
         for node in leaf_nodes:
+            # print(node)
             ans = node[1].split('\n')[-2]
             # print(ans)
             if 'left: ' not in ans:
@@ -76,144 +85,111 @@ def wrong_path(has_ans_list, correct_list, impossible):
             wrong_path_count += 1
     return wrong_path_count, impossible
 
-def append_data(ws, algorithm_name, task_name, theoretical, actual, traversal_nodes, no_ans_in_base, wrong_path, error_cot, task_number):
-    # check to append header
-    has_header = 0
-    blank_count = 0
+def format_border(ws, start_row, end_row, start_col, end_col):
+    # left
+    for row in range(start_row, end_row + 1):
+        ws.cell(row, start_col).border = Border(left = Side(style = 'medium'))
+    # right
+    for row in range(start_row, end_row + 1):
+        ws.cell(row, end_col + 1).border = Border(left = Side(style = 'medium'))
+    # top
+    for col in range(start_col, end_col + 1):
+        ws.cell(start_row, col).border = Border(top = Side(style = 'medium'))
+    # bottom
+    for col in range(start_col, end_col + 1):
+        ws.cell(end_row + 1, col).border = Border(top = Side(style = 'medium'))
+
+def multi_table(ws, pos, pos_table):
+    col = 1
+    for name in table_name:
+        pos_table[name] = {}
+        start_col = col
+        end_pos, col = create_table(ws, name, pos, col, pos_table[name])
+        format_border(ws, pos, end_pos, start_col, col)
+        col += 2
+    return end_pos, col
+
+def create_table(ws, table_name, pos, col, pos_table):
+    start_col = col
+    ws.cell(pos, col).value = table_name
+    col += 1
+    for i in range(3):
+        ws.cell(pos, col).value = i
+        col += 1
+    ws.cell(pos, col).value = 'avg'
+    for name in task_name:
+        pos += 1
+        ws.cell(pos, start_col).value = name
+        pos_table[name] = (pos, start_col)
+    return pos, col
+
+def format_table(ws):
     pos = 1
-    title_pos = 0
-    while blank_count == 0 and has_header == 0:
-        # print(ws[f'A{pos}'].value)
-        if ws[f'A{pos}'].value == algorithm_name:
-            has_header = 1
-            continue
-        if ws[f'A{pos}'].value == None:
-            blank_count = 1
-            continue
-        else:
-            blank_count = 0
-        pos += 1
-    title_pos = pos
-    if has_header == 0:
-        append_header(ws, algorithm_name, pos)
-    pos += 1
-    # check to append task row
-    has_task = 0
-    blank_count = 0
-    while has_task == 0 and blank_count == 0:
-        if ws[f'A{pos}'].value == task_name:
-            has_task = 1
-            continue
-        if ws[f'A{pos}'].value == None:
-            blank_count = 1
-            continue
-        else:
-            blank_count = 0
-        pos += 1
-    
-    if has_task == 0:
-        ws[f'A{pos}'].value = task_name
-        ws.insert_rows(pos + 1)
-    # append theoretical data
-    col = find_table_pos(ws, 'theoretical', title_pos)
-    col += 1 + task_number
-    ws[get_column_letter(col) + str(pos)].value = theoretical
-    # append actual data
-    col = find_table_pos(ws, 'actual', title_pos)
-    col += 1 + task_number
-    ws[get_column_letter(col) + str(pos)].value = actual
-    # append traversal_nodes data
-    col = find_table_pos(ws, 'traversal_nodes', title_pos)
-    col += 1 + task_number
-    ws[get_column_letter(col) + str(pos)].value = traversal_nodes
-    # append no_ans_in_base data
-    col = find_table_pos(ws, 'no_ans_in_tree', title_pos)
-    col += 1 + task_number
-    ws[get_column_letter(col) + str(pos)].value = no_ans_in_base
-    # append wrong_path data
-    col = find_table_pos(ws, 'wrong_path', title_pos)
-    col += 1 + task_number
-    ws[get_column_letter(col) + str(pos)].value = wrong_path
-    # append error_cot data
-    col = find_table_pos(ws, 'error_cot', title_pos)
-    col += 1 + task_number
-    ws[get_column_letter(col) + str(pos)].value = error_cot
-
-    #count avg
-    count_avg(ws, title_pos)
-
-def find_table_pos(ws, title, pos, initial_col = 1):    
-    col = initial_col
-    blank_count = 0
-    while ws[get_column_letter(col) + str(pos)].value != title and blank_count < 2:
-        # print(ws[get_column_letter(col) + str(pos)].value)
-        col += 1
-        if ws[get_column_letter(col) + str(pos)].value == None:
-            blank_count += 1
-        else:
-            blank_count = 0
-    
-    if blank_count == 2:
-        return -1
-    return col
-
-def __table__(ws, title, pos, col):
-    ws[get_column_letter(col) + str(pos)].value = title
-    col += 1
-    for i in range(3):
-        ws[get_column_letter(col) + str(pos)].value = i
-        col += 1
-    ws[get_column_letter(col) + str(pos)].value = 'avg'
-    col += 1
-    # ws[get_column_letter(col) + str(pos)].value = None
-    col += 1
-    return ws, col
-
-def count_avg(ws, title_pos):
     col = 1
-    for i in range(200):
-        col = find_table_pos(ws, 'avg', title_pos, col + 1)
-        if col == -1:
-            break
-        ws = __count_avg__(ws, title_pos, col)
+    for name in algorithm_name:
+        all_pos_table[name] = {}
+        ws.cell(pos, col).value = name
+        pos, _ = multi_table(ws, pos + 1, all_pos_table[name])
+        pos += 1
 
-def __count_avg__(ws, pos, col):
-    pos += 1
-    sum = 0
-    base = 0
-    for i in range(3):
-        if ws[get_column_letter(col - i - 1) + str(pos)].value == None:
-            continue
-        else:
-            sum += ws[get_column_letter(col - i - 1) + str(pos)].value
-            base += 1
-    if base == 0:
-        ws[get_column_letter(col) + str(pos)].value = 0
-    else:
-        ws[get_column_letter(col) + str(pos)].value = sum / base
-    return ws
-
-def append_header(ws, task_name, pos):
-    # header
-    col = 1
-    ws[get_column_letter(col) + str(pos)].value = task_name
-    col += 1
+def append_data(ws, algorithm_name, task_name, theoretical, actual, traversal_nodes, no_ans_in_base, wrong_path, error_cot):
     # theoretical
-    ws, col = __table__(ws, 'theoretical', pos, col)
+    pos, col = all_pos_table[algorithm_name]['theoretical'][task_name]
+    for i in range(3):
+        if ws.cell(pos, col + i).value == None:
+            ws.cell(pos, col + i).value = theoretical
+            break
+    cal_avg(ws, pos, col)
     # actual
-    ws, col = __table__(ws, 'actual', pos, col)
-    # traversal nodes
-    ws, col = __table__(ws, 'traversal_nodes', pos, col)
+    pos, col = all_pos_table[algorithm_name]['actual'][task_name]
+    for i in range(3):
+        if ws.cell(pos, col + i).value == None:
+            ws.cell(pos, col + i).value = actual
+            break
+    cal_avg(ws, pos, col)
+    # traversal_nodes
+    pos, col = all_pos_table[algorithm_name]['traversal nodes'][task_name]
+    for i in range(3):
+        if ws.cell(pos, col + i).value == None:
+            ws.cell(pos, col + i).value = traversal_nodes
+            break
+    cal_avg(ws, pos, col)
     # no ans in tree
-    ws, col = __table__(ws, 'no_ans_in_tree', pos, col)
-    # error cot
-    ws, col = __table__(ws, 'error_cot', pos, col)
+    pos, col = all_pos_table[algorithm_name]['no ans in tree'][task_name]
+    for i in range(3):
+        if ws.cell(pos, col + i).value == None:
+            ws.cell(pos, col + i).value = no_ans_in_base
+            break
+    cal_avg(ws, pos, col)
     # wrong path
-    ws, col = __table__(ws, 'wrong_path', pos, col)
+    pos, col = all_pos_table[algorithm_name]['wrong path'][task_name]
+    for i in range(3):
+        if ws.cell(pos, col + i).value == None:
+            ws.cell(pos, col + i).value = wrong_path
+            break
+    cal_avg(ws, pos, col)
+    # error cot
+    pos, col = all_pos_table[algorithm_name]['error cot'][task_name]
+    for i in range(3):
+        if ws.cell(pos, col + i).value == None:
+            ws.cell(pos, col + i).value = error_cot
+            break
+    cal_avg(ws, pos, col)
+
+def cal_avg(ws, pos, col):
+    sum = 0
+    data_num = 3
+    for i in range(1, 4):
+        if ws.cell(pos, col + i).value == None:
+            data_num -= 1
+            continue
+        sum += ws.cell(pos, col + i).value
+    ws.cell(pos, col + 4).value = sum / data_num
 
 def run(args):
     # load excel file
-    wb = Init(args)
+    excel_path = f'./logs/{args.task}/{args.name_of_task}'
+    wb = Init(excel_path)
     ws = wb.active
 
     task = get_task(args.task)
@@ -224,7 +200,7 @@ def run(args):
         folder_name = f'./logs/{args.task}/{args.name_of_task}/k{args.k}b{args.n_select_sample}/{name}'
         print(folder_name)
         file_name = os.path.join(folder_name, f'{args.name_of_task}_start{args.task_start_index}_end{args.task_end_index}_{args.algorithm}_0.json')
-        print(file_name)
+        # print(file_name)
         with open(file_name, 'r') as file:
              data = json.load(file)
 
@@ -233,10 +209,10 @@ def run(args):
             print('\n'.join(map(str, base)))
 
             bfs = [data[i] for i in range(len(data)) if i % 3 == 1]
-            print('\n'.join(map(str, bfs)))
+            # print('\n'.join(map(str, bfs)))
 
             dfs = [data[i] for i in range(len(data)) if i % 3 == 2]
-            print('\n'.join(map(str, dfs)))
+            # print('\n'.join(map(str, dfs)))
 
             bfs_traversal_nodes = sum([state['traversal_nodes'] for state in bfs]) / len(bfs)
             dfs_traversal_nodes = sum([state['traversal_nodes'] for state in dfs]) / len(dfs)
@@ -252,6 +228,11 @@ def run(args):
             # no ans in base
             has_ans_list, no_ans_count = no_ans_in_base(base)
             print(has_ans_list)
+            count = 0
+            for i in has_ans_list:
+                if i == 0:
+                    print(count)
+                count += 1
             print('no ans tree count: ' + str(no_ans_count))
 
             impossible = 0
@@ -263,12 +244,13 @@ def run(args):
             dfs_wrong_path_count, impossible = wrong_path(has_ans_list, dfs_correct_list, impossible)
             print('dfs wrong path count: ' + str(dfs_wrong_path_count))
             print('impossible: ' + str(impossible))
-
+ 
             # output as excel file
-            append_data(ws, 'bfs', f'k{args.k}b{args.n_select_sample}', bfs_theoretical, bfs_actual, bfs_traversal_nodes, no_ans_count, bfs_wrong_path_count, bfs_theoretical - bfs_actual, int(name))
-            append_data(ws, 'dfs', f'k{args.k}b{args.n_select_sample}', dfs_theoretical, dfs_actual, dfs_traversal_nodes, no_ans_count, dfs_wrong_path_count, dfs_theoretical - dfs_actual, int(name))
+            format_table(ws)
+            append_data(ws, 'bfs', f'k{args.k}b{args.n_select_sample}', bfs_theoretical, bfs_actual, bfs_traversal_nodes, no_ans_count, bfs_wrong_path_count, bfs_theoretical - bfs_actual)
+            append_data(ws, 'dfs+sd', f'k{args.k}b{args.n_select_sample}', dfs_theoretical, dfs_actual, dfs_traversal_nodes, no_ans_count, dfs_wrong_path_count, dfs_theoretical - dfs_actual)
 
-    wb.save(os.path.join(path, excel_file))
+    wb.save(os.path.join(excel_path, excel_file))
     print('output as excel file')
 
 

@@ -11,7 +11,7 @@ def Init_image_folder_path(path):
 
 # use tree_graph to draw
 def dfs_Draw(task, args, infos, graph, idx, path):
-    dot = graphviz.Digraph(comment = str(idx) + '_dfs', format = 'png')
+    dot = graphviz.Digraph(comment = str(idx) + '_dfs', format = 'svg')
     # json file
     best_nodes = set()
     back_nodes = set()
@@ -47,7 +47,7 @@ def dfs_Draw(task, args, infos, graph, idx, path):
     dot.render(output_path, view = False)
 
 def bfs_Draw(task, args, infos, graph, idx, path):
-    dot = graphviz.Digraph(comment = str(idx) + '_bfs', format = 'png')
+    dot = graphviz.Digraph(comment = str(idx) + '_bfs', format = 'svg')
     # json file
     best_nodes = set()
     steps = infos
@@ -79,7 +79,7 @@ def bfs_Draw(task, args, infos, graph, idx, path):
 
 
 def simple_draw(task, args, graph, idx):
-    dot = graphviz.Digraph(comment = str(idx) + '_tree', format = 'png')
+    dot = graphviz.Digraph(comment = str(idx) + '_tree', format = 'svg')
     
     # graph
     dot.node('0', '0' + '\n' + task.get_input(idx))
