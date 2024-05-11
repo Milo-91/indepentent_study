@@ -3,13 +3,22 @@ import tot.record_functions as record
 
 class graph():
     # element {node: dict, prev node: dict, next node: dict}
-    # node: {id, answer, value, parent_node, ancestor_distance}
+    # node: {id, answer, value, parent_node, ancestor_distance, cost time(as parent)}
     def __init__(self, k, b, idx):
-        self.total_element = (2 * b + 1) * k + 1
+        self.total_element = k**3 + k**2 + k + 10
         self.tree_head = self.init_tree_head()
         self.nodes = [None for _ in range(self.total_element)]
         self.visited = [0] * (self.total_element)
         self.idx = idx
+
+    def __copy__(self):
+        new_instance = graph(0, 0, self.idx)
+        new_instance.total_element = self.total_element
+        new_instance.tree_head = self.tree_head.copy()
+        new_instance.nodes = self.nodes.copy()
+        new_instance.visited = self.visited.copy()
+        
+        return new_instance
 
     def reset_idx(self, idx):
         self.idx = idx
@@ -81,19 +90,23 @@ class graph():
             record.Record_txt(record.record_file_name, ' -> ' + str(self.total_element) + '\n\n', self.idx)
 
     def show_in_nodes(self):
-        for node in self.tree_head:
-            while node['next_node']['node'] != None:
-                record.Record_txt(record.record_file_name, str(node['next_node']['node']) + '\n', self.idx)
-                print(node['next_node']['node'])
-                node = node['next_node']
+        for node in self.nodes:
+                record.Record_txt(record.record_file_name, str(node) + '\n', self.idx)
+                print(node)
         record.Record_txt(record.record_file_name, '\n', self.idx)
 
     def child_to_list(self, id):
         child_list = []
         distance_list = []
+        cost_time = self.nodes[id]['cost time']
         next = self.tree_head[id]['next_node']
         while next['node'] != None:
             child_list.append((next['node']['id'], next['node']['answer'], next['node']['value']))
             distance_list.append(next['node']['ancestor_distance'])
             next = next['next_node']
-        return child_list, distance_list
+        return child_list, distance_list, cost_time
+    
+    def add_cost_time_in_parent_nodes(self, ys, cost_time_list):
+        for i in range(len(ys)):
+            print(ys[i][0])
+            self.nodes[ys[i][0]]['cost time'] = cost_time_list[i]

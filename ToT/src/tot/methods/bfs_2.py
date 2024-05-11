@@ -6,6 +6,7 @@ import tot.record_functions as record
 import tot.tasks.tree_graph as tree_graph
 import tot.tasks.draw as draw
 import re
+import time
 
 index = 0 # idx
 
@@ -91,6 +92,7 @@ def get_current_numbers(y: str) -> str:
 def bfs(args, task, idx, to_print=True, graph = None):
     global gpt, index
     index = idx
+    cost_time = 0
     gpt = partial(gpt, model=args.backend, temperature=args.temperature)
     print(gpt)
     x = task.get_input(idx)  # input
@@ -142,10 +144,12 @@ def bfs(args, task, idx, to_print=True, graph = None):
                 new_nodes = sorted(new_nodes, key  = lambda x: task.distance_calculator(x['value'], x['ancestor_distance'], args.n_evaluate_sample))
                 graph.add_nodes(new_nodes)
             else:
-                new_list, distance = graph.child_to_list(y[0])
+                new_list, distance, parent_cost_time = graph.child_to_list(y[0])
                 tuple_ys += new_list
                 distance_list.extend(distance)
                 print("already generated")
+                cost_time += parent_cost_time
+                record.Record_txt(record.record_file_name, '\nparent: ' + str(y[0]) + '\nparent cost time' + str(parent_cost_time) + '\n\n', idx)        
 
         print(tuple_ys)
 
@@ -161,6 +165,7 @@ def bfs(args, task, idx, to_print=True, graph = None):
     graph.show_in_nodes()
     
     # final generation
+    start_time = time.time()
     new_ys = [get_proposals(task, x, ys[0][1], args.k)]
     gpt = partial(gpt, model=args.backend, temperature=args.temperature)
     new_ys = list(itertools.chain(*new_ys))
@@ -168,6 +173,9 @@ def bfs(args, task, idx, to_print=True, graph = None):
     values = get_values(task, x, new_ys, args.n_evaluate_sample)
     top_id = sorted(ids, key=lambda x: values[x], reverse=True)[0]
     answer = new_ys[top_id]
+    end_time = time.time()
+    cost_time += end_time - start_time
+    record.Record_txt(record.record_file_name, '\nparent: ' + str(ys[0][0]) + '\nparent cost time' + str(end_time - start_time) + '\n\n', idx)
 
     if to_print: 
         print(infos)
@@ -177,4 +185,4 @@ def bfs(args, task, idx, to_print=True, graph = None):
     traversal_nodes = 0
     for step in infos:
         traversal_nodes += len(step['ys'])
-    return [answer], {'steps': infos}, traversal_nodes
+    return [answer], {'steps': infos}, traversal_nodes, cost_time

@@ -6,6 +6,7 @@ import tot.record_functions as record
 import tot.tasks.tree_graph as tree_graph
 import tot.tasks.draw as draw
 import re
+import time
 
 index = 0 # idx
 
@@ -98,15 +99,19 @@ def build(args, task, idx, graph = None):
     infos = []
     if graph == None:
         graph = tree_graph.graph(k = args.k, b = args.n_select_sample, idx = idx)
+    root_node = {'id': 0, 'answer': None, 'value': None, 'parent_node': None, 'ancestor_distance': 0, 'cost time': 0}
+    graph.add_nodes([root_node])
     distance_list = [0]
 
     for step in range(task.steps - 1):
     # for step in range(1):
         tuple_ys = []
         infos_ys = []
+        cost_time_list = []
         for y in ys:
             parent_id = y[0]
             # generator
+            start_time = time.time()
             new_ys = get_proposals(task, x, y[1], args.k)
             print(new_ys)
             gpt = partial(gpt, model=args.backend, temperature=args.temperature)
@@ -120,14 +125,16 @@ def build(args, task, idx, graph = None):
             print(values)
             new_ys = list(zip(ids, new_ys, values))
             new_ys = sorted(new_ys, key  = lambda x: x[0])
-            
+            end_time = time.time()
+            cost_time_list.append(end_time - start_time)
+
             tuple_ys += new_ys
             # append to graph
             new_nodes = list()
             for i in range(len(new_ys)):
                 distance = task.distance_calculator(new_ys[i][2], distance_list[y[0]], args.n_evaluate_sample)
                 distance_list.append(distance)
-                node = {'id': new_ys[i][0], 'answer': new_ys[i][1], 'value': new_ys[i][2], 'parent_node': y[0], 'ancestor_distance': distance_list[y[0]]}
+                node = {'id': new_ys[i][0], 'answer': new_ys[i][1], 'value': new_ys[i][2], 'parent_node': y[0], 'ancestor_distance': distance_list[y[0]], 'cost time': 0}
                 new_nodes.append(node)
             graph.add_head_list_len(task.id)
             print('id: ' + str(task.id))
@@ -135,8 +142,9 @@ def build(args, task, idx, graph = None):
             graph.add_nodes(new_nodes)
             
             # for json ys
-            for element in tuple_ys:
+            for element in new_ys:
                 infos_ys.append(element + (parent_id,))
+        graph.add_cost_time_in_parent_nodes(ys, cost_time_list)
         # set output as next input
         infos.append({'step': step, 'ys': infos_ys})
         ys = tuple_ys

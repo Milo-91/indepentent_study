@@ -10,9 +10,9 @@ import time
 from tot.tasks import get_task
 
 excel_file = 'analysis.xlsx'
-task_name = ['k12b8', 'k8b5', 'k5b5', 'k5b3']
-table_name = ['theoretical' , 'actual', 'traversal nodes', 'no ans in tree', 'error cot', 'wrong path']
-algorithm_name = ['bfs', 'dfs+sd']
+task_name = ['k8b5', 'k5b5', 'k5b3']
+table_name = ['theoretical' , 'actual', 'traversal nodes', 'cost time', 'no ans in tree', 'error cot', 'wrong path']
+algorithm_name = ['bfs', 'dfs+sd', 'dfs+ksd']
 all_pos_table = {}
 
 def parse_args():
@@ -132,7 +132,7 @@ def format_table(ws):
         pos, _ = multi_table(ws, pos + 1, all_pos_table[name])
         pos += 1
 
-def append_data(ws, algorithm_name, task_name, theoretical, actual, traversal_nodes, no_ans_in_base, wrong_path, error_cot):
+def append_data(ws, algorithm_name, task_name, theoretical, actual, traversal_nodes, cost_time, no_ans_in_base, wrong_path, error_cot):
     # theoretical
     pos, col = all_pos_table[algorithm_name]['theoretical'][task_name]
     for i in range(3):
@@ -152,6 +152,13 @@ def append_data(ws, algorithm_name, task_name, theoretical, actual, traversal_no
     for i in range(3):
         if ws.cell(pos, col + i).value == None:
             ws.cell(pos, col + i).value = traversal_nodes
+            break
+    cal_avg(ws, pos, col)
+    # cost time
+    pos, col = all_pos_table[algorithm_name]['cost time'][task_name]
+    for i in range(3):
+        if ws.cell(pos, col + i).value == None:
+            ws.cell(pos, col + i).value = cost_time
             break
     cal_avg(ws, pos, col)
     # no ans in tree
@@ -205,25 +212,36 @@ def run(args):
              data = json.load(file)
 
         if args.algorithm == 'whole_tree':
-            base = [data[i] for i in range(len(data)) if i % 3 == 0]
+            base = [data[i] for i in range(len(data)) if i % 4 == 0]
             print('\n'.join(map(str, base)))
 
-            bfs = [data[i] for i in range(len(data)) if i % 3 == 1]
+            bfs = [data[i] for i in range(len(data)) if i % 4 == 1]
             # print('\n'.join(map(str, bfs)))
 
-            dfs = [data[i] for i in range(len(data)) if i % 3 == 2]
+            dfs = [data[i] for i in range(len(data)) if i % 4 == 2]
             # print('\n'.join(map(str, dfs)))
+
+            ksd = [data[i] for i in range(len(data)) if i % 4 == 3]
+            # print('\n'.join(map(str, ksd)))
 
             bfs_traversal_nodes = sum([state['traversal_nodes'] for state in bfs]) / len(bfs)
             dfs_traversal_nodes = sum([state['traversal_nodes'] for state in dfs]) / len(dfs)
+            ksd_traversal_nodes = sum([state['traversal_nodes'] for state in ksd]) / len(ksd)
+
+            bfs_cost_time = sum([state['cost time'] for state in bfs]) / len(bfs)
+            dfs_cost_time = sum([state['cost time'] for state in dfs]) / len(dfs)
+            ksd_cost_time = sum([state['cost time'] for state in ksd]) / len(ksd)
 
             # error cot
             # bfs
             bfs_theoretical, bfs_actual, bfs_correct_list = error_cot(bfs, task)
             print(f'bfs (theoretical, actual): ({bfs_theoretical, bfs_actual})')
-            # dfs
+            # dfs+sd
             dfs_theoretical, dfs_actual, dfs_correct_list = error_cot(dfs, task)
-            print(f'dfs (theoretical, actual): ({dfs_theoretical, dfs_actual})')
+            print(f'dfs+sd (theoretical, actual): ({dfs_theoretical, dfs_actual})')
+            # dfs+ksd
+            ksd_theoretical, ksd_actual, ksd_correct_list = error_cot(ksd, task)
+            print(f'dfs+ksd (theoretical, actual): ({ksd_theoretical, ksd_actual})')
 
             # no ans in base
             has_ans_list, no_ans_count = no_ans_in_base(base)
@@ -240,15 +258,21 @@ def run(args):
             bfs_wrong_path_count, impossible = wrong_path(has_ans_list, bfs_correct_list, impossible)
             print('bfs wrong path count: ' + str(bfs_wrong_path_count))
             
-            # wrong path dfs
+            # wrong path dfs+sd
             dfs_wrong_path_count, impossible = wrong_path(has_ans_list, dfs_correct_list, impossible)
-            print('dfs wrong path count: ' + str(dfs_wrong_path_count))
+            print('dfs+sd wrong path count: ' + str(dfs_wrong_path_count))
+            print('impossible: ' + str(impossible))
+
+            # wrong path dfs+ksd
+            ksd_wrong_path_count, impossible = wrong_path(has_ans_list, ksd_correct_list, impossible)
+            print('dfs+ksd wrong path count: ' + str(ksd_wrong_path_count))
             print('impossible: ' + str(impossible))
  
             # output as excel file
             format_table(ws)
-            append_data(ws, 'bfs', f'k{args.k}b{args.n_select_sample}', bfs_theoretical, bfs_actual, bfs_traversal_nodes, no_ans_count, bfs_wrong_path_count, bfs_theoretical - bfs_actual)
-            append_data(ws, 'dfs+sd', f'k{args.k}b{args.n_select_sample}', dfs_theoretical, dfs_actual, dfs_traversal_nodes, no_ans_count, dfs_wrong_path_count, dfs_theoretical - dfs_actual)
+            append_data(ws, 'bfs', f'k{args.k}b{args.n_select_sample}', bfs_theoretical, bfs_actual, bfs_traversal_nodes, bfs_cost_time, no_ans_count, bfs_wrong_path_count, bfs_theoretical - bfs_actual)
+            append_data(ws, 'dfs+sd', f'k{args.k}b{args.n_select_sample}', dfs_theoretical, dfs_actual, dfs_traversal_nodes, dfs_cost_time, no_ans_count, dfs_wrong_path_count, dfs_theoretical - dfs_actual)
+            append_data(ws, 'dfs+ksd', f'k{args.k}b{args.n_select_sample}', ksd_theoretical, ksd_actual, ksd_traversal_nodes, ksd_cost_time, no_ans_count, ksd_wrong_path_count, ksd_theoretical - ksd_actual)
 
     wb.save(os.path.join(excel_path, excel_file))
     print('output as excel file')

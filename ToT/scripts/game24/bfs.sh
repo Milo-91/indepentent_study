@@ -8,5 +8,6 @@ python run.py \
     --n_evaluate_sample 3 \
     --n_select_sample 3 \
     --k 5 \
-    --algorithm 'whole_tree'
+    --algorithm 'dfs+ksd' \
+    --name_of_task $(date +%Y-%m-%d)
     ${@}

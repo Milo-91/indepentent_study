@@ -10,8 +10,11 @@ def Init_image_folder_path(path):
     image_folder = os.path.join(path, 'image')
 
 # use tree_graph to draw
-def dfs_Draw(task, args, infos, graph, idx, path):
-    dot = graphviz.Digraph(comment = str(idx) + '_dfs', format = 'svg')
+def dfs_Draw(task, args, infos, graph, idx, path, file_name=None):
+    if file_name != None:
+        dot = graphviz.Digraph(comment = str(idx) + '_' + file_name, format = 'svg')
+    else:
+        dot = graphviz.Digraph(comment = str(idx) + '_dfs', format = 'svg')
     # json file
     best_nodes = set()
     back_nodes = set()
@@ -30,10 +33,10 @@ def dfs_Draw(task, args, infos, graph, idx, path):
             # draw nodes
             if now_node['id'] in path:
                 dot.node(str(now_node['id']), str(now_node['id']) + '\n' + str(now_node['answer'].split('\n')[-2]) + '\nparent: ' + str(now_node['parent_node']) + '\nvalue: ' + str(now_node['value']), color = 'red')
-            elif now_node['id'] in best_nodes:
-                dot.node(str(now_node['id']), str(now_node['id']) + '\n' + str(now_node['answer'].split('\n')[-2]) + '\nparent: ' + str(now_node['parent_node']) + '\nvalue: ' + str(now_node['value']), color = 'blue')
             elif now_node['id'] in back_nodes:
                 dot.node(str(now_node['id']), str(now_node['id']) + '\n' + str(now_node['answer'].split('\n')[-2]) + '\nparent: ' + str(now_node['parent_node']) + '\nvalue: ' + str(now_node['value']), color = 'yellow')
+            elif now_node['id'] in best_nodes:
+                dot.node(str(now_node['id']), str(now_node['id']) + '\n' + str(now_node['answer'].split('\n')[-2]) + '\nparent: ' + str(now_node['parent_node']) + '\nvalue: ' + str(now_node['value']), color = 'blue')
             else:
                 dot.node(str(now_node['id']), str(now_node['id']) + '\n' + str(now_node['answer'].split('\n')[-2]) + '\nparent: ' + str(now_node['parent_node']) + '\nvalue: ' + str(now_node['value']))
             # draw edges
@@ -43,7 +46,10 @@ def dfs_Draw(task, args, infos, graph, idx, path):
 
     if not os.path.exists(image_folder):
         os.makedirs(image_folder)
-    output_path = os.path.join(image_folder, f'{idx}_dfs')
+    if file_name != None:
+        output_path = output_path = os.path.join(image_folder, f'{idx}_{file_name}')
+    else:
+        output_path = os.path.join(image_folder, f'{idx}_dfs')
     dot.render(output_path, view = False)
 
 def bfs_Draw(task, args, infos, graph, idx, path):

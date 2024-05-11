@@ -4,6 +4,8 @@ import argparse
 import tot.record_functions as record
 import datetime
 import time
+import copy
+import sys
 
 from tot.tasks import get_task
 from tot.tasks import draw
@@ -15,11 +17,18 @@ from tot.methods.dfs_ksd import ksd
 from tot.methods.whole_tree import build
 from tot.models import gpt_usage
 
+def error_log(type, value, traceback):
+    print(f'type: {type}, value: {value}, traceback: {traceback}')
+    with open('error.log', 'a') as file:
+        file.write(f'type: {type}  value: {value}  traceback: {traceback}\n')
+
 def run(args):
+    sys.excepthook = error_log
     task = get_task(args.task)
     logs, cnt_avg, cnt_any = [], 0, 0
     bfs_cnt_avg = 0
     dfs_cnt_avg = 0
+    ksd_cnt_avg = 0
     total_cost_time = 0
     folder_index = 0
     folder_name = f'./logs/{args.task}/{args.name_of_task}/k{args.k}b{args.n_select_sample}/{folder_index}'
@@ -52,24 +61,29 @@ def run(args):
                 ys, info = naive_solve(args, task, i) 
             else:
                 # ys, info = solve(args, task, i)
-                ys, info = bfs(args, task, i)
+                ys, info, algo_cost_time = bfs(args, task, i)
         elif args.algorithm == 'dfs+sd':
-            ys, info, traversal_nodes = dfs(args, task, i, sd = True, sorting = True, high_acc_mode = False)
+            ys, info, traversal_nodes, algo_cost_time = dfs(args, task, i, sd = True, sorting = True, high_acc_mode = False)
         elif args.algorithm == 'dfs+ksd':
-            ys, info, traversal_nodes = ksd(args, task, i)
+            ys, info, traversal_nodes, algo_cost_time = ksd(args, task, i)
         elif args.algorithm == 'whole_tree':
             graph = tree_graph.graph(k = args.k, b = args.n_select_sample, idx = i)
             ys, info, traversal_nodes = build(args, task, i, graph = graph)
             record.Record_txt(record.record_file_name, '\nusage so far: ' + str(gpt_usage(args.backend)) + '\n\n', idx = i)
-            bfs_ys, bfs_info, bfs_traversal_nodes = bfs(args, task, i, graph = graph)
+            graph_copy = copy.copy(graph)
+            bfs_ys, bfs_info, bfs_traversal_nodes, bfs_cost_time = bfs(args, task, i, graph = graph_copy)
             record.Record_txt(record.record_file_name, '\nusage so far: ' + str(gpt_usage(args.backend)) + '\n\n', idx = i)
-            dfs_ys, dfs_info, dfs_traversal_nodes = dfs(args, task, i, sd = True, sorting = True, high_acc_mode = False, graph = graph)
+            graph_copy = copy.copy(graph)
+            dfs_ys, dfs_info, dfs_traversal_nodes, dfs_cost_time = dfs(args, task, i, sd = True, sorting = True, high_acc_mode = False, graph = graph_copy)
+            record.Record_txt(record.record_file_name, '\nusage so far: ' + str(gpt_usage(args.backend)) + '\n\n', idx = i)
+            graph_copy = copy.copy(graph)
+            ksd_ys, ksd_info, ksd_traversal_nodes, ksd_cost_time = ksd(args, task, i, graph = graph_copy)
             record.Record_txt(record.record_file_name, '\nusage so far: ' + str(gpt_usage(args.backend)) + '\n\n', idx = i)
         end_time = time.time()
         print(end_time - start_time)
         total_cost_time += end_time - start_time
         if args.algorithm == 'whole_tree':
-            record.Record_txt(record.record_file_name, '\nbfs_ys = ' + str(bfs_ys) + '\ndfs_ys = ' + str(dfs_ys) + '\n\n', idx = i)
+            record.Record_txt(record.record_file_name, '\nbfs_ys = ' + str(bfs_ys) + '\ndfs+sd_ys = ' + str(dfs_ys) + '\ndfs+ksd_ys = ' + str(ksd_ys) + '\n\n', idx = i)
         else:
             record.Record_txt(record.record_file_name, '\nys = ' + str(ys) + '\n\n', idx = i)
         record.Record_txt(record.record_file_name, '\n-----task complete-----\n', idx = i)
@@ -77,26 +91,33 @@ def run(args):
         if args.algorithm == 'whole_tree':
             bfs_infos = [task.test_output(i, y) for y in bfs_ys]
             dfs_infos = [task.test_output(i, y) for y in dfs_ys]
-            info.update({'idx': i, 'traversal_nodes': traversal_nodes})
-            bfs_info.update({'idx': i, 'ys': bfs_ys, 'infos': bfs_infos, 'traversal_nodes': bfs_traversal_nodes, 'usage_so_far': gpt_usage(args.backend)}) # even
-            dfs_info.update({'idx': i, 'ys': dfs_ys, 'infos': dfs_infos, 'traversal_nodes': dfs_traversal_nodes, 'usage_so_far': gpt_usage(args.backend)}) # odd
-            record.Record_txt(record.record_file_name, '\nbfs_ys: ' + str(bfs_ys)  + ', infos: ' + str(bfs_infos) + '\ndfs_ys: ' + str(dfs_ys) + ', infos: ' + str(dfs_infos) + '\n\n', idx = i) 
+            ksd_infos = [task.test_output(i, y) for y in ksd_ys]
+            info.update({'idx': i, 'traversal_nodes': traversal_nodes}) # %4 1
+            bfs_info.update({'idx': i, 'ys': bfs_ys, 'infos': bfs_infos, 'traversal_nodes': bfs_traversal_nodes, 'cost time': bfs_cost_time, 'usage_so_far': gpt_usage(args.backend)}) # %4 2
+            dfs_info.update({'idx': i, 'ys': dfs_ys, 'infos': dfs_infos, 'traversal_nodes': dfs_traversal_nodes, 'cost time': dfs_cost_time, 'usage_so_far': gpt_usage(args.backend)}) # %4 3
+            ksd_info.update({'idx': i, 'ys': ksd_ys, 'infos': ksd_infos, 'traversal_nodes': ksd_traversal_nodes, 'cost time': ksd_cost_time, 'usage_so_far': gpt_usage(args.backend)}) # %4 0
+            record.Record_txt(record.record_file_name, '\nbfs_ys: ' + str(bfs_ys)  + ', infos: ' + str(bfs_infos) + '\ndfs+sd_ys: ' + str(dfs_ys) + ', infos: ' + str(dfs_infos) + '\ndfs+ksd_ys: ' + str(ksd_ys) + ', infos: ' + str(ksd_infos) + '\n\n', idx = i) 
             record.Record_txt(record.record_file_name, '\ncost time: ' + str(end_time - start_time) + '\n\n', idx = i)
-            record.Record_txt(record.acc_file_name, str(i) + '\n\b bfs_ys: ' + str(bfs_ys[0])  + ', acc: ' + str(bfs_infos[0]) + ', traversal nodes: ' + str(bfs_traversal_nodes) + '\n\n')
-            record.Record_txt(record.acc_file_name, '\b dfs_ys: ' + str(dfs_ys[0])  + ', acc: ' + str(dfs_infos[0]) + ', traversal nodes: ' + str(dfs_traversal_nodes) + '\n\n')
+            record.Record_txt(record.acc_file_name, str(i) + '\n\b bfs_ys: ' + str(bfs_ys[0])  + ', acc: ' + str(bfs_infos[0]) + ', traversal nodes: ' + str(bfs_traversal_nodes) + ', cost time: ' + str(bfs_cost_time) + '\n\n')
+            record.Record_txt(record.acc_file_name, '\b dfs+sd_ys: ' + str(dfs_ys[0])  + ', acc: ' + str(dfs_infos[0]) + ', traversal nodes: ' + str(dfs_traversal_nodes) + ', cost time: ' + str(dfs_cost_time) + '\n\n')
+            record.Record_txt(record.acc_file_name, '\b dfs+ksd_ys: ' + str(ksd_ys[0])  + ', acc: ' + str(ksd_infos[0]) + ', traversal nodes: ' + str(ksd_traversal_nodes) + 'cost time: ' + str(ksd_cost_time) + '\n\n')
             logs.append(info)
             logs.append(bfs_info)
             logs.append(dfs_info)
+            logs.append(ksd_info)
             with open(file, 'w') as f:
                 json.dump(logs, f, indent=4)
 
             # log main metric
             bfs_accs = [info['r'] for info in bfs_infos]
             dfs_accs = [info['r'] for info in dfs_infos]
+            ksd_accs = [info['r'] for info in ksd_infos]
             bfs_cnt_avg += sum(bfs_accs) / len(bfs_accs)
             print(i, 'bfs: sum(accs)', sum(bfs_accs), 'cnt_avg', bfs_cnt_avg, '\n')
             dfs_cnt_avg += sum(dfs_accs) / len(dfs_accs)
             print(i, 'dfs: sum(accs)', sum(dfs_accs), 'cnt_avg', dfs_cnt_avg, '\n')
+            ksd_cnt_avg += sum(ksd_accs) / len(ksd_accs)
+            print(i, 'ksd: sum(accs)', sum(ksd_accs), 'cnt_avg', ksd_cnt_avg, '\n')
         else:
             infos = [task.test_output(i, y) for y in ys]
             info.update({'idx': i, 'x': task.get_input(i), 'ys': ys, 'infos': infos, 'traversal_nodes': traversal_nodes, 'usage_so_far': gpt_usage(args.backend)})
@@ -117,7 +138,8 @@ def run(args):
     if args.algorithm == 'whole_tree':
         print(bfs_cnt_avg / n, dfs_cnt_avg / n)
         record.Record_txt(record.acc_file_name, '\nbfs: acc: ' + str(bfs_cnt_avg) + ', acc avg: ' + str(bfs_cnt_avg / n))
-        record.Record_txt(record.acc_file_name, '\ndfs: acc: ' + str(bfs_cnt_avg) + ', acc avg: ' + str(dfs_cnt_avg / n) + '\ntotal cost time: ' + str(total_cost_time) + '\nusage: ' + str(gpt_usage(args.backend)) + '\n')
+        record.Record_txt(record.acc_file_name, '\ndfs+sd: acc: ' + str(dfs_cnt_avg) + ', acc avg: ' + str(dfs_cnt_avg / n))
+        record.Record_txt(record.acc_file_name, '\ndfs+ksd: acc: ' + str(ksd_cnt_avg) + ', acc avg: ' + str(ksd_cnt_avg / n) + '\ntotal cost time: ' + str(total_cost_time) + '\nusage: ' + str(gpt_usage(args.backend)) + '\n')
     else:
         print(cnt_avg / n, cnt_any / n)
         record.Record_txt(record.acc_file_name, '\nacc: ' + str(cnt_avg) + ', acc avg: ' + str(cnt_avg / n) + '\ntotal cost time: ' + str(total_cost_time) + '\nusage: ' + str(gpt_usage(args.backend)) + '\n')
