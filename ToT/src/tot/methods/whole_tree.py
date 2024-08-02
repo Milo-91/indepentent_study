@@ -16,6 +16,7 @@ def get_value(task, x, y, n_evaluate_sample, cache_value=True):
     if 'wrong answer' in y:
         return 0
     if cache_value and value_prompt in task.value_cache:
+        # record.Record_txt(record.record_file_name, '\n' + value_prompt + '\nuse cache\n\n', idx = index)
         return task.value_cache[value_prompt]
     value_outputs = gpt(value_prompt, n=n_evaluate_sample, stop=None, idx = index)
     value = task.value_outputs_unwrap(x, y, value_outputs)
@@ -35,9 +36,12 @@ def get_values(task, x, ys, n_evaluate_sample, cache_value=True):
         values.append(value)
     return values
 
-def get_proposals(task, x, y, k):
+def get_proposals(task, x, y, k, cache_propose = True):
     global index, gpt
     propose_prompt = task.propose_prompt_wrap(x, y, k)
+    if cache_propose and propose_prompt in task.propose_cache:
+        record.Record_txt(record.record_file_name, '\n' + propose_prompt + '\nuse cache\n\n', idx = index)
+        return task.propose_cache[propose_prompt], True
     # record.Record_txt(record.debug_file_name, '\npropose prompt: ' + propose_prompt + '\n\n', idx = index)
     
     # Final Generator use Gpt-4
@@ -50,7 +54,9 @@ def get_proposals(task, x, y, k):
             continue
         # record.Record_txt(record.record_file_name, '\nget current numbers: ' + get_current_numbers(y if y else x) + '\n\n', idx = index)
         proposals[i] = add_left(proposals[i], get_current_numbers(y if y else x))
-    return [y + _ + '\n' for _ in proposals]
+    if cache_propose:
+        task.propose_cache[propose_prompt] = [y + _ + '\n' for _ in proposals]
+    return [y + _ + '\n' for _ in proposals], False
 
 def add_left(response, input_string):
     pattern = r"(-?[0-9\.]+)[\s]*([\+\-\*\/])[\s]*(-?[0-9\.]+)[\s]*=[\s]*(-?[0-9\.]+)[\s]*"
@@ -112,7 +118,9 @@ def build(args, task, idx, graph = None):
             parent_id = y[0]
             # generator
             start_time = time.time()
-            new_ys = get_proposals(task, x, y[1], args.k)
+            new_ys, cached = get_proposals(task, x, y[1], args.k)
+            if cached:
+                task.cached_nodes_set.add(parent_id)
             print(new_ys)
             gpt = partial(gpt, model=args.backend, temperature=args.temperature)
             if step == task.steps - 1:

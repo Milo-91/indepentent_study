@@ -16,6 +16,7 @@ infos = []
 index = 0 # idx
 traversal_nodes = 0
 cost_time = 0
+reduced_time = 0
 max_steps = 0
 
 def get_value(task, x, y, n_evaluate_sample, cache_value=True):
@@ -97,7 +98,7 @@ def get_current_numbers(y: str) -> str:
 
 # x: question, y: (id, ans, value)
 def __dfs__(args, task, idx, x, y, graph, distance, t, to_print = True, sd = False, greedy = False, sorting = False, high_acc_mode = False):
-    global best_ans, best_path, path, d_thres, infos, gpt, traversal_nodes, cost_time
+    global best_ans, best_path, path, d_thres, infos, gpt, traversal_nodes, cost_time, reduced_time
     record.Record_txt(record.record_file_name, f'\n----------step {t}----------\n\n', idx = idx)
     record.Record_txt(record.record_file_name, '\ndistance: ' + str(distance) + '\n\n', idx = idx)
     # if achieving leaf node
@@ -175,7 +176,12 @@ def __dfs__(args, task, idx, x, y, graph, distance, t, to_print = True, sd = Fal
         __dfs__(args, task, idx, x, next_y, graph, distance, t + 1, to_print = True, sd = sd, greedy = True, sorting = sorting, high_acc_mode = high_acc_mode)
     else:
         print(parent, graph.nodes[parent])
-        cost_time += graph.nodes[parent]['cost time']
+        # if node is duplicate -> reduced_time
+        if parent not in task.cached_nodes_set:
+            cost_time += graph.nodes[parent]['cost time']
+        else:
+            reduced_time += graph.nodes[parent]['cost time']
+            record.Record_txt(record.record_file_name, '\nreduced id: ' + str(parent) + '\n', idx = idx)
         record.Record_txt(record.record_file_name, '\nparent: ' + str(parent) + '\nparent cost time' + str(graph.nodes[parent]['cost time']) + '\n\n', idx)
         input = graph.tree_head[parent]['next_node']
         while input['node'] != None:
@@ -206,7 +212,7 @@ def __dfs__(args, task, idx, x, y, graph, distance, t, to_print = True, sd = Fal
 
 # sd, greedy flag not using
 def dfs(args, task, idx, to_print = True, sd = False, sorting = False, high_acc_mode = False, graph = None):
-    global d_thres, gpt, best_ans, best_path, path, infos, index, traversal_nodes, max_steps, cost_time
+    global d_thres, gpt, best_ans, best_path, path, infos, index, traversal_nodes, max_steps, cost_time, reduced_time
     # reset global variables
     index = idx
     d_thres = 10000 # a large number
@@ -216,6 +222,7 @@ def dfs(args, task, idx, to_print = True, sd = False, sorting = False, high_acc_
     infos = []
     traversal_nodes = 0
     cost_time = 0
+    reduced_time = 0
     max_steps = 2 * (args.n_select_sample + 1) * args.k
     # initialize
     gpt = partial(gpt, model=args.backend, temperature=args.temperature)
@@ -240,4 +247,4 @@ def dfs(args, task, idx, to_print = True, sd = False, sorting = False, high_acc_
     if to_print:
         print(infos)
     draw.dfs_Draw(task, args, infos, graph, idx, best_path)
-    return [best_ans], {'steps': infos}, traversal_nodes, cost_time
+    return [best_ans], {'steps': infos}, traversal_nodes, cost_time, reduced_time

@@ -68,16 +68,17 @@ def run(args):
             ys, info, traversal_nodes, algo_cost_time = ksd(args, task, i)
         elif args.algorithm == 'whole_tree':
             graph = tree_graph.graph(k = args.k, b = args.n_select_sample, idx = i)
+            task.cached_nodes_set = set()
             ys, info, traversal_nodes = build(args, task, i, graph = graph)
             record.Record_txt(record.record_file_name, '\nusage so far: ' + str(gpt_usage(args.backend)) + '\n\n', idx = i)
             graph_copy = copy.copy(graph)
-            bfs_ys, bfs_info, bfs_traversal_nodes, bfs_cost_time = bfs(args, task, i, graph = graph_copy)
+            bfs_ys, bfs_info, bfs_traversal_nodes, bfs_cost_time, bfs_reduced_time = bfs(args, task, i, graph = graph_copy)
             record.Record_txt(record.record_file_name, '\nusage so far: ' + str(gpt_usage(args.backend)) + '\n\n', idx = i)
             graph_copy = copy.copy(graph)
-            dfs_ys, dfs_info, dfs_traversal_nodes, dfs_cost_time = dfs(args, task, i, sd = True, sorting = True, high_acc_mode = False, graph = graph_copy)
+            dfs_ys, dfs_info, dfs_traversal_nodes, dfs_cost_time, dfs_reduced_time = dfs(args, task, i, sd = True, sorting = True, high_acc_mode = False, graph = graph_copy)
             record.Record_txt(record.record_file_name, '\nusage so far: ' + str(gpt_usage(args.backend)) + '\n\n', idx = i)
             graph_copy = copy.copy(graph)
-            ksd_ys, ksd_info, ksd_traversal_nodes, ksd_cost_time = ksd(args, task, i, graph = graph_copy)
+            ksd_ys, ksd_info, ksd_traversal_nodes, ksd_cost_time, ksd_reduced_time = ksd(args, task, i, graph = graph_copy)
             record.Record_txt(record.record_file_name, '\nusage so far: ' + str(gpt_usage(args.backend)) + '\n\n', idx = i)
         end_time = time.time()
         print(end_time - start_time)
@@ -93,14 +94,15 @@ def run(args):
             dfs_infos = [task.test_output(i, y) for y in dfs_ys]
             ksd_infos = [task.test_output(i, y) for y in ksd_ys]
             info.update({'idx': i, 'traversal_nodes': traversal_nodes}) # %4 1
-            bfs_info.update({'idx': i, 'ys': bfs_ys, 'infos': bfs_infos, 'traversal_nodes': bfs_traversal_nodes, 'cost time': bfs_cost_time, 'usage_so_far': gpt_usage(args.backend)}) # %4 2
-            dfs_info.update({'idx': i, 'ys': dfs_ys, 'infos': dfs_infos, 'traversal_nodes': dfs_traversal_nodes, 'cost time': dfs_cost_time, 'usage_so_far': gpt_usage(args.backend)}) # %4 3
-            ksd_info.update({'idx': i, 'ys': ksd_ys, 'infos': ksd_infos, 'traversal_nodes': ksd_traversal_nodes, 'cost time': ksd_cost_time, 'usage_so_far': gpt_usage(args.backend)}) # %4 0
+            bfs_info.update({'idx': i, 'ys': bfs_ys, 'infos': bfs_infos, 'traversal_nodes': bfs_traversal_nodes, 'cost time': bfs_cost_time, 'reduced time': bfs_reduced_time, 'usage_so_far': gpt_usage(args.backend)}) # %4 2
+            dfs_info.update({'idx': i, 'ys': dfs_ys, 'infos': dfs_infos, 'traversal_nodes': dfs_traversal_nodes, 'cost time': dfs_cost_time, 'reduced time': dfs_reduced_time, 'usage_so_far': gpt_usage(args.backend)}) # %4 3
+            ksd_info.update({'idx': i, 'ys': ksd_ys, 'infos': ksd_infos, 'traversal_nodes': ksd_traversal_nodes, 'cost time': ksd_cost_time, 'reduced time': ksd_reduced_time, 'usage_so_far': gpt_usage(args.backend)}) # %4 0
             record.Record_txt(record.record_file_name, '\nbfs_ys: ' + str(bfs_ys)  + ', infos: ' + str(bfs_infos) + '\ndfs+sd_ys: ' + str(dfs_ys) + ', infos: ' + str(dfs_infos) + '\ndfs+ksd_ys: ' + str(ksd_ys) + ', infos: ' + str(ksd_infos) + '\n\n', idx = i) 
             record.Record_txt(record.record_file_name, '\ncost time: ' + str(end_time - start_time) + '\n\n', idx = i)
             record.Record_txt(record.acc_file_name, str(i) + '\n\b bfs_ys: ' + str(bfs_ys[0])  + ', acc: ' + str(bfs_infos[0]) + ', traversal nodes: ' + str(bfs_traversal_nodes) + ', cost time: ' + str(bfs_cost_time) + '\n\n')
             record.Record_txt(record.acc_file_name, '\b dfs+sd_ys: ' + str(dfs_ys[0])  + ', acc: ' + str(dfs_infos[0]) + ', traversal nodes: ' + str(dfs_traversal_nodes) + ', cost time: ' + str(dfs_cost_time) + '\n\n')
-            record.Record_txt(record.acc_file_name, '\b dfs+ksd_ys: ' + str(ksd_ys[0])  + ', acc: ' + str(ksd_infos[0]) + ', traversal nodes: ' + str(ksd_traversal_nodes) + 'cost time: ' + str(ksd_cost_time) + '\n\n')
+            record.Record_txt(record.acc_file_name, '\b dfs+ksd_ys: ' + str(ksd_ys[0])  + ', acc: ' + str(ksd_infos[0]) + ', traversal nodes: ' + str(ksd_traversal_nodes) + ', cost time: ' + str(ksd_cost_time) + '\n\n')
+            record.Record_txt(record.acc_file_name, 'cached nodes set: ' + str(task.cached_nodes_set) + '\n\n')
             logs.append(info)
             logs.append(bfs_info)
             logs.append(dfs_info)

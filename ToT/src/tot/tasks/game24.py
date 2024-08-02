@@ -32,6 +32,8 @@ class Game24Task(Task):
         path = os.path.join(DATA_PATH, '24', file)
         self.data = list(pd.read_csv(path)['Puzzles'])
         self.value_cache = {}
+        self.propose_cache = {}
+        self.cached_nodes_set = set() # use to record duplicated nodes
         self.steps = 4
         self.stops = ['\n'] * 4
         self.id = 0

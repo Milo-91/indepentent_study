@@ -93,6 +93,7 @@ def bfs(args, task, idx, to_print=True, graph = None):
     global gpt, index
     index = idx
     cost_time = 0
+    reduced_time = 0
     gpt = partial(gpt, model=args.backend, temperature=args.temperature)
     print(gpt)
     x = task.get_input(idx)  # input
@@ -148,7 +149,12 @@ def bfs(args, task, idx, to_print=True, graph = None):
                 tuple_ys += new_list
                 distance_list.extend(distance)
                 print("already generated")
-                cost_time += parent_cost_time
+                # if node is duplicate -> reduced_time
+                if y[0] not in task.cached_nodes_set:
+                    cost_time += parent_cost_time
+                else:
+                    reduced_time += parent_cost_time
+                    record.Record_txt(record.record_file_name, '\nreduced time: ' + str(y[0]) + '\n', idx = idx)
                 record.Record_txt(record.record_file_name, '\nparent: ' + str(y[0]) + '\nparent cost time' + str(parent_cost_time) + '\n\n', idx)        
 
         print(tuple_ys)
@@ -185,4 +191,4 @@ def bfs(args, task, idx, to_print=True, graph = None):
     traversal_nodes = 0
     for step in infos:
         traversal_nodes += len(step['ys'])
-    return [answer], {'steps': infos}, traversal_nodes, cost_time
+    return [answer], {'steps': infos}, traversal_nodes, cost_time, reduced_time

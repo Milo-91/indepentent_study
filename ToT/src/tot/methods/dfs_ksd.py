@@ -110,6 +110,7 @@ def ksd(args, task, idx, to_print=True, graph=None):
     best_ans = ''
     best_id = 0
     cost_time = 0
+    reduced_time = 0
     cost_time_added_parent = set()
     level_nodes = [[] for _ in range(task.steps)]
     infos = []
@@ -172,7 +173,12 @@ def ksd(args, task, idx, to_print=True, graph=None):
                     else:                        
                         new_ys, _, parent_cost_time = graph.child_to_list(y[0])
                         if y[0] not in cost_time_added_parent:
-                            cost_time += parent_cost_time
+                            # if node is duplicate -> reduced_time
+                            if y[0] not in task.cached_nodes_set:
+                                cost_time += parent_cost_time
+                            else:
+                                reduced_time += parent_cost_time
+                                record.Record_txt(record.record_file_name, '\nreduced id: ' + str(y[0]) + '\n', idx = idx)
                             cost_time_added_parent.add(y[0])
                             record.Record_txt(record.record_file_name, '\nparent: ' + str(y[0]) + '\nparent cost time' + str(parent_cost_time) + '\n\n', idx)
                         print("already generated")
@@ -246,4 +252,4 @@ def ksd(args, task, idx, to_print=True, graph=None):
     if to_print:
         print(infos)
     draw.dfs_Draw(task, args, infos, graph, idx, best_path, file_name = 'ksd')
-    return [best_ans], {'steps': infos}, traversal_nodes, cost_time
+    return [best_ans], {'steps': infos}, traversal_nodes, cost_time, reduced_time
