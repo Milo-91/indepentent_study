@@ -233,6 +233,7 @@ def dfs(args, task, idx, to_print = True, sd = False, sorting = False, high_acc_
     if graph == None:
         graph = tree_graph.graph(k = args.k, b = args.n_select_sample, idx = idx)
     
+    record.Record_txt(record.record_file_name, '\n-----dfs+sd-----\n', idx)
     # Greedy to define d_thres
     # best_node, max_value = Greedy(llm, node, graph)
     print(f'd_thres: {d_thres}')

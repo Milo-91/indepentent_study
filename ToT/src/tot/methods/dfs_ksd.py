@@ -117,6 +117,7 @@ def ksd(args, task, idx, to_print=True, graph=None):
     if graph == None:
         graph = tree_graph.graph(k = args.k, b = args.n_select_sample, idx = idx)
     traversal_nodes = 0
+    record.Record_txt(record.record_file_name, '\n-----dfs+ksd-----\n', idx)
 
     # x: question, y: (id, ans, value)
     for b in range(args.n_select_sample):

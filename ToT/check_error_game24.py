@@ -12,7 +12,7 @@ from tot.tasks import get_task
 excel_file = 'analysis.xlsx'
 task_name = ['k8b5', 'k5b5', 'k5b3']
 table_name = ['theoretical' , 'actual', 'traversal nodes', 'cost time', 'no ans in tree', 'error cot', 'wrong path', 'reduced time']
-algorithm_name = ['bfs', 'dfs+sd', 'dfs+ksd']
+algorithm_name = ['bfs', 'dfs+sd', 'dfs+ksd', 'fsd']
 all_pos_table = {}
 
 def parse_args():
@@ -219,29 +219,34 @@ def run(args):
              data = json.load(file)
 
         if args.algorithm == 'whole_tree':
-            base = [data[i] for i in range(len(data)) if i % 4 == 0]
+            base = [data[i] for i in range(len(data)) if i % 5 == 0]
             print('\n'.join(map(str, base)))
 
-            bfs = [data[i] for i in range(len(data)) if i % 4 == 1]
+            bfs = [data[i] for i in range(len(data)) if i % 5 == 1]
             # print('\n'.join(map(str, bfs)))
 
-            dfs = [data[i] for i in range(len(data)) if i % 4 == 2]
+            dfs = [data[i] for i in range(len(data)) if i % 5 == 2]
             # print('\n'.join(map(str, dfs)))
 
-            ksd = [data[i] for i in range(len(data)) if i % 4 == 3]
+            ksd = [data[i] for i in range(len(data)) if i % 5 == 3]
             # print('\n'.join(map(str, ksd)))
+            
+            fsd = [data[i] for i in range(len(data)) if i % 5 == 4]
 
             bfs_traversal_nodes = sum([state['traversal_nodes'] for state in bfs]) / len(bfs)
             dfs_traversal_nodes = sum([state['traversal_nodes'] for state in dfs]) / len(dfs)
             ksd_traversal_nodes = sum([state['traversal_nodes'] for state in ksd]) / len(ksd)
+            fsd_traversal_nodes = sum([state['traversal_nodes'] for state in fsd]) / len(fsd)
 
             bfs_cost_time = sum([state['cost time'] for state in bfs]) / len(bfs)
             dfs_cost_time = sum([state['cost time'] for state in dfs]) / len(dfs)
             ksd_cost_time = sum([state['cost time'] for state in ksd]) / len(ksd)
+            fsd_cost_time = sum([state['cost time'] for state in fsd]) / len(fsd)
 
             bfs_reduced_time = sum([state['reduced time'] for state in bfs]) / len(bfs)
             dfs_reduced_time = sum([state['reduced time'] for state in dfs]) / len(dfs)
             ksd_reduced_time = sum([state['reduced time'] for state in ksd]) / len(ksd)
+            fsd_reduced_time = sum([state['reduced time'] for state in fsd]) / len(fsd)
 
             # error cot
             # bfs
@@ -253,6 +258,9 @@ def run(args):
             # dfs+ksd
             ksd_theoretical, ksd_actual, ksd_correct_list = error_cot(ksd, task)
             print(f'dfs+ksd (theoretical, actual): ({ksd_theoretical, ksd_actual})')
+            # fsd
+            fsd_theoretical, fsd_actual, fsd_correct_list = error_cot(fsd, task)
+            print(f'fsd (theoretical, actual): ({fsd_theoretical, fsd_actual})')
 
             # no ans in base
             has_ans_list, no_ans_count = no_ans_in_base(base)
@@ -278,17 +286,24 @@ def run(args):
             ksd_wrong_path_count, impossible = wrong_path(has_ans_list, ksd_correct_list, impossible)
             print('dfs+ksd wrong path count: ' + str(ksd_wrong_path_count))
             print('impossible: ' + str(impossible))
+            
+            # wrong path fsd
+            fsd_wrong_path_count, impossible = wrong_path(has_ans_list, fsd_correct_list, impossible)
+            print('fsd wrong path count: ' + str(fsd_wrong_path_count))
+            print('impossible: ' + str(impossible))
 
             # reduced time
             print(f'bfs reduced time: {bfs_reduced_time / (bfs_reduced_time + bfs_cost_time) * 100} %')
             print(f'dfs+sd reduced time: {dfs_reduced_time / (dfs_reduced_time + dfs_cost_time) * 100} %')
             print(f'dfs+ksd reduced time: {ksd_reduced_time / (ksd_reduced_time + ksd_cost_time) * 100} %')
+            print(f'fsd reduced time: {fsd_reduced_time / (fsd_reduced_time + fsd_cost_time) * 100} %')
  
             # output as excel file
             format_table(ws)
             append_data(ws, 'bfs', f'k{args.k}b{args.n_select_sample}', bfs_theoretical, bfs_actual, bfs_traversal_nodes, bfs_cost_time, no_ans_count, bfs_wrong_path_count, bfs_theoretical - bfs_actual, bfs_reduced_time / (bfs_reduced_time + bfs_cost_time) * 100)
             append_data(ws, 'dfs+sd', f'k{args.k}b{args.n_select_sample}', dfs_theoretical, dfs_actual, dfs_traversal_nodes, dfs_cost_time, no_ans_count, dfs_wrong_path_count, dfs_theoretical - dfs_actual, dfs_reduced_time / (dfs_reduced_time + dfs_cost_time) * 100)
             append_data(ws, 'dfs+ksd', f'k{args.k}b{args.n_select_sample}', ksd_theoretical, ksd_actual, ksd_traversal_nodes, ksd_cost_time, no_ans_count, ksd_wrong_path_count, ksd_theoretical - ksd_actual, ksd_reduced_time / (ksd_reduced_time + ksd_cost_time) * 100)
+            append_data(ws, 'fsd', f'k{args.k}b{args.n_select_sample}', fsd_theoretical, fsd_actual, fsd_traversal_nodes, fsd_cost_time, no_ans_count, fsd_wrong_path_count, fsd_theoretical - fsd_actual, fsd_reduced_time / (fsd_reduced_time + fsd_cost_time) * 100)
 
     wb.save(os.path.join(excel_path, excel_file))
     print('output as excel file')

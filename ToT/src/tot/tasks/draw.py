@@ -52,8 +52,11 @@ def dfs_Draw(task, args, infos, graph, idx, path, file_name=None):
         output_path = os.path.join(image_folder, f'{idx}_dfs')
     dot.render(output_path, view = False)
 
-def bfs_Draw(task, args, infos, graph, idx, path):
-    dot = graphviz.Digraph(comment = str(idx) + '_bfs', format = 'svg')
+def bfs_Draw(task, args, infos, graph, idx, path, file_name=None):
+    if file_name != None:
+        dot = graphviz.Digraph(comment = str(idx) + '_' + file_name, format = 'svg')
+    else:
+        dot = graphviz.Digraph(comment = str(idx) + '_bfs', format = 'svg')
     # json file
     best_nodes = set()
     steps = infos
@@ -80,7 +83,10 @@ def bfs_Draw(task, args, infos, graph, idx, path):
 
     if not os.path.exists(image_folder):
         os.makedirs(image_folder)
-    output_path = os.path.join(image_folder, f'{idx}_bfs')
+    if file_name != None:
+        output_path = output_path = os.path.join(image_folder, f'{idx}_{file_name}')
+    else:
+        output_path = os.path.join(image_folder, f'{idx}_bfs')
     dot.render(output_path, view = False)
 
 
