@@ -1,5 +1,8 @@
 import tot.record_functions as record
+import jsonpickle
+import json
 
+graph_json_file_name = 'logs/game24/record/graph_{idx}.json'
 
 class graph():
     # element {node: dict, prev node: dict, next node: dict}
@@ -19,6 +22,18 @@ class graph():
         new_instance.visited = self.visited.copy()
         
         return new_instance
+    
+    def __load_from_json__(self, file_path, idx):
+        with open(file_path, 'r') as file:
+            string = file.read()
+            print(string)
+        data = jsonpickle.decode(string)[idx]
+        print(data)
+        self.total_element = data['total_element']
+        self.tree_head = data['tree_head']
+        self.nodes = data['nodes']
+        self.visited = data['visited']
+        self.idx = data['idx']
 
     def reset_idx(self, idx):
         self.idx = idx

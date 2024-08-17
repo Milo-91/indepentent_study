@@ -6,6 +6,7 @@ import datetime
 import time
 import copy
 import sys
+import jsonpickle
 
 from tot.tasks import get_task
 from tot.tasks import draw
@@ -15,6 +16,7 @@ from tot.methods.bfs_2 import bfs
 from tot.methods.dfs_sd import dfs
 from tot.methods.dfs_ksd import ksd
 from tot.methods.fsd import fsd
+from tot.methods.fsd_2 import fsd_2
 from tot.methods.whole_tree import build
 from tot.models import gpt_usage
 
@@ -32,6 +34,7 @@ def run(args):
     ksd_cnt_avg = 0
     fsd_cnt_avg = 0
     total_cost_time = 0
+    graph_list = []
     folder_index = 0
     folder_name = f'./logs/{args.task}/{args.name_of_task}/k{args.k}b{args.n_select_sample}/{folder_index}'
     while os.path.exists(folder_name):
@@ -63,13 +66,19 @@ def run(args):
                 ys, info = naive_solve(args, task, i) 
             else:
                 # ys, info = solve(args, task, i)
-                ys, info, algo_cost_time = bfs(args, task, i)
+                ys, info, bfs_cost_time, bfs_reduced_time = bfs(args, task, i)
         elif args.algorithm == 'dfs+sd':
-            ys, info, traversal_nodes, algo_cost_time = dfs(args, task, i, sd = True, sorting = True, high_acc_mode = False)
+            ys, info, traversal_nodes, dfs_cost_time, dfs_reduced_time = dfs(args, task, i, sd = True, sorting = True, high_acc_mode = False)
         elif args.algorithm == 'dfs+ksd':
-            ys, info, traversal_nodes, algo_cost_time = ksd(args, task, i)
+            ys, info, traversal_nodes,  ksd_cost_time, ksd_reduced_time = ksd(args, task, i)
+        elif args.algorithm == 'fsd_2':
+            ys, info, traversal_nodes, fsd_cost_time, fsd_cost_time = fsd_2(args, task, i)
         elif args.algorithm == 'whole_tree':
             graph = tree_graph.graph(k = args.k, b = args.n_select_sample, idx = i)
+            if args.graph_json == True:
+                graph.__load_from_json__('graph.json', i - 900)
+                graph.show_in_linked_list()
+                graph.show_in_nodes()
             task.cached_nodes_set = set()
             ys, info, traversal_nodes = build(args, task, i, graph = graph)
             record.Record_txt(record.record_file_name, '\nusage so far: ' + str(gpt_usage(args.backend)) + '\n\n', idx = i)
@@ -85,6 +94,7 @@ def run(args):
             graph_copy = copy.copy(graph)
             fsd_ys, fsd_info, fsd_traversal_nodes, fsd_cost_time, fsd_reduced_time = fsd(args, task, i, graph = graph_copy)
             record.Record_txt(record.record_file_name, '\nusage so far: ' + str(gpt_usage(args.backend)) + '\n\n', idx = i)
+            graph_list.append({'total_element': graph.total_element, 'tree_head': graph.tree_head.copy(), 'nodes': graph.nodes.copy(), 'visited': graph.visited.copy(), 'idx': graph.idx})
         end_time = time.time()
         print(end_time - start_time)
         total_cost_time += end_time - start_time
@@ -118,7 +128,7 @@ def run(args):
             logs.append(fsd_info)
             with open(file, 'w') as f:
                 json.dump(logs, f, indent=4)
-
+    
             # log main metric
             bfs_accs = [info['r'] for info in bfs_infos]
             dfs_accs = [info['r'] for info in dfs_infos]
@@ -150,6 +160,11 @@ def run(args):
 
     n = args.task_end_index - args.task_start_index
     if args.algorithm == 'whole_tree':
+        # store graph to json
+        print(graph_list)
+        with open(os.path.join(folder_name,'graph.json'), 'w') as file:
+            file.write(jsonpickle.encode(graph_list))
+
         print(bfs_cnt_avg / n, dfs_cnt_avg / n)
         record.Record_txt(record.acc_file_name, '\nbfs: acc: ' + str(bfs_cnt_avg) + ', acc avg: ' + str(bfs_cnt_avg / n))
         record.Record_txt(record.acc_file_name, '\ndfs+sd: acc: ' + str(dfs_cnt_avg) + ', acc avg: ' + str(dfs_cnt_avg / n))
@@ -180,9 +195,10 @@ def parse_args():
     args.add_argument('--n_evaluate_sample', type=int, default=1)
     args.add_argument('--n_select_sample', type=int, default=1) # b
     args.add_argument('--k', type = int, default = 1) # k
-    args.add_argument('--algorithm', type=str, required=True, choices=['bfs', 'dfs+sd', 'dfs+ksd', 'whole_tree']) # (bfs, dfs+sd, dfs+ksd, whole_tree)
+    args.add_argument('--algorithm', type=str, required=True, choices=['bfs', 'dfs+sd', 'dfs+ksd', 'whole_tree', 'fsd_2']) # (bfs, dfs+sd, dfs+ksd, whole_tree, fsd_2)
     args.add_argument('--name_of_task', type=str, default='default')
-
+    args.add_argument('--graph_json', action='store_true')
+    
     args = args.parse_args()
     return args
 
