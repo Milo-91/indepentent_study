@@ -129,7 +129,7 @@ def run(args):
             record.Record_txt(record.acc_file_name, '\b dfs+ksd_ys: ' + str(ksd_ys[0])  + ', acc: ' + str(ksd_infos[0]) + ', traversal nodes: ' + str(ksd_traversal_nodes) + ', cost time: ' + str(ksd_cost_time) + '\n\n')
             record.Record_txt(record.acc_file_name, '\b fsd_ys: ' + str(fsd_ys[0])  + ', acc: ' + str(fsd_infos[0]) + ', traversal nodes: ' + str(fsd_traversal_nodes) + ', cost time: ' + str(fsd_cost_time) + '\n\n')
             record.Record_txt(record.acc_file_name, 'cached nodes set: ' + str(task.cached_nodes_set) + '\n\n')
-            record.Record_txt(record.acc_file_name, 'cached nodes set: ' + json.dumps(task.propose_cache) + '\n\n')
+            record.Record_txt(record.acc_file_name, 'propose cache:\n' + json.dumps(task.propose_cache, indent=4) + '\n\n')
             logs.append(info)
             logs.append(bfs_info)
             logs.append(dfs_info)
@@ -172,8 +172,8 @@ def run(args):
         # store graph to json
         print(graph_list)
         with open(os.path.join(folder_name,'graph.json'), 'w') as file:
-            # file.write(jsonpickle.encode(graph_list))
-            jsonpickle.dump(jsonpickle.encode(graph_list, file))
+            file.write(jsonpickle.encode(graph_list))
+            # json.dump(jsonpickle.encode(graph_list, make_refs=False), file, indent=4)
 
         print(bfs_cnt_avg / n, dfs_cnt_avg / n)
         record.Record_txt(record.acc_file_name, '\nbfs: acc: ' + str(bfs_cnt_avg) + ', acc avg: ' + str(bfs_cnt_avg / n))
