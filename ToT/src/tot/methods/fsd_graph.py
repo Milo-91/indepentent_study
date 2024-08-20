@@ -9,8 +9,8 @@ import re
 import time
 
 index = 0 # idx
-layer1_b = 8
-layer2_b = 2
+layer1_b = 7
+layer2_b = 3
 
 def get_value(task, x, y, n_evaluate_sample, cache_value=True):
     value_prompt = task.value_prompt_wrap(x, y)
@@ -93,11 +93,10 @@ def get_current_numbers(y: str) -> str:
     last_line = y.strip().split('\n')[-1]
     return ' ' + last_line.split('left: ')[-1].split(')')[0].strip() + ' '
 
-def fsd(args, task, idx, to_print=True, graph = None):
+def fsd_graph(args, task, idx, graph, to_print=True):
     global gpt, index
     index = idx
     cost_time = 0
-    reduced_time = 0
     gpt = partial(gpt, model=args.backend, temperature=args.temperature)
     print(gpt)
     x = task.get_input(idx)  # input
@@ -111,55 +110,16 @@ def fsd(args, task, idx, to_print=True, graph = None):
     graph.show_in_nodes()
 
     for step in range(task.steps - 1):
-        # Graph
+        # only work with graph & no cached_proposals
         tuple_ys = []
         for y in ys:
-            # if has not visited yet
-            if graph.tree_head[y[0]]['next_node']['node'] == None:
-                # generation
-                record.Record_txt(record.record_file_name, '\n-----Generator-----\n\n', idx)
-                new_ys = get_proposals(task, x, y[1], args.k)
-                gpt = partial(gpt, model=args.backend, temperature=args.temperature)
-                print(new_ys)
-                record.Record_txt(record.record_file_name, '\nnew_ys after itertools\n' + '\n'.join(list(map(str, new_ys.copy()))), idx)
-                
-                ids = [task.get_id() for _ in range(len(new_ys))]
-                record.Record_txt(record.record_file_name, '\n-----end Generator-----\n\n', idx)
-
-                # evaluation
-                record.Record_txt(record.record_file_name, '\n-----Evaluator-----\n\n', idx)
-                values = get_values(task, x, new_ys, args.n_evaluate_sample)
-                print(values)
-                record.Record_txt(record.record_file_name, '\nvalues:\n' + '\n'.join(list(map(str, values.copy()))) + '\n\n', idx)
-                record.Record_txt(record.record_file_name, '\n-----end Evaluator-----\n\n', idx)
-
-                new_ys = list(zip(ids, new_ys, values))
-                new_ys = sorted(new_ys, key  = lambda x: x[0])
-                tuple_ys += new_ys
-                new_nodes = list()
-                # append to graph
-                new_nodes = list()
-                for i in range(len(new_ys)):
-                    distance = task.distance_calculator(new_ys[i][2], distance_list[y[0]], args.n_evaluate_sample)
-                    distance_list.append(distance)
-                    node = {'id': new_ys[i][0], 'answer': new_ys[i][1], 'value': new_ys[i][2], 'parent_node': y[0], 'ancestor_distance': distance_list[y[0]]}
-                    new_nodes.append(node)
-                graph.add_head_list_len(task.id)
-                print('id: ' + str(task.id))
-                new_nodes = sorted(new_nodes, key  = lambda x: task.distance_calculator(x['value'], x['ancestor_distance'], args.n_evaluate_sample))
-                graph.add_nodes(new_nodes)
-            else:
-                new_list, distance, parent_cost_time = graph.child_to_list(y[0])
-                tuple_ys += new_list
-                distance_list.extend(distance)
-                print("already generated")
-                # if node is duplicate -> reduced_time
-                if y[0] not in task.cached_nodes_set:
-                    cost_time += parent_cost_time
-                else:
-                    reduced_time += parent_cost_time
-                    record.Record_txt(record.record_file_name, '\nreduced time: ' + str(y[0]) + '\n', idx = idx)
-                record.Record_txt(record.record_file_name, '\nparent: ' + str(y[0]) + '\nparent cost time' + str(parent_cost_time) + '\n\n', idx)        
+            new_list, distance, parent_cost_time = graph.child_to_list(y[0]) 
+            tuple_ys += new_list
+            distance_list.extend(distance)
+            print("already generated")
+            cost_time += parent_cost_time
+            record.Record_txt(record.record_file_name, '\nparent: ' + str(y[0]) + '\nparent cost time: ' + str(parent_cost_time) + '\n\n', idx)
+            record.Record_txt(record.record_file_name, '\nnew_list: ' + str(new_list) + '\ndistance: ' + str(distance) + '\n', idx)
 
         print(tuple_ys)
 
@@ -180,8 +140,9 @@ def fsd(args, task, idx, to_print=True, graph = None):
     graph.show_in_nodes()
     
     # final generation
+    print('final genreation')
     start_time = time.time()
-    new_ys = [get_proposals(task, x, ys[0][1], args.k)]
+    new_ys = [get_proposals(task, x, ys[0][1], args.k)] # only choose the best y in ys
     gpt = partial(gpt, model=args.backend, temperature=args.temperature)
     new_ys = list(itertools.chain(*new_ys))
     ids = list(range(len(new_ys)))
@@ -200,4 +161,4 @@ def fsd(args, task, idx, to_print=True, graph = None):
     traversal_nodes = 0
     for step in infos:
         traversal_nodes += len(step['ys'])
-    return [answer], {'steps': infos}, traversal_nodes, cost_time, reduced_time
+    return [answer], {'steps': infos}, traversal_nodes, cost_time, 0

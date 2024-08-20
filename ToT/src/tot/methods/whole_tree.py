@@ -36,11 +36,11 @@ def get_values(task, x, ys, n_evaluate_sample, cache_value=True):
         values.append(value)
     return values
 
-def get_proposals(task, x, y, k, cache_propose = True):
+def get_proposals(task, x, y, k, cache_propose = False):
     global index, gpt
     propose_prompt = task.propose_prompt_wrap(x, y, k)
     if cache_propose and propose_prompt in task.propose_cache:
-        record.Record_txt(record.record_file_name, '\n' + propose_prompt + '\nuse cache\n\n', idx = index)
+        record.Record_txt(record.record_file_name, '\n' + propose_prompt + '\nuse cache\n\n' + task.propose_cache[propose_prompt] + '\n', idx = index)
         return task.propose_cache[propose_prompt], True
     # record.Record_txt(record.debug_file_name, '\npropose prompt: ' + propose_prompt + '\n\n', idx = index)
     
@@ -54,8 +54,8 @@ def get_proposals(task, x, y, k, cache_propose = True):
             continue
         # record.Record_txt(record.record_file_name, '\nget current numbers: ' + get_current_numbers(y if y else x) + '\n\n', idx = index)
         proposals[i] = add_left(proposals[i], get_current_numbers(y if y else x))
-    if cache_propose:
-        task.propose_cache[propose_prompt] = [y + _ + '\n' for _ in proposals]
+    task.propose_cache[propose_prompt] = [y + _ + '\n' for _ in proposals]
+    record.Record_txt(record.debug_file_name, '\npropose prompt: ' + propose_prompt + '\n\n', idx = index)
     return [y + _ + '\n' for _ in proposals], False
 
 def add_left(response, input_string):
@@ -121,6 +121,7 @@ def build(args, task, idx, graph = None):
             if graph.tree_head[y[0]]['next_node']['node'] == None:
                 # generator
                 start_time = time.time()
+                record.Record_txt(record.record_file_name, '\nnode: ' + str(y[0]) + '\n\n', idx = index)
                 new_ys, cached = get_proposals(task, x, y[1], args.k)
                 if cached:
                     task.cached_nodes_set.add(parent_id)
@@ -139,6 +140,7 @@ def build(args, task, idx, graph = None):
                 end_time = time.time()
                 cost_time_list.append(end_time - start_time)
 
+                record.Record_txt(record.record_file_name, '\n' + str(new_ys) + '\n\n', idx = index)
                 tuple_ys += new_ys
                 # append to graph
                 new_nodes = list()

@@ -17,6 +17,7 @@ from tot.methods.dfs_sd import dfs
 from tot.methods.dfs_ksd import ksd
 from tot.methods.fsd import fsd
 from tot.methods.fsd_2 import fsd_2
+from tot.methods.fsd_graph import fsd_graph
 from tot.methods.whole_tree import build
 from tot.models import gpt_usage
 
@@ -72,13 +73,20 @@ def run(args):
         elif args.algorithm == 'dfs+ksd':
             ys, info, traversal_nodes,  ksd_cost_time, ksd_reduced_time = ksd(args, task, i)
         elif args.algorithm == 'fsd_2':
-            ys, info, traversal_nodes, fsd_cost_time, fsd_cost_time = fsd_2(args, task, i)
+            ys, info, traversal_nodes, fsd_cost_time, fsd_reduced_time = fsd_2(args, task, i)
+        elif args.algorithm == 'fsd_graph':
+            graph = tree_graph.graph(k = args.k, b = args.n_select_sample, idx = i)
+            graph.__load_from_json__('graph.json', i - 900)
+            graph.show_in_linked_list()
+            graph.show_in_nodes()
+            ys, info, traversal_nodes, fsd_cost_time, _ = fsd_graph(args, task, i, graph=graph)
+            total_cost_time += fsd_cost_time
         elif args.algorithm == 'whole_tree':
             graph = tree_graph.graph(k = args.k, b = args.n_select_sample, idx = i)
             if args.graph_json == True:
                 graph.__load_from_json__('graph.json', i - 900)
-                graph.show_in_linked_list()
-                graph.show_in_nodes()
+                # graph.show_in_linked_list()
+                # graph.show_in_nodes()
             task.cached_nodes_set = set()
             ys, info, traversal_nodes = build(args, task, i, graph = graph)
             record.Record_txt(record.record_file_name, '\nusage so far: ' + str(gpt_usage(args.backend)) + '\n\n', idx = i)
@@ -121,6 +129,7 @@ def run(args):
             record.Record_txt(record.acc_file_name, '\b dfs+ksd_ys: ' + str(ksd_ys[0])  + ', acc: ' + str(ksd_infos[0]) + ', traversal nodes: ' + str(ksd_traversal_nodes) + ', cost time: ' + str(ksd_cost_time) + '\n\n')
             record.Record_txt(record.acc_file_name, '\b fsd_ys: ' + str(fsd_ys[0])  + ', acc: ' + str(fsd_infos[0]) + ', traversal nodes: ' + str(fsd_traversal_nodes) + ', cost time: ' + str(fsd_cost_time) + '\n\n')
             record.Record_txt(record.acc_file_name, 'cached nodes set: ' + str(task.cached_nodes_set) + '\n\n')
+            record.Record_txt(record.acc_file_name, 'cached nodes set: ' + json.dumps(task.propose_cache) + '\n\n')
             logs.append(info)
             logs.append(bfs_info)
             logs.append(dfs_info)
@@ -163,7 +172,8 @@ def run(args):
         # store graph to json
         print(graph_list)
         with open(os.path.join(folder_name,'graph.json'), 'w') as file:
-            file.write(jsonpickle.encode(graph_list))
+            # file.write(jsonpickle.encode(graph_list))
+            jsonpickle.dump(jsonpickle.encode(graph_list, file))
 
         print(bfs_cnt_avg / n, dfs_cnt_avg / n)
         record.Record_txt(record.acc_file_name, '\nbfs: acc: ' + str(bfs_cnt_avg) + ', acc avg: ' + str(bfs_cnt_avg / n))
@@ -195,7 +205,7 @@ def parse_args():
     args.add_argument('--n_evaluate_sample', type=int, default=1)
     args.add_argument('--n_select_sample', type=int, default=1) # b
     args.add_argument('--k', type = int, default = 1) # k
-    args.add_argument('--algorithm', type=str, required=True, choices=['bfs', 'dfs+sd', 'dfs+ksd', 'whole_tree', 'fsd_2']) # (bfs, dfs+sd, dfs+ksd, whole_tree, fsd_2)
+    args.add_argument('--algorithm', type=str, required=True, choices=['bfs', 'dfs+sd', 'dfs+ksd', 'whole_tree', 'fsd_2', 'fsd_graph']) # (bfs, dfs+sd, dfs+ksd, whole_tree, fsd_2)
     args.add_argument('--name_of_task', type=str, default='default')
     args.add_argument('--graph_json', action='store_true')
     
