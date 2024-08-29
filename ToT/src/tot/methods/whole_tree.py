@@ -48,6 +48,8 @@ def get_proposals(task, x, y, k, cache_propose = False):
     if 'Answer' in propose_prompt:
         gpt = partial(gpt, model='gpt-4')
     proposals = gpt(propose_prompt, n=1, stop=None, idx = index)[0].split('\n')
+    # state filter
+    proposals = state_filter(proposals)
     # add left
     for i in range(len(proposals)):
         if 'answer' in proposals[i].lower():
@@ -57,6 +59,38 @@ def get_proposals(task, x, y, k, cache_propose = False):
     task.propose_cache[propose_prompt] = [y + _ + '\n' for _ in proposals]
     record.Record_txt(record.debug_file_name, '\npropose prompt: ' + propose_prompt + '\n\n', idx = index)
     return [y + _ + '\n' for _ in proposals], False
+
+def state_filter(input):
+    cache = []
+    proposals = []
+    for item in input:
+        if 'answer' in item.lower():
+            continue
+        pattern = r"(-?[0-9\.]+)[\s]*([\+\-\*\/])[\s]*(-?[0-9\.]+)[\s]*=[\s]*(-?[0-9\.]+)[\s]*"
+        match = re.match(pattern, item)
+        if match:
+            if match.group(2) == '+' or match.group(2) == '*':
+                if float(match.group(1)) <= float(match.group(3)):
+                    if f'{match.group(1)} {match.group(2)} {match.group(3)}' not in cache:
+                        cache.append(f'{match.group(1)} {match.group(2)} {match.group(3)}')
+                        proposals.append(item)
+                    else:
+                        record.Record_txt(record.record_file_name, '\nfiltered: ' + str(item) + '\n\n', idx = index)
+                else:
+                    if f'{match.group(3)} {match.group(2)} {match.group(1)}' not in cache:
+                        cache.append(f'{match.group(3)} {match.group(2)} {match.group(1)}')
+                        proposals.append(item)
+                    else:
+                        record.Record_txt(record.record_file_name, '\nfiltered: ' + str(item) + '\n\n', idx = index)
+            else:
+                if f'{match.group(1)} {match.group(2)} {match.group(3)}' not in cache:
+                    cache.append(f'{match.group(1)} {match.group(2)} {match.group(3)}')
+                    proposals.append(item)
+                else:
+                    record.Record_txt(record.record_file_name, '\nfiltered: ' + str(item) + '\n\n', idx = index)
+    record.Record_txt(record.record_file_name, '\ngeneration filter:\n' + '\n'.join(list(map(str, cache.copy()))) + '\n\n', idx = index)
+    return proposals
+            
 
 def add_left(response, input_string):
     pattern = r"(-?[0-9\.]+)[\s]*([\+\-\*\/])[\s]*(-?[0-9\.]+)[\s]*=[\s]*(-?[0-9\.]+)[\s]*"
@@ -108,6 +142,7 @@ def build(args, task, idx, graph = None):
     root_node = {'id': 0, 'answer': None, 'value': None, 'parent_node': None, 'ancestor_distance': 0, 'cost time': 0}
     graph.add_nodes([root_node])
     distance_list = [0]
+    nodes_avg_time_per_layer = [0, 0, 0] # record nodes avg cost time at each layer
 
     for step in range(task.steps - 1):
     # for step in range(1):
@@ -169,6 +204,8 @@ def build(args, task, idx, graph = None):
                 for element in new_list:
                     infos_ys.append(element + (parent_id,))
                     
+        nodes_avg_time_per_layer[step] = sum(cost_time_list) / len(cost_time_list)
+                    
         # use one variable to detected generated or not (warning: if there are some nodes generated and some are not, there may be an error)
         if generated == 0:
             graph.add_cost_time_in_parent_nodes(ys, cost_time_list)
@@ -180,4 +217,4 @@ def build(args, task, idx, graph = None):
     graph.show_in_linked_list()
     graph.show_in_nodes()
     draw.simple_draw(task, args, graph, idx)
-    return 'no answer', {'steps': infos}, task.id
+    return 'no answer', {'steps': infos}, task.id, nodes_avg_time_per_layer

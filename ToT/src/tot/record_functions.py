@@ -7,6 +7,7 @@ tree_json_file_name = '{file_path}/tree_game24_{idx}.json'
 all_json_file_name = '{file_path}/all_tree_game24.json'
 acc_file_name = '{file_path}/acc_info_game24.txt'
 debug_file_name = '{file_path}/debug_info_{idx}.txt'
+propose_cache_file = '{file_path}/propose_cache_{idx}.txt'
 
 def Init_folder_path(folder_path):
      global record_files_folder

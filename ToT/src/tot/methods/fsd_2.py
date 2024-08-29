@@ -10,7 +10,8 @@ import time
 
 index = 0 # idx
 
-layers_k = [8, 5, 1]
+layers_k = [12, 6, 4]
+layers_b = [7, 4, 1]
 
 def get_value(task, x, y, n_evaluate_sample, cache_value=True):
     value_prompt = task.value_prompt_wrap(x, y)
@@ -163,10 +164,10 @@ def fsd_2(args, task, idx, to_print=True, graph = None):
         print(tuple_ys)
 
         # selection
-        selected_ys = sorted(tuple_ys, key=lambda x: task.distance_calculator(x[2], graph.nodes[x[0]]['ancestor_distance'], args.n_evaluate_sample))
+        selected_ys = sorted(tuple_ys, key=lambda x: task.distance_calculator(x[2], graph.nodes[x[0]]['ancestor_distance'], args.n_evaluate_sample))[:layers_b[step]]
         print(selected_ys)
         record.Record_txt(record.record_file_name, '\nselected nodes:\n' + '\n'.join(list(map(str, selected_ys.copy()))) + '\n' + '\n\n', idx)
-
+        
         infos.append({'step': step, 'ys': tuple_ys, 'select_new_ys': selected_ys})
         ys = selected_ys
     

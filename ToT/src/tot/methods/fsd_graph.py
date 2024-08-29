@@ -9,8 +9,6 @@ import re
 import time
 
 index = 0 # idx
-layer1_b = 7
-layer2_b = 3
 
 def get_value(task, x, y, n_evaluate_sample, cache_value=True):
     value_prompt = task.value_prompt_wrap(x, y)
@@ -93,7 +91,7 @@ def get_current_numbers(y: str) -> str:
     last_line = y.strip().split('\n')[-1]
     return ' ' + last_line.split('left: ')[-1].split(')')[0].strip() + ' '
 
-def fsd_graph(args, task, idx, graph, to_print=True):
+def fsd_graph(args, task, idx, graph, to_print=True, layer1_b = 8, layer2_b = 2):
     global gpt, index
     index = idx
     cost_time = 0
