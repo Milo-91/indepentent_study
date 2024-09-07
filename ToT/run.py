@@ -86,6 +86,8 @@ def run(args):
             graph.show_in_nodes()
             ys, info, traversal_nodes, fsd_cost_time, _ = fsd_graph(args, task, i, graph=graph, layer1_b=6, layer2_b=4)
             total_cost_time += fsd_cost_time
+        elif args.algorithm == 'no_algorithm':
+            ys, info, traversal_nodes, nodes_avg_time_per_layer_temp = build(args, task, i, layers_k = [12, 6, 4])
         elif args.algorithm == 'whole_tree':
             graph = tree_graph.graph(k = args.k, b = args.n_select_sample, idx = i)
             if args.graph_json == True:
@@ -106,7 +108,7 @@ def run(args):
             ksd_ys, ksd_info, ksd_traversal_nodes, ksd_cost_time, ksd_reduced_time = ksd(args, task, i, graph = graph_copy)
             record.Record_txt(record.record_file_name, '\nusage so far: ' + str(gpt_usage(args.backend)) + '\n\n', idx = i)
             graph_copy = copy.copy(graph)
-            fsd_ys, fsd_info, fsd_traversal_nodes, fsd_cost_time, fsd_reduced_time = fsd(args, task, i, graph = graph_copy)
+            fsd_ys, fsd_info, fsd_traversal_nodes, fsd_cost_time, fsd_reduced_time = fsd(args, task, i, graph = graph_copy, layer1_b=6, layer2_b=3)
             record.Record_txt(record.record_file_name, '\nusage so far: ' + str(gpt_usage(args.backend)) + '\n\n', idx = i)
             graph_copy = copy.copy(graph)
             fsd73_ys, fsd73_info, fsd73_traversal_nodes, fsd73_cost_time, fsd73_reduced_time = fsd(args, task, i, graph=graph_copy, layer1_b=7, layer2_b=3)
@@ -235,7 +237,7 @@ def parse_args():
     args.add_argument('--n_evaluate_sample', type=int, default=1)
     args.add_argument('--n_select_sample', type=int, default=1) # b
     args.add_argument('--k', type = int, default = 1) # k
-    args.add_argument('--algorithm', type=str, required=True, choices=['bfs', 'dfs+sd', 'dfs+ksd', 'whole_tree', 'fsd_2', 'fsd_graph']) # (bfs, dfs+sd, dfs+ksd, whole_tree, fsd_2)
+    args.add_argument('--algorithm', type=str, required=True, choices=['bfs', 'dfs+sd', 'dfs+ksd', 'whole_tree', 'fsd_2', 'fsd_graph', 'no_algorithm']) # (bfs, dfs+sd, dfs+ksd, whole_tree, fsd_2)
     args.add_argument('--name_of_task', type=str, default='default')
     args.add_argument('--graph_json', action='store_true')
     

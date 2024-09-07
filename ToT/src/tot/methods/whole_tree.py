@@ -56,6 +56,7 @@ def get_proposals(task, x, y, k, cache_propose = False):
             continue
         # record.Record_txt(record.record_file_name, '\nget current numbers: ' + get_current_numbers(y if y else x) + '\n\n', idx = index)
         proposals[i] = add_left(proposals[i], get_current_numbers(y if y else x))
+    proposals = list(filter(lambda x: x != 'wrong answer', proposals))
     task.propose_cache[propose_prompt] = [y + _ + '\n' for _ in proposals]
     record.Record_txt(record.debug_file_name, '\npropose prompt: ' + propose_prompt + '\n\n', idx = index)
     return [y + _ + '\n' for _ in proposals], False
@@ -70,18 +71,11 @@ def state_filter(input):
         match = re.match(pattern, item)
         if match:
             if match.group(2) == '+' or match.group(2) == '*':
-                if float(match.group(1)) <= float(match.group(3)):
-                    if f'{match.group(1)} {match.group(2)} {match.group(3)}' not in cache:
-                        cache.append(f'{match.group(1)} {match.group(2)} {match.group(3)}')
-                        proposals.append(item)
-                    else:
-                        record.Record_txt(record.record_file_name, '\nfiltered: ' + str(item) + '\n\n', idx = index)
+                if f'{match.group(1)} {match.group(2)} {match.group(3)}' not in cache and f'{match.group(3)} {match.group(2)} {match.group(1)}' not in cache:
+                    cache.append(f'{match.group(1)} {match.group(2)} {match.group(3)}')
+                    proposals.append(item)
                 else:
-                    if f'{match.group(3)} {match.group(2)} {match.group(1)}' not in cache:
-                        cache.append(f'{match.group(3)} {match.group(2)} {match.group(1)}')
-                        proposals.append(item)
-                    else:
-                        record.Record_txt(record.record_file_name, '\nfiltered: ' + str(item) + '\n\n', idx = index)
+                    record.Record_txt(record.record_file_name, '\nfiltered: ' + str(item) + '\n\n', idx = index)
             else:
                 if f'{match.group(1)} {match.group(2)} {match.group(3)}' not in cache:
                     cache.append(f'{match.group(1)} {match.group(2)} {match.group(3)}')
@@ -129,7 +123,7 @@ def get_current_numbers(y: str) -> str:
     last_line = y.strip().split('\n')[-1]
     return ' ' + last_line.split('left: ')[-1].split(')')[0].strip() + ' '
 
-def build(args, task, idx, graph = None):
+def build(args, task, idx, graph = None, layers_k=[8, 8, 8]):
     global gpt, index
     gpt = partial(gpt, model=args.backend, temperature=args.temperature)
     print(gpt)
@@ -157,7 +151,7 @@ def build(args, task, idx, graph = None):
                 # generator
                 start_time = time.time()
                 record.Record_txt(record.record_file_name, '\nnode: ' + str(y[0]) + '\n\n', idx = index)
-                new_ys, cached = get_proposals(task, x, y[1], args.k)
+                new_ys, cached = get_proposals(task, x, y[1], layers_k[step])
                 if cached:
                     task.cached_nodes_set.add(parent_id)
                 print(new_ys)

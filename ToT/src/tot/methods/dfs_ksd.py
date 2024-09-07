@@ -185,7 +185,8 @@ def ksd(args, task, idx, to_print=True, graph=None):
                         print("already generated")
                     
                     # Put outputs into level_nodes
-                    traversal_nodes = add_level_nodes(level_nodes[step], new_ys.copy(), traversal_nodes)
+                    if new_ys:
+                        traversal_nodes = add_level_nodes(level_nodes[step], new_ys.copy(), traversal_nodes)
                     print(parent)
                     level_nodes[step] = sorted(level_nodes[step], key = lambda x: task.distance_calculator(x[2], graph.nodes[x[0]]['ancestor_distance'], args.n_evaluate_sample))
                     record.Record_txt(record.record_file_name, '\nancestor distance:\n' + str([graph.nodes[x[0]]['ancestor_distance'] for x in level_nodes[step]]) + '\n\n', idx = idx)
