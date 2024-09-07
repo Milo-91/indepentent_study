@@ -7,8 +7,10 @@ import tot.tasks.tree_graph as tree_graph
 import tot.tasks.draw as draw
 import re
 import time
+import sympy
 
 index = 0 # idx
+associative_cache = []
 
 def get_value(task, x, y, n_evaluate_sample, cache_value=True):
     value_prompt = task.value_prompt_wrap(x, y)
@@ -60,6 +62,50 @@ def get_proposals(task, x, y, k, cache_propose = False):
     task.propose_cache[propose_prompt] = [y + _ + '\n' for _ in proposals]
     record.Record_txt(record.debug_file_name, '\npropose prompt: ' + propose_prompt + '\n\n', idx = index)
     return [y + _ + '\n' for _ in proposals], False
+
+def Associative_filter(x, y):
+    x_copy = x
+    left = None
+    x_left = '( left: ' + x + ' )'
+    print(x_left)
+    path = list(filter(None, y.split('\n')))[::-1]
+    path.append(x_left)
+    print(path)
+    # use '\n' to judge layer of y
+    for i in range(y.count('\n')):
+        match = re.search(r'(.+)[\s]*=[\s]*(-?[\d.]+)[\s]*\( left:(.+)\)', path[i])
+        if match:
+            x = ' ( ' + match.group(1).strip() + ' ) ' # not replace ' ' to '' (negative numbers problem)
+            y = match.group(2)
+            y = ' ' + y + ' '
+            print(x, y)
+            if left == None:
+                left = match.group(3)
+                delete_element = list(re.findall(r'-?[\d.]+', left.replace(y, ' ', 1)))
+                print('delete element: ' + str(delete_element))
+                for element in delete_element:
+                    left = left.replace(' ' + element + ' ', ' ', 1)
+        else:
+            print("cant match path format")
+            return None
+
+        left = left.replace(y, x, 1)
+        
+    print(left)
+    # for algebra
+    expr = number_to_algebra(x_copy, left)
+    return expr
+
+def number_to_algebra(x, path):
+    x_set = sorted(list(set(re.findall(r'-?\d+', x))), key = lambda x: int(x)) # sort to avoid number to replace algebra subscript
+    x_dict = {}
+    for i in range(len(x_set)):
+        x_dict.update({x_set[i]: f'x{int(x_set[0]) + i}'}) # x_set[0] + i to avoid number to replace algebra subscript
+    print(x_dict)
+    for element in x_dict:
+        path = path.replace(' ' + element + ' ', ' ' + x_dict[element] + ' ')
+    print(path)
+    return path
 
 def state_filter(input):
     cache = []
@@ -152,6 +198,21 @@ def build(args, task, idx, graph = None, layers_k=[8, 8, 8]):
                 start_time = time.time()
                 record.Record_txt(record.record_file_name, '\nnode: ' + str(y[0]) + '\n\n', idx = index)
                 new_ys, cached = get_proposals(task, x, y[1], layers_k[step])
+                # for associative property
+                for element in new_ys:
+                    remove = 0
+                    equation = Associative_filter(x, element)
+                    if equation != None:
+                        for eq in associative_cache:
+                            if sympy.expand(equation) == eq:
+                                new_ys.remove(element)
+                                remove = 1
+                                break
+                        if remove == 0:
+                            associative_cache.append(sympy.expand(Associative_filter(x, element)))
+                record.Record_txt(record.record_file_name, '\nassociative: ' + '\n'.join(list(map(str, associative_cache.copy()))) + '\ncount: ' + str(len(associative_cache)) + '\n\n', idx = index)
+                
+                # for proposal cache
                 if cached:
                     task.cached_nodes_set.add(parent_id)
                 print(new_ys)
