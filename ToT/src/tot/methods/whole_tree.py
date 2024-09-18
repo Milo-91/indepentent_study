@@ -170,7 +170,7 @@ def get_current_numbers(y: str) -> str:
     return ' ' + last_line.split('left: ')[-1].split(')')[0].strip() + ' '
 
 def build(args, task, idx, graph = None, layers_k=[8, 8, 8]):
-    global gpt, index
+    global gpt, index, associative_cache
     gpt = partial(gpt, model=args.backend, temperature=args.temperature)
     print(gpt)
     index = idx
@@ -183,6 +183,7 @@ def build(args, task, idx, graph = None, layers_k=[8, 8, 8]):
     graph.add_nodes([root_node])
     distance_list = [0]
     nodes_avg_time_per_layer = [0, 0, 0] # record nodes avg cost time at each layer
+    associative_cache = [] # initializing
 
     for step in range(task.steps - 1):
     # for step in range(1):
@@ -210,7 +211,7 @@ def build(args, task, idx, graph = None, layers_k=[8, 8, 8]):
                                 break
                         if remove == 0:
                             associative_cache.append(sympy.expand(Associative_filter(x, element)))
-                record.Record_txt(record.record_file_name, '\nassociative: ' + '\n'.join(list(map(str, associative_cache.copy()))) + '\ncount: ' + str(len(associative_cache)) + '\n\n', idx = index)
+                record.Record_txt(record.record_file_name, '\nassociative:\n' + '\n'.join(list(map(str, associative_cache.copy()))) + '\ncount: ' + str(len(associative_cache)) + '\n\n', idx = index)
                 
                 # for proposal cache
                 if cached:

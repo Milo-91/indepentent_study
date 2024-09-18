@@ -135,56 +135,60 @@ def format_table(ws):
 def append_data(ws, algorithm_name, task_name, theoretical, actual, traversal_nodes, cost_time, no_ans_in_base, wrong_path, error_cot, reduced_time):
     # theoretical
     pos, col = all_pos_table[algorithm_name]['theoretical'][task_name]
-    for i in range(3):
+    for i in range(1, 4):
+        print(ws.cell(pos, col + i).value)
+        #time.sleep(0.5)
         if ws.cell(pos, col + i).value == None:
             ws.cell(pos, col + i).value = theoretical
+            print(f'put in {i}')
+            #time.sleep(3)
             break
     cal_avg(ws, pos, col)
     # actual
     pos, col = all_pos_table[algorithm_name]['actual'][task_name]
-    for i in range(3):
+    for i in range(1, 4):
         if ws.cell(pos, col + i).value == None:
             ws.cell(pos, col + i).value = actual
             break
     cal_avg(ws, pos, col)
     # traversal_nodes
     pos, col = all_pos_table[algorithm_name]['traversal nodes'][task_name]
-    for i in range(3):
+    for i in range(1, 4):
         if ws.cell(pos, col + i).value == None:
             ws.cell(pos, col + i).value = traversal_nodes
             break
     cal_avg(ws, pos, col)
     # cost time
     pos, col = all_pos_table[algorithm_name]['cost time'][task_name]
-    for i in range(3):
+    for i in range(1, 4):
         if ws.cell(pos, col + i).value == None:
             ws.cell(pos, col + i).value = cost_time
             break
     cal_avg(ws, pos, col)
     # no ans in tree
     pos, col = all_pos_table[algorithm_name]['no ans in tree'][task_name]
-    for i in range(3):
+    for i in range(1, 4):
         if ws.cell(pos, col + i).value == None:
             ws.cell(pos, col + i).value = no_ans_in_base
             break
     cal_avg(ws, pos, col)
     # wrong path
     pos, col = all_pos_table[algorithm_name]['wrong path'][task_name]
-    for i in range(3):
+    for i in range(1, 4):
         if ws.cell(pos, col + i).value == None:
             ws.cell(pos, col + i).value = wrong_path
             break
     cal_avg(ws, pos, col)
     # error cot
     pos, col = all_pos_table[algorithm_name]['error cot'][task_name]
-    for i in range(3):
+    for i in range(1, 4):
         if ws.cell(pos, col + i).value == None:
             ws.cell(pos, col + i).value = error_cot
             break
     cal_avg(ws, pos, col)
     # reduced time
     pos, col = all_pos_table[algorithm_name]['reduced time'][task_name]
-    for i in range(3):
+    for i in range(1, 4):
         if ws.cell(pos, col + i).value == None:
             ws.cell(pos, col + i).value = reduced_time
             break
@@ -214,7 +218,8 @@ def run(args):
         folder_name = f'./logs/{args.task}/{args.name_of_task}/k{args.k}b{args.n_select_sample}/{name}'
         print(folder_name)
         file_name = os.path.join(folder_name, f'{args.name_of_task}_start{args.task_start_index}_end{args.task_end_index}_{args.algorithm}_0.json')
-        # print(file_name)
+        print(file_name)
+        time.sleep(3)
         with open(file_name, 'r') as file:
              data = json.load(file)
 
