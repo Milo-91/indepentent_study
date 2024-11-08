@@ -1,10 +1,10 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 
 read -p "repeat times: " times
 read -p "how much sets: " set_num
 today=$(date +%Y-%m-%d)
 start_index=900
-end_index=1000
+end_index=901
 algorithm='no_algorithm'
 
 for ((i=0;i<set_num;i++));
