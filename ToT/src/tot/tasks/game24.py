@@ -95,19 +95,27 @@ class Game24Task(Task):
         current_numbers = get_current_numbers(y)
         return value_prompt.format(input=current_numbers)
     
+    def __name_check__(self, name):
+        validate_name = ['sure', 'likely', 'impossible']
+        return name in validate_name
+    
     @staticmethod
-    def value_outputs_unwrap(x: str, y: str, value_outputs: list) -> float:
+    def value_outputs_unwrap(x: str, y: str, value_outputs: list, avg_probs: list = None) -> float:
         if len(y.strip().split('\n')) == 4 and 'answer' not in y.lower():
             return 0
         value_names = [_.split('\n')[-1] for _ in value_outputs]
         value_map = {'impossible': 0.001, 'likely': 1, 'sure': 20}  # TODO: ad hoc
-        value = sum(value * value_names.count(name) for name, value in value_map.items())
+        if avg_probs != None:
+            mix = list(zip(value_names, avg_probs))
+            value = round(sum([prob * value_map[name] if name in value_map.keys() else 0 for name, prob in mix]) / sum(avg_probs), 3)
+        else:
+            value = sum(value * value_names.count(name) for name, value in value_map.items())
         return value
     
     @staticmethod
     def distance_calculator(value, ancestor_distance, n_evaluate_sample):
         value_map = {'impossible': 0.001, 'likely': 1, 'sure': 20}
-        max = value_map['sure'] * n_evaluate_sample
+        max = value_map['sure']
         if value == None:
             return -1
         distance = max - value

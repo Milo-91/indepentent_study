@@ -1,4 +1,5 @@
 import os
+import math
 import openai
 import backoff
 from dotenv import load_dotenv
@@ -29,13 +30,18 @@ def gpt(prompt, model="gpt-4", temperature=0.7, max_tokens=1000, n=1, stop=None,
 def chatgpt(messages, model="gpt-4", temperature=0.7, max_tokens=1000, n=1, stop=None, idx = None) -> list:
     global completion_tokens_4, prompt_tokens_4, completion_tokens_3_5, prompt_tokens_3_5
     outputs = []
+    avg_probs = []
     while n > 0:
         cnt = min(n, 20)
         n -= cnt
-        res = completions_with_backoff(model=model, messages=messages, temperature=temperature, max_tokens=max_tokens, n=cnt, stop=stop)
-        print(res)
+        res = completions_with_backoff(model=model, messages=messages, temperature=temperature, max_tokens=max_tokens, n=cnt, stop=stop, logprobs=True)
+        # print(res)
         # record.Record_txt(record.record_file_name, f'\nres(n={cnt}): ' + str(res) +'\n\n', idx)
         outputs.extend([choice["message"]["content"] for choice in res["choices"]])
+        for r in res['choices']:
+            log_list = [log['logprob'] for log in r['logprobs']['content']]
+            avg_prob = math.exp(sum(log_list) / len(log_list))
+            avg_probs.append(avg_prob)
         # record.Record_txt(record.debug_file_name, f'\nres(n={cnt}, model={model}): ' + str(res) +'\n\n', idx)
         # log completion tokens
         if model == 'gpt-4':
@@ -44,7 +50,7 @@ def chatgpt(messages, model="gpt-4", temperature=0.7, max_tokens=1000, n=1, stop
         else:
             completion_tokens_3_5 += res["usage"]["completion_tokens"]
             prompt_tokens_3_5 += res["usage"]["prompt_tokens"]
-    return outputs
+    return outputs, avg_probs
     
 def gpt_usage(backend="gpt-4"):
     global completion_tokens_4, prompt_tokens_4, completion_tokens_3_5, prompt_tokens_3_5

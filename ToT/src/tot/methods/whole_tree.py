@@ -20,8 +20,11 @@ def get_value(task, x, y, n_evaluate_sample, cache_value=True):
     if cache_value and value_prompt in task.value_cache:
         # record.Record_txt(record.record_file_name, '\n' + value_prompt + '\nuse cache\n\n', idx = index)
         return task.value_cache[value_prompt]
-    value_outputs = gpt(value_prompt, n=n_evaluate_sample, stop=None, idx = index)
-    value = task.value_outputs_unwrap(x, y, value_outputs)
+    value_outputs, avg_probs = gpt(value_prompt, n=n_evaluate_sample, stop=None, idx = index)
+    print(avg_probs)
+    record.Record_txt(record.debug_file_name, '\nvalue outputs: ' + str(value_outputs) + '\navg probs: ' + str(avg_probs) + '\n\n', idx = index)
+    value = task.value_outputs_unwrap(x, y, value_outputs, avg_probs)
+    record.Record_txt(record.debug_file_name, 'final value: ' + str(value) + '\n\n', idx = index)
     if cache_value:
         task.value_cache[value_prompt] = value
     return value
@@ -49,7 +52,8 @@ def get_proposals(task, x, y, k, cache_propose = False):
     # Final Generator use Gpt-4
     if 'Answer' in propose_prompt:
         gpt = partial(gpt, model='gpt-4')
-    proposals = gpt(propose_prompt, n=1, stop=None, idx = index)[0].split('\n')
+    proposals, _ = gpt(propose_prompt, n=1, stop=None, idx = index)
+    proposals = proposals[0].split('\n')
     # state filter
     proposals = state_filter(proposals)
     # add left
@@ -60,7 +64,7 @@ def get_proposals(task, x, y, k, cache_propose = False):
         proposals[i] = add_left(proposals[i], get_current_numbers(y if y else x))
     proposals = list(filter(lambda x: x != 'wrong answer', proposals))
     task.propose_cache[propose_prompt] = [y + _ + '\n' for _ in proposals]
-    record.Record_txt(record.debug_file_name, '\npropose prompt: ' + propose_prompt + '\n\n', idx = index)
+    # record.Record_txt(record.debug_file_name, '\npropose prompt: ' + propose_prompt + '\n\n', idx = index)
     return [y + _ + '\n' for _ in proposals], False
 
 def Associative_filter(x, y):

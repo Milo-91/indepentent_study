@@ -17,7 +17,7 @@ def get_value(task, x, y, n_evaluate_sample, cache_value=True):
         return 0
     if cache_value and value_prompt in task.value_cache:
         return task.value_cache[value_prompt]
-    value_outputs = gpt(value_prompt, n=n_evaluate_sample, stop=None, idx = index)
+    value_outputs, _ = gpt(value_prompt, n=n_evaluate_sample, stop=None, idx = index)
     value = task.value_outputs_unwrap(x, y, value_outputs)
     if cache_value:
         task.value_cache[value_prompt] = value
@@ -43,7 +43,8 @@ def get_proposals(task, x, y, k):
     # Final Generator use Gpt-4
     if 'Answer' in propose_prompt:
         gpt = partial(gpt, model='gpt-4')
-    proposals = gpt(propose_prompt, n=1, stop=None, idx = index)[0].split('\n')
+    proposals, _ = gpt(propose_prompt, n=1, stop=None, idx = index)
+    proposals = proposals[0].split('\n')
     # add left
     for i in range(len(proposals)):
         if 'answer' in proposals[i].lower():
