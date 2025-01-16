@@ -65,6 +65,7 @@ def run(args):
         ys, info, traversal_nodes, nodes_avg_time_per_layer_temp = build(args, task, i, graph = graph)
         nodes_avg_time_per_layer = [a + b for a, b in zip(nodes_avg_time_per_layer, nodes_avg_time_per_layer_temp)]
         record.Record_txt(record.record_file_name, '\nusage so far: ' + str(gpt_usage(args.backend)) + '\n\n', idx = i)
+        '''
         graph_copy = copy.copy(graph)
         bfs_ys, bfs_info, bfs_traversal_nodes, bfs_cost_time, bfs_reduced_time = bfs(args, task, i, graph = graph_copy)
         record.Record_txt(record.record_file_name, '\nusage so far: ' + str(gpt_usage(args.backend)) + '\n\n', idx = i)
@@ -77,7 +78,7 @@ def run(args):
         graph_copy = copy.copy(graph)
         graph_list.append({'total_element': graph.total_element, 'tree_head': graph.tree_head.copy(), 'nodes': graph.nodes.copy(), 'visited': graph.visited.copy(), 'idx': graph.idx})
         record.Record_txt(record.record_file_name, '\nbfs_ys = ' + str(bfs_ys) + '\ndfs+sd_ys = ' + str(dfs_ys) + '\ndfs+ksd_ys = ' + str(ksd_ys) + '\n\n', idx = i)
-
+        
         # log
         bfs_infos = [task.test_output(i, y) for y in bfs_ys]
         dfs_infos = [task.test_output(i, y) for y in dfs_ys]
@@ -108,7 +109,7 @@ def run(args):
         print(i, 'dfs: sum(accs)', sum(dfs_accs), 'cnt_avg', dfs_cnt_avg, '\n')
         ksd_cnt_avg += sum(ksd_accs) / len(ksd_accs)
         print(i, 'ksd: sum(accs)', sum(ksd_accs), 'cnt_avg', ksd_cnt_avg, '\n')
-
+        '''
     n = args.task_end_index - args.task_start_index
     # store graph to json
     print(graph_list)
@@ -118,7 +119,6 @@ def run(args):
         file.write(graph_json_str)
         # json.dump(jsonpickle.encode(graph_list, make_refs=False), file, indent=4)
 
-    print(bfs_cnt_avg / n, dfs_cnt_avg / n)
     record.Record_txt(record.acc_file_name, '\nbfs: acc: ' + str(bfs_cnt_avg) + ', acc avg: ' + str(bfs_cnt_avg / n))
     record.Record_txt(record.acc_file_name, '\ndfs+sd: acc: ' + str(dfs_cnt_avg) + ', acc avg: ' + str(dfs_cnt_avg / n))
     record.Record_txt(record.acc_file_name, '\ndfs+ksd: acc: ' + str(ksd_cnt_avg) + ', acc avg: ' + str(ksd_cnt_avg / n))
@@ -148,7 +148,7 @@ def parse_args():
     args.add_argument('--algorithm', type=str, required=True, choices=['bfs', 'dfs+sd', 'dfs+ksd', 'whole_tree', 'fsd_2', 'fsd_graph', 'no_algorithm']) # (bfs, dfs+sd, dfs+ksd, whole_tree, fsd_2)
     args.add_argument('--name_of_task', type=str, default='default')
     args.add_argument('--graph_json', action='store_true')
-    args.add_argument('--evaluator_method', type=str, required=True, choices=['origin', 'logprob'])
+    args.add_argument('--evaluator_method', type=str, choices=['origin', 'logprob'], default='origin')
     
     args = args.parse_args()
     return args

@@ -8,7 +8,7 @@ from tot.prompts.game24 import *
 
 def get_current_numbers(y: str) -> str:
     last_line = y.strip().split('\n')[-1]
-    return last_line.split('left: ')[-1].split(')')[0]
+    return last_line.split('left: ')[-1].split(')')[0].strip()
 
 
 class Game24Task(Task):
@@ -34,6 +34,7 @@ class Game24Task(Task):
         self.value_cache = {}
         self.steps = 4
         self.stops = ['\n'] * 4
+        self.id = 0
 
     def __len__(self) -> int:
         return len(self.data)
@@ -53,6 +54,16 @@ class Game24Task(Task):
         except Exception as e:
             # print(e)
             return {'r': 0}
+    
+    def get_id(self):
+        self.id += 1
+        return self.id - 1
+    
+    def reset_id(self, id = None):
+        if id == None:
+            self.id = 0
+        else:
+            self.id = id
             
     @staticmethod
     def standard_prompt_wrap(x: str, y:str='') -> str:
@@ -63,13 +74,13 @@ class Game24Task(Task):
         return cot_prompt.format(input=x) + y
     
     @staticmethod
-    def propose_prompt_wrap(x: str, y: str='') -> str:
+    def propose_prompt_wrap(x: str, y: str='', k: int = 1) -> str:
         current_numbers = get_current_numbers(y if y else x)
         if current_numbers == '24':
             prompt = cot_prompt.format(input=x) + 'Steps:' + y
             # print([prompt])
         else:
-            prompt = propose_prompt.format(input=current_numbers)
+            prompt = propose_prompt.format(input=current_numbers, k=k)
         return prompt
     
     @staticmethod
@@ -82,11 +93,34 @@ class Game24Task(Task):
         current_numbers = get_current_numbers(y)
         return value_prompt.format(input=current_numbers)
     
+    def __name_check__(self, name):
+        validate_name = ['sure', 'likely', 'impossible']
+        return name in validate_name
+    
     @staticmethod
-    def value_outputs_unwrap(x: str, y: str, value_outputs: list) -> float:
+    def value_outputs_unwrap(x: str, y: str, value_outputs: list, avg_probs: list = None) -> float:
         if len(y.strip().split('\n')) == 4 and 'answer' not in y.lower():
             return 0
         value_names = [_.split('\n')[-1] for _ in value_outputs]
         value_map = {'impossible': 0.001, 'likely': 1, 'sure': 20}  # TODO: ad hoc
-        value = sum(value * value_names.count(name) for name, value in value_map.items())
+        if avg_probs != None:
+            mix = list(zip(value_names, avg_probs))
+            value = round(sum([prob * value_map[name] if name in value_map.keys() else 0 for name, prob in mix]) / sum(avg_probs), 3)
+        else:
+            value = sum(value * value_names.count(name) for name, value in value_map.items())
         return value
+    
+    @staticmethod
+    def distance_calculator(value, ancestor_distance, n_evaluate_sample, evaluator_method):
+        value_map = {'impossible': 0.001, 'likely': 1, 'sure': 20}
+        max = value_map['sure']
+        if value == None:
+            return -1
+        # maximum is sure * n_evaluate_sample
+        if evaluator_method == 'origin':
+            distance = max * n_evaluate_sample - value
+        # maximum is sure
+        elif evaluator_method == 'logprob':
+            distance = max - value
+        distance += ancestor_distance
+        return distance

@@ -13,8 +13,7 @@ index = 0 # idx
 def get_proposals(task, x, y, k):
     global index, gpt
     propose_prompt = task.propose_prompt_wrap(x, y, k)
-    proposals, _ = gpt(propose_prompt, n=1, stop=None, idx = index)
-    proposals = proposals[0].split('\n')
+    proposals = gpt(propose_prompt, n=1, stop=None, idx = index)[0].split('\n')
     
     # add left
     for i in range(len(proposals)):
@@ -66,6 +65,7 @@ def build(args, task, idx, graph = None):
     global gpt, index
     gpt = partial(gpt, model=args.backend, temperature=args.temperature)
     print(gpt)
+    print('this is new code')
     index = idx
     x = task.get_input(idx)  # input
     ys = [(task.get_id(), '', 0)]  # current output candidates
@@ -78,42 +78,37 @@ def build(args, task, idx, graph = None):
     for step in range(task.steps - 1):
         tuple_ys = []
         infos_ys = []
-        generator_cost_time_list = []
         for y in ys:
             parent_id = y[0]
             # if has not visited yet
             if graph.tree_head[y[0]]['next_node']['node'] == None:
                 # generator
                 start_time = time.time()
-                record.Record_txt(record.record_file_name, '\nnode: ' + str(y[0]) + '\n\n', idx = index)
-                new_ys = get_proposals(task, x, y[1])
+                record.Record_txt(record.record_file_name, '\nnode: ' + str(y[0]) + '\n' + str(y[1]) + '\n\n', idx = index)
+                new_ys = get_proposals(task, x, y[1], k = args.k)
                 print(new_ys)
                 gpt = partial(gpt, model=args.backend, temperature=args.temperature)
                 ids = [task.get_id() for _ in range(len(new_ys))]
                 end_time = time.time()
-                generator_cost_time_list.append(end_time - start_time)
-                
-                # evaluator in another file
+                generation_cost_time = end_time - start_time
                 new_ys = list(zip(ids, new_ys))
+                
+                # evaluator is in another file
                 
                 record.Record_txt(record.record_file_name, '\n' + str(new_ys) + '\n\n', idx = index)
                 tuple_ys += new_ys
                 # append to graph
                 new_nodes = list()
                 for i in range(len(new_ys)):
-                    node = {'id': new_ys[i][0], 'answer': new_ys[i][1], 'value': None, 'parent_node': y[0], 'ancestor_distance': None, 'cost time': None}
+                    node = {'id': new_ys[i][0], 'answer': new_ys[i][1], 'value': None, 'parent_node': y[0], 'ancestor_distance': None, 'generation cost time': generation_cost_time / len(new_ys)}
                     new_nodes.append(node)
                 graph.add_head_list_len(task.id)
-                print('id: ' + str(task.id))
-                new_nodes = sorted(new_nodes, key  = lambda x: task.distance_calculator(x['value'], x['ancestor_distance'], args.n_evaluate_sample))
-                graph.add_nodes(new_nodes)
         
                 # for json ys
                 for element in new_ys:
                     infos_ys.append(element + (parent_id,))
             else:
                 record.Record_txt(record.debug_file_name, '\nerror in build\n\n', idx = index)
-            graph.add_cost_time(new_ys, generator_cost_time_list=generator_cost_time_list)
             
         # set output as next input
         infos.append({'step': step, 'ys': infos_ys})
