@@ -103,11 +103,13 @@ def build(args, task, idx, graph = None):
                     node = {'id': new_ys[i][0], 'answer': new_ys[i][1], 'value': None, 'parent_node': y[0], 'ancestor_distance': None, 'generation cost time': generation_cost_time / len(new_ys)}
                     new_nodes.append(node)
                 graph.add_head_list_len(task.id)
+                graph.add_nodes(new_nodes)
         
                 # for json ys
                 for element in new_ys:
                     infos_ys.append(element + (parent_id,))
             else:
+                # in this case no generated choice
                 record.Record_txt(record.debug_file_name, '\nerror in build\n\n', idx = index)
             
         # set output as next input
@@ -117,5 +119,5 @@ def build(args, task, idx, graph = None):
 
     graph.show_in_linked_list()
     graph.show_in_nodes()
-    draw.simple_draw(task, args, graph, idx)
+    # draw.simple_draw(task, args, graph, idx)
     return {'steps': infos}, task.id

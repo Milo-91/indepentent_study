@@ -60,10 +60,10 @@ def run(args):
         # for reuse graph by json file
         if args.graph_json == True:
             graph.__load_from_json__('graph.json', i - 900)
-        # bnuilding complete tree
-        task.cached_nodes_set = set()
-        ys, info, traversal_nodes, nodes_avg_time_per_layer_temp = build(args, task, i, graph = graph)
-        nodes_avg_time_per_layer = [a + b for a, b in zip(nodes_avg_time_per_layer, nodes_avg_time_per_layer_temp)]
+        # building complete tree
+        print('building tree start')
+        info, traversal_nodes = build(args, task, i, graph = graph)
+        print('building tree end')
         record.Record_txt(record.record_file_name, '\nusage so far: ' + str(gpt_usage(args.backend)) + '\n\n', idx = i)
         '''
         graph_copy = copy.copy(graph)
@@ -112,13 +112,14 @@ def run(args):
         '''
     n = args.task_end_index - args.task_start_index
     # store graph to json
+    '''
     print(graph_list)
     with open(os.path.join(folder_name,'graph.json'), 'w') as file:
         graph_json_str = jsonpickle.encode(graph_list)
         print(graph_json_str)
         file.write(graph_json_str)
         # json.dump(jsonpickle.encode(graph_list, make_refs=False), file, indent=4)
-
+    '''
     record.Record_txt(record.acc_file_name, '\nbfs: acc: ' + str(bfs_cnt_avg) + ', acc avg: ' + str(bfs_cnt_avg / n))
     record.Record_txt(record.acc_file_name, '\ndfs+sd: acc: ' + str(dfs_cnt_avg) + ', acc avg: ' + str(dfs_cnt_avg / n))
     record.Record_txt(record.acc_file_name, '\ndfs+ksd: acc: ' + str(ksd_cnt_avg) + ', acc avg: ' + str(ksd_cnt_avg / n))
