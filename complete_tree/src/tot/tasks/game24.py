@@ -84,12 +84,15 @@ class Game24Task(Task):
         return prompt
     
     @staticmethod
-    def value_prompt_wrap(x: str, y: str) -> str:
+    def value_prompt_wrap(y: str) -> str:
         last_line = y.strip().split('\n')[-1]
+        # temp pass value_last_step
+        '''
         if 'left: ' not in last_line:  # last step
             ans = last_line.lower().replace('answer: ', '')
             # print([value_last_step_prompt.format(input=x, answer=ans)])
             return value_last_step_prompt.format(input=x, answer=ans)
+        '''
         current_numbers = get_current_numbers(y)
         return value_prompt.format(input=current_numbers)
     
@@ -98,7 +101,7 @@ class Game24Task(Task):
         return name in validate_name
     
     @staticmethod
-    def value_outputs_unwrap(x: str, y: str, value_outputs: list, avg_probs: list = None) -> float:
+    def value_outputs_unwrap(y: str, value_outputs: list, avg_probs: list = None) -> float:
         if len(y.strip().split('\n')) == 4 and 'answer' not in y.lower():
             return 0
         value_names = [_.split('\n')[-1] for _ in value_outputs]

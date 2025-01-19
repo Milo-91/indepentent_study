@@ -1,16 +1,18 @@
 import tot.record_functions as record
 import jsonpickle
 import json
+import sys
 
 graph_json_file_name = 'logs/game24/record/graph_{idx}.json'
 
 class graph():
-    # element {node: dict, prev node: dict, next node: dict}
+    # element: {node: dict, prev node: dict, next node: dict}
+    # nodes: {'0': node0, '1': node1, ...}
     # node: {id, answer, value, parent_node, ancestor_distance, generation cost time, evaluation cost time}
     def __init__(self, k, b, idx):
         self.total_element = k**3 + k**2 + k + 10
         self.tree_head = self.init_tree_head()
-        self.nodes = [None for _ in range(self.total_element)]
+        self.nodes = dict()
         self.visited = [0] * (self.total_element)
         self.idx = idx
 
@@ -34,7 +36,7 @@ class graph():
         self.nodes = data['nodes']
         self.visited = data['visited']
         self.idx = data['idx']
-
+    
     def reset_idx(self, idx):
         self.idx = idx
     
@@ -59,7 +61,12 @@ class graph():
                 self.tree_head[parent]['prev_node'] = new_element
             if new_node['id'] >= self.total_element:
                 self.add_head_list_len(new_node['id'])
-            self.nodes[new_node['id']] = new_node
+            if self.nodes[str(new_node['id'])] == None:
+                self.nodes[str(new_node['id'])] = new_node
+            else:
+                print('duplicate id')
+                sys.stderr.write('duplicate id')
+                sys.exit(1)
 
     def append_tree_head(self, origin_tree_head):
         # need to adjust total_element before call this function
@@ -99,13 +106,12 @@ class graph():
         if new_len >= self.total_element:
             record.Record_txt(record.record_file_name, '\nadjust graph list length ' + str(self.total_element), self.idx)
             self.visited.extend([0] * (new_len - self.total_element + 1))
-            self.nodes.extend([None for _ in range(new_len - self.total_element + 1)])
             self.total_element = new_len + 1
             self.tree_head = self.append_tree_head(self.tree_head)
             record.Record_txt(record.record_file_name, ' -> ' + str(self.total_element) + '\n\n', self.idx)
 
     def show_in_nodes(self):
-        for node in self.nodes:
+        for _, node in self.nodes.items():
                 record.Record_txt(record.record_file_name, str(node) + '\n', self.idx)
                 print(node)
         record.Record_txt(record.record_file_name, '\n', self.idx)
@@ -113,7 +119,7 @@ class graph():
     def child_to_list(self, id):
         child_list = []
         distance_list = []
-        cost_time = self.nodes[id]['generation cost time'] + self.nodes[id]['evaluation cost time']
+        cost_time = self.nodes[str(id)]['generation cost time'] + self.nodes[str(id)]['evaluation cost time']
         next = self.tree_head[id]['next_node']
         while next['node'] != None:
             child_list.append((next['node']['id'], next['node']['answer'], next['node']['value']))
@@ -125,6 +131,6 @@ class graph():
         for i in range(len(ys)):
             print(ys[i][0])
             if generation_cost_time_list != None:
-                self.nodes[ys[i][0]]['generation cost time'] = generation_cost_time_list[i]
+                self.nodes[str(ys[i][0])]['generation cost time'] = generation_cost_time_list[i]
             if evaluation_cost_time_list != None:
-                self.nodes[ys[i][0]]['evaluation cost time'] = evaluation_cost_time_list[i]
+                self.nodes[str(ys[i][0])]['evaluation cost time'] = evaluation_cost_time_list[i]
