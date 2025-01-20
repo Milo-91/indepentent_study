@@ -45,7 +45,6 @@ def evaluation(args, task, idx, graph):
     global index
     index = idx
     for _, node in graph.nodes.items():
-        print('hello')
         # evaluator
         start_time = time.time()
         # skip root node

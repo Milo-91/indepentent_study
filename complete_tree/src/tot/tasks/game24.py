@@ -85,16 +85,14 @@ class Game24Task(Task):
     
     @staticmethod
     def value_prompt_wrap(y: str) -> str:
-        last_line = y.strip().split('\n')[-1]
-        # temp pass value_last_step
-        '''
-        if 'left: ' not in last_line:  # last step
-            ans = last_line.lower().replace('answer: ', '')
-            # print([value_last_step_prompt.format(input=x, answer=ans)])
-            return value_last_step_prompt.format(input=x, answer=ans)
-        '''
         current_numbers = get_current_numbers(y)
         return value_prompt.format(input=current_numbers)
+    
+    @staticmethod
+    def last_value_prompt_wrap(x: str, y: str) -> str:
+        last_line = y.strip().split('\n')[-1]
+        ans = last_line.lower().replace('answer: ', '')
+        return value_last_step_prompt.format(input=x, answer=ans)
     
     def __name_check__(self, name):
         validate_name = ['sure', 'likely', 'impossible']
@@ -118,7 +116,7 @@ class Game24Task(Task):
         value_map = {'impossible': 0.001, 'likely': 1, 'sure': 20}
         max = value_map['sure']
         if value == None:
-            return -1
+            return 0
         # maximum is sure * n_evaluate_sample
         if evaluator_method == 'origin':
             distance = max * n_evaluate_sample - value

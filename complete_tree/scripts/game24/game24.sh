@@ -31,6 +31,7 @@ do
         --k ${array_k[i]} \
         --algorithm $algorithm \
         --name_of_task $today \
+        --evaluator_method logprob \
         #--graph_json # if use this is true
         ${@}
     done
