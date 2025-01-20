@@ -19,15 +19,8 @@ def get_value(task, x, y, n_evaluate_sample, evaluator_method, cache_value=True)
     if cache_value and value_prompt in task.value_cache:
         # record.Record_txt(record.record_file_name, '\n' + value_prompt + '\nuse cache\n\n', idx = index)
         return task.value_cache[value_prompt]
-    if evaluator_method == 'origin':
-        value_outputs = gpt(value_prompt, n=n_evaluate_sample, stop=None, idx = index, logprobs = False)
-        record.Record_txt(record.debug_file_name, '\nevaluator method: ' + evaluator_method + '\nvalue outputs: ' + str(value_outputs) + '\n\n', idx = index)
-        value = task.value_outputs_unwrap(y, value_outputs, evaluator_method)
-    elif evaluator_method == 'logprob':
-        value_outputs, avg_probs = gpt(value_prompt, n=n_evaluate_sample, stop=None, idx = index, logprobs = True)
-        print(avg_probs)
-        record.Record_txt(record.debug_file_name, '\nevaluator method: ' + evaluator_method + '\nvalue outputs: ' + str(value_outputs) + '\navg probs: ' + str(avg_probs) + '\n\n', idx = index)
-        value = task.value_outputs_unwrap(y, value_outputs, evaluator_method, avg_probs)
+    value_outputs = gpt(value_prompt, n=n_evaluate_sample, stop=None, idx = index, logprobs = False)
+    value = task.value_outputs_unwrap(y, value_outputs, )
     record.Record_txt(record.debug_file_name, 'final value: ' + str(value) + '\n\n', idx = index)
     if cache_value:
         task.value_cache[value_prompt] = value
