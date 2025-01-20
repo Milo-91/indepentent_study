@@ -61,7 +61,7 @@ class graph():
                 self.tree_head[parent]['prev_node'] = new_element
             if new_node['id'] >= self.total_element:
                 self.add_head_list_len(new_node['id'])
-            if self.nodes[str(new_node['id'])] == None:
+            if str(new_node['id']) not in self.nodes:
                 self.nodes[str(new_node['id'])] = new_node
             else:
                 print('duplicate id')
@@ -134,3 +134,6 @@ class graph():
                 self.nodes[str(ys[i][0])]['generation cost time'] = generation_cost_time_list[i]
             if evaluation_cost_time_list != None:
                 self.nodes[str(ys[i][0])]['evaluation cost time'] = evaluation_cost_time_list[i]
+                
+    def __sort_nodes__(self):
+        self.nodes = dict(sorted(self.nodes.items(), key=lambda item: int(item[0])))

@@ -13,6 +13,7 @@ from tot.tasks import draw
 import tot.tasks.tree_graph as tree_graph
 import tot.record_functions as record
 from tot.methods.whole_tree import build
+from tot.methods.evaluator import evaluation
 from tot.methods.bfs_2 import bfs
 from tot.methods.dfs_sd import dfs
 from tot.methods.dfs_ksd import ksd
@@ -61,10 +62,14 @@ def run(args):
         if args.graph_json == True:
             graph.__load_from_json__('graph.json', i - 900)
         # building complete tree
-        print('building tree start')
+        print('-----building tree start-----')
         info, traversal_nodes = build(args, task, i, graph = graph)
-        print('building tree end')
+        print('-----building tree end-----')
         record.Record_txt(record.record_file_name, '\nusage so far: ' + str(gpt_usage(args.backend)) + '\n\n', idx = i)
+        # evaluation
+        print('-----evaluation start-----')
+        evaluation(args, task, i, graph)
+        print('-----evaluation end-----')
         '''
         graph_copy = copy.copy(graph)
         bfs_ys, bfs_info, bfs_traversal_nodes, bfs_cost_time, bfs_reduced_time = bfs(args, task, i, graph = graph_copy)

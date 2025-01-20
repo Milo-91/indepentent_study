@@ -68,13 +68,14 @@ def build(args, task, idx, graph = None):
     print('this is new code')
     index = idx
     x = task.get_input(idx)  # input
-    ys = [(task.get_id(), '', 0)]  # current output candidates
+    ys = [(task.get_id(), '')]  # current output candidates
     infos = []
     if graph == None:
         graph = tree_graph.graph(k = args.k, b = args.n_select_sample, idx = idx)
-    root_node = {'id': 0, 'answer': None, 'value': None, 'parent_node': None, 'ancestor_distance': 0, 'cost time': 0}
+    root_node = {'id': 0, 'answer': None, 'value': None, 'parent_node': None, 'ancestor_distance': 0, 'generation cost time': 0, 'evaluation cost time': 0}
     graph.add_nodes([root_node])
 
+    print('start task')
     for step in range(task.steps - 1):
         tuple_ys = []
         infos_ys = []
@@ -116,7 +117,8 @@ def build(args, task, idx, graph = None):
         infos.append({'step': step, 'ys': infos_ys})
         ys = tuple_ys
         
-
+    # for dict nodes
+    graph.__sort_nodes__()
     graph.show_in_linked_list()
     graph.show_in_nodes()
     # draw.simple_draw(task, args, graph, idx)

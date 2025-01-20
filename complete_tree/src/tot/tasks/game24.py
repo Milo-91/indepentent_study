@@ -101,16 +101,16 @@ class Game24Task(Task):
         return name in validate_name
     
     @staticmethod
-    def value_outputs_unwrap(y: str, value_outputs: list, avg_probs: list = None) -> float:
+    def value_outputs_unwrap(y: str, value_outputs: list, evaluator_method, avg_probs: list = None) -> float:
         if len(y.strip().split('\n')) == 4 and 'answer' not in y.lower():
             return 0
         value_names = [_.split('\n')[-1] for _ in value_outputs]
         value_map = {'impossible': 0.001, 'likely': 1, 'sure': 20}  # TODO: ad hoc
-        if avg_probs != None:
+        if evaluator_method == 'origin':
+            value = sum(value * value_names.count(name) for name, value in value_map.items())
+        elif evaluator_method == 'logprob':
             mix = list(zip(value_names, avg_probs))
             value = round(sum([prob * value_map[name] if name in value_map.keys() else 0 for name, prob in mix]) / sum(avg_probs), 3)
-        else:
-            value = sum(value * value_names.count(name) for name, value in value_map.items())
         return value
     
     @staticmethod
