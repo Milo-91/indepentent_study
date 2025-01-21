@@ -119,13 +119,14 @@ class graph():
     def child_to_list(self, id):
         child_list = []
         distance_list = []
-        cost_time = self.nodes[str(id)]['generation cost time'] + self.nodes[str(id)]['evaluation cost time']
+        child_nodes_cost_time = []
         next = self.tree_head[id]['next_node']
         while next['node'] != None:
             child_list.append((next['node']['id'], next['node']['answer'], next['node']['value']))
             distance_list.append(next['node']['ancestor_distance'])
+            child_nodes_cost_time.append(next['node']['generation cost time'] + next['node']['evaluation cost time'])
             next = next['next_node']
-        return child_list, distance_list, cost_time
+        return child_list, distance_list, child_nodes_cost_time
     
     def add_cost_time(self, ys, generation_cost_time_list:list = None, evaluation_cost_time_list:list = None):
         for i in range(len(ys)):
