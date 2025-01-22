@@ -73,10 +73,10 @@ def run(args):
         graph_copy = copy.copy(graph)
         bfs_ys, bfs_info, bfs_traversal_nodes, bfs_cost_time = bfs(args, task, i, graph = graph_copy)
         record.Record_txt(record.record_file_name, '\nusage so far: ' + str(gpt_usage(args.backend)) + '\n\n', idx = i)
-        '''
         graph_copy = copy.copy(graph)
-        dfs_ys, dfs_info, dfs_traversal_nodes, dfs_cost_time, dfs_reduced_time = dfs(args, task, i, sd = True, sorting = True, high_acc_mode = False, graph = graph_copy)
+        dfs_ys, dfs_info, dfs_traversal_nodes, dfs_cost_time = dfs(args, task, i, graph = graph_copy)
         record.Record_txt(record.record_file_name, '\nusage so far: ' + str(gpt_usage(args.backend)) + '\n\n', idx = i)
+        '''
         graph_copy = copy.copy(graph)
         ksd_ys, ksd_info, ksd_traversal_nodes, ksd_cost_time, ksd_reduced_time = ksd(args, task, i, graph = graph_copy)
         record.Record_txt(record.record_file_name, '\nusage so far: ' + str(gpt_usage(args.backend)) + '\n\n', idx = i)

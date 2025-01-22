@@ -63,27 +63,30 @@ def __dfs__(args, task, idx, x, y, graph, distance, t, high_acc_mode = False):
 
     # Graph
     parent = y[0]
-    child_list, _, child_nodes_cost_time = graph.child_to_list(parent)
+    child_list, distance_list, child_nodes_cost_time = graph.child_to_list(parent)
     cost_time += sum(child_nodes_cost_time)
-    record.Record_txt(record.record_file_name, '\nparent: ' + str(parent) + '\nparent cost time' + str(child_nodes_cost_time) + '\n\n', idx)
-    child_list = sorted(child_list, key  = lambda x: task.distance_calculator(x['value'], x['ancestor_distance'], args.n_evaluate_sample, args.evaluator_method))
+    record.Record_txt(record.record_file_name, '\nparent: ' + str(parent) + '\nparent cost time' + str(sum(child_nodes_cost_time)) + '\n\n', idx)
+    temp_node_list = [(*child, distance) for child, distance in zip(child_list, distance_list)]
+    print(temp_node_list)
+    child_list = sorted(temp_node_list, key  = lambda x: task.distance_calculator(x[2], x[3], args.n_evaluate_sample, args.evaluator_method))
     for input_node in child_list:
         traversal_nodes += 1
         # if distance > d_thres -> prune
         origin_distance = distance
-        print(input_node['value'], distance, args.n_evaluate_sample)
-        distance = task.distance_calculator(input_node['value'], distance, args.n_evaluate_sample, args.evaluator_method)
+        print(input_node)
+        print(input_node[2], distance, args.n_evaluate_sample)
+        distance = task.distance_calculator(input_node[2], distance, args.n_evaluate_sample, args.evaluator_method)
         record.Record_txt(record.record_file_name, '\ndistance: ' + str(distance) + '\nd_thres: ' + str(d_thres) + '\n', idx = idx)
         if distance < d_thres:    
             # put input_node into next step
             record.Record_txt(record.record_file_name, '\nselected node: ' + str(input_node) + '\n\n', idx = idx)
-            infos.append({'step': t, 'select_id': input_node['id'], 'select_new_ys': input_node['answer'], 'values': input_node['value'], 'is_best': False, 'is_back': False})
+            infos.append({'step': t, 'select_id': input_node[0], 'select_new_ys': input_node[1], 'values': input_node[2], 'is_best': False, 'is_back': False})
             print(f'distance: {distance}')
-            path.add(input_node['id'])
-            __dfs__(args, task, idx, x, (input_node['id'], input_node['answer'], input_node['value']), graph, distance, t + 1, high_acc_mode = high_acc_mode)
-            path.remove(input_node['id'])
+            path.add(input_node[0])
+            __dfs__(args, task, idx, x, input_node, graph, distance, t + 1, high_acc_mode = high_acc_mode)
+            path.remove(input_node[0])
         else:
-            infos.append({'step': t, 'select_id': input_node['id'], 'select_new_ys': input_node['answer'], 'values': input_node['value'], 'is_best': False, 'is_back': True})
+            infos.append({'step': t, 'select_id': input_node[0], 'select_new_ys': input_node[1], 'values': input_node[2], 'is_best': False, 'is_back': True})
             record.Record_txt(record.record_file_name, '\n(prune)selected node: ' + str(input_node) + '\n\n', idx = idx)
 
         # reset distance
@@ -112,7 +115,7 @@ def dfs(args, task, idx, graph, to_print = True,  high_acc_mode = False):
     record.Record_txt(record.record_file_name, '\n-----dfs+sd-----\n', idx)
     # Greedy to define d_thres
     print(f'd_thres: {d_thres}')
-    __dfs__(args, task, idx, x, y, graph, distance = 0, t = 0, to_print = to_print, high_acc_mode = high_acc_mode)
+    __dfs__(args, task, idx, x, y, graph, distance = 0, t = 0, high_acc_mode = high_acc_mode)
     print(f'd_thres: {d_thres}')
     print(best_ans)
     record.Record_txt(record.record_file_name, '\nbest node: ' + str(best_ans) + '\nd_thres: ' + str(d_thres) + '\n\n', idx = idx)
