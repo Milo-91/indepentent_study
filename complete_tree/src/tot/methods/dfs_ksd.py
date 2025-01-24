@@ -82,6 +82,7 @@ def ksd(args, task, idx, to_print=True, graph=None):
             # selection
             count = 0
             all_traversal = 0
+            print(graph.visited)
             while graph.visited[level_nodes[step][count][0]] == 1:
                 count += 1
                 if count == len(level_nodes[step]):
@@ -94,7 +95,7 @@ def ksd(args, task, idx, to_print=True, graph=None):
             distance = task.distance_calculator(select_new_ys[0][2], select_new_ys[0][3], args.n_evaluate_sample, args.evaluator_method)
 
             print(select_new_ys)
-            record.Record_txt(record.record_file_name, '\nselected nodes:\n' + '\n'.join(list(map(str, select_new_ys.copy()))) + '\nnode: ' + str(graph.nodes[select_new_ys[0][0]]) + '\n\n', idx)
+            record.Record_txt(record.record_file_name, '\nselected nodes:\n' + '\n'.join(list(map(str, select_new_ys.copy()))) + '\nnode: ' + str(graph.nodes[str(select_new_ys[0][0])]) + '\n\n', idx)
             
             y = select_new_ys[0]
             infos.append({'step': step, 'select_id': y[0], 'select_new_ys': y[1], 'values': y[2], 'is_best': True, 'is_back': False})

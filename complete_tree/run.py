@@ -77,7 +77,7 @@ def run(args):
         dfs_ys, dfs_info, dfs_traversal_nodes, dfs_cost_time = dfs(args, task, i, graph = graph_copy)
         record.Record_txt(record.record_file_name, '\nusage so far: ' + str(gpt_usage(args.backend)) + '\n\n', idx = i)
         graph_copy = copy.copy(graph)
-        ksd_ys, ksd_info, ksd_traversal_nodes, ksd_cost_time, ksd_reduced_time = ksd(args, task, i, graph = graph_copy)
+        ksd_ys, ksd_info, ksd_traversal_nodes, ksd_cost_time = ksd(args, task, i, graph = graph_copy)
         record.Record_txt(record.record_file_name, '\nusage so far: ' + str(gpt_usage(args.backend)) + '\n\n', idx = i)
         graph_copy = copy.copy(graph)
         graph_list.append({'total_element': graph.total_element, 'tree_head': graph.tree_head.copy(), 'nodes': graph.nodes.copy(), 'visited': graph.visited.copy(), 'idx': graph.idx})
