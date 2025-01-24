@@ -65,10 +65,12 @@ def __dfs__(args, task, idx, x, y, graph, distance, t, high_acc_mode = False):
     parent = y[0]
     child_list, distance_list, child_nodes_cost_time = graph.child_to_list(parent)
     cost_time += sum(child_nodes_cost_time)
+    record.Record_txt(record.record_file_name, '\nchild_list:\n' + '\n'.join(list(map(str, child_list.copy()))), idx)
     record.Record_txt(record.record_file_name, '\nparent: ' + str(parent) + '\nparent cost time' + str(sum(child_nodes_cost_time)) + '\n\n', idx)
     temp_node_list = [(*child, distance) for child, distance in zip(child_list, distance_list)]
     print(temp_node_list)
     child_list = sorted(temp_node_list, key  = lambda x: task.distance_calculator(x[2], x[3], args.n_evaluate_sample, args.evaluator_method))
+    record.Record_txt(record.record_file_name, '\nchild_list:\n' + '\n'.join(list(map(str, child_list.copy()))), idx)
     for input_node in child_list:
         traversal_nodes += 1
         # if distance > d_thres -> prune
@@ -111,7 +113,7 @@ def dfs(args, task, idx, graph, to_print = True,  high_acc_mode = False):
     x = task.get_input(idx)  # input
     y = (task.get_id() if task.id == 0 else 0, '', 0)  # current output candidates (id, answer, value)
     
-    
+    print('-----dfs+sd-----')
     record.Record_txt(record.record_file_name, '\n-----dfs+sd-----\n', idx)
     # Greedy to define d_thres
     print(f'd_thres: {d_thres}')
@@ -119,9 +121,10 @@ def dfs(args, task, idx, graph, to_print = True,  high_acc_mode = False):
     print(f'd_thres: {d_thres}')
     print(best_ans)
     record.Record_txt(record.record_file_name, '\nbest node: ' + str(best_ans) + '\nd_thres: ' + str(d_thres) + '\n\n', idx = idx)
-    
+    print('-----end dfs+sd-----')
+    record.Record_txt(record.record_file_name, '\n-----end dfs+sd-----\n', idx)
 
     if to_print:
         print(infos)
-    # draw.dfs_Draw(task, args, infos, graph, idx, best_path)
+    draw.dfs_Draw(task, args, infos, graph, idx, best_path)
     return [best_ans], {'steps': infos}, traversal_nodes, cost_time

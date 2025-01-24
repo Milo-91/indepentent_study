@@ -61,7 +61,7 @@ def bfs(args, task, idx, graph, to_print=True):
     if to_print: 
         print(infos)
     path = {ys[0][0]}
-    # draw.bfs_Draw(task, args, infos, graph, idx, path)
+    draw.bfs_Draw(task, args, infos, graph, idx, path)
     # count traversal nodes
     traversal_nodes = 0
     for step in infos:

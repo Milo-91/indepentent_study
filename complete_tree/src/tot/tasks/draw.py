@@ -41,7 +41,7 @@ def dfs_Draw(task, args, infos, graph, idx, path, file_name=None):
                 dot.node(str(now_node['id']), str(now_node['id']) + '\n' + str(now_node['answer'].split('\n')[-2]) + '\nparent: ' + str(now_node['parent_node']) + '\nvalue: ' + str(now_node['value']))
             # draw edges
             if now_node['parent_node'] != None:
-                dot.edge(str(now_node['parent_node']), str(now_node['id']), label = str(task.distance_calculator(now_node['value'], now_node['ancestor_distance'], args.n_evaluate_sample)), fontsize = '32')
+                dot.edge(str(now_node['parent_node']), str(now_node['id']), label = str(task.distance_calculator(now_node['value'], now_node['ancestor_distance'], args.n_evaluate_sample, args.evaluator_method)), fontsize = '32')
             node = node['next_node']
 
     if not os.path.exists(image_folder):
@@ -78,7 +78,7 @@ def bfs_Draw(task, args, infos, graph, idx, path, file_name=None):
                 dot.node(str(now_node['id']), str(now_node['id']) + '\n' + str(now_node['answer'].split('\n')[-2]) + '\nparent: ' + str(now_node['parent_node']) + '\nvalue: ' + str(now_node['value']))
             # draw edges
             if now_node['parent_node'] != None:
-                dot.edge(str(now_node['parent_node']), str(now_node['id']), label = str(task.distance_calculator(now_node['value'], now_node['ancestor_distance'], args.n_evaluate_sample)), fontsize = '32')
+                dot.edge(str(now_node['parent_node']), str(now_node['id']), label = str(task.distance_calculator(now_node['value'], now_node['ancestor_distance'], args.n_evaluate_sample, args.evaluator_method)), fontsize = '32')
             node = node['next_node']
 
     if not os.path.exists(image_folder):
@@ -102,7 +102,7 @@ def simple_draw(task, args, graph, idx):
             dot.node(str(now_node['id']), str(now_node['id']) + '\n' + str(now_node['answer'].split('\n')[-2]) + '\nparent: ' + str(now_node['parent_node']) + '\nvalue: ' + str(now_node['value']))
             # draw edges
             if now_node['parent_node'] != None:
-                dot.edge(str(now_node['parent_node']), str(now_node['id']), label = str(task.distance_calculator(now_node['value'], now_node['ancestor_distance'], args.n_evaluate_sample)), fontsize = '32')
+                dot.edge(str(now_node['parent_node']), str(now_node['id']), label = str(task.distance_calculator(now_node['value'], now_node['ancestor_distance'], args.n_evaluate_sample, args.evaluator_method)), fontsize = '32')
             node = node['next_node']
 
     if not os.path.exists(image_folder):
