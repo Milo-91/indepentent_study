@@ -5,6 +5,7 @@ from tot.models import gpt
 import tot.record_functions as record
 import tot.tasks.tree_graph as tree_graph
 import tot.tasks.draw as draw
+import tot.methods.evaluator as evaluator
 import re
 import time
 
@@ -36,6 +37,7 @@ def ksd(args, task, idx, to_print=True, graph=None):
     if graph == None:
         graph = tree_graph.graph(k = args.k, b = args.n_select_sample, idx = idx)
     traversal_nodes = 0
+    print('-----dfs+ksd-----')
     record.Record_txt(record.record_file_name, '\n-----dfs+ksd-----\n', idx)
 
     # x: question, y: (id, ans, value)
@@ -98,22 +100,23 @@ def ksd(args, task, idx, to_print=True, graph=None):
             infos.append({'step': step, 'select_id': y[0], 'select_new_ys': y[1], 'values': y[2], 'is_best': True, 'is_back': False})
                 
         graph.visit_nodes([{'id': y[0]}])
-        # Final Generator
+        # final generation
         if is_prune == 1:
             continue
         start_time = time.time()
-        new_ys = [get_proposals(task, x, y[1], args.k)]
+        new_ys = [evaluator.last_step_proposals(task, x, y[1], args.k)]
+        gpt = partial(gpt, model=args.backend, temperature=args.temperature)
         new_ys = list(itertools.chain(*new_ys))
         ids = list(range(len(new_ys)))
-        values = get_values(task, x, new_ys, args.n_evaluate_sample)
+        values = evaluator.last_step_values(task, x, new_ys, args.n_evaluate_sample, args.evaluator_method)
         top_id = sorted(ids, key=lambda x: values[x], reverse=True)[0]
         answer= new_ys[top_id]
         answer_value = values[top_id]
-        distance = task.distance_calculator(answer_value, distance, args.n_evaluate_sample)
+        record.Record_txt(record.record_file_name, '\nanswer: ' + str(answer) + '\n\n', idx = idx)
+        distance = task.distance_calculator(answer_value, distance, args.n_evaluate_sample, args.evaluator_method)
         end_time = time.time()
         cost_time += end_time - start_time
-        record.Record_txt(record.record_file_name, '\nparent: ' + str(y[0]) + '\nparent cost time' + str(end_time - start_time) + '\n\n', idx)
-        record.Record_txt(record.record_file_name, '\nanswer: ' + str(answer) + '\n\n', idx = idx)
+        record.Record_txt(record.record_file_name, '\nparent: ' + str(y[0]) + '\ncost time: ' + str(end_time - start_time) + '\n\n', idx)
         # save result and then back
         if distance < d_thres:
             print('max')
@@ -124,19 +127,17 @@ def ksd(args, task, idx, to_print=True, graph=None):
             record.Record_txt(record.record_file_name, '\nchange best answer\nbest_ans: ' + str(best_ans) + '\nd_thres: ' + str(d_thres) + '\n\n', idx = idx)
         infos.append({'step': step, 'select_id': y[0], 'select_new_ys': answer, 'values': values, 'is_best': True, 'is_back': False})
 
-    graph.show_in_linked_list()
-    graph.show_in_nodes()
-
     parent_id = best_id
     best_path = set()
     while parent_id != 0:
         print(parent_id)
         best_path.add(parent_id)
-        parent_id = graph.nodes[parent_id]['parent_node']
+        parent_id = graph.nodes[str(parent_id)]['parent_node']
     
     print(best_path)
     record.Record_txt(record.record_file_name, '\nbest_path: ' + str(best_path) + '\n\n', idx = idx)
-
+    print('-----end dfs+ksd-----')
+    record.Record_txt(record.record_file_name, '\n-----end dfs+ksd-----\n', idx)
     if to_print:
         print(infos)
     draw.dfs_Draw(task, args, infos, graph, idx, best_path, file_name = 'ksd')
