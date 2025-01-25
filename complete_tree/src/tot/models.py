@@ -24,11 +24,13 @@ if api_base != "":
 def completions_with_backoff(**kwargs):
     return openai.ChatCompletion.create(**kwargs)
 
-def gpt(prompt, model="gpt-4", temperature=0.7, max_tokens=1000, n=1, stop=None, idx = None, logprobs = False) -> list:
+def gpt(prompt, model='gpt-3.5-turbo', temperature=0.7, max_tokens=1000, n=1, stop=None, idx = None, logprobs = False) -> list:
     messages = [{"role": "user", "content": prompt}]
+    if model == 'gpt-4':
+        record.Record_txt(record.record_file_name, '\nuse gpt-4\n\n', idx = idx)
     return chatgpt(messages, model=model, temperature=temperature, max_tokens=max_tokens, n=n, stop=stop, idx = idx, logprobs = logprobs)
 
-def chatgpt(messages, model="gpt-4", temperature=0.7, max_tokens=1000, n=1, stop=None, idx = None, logprobs = False) -> list:
+def chatgpt(messages, model='gpt-3.5-turbo', temperature=0.7, max_tokens=1000, n=1, stop=None, idx = None, logprobs = False) -> list:
     global completion_tokens_4, prompt_tokens_4, completion_tokens_3_5, prompt_tokens_3_5
     outputs = []
     if logprobs == False:
@@ -72,4 +74,4 @@ def gpt_usage(backend="gpt-4"):
         cost += completion_tokens_4 / 1000 * 0.06 + prompt_tokens_4 / 1000 * 0.03
     elif backend == "gpt-3.5-turbo":
         cost += completion_tokens_3_5 / 1000 * 0.002 + prompt_tokens_3_5 / 1000 * 0.0015
-    return {"completion_tokens": completion_tokens_4 + completion_tokens_3_5, "prompt_tokens": prompt_tokens_4 + prompt_tokens_3_5, "cost": cost}
+    return {"gpt-4 completion_tokens": completion_tokens_4, "gpt-4 prompt_tokens": prompt_tokens_4 , 'gpt-3.5 completion_tokens': completion_tokens_3_5, 'gpt-3.5 prompt_tokens': prompt_tokens_3_5, "cost": cost}

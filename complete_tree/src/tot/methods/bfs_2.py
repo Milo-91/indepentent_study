@@ -44,8 +44,8 @@ def bfs(args, task, idx, graph, to_print=True):
     # final generation
     start_time = time.time()
     new_ys = [evaluator.last_step_proposals(task, x, ys[0][1], args.k)]
-    record.Record_txt(record.record_file_name, '\nfinal proposals: ' + str(len(new_ys)) + '\n' + '\n'.join(list(map(str, new_ys.copy()))) + '\n' + '\n\n', idx)
     gpt = partial(gpt, model=args.backend, temperature=args.temperature)
+    record.Record_txt(record.record_file_name, '\nfinal proposals: ' + str(len(new_ys)) + '\n' + '\n'.join(list(map(str, new_ys.copy()))) + '\n' + '\n\n', idx)
     new_ys = list(itertools.chain(*new_ys))
     ids = list(range(len(new_ys)))
     values = evaluator.last_step_values(task, x, new_ys, args.n_evaluate_sample, args.evaluator_method)
@@ -55,6 +55,8 @@ def bfs(args, task, idx, graph, to_print=True):
     end_time = time.time()
     cost_time += end_time - start_time
     record.Record_txt(record.record_file_name, '\nfinal generation\nparent: ' + str(ys[0][0]) + '\ncost time' + str(end_time - start_time) + '\n\n', idx)
+    final_node = {'id': task.get_id(), 'answer': answer, 'value': values[top_id], 'parent_node': ys[0][0], 'ancestor_distance': 0, 'generation cost time': 0, 'evaluation cost time': 0}
+    graph.add_nodes([final_node])
     print('-----end bfs-----')
     record.Record_txt(record.record_file_name, '\n-----end bfs-----\n', idx)
 

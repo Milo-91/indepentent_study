@@ -77,14 +77,16 @@ def last_step_values(task, x, ys, n_evaluate_sample, evaluator_method, cache_val
 def last_step_proposals(task, x, y, k):
     global index, gpt
     propose_prompt = task.propose_prompt_wrap(x, y, k)
-    proposals = gpt(propose_prompt, n=1, stop=None, idx = index)[0].split('\n')
+    proposals = gpt(propose_prompt, model='gpt-4', n=1, stop=None, idx = index)[0].split('\n')
     
     return [y + _ + '\n' for _ in proposals]
 
 
 def evaluation(args, task, idx, graph):
-    global index
+    global index, gpt
     index = idx
+    gpt = partial(gpt, model=args.backend, temperature=args.temperature)
+    print(gpt)
     for _, node in graph.nodes.items():
         # evaluator
         start_time = time.time()

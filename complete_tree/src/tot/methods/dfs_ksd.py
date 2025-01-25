@@ -118,6 +118,8 @@ def ksd(args, task, idx, to_print=True, graph=None):
         end_time = time.time()
         cost_time += end_time - start_time
         record.Record_txt(record.record_file_name, '\nparent: ' + str(y[0]) + '\ncost time: ' + str(end_time - start_time) + '\n\n', idx)
+        final_node = {'id': task.get_id(), 'answer': answer, 'value': values[top_id], 'parent_node': y[0], 'ancestor_distance': 0, 'generation cost time': 0, 'evaluation cost time': 0}
+        graph.add_nodes([final_node])
         # save result and then back
         if distance < d_thres:
             print('max')
