@@ -15,14 +15,14 @@ def get_value(task, y, n_evaluate_sample, evaluator_method, cache_value=True):
         return task.value_cache[value_prompt]
     if evaluator_method == 'origin':
         value_outputs = gpt(value_prompt, n=n_evaluate_sample, stop=None, idx = index, logprobs = False)
-        record.Record_txt(record.debug_file_name, '\nevaluator method: ' + evaluator_method + '\nvalue outputs: ' + str(value_outputs) + '\n\n', idx = index)
+        # record.Record_txt(record.debug_file_name, '\nevaluator method: ' + evaluator_method + '\nvalue outputs: ' + str(value_outputs) + '\n\n', idx = index)
         value = task.value_outputs_unwrap(y, value_outputs, evaluator_method)
     elif evaluator_method == 'logprob':
         value_outputs, avg_probs = gpt(value_prompt, n=n_evaluate_sample, stop=None, idx = index, logprobs = True)
         print(avg_probs)
-        record.Record_txt(record.debug_file_name, '\nevaluator method: ' + evaluator_method + '\nvalue outputs: ' + str(value_outputs) + '\navg probs: ' + str(avg_probs) + '\n\n', idx = index)
+        # record.Record_txt(record.debug_file_name, '\nevaluator method: ' + evaluator_method + '\nvalue outputs: ' + str(value_outputs) + '\navg probs: ' + str(avg_probs) + '\n\n', idx = index)
         value = task.value_outputs_unwrap(y, value_outputs, evaluator_method, avg_probs)
-    record.Record_txt(record.debug_file_name, 'final value: ' + str(value) + '\n\n', idx = index)
+    # record.Record_txt(record.debug_file_name, 'final value: ' + str(value) + '\n\n', idx = index)
     if cache_value:
         task.value_cache[value_prompt] = value
     return value
@@ -56,7 +56,7 @@ def last_step_value(task, x, y, n_evaluate_sample, evaluator_method, cache_value
     elif evaluator_method == 'logprob':
         value_outputs, avg_probs = gpt(value_prompt, n=n_evaluate_sample, stop=None, idx = index, logprobs = True)
         value = task.value_outputs_unwrap(y, value_outputs, evaluator_method, avg_probs)
-    record.Record_txt(record.debug_file_name, 'final value: ' + str(value) + '\n\n', idx = index)
+    record.Record_txt(record.record_file_name, 'final value: ' + str(value) + '\n\n', idx = index)
     if cache_value:
         task.value_cache[value_prompt] = value
     return value
@@ -77,8 +77,11 @@ def last_step_values(task, x, ys, n_evaluate_sample, evaluator_method, cache_val
 def last_step_proposals(task, x, y, k):
     global index, gpt
     propose_prompt = task.propose_prompt_wrap(x, y, k)
-    proposals = gpt(propose_prompt, model='gpt-4', n=1, stop=None, idx = index)[0].split('\n')
-    
+    if 'Answer' in propose_prompt:
+        gpt = partial(gpt, model='gpt-4')
+    proposals = gpt(propose_prompt, n=1, stop=None, idx = index)[0].split('\n')
+    gpt = partial(gpt, model='gpt-3.5-turbo')
+
     return [y + _ + '\n' for _ in proposals]
 
 

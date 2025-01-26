@@ -78,7 +78,6 @@ class Game24Task(Task):
         current_numbers = get_current_numbers(y if y else x)
         if current_numbers == '24':
             prompt = cot_prompt.format(input=x) + 'Steps:' + y
-            # print([prompt])
         else:
             prompt = propose_prompt.format(input=current_numbers, k=k)
         return prompt
