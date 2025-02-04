@@ -33,6 +33,7 @@ def ksd(args, task, idx, to_print=True, graph=None):
     best_id = 0
     cost_time = 0
     level_nodes = [[] for _ in range(task.steps)]
+    cost_time_list = []
     infos = []
     if graph == None:
         graph = tree_graph.graph(k = args.k, b = args.n_select_sample, idx = idx)
@@ -52,9 +53,11 @@ def ksd(args, task, idx, to_print=True, graph=None):
                 is_prune = 0
                 record.Record_txt(record.record_file_name, '\ndistance: ' + str(distance) + ', d_thres: ' + str(d_thres) + '\n\n', idx = idx)
                 record.Record_txt(record.record_file_name, '\nlevel_nodes\n' + '\n'.join(list(map(str, level_nodes.copy()))), idx)
+                record.Record_txt(record.record_file_name, '\nlevel_nodes\n' + str(cost_time_list), idx)
                 record.Record_txt(record.record_file_name, '\nvisited\n' + str(graph.visited), idx)
                 print(y[0])
                 graph.visit_nodes([{'id': y[0]}])
+
                 # prune
                 if distance >= d_thres:
                     record.Record_txt(record.record_file_name, '\n(prune)distance: ' + str(distance) + ', d_thres: ' + str(d_thres) + '\n\n', idx = idx)
@@ -66,9 +69,11 @@ def ksd(args, task, idx, to_print=True, graph=None):
                     # Graph
                     parent = y[0]
                     child_list, distance_list, child_cost_time = graph.child_to_list(y[0])
+                    if y[0] not in cost_time_list:
+                        cost_time += sum(child_cost_time)
+                        record.Record_txt(record.record_file_name, '\nparent: ' + str(y[0]) + '\nparent cost time: ' + str(sum(child_cost_time)) + '\n\n', idx)
+                        cost_time_list.append(y[0])
                     temp_node_list = [(*child, distance) for child, distance in zip(child_list, distance_list)]
-                    cost_time += sum(child_cost_time)
-                    record.Record_txt(record.record_file_name, '\nparent: ' + str(y[0]) + '\nparent cost time' + str(sum(child_cost_time)) + '\n\n', idx)
                     
                     # Put outputs into level_nodes
                     print(child_list)
@@ -101,9 +106,9 @@ def ksd(args, task, idx, to_print=True, graph=None):
             infos.append({'step': step, 'select_id': y[0], 'select_new_ys': y[1], 'values': y[2], 'is_best': True, 'is_back': False})
                 
         graph.visit_nodes([{'id': y[0]}])
-        # final generation
         if is_prune == 1:
             continue
+        # final generation
         start_time = time.time()
         new_ys = [evaluator.last_step_proposals(task, x, y[1], args.k)]
         gpt = partial(gpt, model=args.backend, temperature=args.temperature)
@@ -117,7 +122,7 @@ def ksd(args, task, idx, to_print=True, graph=None):
         distance = task.distance_calculator(answer_value, distance, args.n_evaluate_sample, args.evaluator_method)
         end_time = time.time()
         cost_time += end_time - start_time
-        record.Record_txt(record.record_file_name, '\nparent: ' + str(y[0]) + '\ncost time: ' + str(end_time - start_time) + '\n\n', idx)
+        record.Record_txt(record.record_file_name, '\nfinal generation\nparent: ' + str(y[0]) + '\ncost time: ' + str(end_time - start_time) + '\n\n', idx)
         final_node = {'id': task.get_id(), 'answer': answer, 'value': values[top_id], 'parent_node': y[0], 'ancestor_distance': 0, 'generation cost time': 0, 'evaluation cost time': 0}
         graph.add_nodes([final_node])
         # save result and then back
