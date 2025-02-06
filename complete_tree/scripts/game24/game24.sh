@@ -4,7 +4,7 @@ read -p "repeat times: " times
 read -p "how much sets: " set_num
 today=$(date +%Y-%m-%d)
 start_index=900
-end_index=901
+end_index=1000
 algorithm='whole_tree'
 
 for ((i=0;i<set_num;i++));
@@ -31,7 +31,7 @@ do
         --k ${array_k[i]} \
         --algorithm $algorithm \
         --name_of_task $today \
-        --evaluator_method logprob \
+        --evaluator_method origin \
         #--graph_json # if use this is true
         ${@}
     done
