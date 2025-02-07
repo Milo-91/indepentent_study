@@ -53,7 +53,7 @@ def ksd(args, task, idx, to_print=True, graph=None):
                 is_prune = 0
                 record.Record_txt(record.record_file_name, '\ndistance: ' + str(distance) + ', d_thres: ' + str(d_thres) + '\n\n', idx = idx)
                 record.Record_txt(record.record_file_name, '\nlevel_nodes\n' + '\n'.join(list(map(str, level_nodes.copy()))), idx)
-                record.Record_txt(record.record_file_name, '\nlevel_nodes\n' + str(cost_time_list), idx)
+                record.Record_txt(record.record_file_name, '\cosr time list\n' + str(cost_time_list), idx)
                 record.Record_txt(record.record_file_name, '\nvisited\n' + str(graph.visited), idx)
                 print(y[0])
                 graph.visit_nodes([{'id': y[0]}])
@@ -105,36 +105,40 @@ def ksd(args, task, idx, to_print=True, graph=None):
             y = select_new_ys[0]
             infos.append({'step': step, 'select_id': y[0], 'select_new_ys': y[1], 'values': y[2], 'is_best': True, 'is_back': False})
                 
+        # id: y[0], ans: y[1], value: y[2]
         graph.visit_nodes([{'id': y[0]}])
         if is_prune == 1:
             continue
-        # final generation
-        start_time = time.time()
-        new_ys = [evaluator.last_step_proposals(task, x, y[1], args.k)]
-        gpt = partial(gpt, model=args.backend, temperature=args.temperature)
-        new_ys = list(itertools.chain(*new_ys))
-        ids = list(range(len(new_ys)))
-        values = evaluator.last_step_values(task, x, new_ys, args.n_evaluate_sample, args.evaluator_method)
-        top_id = sorted(ids, key=lambda x: values[x], reverse=True)[0]
-        answer= new_ys[top_id]
-        answer_value = values[top_id]
-        record.Record_txt(record.record_file_name, '\nanswer: ' + str(answer) + '\n\n', idx = idx)
-        distance = task.distance_calculator(answer_value, distance, args.n_evaluate_sample, args.evaluator_method)
-        end_time = time.time()
-        cost_time += end_time - start_time
-        record.Record_txt(record.record_file_name, '\nfinal generation\nparent: ' + str(y[0]) + '\ncost time: ' + str(end_time - start_time) + '\n\n', idx)
-        final_node = {'id': task.get_id(), 'answer': answer, 'value': values[top_id], 'parent_node': y[0], 'ancestor_distance': 0, 'generation cost time': 0, 'evaluation cost time': 0}
-        graph.add_nodes([final_node])
+        
         # save result and then back
         if distance < d_thres:
             print('max')
-            best_ans = answer
+            best_ans = y[1]
             best_id = y[0]
             # dfs with sphere decoding
             d_thres = distance
             record.Record_txt(record.record_file_name, '\nchange best answer\nbest_ans: ' + str(best_ans) + '\nd_thres: ' + str(d_thres) + '\n\n', idx = idx)
-        infos.append({'step': step, 'select_id': y[0], 'select_new_ys': answer, 'values': values, 'is_best': True, 'is_back': False})
-
+        infos.append({'step': step, 'select_id': y[0], 'select_new_ys': y[1], 'values': y[2], 'is_best': True, 'is_back': False})
+    
+    # final generation
+    start_time = time.time()
+    new_ys = [evaluator.last_step_proposals(task, x, best_ans, args.k)]
+    gpt = partial(gpt, model=args.backend, temperature=args.temperature)
+    new_ys = list(itertools.chain(*new_ys))
+    ids = list(range(len(new_ys)))
+    values = evaluator.last_step_values(task, x, new_ys, args.n_evaluate_sample, args.evaluator_method)
+    top_id = sorted(ids, key=lambda x: values[x], reverse=True)[0]
+    answer= new_ys[top_id]
+    answer_value = values[top_id]
+    record.Record_txt(record.record_file_name, '\nanswer: ' + str(answer) + '\n\n', idx = idx)
+    distance = task.distance_calculator(answer_value, distance, args.n_evaluate_sample, args.evaluator_method)
+    end_time = time.time()
+    cost_time += end_time - start_time
+    record.Record_txt(record.record_file_name, '\nfinal generation\nparent: ' + str(best_id) + '\ncost time: ' + str(end_time - start_time) + '\n\n', idx)
+    final_node = {'id': task.get_id(), 'answer': answer, 'value': values[top_id], 'parent_node': best_id, 'ancestor_distance': d_thres, 'generation cost time': 0, 'evaluation cost time': 0}
+    graph.add_nodes([final_node])
+    record.Record_txt(record.record_file_name, '\nFinal Generation\nbest_ans: ' + str(best_ans) + '\nd_thres: ' + str(d_thres) + '\nfinal node: ' + str(final_node) + '\n\n', idx = idx)
+    
     parent_id = best_id
     best_path = set()
     while parent_id != 0:

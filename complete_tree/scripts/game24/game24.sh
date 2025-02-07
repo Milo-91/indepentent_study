@@ -4,8 +4,9 @@ read -p "repeat times: " times
 read -p "how much sets: " set_num
 today=$(date +%Y-%m-%d)
 start_index=900
-end_index=1000
+end_index=901
 algorithm='whole_tree'
+evaluator_method='compare'
 
 for ((i=0;i<set_num;i++));
 do
@@ -31,21 +32,52 @@ do
         --k ${array_k[i]} \
         --algorithm $algorithm \
         --name_of_task $today \
-        --evaluator_method origin \
+        --evaluator_method $evaluator_method \
         #--graph_json # if use this is true
         ${@}
     done
 done
 
-for ((i=0;i<set_num;i++));
-do
-    python check_error_game24.py \
-    --task game24 \
-    --task_start_index $start_index \
-    --task_end_index $end_index \
-    --algorithm $algorithm \
-    --n_select_sample ${array_b[i]} \
-    --k ${array_k[i]} \
-    --name_of_task $today
-    ${@}    
-done
+if [ "$evaluator_method" = "compare" ]; then
+    for ((i=0;i<set_num;i++));
+    do
+        python check_error_game24.py \
+        --task game24 \
+        --task_start_index $start_index \
+        --task_end_index $end_index \
+        --algorithm $algorithm \
+        --n_select_sample ${array_b[i]} \
+        --k ${array_k[i]} \
+        --name_of_task $today \
+        --evaluator_method 'origin'
+        ${@}    
+    done
+
+    for ((i=0;i<set_num;i++));
+    do
+        python check_error_game24.py \
+        --task game24 \
+        --task_start_index $start_index \
+        --task_end_index $end_index \
+        --algorithm $algorithm \
+        --n_select_sample ${array_b[i]} \
+        --k ${array_k[i]} \
+        --name_of_task $today \
+        --evaluator_method 'logprob'
+        ${@}    
+    done
+else
+    for ((i=0;i<set_num;i++));
+    do
+        python check_error_game24.py \
+        --task game24 \
+        --task_start_index $start_index \
+        --task_end_index $end_index \
+        --algorithm $algorithm \
+        --n_select_sample ${array_b[i]} \
+        --k ${array_k[i]} \
+        --name_of_task $today \
+        --evaluator_method $evaluator_meothod
+        ${@}    
+    done
+fi

@@ -24,6 +24,7 @@ def parse_args():
     args.add_argument('--n_select_sample', type=int, default=1) # b
     args.add_argument('--k', type = int, default = 1) # k
     args.add_argument('--name_of_task', type=str, default='default')
+    args.add_argument('--evaluator_method', type=str, choices=['origin', 'logprob', 'compare'], default='origin')
     args = args.parse_args()
     return args
 
@@ -198,8 +199,11 @@ def cal_avg(ws, pos, col):
     ws.cell(pos, col + 4).value = sum / data_num
 
 def run(args):
+    global excel_file
+    excel_file = f'analysis_{args.evaluator_method}.xlsx'
     # load excel file
     excel_path = f'./logs/{args.task}/{args.name_of_task}'
+
     wb = Init(excel_path)
     ws = wb.active
 
@@ -210,7 +214,7 @@ def run(args):
     for name in dir_list:
         folder_name = f'./logs/{args.task}/{args.name_of_task}/k{args.k}b{args.n_select_sample}/{name}'
         print(folder_name)
-        json_file_name = os.path.join(folder_name, f'{args.name_of_task}_start{args.task_start_index}_end{args.task_end_index}_{args.algorithm}.json')
+        json_file_name = os.path.join(folder_name, f'{args.name_of_task}_start{args.task_start_index}_end{args.task_end_index}_{args.algorithm}_{args.evaluator_method}.json')
         print(json_file_name)
         time.sleep(3)
         with open(json_file_name, 'r') as file:
