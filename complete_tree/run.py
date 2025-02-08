@@ -111,7 +111,7 @@ def run(args):
             record.Record_txt(record.record_file_name, '\norigin\nbfs_ys = ' + str(ys_list[0][0]) + '\ndfs+sd_ys = ' + str(ys_list[1][0]) + '\ndfs+ksd_ys = ' + str(ys_list[2][0]) + '\n\n', idx = i)
             
             # log
-            infos = [[None for _ in range(2)] for _ in range(3)]
+            infos = [[{} for _ in range(2)] for _ in range(3)]
             infos[0][0] = [task.test_output(i, y) for y in ys_list[0][0]]
             infos[1][0] = [task.test_output(i, y) for y in ys_list[1][0]]
             infos[2][0] = [task.test_output(i, y) for y in ys_list[2][0]]
