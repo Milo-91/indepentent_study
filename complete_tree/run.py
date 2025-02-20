@@ -73,10 +73,10 @@ def run(args):
         #     task.reset_id(id = len(graph.nodes))
         if args.evaluator_method == 'compare':
             # for list [0: bfs, 1: dfs+sd, 2: ksd][0: origin, 1: logprob]
-            ys_list = [[None for _ in range(2)] for _ in range(3)]
-            info_list = [[None for _ in range(2)] for _ in range(3)]
-            traversal_nodes_list = [[None for _ in range(2)] for _ in range(3)]
-            cost_time_list = [[None for _ in range(2)] for _ in range(3)]
+            ys_list = [[{} for _ in range(2)] for _ in range(3)]
+            info_list = [[{} for _ in range(2)] for _ in range(3)]
+            traversal_nodes_list = [[{} for _ in range(2)] for _ in range(3)]
+            cost_time_list = [[{} for _ in range(2)] for _ in range(3)]
             # building complete tree
             print('-----building tree start-----')
             info, traversal_nodes = build(args, task, i, graph = graph)
@@ -117,16 +117,16 @@ def run(args):
             infos[2][0] = [task.test_output(i, y) for y in ys_list[2][0]]
             info.update({'idx': i, 'traversal_nodes': traversal_nodes})                                                                                                                                              # %4 0
             info_list[0][0].update({'idx': i, 'ys': ys_list[0][0], 'infos': infos[0][0], 'traversal_nodes': traversal_nodes_list[0][0], 'cost time': cost_time_list[0][0], 'usage_so_far': gpt_usage(args.backend)}) # %4 1
-            info_list[0][1].update({'idx': i, 'ys': ys_list[1][0], 'infos': infos[1][0], 'traversal_nodes': traversal_nodes_list[1][0], 'cost time': cost_time_list[1][0], 'usage_so_far': gpt_usage(args.backend)}) # %4 2
-            info_list[0][2].update({'idx': i, 'ys': ys_list[2][0], 'infos': infos[2][0], 'traversal_nodes': traversal_nodes_list[2][0], 'cost time': cost_time_list[2][0], 'usage_so_far': gpt_usage(args.backend)}) # %4 3
+            info_list[1][0].update({'idx': i, 'ys': ys_list[1][0], 'infos': infos[1][0], 'traversal_nodes': traversal_nodes_list[1][0], 'cost time': cost_time_list[1][0], 'usage_so_far': gpt_usage(args.backend)}) # %4 2
+            info_list[2][0].update({'idx': i, 'ys': ys_list[2][0], 'infos': infos[2][0], 'traversal_nodes': traversal_nodes_list[2][0], 'cost time': cost_time_list[2][0], 'usage_so_far': gpt_usage(args.backend)}) # %4 3
             record.Record_txt(record.record_file_name, '\nbfs_ys: ' + str(ys_list[0][0])  + ', infos: ' + str(infos[0][0]) + '\ndfs+sd_ys: ' + str(ys_list[1][0]) + ', infos: ' + str(infos[1][0]) + '\ndfs+ksd_ys: ' + str(ys_list[2][0]) + ', infos: ' + str(infos[2][0]) + '\n\n', idx = i) 
             record.Record_txt(record.acc_file_name, str(i) + '\n\b bfs_ys: ' + str(ys_list[0][0][0])  + ', acc: ' + str(infos[0][0][0]) + ', traversal nodes: ' + str(traversal_nodes_list[0][0]) + ', cost time: ' + str(cost_time_list[0][0]) + '\n\n')
             record.Record_txt(record.acc_file_name, '\b dfs+sd_ys: ' + str(ys_list[1][0][0])  + ', acc: ' + str(infos[1][0][0]) + ', traversal nodes: ' + str(traversal_nodes_list[0][0]) + ', cost time: ' + str(cost_time_list[1][0]) + '\n\n')
             record.Record_txt(record.acc_file_name, '\b dfs+ksd_ys: ' + str(ys_list[2][0][0])  + ', acc: ' + str(infos[2][0][0]) + ', traversal nodes: ' + str(traversal_nodes_list[2][0]) + ', cost time: ' + str(cost_time_list[2][0]) + '\n\n')
             logs.append(info)
-            logs.append(bfs_info)
-            logs.append(dfs_info)
-            logs.append(ksd_info)
+            logs.append(info_list[0][0])
+            logs.append(info_list[1][0])
+            logs.append(info_list[2][0])
             with open(json_file_name_origin, 'w') as f:
                 json.dump(logs, f, indent=4)
             
@@ -161,17 +161,17 @@ def run(args):
             infos[1][1] = [task.test_output(i, y) for y in ys_list[1][1]]
             infos[2][1] = [task.test_output(i, y) for y in ys_list[2][1]]
             info_list[0][1].update({'idx': i, 'ys': ys_list[0][1], 'infos': infos[0][1], 'traversal_nodes': traversal_nodes_list[0][1], 'cost time': cost_time_list[0][1], 'usage_so_far': gpt_usage(args.backend)}) # %4 1
-            info_list[0][1].update({'idx': i, 'ys': ys_list[1][1], 'infos': infos[1][1], 'traversal_nodes': traversal_nodes_list[1][1], 'cost time': cost_time_list[1][1], 'usage_so_far': gpt_usage(args.backend)}) # %4 2
-            info_list[0][2].update({'idx': i, 'ys': ys_list[2][1], 'infos': infos[2][1], 'traversal_nodes': traversal_nodes_list[2][1], 'cost time': cost_time_list[2][1], 'usage_so_far': gpt_usage(args.backend)}) # %4 3
+            info_list[1][1].update({'idx': i, 'ys': ys_list[1][1], 'infos': infos[1][1], 'traversal_nodes': traversal_nodes_list[1][1], 'cost time': cost_time_list[1][1], 'usage_so_far': gpt_usage(args.backend)}) # %4 2
+            info_list[2][1].update({'idx': i, 'ys': ys_list[2][1], 'infos': infos[2][1], 'traversal_nodes': traversal_nodes_list[2][1], 'cost time': cost_time_list[2][1], 'usage_so_far': gpt_usage(args.backend)}) # %4 3
             record.Record_txt(record.record_file_name, '\nbfs_ys: ' + str(ys_list[0][1])  + ', infos: ' + str(infos[0][1]) + '\ndfs+sd_ys: ' + str(ys_list[1][1]) + ', infos: ' + str(infos[1][1]) + '\ndfs+ksd_ys: ' + str(ys_list[2][1]) + ', infos: ' + str(infos[2][1]) + '\n\n', idx = i) 
             record.Record_txt(record.acc_file_name, str(i) + '\n\b bfs_ys: ' + str(ys_list[0][0][1])  + ', acc: ' + str(infos[0][0][1]) + ', traversal nodes: ' + str(traversal_nodes_list[0][1]) + ', cost time: ' + str(cost_time_list[0][1]) + '\n\n')
             record.Record_txt(record.acc_file_name, '\b dfs+sd_ys: ' + str(ys_list[1][0][1])  + ', acc: ' + str(infos[1][0][1]) + ', traversal nodes: ' + str(traversal_nodes_list[0][1]) + ', cost time: ' + str(cost_time_list[1][1]) + '\n\n')
             record.Record_txt(record.acc_file_name, '\b dfs+ksd_ys: ' + str(ys_list[2][0][1])  + ', acc: ' + str(infos[2][0][1]) + ', traversal nodes: ' + str(traversal_nodes_list[2][1]) + ', cost time: ' + str(cost_time_list[2][1]) + '\n\n')
             logs = []
             logs.append(info)
-            logs.append(bfs_info)
-            logs.append(dfs_info)
-            logs.append(ksd_info)
+            logs.append(info_list[0][1])
+            logs.append(info_list[1][1])
+            logs.append(info_list[2][1])
             with open(json_file_name_logprob, 'w') as f:
                 json.dump(logs, f, indent=4)
         else:

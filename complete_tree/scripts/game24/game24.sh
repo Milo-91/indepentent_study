@@ -4,7 +4,7 @@ read -p "repeat times: " times
 read -p "how much sets: " set_num
 today=$(date +%Y-%m-%d)
 start_index=900
-end_index=910
+end_index=902
 algorithm='whole_tree'
 evaluator_method='compare'
 
