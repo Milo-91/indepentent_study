@@ -47,8 +47,7 @@ def run(args):
         folder_name = f'./logs/{args.task}/{args.name_of_task}/k{args.k}b{args.n_select_sample}/{folder_index}'
         if args.evaluator_method == 'compare':
             json_file_name_origin = os.path.join(folder_name, f'{args.name_of_task}_start{args.task_start_index}_end{args.task_end_index}_{args.algorithm}_origin.json')
-            json_file_name_logprob = os.path.join(folder_name, f'{args.name_of_task}_start{args.task_start_index}_end{args.task_end_index}_{args.algorithm}_logprob.json')            
-                        
+            json_file_name_logprob = os.path.join(folder_name, f'{args.name_of_task}_start{args.task_start_index}_end{args.task_end_index}_{args.algorithm}_logprob.json')                        
         else:
             json_file_name = os.path.join(folder_name, f'{args.name_of_task}_start{args.task_start_index}_end{args.task_end_index}_{args.algorithm}_{args.evaluator_method}.json')
     os.makedirs(os.path.dirname(folder_name), exist_ok=True)
@@ -111,7 +110,7 @@ def run(args):
             record.Record_txt(record.record_file_name, '\norigin\nbfs_ys = ' + str(ys_list[0][0]) + '\ndfs+sd_ys = ' + str(ys_list[1][0]) + '\ndfs+ksd_ys = ' + str(ys_list[2][0]) + '\n\n', idx = i)
             
             # log
-            infos = [[{} for _ in range(2)] for _ in range(3)]
+            infos = [[None for _ in range(2)] for _ in range(3)]
             infos[0][0] = [task.test_output(i, y) for y in ys_list[0][0]]
             infos[1][0] = [task.test_output(i, y) for y in ys_list[1][0]]
             infos[2][0] = [task.test_output(i, y) for y in ys_list[2][0]]
@@ -144,12 +143,12 @@ def run(args):
             task.reset_id(id = traversal_nodes)
             ys_list[0][1], info_list[0][1], traversal_nodes_list[0][1], cost_time_list[0][1] = bfs(args, task, i, graph = graph_logprob_copy)
             record.Record_txt(record.record_file_name, '\nusage so far: ' + str(gpt_usage(args.backend)) + '\n\n', idx = i)
-            graph_logprob_copy = copy.copy(graph.logprob)
+            graph_logprob_copy = copy.copy(graph_logprob)
             graph_logprob.show_in_nodes()
             task.reset_id(id = traversal_nodes)
             ys_list[1][1], info_list[1][1], traversal_nodes_list[1][1], cost_time_list[1][1] = dfs(args, task, i, graph = graph_logprob_copy)
             record.Record_txt(record.record_file_name, '\nusage so far: ' + str(gpt_usage(args.backend)) + '\n\n', idx = i)
-            graph_logprob_copy = copy.copy(graph.logprob)
+            graph_logprob_copy = copy.copy(graph_logprob)
             graph_logprob.show_in_nodes()
             task.reset_id(id = traversal_nodes)
             ys_list[2][1], info_list[2][1], traversal_nodes_list[2][1], cost_time_list[2][1] = ksd(args, task, i, graph = graph_logprob_copy)
@@ -160,18 +159,25 @@ def run(args):
             infos[0][1] = [task.test_output(i, y) for y in ys_list[0][1]]
             infos[1][1] = [task.test_output(i, y) for y in ys_list[1][1]]
             infos[2][1] = [task.test_output(i, y) for y in ys_list[2][1]]
+            print('-------要不要讓我交報告了-------')
             info_list[0][1].update({'idx': i, 'ys': ys_list[0][1], 'infos': infos[0][1], 'traversal_nodes': traversal_nodes_list[0][1], 'cost time': cost_time_list[0][1], 'usage_so_far': gpt_usage(args.backend)}) # %4 1
             info_list[1][1].update({'idx': i, 'ys': ys_list[1][1], 'infos': infos[1][1], 'traversal_nodes': traversal_nodes_list[1][1], 'cost time': cost_time_list[1][1], 'usage_so_far': gpt_usage(args.backend)}) # %4 2
             info_list[2][1].update({'idx': i, 'ys': ys_list[2][1], 'infos': infos[2][1], 'traversal_nodes': traversal_nodes_list[2][1], 'cost time': cost_time_list[2][1], 'usage_so_far': gpt_usage(args.backend)}) # %4 3
             record.Record_txt(record.record_file_name, '\nbfs_ys: ' + str(ys_list[0][1])  + ', infos: ' + str(infos[0][1]) + '\ndfs+sd_ys: ' + str(ys_list[1][1]) + ', infos: ' + str(infos[1][1]) + '\ndfs+ksd_ys: ' + str(ys_list[2][1]) + ', infos: ' + str(infos[2][1]) + '\n\n', idx = i) 
-            record.Record_txt(record.acc_file_name, str(i) + '\n\b bfs_ys: ' + str(ys_list[0][0][1])  + ', acc: ' + str(infos[0][0][1]) + ', traversal nodes: ' + str(traversal_nodes_list[0][1]) + ', cost time: ' + str(cost_time_list[0][1]) + '\n\n')
-            record.Record_txt(record.acc_file_name, '\b dfs+sd_ys: ' + str(ys_list[1][0][1])  + ', acc: ' + str(infos[1][0][1]) + ', traversal nodes: ' + str(traversal_nodes_list[0][1]) + ', cost time: ' + str(cost_time_list[1][1]) + '\n\n')
-            record.Record_txt(record.acc_file_name, '\b dfs+ksd_ys: ' + str(ys_list[2][0][1])  + ', acc: ' + str(infos[2][0][1]) + ', traversal nodes: ' + str(traversal_nodes_list[2][1]) + ', cost time: ' + str(cost_time_list[2][1]) + '\n\n')
+            record.Record_txt(record.acc_file_name, str(i) + '\n\b bfs_ys: ' + str(ys_list[0][1][0])  + ', acc: ' + str(infos[0][1][0]) + ', traversal nodes: ' + str(traversal_nodes_list[0][1]) + ', cost time: ' + str(cost_time_list[0][1]) + '\n\n')
+            record.Record_txt(record.acc_file_name, '\b dfs+sd_ys: ' + str(ys_list[1][1][0])  + ', acc: ' + str(infos[1][1][0]) + ', traversal nodes: ' + str(traversal_nodes_list[0][1]) + ', cost time: ' + str(cost_time_list[1][1]) + '\n\n')
+            record.Record_txt(record.acc_file_name, '\b dfs+ksd_ys: ' + str(ys_list[2][1][0])  + ', acc: ' + str(infos[2][1][0]) + ', traversal nodes: ' + str(traversal_nodes_list[2][1]) + ', cost time: ' + str(cost_time_list[2][1]) + '\n\n')
+            print('---------------------0-------------------------')
             logs = []
+            print('---------------------1-------------------------')
             logs.append(info)
+            print('---------------------2-------------------------')
             logs.append(info_list[0][1])
+            print('---------------------3-------------------------')
             logs.append(info_list[1][1])
+            print('---------------------4-------------------------')
             logs.append(info_list[2][1])
+            print('---------------------5-------------------------')
             with open(json_file_name_logprob, 'w') as f:
                 json.dump(logs, f, indent=4)
         else:
